@@ -1,0 +1,11 @@
+<P>To improve your skills, checkout these links-</p>
+
+<ul>
+<li><a href=“http://memory-sports.com”>memory-sports.com</a></li>
+
+<li><a href=“http://artofmemory.com/wiki/Person-Action-Object_(PAO)_System”>Person-Action-Object</a></li>
+
+<li><a href=“http://www.memoryconsulting.com/pridmore.htm”>Ben System</a></li>
+
+<li><a href=“http://mnemosyne-proj.org”>Mnemosyne Project</a></li>
+</li>

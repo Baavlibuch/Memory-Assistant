@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-hdpi/drawer_shadow.9.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable-hdpi/drawer_shadow.9.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-hdpi/ic_drawer.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable-hdpi/ic_drawer.png"
+    }
+]

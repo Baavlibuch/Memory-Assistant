@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-v21/avd_show_password.xml",
+        "source": "/Users/Manik/.android/build-cache/0f6d65fae50fc790944c5fe28b4a74b4ac0d487b/output/res/drawable-v21/avd_show_password.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/Manik/.android/build-cache/9c980afc7c0e7a1f1defff3386917d16b5a80c54/output/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-v21/design_bottom_navigation_item_background.xml",
+        "source": "/Users/Manik/.android/build-cache/0f6d65fae50fc790944c5fe28b4a74b4ac0d487b/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-v21/design_password_eye.xml",
+        "source": "/Users/Manik/.android/build-cache/0f6d65fae50fc790944c5fe28b4a74b4ac0d487b/output/res/drawable-v21/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/Users/Manik/.android/build-cache/9c980afc7c0e7a1f1defff3386917d16b5a80c54/output/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/Manik/.android/build-cache/9c980afc7c0e7a1f1defff3386917d16b5a80c54/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-v21/avd_hide_password.xml",
+        "source": "/Users/Manik/.android/build-cache/0f6d65fae50fc790944c5fe28b4a74b4ac0d487b/output/res/drawable-v21/avd_hide_password.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/Manik/.android/build-cache/9c980afc7c0e7a1f1defff3386917d16b5a80c54/output/res/drawable-v21/abc_btn_colored_material.xml"
+    }
+]
