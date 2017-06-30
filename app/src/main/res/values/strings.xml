@@ -1,0 +1,83 @@
+<resources>
+
+
+    <string name="app_name">Memory Athletes</string>
+    <string name="cd">Chose Discipline</string>
+    <string name="a">Equations</string>
+    <string name="b">Numbers</string>
+    <string name="c">Words</string>
+    <string name="d">Names</string>
+    <string name="e">Cards</string>
+    <string name="f">Binary Digits</string>
+    <string name="g">Places</string>
+    <string name="h">Dates</string>
+    <string name="i">Foods</string>
+    <string name="j">Colours</string>
+    <string name="k">Letters</string>
+    <string name="random">Random</string>
+    <string name="cf">Chose File</string>
+
+    <string name="enter_ans">Enter responses</string>
+    <string name="score">Score</string>
+    <string name="time_taken">Time taken</string>
+    <string name="check">Check</string>
+    <string name="just_answers">Just show the answers</string>
+    <string name="time_elapsed">Time Elapsed</string>
+    <string name="time_left">Time Left</string>
+    <string name="wrong">Wrong</string>
+    <string name="correct">Correct</string>
+    <string name="your_response">Your Responses</string>
+    <string name="correct_answers">Correct Answers</string>
+
+    <string name="enter">Enter the number of </string>
+    <string name="st">values</string>
+    <string name="decks">decks</string>
+    <string name="words">words</string>
+    <string name="places">places</string>
+    <string name="nm">names</string>
+    <string name="sz">Select maximum digits in a value</string>
+    <string name="clump">How many values to group together</string>
+    <string name="sw">Stopwatch</string>
+    <string name="tm">Timer</string>
+    <string name="clock">Select Timekeeper</string>
+    <string name="start">Start</string>
+    <string name="time_up">Time\'s Up</string>
+    <string name="ed">Please Enter Duration!</string>
+    <string name="reset">Reset</string>
+    <string name="stop">Stop</string>
+    <string name="resume">Resume</string>
+    <string name="ers">Enter number of values and size of each value</string>
+    <string name="save">Save</string>
+    <string name="save_failed">Save Failed. Retry?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="none">No time constraint</string>
+    <string name="enter_minutes">Enter minutes</string>
+    <string name="enter_seconds">Enter seconds</string>
+    <string name="next">Next</string>
+    <string name="prev">Previous</string>
+    <string name="negative">Include negative numbers</string>
+    <string name="decimal">Include decimal numbers</string>
+    <string name="start_timer">Start Timer</string>
+    <string name="start_stopwatch">Start Stopwatch</string>
+
+
+    <string name="login">Login</string>
+    <string name="learn">Learn</string>
+    <string name="practice">Practice</string>
+    <string name="recall">Recall</string>
+    <string name="preferences">Preferences</string>
+    <string name="get_pro">Get Pro</string>
+    <string name="title_activity_preferences">Preferences</string>
+
+    <string name="tab"> \t</string>
+
+
+    <string name="method_of_loci">Method Of Loci</string>
+    <string name="associations">The Perfect Association</string>
+    <string name="major_system">The Major System</string>
+    <string name="checkout">Checkout These Links</string>
+    <string name="pao"></string>
+    <string name="wardrobe_method"></string>
+
+</resources>
