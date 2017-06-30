@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* Quick summary
+* Quick summary-
 Memory sports android app.
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
@@ -22,11 +22,11 @@ Memory sports android app.
 
 * Writing tests
 * Code review
-* Other guidelines
+* Other guidelines-
 **The code is in <app/src/main>
 **
 ### Who do I talk to? ###
 
-* Repo owner or admin 
+* Repo owner or admin-
 **Manik**
 * Other community or team contact
