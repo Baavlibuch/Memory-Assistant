@@ -5,6 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * Quick summary
+Memory sports android app.
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
