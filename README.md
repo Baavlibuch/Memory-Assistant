@@ -22,10 +22,10 @@ This README would normally document whatever steps are necessary to get your app
 * Writing tests
 * Code review
 * Other guidelines
-**The code is in app/src/main
+**The code is in <app/src/main>
 **
 ### Who do I talk to? ###
 
 * Repo owner or admin
-**Manik
-*** Other community or team contact
+**Manik**
+* Other community or team contact
