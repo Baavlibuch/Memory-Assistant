@@ -1,0 +1,18 @@
+<p>The practice of memorising equations is an unforgivable sin because they are meant to be understood. However, when it comes to sport, these sins are forgiven. Unfortunately, memorising equations using memory techniques lies in unwandered territory. I have tried to create a system of memorising equations but it is very crude and inefficient so you’ll have to tweak it. If you manage to improve it, please share it with me. </p>
+
+<p>Here is how I memorise things.<p>
+<ul>
+<li>You can denote numbers with objects. I only do this for small numbers so that things stay easy. For bigger numbers, you can create a constant and memorise it seperately on a different path.</li>
+<li>You can also create a path filled with formulae you already know and use it’s pegs here</li>
+<li>For a constant like speed of light (c) or the universal gravitation constant (G) you can use animals. So a giraffe for G and a camel for c.</li>
+<li>Use an action for an operator. Example - punch for multiplication. You can memorise parentheses and subscripts as actions too.</li>
+<li>For a variable, a person seems to be the best choice. Alan from The Hangover is a good choice for A. Don’t mix up the capital and small letters, assign different people to both.</li>
+<li>For a chemical equation, people can denote <b>new</b> molecules. Don’t use anything for elements, you should know them all or you can just use the pegs from another path/wardrobe.</li>
+
+<p>To memorise all those symbols, create a story. You can store a short equation, at a single peg but if it gets long, you probably will need to continue it on the next peg. In the latter, be sure to mark it as the continuation. Another action can be used for this task.</p>
+
+<p>Some tips</p>
+
+<ul>
+<li>Try to keep all the terms and variables in order. It has its pros and cons. The main con is that it makes the stories similar and repetitive and increases the chances of forgetting the equation. This con results into a pro - encourages understanding the equations for those who do rote learning.</li>
+<ul>

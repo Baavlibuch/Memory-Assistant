@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../jqmath/jqmath-0.4.3.css">
+        <script src="../jqmath/jquery-1.4.3.min.js"></script>
+        <script src="../jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+    </head>
+    <body>
