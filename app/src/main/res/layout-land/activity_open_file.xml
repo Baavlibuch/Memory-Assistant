@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="horizontal"
-    tools:context="com.maniksejwal.memoryathletes.main.OpenFile.Recall">
+    tools:context=".OpenFile.Recall">
 
     <ScrollView
         android:layout_width="0dp"

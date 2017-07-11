@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.maniksejwal.memoryathletes.R;
-import com.maniksejwal.memoryathletes.main.OpenFile.Recall;
+import com.maniksejwal.memoryathletes.OpenFile.Recall;
 
 import java.util.ArrayList;
 

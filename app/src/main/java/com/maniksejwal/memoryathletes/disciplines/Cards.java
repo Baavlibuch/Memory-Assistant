@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.maniksejwal.memoryathletes.R;
-import com.maniksejwal.memoryathletes.main.Disciplines;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -155,7 +154,7 @@ public class Cards extends Disciplines {
     }
 
     @Override
-    protected void save() {
+    protected String save() {
         String string="";
 
         String fname = getFilesDir().getAbsolutePath() + File.separator + getTitle() + File.separator +
@@ -179,11 +178,13 @@ public class Cards extends Disciplines {
 
                 outputStream.close();
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                return fname;
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
             }
         } else Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
+        return null;
     }
 
     @Override

@@ -3,8 +3,8 @@
     package="com.maniksejwal.memoryathletes.test" >
 
     <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="25" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="26" />
 
     <instrumentation
         android:name="android.support.test.runner.AndroidJUnitRunner"

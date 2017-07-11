@@ -42,28 +42,41 @@ public class Learn extends AppCompatActivity {
                 Intent intent = new Intent(Learn.this, item.mClass);
                 intent.putExtra("header", item.mItem);
                 intent.putExtra("file", item.mFile);
+                intent.putExtra("webView", item.webView);
                 startActivity(intent);
             }
         });
     }
 
     private void setList(ArrayList<Item> list){
-        list.add(new Item(R.string.method_of_loci, Lessons.class, R.raw.method_of_loci));
-        list.add(new Item(R.string.associations, Lessons.class, R.raw.perfect_association));
-        list.add(new Item(R.string.major_system, Lessons.class, R.raw.major_system));
+        list.add(new Item(R.string.method_of_loci, Lessons.class, R.raw.lesson_method_of_loci));
+        list.add(new Item(R.string.associations, Lessons.class, R.raw.lesson_perfect_association));
+        list.add(new Item(R.string.major_system, Lessons.class, R.raw.lesson_major_system));
+        list.add(new Item(R.string.equations, Lessons.class, R.raw.lesson_equations));
+        list.add(new Item(R.string.derivations, Lessons.class, R.raw.lesson_derivations));
+
         list.add(new Item(R.string.checkout, Lessons.class, R.raw.checkout));
-        //list.add(new Item(R.string.pao, Lessons.class*/));
-        //list.add(new Item(R.string.wardrobe_method, Lessons.class*/));
+        list.add(new Item(R.string.checkout, Lessons.class, R.raw.equations_math_important, true));
+        //list.add(new Item(R.string.pao, Lessons.class));
+        //list.add(new Item(R.string.wardrobe_method, Lessons.class));
     }
 
     private class Item {
         int mItem, mFile;
         Class mClass;
+        boolean webView = false;
 
         Item(int item, Class class1, int file) {
             mItem = item;
             mClass = class1;
             mFile = file;
+        }
+
+        Item(int item, Class class1, int file, boolean wV) {
+            mItem = item;
+            mClass = class1;
+            mFile = file;
+            webView=wV;
         }
     }
 
@@ -77,8 +90,7 @@ public class Learn extends AppCompatActivity {
                 listItemView = LayoutInflater.from(getContext()).inflate(R.layout.main_item, null, true);
             }
 
-
-            TextView textView = (TextView) listItemView.findViewById(R.id.main_textView);
+            TextView textView = listItemView.findViewById(R.id.main_textView);
             textView.setText(getString(getItem(position).mItem));
 
             return listItemView;

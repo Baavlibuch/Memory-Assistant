@@ -8,7 +8,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.maniksejwal.memoryathletes.R;
-import com.maniksejwal.memoryathletes.main.Disciplines;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -157,6 +156,44 @@ public class Places extends Disciplines {
             String island;
             while ((island = dict.readLine()) != null) {
                 mPlace.add(island);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            dict.close();
+        } catch (IOException e) {
+            Log.e(TAG, "File not closed");
+        }
+
+        dict = null;
+
+        try {
+            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.heritage)));
+            String heritage;
+            while ((heritage = dict.readLine()) != null) {
+                mPlace.add(heritage);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            dict.close();
+        } catch (IOException e) {
+            Log.e(TAG, "File not closed");
+        }
+
+        dict = null;
+
+        try {
+            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.rivers)));
+            String rivers;
+            while ((rivers = dict.readLine()) != null) {
+                mPlace.add(rivers);
             }
 
         } catch (IOException e) {
@@ -391,88 +428,6 @@ public class Places extends Disciplines {
         (findViewById(clock_text)).setVisibility(View.GONE);
         Log.i(TAG, "setButtons complete");
     }
-
-    void timer() {
-        Log.i(TAG, "timer() entered");
-        ((TextView) findViewById(clock_text)).setText("");
-        if (!isTimerRunning) {
-            cdt = new CountDownTimer(((Long.parseLong(((EditText)
-                    ((LinearLayout) findViewById(R.id.clock_edit)).findViewById(R.id.min)).getText().
-                    toString()) * 60000 + Integer.parseInt(((EditText) ((LinearLayout) findViewById
-                    (R.id.clock_edit)).findViewById(R.id.sec)).getText().toString()) * 1000)), 1000) {
-
-                boolean isRunning = true;
-
-                public void onTick(long millisUntilFinished) {
-                    ((TextView) findViewById(clock_text)).setText("" + millisUntilFinished / 60000 +
-                            " min  " + (millisUntilFinished / 1000) % 60 + " sec");
-                    mTime = millisUntilFinished;
-                }
-
-                public void onFinish() {
-                    ((TextView) findViewById(clock_text)).setText(R.string.time_up);
-                    (findViewById(R.id.numbers)).setVisibility(View.GONE);
-                    (findViewById(R.id.time)).setVisibility(View.VISIBLE);
-                    (findViewById(R.id.start)).setVisibility(View.VISIBLE);
-                    (findViewById(R.id.stop)).setVisibility(View.INVISIBLE);
-                    isRunning = false;
-                }
-            }.start();
-        } else {
-            cdt = new CountDownTimer(mTime, 1000) {
-                public void onTick(long millisUntilFinished) {
-                    ((TextView) findViewById(clock_text)).setText("" + millisUntilFinished / 60000 +
-                            " min  " + (millisUntilFinished
-                            / 1000) % 60 + " sec");
-                    mTime = millisUntilFinished;
-                }
-
-                public void onFinish() {
-                    ((TextView) findViewById(clock_text)).setText(R.string.time_up);
-                    (findViewById(R.id.numbers)).setVisibility(View.GONE);
-                }
-            }.start();
-        }
-        Log.i(TAG, "timer() complete");
-    }
-
-    private class myAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            (findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
-            int noOfValues;
-
-            if ((((EditText) findViewById(R.id.no_of_values)).getText().toString().length() > 0)) {
-                noOfValues = Integer.parseInt((((EditText) findViewById(R.id.no_of_values)).getText().toString()));
-            } else {
-                noOfValues = 100;
-            }
-
-            a.set(1, noOfValues);
-        }
-
-        @Override
-        protected String doInBackground(ArrayList<Integer>... a) {
-
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            (findViewById(R.id.save)).setVisibility(View.VISIBLE);
-            if (a.get(2) == 0) {
-                return;
-            }
-            ((TextView) findViewById(R.id.numbers)).setText(s);
-            (findViewById(R.id.numbers)).setVisibility(View.VISIBLE);
-            (findViewById(R.id.progress_bar)).setVisibility(View.GONE);
-            (findViewById(R.id.no_of_values)).setVisibility(View.GONE);
-        }
-    }
-
-
 }
 
 */

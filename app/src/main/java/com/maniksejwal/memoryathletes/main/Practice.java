@@ -20,11 +20,11 @@ import com.maniksejwal.memoryathletes.disciplines.Colours;
 import com.maniksejwal.memoryathletes.disciplines.Equations;
 import com.maniksejwal.memoryathletes.disciplines.Foods;
 import com.maniksejwal.memoryathletes.disciplines.Places;
-import com.maniksejwal.memoryathletes.disciplines.RandomDates;
-import com.maniksejwal.memoryathletes.disciplines.RandomLetters;
-import com.maniksejwal.memoryathletes.disciplines.RandomNames;
-import com.maniksejwal.memoryathletes.disciplines.RandomNumbers;
-import com.maniksejwal.memoryathletes.disciplines.RandomWords;
+import com.maniksejwal.memoryathletes.disciplines.Dates;
+import com.maniksejwal.memoryathletes.disciplines.Letters;
+import com.maniksejwal.memoryathletes.disciplines.Names;
+import com.maniksejwal.memoryathletes.disciplines.Numbers;
+import com.maniksejwal.memoryathletes.disciplines.Words;
 
 import java.util.ArrayList;
 
@@ -61,14 +61,14 @@ public class Practice extends AppCompatActivity {
 
     private void setList(ArrayList<Category> disc) {
         disc.add(new Category(R.string.e, pic, Cards.class, false, false));
-        disc.add(new Category(R.string.b, pic, RandomNumbers.class, true, false, 1));
-        disc.add(new Category(R.string.k, pic, RandomLetters.class, true, false));
+        disc.add(new Category(R.string.b, pic, Numbers.class, true, false, 1));
+        disc.add(new Category(R.string.k, pic, Letters.class, true, false));
         disc.add(new Category(R.string.f, pic, BinaryDigits.class, true, false));
-        disc.add(new Category(R.string.c, pic, RandomWords.class, false, true));
-        disc.add(new Category(R.string.d, pic, RandomNames.class, false, true));
+        disc.add(new Category(R.string.c, pic, Words.class, false, true));
+        disc.add(new Category(R.string.d, pic, Names.class, false, true));
         disc.add(new Category(R.string.g, pic, Places.class, false, true));
         disc.add(new Category(R.string.a, pic, Equations.class, false, false));
-        disc.add(new Category(R.string.h, pic, RandomDates.class, false, false));
+        disc.add(new Category(R.string.h, pic, Dates.class, false, false));
         disc.add(new Category(R.string.i, pic, Foods.class, false, false));
         disc.add(new Category(R.string.j, pic, Colours.class, false, false));
     }
@@ -111,11 +111,12 @@ public class Practice extends AppCompatActivity {
                 listView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
             }
 
-            TextView txt = (TextView) listView.findViewById(R.id.text);
-            ImageView img = (ImageView) listView.findViewById(R.id.image);
+            TextView txt = listView.findViewById(R.id.text);
+            ImageView img = listView.findViewById(R.id.image);
             txt.setText(cat.mNameId);
             img.setImageResource(cat.mImageId);
             return listView;
         }
     }
+
 }

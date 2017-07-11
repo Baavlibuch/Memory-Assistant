@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.maniksejwal.memoryathletes.R;
-import com.maniksejwal.memoryathletes.main.Disciplines;
 
 import java.util.Random;
 

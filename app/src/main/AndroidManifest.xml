@@ -29,7 +29,7 @@
         <activity android:name=".main.Learn" />
         <activity android:name=".Lessons.Lessons"/>
         <activity android:name=".main.Login" />
-        <activity android:name=".main.OpenFile.Recall"
+        <activity android:name=".OpenFile.Recall"
             android:configChanges="orientation|screenSize" />
         <activity android:name=".main.Practice" />
         <activity
@@ -39,16 +39,16 @@
         <!-- Practice Disciplines -->
 
         <activity
-            android:name=".disciplines.RandomNumbers"
+            android:name=".disciplines.Numbers"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".disciplines.Equations"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".disciplines.RandomWords"
+            android:name=".disciplines.Words"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".disciplines.RandomNames"
+            android:name=".disciplines.Names"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".disciplines.Cards"
@@ -63,13 +63,13 @@
             android:name=".disciplines.Foods"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".disciplines.RandomDates"
+            android:name=".disciplines.Dates"
             android:configChanges="orientation|screenSize" />
         <activity
             android:name=".disciplines.Colours"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".disciplines.RandomLetters"
+            android:name=".disciplines.Letters"
             android:configChanges="orientation|screenSize" />
 
     </application>
