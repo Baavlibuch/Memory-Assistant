@@ -6,121 +6,57 @@
     android:orientation="vertical"
     tools:context=".OpenFile.Recall">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/discipline_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:padding="4dp" />
+
+        <Spinner
+            android:id="@+id/chose_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            android:visibility="gone" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
             android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/discipline_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp" />
-
-            <Spinner
-                android:id="@+id/chose_file"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:visibility="gone" />
-
-            <LinearLayout
-                android:id="@+id/response_layout"
+            <ScrollView
+                android:id="@+id/recall_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:orientation="horizontal">
-
-                    <!--<Button
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/start_timer"
-                        android:onClick="startTimer"/>-->
-
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:onClick="startSW"
-                        android:text="@string/start_stopwatch" />
-
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/response_input"
+                    android:id="@+id/recall_text_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:hint="@string/enter_ans"
-                    android:imeOptions="normal" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/previous"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/prev"
-                        android:visibility="gone" />
-                    <!--Might be useful-->
-                    <Button
-                        android:id="@+id/check"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/check" />
-
-                    <Button
-                        android:id="@+id/next"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/next"
-                        android:visibility="gone" />
-                    <!--Might be useful-->
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/just_answers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/just_answers" />
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/text_answer_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <LinearLayout
+                        android:id="@+id/responses_text_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/your_answers"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/your_response" />
@@ -134,13 +70,16 @@
 
                     </LinearLayout>
 
+
                     <LinearLayout
+                        android:id="@+id/answers_text_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/correct_answers"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/correct_answers" />
@@ -156,47 +95,148 @@
 
                 </LinearLayout>
 
-        <!--        <LinearLayout
-                    android:id="@+id/image_answer_layout"
-                    android:layout_width="match_parent"
+            </ScrollView>
+
+            <GridView
+                android:id="@+id/cards_responses"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:horizontalSpacing="10dp"
+                android:numColumns="8"
+                android:verticalSpacing="10dp"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/progress_bar_recall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-                    <ListView
-                        android:id="@+id/responses_images"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <ListView
-                        android:id="@+id/answers_images"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
-                TODO:Use gridview-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-
-                    <ProgressBar
-                        android:id="@+id/progress_bar_recall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone" />
-                    <!--Don't use "layout-gravity=canter", it is buggy-->
-
-                </LinearLayout>
+                    android:visibility="visible" />
+                <!--Don't use "layout-gravity=canter", it is buggy-->
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:id="@+id/response_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/response_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="@string/enter_ans"
+                        />
+
+                </ScrollView>
+
+                <LinearLayout
+                    android:id="@+id/card_suit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/card_numbers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:orientation="horizontal" />
+
+                </HorizontalScrollView>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <!--<Button
+                            android:id="@+id/previous"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/prev"
+                            android:visibility="gone" />-->
+                        <!--Might be useful-->
+
+                        <!--<Button
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/start_timer"
+                            android:onClick="startTimer"/>-->
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="startSW"
+                            android:text="@string/start_stopwatch" />
+
+                        <Button
+                            android:id="@+id/check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="check"
+                            android:text="@string/check" />
+
+                        <Button
+                            android:id="@+id/just_answers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/just_answers" />
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:onClick="reset"
+                            android:text="@string/reset" />
+
+
+                        <!--<Button
+                            android:id="@+id/next"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/next"
+                            android:visibility="gone" />-->
+                        <!--Might be useful-->
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
         </LinearLayout>
 
-    </ScrollView>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/result"

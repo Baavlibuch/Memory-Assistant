@@ -11,9 +11,9 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--android:largeHeap="true"-->
 
         <activity android:name=".main.MainActivity">
             <intent-filter>
@@ -30,7 +30,8 @@
         <activity android:name=".Lessons.Lessons"/>
         <activity android:name=".main.Login" />
         <activity android:name=".OpenFile.Recall"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity android:name=".main.Practice" />
         <activity
             android:name=".main.Preferences"
@@ -40,37 +41,48 @@
 
         <activity
             android:name=".disciplines.Numbers"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Equations"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Words"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Names"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Cards"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.BinaryDigits"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Places"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Foods"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Dates"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Colours"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".disciplines.Letters"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"/>
 
     </application>
 

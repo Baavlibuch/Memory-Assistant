@@ -63,7 +63,7 @@ public class Disciplines extends AppCompatActivity {
             setContentView(R.layout.activity_disciplines);
             setButtons();
             if (intent.getBooleanExtra("hasSpinner", false)) {
-                    makeSpinner(intent.getIntExtra("spinnerContent", 0));
+                makeSpinner(intent.getIntExtra("spinnerContent", 0));
             }
         }
 
@@ -102,7 +102,7 @@ public class Disciplines extends AppCompatActivity {
             }
         });
         ArrayList<String> categories = new ArrayList<>();
-        if(spinnerContent==0) {
+        if (spinnerContent == 0) {
             categories.add(getString(R.string.clump));
             categories.add("Don't group");
         } else {
@@ -151,7 +151,7 @@ public class Disciplines extends AppCompatActivity {
         }
     }
 
-    protected void numbersVisibility(int v){
+    protected void numbersVisibility(int v) {
         (findViewById(R.id.random_values)).setVisibility(v);
     }
 
@@ -201,18 +201,18 @@ public class Disciplines extends AppCompatActivity {
         Log.i(TAG, "Start complete");
     }
 
-    protected String save(){
+    protected String save() {
         String string = ((TextView) findViewById(R.id.random_values)).getText().toString();
 
         String fname = getFilesDir().getAbsolutePath() + File.separator + getTitle() + File.separator +
                 ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
         String dirPath = getFilesDir().getAbsolutePath() + File.separator + getTitle();
         File pDir = new File(dirPath);
-        boolean isDirectoryCreated=pDir.exists();
+        boolean isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) {
             isDirectoryCreated = pDir.mkdir();
         }
-        if(isDirectoryCreated) {
+        if (isDirectoryCreated) {
             try {
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
                 outputStream.write(string.getBytes());
@@ -224,11 +224,12 @@ public class Disciplines extends AppCompatActivity {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
             }
-        } else Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
         return null;
     }
 
-    protected void reset(){
+    protected void reset() {
         if (((RadioButton) findViewById(R.id.timer)).isChecked()) {
             cdt.cancel();
             (findViewById(clock_text)).setVisibility(View.GONE);
@@ -405,7 +406,7 @@ public class Disciplines extends AppCompatActivity {
         Log.i(TAG, "timer() complete");
     }
 
-    protected void preExecute(){
+    protected void preExecute() {
         (findViewById(R.id.progress_bar_discipline)).setVisibility(View.VISIBLE);
         int noOfValues, size;
         try {
@@ -415,7 +416,7 @@ public class Disciplines extends AppCompatActivity {
                 size = Integer.parseInt(((Spinner) findViewById(R.id.spinner)).getSelectedItem().toString());
             }
             a.set(0, size);
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -428,11 +429,11 @@ public class Disciplines extends AppCompatActivity {
         a.set(1, noOfValues);
     }
 
-    protected String background(){
+    protected String background() {
         return "";
     }
 
-    protected void postExecute(String s){
+    protected void postExecute(String s) {
         (findViewById(R.id.save)).setVisibility(View.VISIBLE);
         (findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
         if (a.get(2) == 0) {

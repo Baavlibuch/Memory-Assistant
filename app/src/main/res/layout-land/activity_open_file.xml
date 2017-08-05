@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/text_answer_layout"
+                    android:id="@+id/recall_text_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"

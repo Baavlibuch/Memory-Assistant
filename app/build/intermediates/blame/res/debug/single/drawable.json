@@ -56,6 +56,10 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/pic.jpg"
     },
     {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/d.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/d.png"
+    },
+    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_list_selector_holo_dark.xml"
     },
@@ -76,12 +80,12 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/sj.png"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background.xml",
-        "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_dialog_material_background.xml"
-    },
-    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/navigation_empty_icon.xml",
         "source": "/Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/res/drawable/navigation_empty_icon.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background.xml",
+        "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_dialog_material_background.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/hk.png",
@@ -168,6 +172,10 @@
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_cab_background_internal_bg.xml"
     },
     {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/h.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/h.png"
+    },
+    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_ratingbar_small_material.xml"
     },
@@ -250,6 +258,10 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/s3.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/s3.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/s.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/s.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_ic_go_search_api_material.xml",
@@ -358,6 +370,10 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/ha.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/ha.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/c.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/c.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/design_snackbar_background.xml",

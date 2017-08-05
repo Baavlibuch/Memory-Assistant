@@ -24,16 +24,16 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/mountains.txt"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/first.txt",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/first.txt"
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/lesson_derivations.txt",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/lesson_derivations.txt"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/jqmath_beg.txt",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/jqmath_beg.txt"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/lesson_derivations.txt",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/lesson_derivations.txt"
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/first.txt",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/first.txt"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/words.txt",

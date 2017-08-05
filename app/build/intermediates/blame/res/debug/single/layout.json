@@ -4,16 +4,16 @@
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/layout/select_dialog_item_material.xml"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
-        "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/layout/notification_template_lines_media.xml"
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/res/layout/design_navigation_menu_item.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/activity_disciplines.xml",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/layout/activity_disciplines.xml"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
-        "source": "/Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/res/layout/design_navigation_menu_item.xml"
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
+        "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/layout/notification_template_lines_media.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/activity_preferences.xml",
@@ -62,10 +62,6 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/layout/abc_list_menu_item_radio.xml"
-    },
-    {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/layout_cards.xml",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/layout/layout_cards.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",

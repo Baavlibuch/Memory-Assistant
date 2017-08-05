@@ -11,5 +11,5 @@
 <p>$$∫\cosec x=\log \ \tan (x/2)$$</p>
 <p>$$∫\cosec x=-\ln |\cosec x+\cot x|$$</p>
 <p>$$∫\tan x=\ln |\cos x|$$</p>
-<p>$$∫\tan x=-\ln |\cosx|$$</p>
+<p>$$∫\tan x=-\ln |\cos x|$$</p>
 <p>$$∫1/{1-x^2}dx=1/2\ln |(1+x)/(1-x)|+c$$</p>

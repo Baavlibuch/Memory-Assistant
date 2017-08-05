@@ -451,36 +451,6 @@ public class Names extends Disciplines {
             (findViewById(R.id.no_of_values)).setVisibility(View.GONE);
         }
     }
-
-    private class DictionaryAsyncTask extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            setContentView(R.layout.loading);
-//            (findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected String doInBackground(Void... a) {
-            createDictionary();
-            return "";
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            //(findViewById(R.id.progress_bar)).setVisibility(View.GONE);
-            setContentView(R.layout.activity_random_names);
-
-            setButtons();
-            a.add(0);
-            a.add(0);
-            a.add(0);
-            a.add(0);
-            RandomNames.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        }
-    }
 }
 
 */

@@ -28,6 +28,7 @@
     <string name="correct">Correct</string>
     <string name="your_response">Your Responses</string>
     <string name="correct_answers">Correct Answers</string>
+    <string name="delete">Delete</string>
 
     <string name="enter">Enter the number of</string>
     <string name="st">values</string>
