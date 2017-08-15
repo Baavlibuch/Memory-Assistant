@@ -1,0 +1,15 @@
+<h2>2</h2>
+
+<p>Flux Density $$B_m$$</p>
+<p>Step Up Transformer $$N_1&lt;N_2$$</p>
+<p>Step Down Transformer $$N_1>N_2$$</p>
+<p>Ideal Transformer $$V_1/V_2=N_1/N_2=I_2/I_1$$</p>
+<p>Transformer Rating $$V^{1°}/V^{2°}$$</p>
+<p>$$η=P_{out}/{P_{Out}+P_{Cu}+P_{Fe}}={V_2I_2\cos ϕ_2}/{V_2I_2\cos ϕ_2+I_2^2R_2+P_i}$$</p>
+<p>$$I_{2_m}=√{P_i/R_{e_2}}=I_{2_{FL}}√{P_i/P_{c_{FL}}}$$</p>
+<p>Rated Current at any load $$x=I_2/I_{2_FL}$$</p>
+<p>Copper Loss $$x^2P_{c_{FL}$$</p>
+<p>$$P_{out}=x(V_2I_{2_{FL}})\cos ϕ_2$$</p>
+<p>$$VR={E_2-V_2}/E_2×100$$</p>
+<p>Lagging PF $$-θ$$</p>
+<p>Leading PF $$+θ$$</p>

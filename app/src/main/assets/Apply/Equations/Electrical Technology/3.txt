@@ -1,0 +1,12 @@
+<h2>3</h2>
+
+<p>Mesh Analysis: KVL<p>
+<p>Nodal Voltage Method: KCL<p>
+<p>$$R_A={R_{AB}R_{AC}}/{R_{AB}+R_{BC}+R_{AC}}$$<p>
+<p>$$R_{AB}=R_A+R_B+{R_AR_B}/R_C$$<p>
+<p>Thevnin's Theorem $$V_{th}, R_{eq}$$<p>
+<p>Compensation Theorem $$R, I⇔V=IR$$<p>
+<p>Norton's Theorem $$I_{SC}, R_N$$<p>
+<p>Milman's Theorem $$V_{th}={∑I}/{∑G}$$<p>
+<p>MPT $$R_L=R_{th}$$ $$P_{L_{max}}={E^2R_L}/{4{R_L}^2}=E^2/{4R_L}=E^2/{4R_i}$$ $$R_i=R+r$$<p>
+<p>$$η=P_L/P_T=R_L/{R_L+R_i}$$<p>
