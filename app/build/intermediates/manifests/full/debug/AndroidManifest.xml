@@ -37,7 +37,7 @@
 
         <activity android:name="com.maniksejwal.memoryathletes.main.GetPro" />
         <activity android:name="com.maniksejwal.memoryathletes.main.Learn" />
-        <activity android:name="com.maniksejwal.memoryathletes.Lessons.Lessons" />
+        <activity android:name="com.maniksejwal.memoryathletes.lessons.Lessons" />
         <activity android:name="com.maniksejwal.memoryathletes.main.Login" />
         <activity
             android:name="com.maniksejwal.memoryathletes.OpenFile.Recall"
@@ -94,6 +94,7 @@
             android:name="com.maniksejwal.memoryathletes.disciplines.Letters"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
+        <activity android:name="com.maniksejwal.memoryathletes.main.Apply" />
     </application>
 
 </manifest>

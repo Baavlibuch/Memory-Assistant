@@ -62,17 +62,16 @@
     <string name="start_timer">Start Timer</string>
     <string name="start_stopwatch">Start Stopwatch</string>
 
-
     <string name="login">Login</string>
     <string name="learn">Learn</string>
     <string name="practice">Practice</string>
     <string name="recall">Recall</string>
     <string name="preferences">Preferences</string>
     <string name="get_pro">Get Pro</string>
+    <string name="apply">Apply</string>
     <string name="title_activity_preferences">Preferences</string>
 
     <string name="tab">\t</string>
-
 
     <string name="method_of_loci">Method Of Loci</string>
     <string name="associations">The Perfect Association</string>

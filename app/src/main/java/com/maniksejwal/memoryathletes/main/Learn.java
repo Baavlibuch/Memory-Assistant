@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.maniksejwal.memoryathletes.Lessons.Lessons;
+import com.maniksejwal.memoryathletes.lessons.Lessons;
 import com.maniksejwal.memoryathletes.R;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class Learn extends AppCompatActivity {
         setAdapter();
     }
 
-    public void setAdapter(){
+    public void setAdapter() {
         final ArrayList<Item> list = new ArrayList<>();
         setList(list);
 
@@ -39,16 +39,16 @@ public class Learn extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = list.get(position);
-                Intent intent = new Intent(Learn.this, item.mClass);
+                Intent intent = new Intent(getApplicationContext(), item.mClass);
                 intent.putExtra("header", item.mItem);
                 intent.putExtra("file", item.mFile);
-                intent.putExtra("webView", item.webView);
+                intent.putExtra("mWebView", item.mWebView);
                 startActivity(intent);
             }
         });
     }
 
-    private void setList(ArrayList<Item> list){
+    private void setList(ArrayList<Item> list) {
         list.add(new Item(R.string.method_of_loci, Lessons.class, R.raw.lesson_method_of_loci));
         list.add(new Item(R.string.associations, Lessons.class, R.raw.lesson_perfect_association));
         list.add(new Item(R.string.major_system, Lessons.class, R.raw.lesson_major_system));
@@ -56,7 +56,7 @@ public class Learn extends AppCompatActivity {
         list.add(new Item(R.string.derivations, Lessons.class, R.raw.lesson_derivations));
 
         list.add(new Item(R.string.checkout, Lessons.class, R.raw.checkout));
-        list.add(new Item(R.string.checkout, Lessons.class, R.raw.equations_math_important, true));
+        //list.add(new Item(R.string.checkout, Lessons.class, R.raw.Important, true));
         //list.add(new Item(R.string.pao, Lessons.class));
         //list.add(new Item(R.string.wardrobe_method, Lessons.class));
     }
@@ -64,7 +64,7 @@ public class Learn extends AppCompatActivity {
     private class Item {
         int mItem, mFile;
         Class mClass;
-        boolean webView = false;
+        boolean mWebView = false;
 
         Item(int item, Class class1, int file) {
             mItem = item;
@@ -72,17 +72,19 @@ public class Learn extends AppCompatActivity {
             mFile = file;
         }
 
-        Item(int item, Class class1, int file, boolean wV) {
+        Item(int item, Class class1, int file, boolean webView) {
             mItem = item;
             mClass = class1;
             mFile = file;
-            webView=wV;
+            mWebView = webView;
         }
     }
 
     private class LearnAdapter extends ArrayAdapter<Item> {
 
-        LearnAdapter(Activity context, ArrayList<Item> list) {super(context, 0, list);}
+        LearnAdapter(Activity context, ArrayList<Item> list) {
+            super(context, 0, list);
+        }
 
         @Override
         public View getView(int position, View listItemView, ViewGroup parent) {

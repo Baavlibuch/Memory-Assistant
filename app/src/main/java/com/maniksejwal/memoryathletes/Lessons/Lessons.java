@@ -1,9 +1,10 @@
-package com.maniksejwal.memoryathletes.Lessons;
+package com.maniksejwal.memoryathletes.lessons;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,8 +22,7 @@ import java.io.InputStreamReader;
  */
 
 public class Lessons extends AppCompatActivity {
-
-
+    private static final String LOG_TAG = "\t Log : Lessons : ";
     private static final String TAG = "String builder =";
     /*final String JQMATH_BEG = "<!DOCTYPE html>" +
             "<html>\n" +
@@ -42,10 +42,35 @@ public class Lessons extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
         Intent intent = getIntent();
-        setTitle(getString(intent.getIntExtra("header", R.string.learn)));
+        int header = intent.getIntExtra("header", 0);
+        if (header != 0)
+            setTitle(getString(header));
+        else setTitle(intent.getStringExtra("headerString"));
 
-        StringBuilder sb = readFile(intent.getIntExtra("file", 0));
+        StringBuilder sb;
+        int fileInt = intent.getIntExtra("file", 0);
+        if (fileInt != 0)
+            sb = readFile(fileInt);
+        else {
+            String s = intent.getStringExtra("fileString");
+            BufferedReader bufferedReader = null;
+            sb = new StringBuilder("");
+            try {
+                bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(s)));
+                while ((s = bufferedReader.readLine()) != null)
+                    sb.append(s);
+            } catch (IOException e) {
+                Toast.makeText(this, "Couldn't open the file", Toast.LENGTH_SHORT).show();
+            }
+            try {
+                if (bufferedReader != null)
+                    bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         if (sb == null) {
+            Log.w(LOG_TAG, "String Builder sb is empty");
             finish();
             return;
         }
@@ -56,11 +81,13 @@ public class Lessons extends AppCompatActivity {
             webSettings.setJavaScriptEnabled(true);
             StringBuilder sb1 = readFile(R.raw.jqmath_beg);
             if (sb1 == null) {
+                Log.e(LOG_TAG, "jqmath read error");
                 finish();
                 return;
             }
             StringBuilder sb2 = readFile(R.raw.jqmath_end);
             if (sb2 == null) {
+                Log.e(LOG_TAG, "jqmath read error");
                 finish();
                 return;
             }
@@ -73,11 +100,10 @@ public class Lessons extends AppCompatActivity {
             webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "text/html", "UTF-8", null);
             webView.setVisibility(View.VISIBLE);
         } else {
+            Log.v(LOG_TAG, "webView is false");
             ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
             findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
-
         }
-
     }
 
     StringBuilder readFile(int path) {

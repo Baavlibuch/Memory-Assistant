@@ -161,9 +161,8 @@ public class Recall extends AppCompatActivity {
                 responses.clear();
 
                 setResponseLayout();
-
-                //findViewById(R.id.text_answer_layout).setVisibility(View.VISIBLE);
-
+                findViewById(R.id.discipline_spinner).setVisibility(View.GONE);
+                findViewById(R.id.chose_file).setVisibility(View.GONE);
             }
 
             @Override
@@ -573,9 +572,9 @@ public class Recall extends AppCompatActivity {
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
-        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.response_layout).setVisibility(View.GONE);
         findViewById(R.id.discipline_spinner).setVisibility(View.VISIBLE);
-        findViewById(R.id.chose_file).setVisibility(View.VISIBLE);
+        makeSpinner2();
         //findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
 
         //((TextView) findViewById(R.id.responses_text)).setText("");

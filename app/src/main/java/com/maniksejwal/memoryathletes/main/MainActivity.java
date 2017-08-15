@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setAdapter();
     }
 
-    public void setAdapter(){
+    public void setAdapter() {
         final ArrayList<Item> list = new ArrayList<>();
         setList(list);
 
@@ -41,17 +41,20 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = list.get(position);
                 Intent intent = new Intent(MainActivity.this, item.mClass);
+                if (item.mItem == R.string.apply)
+                    intent.putExtra(getString(R.string.apply), getString(R.string.apply));
                 startActivity(intent);
             }
         });
         Log.i(TAG, "Adapter set!");
     }
 
-    private void setList(ArrayList<Item> list){
+    private void setList(ArrayList<Item> list) {
         list.add(new Item(R.string.login, Login.class));
         list.add(new Item(R.string.learn, Learn.class));
         list.add(new Item(R.string.practice, Practice.class));
         list.add(new Item(R.string.recall, Recall.class));
+        list.add(new Item(R.string.apply, Apply.class));
         list.add(new Item(R.string.preferences, Preferences.class));
         list.add(new Item(R.string.get_pro, GetPro.class));
         Log.i(TAG, "List set!");
@@ -77,12 +80,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View listItemView = convertView;
-            if(listItemView == null) {
+            if (listItemView == null) {
                 listItemView = LayoutInflater.from(getContext()).inflate(R.layout.main_item,
                         parent, false);
             }
 
-            TextView textView = (TextView) listItemView.findViewById(R.id.main_textView);
+            TextView textView = listItemView.findViewById(R.id.main_textView);
             textView.setText(getString(getItem(position).mItem));
 
             return listItemView;

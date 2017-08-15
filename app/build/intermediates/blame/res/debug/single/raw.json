@@ -4,10 +4,6 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/waterfalls.txt"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/equations_math_series.txt",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/equations_math_series.txt"
-    },
-    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/lakes.txt",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/lakes.txt"
     },
@@ -78,10 +74,6 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/lesson_equations.txt",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/lesson_equations.txt"
-    },
-    {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/equations_math_important",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/equations_math_important"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/lesson_method_of_loci.txt",

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:2:1-89:12
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:2:1-90:12
 	package
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:3:5-45
 		INJECTED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManife
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:9:5-87:19
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:8:5-88:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/Manik/.android/build-cache/44ea3442ae25ebf4f0064ed11283378a532ee08d/output/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:26.0.0-alpha1] /Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/AndroidManifest.xml:29:5-20
@@ -36,17 +36,17 @@ MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /Users/Manik/
 MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /Users/Manik/.android/build-cache/2cf552cfed2c4a8581c87321a0251862ec8521e9/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/Manik/.android/build-cache/3acd89001d769636b789fa61c7933a37eb50a337/output/AndroidManifest.xml:29:5-20
 	android:label
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:12:9-41
 	android:supportsRtl
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:14:9-35
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:13:9-35
 	android:hardwareAccelerated
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:11:9-43
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:10:9-43
 	android:allowBackup
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:9:9-35
 	android:icon
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:12:9-43
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:11:9-43
 	android:theme
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:15:9-40
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:14:9-40
 activity#com.maniksejwal.memoryathletes.main.MainActivity
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:18:9-24:20
 	android:name
@@ -69,8 +69,8 @@ activity#com.maniksejwal.memoryathletes.main.Learn
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:29:9-48
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:29:19-45
-activity#com.maniksejwal.memoryathletes.Lessons.Lessons
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:30:9-52
+activity#com.maniksejwal.memoryathletes.lessons.Lessons
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:30:9-53
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:30:19-50
 activity#com.maniksejwal.memoryathletes.main.Login
@@ -78,111 +78,115 @@ ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManife
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:31:19-45
 activity#com.maniksejwal.memoryathletes.OpenFile.Recall
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:32:9-34:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:32:9-35:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:34:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:35:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:33:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:34:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:32:19-50
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:33:13-44
 activity#com.maniksejwal.memoryathletes.main.Practice
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:35:9-51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:36:9-51
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:35:19-48
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:36:19-48
 activity#com.maniksejwal.memoryathletes.main.Preferences
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:36:9-38:66
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:37:9-39:66
 	android:label
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:38:13-63
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:39:13-63
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:37:13-45
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:38:13-45
 activity#com.maniksejwal.memoryathletes.disciplines.Numbers
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:42:9-45:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:43:9-46:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:45:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:46:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:44:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:45:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:43:13-48
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:44:13-48
 activity#com.maniksejwal.memoryathletes.disciplines.Equations
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:46:9-49:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:47:9-50:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:49:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:50:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:48:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:49:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:47:13-50
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:48:13-50
 activity#com.maniksejwal.memoryathletes.disciplines.Words
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:50:9-53:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:51:9-54:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:53:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:54:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:52:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:53:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:51:13-46
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:52:13-46
 activity#com.maniksejwal.memoryathletes.disciplines.Names
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:54:9-57:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:55:9-58:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:57:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:58:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:56:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:57:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:55:13-46
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:56:13-46
 activity#com.maniksejwal.memoryathletes.disciplines.Cards
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:58:9-61:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:59:9-62:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:61:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:62:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:60:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:61:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:59:13-46
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:60:13-46
 activity#com.maniksejwal.memoryathletes.disciplines.BinaryDigits
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:62:9-65:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:63:9-66:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:65:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:66:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:64:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:65:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:63:13-53
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:64:13-53
 activity#com.maniksejwal.memoryathletes.disciplines.Places
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:66:9-69:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:67:9-70:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:69:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:70:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:68:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:69:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:67:13-47
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:68:13-47
 activity#com.maniksejwal.memoryathletes.disciplines.Foods
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:70:9-73:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:71:9-74:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:73:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:74:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:72:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:73:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:71:13-46
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:72:13-46
 activity#com.maniksejwal.memoryathletes.disciplines.Dates
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:74:9-77:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:75:9-78:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:77:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:78:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:76:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:77:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:75:13-46
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:76:13-46
 activity#com.maniksejwal.memoryathletes.disciplines.Colours
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:78:9-81:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:79:9-82:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:81:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:82:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:80:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:81:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:79:13-48
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:80:13-48
 activity#com.maniksejwal.memoryathletes.disciplines.Letters
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:82:9-85:51
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:83:9-86:52
 	android:screenOrientation
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:85:13-49
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:86:13-49
 	android:configChanges
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:84:13-59
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:85:13-59
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:83:13-48
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:84:13-48
+activity#com.maniksejwal.memoryathletes.main.Apply
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:87:9-57
+	android:name
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:87:19-45
 uses-sdk
 INJECTED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/Manik/.android/build-cache/44ea3442ae25ebf4f0064ed11283378a532ee08d/output/AndroidManifest.xml:5:5-7:41
