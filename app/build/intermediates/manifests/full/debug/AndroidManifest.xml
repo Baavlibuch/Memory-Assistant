@@ -95,6 +95,8 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name="com.maniksejwal.memoryathletes.main.Apply" />
+        <activity android:name="com.maniksejwal.memoryathletes.mySpace.MySpace" />
+        <activity android:name="com.maniksejwal.memoryathletes.mySpace.WriteFile" />
     </application>
 
 </manifest>

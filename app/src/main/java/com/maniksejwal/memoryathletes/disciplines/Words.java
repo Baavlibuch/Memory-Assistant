@@ -88,7 +88,7 @@ public class Words extends Disciplines {
             setContentView(R.layout.activity_disciplines);
 
             setButtons();
-            ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.words));
+            ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.words_small));
             Words.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         }
     }

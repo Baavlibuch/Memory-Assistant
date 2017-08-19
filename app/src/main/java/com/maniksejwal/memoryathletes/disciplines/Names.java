@@ -401,56 +401,6 @@ public class Names extends Disciplines {
         }
         Log.i(TAG, "timer() complete");
     }
-
-    private class myAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            (findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
-            int noOfValues;
-
-            if ((((EditText) findViewById(R.id.no_of_values)).getText().toString().length() > 0)) {
-                noOfValues = Integer.parseInt((((EditText) findViewById(R.id.no_of_values)).getText().toString()));
-            } else {
-                noOfValues = 100;
-            }
-
-            a.set(1, noOfValues);
-        }
-
-        @Override
-        protected String doInBackground(ArrayList<Integer>... a) {
-            Log.v(TAG, "doInBackground() entered");
-
-            String textString = "";
-            Random rand = new Random();
-            int n;
-
-            for (int i = 0; i < a[0].get(1); i++) {
-                n = rand.nextInt(mFirstName.size());
-                textString += (mFirstName.get(n) + " ");
-                n = rand.nextInt(mLastName.size());
-                textString += (mLastName.get(n) + "\n");
-                if((1+i)%20 == 0) textString += ("\n");
-                if (a[0].get(2) == 0) break;
-            }
-            return textString;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            (findViewById(R.id.save)).setVisibility(View.VISIBLE);
-            if (a.get(2) == 0) {
-                return;
-            }
-            ((TextView) findViewById(R.id.numbers)).setText(s);
-            (findViewById(R.id.numbers)).setVisibility(View.VISIBLE);
-            (findViewById(R.id.progress_bar)).setVisibility(View.GONE);
-            (findViewById(R.id.no_of_values)).setVisibility(View.GONE);
-        }
-    }
 }
 
 */

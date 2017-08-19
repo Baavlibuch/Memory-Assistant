@@ -84,7 +84,9 @@
             android:name=".disciplines.Letters"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
-        <activity android:name=".main.Apply"></activity>
+        <activity android:name=".main.Apply" />
+        <activity android:name=".mySpace.MySpace" />
+        <activity android:name=".mySpace.WriteFile"></activity>
     </application>
 
 </manifest>

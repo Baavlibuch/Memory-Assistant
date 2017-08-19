@@ -2,6 +2,17 @@
 
 
     <string name="app_name">Memory Athletes</string>
+
+    <string name="login">Login</string>
+    <string name="learn">Learn</string>
+    <string name="practice">Practice</string>
+    <string name="recall">Recall</string>
+    <string name="preferences">Preferences</string>
+    <string name="get_pro">Get Pro</string>
+    <string name="apply">Apply</string>
+    <string name="my_space">My Space</string>
+    <string name="title_activity_preferences">Preferences</string> <!--Weird error without this-->
+
     <string name="cd">Chose Discipline</string>
     <string name="a">Equations</string>
     <string name="b">Numbers</string>
@@ -21,7 +32,7 @@
     <string name="score">Score</string>
     <string name="time_taken">Time taken</string>
     <string name="check">Check</string>
-    <string name="just_answers">Just show the answers</string>
+    <string name="just_answers">Give Up!</string>
     <string name="time_elapsed">Time Elapsed</string>
     <string name="time_left">Time Left</string>
     <string name="wrong">Wrong</string>
@@ -33,7 +44,7 @@
     <string name="enter">Enter the number of</string>
     <string name="st">values</string>
     <string name="decks">decks</string>
-    <string name="words">words</string>
+    <string name="words_small">words</string>
     <string name="places">places</string>
     <string name="nm">names</string>
     <string name="sz">Select maximum digits in a value</string>
@@ -62,14 +73,15 @@
     <string name="start_timer">Start Timer</string>
     <string name="start_stopwatch">Start Stopwatch</string>
 
-    <string name="login">Login</string>
-    <string name="learn">Learn</string>
-    <string name="practice">Practice</string>
-    <string name="recall">Recall</string>
-    <string name="preferences">Preferences</string>
-    <string name="get_pro">Get Pro</string>
-    <string name="apply">Apply</string>
-    <string name="title_activity_preferences">Preferences</string>
+    <string name="majors">Major Systems</string>
+    <string name="ben">Ben Systems</string>
+    <string name="wardrobes">Wardrobes</string>
+    <string name="lists">Lists</string>
+    <string name="algos">Algorithms</string>
+    <string name="words">Words</string>
+
+    <string name="fname">Name</string>
+    <string name="here">Enter here</string>
 
     <string name="tab">\t</string>
 

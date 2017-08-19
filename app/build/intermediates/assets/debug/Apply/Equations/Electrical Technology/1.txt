@@ -1,0 +1,39 @@
+<h2>1</h2>
+
+<p><b>Ammeter</b></p>
+<p>$$I=I_g{{R_g+R_s}/R_s}$$</p>
+<p>$$I_sR_s=I_gR_g$$</p>
+<p>$$R_s={I_gR_g}/{I-I_g}=R_g/{I/I_g-2}$$</p>
+<p>$$c=I/I_g$$</p>
+
+<p><b>Voltmeter</b></p>
+<p>$$V=I_g(R+R_g)$$</p>
+<br/>
+
+<p>$$MF=I/I_M$$</p>
+<p>Delta to Star $$R_A={R_{AC}×R_{AB}}/{R_{AC}+R_{BC}+R_{AB}}$$</p>
+<p>Star to Delta $$R_{BC}={R_AR_B+R_BR_C+R_AR_C}/R_A$$</p>
+<p>$$PF=\cos ϕ$$</p>
+<p>$$ω=1/√{LC}$$</p>
+<p>$$Δf=R/{4πL}$$</p>
+<p>$$Q=1/R√{L/C}=f_r/{Δf}$$</p>
+<p>$$V_L=√3V_{Ph}$$</p>
+
+<p><b>Star</b></p>
+<p>$$I_L=I_{Ph}$$</p>
+<p>$$P=3(V_{Ph}I_{Ph}\cos ϕ)$$</p>
+
+<p><b>Delta</b></p>
+<p>$$V_L=V_{Ph}$$</p>
+<p>$$I_L=√3I_{Ph}$$</p>
+<br/>
+
+<p>Active Power (P) $$P_{AC}=√3V_LI_L\cos ϕ=√3(W_1-W_2)$$</p>
+<p>Reactive Power (Q) $$P_R=√3V_LI_L\sin ϕ=(W_1+W_2)$$</p>
+<p>Apparent Power (S) $$P_{Ap}=√3V_LI_L$$</p>
+<p>$$\tan ϕ={\text "active power"}/{\text "reactive power"}$$</p>
+<p>$$\cos ϕ=\cos ^{-1}{\tan [{√3(W_1-W_2)}/(W_1+W_2)]}$$</p>
+<p>$$\text"Turn ratio"=N_1/N_2=E_1/E_2$$</p>
+<p>Reluctance $$R=1/{μ_0μ_r}(l/A)$$</p>
+<p>$$E_{rms}=E_0/√2=0.707E_0=4.44Nfϕn$$</p>
+<p>$$E_{av}=2E_0/π=0.637E_0$$</p>

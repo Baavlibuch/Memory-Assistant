@@ -82,7 +82,6 @@ public class Apply extends AppCompatActivity {
         }
     }
 
-
     private String[] listAssetFiles(String path) {
 
         String[] list = new String[0];

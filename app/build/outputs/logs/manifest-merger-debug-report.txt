@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:2:1-90:12
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:2:1-92:12
 	package
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:3:5-45
 		INJECTED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManife
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:8:5-88:19
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:8:5-90:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/Manik/.android/build-cache/44ea3442ae25ebf4f0064ed11283378a532ee08d/output/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support:design:26.0.0-alpha1] /Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/AndroidManifest.xml:29:5-20
@@ -184,9 +184,17 @@ ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManife
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:84:13-48
 activity#com.maniksejwal.memoryathletes.main.Apply
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:87:9-57
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:87:9-48
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:87:19-45
+activity#com.maniksejwal.memoryathletes.mySpace.MySpace
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:88:9-53
+	android:name
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:88:19-50
+activity#com.maniksejwal.memoryathletes.mySpace.WriteFile
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:89:9-64
+	android:name
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:89:19-52
 uses-sdk
 INJECTED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/Manik/.android/build-cache/44ea3442ae25ebf4f0064ed11283378a532ee08d/output/AndroidManifest.xml:5:5-7:41

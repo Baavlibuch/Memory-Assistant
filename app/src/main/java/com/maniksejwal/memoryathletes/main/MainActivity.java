@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.maniksejwal.memoryathletes.R;
 import com.maniksejwal.memoryathletes.OpenFile.Recall;
+import com.maniksejwal.memoryathletes.mySpace.MySpace;
 
 import java.util.ArrayList;
 
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Item(R.string.practice, Practice.class));
         list.add(new Item(R.string.recall, Recall.class));
         list.add(new Item(R.string.apply, Apply.class));
+        list.add(new Item(R.string.my_space, MySpace.class));
         list.add(new Item(R.string.preferences, Preferences.class));
         list.add(new Item(R.string.get_pro, GetPro.class));
         Log.i(TAG, "List set!");
@@ -64,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         int mItem;
         Class mClass;
 
-        Item(int item, Class class1) {
-            mItem = item;
+        Item(int itemName, Class class1) {
+            mItem = itemName;
             mClass = class1;
             Log.i(TAG, "Item set!");
         }
