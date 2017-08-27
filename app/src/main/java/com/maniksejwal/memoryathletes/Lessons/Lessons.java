@@ -24,6 +24,7 @@ import java.io.InputStreamReader;
 public class Lessons extends AppCompatActivity {
     private static final String LOG_TAG = "\t Log : Lessons : ";
     private static final String TAG = "String builder =";
+
     /*final String JQMATH_BEG = "<!DOCTYPE html>" +
             "<html>\n" +
             "    <head>\n" +
@@ -42,7 +43,7 @@ public class Lessons extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
         Intent intent = getIntent();
-        int header = intent.getIntExtra("header", 0);
+        int header = intent.getIntExtra("mHeader", 0);
         if (header != 0)
             setTitle(getString(header));
         else setTitle(intent.getStringExtra("headerString"));
@@ -57,8 +58,7 @@ public class Lessons extends AppCompatActivity {
             sb = new StringBuilder("");
             try {
                 bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(s)));
-                while ((s = bufferedReader.readLine()) != null)
-                    sb.append(s);
+                while ((s = bufferedReader.readLine()) != null) sb.append(s);
             } catch (IOException e) {
                 Toast.makeText(this, "Couldn't open the file", Toast.LENGTH_SHORT).show();
             }
@@ -97,10 +97,10 @@ public class Lessons extends AppCompatActivity {
             //((TextView) findViewById(R.id.lesson)).setText(js);
             //findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
 
-            webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "text/html", "UTF-8", null);
+            webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "mText/html", "UTF-8", null);
             webView.setVisibility(View.VISIBLE);
         } else {
-            Log.v(LOG_TAG, "webView is false");
+            Log.v(LOG_TAG, "list is false");
             ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
             findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
         }

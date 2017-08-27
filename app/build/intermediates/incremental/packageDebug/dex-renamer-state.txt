@@ -1,4 +1,4 @@
-#Sat Aug 26 20:20:49 IST 2017
+#Sun Aug 27 19:07:39 IST 2017
 base.0=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a961bdc359c78edb6a24c420ec3a13c2fa6510c7
 renamed.1=classes.dex
 renamed.0=classes2.dex

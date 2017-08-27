@@ -40,9 +40,10 @@ public class Learn extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = list.get(position);
                 Intent intent = new Intent(getApplicationContext(), item.mClass);
-                intent.putExtra("header", item.mItem);
+                intent.putExtra("mHeader", item.mItem);
                 intent.putExtra("file", item.mFile);
                 intent.putExtra("mWebView", item.mWebView);
+                intent.putExtra("list", true);
                 startActivity(intent);
             }
         });
@@ -52,12 +53,12 @@ public class Learn extends AppCompatActivity {
         list.add(new Item(R.string.method_of_loci, Lessons.class, R.raw.lesson_method_of_loci));
         list.add(new Item(R.string.associations, Lessons.class, R.raw.lesson_perfect_association));
         list.add(new Item(R.string.major_system, Lessons.class, R.raw.lesson_major_system));
+        list.add(new Item(R.string.pao, Lessons.class, R.raw.lesson_pao));
         list.add(new Item(R.string.equations, Lessons.class, R.raw.lesson_equations));
         list.add(new Item(R.string.derivations, Lessons.class, R.raw.lesson_derivations));
 
         list.add(new Item(R.string.checkout, Lessons.class, R.raw.checkout));
         //list.add(new Item(R.string.checkout, Lessons.class, R.raw.Important, true));
-        //list.add(new Item(R.string.pao, Lessons.class));
         //list.add(new Item(R.string.wardrobe_method, Lessons.class));
     }
 

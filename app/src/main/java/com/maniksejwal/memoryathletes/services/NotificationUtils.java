@@ -41,7 +41,7 @@ public abstract class NotificationUtils {
 
     public static void createNotification(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String text = sharedPreferences.getString("text", "Text not found");
+        String text = sharedPreferences.getString("mText", "Text not found");
         Log.d(LOG_TAG, text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))

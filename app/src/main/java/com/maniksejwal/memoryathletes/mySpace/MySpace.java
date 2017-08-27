@@ -81,7 +81,7 @@ public class MySpace extends AppCompatActivity {
                     String fileName = getFilesDir().getAbsolutePath() + File.separator + getTitle();
                     String name = item.mItem;
                     Intent intent = new Intent(getApplicationContext(), WriteFile.class);
-                    intent.putExtra("header", item.mItem);
+                    intent.putExtra("mHeader", item.mItem);
                     intent.putExtra("fileString", name);
                     intent.putExtra("path", fileName);
                     File file = new File(fileName);
@@ -99,7 +99,7 @@ public class MySpace extends AppCompatActivity {
 
     public void add(View view){
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
-        intent.putExtra("header", getTitle());
+        intent.putExtra("mHeader", getTitle());
         intent.putExtra("name", false);
         intent.putExtra("path", getFilesDir().getAbsolutePath() + File.separator + getTitle());
         startActivity(intent);

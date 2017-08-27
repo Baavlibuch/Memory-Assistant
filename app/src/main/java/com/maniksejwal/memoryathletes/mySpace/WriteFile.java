@@ -24,7 +24,7 @@ public class WriteFile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_file);
         Intent intent = getIntent();
-        String header = intent.getStringExtra("header");
+        String header = intent.getStringExtra("mHeader");
         header = header.substring(0, header.length() - 4);
         setTitle(header);
         path = intent.getStringExtra("path");

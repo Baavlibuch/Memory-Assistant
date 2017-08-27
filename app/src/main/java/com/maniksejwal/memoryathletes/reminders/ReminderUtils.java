@@ -40,7 +40,7 @@ public class ReminderUtils {
         int diff = next(context);
         Log.v(LOG_TAG, "Next notification is after " + diff + "seconds");
         //Bundle bundle = new Bundle();
-        //bundle.putString("text", text);
+        //bundle.putString("mText", mText);
         //if (sInitialised) return;
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
@@ -99,7 +99,7 @@ public class ReminderUtils {
         if (diff < 0) diff += DAY / 1000;
         diff *= 60;
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("text", text);
+        editor.putString("mText", text);
         editor.apply();
         return (int) diff;
     }

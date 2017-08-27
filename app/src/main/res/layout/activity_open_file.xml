@@ -182,7 +182,7 @@
                             android:id="@+id/previous"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/prev"
+                            android:mText="@string/prev"
                             android:visibility="gone" />-->
                         <!--Might be useful-->
 
@@ -190,7 +190,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="@string/start_timer"
+                            android:mText="@string/start_timer"
                             android:onClick="startTimer"/>-->
 
                         <Button
@@ -224,7 +224,7 @@
                             android:id="@+id/next"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/next"
+                            android:mText="@string/next"
                             android:visibility="gone" />-->
                         <!--Might be useful-->
 
