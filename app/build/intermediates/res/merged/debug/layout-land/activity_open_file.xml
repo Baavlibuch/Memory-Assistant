@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="horizontal"
-    tools:context=".OpenFile.Recall">
+    tools:context=".openFile.Recall">
 
     <ScrollView
         android:layout_width="0dp"

@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.maniksejwal.memoryathletes.R;
-import com.maniksejwal.memoryathletes.OpenFile.Recall;
+import com.maniksejwal.memoryathletes.openFile.Recall;
 
 import java.io.File;
 import java.io.FileOutputStream;

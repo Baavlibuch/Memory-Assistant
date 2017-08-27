@@ -2,7 +2,9 @@ package com.maniksejwal.memoryathletes.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,14 +16,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.maniksejwal.memoryathletes.R;
-import com.maniksejwal.memoryathletes.OpenFile.Recall;
 import com.maniksejwal.memoryathletes.mySpace.MySpace;
+import com.maniksejwal.memoryathletes.openFile.Recall;
+import com.maniksejwal.memoryathletes.reminders.ReminderUtils;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String LOG_TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setAdapter();
+
     }
 
     public void setAdapter() {
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Log.i(TAG, "Adapter set!");
+        Log.i(LOG_TAG, "Adapter set!");
     }
 
     private void setList(ArrayList<Item> list) {
@@ -57,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Item(R.string.recall, Recall.class));
         list.add(new Item(R.string.apply, Apply.class));
         list.add(new Item(R.string.my_space, MySpace.class));
+        //list.add(new Item(R.string.reminders, ))
         list.add(new Item(R.string.preferences, Preferences.class));
         list.add(new Item(R.string.get_pro, GetPro.class));
-        Log.i(TAG, "List set!");
+        Log.i(LOG_TAG, "List set!");
     }
 
     private class Item {
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Item(int itemName, Class class1) {
             mItem = itemName;
             mClass = class1;
-            Log.i(TAG, "Item set!");
+            Log.i(LOG_TAG, "Item set!");
         }
     }
 
@@ -93,5 +98,15 @@ public class MainActivity extends AppCompatActivity {
             return listItemView;
         }
 
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        e.putLong("last_opened", System.currentTimeMillis());
+        Log.v(LOG_TAG, "Last opened on" + System.currentTimeMillis());
+        e.apply();
+        ReminderUtils.scheduleReminder(this);
     }
 }

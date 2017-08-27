@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <meta-data
         android:name="android.support.VERSION"
@@ -25,7 +26,9 @@
 
         <!-- android:largeHeap="true" -->
 
-        <activity android:name="com.maniksejwal.memoryathletes.main.MainActivity" >
+        <activity
+            android:name="com.maniksejwal.memoryathletes.main.MainActivity"
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +43,7 @@
         <activity android:name="com.maniksejwal.memoryathletes.lessons.Lessons" />
         <activity android:name="com.maniksejwal.memoryathletes.main.Login" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.OpenFile.Recall"
+            android:name="com.maniksejwal.memoryathletes.openFile.Recall"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name="com.maniksejwal.memoryathletes.main.Practice" />
@@ -97,6 +100,26 @@
         <activity android:name="com.maniksejwal.memoryathletes.main.Apply" />
         <activity android:name="com.maniksejwal.memoryathletes.mySpace.MySpace" />
         <activity android:name="com.maniksejwal.memoryathletes.mySpace.WriteFile" />
+
+        <service
+            android:name="com.maniksejwal.memoryathletes.services.ReminderJobService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <!--
+             Receives GooglePlay execution requests and forwards them to the
+             appropriate internal service.
+        -->
+        <service
+            android:name="com.firebase.jobdispatcher.GooglePlayReceiver"
+            android:exported="true"
+            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE" >
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

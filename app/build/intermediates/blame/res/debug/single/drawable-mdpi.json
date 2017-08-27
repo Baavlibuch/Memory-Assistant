@@ -1,10 +1,22 @@
 [
     {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_sync_black_24dp.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/build/generated/res/pngs/debug/drawable-mdpi/ic_sync_black_24dp.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_notifications_black_24dp.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/build/generated/res/pngs/debug/drawable-mdpi/ic_notifications_black_24dp.png"
+    },
+    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-mdpi/drawer_shadow.9.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable-mdpi/drawer_shadow.9.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_drawer.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable-mdpi/ic_drawer.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable-mdpi/ic_info_black_24dp.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/build/generated/res/pngs/debug/drawable-mdpi/ic_info_black_24dp.png"
     }
 ]

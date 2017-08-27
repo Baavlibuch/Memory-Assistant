@@ -1,7 +1,7 @@
 <resources>
 
 
-    <string name="app_name">Memory Athletes</string>
+    <string name="app_name">Memory Assistant</string>
 
     <string name="login">Login</string>
     <string name="learn">Learn</string>
@@ -11,6 +11,7 @@
     <string name="get_pro">Get Pro</string>
     <string name="apply">Apply</string>
     <string name="my_space">My Space</string>
+    <string name="reminders">Reminders</string>
     <string name="title_activity_preferences">Preferences</string> <!--Weird error without this-->
 
     <string name="cd">Chose Discipline</string>
@@ -79,6 +80,11 @@
     <string name="lists">Lists</string>
     <string name="algos">Algorithms</string>
     <string name="words">Words</string>
+
+    <string name="periodic">Periodic Reminders</string>
+    <string name="location_wise">Based On Location</string>
+    <string name="transit">During Transit</string>
+    <string name="default_time">22:00</string>
 
     <string name="fname">Name</string>
     <string name="here">Enter here</string>

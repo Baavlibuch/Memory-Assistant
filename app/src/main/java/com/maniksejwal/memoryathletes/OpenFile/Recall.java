@@ -1,4 +1,4 @@
-package com.maniksejwal.memoryathletes.OpenFile;
+package com.maniksejwal.memoryathletes.openFile;
 
 import android.app.Activity;
 import android.os.AsyncTask;

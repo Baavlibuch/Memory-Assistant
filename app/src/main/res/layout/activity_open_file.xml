@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".OpenFile.Recall">
+    tools:context=".openFile.Recall">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -192,10 +192,6 @@
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_btn_borderless_material.xml"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/ic_notifications_black_24dp.xml",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/ic_notifications_black_24dp.xml"
-    },
-    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/cq.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/cq.png"
     },
@@ -288,10 +284,6 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/d10.png"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/ic_info_black_24dp.xml",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/ic_info_black_24dp.xml"
-    },
-    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/c5.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/c5.png"
     },
@@ -330,10 +322,6 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/c3.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/c3.png"
-    },
-    {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/ic_sync_black_24dp.xml",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/ic_sync_black_24dp.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",

@@ -6,36 +6,38 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1503158596534"
+    timestamp="1503798780037"
     token="-5349423385581405604"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="2511" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="537" />
+        duration="0" />
     <task
         name="verifier"
-        duration="29" />
-
-    <artifact
-        location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-        type="SPLIT" />
+        duration="0" />
 
     <build
         build-mode="FULL"
-        timestamp="1503157042891"
+        timestamp="1503798704539"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
@@ -50,9 +52,6 @@
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
@@ -62,36 +61,12 @@
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/outputs/apk/app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1503157613254"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/outputs/apk/app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1503158596534"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-    </build>
+        timestamp="1503798780037"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>
