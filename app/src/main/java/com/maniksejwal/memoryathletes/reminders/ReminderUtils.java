@@ -50,7 +50,7 @@ public class ReminderUtils {
                 .setTag(REMINDER_JOB_TAG)
                 //.setConstraints()
                 .setLifetime(Lifetime.FOREVER)
-                .setRecurring(false)
+                .setRecurring(true)
                 .setTrigger(Trigger.executionWindow(diff, diff + 20))
                 //REMINDER_INTERVAL_SECS - SYNC_FLEXTIME_SECONDS,
                 //REMINDER_INTERVAL_SECS + SYNC_FLEXTIME_SECONDS))

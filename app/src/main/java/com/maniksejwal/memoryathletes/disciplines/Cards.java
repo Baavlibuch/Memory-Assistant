@@ -59,7 +59,7 @@ public class Cards extends Disciplines {
 
     @Override
     protected String background() {
-        Log.v(TAG, "do in background entered to create string");
+        Log.v(LOG_TAG, "do in background entered to create string");
         ArrayList<Integer> cards = new ArrayList<>();
         //Random rand = new Random();
         int n;
@@ -103,7 +103,8 @@ public class Cards extends Disciplines {
     }
 
     @Override
-    protected String save() {
+    protected boolean save() {
+        if(randomList.isEmpty()) return false;
         StringBuilder stringBuilder = new StringBuilder("");
 
         String fname = getFilesDir().getAbsolutePath() + File.separator + getTitle() + File.separator +
@@ -127,14 +128,14 @@ public class Cards extends Disciplines {
 
                 outputStream.close();
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                return fname;
+                return true;
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
             }
         } else
             Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
-        return null;
+        return false;
     }
 
     @Override
@@ -175,14 +176,14 @@ public class Cards extends Disciplines {
     }
 
     void startCommon() {
-        Log.v(TAG, "startCommon entered");
+        Log.v(LOG_TAG, "startCommon entered");
         a.set(2, 1);
         (new myAsyncTask()).execute(a);
         (findViewById(R.id.time)).setVisibility(View.GONE);
         (findViewById(R.id.stop)).setVisibility(View.VISIBLE);
         (findViewById(R.id.start)).setVisibility(View.GONE);
         ((RadioGroup) findViewById(R.id.time)).clearCheck();
-        Log.v(TAG, "startCommon ended");
+        Log.v(LOG_TAG, "startCommon ended");
     }
 }
 

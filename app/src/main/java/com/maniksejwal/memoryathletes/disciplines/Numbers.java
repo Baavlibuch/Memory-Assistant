@@ -21,7 +21,7 @@ public class Numbers extends Disciplines {
         findViewById(R.id.negative).setVisibility(View.VISIBLE);
         findViewById(R.id.decimal).setVisibility(View.VISIBLE);
 
-        Log.i(TAG, "Activity Created");
+        Log.i(LOG_TAG, "Activity Created");
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Numbers extends Disciplines {
                 for (j = 0; j / 2 <= 2 * a.get(0) - Double.toString(n).length() + 1; j++) {
                     stringBuilder.append(" ");
                 }
-                Log.i(TAG, "Entered " + j);
+                Log.i(LOG_TAG, "Entered " + j);
                 if (n < 0) stringBuilder.append(" ");
                 if (a.get(2) == 0) break;
             }
@@ -95,7 +95,7 @@ public class Numbers extends Disciplines {
 }
 
 /*
-    private static String TAG = "Position::--";
+    private static String LOG_TAG = "Position::--";
     private CountDownTimer cdt;
     long mTime = 0;
     private boolean isTimerRunning = false;
@@ -121,12 +121,12 @@ public class Numbers extends Disciplines {
     }
 
     void Start() {
-        Log.i(TAG, "Start entered");
+        Log.i(LOG_TAG, "Start entered");
         try {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow
                     (getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
-            Log.e(TAG, "Couldn't hide keypad ", e);
+            Log.e(LOG_TAG, "Couldn't hide keypad ", e);
         }
         ((TextView) findViewById(clock_text)).setText("");
 
@@ -164,7 +164,7 @@ public class Numbers extends Disciplines {
 
         startCommon();
         (findViewById(R.id.numbers)).setVisibility(View.VISIBLE);
-        Log.i(TAG, "Start complete");
+        Log.i(LOG_TAG, "Start complete");
     }
 }
 

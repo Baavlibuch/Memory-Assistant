@@ -24,7 +24,7 @@ import static com.maniksejwal.memoryathletes.R.string.periodic;
  * Created by Manik on 26/08/17.
  */
 
-public abstract class NotificationUtils {
+abstract class NotificationUtils {
     private static final int WATER_REMINDER_PENDING_INTENT_ID = 3417;
     private static final String LOG_TAG = "\tNotificationUtils : ";
 
@@ -39,7 +39,7 @@ public abstract class NotificationUtils {
         return BitmapFactory.decodeResource(res, R.mipmap.ic_launcher);
     }
 
-    public static void createNotification(Context context) {
+    static void createNotification(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String text = sharedPreferences.getString("mText", "Text not found");
         Log.d(LOG_TAG, text);

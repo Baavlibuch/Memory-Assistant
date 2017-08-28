@@ -2,7 +2,6 @@ package com.maniksejwal.memoryathletes.disciplines;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -41,18 +40,12 @@ import static com.maniksejwal.memoryathletes.R.id.clock_text;
 
 public class Disciplines extends AppCompatActivity {
 
-    protected static String TAG = "Position::--__";
+    protected static String LOG_TAG = "\tDiscipline: ";
     protected CountDownTimer cdt;
     protected long mTime = 0;
     protected boolean isTimerRunning = false;
     protected ArrayList<Integer> a = new ArrayList<>();
     //protected boolean hasAsync;
-
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +60,7 @@ public class Disciplines extends AppCompatActivity {
             }
         }
 
-        Log.i(TAG, "0 means error in getting title resource string ID through intent");
+        Log.i(LOG_TAG, "0 means error in getting title resource string ID through intent");
         setTitle(getString(intent.getIntExtra("nameID", 0)));
 
         //setContentView(R.layout.activity_binary_digits); TODO: fix it!
@@ -80,12 +73,12 @@ public class Disciplines extends AppCompatActivity {
         a.add(0);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        Log.i(TAG, "Activity Created");
+        Log.i(LOG_TAG, "Activity Created");
     }
     //EditText no_of_values
 
     protected void makeSpinner(int spinnerContent) {
-        Log.i(TAG, "makeSpinner() entered");
+        Log.i(LOG_TAG, "makeSpinner() entered");
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setVisibility(View.VISIBLE);
 
@@ -96,7 +89,7 @@ public class Disciplines extends AppCompatActivity {
                     ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                             hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 } catch (Exception e) {
-                    Log.e(TAG, "Couldn't hide keypad ", e);
+                    Log.e(LOG_TAG, "Couldn't hide keypad ", e);
                 }
                 return false;
             }
@@ -131,7 +124,7 @@ public class Disciplines extends AppCompatActivity {
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-        Log.i(TAG, "makeSpinner() complete");
+        Log.i(LOG_TAG, "makeSpinner() complete");
     }
 
     protected void startCommon() {
@@ -156,12 +149,12 @@ public class Disciplines extends AppCompatActivity {
     }
 
     protected void Start() {
-        Log.i(TAG, "Start entered");
+        Log.i(LOG_TAG, "Start entered");
         try {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                     hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
-            Log.e(TAG, "Couldn't hide keypad ", e);
+            Log.e(LOG_TAG, "Couldn't hide keypad ", e);
         }
         ((TextView) findViewById(clock_text)).setText("");
 
@@ -198,11 +191,12 @@ public class Disciplines extends AppCompatActivity {
         }
 
         startCommon();
-        Log.i(TAG, "Start complete");
+        Log.i(LOG_TAG, "Start complete");
     }
 
-    protected String save() {
+    protected boolean save() {
         String string = ((TextView) findViewById(R.id.random_values)).getText().toString();
+        if (string == "") return false;
 
         String fname = getFilesDir().getAbsolutePath() + File.separator + getTitle() + File.separator +
                 ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
@@ -219,14 +213,14 @@ public class Disciplines extends AppCompatActivity {
 
                 outputStream.close();
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                return fname;
+                return true;
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
             }
         } else
             Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
-        return null;
+        return false;
     }
 
     protected void reset() {
@@ -253,8 +247,9 @@ public class Disciplines extends AppCompatActivity {
         isTimerRunning = false;
     }
 
+
     protected void setButtons() {
-        Log.i(TAG, "setButtons entered");
+        Log.i(LOG_TAG, "setButtons entered");
 
         findViewById(R.id.sw).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -262,7 +257,7 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(TAG, "Stopwatch onClickListener set");
+        Log.i(LOG_TAG, "Stopwatch onClickListener set");
 
 
         findViewById(R.id.timer).setOnClickListener(new View.OnClickListener() {
@@ -273,7 +268,7 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(TAG, "timer onClickListener set");
+        Log.i(LOG_TAG, "timer onClickListener set");
 
         findViewById(R.id.none).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -281,7 +276,7 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(TAG, "none onClickListener set");
+        Log.i(LOG_TAG, "none onClickListener set");
 
         (findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -289,7 +284,7 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(TAG, "start onClickListener set");
+        Log.i(LOG_TAG, "start onClickListener set");
 
         (findViewById(R.id.reset)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -297,7 +292,7 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(TAG, "reset onClickListener set");
+        Log.i(LOG_TAG, "reset onClickListener set");
 
         (findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -316,7 +311,7 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(TAG, "stop onClickListener set");
+        Log.i(LOG_TAG, "stop onClickListener set");
 
         findViewById(R.id.resume).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -333,7 +328,7 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(TAG, "resume onClickListener set");
+        Log.i(LOG_TAG, "resume onClickListener set");
 
         (findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -341,13 +336,15 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(TAG, "save onClickListener set");
+        Log.i(LOG_TAG, "save onClickListener set");
 
         findViewById(R.id.recall).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Recall.class);
-                intent.putExtra("file location", save());
+                intent.putExtra("file exists", save());
+                intent.putExtra("discipline", getTitle());
+                Log.v(LOG_TAG, "recalling" + getTitle());
                 startActivity(intent);
             }
         });
@@ -359,11 +356,11 @@ public class Disciplines extends AppCompatActivity {
         findViewById(R.id.chronometer).setVisibility(View.GONE);
         findViewById(clock_text).setVisibility(View.GONE);
         findViewById(R.id.prev).setVisibility(View.GONE);
-        Log.i(TAG, "setButtons complete");
+        Log.i(LOG_TAG, "setButtons complete");
     }
 
     protected void timer() {
-        Log.i(TAG, "timer() entered");
+        Log.i(LOG_TAG, "timer() entered");
         ((TextView) findViewById(clock_text)).setText("");
         if (!isTimerRunning) {
             cdt = new CountDownTimer(((Long.parseLong(((EditText)
@@ -403,7 +400,7 @@ public class Disciplines extends AppCompatActivity {
                 }
             }.start();
         }
-        Log.i(TAG, "timer() complete");
+        Log.i(LOG_TAG, "timer() complete");
     }
 
     protected void preExecute() {

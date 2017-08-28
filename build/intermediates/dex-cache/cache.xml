@@ -38,6 +38,15 @@
         <dex dex="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/pre-dexed/debug/classes_bfdc8f82fac706cfcfa2b6871b3404038f14f62d.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="/Users/Manik/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_edee8bba0f2d8e82edbd85d0480047b35100d54f/classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="/Users/Manik/.android/build-cache/44ea3442ae25ebf4f0064ed11283378a532ee08d/output/jars/classes.jar"
         jumboMode="false"

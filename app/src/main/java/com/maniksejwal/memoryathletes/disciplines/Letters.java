@@ -15,7 +15,7 @@ public class Letters extends Disciplines {
         super.onCreate(savedInstanceState);
 
         ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.st));
-        Log.i(TAG, "Activity Created");
+        Log.i(LOG_TAG, "Activity Created");
     }
 
     @Override
@@ -33,7 +33,7 @@ public class Letters extends Disciplines {
             }
             stringBuilder.append("   ");
         }
-        Log.v(TAG, stringBuilder.toString());
+        Log.v(LOG_TAG, stringBuilder.toString());
         return stringBuilder.toString();
     }
 }

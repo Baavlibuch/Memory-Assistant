@@ -24,12 +24,12 @@ public class Words extends Disciplines {
         super.onCreate(savedInstanceState);
 
         new DictionaryAsyncTask().execute();
-        Log.i(TAG, "Activity Created");
+        Log.i(LOG_TAG, "Activity Created");
     }
 
     @Override
     protected String background() {
-        Log.v(TAG, "doInBackground() entered");
+        Log.v(LOG_TAG, "doInBackground() entered");
 
         StringBuilder stringBuilder = new StringBuilder();
         //String textString = "";
@@ -52,7 +52,7 @@ public class Words extends Disciplines {
             String word;
             while ((word = dict.readLine()) != null) {
                 mDictionary.add(word);
-           //     Log.v(TAG, word);
+           //     Log.v(LOG_TAG, word);
             }
 
         } catch (IOException e) {
@@ -62,7 +62,7 @@ public class Words extends Disciplines {
         try {
             dict.close(); //had if (dict!=null)
         } catch (IOException e) {
-            Log.e(TAG, "File not closed");
+            Log.e(LOG_TAG, "File not closed");
         }
     }
 
@@ -95,7 +95,7 @@ public class Words extends Disciplines {
 
 }
 /*
-    private static String TAG = "Position::--";
+    private static String LOG_TAG = "Position::--";
     private CountDownTimer cdt;
     long mTime = 0;
     private boolean isTimerRunning = false;
@@ -116,12 +116,12 @@ public class Words extends Disciplines {
     }
 
     void Start() {
-        Log.i(TAG, "Start entered");
+        Log.i(LOG_TAG, "Start entered");
         try {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow
                     (getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
-            Log.e(TAG, "Couldn't hide keypad ", e);
+            Log.e(LOG_TAG, "Couldn't hide keypad ", e);
         }
         ((TextView) findViewById(clock_text)).setText("");
 
@@ -159,11 +159,11 @@ public class Words extends Disciplines {
 
         startCommon();
         (findViewById(R.id.numbers)).setVisibility(View.VISIBLE);
-        Log.i(TAG, "Start complete");
+        Log.i(LOG_TAG, "Start complete");
     }
 
     void setButtons() {
-        Log.i(TAG, "setButtons entered");
+        Log.i(LOG_TAG, "setButtons entered");
 
         findViewById(R.id.sw).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -276,11 +276,11 @@ public class Words extends Disciplines {
         (findViewById(R.id.stop)).setVisibility(View.GONE);
         (findViewById(R.id.chronometer)).setVisibility(View.GONE);
         (findViewById(R.id.clock_text)).setVisibility(View.GONE);
-        Log.i(TAG, "setButtons complete");
+        Log.i(LOG_TAG, "setButtons complete");
     }
 
     void timer() {
-        Log.i(TAG, "timer() entered");
+        Log.i(LOG_TAG, "timer() entered");
         ((TextView) findViewById(clock_text)).setText("");
         if (!isTimerRunning) {
             cdt = new CountDownTimer(((Long.parseLong(((EditText)
@@ -320,7 +320,7 @@ public class Words extends Disciplines {
                 }
             }.start();
         }
-        Log.i(TAG, "timer() complete");
+        Log.i(LOG_TAG, "timer() complete");
     }
 
     private class myAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {

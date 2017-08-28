@@ -1,4 +1,4 @@
-#Sun Aug 27 19:07:35 IST 2017
+#Mon Aug 28 10:42:34 IST 2017
 base.0=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0
 renamed.0=classes.dex
 file.0=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex

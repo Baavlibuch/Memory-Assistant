@@ -35,7 +35,9 @@
 <p>The following rules are the basics of the system. You have to memorize them in order to create and reconstruct your images. I taught them to dozens of children. They were able to learn them in about ten minutes. Without an oral explanation, it might take a little bit longer, but you get my point: It is very simple!</p>
 
 <h3>The Major Code</h3>
-	<p>Numeral	 Associated Constants</p>
+
+<p>Numeral	 Associated Constants</p>
+
 <ul>
 	<li>0	 s, z, soft c</li>
 	<li>1	 t, d</li>
@@ -49,7 +51,7 @@
 	<li>9	 p, b</li>
 	<li>Unassigned-Vowel sounds, w,h,y,x</li>
 </ul>
-<p>The Mnemonics -</p>
+<b>The Mnemonics -</b>
  <ul>
 <li>z is the first letter of zero. The other letters have a similar sound</li>
 <li>t & d have one downward stroke and sound similar (some variant systems include "th")</li>

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Aug 27 21:07:09 IST 2017
+#Mon Aug 28 14:45:13 IST 2017
 20.base=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/resources-debug.ap_
 143.base=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/resources-debug.ap_
 340.file=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/resources-debug.ap_/res/drawable/s5.png

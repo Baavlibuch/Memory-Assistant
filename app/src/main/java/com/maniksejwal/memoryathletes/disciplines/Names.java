@@ -26,7 +26,7 @@ public class Names extends Disciplines {
         super.onCreate(savedInstanceState);
 
         (new DictionaryAsyncTask()).execute();
-        Log.i(TAG, "Activity Created");
+        Log.i(LOG_TAG, "Activity Created");
     }
 
     private void createDictionary() {
@@ -46,7 +46,7 @@ public class Names extends Disciplines {
         try {
             if (dict != null) dict.close();
         } catch (IOException e) {
-            Log.e(TAG, "File not closed");
+            Log.e(LOG_TAG, "File not closed");
         }
 
         dict = null;
@@ -62,19 +62,19 @@ public class Names extends Disciplines {
         } catch (IOException e) {
             e.printStackTrace();
             // } catch (StringIndexOutOfBoundsException e){
-            //   Log.e(TAG, "error" + mLastName.size());
+            //   Log.e(LOG_TAG, "error" + mLastName.size());
         }
 
         try {
             if (dict != null) dict.close();
         } catch (IOException e) {
-            Log.e(TAG, "File not closed");
+            Log.e(LOG_TAG, "File not closed");
         }
     }
 
     @Override
     protected String background() {
-        Log.v(TAG, "doInBackground() entered");
+        Log.v(LOG_TAG, "doInBackground() entered");
 
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
@@ -125,7 +125,7 @@ public class Names extends Disciplines {
 }
 
 /*
-    private static String TAG = "Position::--";
+    private static String LOG_TAG = "Position::--";
     private CountDownTimer cdt;
     long mTime = 0;
     private boolean isTimerRunning = false;
@@ -139,7 +139,7 @@ public class Names extends Disciplines {
         setTitle(getString(R.string.random) + " " + getString(R.string.d));
 
         (new DictionaryAsyncTask()).execute();
-        Log.i(TAG, "Activity Created");
+        Log.i(LOG_TAG, "Activity Created");
     }
 
     private void createDictionary() {
@@ -159,7 +159,7 @@ public class Names extends Disciplines {
         try {
             if (dict != null) dict.close();
         } catch (IOException e) {
-            Log.e(TAG, "File not closed");
+            Log.e(LOG_TAG, "File not closed");
         }
 
         dict = null;
@@ -175,13 +175,13 @@ public class Names extends Disciplines {
         } catch (IOException e) {
             e.printStackTrace();
        // } catch (StringIndexOutOfBoundsException e){
-         //   Log.e(TAG, "error" + mLastName.size());
+         //   Log.e(LOG_TAG, "error" + mLastName.size());
         }
 
         try {
             if (dict != null) dict.close();
         } catch (IOException e) {
-            Log.e(TAG, "File not closed");
+            Log.e(LOG_TAG, "File not closed");
         }
     }
 
@@ -195,12 +195,12 @@ public class Names extends Disciplines {
     }
 
     void Start() {
-        Log.i(TAG, "Start entered");
+        Log.i(LOG_TAG, "Start entered");
         try {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow
                     (getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
-            Log.e(TAG, "Couldn't hide keypad ", e);
+            Log.e(LOG_TAG, "Couldn't hide keypad ", e);
         }
         ((TextView) findViewById(clock_text)).setText("");
 
@@ -238,11 +238,11 @@ public class Names extends Disciplines {
 
         startCommon();
         (findViewById(R.id.numbers)).setVisibility(View.VISIBLE);
-        Log.i(TAG, "Start complete");
+        Log.i(LOG_TAG, "Start complete");
     }
 
     void setButtons() {
-        Log.i(TAG, "setButtons entered");
+        Log.i(LOG_TAG, "setButtons entered");
 
         findViewById(R.id.sw).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -355,11 +355,11 @@ public class Names extends Disciplines {
         (findViewById(R.id.stop)).setVisibility(View.GONE);
         (findViewById(R.id.chronometer)).setVisibility(View.GONE);
         (findViewById(clock_text)).setVisibility(View.GONE);
-        Log.i(TAG, "setButtons complete");
+        Log.i(LOG_TAG, "setButtons complete");
     }
 
     void timer() {
-        Log.i(TAG, "timer() entered");
+        Log.i(LOG_TAG, "timer() entered");
         ((TextView) findViewById(clock_text)).setText("");
         if (!isTimerRunning) {
             cdt = new CountDownTimer(((Long.parseLong(((EditText)
@@ -399,7 +399,7 @@ public class Names extends Disciplines {
                 }
             }.start();
         }
-        Log.i(TAG, "timer() complete");
+        Log.i(LOG_TAG, "timer() complete");
     }
 }
 
