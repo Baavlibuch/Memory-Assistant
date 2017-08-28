@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Aug 27 19:07:39 IST 2017
+#Sun Aug 27 21:07:12 IST 2017
 20.base=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/resources-debug.ap_
 143.base=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/resources-debug.ap_
 340.file=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/resources-debug.ap_/res/drawable-xxhdpi-v4/ic_sync_black_24dp.png

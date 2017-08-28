@@ -1,4 +1,4 @@
-<h4>History</h4>
+<h3>History</h3>
 
 <p>Starting with a 2-digit system like the 2nd-Level Major System is a relatively small effort of 100 images (10²). A system like this can be learned in a very short time, is therefore quickly available and can easily be trained. The downside of it is the small cluster of only two digits. For a forty digit number you will have to memorize 20 images on 20 locations with your Elephant Path through the Method of Loci (supposing you use one image on each location).</p>
 
@@ -6,7 +6,7 @@
 
 <p>The PAO-System jumps in that huge gap between these two techniques and provides a beautiful alternative with only 300 images needed. Technically it is a 3 x 2-digit system. It is also a great upgrade for your existing 2-digit system and will be memorized in no time. But it also can work as your first system.</p>
 
-<h4>How PAO works</h4>
+<h3>How PAO works</h3>
 
 <p>The idea behind the PAO-System is very simple: If we want to avoid encoding more digits into one image, we have to find another way to condense information. We can do that by creating a cluster of 2-digit images. That means we use more than one list of 100 images and combine them into one big cluster. In case of the PAO-System we create three lists of 100 items each: 100 persons (P), 100 actions (A) and 100 objects (O).</p>
 
@@ -18,11 +18,11 @@
 
 <p>Due to this and other phenomenon many consider variations of the system, for example a PO-System with only two lists of 100 persons and 100 objects. That will give you plenty of room for creativity again but will reduce the cluster to 4 digits instead of 6. Others have problems with the 100 persons. They always confuse them with each other and only use an AO-System with 100 actions and 100 objects.</p>
 
-<h4>Creating the PAO System</h4>
+<h3>Creating the PAO System</h3>
 
 <p>There are many ways to create your three lists. Personally I prefer the following method: If you are building your first number system, you should consider the Major System. It will help you to encode your first list of 100 images and learn them quickly. Then, or if you already have a 2-digit system, you can upgrade it astonishingly easy and quick: Look at all your 100 images. If they are objects try to find associations to a person and action for each one. If they are persons look for a fitting object and action. That way you will create natural associations you already have in your head. After specifying them you will remember your new lists very easily by activating your images in your first list.</p>
 
-<h4>PAO in action</h4>
+<h3>PAO in action</h3>
 
 <p>To memorize a 40-digit number you will read it in steps of two digits each, translating the first two into the person, the second two into the action and the third two digits into the object. Put them together and combine this image with your location from your Elephant Path. Then go on to the next six digits and repeat this sequence until you created five image clusters. Only 6.6 clusters and you can memorize 8304827739410499306928301829439382904639 – amazing isn’t it?</p>
 
@@ -30,6 +30,6 @@
 
 <p>If you are competing at a memory competition you will have to deal with the fact, that each row will be 40 digits long. After 6 PAO-images (36 digits) you will reach the end of the row with only four digits left. When you encode the next four images in this row AND the next two digits in the following row to create a full PAO-image, you could lose two complete rows with 80 digits together. If you forget this PAO-image you will have 4 mistakes in the first row and 2 mistakes in the second, setting both of them to zero (1 mistake half of the row, 2 mistakes cancels the row). To avoid this you should consider memorizing only the last four digits of the row with a PO-image for example and starting the next row with a new PAO-image.</p>
 
-<h4>PAO for cards</h4>
+<h3>PAO for cards</h3>
 
 <p>You can use the PAO-Sytem for cards as well. In case of cards it makes even more sense because a 2-card system requires 2.652 images (52x51 cards). It is much easier to create and works exactly the same way as with numbers. You can simply take your existing 1st-Level card system and upgrade it with the same technique I explained above. If you don’t have a card system yet, you should create a simple one and then upgrade it. It really is worth the effort and athletes like Andy Bell are able to memorize a deck of 52 cards with it in 31.16 seconds.</p>

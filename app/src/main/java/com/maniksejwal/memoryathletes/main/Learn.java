@@ -73,12 +73,12 @@ public class Learn extends AppCompatActivity {
             mFile = file;
         }
 
-        Item(int item, Class class1, int file, boolean webView) {
+        /*Item(int item, Class class1, int file, boolean webView) {
             mItem = item;
             mClass = class1;
             mFile = file;
             mWebView = webView;
-        }
+        }*/
     }
 
     private class LearnAdapter extends ArrayAdapter<Item> {
