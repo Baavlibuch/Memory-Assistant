@@ -3,7 +3,9 @@ package com.maniksejwal.memoryathletes.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,17 +24,31 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Apply extends AppCompatActivity {
-    String path;
+    private static final String LOG_TAG = "\tApply";
+    ArrayList<String> pathList =new ArrayList<>();
     private static final String TAG = "Log : ";
     int listViewId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
         setContentView(R.layout.activity_apply);
-        setTitle(getString(R.string.apply));
+        setTitle(Html.fromHtml(title + getString(R.string.apply)));
         Intent intent = getIntent();
-        path = intent.getStringExtra(getString(R.string.apply));
+        pathList.add(intent.getStringExtra(getString(R.string.apply)));
         Log.v(TAG, "Title Set");
 
         setAdapter();
@@ -40,7 +56,10 @@ public class Apply extends AppCompatActivity {
 
     public void setAdapter() {
         try {
-            String[] list = listAssetFiles(path);
+            StringBuilder path = new StringBuilder("");
+            for(String i : pathList) path.append(i);
+            Log.v(LOG_TAG, "path = " + path);
+            String[] list = listAssetFiles(path.toString());
             Log.v(TAG, "list set");
             if (list == null) {
                 Toast.makeText(this, "Empty List!", Toast.LENGTH_SHORT).show();
@@ -67,10 +86,12 @@ public class Apply extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), Lessons.class);
                         intent.putExtra("headerString", item.mItem);
                         intent.putExtra("webView", true);
+                        StringBuilder path = new StringBuilder("");
+                        for(String i : pathList) path.append(i);
                         intent.putExtra("fileString", path + "/" + string);
                         startActivity(intent);
                     } else {
-                        path += "/" + string;
+                        pathList.add("/" + string);
                         linearLayout.findViewById(listViewId).setVisibility(View.GONE);
                         listViewId++;
                         setAdapter();
@@ -122,5 +143,17 @@ public class Apply extends AppCompatActivity {
 
             return listItemView;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(listViewId==0) {
+            super.onBackPressed();
+            return;
+        }
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.apply_layout);
+        linearLayout.removeViewAt(listViewId--);
+        linearLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
+        pathList.remove(pathList.size()-1);
     }
 }

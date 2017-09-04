@@ -3,7 +3,9 @@ package com.maniksejwal.memoryathletes.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.maniksejwal.memoryathletes.lessons.Lessons;
 import com.maniksejwal.memoryathletes.R;
+import com.maniksejwal.memoryathletes.lessons.Lessons;
 
 import java.util.ArrayList;
 
@@ -23,8 +25,21 @@ public class Learn extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
         setContentView(R.layout.activity_learn);
-        setTitle(getString(R.string.learn));
+        setTitle(Html.fromHtml(title + getString(R.string.learn)));
 
         setAdapter();
     }
@@ -54,12 +69,12 @@ public class Learn extends AppCompatActivity {
         list.add(new Item(R.string.associations, Lessons.class, R.raw.lesson_perfect_association));
         list.add(new Item(R.string.major_system, Lessons.class, R.raw.lesson_major_system));
         list.add(new Item(R.string.pao, Lessons.class, R.raw.lesson_pao));
+        list.add(new Item(R.string.wardrobe_method, Lessons.class, R.raw.lesson_wardrobes));
         list.add(new Item(R.string.equations, Lessons.class, R.raw.lesson_equations));
         list.add(new Item(R.string.derivations, Lessons.class, R.raw.lesson_derivations));
 
         list.add(new Item(R.string.checkout, Lessons.class, R.raw.checkout));
         //list.add(new Item(R.string.checkout, Lessons.class, R.raw.Important, true));
-        //list.add(new Item(R.string.wardrobe_method, Lessons.class));
     }
 
     private class Item {

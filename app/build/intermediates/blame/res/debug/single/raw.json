@@ -8,6 +8,10 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/lesson_pao.txt"
     },
     {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/lesson_wardrobes.txt",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/lesson_wardrobes.txt"
+    },
+    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/raw/lakes.txt",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/raw/lakes.txt"
     },

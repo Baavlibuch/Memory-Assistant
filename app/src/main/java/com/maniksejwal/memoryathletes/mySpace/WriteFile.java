@@ -1,14 +1,18 @@
 package com.maniksejwal.memoryathletes.mySpace;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.maniksejwal.memoryathletes.R;
+import com.maniksejwal.memoryathletes.reminders.ReminderUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,11 +26,24 @@ public class WriteFile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
         setContentView(R.layout.activity_write_file);
         Intent intent = getIntent();
         String header = intent.getStringExtra("mHeader");
         header = header.substring(0, header.length() - 4);
-        setTitle(header);
+        setTitle(Html.fromHtml(title + header));
         path = intent.getStringExtra("path");
         if (intent.getBooleanExtra("name", true)) {
             ((EditText) findViewById(R.id.f_name)).setText(getTitle().toString());
@@ -73,6 +90,12 @@ public class WriteFile extends AppCompatActivity {
                 outputStream.write(string.getBytes());
                 outputStream.close();
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
+                e.putLong(fname, System.currentTimeMillis());
+                Log.v(LOG_TAG, fname + "made at " + System.currentTimeMillis());
+                e.apply();
+                ReminderUtils.mySpaceReminder(this, fname);
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
@@ -80,5 +103,6 @@ public class WriteFile extends AppCompatActivity {
         } else
             Toast.makeText(getApplicationContext(), "Couldn't find the parent directory!", Toast.LENGTH_SHORT).show();
         Log.v(LOG_TAG, "path = " + path);
+
     }
 }

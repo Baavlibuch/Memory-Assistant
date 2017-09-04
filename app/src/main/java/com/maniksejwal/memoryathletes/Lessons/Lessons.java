@@ -3,6 +3,7 @@ package com.maniksejwal.memoryathletes.lessons;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -28,38 +29,52 @@ import java.util.ArrayList;
  */
 
 public class Lessons extends AppCompatActivity {
-    private static final String LOG_TAG = "\tLog : Lessons : ";
+    private static final String LOG_TAG = "\tLessons";
     private static final String TAG = "String builder =";
 
-    /*final String JQMATH_BEG = "<!DOCTYPE html>" +
-            "<html>\n" +
-            "    <head>\n" +
-            "        <meta charset=\"utf-8\">\n" +
-            "        <link rel=\"stylesheet\" href=\"http://fonts.googleapis.com/css?family=UnifrakturMaguntia\">\n" +
-            "        <link rel=\"stylesheet\" href=\"../jqmath/jqmath-0.4.3.css\">\n" +
-            "        <script src=\"../jqmath/jquery-1.4.3.min.js\"></script>\n" +
-            "        <script src=\"../jqmath/jqmath-etc-0.4.6.min.js\" charset=\"utf-8\"></script>\n" +
-            "    </head>\n" +
-            "    <body>";
-    final String JQMATH_END = "</body>" +
-            "</html>";*/
+    ///*final String JQMATH_BEG = "<!DOCTYPE html>" +
+      //      "<html>\n" +
+        //    "    <head>\n" +
+          //  "        <meta charset=\"utf-8\">\n" +
+            //"        <link rel=\"stylesheet\" href=\"http://fonts.googleapis.com/css?family=UnifrakturMaguntia\">\n" +
+            //"        <link rel=\"stylesheet\" href=\"../jqmath/jqmath-0.4.3.css\">\n" +
+            //"        <script src=\"../jqmath/jquery-1.4.3.min.js\"></script>\n" +
+            //"        <script src=\"../jqmath/jqmath-etc-0.4.6.min.js\" charset=\"utf-8\"></script>\n" +
+            //"    </head>\n" +
+            //"    <body>";
+    //final String JQMATH_END = "</body>" +
+      //      "</html>";*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
+        Log.v(LOG_TAG, "theme = " + theme);
         setContentView(R.layout.activity_lesson);
         Intent intent = getIntent();
         int header = intent.getIntExtra("mHeader", 0);
         if (header != 0)
-            setTitle(getString(header));
+            setTitle(Html.fromHtml(title + getString(header)));
         else setTitle(intent.getStringExtra("headerString"));
 
-        StringBuilder sb;
+        StringBuilder sb= new StringBuilder("");
         int fileInt = intent.getIntExtra("file", 0);
         if (fileInt != 0) {
             if (intent.getBooleanExtra("list", false)) {
                 ListView listView = (ListView) findViewById(R.id.lesson_list);
-                ArrayList<Item> list = readFile(fileInt, intent);
+                ArrayList<Item> list = readList(fileInt);
                 Log.v(LOG_TAG, "list length = " + list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(this, list);
                 Log.v(LOG_TAG, "adapter set");
@@ -67,23 +82,9 @@ public class Lessons extends AppCompatActivity {
                 listView.setVisibility(View.VISIBLE);
                 Log.v(LOG_TAG, "listView set");
                 return;
-            } else sb = readFile(fileInt);//For raw files
+            } else sb = readResource(fileInt);//For raw files
         } else {
-            String s = intent.getStringExtra("fileString"); //For assets and filesDir
-            BufferedReader bufferedReader = null;
-            sb = new StringBuilder("");
-            try {
-                bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(s)));
-                while ((s = bufferedReader.readLine()) != null) sb.append(s);
-            } catch (IOException e) {
-                Toast.makeText(this, "Couldn't open the file", Toast.LENGTH_SHORT).show();
-            }
-            try {
-                if (bufferedReader != null)
-                    bufferedReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            sb = readAsset(sb, intent);
         }
         if (sb == null) {
             Log.w(LOG_TAG, "String Builder sb is empty");
@@ -92,29 +93,7 @@ public class Lessons extends AppCompatActivity {
         }
 
         if (intent.getBooleanExtra("webView", false)) {     //For JQMath
-            WebView webView = (WebView) findViewById(R.id.web_view);
-            WebSettings webSettings = webView.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            StringBuilder sb1 = readFile(R.raw.jqmath_beg);
-            if (sb1 == null) {
-                Log.e(LOG_TAG, "jqmath read error");
-                finish();
-                return;
-            }
-            StringBuilder sb2 = readFile(R.raw.jqmath_end);
-            if (sb2 == null) {
-                Log.e(LOG_TAG, "jqmath read error");
-                finish();
-                return;
-            }
-            String js = sb1.toString() + sb.toString() + sb2.toString();
-            //String js = JQMATH_BEG + "asfd $$u_n/v_n$$" + JQMATH_END;
-            //webView.loadUrl("file:///android_asset/jqmath/index.html");
-            //((TextView) findViewById(R.id.lesson)).setText(js);
-            //findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
-
-            webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "mText/html", "UTF-8", null);
-            webView.setVisibility(View.VISIBLE);
+            setWebView(sb);
         } else {
             Log.v(LOG_TAG, "list is false");
             ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
@@ -122,7 +101,33 @@ public class Lessons extends AppCompatActivity {
         }
     }
 
-    StringBuilder readFile(int path) {
+    void setWebView(StringBuilder sb){
+        WebView webView = (WebView) findViewById(R.id.web_view);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        StringBuilder sb1 = readResource(R.raw.jqmath_beg);
+        if (sb1 == null) {
+            Log.e(LOG_TAG, "jqmath read error");
+            finish();
+            return;
+        }
+        StringBuilder sb2 = readResource(R.raw.jqmath_end);
+        if (sb2 == null) {
+            Log.e(LOG_TAG, "jqmath read error");
+            finish();
+            return;
+        }
+        String js = sb1.toString() + sb.toString() + sb2.toString();
+        //String js = JQMATH_BEG + "asfd $$u_n/v_n$$" + JQMATH_END;
+        //webView.loadUrl("file:///android_asset/jqmath/index.html");
+        //((TextView) findViewById(R.id.lesson)).setText(js);
+        //findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
+
+        webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "mText/html", "UTF-8", null);
+        webView.setVisibility(View.VISIBLE);
+    }
+
+    StringBuilder readResource(int path) {
         if (path == 0) return null;
         BufferedReader reader = null;
         String line;
@@ -150,8 +155,8 @@ public class Lessons extends AppCompatActivity {
         }
     }
 
-    ArrayList<Item> readFile(int path, Intent intent) {
-        Log.v(LOG_TAG, "readFile(int, Intent) entered");
+    ArrayList<Item> readList(int path) {
+        Log.v(LOG_TAG, "readResource(int, Intent) entered");
         if (path == 0) return null;
         BufferedReader reader = null;
         String line, header = "";
@@ -185,6 +190,24 @@ public class Lessons extends AppCompatActivity {
         }
     }
 
+    StringBuilder readAsset(StringBuilder sb, Intent intent){
+        String line = intent.getStringExtra("fileString"); //For assets and filesDir
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
+            while ((line = bufferedReader.readLine()) != null) sb.append(line);
+        } catch (IOException e) {
+            Toast.makeText(this, "Couldn't open the file", Toast.LENGTH_SHORT).show();
+        }
+        try {
+            if (bufferedReader != null)
+                bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb;
+    }
+
     private class Item {
         String mHeader, mText;
 
@@ -215,11 +238,13 @@ public class Lessons extends AppCompatActivity {
             Log.v(LOG_TAG, "mText = \t" + item.mText);
             Log.v(LOG_TAG, "mHeader = \t" + item.mHeader);
 
-            TextView textView = listItemView.findViewById(R.id.lesson_item_header);
-            if (item.mHeader == null || item.mHeader == "") textView.setVisibility(View.GONE);
+            TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
+            View view = listItemView.findViewById(R.id.lesson_item_header_layout);
+            if (item.mHeader == null || item.mHeader == "")
+                view.setVisibility(View.GONE);
             else {
                 textView.setText(Html.fromHtml(item.mHeader));
-                textView.setOnClickListener(new View.OnClickListener() {
+                view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (textView1.getVisibility() == View.GONE)

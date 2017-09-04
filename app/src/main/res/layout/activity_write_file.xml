@@ -7,37 +7,35 @@
     tools:context="com.maniksejwal.memoryathletes.mySpace.WriteFile">
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/fname"
         android:id="@+id/f_name"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"/>
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/my_space_editText"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        android:hint="@string/here"
-        android:layout_below="@id/f_name"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginTop="16dp"
+        android:hint="@string/fname" />
+
+    <EditText
+        android:id="@+id/my_space_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/f_name"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="@string/here"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/saveFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="@android:color/holo_blue_dark"
-        tools:layout_editor_absoluteX="341dp"
-        tools:layout_editor_absoluteY="472dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_margin="16dp"
         android:onClick="save"
-        android:id="@+id/saveFAB"/>
+        app:srcCompat="@android:drawable/ic_menu_save" />
 
 </RelativeLayout>

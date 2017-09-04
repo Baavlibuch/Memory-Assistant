@@ -6,45 +6,45 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1503912898708"
+    timestamp="1504535571224"
     token="-5349423385581405604"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="2952" />
+        duration="4144" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="572" />
+        duration="459" />
     <task
         name="verifier"
-        duration="34" />
+        duration="63" />
 
+    <artifact
+        location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+        type="SPLIT" />
+    <artifact
+        location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+        type="SPLIT" />
     <artifact
         location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
         type="SPLIT" />
 
     <build
         build-mode="FULL"
-        timestamp="1503912733439"
+        timestamp="1504532921629"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
@@ -56,10 +56,16 @@
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
@@ -70,8 +76,14 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1503912898708"
+        timestamp="1504535571224"
         verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            type="SPLIT" />
         <artifact
             location="/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />

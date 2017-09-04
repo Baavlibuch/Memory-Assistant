@@ -3,7 +3,9 @@ package com.maniksejwal.memoryathletes.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,29 +19,38 @@ import com.maniksejwal.memoryathletes.R;
 import com.maniksejwal.memoryathletes.disciplines.BinaryDigits;
 import com.maniksejwal.memoryathletes.disciplines.Cards;
 import com.maniksejwal.memoryathletes.disciplines.Colours;
+import com.maniksejwal.memoryathletes.disciplines.Dates;
 import com.maniksejwal.memoryathletes.disciplines.Equations;
 import com.maniksejwal.memoryathletes.disciplines.Foods;
-import com.maniksejwal.memoryathletes.disciplines.Places;
-import com.maniksejwal.memoryathletes.disciplines.Dates;
 import com.maniksejwal.memoryathletes.disciplines.Letters;
 import com.maniksejwal.memoryathletes.disciplines.Names;
 import com.maniksejwal.memoryathletes.disciplines.Numbers;
+import com.maniksejwal.memoryathletes.disciplines.Places;
 import com.maniksejwal.memoryathletes.disciplines.Words;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import static com.maniksejwal.memoryathletes.R.drawable.pic;
-
 public class Practice extends AppCompatActivity {
-
-    private static String TAG = "Position::--";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
         setContentView(R.layout.activity_practice);
-        setTitle("Practice");
+        setTitle(Html.fromHtml(title+getString(R.string.practice)));
         final ArrayList<Category> disc = new ArrayList<>();
         setList(disc);
 
@@ -60,17 +71,17 @@ public class Practice extends AppCompatActivity {
     }
 
     private void setList(ArrayList<Category> disc) {
-        disc.add(new Category(R.string.e, pic, Cards.class, false, false));
-        disc.add(new Category(R.string.b, pic, Numbers.class, true, false, 1));
-        disc.add(new Category(R.string.k, pic, Letters.class, true, false));
-        disc.add(new Category(R.string.f, pic, BinaryDigits.class, true, false));
-        disc.add(new Category(R.string.c, pic, Words.class, false, true));
-        disc.add(new Category(R.string.d, pic, Names.class, false, true));
-        disc.add(new Category(R.string.g, pic, Places.class, false, true));
-        disc.add(new Category(R.string.a, pic, Equations.class, false, false));
-        disc.add(new Category(R.string.h, pic, Dates.class, false, false));
-        disc.add(new Category(R.string.i, pic, Foods.class, false, false));
-        disc.add(new Category(R.string.j, pic, Colours.class, false, false));
+        disc.add(new Category(R.string.b, R.drawable.numbers, Numbers.class, true, false, 1));
+        disc.add(new Category(R.string.c, R.drawable.words, Words.class, false, true));
+        disc.add(new Category(R.string.d, R.drawable.names, Names.class, false, true));
+        disc.add(new Category(R.string.g, R.drawable.places, Places.class, false, true));
+        disc.add(new Category(R.string.e, R.drawable.cards, Cards.class, false, false));
+        disc.add(new Category(R.string.f, R.drawable.binary, BinaryDigits.class, true, false));
+        disc.add(new Category(R.string.k, R.drawable.letters, Letters.class, true, false));
+        disc.add(new Category(R.string.a, R.drawable.equations, Equations.class, false, false));
+        disc.add(new Category(R.string.h, R.drawable.dates, Dates.class, false, false));
+        disc.add(new Category(R.string.i, R.drawable.foods, Foods.class, false, false));
+        disc.add(new Category(R.string.j, R.drawable.colours, Colours.class, false, false));
     }
 
     private class Category {
@@ -114,7 +125,15 @@ public class Practice extends AppCompatActivity {
             TextView txt = listView.findViewById(R.id.text);
             ImageView img = listView.findViewById(R.id.image);
             txt.setText(cat.mNameId);
-            img.setImageResource(cat.mImageId);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(cat.mImageId)
+                    .placeholder(R.mipmap.launcher_ic)
+                    .fit()
+                    .centerCrop()
+                    //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ
+                    .into(img);
+            //img.setImageResource(cat.mImageId);
             return listView;
         }
     }

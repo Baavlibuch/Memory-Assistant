@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.maniksejwal.memoryathletes">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_ic"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Default">
 
         <!-- android:largeHeap="true" -->
 
-        <activity android:name=".main.MainActivity"
+        <activity
+            android:name=".main.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,72 +31,113 @@
         <!-- Main Activity options -->
 
         <activity android:name=".main.GetPro" />
-        <activity android:name=".main.Learn" />
-        <activity android:name=".lessons.Lessons" />
-        <activity android:name=".main.Login" />
         <activity
-            android:name=".openFile.Recall"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
-        <activity android:name=".main.Practice" />
+            android:name=".main.Login"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".main.Learn"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".recall.Recall"
+            android:parentActivityName=".main.MainActivity"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".main.Practice"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.Preferences"
-            android:label="@string/title_activity_preferences" />
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".main.Apply"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".mySpace.MySpace"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".mySpace.WriteFile"
+            android:parentActivityName=".mySpace.MySpace"
+            tools:targetApi="jelly_bean" />
+        <activity android:name=".lessons.Lessons" />
 
         <!-- Practice Disciplines -->
 
         <activity
             android:name=".disciplines.Numbers"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Equations"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Words"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Names"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Cards"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.BinaryDigits"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Places"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Foods"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Dates"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Colours"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
         <activity
             android:name=".disciplines.Letters"
-            android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
-        <activity android:name=".main.Apply" />
-        <activity android:name=".mySpace.MySpace" />
-        <activity android:name=".mySpace.WriteFile" />
-        
-        <service android:name=".services.ReminderJobService"
+            android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
+
+
+        <service
+            android:name=".services.ReminderJobService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".services.MySpaceJobService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
     </application>

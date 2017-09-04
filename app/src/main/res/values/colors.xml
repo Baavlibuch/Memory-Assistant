@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="suit_background">#51111111</color>
+    <color name="lightColorPrimary">#673AB7</color>
+    <color name="lightColorPrimaryDark">#512DA8</color>
+    <color name="lightColorAccent">#26C6DA</color>
+
+    <color name="darkColorPrimary">#512DA8</color>
+    <color name="darkColorPrimaryDark">#4527A0</color>
+    <color name="darkColorAccent">#00ACC1</color>
+
+    <color name="pitchColorPrimary">#200A81</color>
+    <color name="pitchColorPrimaryDark">#0F055F</color>
+    <color name="pitchColorAccent">#1976D2</color>
+    <color name="black">#000000</color>
+
+    <color name="color_suit_background">#44111111</color>
 </resources>

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 
 import com.maniksejwal.memoryathletes.R;
 import com.maniksejwal.memoryathletes.mySpace.MySpace;
-import com.maniksejwal.memoryathletes.openFile.Recall;
+import com.maniksejwal.memoryathletes.recall.Recall;
 import com.maniksejwal.memoryathletes.reminders.ReminderUtils;
 
 import java.util.ArrayList;
@@ -29,10 +30,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
         setContentView(R.layout.activity_main);
-
+        setTitle(Html.fromHtml(title + getString(R.string.app_name)));
         setAdapter();
-
     }
 
     public void setAdapter() {
@@ -55,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setList(ArrayList<Item> list) {
-        list.add(new Item(R.string.login, Login.class));
+        //list.add(new Item(R.string.login, Login.class));
         list.add(new Item(R.string.learn, Learn.class));
         list.add(new Item(R.string.practice, Practice.class));
         list.add(new Item(R.string.recall, Recall.class));
@@ -63,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Item(R.string.my_space, MySpace.class));
         //list.add(new Item(R.string.reminders, ))
         list.add(new Item(R.string.preferences, Preferences.class));
-        list.add(new Item(R.string.get_pro, GetPro.class));
-        Log.i(LOG_TAG, "List set!");
+        //list.add(new Item(R.string.get_pro, GetPro.class));
+        Log.v(LOG_TAG, "List set!");
     }
 
     private class Item {
@@ -101,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
         SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
         e.putLong("last_opened", System.currentTimeMillis());
         Log.v(LOG_TAG, "Last opened on" + System.currentTimeMillis());

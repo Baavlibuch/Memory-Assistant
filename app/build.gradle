@@ -19,6 +19,9 @@ android {
     }
     productFlavors {
     }
+    aaptOptions {
+        cruncherEnabled = false
+    }
 }
 
 dependencies {

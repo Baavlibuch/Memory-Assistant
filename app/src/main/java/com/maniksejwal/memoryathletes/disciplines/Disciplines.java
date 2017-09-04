@@ -6,7 +6,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,7 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.maniksejwal.memoryathletes.R;
-import com.maniksejwal.memoryathletes.openFile.Recall;
+import com.maniksejwal.memoryathletes.recall.Recall;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,6 +53,20 @@ public class Disciplines extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
+
         Intent intent = getIntent();
         if (/*hasAsync =*/ !intent.getBooleanExtra("hasAsyncTask", false)) {
             setContentView(R.layout.activity_disciplines);
@@ -61,7 +77,7 @@ public class Disciplines extends AppCompatActivity {
         }
 
         Log.i(LOG_TAG, "0 means error in getting title resource string ID through intent");
-        setTitle(getString(intent.getIntExtra("nameID", 0)));
+        setTitle(Html.fromHtml(title+getString(intent.getIntExtra("nameID", 0))));
 
         //setContentView(R.layout.activity_binary_digits); TODO: fix it!
         //setTitle("Binary Digits"); TODO: fix it!

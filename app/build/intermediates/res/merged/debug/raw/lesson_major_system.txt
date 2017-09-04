@@ -1,10 +1,12 @@
+<p>Source : http://memory-sports.com</p>
+
 <p>It is a powerful tool which is used by the majority of mental athletes. Since it is based on a phonetic system, you will easily memorize all the images and go on to use it in action.</p>
 
-<h3>The challenge of numbers</h3>
+<h4>The challenge of numbers</h4>
 
 <p>The reason why numbers are so troublesome for many people is that they are abstract. They characterize an amount of something, but are nothing we can see, hold or feel. We can’t even describe what they mean. Sure, you can try it for a very low digit. But when it comes to more than ten you will have huge problems. The conclusion for memory athletes is, to make numbers more concrete.</p>
 
-<h3>The different peg systems</h3>
+<h4>The different peg systems</h4>
 
 <p>To manifest a number you have to alter it into something else. It doesn’t really matter into what, as long as you can imagine it. Since we have a decimal system, we need to translate at least ten images for each number. The lists you create out of those objects are broadly called “peg lists“. I will refer to these objects as “images” or “mnemonics”. Once you memorized such a list, you can use it over and over again and memorize any amount of digits (depending on the amount of your locations from your Method of Loci).</p>
 
@@ -12,7 +14,7 @@
 
 <p>This overview is merely an example of the most popular systems. The possibilities are far greater. Every novice is advised to keep in mind that there always might be a better solution for translating numbers into something more memorable.</p>
 
-<h3>1st-Level: Number-Shape and Number-Rhyme System</h3>
+<h4>1st-Level: Number-Shape and Number-Rhyme System</h4>
 
 <p>One approach is through the shape of each number. For example: The “two” looks just like a swan. Another way is using rhymes for each number. In this case the “two” could be “shoe”. Except you are dealing with only a few small numbers, don’t bother learning such a simple system. But why is that?</p>
 
@@ -22,7 +24,7 @@
 
 <p>If you want to memorize digits more effectively, you will need a more evolved system. So let’s skip these and go on to the 2-digit-Systems.</p>
 
-<h3>2nd -Level: The Major System</h3>
+<h4>2nd -Level: The Major System</h4>
 
 <p>The smallest cluster for decimal digits is two digits together. 10x10 makes 100 images for each combination of two numbers. It might sound much to learn, but the mnemonic basis of these systems help you to do so in a very short time. This guide sets its focus on the Major System, one of many ways to cluster two digits together. In the end it doesn’t matter what kind of system you use if you have the same amount of information stored as images.</p>
 
@@ -30,11 +32,11 @@
 
 <p>Another great thing about the Major System is the fact, that it is expandable. By adding a third number to your cluster you will reach the 3rd level. That would mean to memorize 1.000 objects, before you can use it (or 900 if you already learned a list of 100). But that is nothing you should think about for starters. Actually you are able to come very far with a 2nd-Level system. But the amount of memory athletes using a 3rd-Level system is growing every day. I will not go into detail about the 3rd-Level system because it works excactly the same way as a 2nd-Level Major System but with three digits to encode instead of two.</p>
 
-<h3>The rules: 86 is a fish</h3>
+<h4>The rules: 86 is a fish</h4>
 
 <p>The following rules are the basics of the system. You have to memorize them in order to create and reconstruct your images. I taught them to dozens of children. They were able to learn them in about ten minutes. Without an oral explanation, it might take a little bit longer, but you get my point: It is very simple!</p>
 
-<h3>The Major Code</h3>
+<h4>The Major Code</h4>
 
 <p>Numeral	 Associated Constants</p>
 
@@ -70,6 +72,6 @@
 
 <p>Often the mapping is compact. “Hindquarters”, for example, translates unambiguously to 2174140, which amounts to 7 digits encoded by 12 letters, and can be easily visualized.</p>
 
-<h3>Create your own list</h3>
+<h4>Create your own list</h4>
 
 <p>If you are sticking to the rules above, there are few things you can make wrong. You can even use abstract words like “time” if you have a strong visual association for it like a clock. Stay strictly with the rules in the beginning. It will help you to memorize the words. Later you can jump around and use any words to replace your weaker images. I changed several pegs in my system over time without using the Major System anymore. But to learn the whole pack at once, the rules are a must have.</p>

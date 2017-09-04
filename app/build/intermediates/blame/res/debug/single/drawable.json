@@ -4,12 +4,24 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/ck.png"
     },
     {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/equations.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/equations.png"
+    },
+    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_material.xml",
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_ratingbar_material.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/s9.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/s9.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/colours.jpg",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/colours.jpg"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/dates.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/dates.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
@@ -22,6 +34,14 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/h9.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/h9.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/foods.jpg",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/foods.jpg"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/cards.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/cards.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/d6.png",
@@ -48,12 +68,12 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/cj.png"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
-        "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_btn_radio_material.xml"
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/words.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/words.png"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/pic.jpg",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/pic.jpg"
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
+        "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_btn_radio_material.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/d.png",
@@ -84,12 +104,12 @@
         "source": "/Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/res/drawable/navigation_empty_icon.xml"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background.xml",
-        "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_dialog_material_background.xml"
-    },
-    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/hk.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/hk.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background.xml",
+        "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_dialog_material_background.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
@@ -178,6 +198,10 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/places.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/places.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_tick_mark_material.xml",
@@ -288,8 +312,16 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/c5.png"
     },
     {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/letters.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/letters.png"
+    },
+    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/drawable/abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/binary.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/binary.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
@@ -306,6 +338,10 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/design_password_eye.xml",
         "source": "/Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/res/drawable/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/names.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/names.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/hq.png",
@@ -372,16 +408,20 @@
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/sq.png"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/s7.png",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/s7.png"
-    },
-    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/hj.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/hj.png"
     },
     {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/s7.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/s7.png"
+    },
+    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/s4.png",
         "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/s4.png"
+    },
+    {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/numbers.png",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/drawable/numbers.png"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/drawable/d8.png",

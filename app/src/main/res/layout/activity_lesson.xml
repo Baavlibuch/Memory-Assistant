@@ -34,5 +34,4 @@
         android:id="@+id/lesson_list"
         android:visibility="gone"/>
 
-
 </LinearLayout>

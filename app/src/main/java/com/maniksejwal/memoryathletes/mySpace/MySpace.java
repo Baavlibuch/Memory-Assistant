@@ -3,7 +3,9 @@ package com.maniksejwal.memoryathletes.mySpace;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +30,21 @@ public class MySpace extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
         setContentView(R.layout.activity_my_space);
-        setTitle(R.string.my_space);
+        setTitle(Html.fromHtml(title + getString(R.string.my_space)));
         Intent intent = getIntent();
         //path = intent.getStringExtra(getString(R.string.apply));
         Log.v(LOG_TAG, "Title Set");
@@ -74,7 +89,10 @@ public class MySpace extends AppCompatActivity {
                     dir = new File(getFilesDir().getAbsolutePath() + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
-                    setTitle(item.mItem);
+                    if(PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                            .getString(getString(R.string.theme), "AppTheme")=="Light")
+                        setTitle(Html.fromHtml("<font color=#FFFFFF>" + item.mItem));
+                    else setTitle(item.mItem);
                     findViewById(R.id.floatingActionButton).setVisibility(View.VISIBLE);
                     setAdapter();
                 } else {

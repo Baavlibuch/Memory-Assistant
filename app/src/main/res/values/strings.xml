@@ -1,6 +1,5 @@
 <resources>
 
-
     <string name="app_name">Memory Assistant</string>
 
     <string name="login">Login</string>
@@ -81,23 +80,36 @@
     <string name="algos">Algorithms</string>
     <string name="words">Words</string>
 
-    <string name="periodic">Periodic Reminders</string>
+    <string name="remind">Remind Me Periodically</string>
+    <string name="periodic">I Like To Practice At</string>
     <string name="location_wise">Based On Location</string>
     <string name="transit">During Transit</string>
-    <string name="default_time">22:00</string>
+    <string name="default_time">22:30</string>
+    <string name="theme">Theme</string>
+    <string name="app_theme">AppTheme</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="pitch">pitch</string>
+    <string-array name="themes">
+        <item>Default</item>
+        <item>Light</item>
+        <item>Dark</item>
+        <item>Night</item>
+    </string-array>
 
     <string name="fname">Name</string>
     <string name="here">Enter here</string>
-
-    <string name="tab">\t</string>
 
     <string name="method_of_loci">Method Of Loci</string>
     <string name="associations">The Perfect Association</string>
     <string name="major_system">The Major System</string>
     <string name="equations">Equations</string>
     <string name="derivations">Derivations</string>
-    <string name="checkout">Checkout These</string>
+    <string name="checkout">Check These Out!</string>
     <string name="pao">The PAO Memory System</string>
-    <string name="wardrobe_method"></string>
+    <string name="wardrobe_method">Wardrobe Method</string>
+
+    <string name="tab">\t</string>
+    <string name="drop_down">Expand</string>
 
 </resources>

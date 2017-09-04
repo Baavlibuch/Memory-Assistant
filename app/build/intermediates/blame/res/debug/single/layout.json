@@ -100,6 +100,10 @@
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/layout/notification_template_icon_group.xml"
     },
     {
+        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/activity_recall.xml",
+        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/layout/activity_recall.xml"
+    },
+    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
         "source": "/Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/res/layout/design_navigation_item_header.xml"
     },
@@ -220,10 +224,6 @@
         "source": "/Users/Manik/.android/build-cache/42f60c038561774e61c720dbeced1941078b68af/output/res/layout/design_text_input_password_icon.xml"
     },
     {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/activity_open_file.xml",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/layout/activity_open_file.xml"
-    },
-    {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/layout/abc_action_menu_item_layout.xml"
     },
@@ -242,10 +242,6 @@
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
         "source": "/Users/Manik/.android/build-cache/379725ed3b62b7d14dc8cdd8e0e4ab3abfe579ad/output/res/layout/abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/recall_simple_fragment.xml",
-        "source": "/Users/Manik/AndroidStudioProjects/Android/app/src/main/res/layout/recall_simple_fragment.xml"
     },
     {
         "merged": "/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/res/merged/debug/layout/loading.xml",

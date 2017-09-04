@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/remind"
+        android:title="@string/remind"/>
+
     <com.maniksejwal.memoryathletes.reminders.TimePreference
         android:defaultValue="@string/default_time"
         android:key="@string/periodic"
         android:title="@string/periodic"
         />
+
+    <ListPreference
+        android:defaultValue="@string/app_theme"
+        android:key="@string/theme"
+        android:title="@string/theme"
+        android:entries="@array/themes"
+        android:entryValues="@array/themes"/>
 
 </PreferenceScreen>
