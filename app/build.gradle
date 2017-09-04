@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.memory_athelete.memoryathletes"
+        applicationId "com.memory_athelte.memoryassistant"
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 1

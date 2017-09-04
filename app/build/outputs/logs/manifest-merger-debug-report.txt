@@ -2,7 +2,7 @@
 manifest
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:2:1-145:12
 	package
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:4:5-48
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:4:5-49
 		INJECTED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -48,12 +48,12 @@ MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/Manik/.and
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:14:9-43
 	android:theme
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:17:9-39
-activity#com.memory_athlete.memoryathletes.main.MainActivity
+activity#com.memory_athlete.memoryassistant.main.MainActivity
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:21:9-29:20
 	android:launchMode
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:23:13-43
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:22:13-79
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:22:13-80
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:24:13-28:29
 action#android.intent.action.MAIN
@@ -64,210 +64,210 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:27:17-77
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:27:27-74
-activity#com.memory_athlete.memoryathletes.main.GetPro
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:33:9-82
+activity#com.memory_athlete.memoryassistant.main.GetPro
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:33:9-83
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:33:19-79
-activity#com.memory_athlete.memoryathletes.main.Login
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:33:19-80
+activity#com.memory_athlete.memoryassistant.main.Login
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:34:9-37:44
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:36:13-93
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:36:13-94
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:37:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:35:13-72
-activity#com.memory_athlete.memoryathletes.main.Learn
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:35:13-73
+activity#com.memory_athlete.memoryassistant.main.Learn
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:38:9-41:44
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:40:13-93
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:40:13-94
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:41:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:39:13-72
-activity#com.memory_athlete.memoryathletes.recall.Recall
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:39:13-73
+activity#com.memory_athlete.memoryassistant.recall.Recall
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:42:9-46:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:45:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:44:13-93
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:44:13-94
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:46:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:43:13-75
-activity#com.memory_athlete.memoryathletes.main.Practice
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:43:13-76
+activity#com.memory_athlete.memoryassistant.main.Practice
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:47:9-50:44
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:49:13-93
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:49:13-94
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:50:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:48:13-75
-activity#com.memory_athlete.memoryathletes.main.Preferences
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:48:13-76
+activity#com.memory_athlete.memoryassistant.main.Preferences
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:51:9-54:44
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:53:13-93
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:53:13-94
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:54:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:52:13-78
-activity#com.memory_athlete.memoryathletes.main.Apply
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:52:13-79
+activity#com.memory_athlete.memoryassistant.main.Apply
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:55:9-58:44
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:57:13-93
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:57:13-94
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:58:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:56:13-72
-activity#com.memory_athlete.memoryathletes.mySpace.MySpace
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:56:13-73
+activity#com.memory_athlete.memoryassistant.mySpace.MySpace
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:59:9-62:44
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:61:13-93
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:61:13-94
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:62:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:60:13-77
-activity#com.memory_athlete.memoryathletes.mySpace.WriteFile
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:60:13-78
+activity#com.memory_athlete.memoryassistant.mySpace.WriteFile
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:63:9-66:44
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:65:13-91
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:65:13-92
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:66:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:64:13-79
-activity#com.memory_athlete.memoryathletes.lessons.Lessons
-ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:67:9-86
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:64:13-80
+activity#com.memory_athlete.memoryassistant.lessons.Lessons
+ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:67:9-87
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:67:19-83
-activity#com.memory_athlete.memoryathletes.disciplines.Numbers
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:67:19-84
+activity#com.memory_athlete.memoryassistant.disciplines.Numbers
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:71:9-75:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:74:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:73:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:73:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:75:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:72:13-81
-activity#com.memory_athlete.memoryathletes.disciplines.Equations
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:72:13-82
+activity#com.memory_athlete.memoryassistant.disciplines.Equations
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:76:9-80:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:79:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:78:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:78:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:80:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:77:13-83
-activity#com.memory_athlete.memoryathletes.disciplines.Words
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:77:13-84
+activity#com.memory_athlete.memoryassistant.disciplines.Words
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:81:9-85:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:84:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:83:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:83:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:85:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:82:13-79
-activity#com.memory_athlete.memoryathletes.disciplines.Names
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:82:13-80
+activity#com.memory_athlete.memoryassistant.disciplines.Names
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:86:9-90:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:89:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:88:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:88:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:90:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:87:13-79
-activity#com.memory_athlete.memoryathletes.disciplines.Cards
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:87:13-80
+activity#com.memory_athlete.memoryassistant.disciplines.Cards
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:91:9-95:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:94:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:93:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:93:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:95:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:92:13-79
-activity#com.memory_athlete.memoryathletes.disciplines.BinaryDigits
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:92:13-80
+activity#com.memory_athlete.memoryassistant.disciplines.BinaryDigits
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:96:9-100:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:99:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:98:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:98:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:100:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:97:13-86
-activity#com.memory_athlete.memoryathletes.disciplines.Places
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:97:13-87
+activity#com.memory_athlete.memoryassistant.disciplines.Places
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:101:9-105:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:104:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:103:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:103:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:105:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:102:13-80
-activity#com.memory_athlete.memoryathletes.disciplines.Foods
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:102:13-81
+activity#com.memory_athlete.memoryassistant.disciplines.Foods
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:106:9-110:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:109:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:108:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:108:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:110:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:107:13-79
-activity#com.memory_athlete.memoryathletes.disciplines.Dates
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:107:13-80
+activity#com.memory_athlete.memoryassistant.disciplines.Dates
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:111:9-115:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:114:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:113:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:113:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:115:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:112:13-79
-activity#com.memory_athlete.memoryathletes.disciplines.Colours
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:112:13-80
+activity#com.memory_athlete.memoryassistant.disciplines.Colours
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:116:9-120:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:119:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:118:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:118:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:120:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:117:13-81
-activity#com.memory_athlete.memoryathletes.disciplines.Letters
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:117:13-82
+activity#com.memory_athlete.memoryassistant.disciplines.Letters
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:121:9-125:44
 	android:screenOrientation
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:124:13-49
 	android:parentActivityName
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:123:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:123:13-90
 	tools:targetApi
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:125:13-41
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:122:13-81
-service#com.memory_athlete.memoryathletes.services.ReminderJobService
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:122:13-82
+service#com.memory_athlete.memoryassistant.services.ReminderJobService
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:128:9-134:19
 	android:exported
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:130:13-37
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:129:13-89
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:129:13-90
 intent-filter#com.firebase.jobdispatcher.ACTION_EXECUTE
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:131:13-133:29
 action#com.firebase.jobdispatcher.ACTION_EXECUTE
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:132:17-84
 	android:name
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:132:25-81
-service#com.memory_athlete.memoryathletes.services.MySpaceJobService
+service#com.memory_athlete.memoryassistant.services.MySpaceJobService
 ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:135:9-142:19
 	android:enabled
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:137:13-35
 	android:exported
 		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:138:13-37
 	android:name
-		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:136:13-88
+		ADDED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml:136:13-89
 uses-sdk
 INJECTED from /Users/Manik/AndroidStudioProjects/Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/Manik/.android/build-cache/44ea3442ae25ebf4f0064ed11283378a532ee08d/output/AndroidManifest.xml:5:5-7:41

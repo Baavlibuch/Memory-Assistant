@@ -1,4 +1,4 @@
-#Mon Sep 04 23:07:08 IST 2017
+#Mon Sep 04 23:38:25 IST 2017
 file.2=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.0.0-alpha1_ef6727f9e48e4cae10537dd4edcc0a544a860024/classes.dex
 base.2=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.0.0-alpha1_ef6727f9e48e4cae10537dd4edcc0a544a860024
 file.1=/Users/Manik/AndroidStudioProjects/Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_edee8bba0f2d8e82edbd85d0480047b35100d54f/classes.dex

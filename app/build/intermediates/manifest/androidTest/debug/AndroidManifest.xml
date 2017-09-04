@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.memory_athlete.memoryathletes.test" >
+    package="com.memory_athelte.memoryassistant.test" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -10,8 +10,8 @@
         android:name="android.support.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for com.maniksejwal.memoryathletes"
-        android:targetPackage="com.maniksejwal.memoryathletes" />
+        android:label="Tests for com.memory_athelte.memoryassistant"
+        android:targetPackage="com.memory_athelte.memoryassistant" />
 
     <application>
         <uses-library android:name="android.test.runner" />

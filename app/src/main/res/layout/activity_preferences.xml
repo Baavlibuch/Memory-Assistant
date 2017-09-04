@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/preferences_fragment"
-    android:name="com.memory_athlete.memoryathletes.main.Preferences$MemoryPreferenceFragment"
+    android:name="com.memory_athlete.memoryassistant.main.Preferences$MemoryPreferenceFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.memory_athlete.memoryathletes.main.Preferences" />
+    tools:context="com.memory_athlete.memoryassistant.main.Preferences" />
