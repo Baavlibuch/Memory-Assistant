@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.maniksejwal.memoryathletes"
+    package="com.memory_athelete.memoryathletes"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -28,7 +28,7 @@
         <!-- android:largeHeap="true" -->
 
         <activity
-            android:name="com.maniksejwal.memoryathletes.main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.main.MainActivity"
             android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,90 +39,90 @@
 
         <!-- Main Activity options -->
 
-        <activity android:name="com.maniksejwal.memoryathletes.main.GetPro" />
+        <activity android:name="com.memory_athlete.memoryathletes.main.GetPro" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.main.Login"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.MainActivity" />
+            android:name="com.memory_athlete.memoryathletes.main.Login"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.main.Learn"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.MainActivity" />
+            android:name="com.memory_athlete.memoryathletes.main.Learn"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.recall.Recall"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.recall.Recall"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.main.Practice"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.MainActivity" />
+            android:name="com.memory_athlete.memoryathletes.main.Practice"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.main.Preferences"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.MainActivity" />
+            android:name="com.memory_athlete.memoryathletes.main.Preferences"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.main.Apply"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.MainActivity" />
+            android:name="com.memory_athlete.memoryathletes.main.Apply"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.mySpace.MySpace"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.MainActivity" />
+            android:name="com.memory_athlete.memoryathletes.mySpace.MySpace"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.mySpace.WriteFile"
-            android:parentActivityName="com.maniksejwal.memoryathletes.mySpace.MySpace" />
-        <activity android:name="com.maniksejwal.memoryathletes.lessons.Lessons" />
+            android:name="com.memory_athlete.memoryathletes.mySpace.WriteFile"
+            android:parentActivityName="com.memory_athlete.memoryathletes.mySpace.MySpace" />
+        <activity android:name="com.memory_athlete.memoryathletes.lessons.Lessons" />
 
         <!-- Practice Disciplines -->
 
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Numbers"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Numbers"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Equations"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Equations"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Words"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Words"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Names"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Names"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Cards"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Cards"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.BinaryDigits"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.BinaryDigits"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Places"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Places"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Foods"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Foods"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Dates"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Dates"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Colours"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Colours"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.maniksejwal.memoryathletes.disciplines.Letters"
-            android:parentActivityName="com.maniksejwal.memoryathletes.main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Letters"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait" />
 
         <service
-            android:name="com.maniksejwal.memoryathletes.services.ReminderJobService"
+            android:name="com.memory_athlete.memoryathletes.services.ReminderJobService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
         <service
-            android:name="com.maniksejwal.memoryathletes.services.MySpaceJobService"
+            android:name="com.memory_athlete.memoryathletes.services.MySpaceJobService"
             android:enabled="true"
             android:exported="false" >
             <intent-filter>
@@ -144,7 +144,7 @@
 
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"
-            android:authorities="com.maniksejwal.memoryathletes.com.android.tools.fd.runtime.InstantRunContentProvider"
+            android:authorities="com.memory_athelete.memoryathletes.com.android.tools.fd.runtime.InstantRunContentProvider"
             android:multiprocess="true" />
     </application>
 

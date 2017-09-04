@@ -6,7 +6,7 @@
         android:key="@string/remind"
         android:title="@string/remind"/>
 
-    <com.maniksejwal.memoryathletes.reminders.TimePreference
+    <com.memory_athlete.memoryathletes.reminders.TimePreference
         android:defaultValue="@string/default_time"
         android:key="@string/periodic"
         android:title="@string/periodic"

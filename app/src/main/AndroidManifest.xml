@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.maniksejwal.memoryathletes">
+    package="com.memory_athlete.memoryathletes">
 
     <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
     <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
@@ -19,7 +19,7 @@
         <!-- android:largeHeap="true" -->
 
         <activity
-            android:name=".main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.main.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,110 +30,110 @@
 
         <!-- Main Activity options -->
 
-        <activity android:name=".main.GetPro" />
+        <activity android:name="com.memory_athlete.memoryathletes.main.GetPro" />
         <activity
-            android:name=".main.Login"
-            android:parentActivityName=".main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.main.Login"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".main.Learn"
-            android:parentActivityName=".main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.main.Learn"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".recall.Recall"
-            android:parentActivityName=".main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.recall.Recall"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".main.Practice"
-            android:parentActivityName=".main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.main.Practice"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".main.Preferences"
-            android:parentActivityName=".main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.main.Preferences"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".main.Apply"
-            android:parentActivityName=".main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.main.Apply"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".mySpace.MySpace"
-            android:parentActivityName=".main.MainActivity"
+            android:name="com.memory_athlete.memoryathletes.mySpace.MySpace"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".mySpace.WriteFile"
-            android:parentActivityName=".mySpace.MySpace"
+            android:name="com.memory_athlete.memoryathletes.mySpace.WriteFile"
+            android:parentActivityName="com.memory_athlete.memoryathletes.mySpace.MySpace"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".lessons.Lessons" />
+        <activity android:name="com.memory_athlete.memoryathletes.lessons.Lessons" />
 
         <!-- Practice Disciplines -->
 
         <activity
-            android:name=".disciplines.Numbers"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Numbers"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Equations"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Equations"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Words"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Words"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Names"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Names"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Cards"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Cards"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.BinaryDigits"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.BinaryDigits"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Places"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Places"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Foods"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Foods"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Dates"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Dates"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Colours"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Colours"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".disciplines.Letters"
-            android:parentActivityName=".main.Practice"
+            android:name="com.memory_athlete.memoryathletes.disciplines.Letters"
+            android:parentActivityName="com.memory_athlete.memoryathletes.main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
 
 
         <service
-            android:name=".services.ReminderJobService"
+            android:name="com.memory_athlete.memoryathletes.services.ReminderJobService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
         <service
-            android:name=".services.MySpaceJobService"
+            android:name="com.memory_athlete.memoryathletes.services.MySpaceJobService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

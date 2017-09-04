@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.maniksejwal.memoryathletes.mySpace.MySpace">
+    tools:context="com.memory_athlete.memoryathletes.mySpace.MySpace">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
