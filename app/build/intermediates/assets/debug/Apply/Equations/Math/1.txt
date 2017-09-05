@@ -9,6 +9,6 @@
 <p>$$e^(ax)\sin (bx+c)=r^ne^(ax)\sin (bx+c+nα)$$</p>
 <p>$$e^(ax)\cos (bx+c)=r^ne^(ax)\cos (bx+c+nα)$$</p>
 <p>$r=√{a^2+b^2}$, $α=\tan ^{-1}(b/a)$ &nbsp $a=r\cos α$, $b=r\sin α$ </p>
-<p>Leibnitz Theorem: $$∑↙{r=0}↖n ^{n-r}C_ru_{n-r}v_r$$ $$y_n=(uv)_n=u_nv+ ^nC_1u_{n-1}v_1+ ^nC_2u_{n-2}v_2+\_\ \_\ \_\ ^nC_ru_{n-r}v_r+\_\ \_\ \_\ +uv_n</p>
-<p>Maclaurin's Theorem: $$f(x)=f(0)+xf'(0)+x^2/{2!}f''(0)+x^3/{3!}f'''(0)+\_\ \_\ \_\ </p>
-<p>Taylor's Theorem: f(x+h)=f(x)+hf'(x)+h^2/{2!}f''(x)+h^3/{3!}f'''(x)+\_\ \_\ \_\ </p>
+<p>Leibnitz Theorem: $$∑↙{r=0}↖n {^{n-r}C_r}u_{n-r}v_r$$ $$y_n=(uv)_n=u_nv+ {^nC_1}u_{n-1}v_1 + {^nC_2}u_{n-2}v_2 + …{^nC_r}u_{n-r}v_r+…+uv_n$$</p>
+<p>Maclaurin's Theorem: $$f(x)=f(0)+xf'(0)+x^2/{2!}f''(0)+x^3/{3!}f'''(0)+…$$</p>
+<p>Taylor's Theorem: $$f(x+h)=f(x)+hf'(x)+h^2/{2!}f''(x)+h^3/{3!}f'''(x)+…$$</p>
