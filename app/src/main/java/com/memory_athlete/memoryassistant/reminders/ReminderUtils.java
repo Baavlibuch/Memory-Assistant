@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.compat.BuildConfig;
 import android.util.Log;
 
 import com.firebase.jobdispatcher.Driver;
@@ -41,7 +42,7 @@ public class ReminderUtils {
 
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
-        Log.v(LOG_TAG, "dispatcher created");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "dispatcher created");
         String s = "";
         for (int i = 0; i < 3; i++) {
             switch (i) {
@@ -57,7 +58,7 @@ public class ReminderUtils {
                     diff1 = diff;
                     s = "seconds";
             }
-            if (diff1 > HOUR) diff1 += HOUR;
+            if (diff1 < HOUR) diff1 += HOUR;
 
 
             dispatcher.cancel(REMINDER_JOB_TAG + i);
@@ -69,25 +70,25 @@ public class ReminderUtils {
                     .setTrigger(Trigger.executionWindow(diff1 - HOUR, diff1 + HOUR))
                     .setReplaceCurrent(true)
                     .build();
-            Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
             //.setConstraints()
             //REMINDER_INTERVAL_SECS - SYNC_FLEXTIME_SECONDS,
             //REMINDER_INTERVAL_SECS + SYNC_FLEXTIME_SECONDS))
             //.setExtras(bundle)
-            Log.v(LOG_TAG, "Job built");
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Job built");
             dispatcher.schedule(constraintReminderJob);
-            Log.v(LOG_TAG, "dispatcher scheduled");
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "dispatcher scheduled");
         }
-        Log.v(LOG_TAG, "reminder set");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reminder set");
     }
 
     private static int next(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         String time = preferences.getString(context.getString(R.string.periodic), "22:30");
-        Log.v(LOG_TAG, "reminder time - " + time);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reminder time - " + time);
         int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
-        Log.v(LOG_TAG, hour + " " + minutes);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, hour + " " + minutes);
         Calendar rightNow = Calendar.getInstance();
         int hr = rightNow.get(Calendar.HOUR_OF_DAY);
         int min = rightNow.get(Calendar.MINUTE);
@@ -132,8 +133,8 @@ public class ReminderUtils {
                     diff1 = diff + 12 * MONTH;
                     s = "year";
             }
-            if (diff1 > HOUR) diff1 += HOUR;
-            Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
+            if (diff1 < HOUR) diff1 += HOUR;
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
 
             Job constraintReminderJob = dispatcher.newJobBuilder()
                     .setService(ReminderJobService.class)
@@ -150,7 +151,7 @@ public class ReminderUtils {
             //.setExtras(bundle)
             Log.v(LOG_TAG, "Job built");
             dispatcher.schedule(constraintReminderJob);
-            Log.v(LOG_TAG, "dispatcher scheduled");
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "dispatcher scheduled");
         }
     }
 }

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -38,7 +39,7 @@ abstract class NotificationUtils {
     static void createNotification(Context context) {
 
         String text = text(context);
-        Log.d(LOG_TAG, text);
+        if (BuildConfig.DEBUG) Log.d(LOG_TAG, text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 //.setLargeIcon(largeIcon(context))
@@ -55,20 +56,20 @@ abstract class NotificationUtils {
         NotificationManager notificationManager = (NotificationManager)
                 (context.getSystemService(Context.NOTIFICATION_SERVICE));
         notificationManager.notify(PERIODIC_REMINDER_PENDING_INTENT_ID, notificationBuilder.build());
-        Log.v(LOG_TAG, "createNotification() complete");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "createNotification() complete");
     }
 
     private static String text(Context context) {
         long lastOpened = PreferenceManager.getDefaultSharedPreferences(context)
                 .getLong("last_opened", System.currentTimeMillis());
-        Log.v(LOG_TAG, "last opened - " + String.valueOf(lastOpened));
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "last opened - " + String.valueOf(lastOpened));
         String time = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext())
                 .getString(context.getString(R.string.periodic), "22:30");
-        Log.v(LOG_TAG, "reminder time - " + time);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reminder time - " + time);
 
         int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
-        Log.v(LOG_TAG, hour + " " + minutes);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, hour + " " + minutes);
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 
@@ -79,7 +80,7 @@ abstract class NotificationUtils {
 
     static void createMySpaceNotification(Context context, String fname) {
         String text = mySpaceText(context, fname);
-        Log.d(LOG_TAG, text);
+        if (BuildConfig.DEBUG) Log.d(LOG_TAG, text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 //.setLargeIcon(largeIcon(context))
@@ -96,20 +97,20 @@ abstract class NotificationUtils {
         NotificationManager notificationManager = (NotificationManager)
                 (context.getSystemService(Context.NOTIFICATION_SERVICE));
         notificationManager.notify(MY_SPACE_REMINDER_PENDING_INTENT_ID, notificationBuilder.build());
-        Log.v(LOG_TAG, "createNotification() complete");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "createNotification() complete");
     }
 
     private static String mySpaceText(Context context, String fname) {
         long lastOpened = PreferenceManager.getDefaultSharedPreferences(context)
                 .getLong(fname, System.currentTimeMillis());
-        Log.v(LOG_TAG, "fname was created at " + String.valueOf(lastOpened));
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "fname was created at " + String.valueOf(lastOpened));
         String time = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext())
                 .getString(context.getString(R.string.periodic), "22:30");
-        Log.v(LOG_TAG, "reminder time - " + time);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reminder time - " + time);
 
         int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
-        Log.v(LOG_TAG, hour + " " + minutes);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, hour + " " + minutes);
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 

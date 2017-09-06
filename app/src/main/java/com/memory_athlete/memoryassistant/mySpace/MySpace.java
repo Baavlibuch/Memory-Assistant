@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -26,11 +27,12 @@ public class MySpace extends AppCompatActivity {
     private static final String LOG_TAG = "\tMySpace :";
     int listViewId = 0;
     File dir = null;
+    String title="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme){
             case "Dark":
                 setTheme(R.style.dark);
@@ -47,32 +49,30 @@ public class MySpace extends AppCompatActivity {
         setTitle(Html.fromHtml(title + getString(R.string.my_space)));
         Intent intent = getIntent();
         //path = intent.getStringExtra(getString(R.string.apply));
-        Log.v(LOG_TAG, "Title Set");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Title Set");
 
         setAdapter();
     }
 
     public void setAdapter() {
-        Log.v(LOG_TAG, "setAdapter started");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "setAdapter started");
         ArrayList<Item> arrayList = new ArrayList<>();
         if (listViewId == 0) arrayList = setList();
         else {
             File[] files = dir.listFiles();
             if (files==null){
-                Toast.makeText(this, "file List is null", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (files.length == 0){
-                Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show();
                 return;
             } else {
                 for (File file : files) {
-                    Log.d(LOG_TAG, "FileName: " + file.getName());
+                    if (BuildConfig.DEBUG) Log.d(LOG_TAG, "FileName: " + file.getName());
                     arrayList.add(new Item(file.getName(), WriteFile.class));
                 }
             }
         }
-        Log.v(LOG_TAG, "list set");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "list set");
         MySpaceAdapter adapter = new MySpaceAdapter(this, arrayList);
         final ListView listView = new ListView(this);
         listView.setLayoutParams(new RelativeLayout.LayoutParams(
@@ -89,10 +89,7 @@ public class MySpace extends AppCompatActivity {
                     dir = new File(getFilesDir().getAbsolutePath() + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
-                    if(PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
-                            .getString(getString(R.string.theme), "AppTheme")=="Light")
-                        setTitle(Html.fromHtml("<font color=#FFFFFF>" + item.mItem));
-                    else setTitle(item.mItem);
+                        setTitle(Html.fromHtml(title + item.mItem));
                     findViewById(R.id.floatingActionButton).setVisibility(View.VISIBLE);
                     setAdapter();
                 } else {
@@ -109,7 +106,7 @@ public class MySpace extends AppCompatActivity {
                     }
                     if(isDirectoryCreated) {
                         startActivity(intent);
-                    } else Toast.makeText(getApplicationContext(), "Couldn't create the directory", Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -144,7 +141,7 @@ public class MySpace extends AppCompatActivity {
         Item(String itemName, Class class1) {
             mItem = itemName;
             mClass = class1;
-            Log.i(LOG_TAG, "Item set!");
+            if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Item set!");
         }
     }
 

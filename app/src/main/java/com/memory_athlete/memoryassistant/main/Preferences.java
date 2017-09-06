@@ -82,6 +82,6 @@ public class Preferences extends AppCompatActivity {
             super.onStop();
             if(PreferenceManager.getDefaultSharedPreferences(this)
                     .getString(getString(R.string.theme), "AppTheme") != theme)
-            Toast.makeText(this, "You might need to restart the app for changes to take effect", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please restart the app", Toast.LENGTH_SHORT).show();
         }
 }

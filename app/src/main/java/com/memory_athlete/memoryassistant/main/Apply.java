@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -49,7 +50,7 @@ public class Apply extends AppCompatActivity {
         setTitle(Html.fromHtml(title + getString(R.string.apply)));
         Intent intent = getIntent();
         pathList.add(intent.getStringExtra(getString(R.string.apply)));
-        Log.v(TAG, "Title Set");
+        if (BuildConfig.DEBUG) Log.v(TAG, "Title Set");
 
         setAdapter();
     }
@@ -58,17 +59,17 @@ public class Apply extends AppCompatActivity {
         try {
             StringBuilder path = new StringBuilder("");
             for(String i : pathList) path.append(i);
-            Log.v(LOG_TAG, "path = " + path);
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
             String[] list = listAssetFiles(path.toString());
-            Log.v(TAG, "list set");
+            if (BuildConfig.DEBUG) Log.v(TAG, "list set");
             if (list == null) {
-                Toast.makeText(this, "Empty List!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();
                 return;
             }
-            Log.v(TAG, "list.size() = " + list.length);
+            if (BuildConfig.DEBUG) Log.v(TAG, "list.size() = " + list.length);
             final ArrayList<Item> arrayList = new ArrayList<>();
             for (String i : list) arrayList.add(new Item(i, true));
-            Log.v(TAG, "arrayList set");
+            if (BuildConfig.DEBUG) Log.v(TAG, "arrayList set");
             ApplyAdapter adapter = new ApplyAdapter(this, arrayList);
             ListView listView = new ListView(this);
             listView.setLayoutParams(new LinearLayout.LayoutParams(
@@ -99,7 +100,7 @@ public class Apply extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
-            Toast.makeText(this, "Error in setAdapter", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -108,10 +109,10 @@ public class Apply extends AppCompatActivity {
         String[] list = new String[0];
         try {
             list = getAssets().list(path);
-            Log.v(TAG, "got assets");
+            if (BuildConfig.DEBUG) Log.v(TAG, "got assets");
         } catch (IOException e) {
-            Toast.makeText(this, "empty directory", Toast.LENGTH_SHORT).show();
-            Log.v(TAG, "couldn't get assets");
+            Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();
+            if (BuildConfig.DEBUG) Log.v(TAG, "couldn't get assets");
         }
         return list;
     }

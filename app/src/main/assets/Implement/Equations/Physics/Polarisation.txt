@@ -1,0 +1,11 @@
+<h2>Polarisation</h2>
+
+<p>Mallus Law $$I=A^2\cos ^2θ$$</p>
+<p>Brewster's Law $$μ=\tan i_p$$ $$i_p+r=π/2$$</p>
+<p>Calcite (-ve) $$μ_e<μ_o$$</p>
+<p>Quartz (+ve) $$μ_e>μ_o$$</p>
+<p>$$x^2/a^2+y^2/b^2-{2xy}/{ab}\cos ϕ=\sin ^2ϕ$$</p>
+<p>Quartz $$θ=A+B/λ^2$$</p>
+<p>Nicole $71°, 112°$ $68°, 109°$</p>
+<p>Calcite &nbsp &nbsp $109°, 71°$ &nbsp &nbsp $102°, 78°$</p>
+<p>$$s=θ/{lc}=θ/{l(m/v)}=θv/lm$$</p>

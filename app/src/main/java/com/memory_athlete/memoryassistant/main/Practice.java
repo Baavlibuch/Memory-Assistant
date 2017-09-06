@@ -18,10 +18,6 @@ import android.widget.TextView;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
-import com.memory_athlete.memoryassistant.disciplines.Colours;
-import com.memory_athlete.memoryassistant.disciplines.Dates;
-import com.memory_athlete.memoryassistant.disciplines.Equations;
-import com.memory_athlete.memoryassistant.disciplines.Foods;
 import com.memory_athlete.memoryassistant.disciplines.Letters;
 import com.memory_athlete.memoryassistant.disciplines.Names;
 import com.memory_athlete.memoryassistant.disciplines.Numbers;
@@ -78,10 +74,10 @@ public class Practice extends AppCompatActivity {
         disc.add(new Category(R.string.e, R.drawable.cards, Cards.class, false, false));
         disc.add(new Category(R.string.f, R.drawable.binary, BinaryDigits.class, true, false));
         disc.add(new Category(R.string.k, R.drawable.letters, Letters.class, true, false));
-        disc.add(new Category(R.string.a, R.drawable.equations, Equations.class, false, false));
-        disc.add(new Category(R.string.h, R.drawable.dates, Dates.class, false, false));
-        disc.add(new Category(R.string.i, R.drawable.foods, Foods.class, false, false));
-        disc.add(new Category(R.string.j, R.drawable.colours, Colours.class, false, false));
+        //disc.add(new Category(R.string.a, R.drawable.equations, Equations.class, false, false));
+        //disc.add(new Category(R.string.h, R.drawable.dates, Dates.class, false, false));
+        //disc.add(new Category(R.string.i, R.drawable.foods, Foods.class, false, false));
+        //disc.add(new Category(R.string.j, R.drawable.colours, Colours.class, false, false));
     }
 
     private class Category {

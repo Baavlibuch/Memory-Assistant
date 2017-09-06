@@ -1,0 +1,20 @@
+<h2>Matrices</h2>
+
+<p>$$|R+1|:0, |R|≠0$$</p>
+<p>Normal Form $$[I_r, 0]$$</p>
+<p>Unique Solution $$r(A)=r(A:B)=n$$ $$|A|≠0$$</p>
+<p>Infinite Solutions $$r(A)=r(A:B)<n$$ $$|A|=0$$</p>
+<p>No Solutions $$r(A)≠r(A:B)$$</p>
+<br/>
+<p>Characteristic Equation $$|A-λI|=λ^m+a_cλ^{m-1}+a_1λ^{m-2}+\_\ \_\ \_\ a_k=0$$$$λ_1,λ_2,λ_3\_\ \_\ \_\ λ_m\text": Roots or Eigen Values"$$$$X_1,X_2,X_3\_\ \_\ \_\ X_m\text": Eigen Vectors"$$</p>
+<br/>
+<p>Trivial $$X=0$$</p>
+<p>Non Trivial $$X≠0$$</p>
+<p>Trace of a Matrix = Σ Eigen Values</p>
+<p>Cayley Hamilton Theorem: Every square matrix satisfies its characteristic equation</p>
+<p>Homogeneous Equation $$m=n, B=0$$</p>
+<p>Linearly Independent $$α_1=α_2=α_3=\_\ \_\ \_\ =α_n=0$$</p>
+<p>$$Z*=(\ov Z)^T=\ov {(Z^T)}$$</p>
+<p>Hermitian Matrix $$Z=Z*$$ <br/>↘: Real, ↗↗↗: Conjugate</p>
+<p>Skew Hermetian Matrix $$Z*=-Z$$↘: 0 or $i$ , ↗↗↗: Conjugate</p>
+<p>Unitary Matrix $$Z*Z=I$$</p>

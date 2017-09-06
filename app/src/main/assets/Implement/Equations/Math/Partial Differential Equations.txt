@@ -1,0 +1,25 @@
+<h2>Partial Differential Equations</h2>
+
+<p><b>Variable Separable </b>$$f(y)\d y=ϕ(x)\d x$$<p>
+<br/>
+<p><b>Homogeneous </b><br/>$y=vx$ $$\d y/{\d x}={f(x,y)}/{ϕ(x,y)}$$</p>
+<br/>
+<p><b>Linear </b>$${dy}/{dx}+Py=Q$$ $$IF=e^{p.dx}$$ $$y.IF=∫Q.IF+c$$</p>
+<br/>
+<p><b>Exact </b><br/>$Mdx+Ny=0$</p>
+<p>$${{∂M}/{∂y}-{∂N}/{∂x}}/N={{∂N}/{∂x}-{∂M}/{∂y}}/M, IF=e^∫$$</p>
+<p>$$M=yf_1(xy), N=xf_2(xy)$$ $$IF=1/{Mx-Ny}$$</p>
+<p>$$x^my^n(ay\d x+bx\d y)+x^{m'}y^{n'}(a'y\d x+b'x\d y)=0$$ $${m+h+1}/a={n+k+1}/b$$ $${m'+h+1}/{a'}={n'+k+1}/{b'}$$ $$IF=x^hy^k$$</p>
+<p>Homogeneous, $Mx+Ny≠0$, $IF=1/{Mx+Ny}$</p>
+<br/>
+<p>$${x\d y-y\d x}/{xy}=\d [\log (y/x)]$$</p>
+<p>$${x\d y-y\d x}/{x^2+y^2}=d[\tan ^{-1}(y/x)]$$</p>
+<p>$${x\d x-y\d y}/{x^2+y^2}=\d [{1/2}\log (x^2+y^2)]$$</p>
+<p>$${x\d y-y\d x}/{x^2-y^2}=\d [{1/2}\log {x+y}/{x-y}]$$</p>
+<p>$${x\d y+y\d x}/{x^2y^2}=d[-1/{xy}]$$</p>
+<p>Legendre LE $$∑↙{r=0}↖n(a+bx)^{r}{\d ^ry}/{\d x^r}$$ $$(a+bx)^n{\d ^ny}/{\d x^n}+a_1(a+bx)^{n-1}{\d ^{n-1}y}/{\d x^{n-1}+…+ay=x$$</p>
+<p>Legendre Function $m=n/2$ or $(n-1)/2$ $$P_n(x)={∑↙{n=0}↖m(-1)^m(2n-2m)!}/{2^nn!(n-m)!(n-2m)!}$$</p>
+<p>Radique Function $$P_n(x)=1/{n!2^n}{\d ^n}/{\d x^n}(x^2-1)^n $$ $$P_0(x)=1, P_1(x)=x, P_2=1/2(x^2-1)x $$ $$P_n(1)=1, P_n(-1)=(-1)^n, P_n(0)= $$</p>
+<p>Bessel Differential Equation $$x^2{\d ^2y}/{\d x^2}+{x\d y}/{\d x}+(x^2-n^2)y=0 \text"\n n is constant" $$</p>
+<p>Bessel Function $$J_n(x)=x^n∑↙{m=0}↖\∞{(-1)^mx^{2m}}/{2^{2m+n}m!(m+n+1)!}$$</p>
+<p><b>Recurrence Relation</b>$$\d /{\d x}(x^nJ_n(x))=x^nJ_{n-1}(x)$$ $$\d /{\d x}(x^{-n}J_n(x))=-x^{-n}J_{n+1}(x)$$ $$\d /{\d x}\sin x=J_{n-1}(x)-/nJ_n(x)$$</p>

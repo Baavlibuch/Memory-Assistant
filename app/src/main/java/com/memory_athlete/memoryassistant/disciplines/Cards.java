@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
+import android.support.compat.BuildConfig;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -59,7 +60,9 @@ public class Cards extends Disciplines {
 
     @Override
     protected String background() {
-        Log.v(LOG_TAG, "do in background entered to create string");
+        if (BuildConfig.DEBUG) {
+            Log.v(LOG_TAG, "do in background entered to create string");
+        }
         ArrayList<Integer> cards = new ArrayList<>();
         //Random rand = new Random();
         int n;
@@ -131,10 +134,10 @@ public class Cards extends Disciplines {
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
             }
         } else
-            Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Couldn't save the card list", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -176,14 +179,14 @@ public class Cards extends Disciplines {
     }
 
     void startCommon() {
-        Log.v(LOG_TAG, "startCommon entered");
+       if (BuildConfig.DEBUG) Log.v(LOG_TAG, "startCommon entered");
         a.set(2, 1);
         (new myAsyncTask()).execute(a);
         (findViewById(R.id.time)).setVisibility(View.GONE);
         (findViewById(R.id.stop)).setVisibility(View.VISIBLE);
         (findViewById(R.id.start)).setVisibility(View.GONE);
         ((RadioGroup) findViewById(R.id.time)).clearCheck();
-        Log.v(LOG_TAG, "startCommon ended");
+       if (BuildConfig.DEBUG) Log.v(LOG_TAG, "startCommon ended");
     }
 }
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -76,7 +77,9 @@ public class Disciplines extends AppCompatActivity {
             }
         }
 
-        Log.i(LOG_TAG, "0 means error in getting title resource string ID through intent");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "0 means error in getting title resource string ID through intent");
+        }
         setTitle(Html.fromHtml(title+getString(intent.getIntExtra("nameID", 0))));
 
         //setContentView(R.layout.activity_binary_digits); TODO: fix it!
@@ -89,12 +92,16 @@ public class Disciplines extends AppCompatActivity {
         a.add(0);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        Log.i(LOG_TAG, "Activity Created");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "Activity Created");
+        }
     }
     //EditText no_of_values
 
     protected void makeSpinner(int spinnerContent) {
-        Log.i(LOG_TAG, "makeSpinner() entered");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "makeSpinner() entered");
+        }
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setVisibility(View.VISIBLE);
 
@@ -105,7 +112,9 @@ public class Disciplines extends AppCompatActivity {
                     ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                             hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 } catch (Exception e) {
-                    Log.e(LOG_TAG, "Couldn't hide keypad ", e);
+                    if (BuildConfig.DEBUG) {
+                        Log.e(LOG_TAG, "Couldn't hide keypad ", e);
+                    }
                 }
                 return false;
             }
@@ -140,7 +149,9 @@ public class Disciplines extends AppCompatActivity {
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-        Log.i(LOG_TAG, "makeSpinner() complete");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "makeSpinner() complete");
+        }
     }
 
     protected void startCommon() {
@@ -165,12 +176,14 @@ public class Disciplines extends AppCompatActivity {
     }
 
     protected void Start() {
-        Log.i(LOG_TAG, "Start entered");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "Start entered");
+        }
         try {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                     hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
-            Log.e(LOG_TAG, "Couldn't hide keypad ", e);
+            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "Couldn't hide keypad ", e);
         }
         ((TextView) findViewById(clock_text)).setText("");
 
@@ -207,7 +220,7 @@ public class Disciplines extends AppCompatActivity {
         }
 
         startCommon();
-        Log.i(LOG_TAG, "Start complete");
+        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Start complete");
     }
 
     protected boolean save() {
@@ -232,10 +245,10 @@ public class Disciplines extends AppCompatActivity {
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
             }
         } else
-            Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Couldn't save the list", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -265,7 +278,9 @@ public class Disciplines extends AppCompatActivity {
 
 
     protected void setButtons() {
-        Log.i(LOG_TAG, "setButtons entered");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "setButtons entered");
+        }
 
         findViewById(R.id.sw).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -273,7 +288,9 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(LOG_TAG, "Stopwatch onClickListener set");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "Stopwatch onClickListener set");
+        }
 
 
         findViewById(R.id.timer).setOnClickListener(new View.OnClickListener() {
@@ -284,7 +301,9 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(LOG_TAG, "timer onClickListener set");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "timer onClickListener set");
+        }
 
         findViewById(R.id.none).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -292,7 +311,9 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(LOG_TAG, "none onClickListener set");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "none onClickListener set");
+        }
 
         (findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -300,7 +321,9 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(LOG_TAG, "start onClickListener set");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "start onClickListener set");
+        }
 
         (findViewById(R.id.reset)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -308,7 +331,9 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(LOG_TAG, "reset onClickListener set");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "reset onClickListener set");
+        }
 
         (findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -327,7 +352,9 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(LOG_TAG, "stop onClickListener set");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "stop onClickListener set");
+        }
 
         findViewById(R.id.resume).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -344,7 +371,9 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(LOG_TAG, "resume onClickListener set");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "resume onClickListener set");
+        }
 
         (findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -352,7 +381,9 @@ public class Disciplines extends AppCompatActivity {
             }
         });
 
-        Log.i(LOG_TAG, "save onClickListener set");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "save onClickListener set");
+        }
 
         findViewById(R.id.recall).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -360,7 +391,9 @@ public class Disciplines extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Recall.class);
                 intent.putExtra("file exists", save());
                 intent.putExtra("discipline", getTitle());
-                Log.v(LOG_TAG, "recalling" + getTitle());
+                if (BuildConfig.DEBUG) {
+                    Log.v(LOG_TAG, "recalling" + getTitle());
+                }
                 startActivity(intent);
             }
         });
@@ -372,11 +405,13 @@ public class Disciplines extends AppCompatActivity {
         findViewById(R.id.chronometer).setVisibility(View.GONE);
         findViewById(clock_text).setVisibility(View.GONE);
         findViewById(R.id.prev).setVisibility(View.GONE);
-        Log.i(LOG_TAG, "setButtons complete");
+        if (BuildConfig.DEBUG) {
+            Log.i(LOG_TAG, "setButtons complete");
+        }
     }
 
     protected void timer() {
-        Log.i(LOG_TAG, "timer() entered");
+        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "timer() entered");
         ((TextView) findViewById(clock_text)).setText("");
         if (!isTimerRunning) {
             cdt = new CountDownTimer(((Long.parseLong(((EditText)
@@ -416,7 +451,7 @@ public class Disciplines extends AppCompatActivity {
                 }
             }.start();
         }
-        Log.i(LOG_TAG, "timer() complete");
+        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "timer() complete");
     }
 
     protected void preExecute() {

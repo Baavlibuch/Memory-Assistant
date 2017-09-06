@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.compat.BuildConfig;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -24,12 +25,12 @@ public class Words extends Disciplines {
         super.onCreate(savedInstanceState);
 
         new DictionaryAsyncTask().execute();
-        Log.i(LOG_TAG, "Activity Created");
+        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Activity Created");
     }
 
     @Override
     protected String background() {
-        Log.v(LOG_TAG, "doInBackground() entered");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "doInBackground() entered");
 
         StringBuilder stringBuilder = new StringBuilder();
         //String textString = "";
@@ -62,7 +63,7 @@ public class Words extends Disciplines {
         try {
             dict.close(); //had if (dict!=null)
         } catch (IOException e) {
-            Log.e(LOG_TAG, "File not closed");
+            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
         }
     }
 

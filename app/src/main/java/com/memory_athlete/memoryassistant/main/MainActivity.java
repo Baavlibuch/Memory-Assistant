@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Log.i(LOG_TAG, "Adapter set!");
+        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Adapter set!");
     }
 
     private void setList(ArrayList<Item> list) {
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         //list.add(new Item(R.string.reminders, ))
         list.add(new Item(R.string.preferences, Preferences.class));
         //list.add(new Item(R.string.get_pro, GetPro.class));
-        Log.v(LOG_TAG, "List set!");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "List set!");
     }
 
     private class Item {
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         Item(int itemName, Class class1) {
             mItem = itemName;
             mClass = class1;
-            Log.i(LOG_TAG, "Item set!");
+            if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Item set!");
         }
     }
 
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
         e.putLong("last_opened", System.currentTimeMillis());
-        Log.v(LOG_TAG, "Last opened on" + System.currentTimeMillis());
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Last opened on" + System.currentTimeMillis());
         e.apply();
         ReminderUtils.scheduleReminder(this);
     }

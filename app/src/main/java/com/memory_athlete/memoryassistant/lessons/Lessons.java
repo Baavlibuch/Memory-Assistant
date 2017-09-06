@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -61,13 +62,13 @@ public class Lessons extends AppCompatActivity {
                 setTheme(R.style.light);
                 title="<font color=#FFFFFF>";
         }
-        Log.v(LOG_TAG, "theme = " + theme);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "theme = " + theme);
         setContentView(R.layout.activity_lesson);
         Intent intent = getIntent();
         int header = intent.getIntExtra("mHeader", 0);
         if (header != 0)
             setTitle(Html.fromHtml(title + getString(header)));
-        else setTitle(intent.getStringExtra("headerString"));
+        else setTitle(Html.fromHtml(title + intent.getStringExtra("headerString")));
 
         StringBuilder sb= new StringBuilder("");
         int fileInt = intent.getIntExtra("file", 0);
@@ -75,19 +76,19 @@ public class Lessons extends AppCompatActivity {
             if (intent.getBooleanExtra("list", false)) {
                 ListView listView = (ListView) findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readList(fileInt);
-                Log.v(LOG_TAG, "list length = " + list.size());
+                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "list length = " + list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(this, list);
-                Log.v(LOG_TAG, "adapter set");
+                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "adapter set");
                 listView.setAdapter(lessonAdapter);
                 listView.setVisibility(View.VISIBLE);
-                Log.v(LOG_TAG, "listView set");
+                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "listView set");
                 return;
             } else sb = readResource(fileInt);//For raw files
         } else {
             sb = readAsset(sb, intent);
         }
         if (sb == null) {
-            Log.w(LOG_TAG, "String Builder sb is empty");
+            if (BuildConfig.DEBUG) Log.w(LOG_TAG, "String Builder sb is empty");
             finish();
             return;
         }
@@ -95,7 +96,7 @@ public class Lessons extends AppCompatActivity {
         if (intent.getBooleanExtra("webView", false)) {     //For JQMath
             setWebView(sb);
         } else {
-            Log.v(LOG_TAG, "list is false");
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "list is false");
             ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
             findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
         }
@@ -107,13 +108,13 @@ public class Lessons extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         StringBuilder sb1 = readResource(R.raw.jqmath_beg);
         if (sb1 == null) {
-            Log.e(LOG_TAG, "jqmath read error");
+            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "jqmath read error");
             finish();
             return;
         }
         StringBuilder sb2 = readResource(R.raw.jqmath_end);
         if (sb2 == null) {
-            Log.e(LOG_TAG, "jqmath read error");
+            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "jqmath read error");
             finish();
             return;
         }
@@ -149,14 +150,14 @@ public class Lessons extends AppCompatActivity {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            Toast.makeText(this, "Couldn't open the lesson", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
             finish();
             return sb;
         }
     }
 
     ArrayList<Item> readList(int path) {
-        Log.v(LOG_TAG, "readResource(int, Intent) entered");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "readResource(int, Intent) entered");
         if (path == 0) return null;
         BufferedReader reader = null;
         String line, header = "";
@@ -184,7 +185,7 @@ public class Lessons extends AppCompatActivity {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            Toast.makeText(this, "Couldn't open the lesson", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
             finish();
             return null;
         }
@@ -197,7 +198,8 @@ public class Lessons extends AppCompatActivity {
             bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
             while ((line = bufferedReader.readLine()) != null) sb.append(line);
         } catch (IOException e) {
-            Toast.makeText(this, "Couldn't open the file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
+            finish();
         }
         try {
             if (bufferedReader != null)
@@ -221,12 +223,12 @@ public class Lessons extends AppCompatActivity {
 
         LessonAdapter(Activity context, ArrayList<Item> list) {
             super(context, 0, list);
-            Log.v(LOG_TAG, "LessonAdapter() entered");
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "LessonAdapter() entered");
         }
 
         @Override
         public View getView(int position, View listItemView, ViewGroup parent) {
-            Log.v(LOG_TAG, "getView() entered");
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getView() entered");
             if (listItemView == null) {
                 listItemView = LayoutInflater.from(getContext()).inflate(R.layout.lesson_list_item, null, true);
             }
@@ -235,8 +237,8 @@ public class Lessons extends AppCompatActivity {
             final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);
             textView1.setText(Html.fromHtml(item.mText));
             if(position>0) textView1.setVisibility(View.GONE);
-            Log.v(LOG_TAG, "mText = \t" + item.mText);
-            Log.v(LOG_TAG, "mHeader = \t" + item.mHeader);
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "mText = \t" + item.mText);
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "mHeader = \t" + item.mHeader);
 
             TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
             View view = listItemView.findViewById(R.id.lesson_item_header_layout);

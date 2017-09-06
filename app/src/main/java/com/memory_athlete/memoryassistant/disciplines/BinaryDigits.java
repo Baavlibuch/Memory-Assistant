@@ -14,7 +14,7 @@ public class BinaryDigits extends Disciplines {
         ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.st));
     }
 
-    @Override
+        @Override
     protected String background(){
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();

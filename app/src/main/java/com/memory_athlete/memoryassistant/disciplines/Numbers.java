@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
+import android.support.compat.BuildConfig;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -21,7 +22,7 @@ public class Numbers extends Disciplines {
         findViewById(R.id.negative).setVisibility(View.VISIBLE);
         findViewById(R.id.decimal).setVisibility(View.VISIBLE);
 
-        Log.i(LOG_TAG, "Activity Created");
+        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Activity Created");
     }
 
     @Override
@@ -48,7 +49,7 @@ public class Numbers extends Disciplines {
                 for (j = 0; j / 2 <= 2 * a.get(0) - Double.toString(n).length() + 1; j++) {
                     stringBuilder.append(" ");
                 }
-                Log.i(LOG_TAG, "Entered " + j);
+                if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Entered " + j);
                 if (n < 0) stringBuilder.append(" ");
                 if (a.get(2) == 0) break;
             }

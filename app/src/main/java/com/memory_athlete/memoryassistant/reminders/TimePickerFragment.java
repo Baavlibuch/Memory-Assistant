@@ -37,7 +37,7 @@ public class TimePickerFragment extends DialogFragment
         preferencesEditor.putInt("Hour", hourOfDay);
         preferencesEditor.putInt("Min", minute);
         if (!preferencesEditor.commit())
-            Toast.makeText(getActivity(), "Time not saved!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_LONG).show();
 
     }
 

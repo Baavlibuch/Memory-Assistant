@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.services;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.compat.BuildConfig;
 import android.util.Log;
 
 import com.firebase.jobdispatcher.JobParameters;
@@ -13,11 +14,11 @@ public class MySpaceJobService extends JobService {
 
     @Override
     public boolean onStartJob(final JobParameters job) {
-        Log.v(LOG_TAG, "onStartJob() started");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "onStartJob() started");
         mBackgroundTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                Log.v(LOG_TAG, "entered doInBackground()");
+                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered doInBackground()");
                 Bundle bundle = job.getExtras();
                 if(bundle!=null) {
                     String fname = bundle.getString("fname");
@@ -29,7 +30,7 @@ public class MySpaceJobService extends JobService {
 
             @Override
             protected void onPostExecute(Object o) {
-                Log.v(LOG_TAG, "entered onPostExecute()");
+                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered onPostExecute()");
                 jobFinished(job, false);
             }
         };

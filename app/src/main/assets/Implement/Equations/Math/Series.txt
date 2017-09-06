@@ -1,0 +1,12 @@
+<h2>Series</h2>
+
+<p>Limit Form of Comparision Test		$$u_n/v_n$$</p>
+<p>p Series	Test	            		$$1/n^p$$</p>
+<p>D’Alembert Ratio Test			$$u_{n+1}/u_n$$</p>
+<p>Comparision of Ratios			$$u_{n+1}/u_n : v_{n+1}/v_n$$</p>
+<p>Raabe’s Test (Higher Ratio Test)		$$\lim↙{n→∞}n{u_n/u_{n+1}-1}=k$$</p>
+<p>Log Test					        $$\lim↙{n→∞}n\log{u_n/u_{n+1}}=k$$</p>
+<p>Gauss Test					    $$u_n/u_{n+1}=1+λ/n+0{1/n}$$</p>
+<p>Cauchy’s Root Test				$$\lim↙{n→∞}u_n^{1/n}=λ$$</p>
+<p>Leibnitz Rule				    $$(-1)^n$$</p>
+<p>Power Series					    $$xl$$</p>

@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.services;
 
 import android.os.AsyncTask;
+import android.support.compat.BuildConfig;
 import android.util.Log;
 
 import com.firebase.jobdispatcher.JobParameters;
@@ -17,11 +18,11 @@ public class ReminderJobService extends JobService {
 
     @Override
     public boolean onStartJob(final JobParameters jobParameters) {
-        Log.v(LOG_TAG, "onStartJob() started");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "onStartJob() started");
         mBackgroundTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                Log.v(LOG_TAG, "entered doInBackground()");
+                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered doInBackground()");
                 NotificationUtils.createNotification(ReminderJobService.this);
                 //ReminderTask.executeTask(context, ReminderTask.);
                 return null;
@@ -29,7 +30,7 @@ public class ReminderJobService extends JobService {
 
             @Override
             protected void onPostExecute(Object o) {
-                Log.v(LOG_TAG, "entered onPostExecute()");
+                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered onPostExecute()");
                 jobFinished(jobParameters, false);
             }
         };
@@ -39,7 +40,7 @@ public class ReminderJobService extends JobService {
 
     @Override
     public boolean onStopJob(com.firebase.jobdispatcher.JobParameters job) {
-        Log.v(LOG_TAG, "Entered onStopJob()");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Entered onStopJob()");
         return false;
     }
 }

@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.compat.BuildConfig;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -46,7 +47,7 @@ public class Names extends Disciplines {
         try {
             if (dict != null) dict.close();
         } catch (IOException e) {
-            Log.e(LOG_TAG, "File not closed");
+            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
         }
 
         dict = null;
@@ -68,13 +69,13 @@ public class Names extends Disciplines {
         try {
             if (dict != null) dict.close();
         } catch (IOException e) {
-            Log.e(LOG_TAG, "File not closed");
+            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
         }
     }
 
     @Override
     protected String background() {
-        Log.v(LOG_TAG, "doInBackground() entered");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "doInBackground() entered");
 
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();

@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -78,7 +79,7 @@ public class Recall extends AppCompatActivity {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
-            case "Day Night":
+            case "Night":
                 setTheme(R.style.pitch);
                 (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
                 break;
@@ -93,7 +94,7 @@ public class Recall extends AppCompatActivity {
         setTitle(Html.fromHtml(title + getString(R.string.recall)));
         makeSpinner1(intent);
 
-        Log.v(LOG_TAG, "activity created");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "activity created");
     }
 
     void makeSpinner1(final Intent intent) {
@@ -135,7 +136,7 @@ public class Recall extends AppCompatActivity {
             spinner.setSelection(
                     categories.indexOf(s));
 
-        Log.v(LOG_TAG, "spinner 1 set");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "spinner 1 set");
     }
 
     void spinnerReset() {
@@ -150,7 +151,7 @@ public class Recall extends AppCompatActivity {
     void makeSpinner2(Intent intent) {
         spinnerReset();
         final String discipline = ((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString();
-        Log.v(LOG_TAG, "item : = = " + discipline);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "item : = = " + discipline);
         if (discipline == getString(R.string.cd)) return;
 
         final Spinner chose_file = (Spinner) findViewById(R.id.chose_file);
@@ -159,13 +160,13 @@ public class Recall extends AppCompatActivity {
         fileList.add(getString(R.string.cf));
         File[] files = dir.listFiles();
         if (files == null) {
-            Toast.makeText(getApplicationContext(), "No saved entries found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Do you save what you practice", Toast.LENGTH_SHORT).show();
             chose_file.setVisibility(View.GONE);
             return;
         }
         chose_file.setVisibility(View.VISIBLE);
         for (File file : files) {
-            Log.d("Files", "FileName:" + file.getName());
+            if (BuildConfig.DEBUG) Log.d("Files", "FileName:" + file.getName());
             fileList.add(file.getName());
         }
         chose_file.setAdapter(null);
@@ -200,7 +201,7 @@ public class Recall extends AppCompatActivity {
             chose_file.setSelection(fileList.size() - 1);
         }
 
-        Log.v(LOG_TAG, "spinner 2 set");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "spinner 2 set");
     }
 
 
@@ -215,12 +216,12 @@ public class Recall extends AppCompatActivity {
         responses.add(String.valueOf(card + selectedSuit));
         updateGridView();
         //mAdapter.notifyDataSetChanged();
-        Log.v(LOG_TAG, "cardSelected complete");
+        if (BuildConfig.DEBUG)    Log.v(LOG_TAG, "cardSelected complete");
     }
 
     void cardResponseLayout() {
         cardImageIds = MakeList.makeCards();
-        Log.v(LOG_TAG, "setting card layout...");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "setting card layout...");
         findViewById(R.id.response_input).setVisibility(View.GONE);
         findViewById(R.id.cards_responses).setVisibility(View.VISIBLE);
         compareFormat = 2;
@@ -246,7 +247,7 @@ public class Recall extends AppCompatActivity {
                     }
                     view.setBackgroundColor(getResources().getColor(R.color.color_suit_background));
                     selectedSuit = view.getId() * 13;
-                    Log.v(LOG_TAG, "selectedSuit = " + selectedSuit);
+                    if (BuildConfig.DEBUG) Log.v(LOG_TAG, "selectedSuit = " + selectedSuit);
                 }
             });
             suitLayout.addView(imageView);
@@ -273,7 +274,7 @@ public class Recall extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     cardSelected(view.getId());
-                    Log.v(LOG_TAG, "Selected Card = " + view.getId());
+                    if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Selected Card = " + view.getId());
                 }
             });
             numberLayout.addView(textView);
@@ -337,11 +338,11 @@ public class Recall extends AppCompatActivity {
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.reset).setVisibility(View.GONE);
 
-        Log.v(LOG_TAG, "responseLayout set");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "responseLayout set");
     }
 
     void getAnswers(Spinner spinner) {
-        Log.v(LOG_TAG, "getAnswersEntered");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getAnswersEntered");
         try {
             String string;
 
@@ -356,18 +357,18 @@ public class Recall extends AppCompatActivity {
                     //else if (mDiscipline == getString(e))
                 else answers.add(string);
             }
-            Log.v(LOG_TAG, String.valueOf(answers.size()));
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, String.valueOf(answers.size()));
             scanner.close();
         } catch (Exception e) {
             //Toast.makeText(this, "Couldn't read the saved answers", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
 
-        Log.v(LOG_TAG, "getAnswers() complete");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getAnswers() complete");
     }
 
     String giveUp() {
-        Log.v(LOG_TAG, "Give Up! pressed");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Give Up! pressed");
         Scanner scanner = null;
         String whitespace;
         switch (responseFormat) {
@@ -382,12 +383,12 @@ public class Recall extends AppCompatActivity {
             scanner = new Scanner(new File(getFilesDir().getAbsolutePath() +
                     File.separator + mDiscipline + File.separator +
                     mSpinner.getSelectedItem().toString())).useDelimiter("\t|\t   \t|\n|\n\n");
-            Log.v(LOG_TAG, "scanner created");
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "scanner created");
             if (mDiscipline==getString(R.string.e)) {
                 String[] cards = makeCardString();
                 while (scanner.hasNext()) sb.append(cards[Integer.parseInt(scanner.next())]).append(whitespace);
             } else while (scanner.hasNext()) sb.append(scanner.next()).append(whitespace);
-            Log.v(LOG_TAG, "giveUp() complete, returns " + sb.toString());
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "giveUp() complete, returns " + sb.toString());
             return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();
@@ -395,7 +396,7 @@ public class Recall extends AppCompatActivity {
             if (scanner != null)
                 scanner.close();
         }
-        Log.v(LOG_TAG, "giveUp() complete, returns null");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "giveUp() complete, returns null");
         return null;
     }
 
@@ -429,7 +430,7 @@ public class Recall extends AppCompatActivity {
         //responses.set(mResponsePosition, value);
         String text = ((TextView) findViewById(R.id.responses_text)).getText() + " " + getString(R.string.tab) + value;
         ((TextView) findViewById(R.id.responses_text)).setText(text);
-        Log.v(LOG_TAG, "onEditorAction complete");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "onEditorAction complete");
         editText.setText("");
         //editText.setHint("Enter value no. " + (++mResponsePosition + 1));
     }
@@ -447,13 +448,13 @@ public class Recall extends AppCompatActivity {
 
 
     void compare(boolean words) {
-        Log.v(LOG_TAG, "Comparing answers and responses in background");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Comparing answers and responses in background");
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
         whitespace = compareFormat > 0 ? "\n" : getString(R.string.tab);
-        Log.v(LOG_TAG, "whitespace = " + whitespace + ".");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "whitespace = " + whitespace + ".");
         for (int i = 0, j = 0; i < responses.size() && j < answers.size(); i++, j++) {
-            Log.v(LOG_TAG, "Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
             if (missed >= 10 && missed >= 10 * correct) break;
             if (isLeft(i, j)) continue;
             if (isCorrect(i, j)) continue;
@@ -585,7 +586,7 @@ public class Recall extends AppCompatActivity {
         //((TextView) findViewById(R.id.answers_text)).setText("");
 
 
-        Log.v(LOG_TAG, "Recall Reset Complete");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Recall Reset Complete");
     }
 
     public void reset(View view) {
@@ -619,7 +620,7 @@ public class Recall extends AppCompatActivity {
             getResponse();
             findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
             //Log.v(LOG_TAG, "answers.size() = " + String.valueOf(answers.size()));
-            Log.v(LOG_TAG, "responses.size() = " + String.valueOf(responses.size()));
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "responses.size() = " + String.valueOf(responses.size()));
         }
 
         @SafeVarargs
@@ -643,10 +644,10 @@ public class Recall extends AppCompatActivity {
             ((TextView) findViewById(R.id.answers_text)).setText(Html.fromHtml(mTextAnswer.toString()),
                     TextView.BufferType.SPANNABLE);
 
-            Log.v(LOG_TAG, "mTextResponse length = " + String.valueOf(mTextAnswer.toString().length()));
-            Log.v(LOG_TAG, "mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "mTextResponse length = " + String.valueOf(mTextAnswer.toString().length()));
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
 
-            Log.v(LOG_TAG, "answer 0 = " + answers.get(0));
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "answer 0 = " + answers.get(0));
 
             findViewById(R.id.responses_text).setVisibility(View.VISIBLE);
             findViewById(R.id.result).setVisibility(View.VISIBLE);
@@ -677,7 +678,7 @@ public class Recall extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             if (s == null) {
-                Toast.makeText(getApplicationContext(), "Error reading the answers", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Sorry...", Toast.LENGTH_SHORT).show();
                 reset();
                 return;
             }
@@ -729,7 +730,7 @@ public class Recall extends AppCompatActivity {
                     .into(imageView);
             //imageView.setImageResource(cardImageIds[parseInt(responses.get(position))]);
 
-            Log.v(LOG_TAG, "getView() complete");
+            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getView() complete");
 
             //((ImageView) listItemView.findViewById(R.id.card_image)).setImageResource(
             //      cardImageIds[parseInt(responses.get(position))]);
