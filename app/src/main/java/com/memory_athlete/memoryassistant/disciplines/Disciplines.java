@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.disciplines;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -35,7 +36,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import timber.log.Timber;
+
 import static com.memory_athlete.memoryassistant.R.id.clock_text;
+import static java.lang.Math.pow;
 
 /**
  * Created by Manik on 25/04/17.
@@ -46,16 +50,17 @@ public class Disciplines extends AppCompatActivity {
     protected static String LOG_TAG = "\tDiscipline: ";
     protected CountDownTimer cdt;
     protected long mTime = 0;
-    protected boolean isTimerRunning = false;
+    protected boolean isTimerRunning = false, hasStandard = true;
     protected ArrayList<Integer> a = new ArrayList<>();
     //protected boolean hasAsync;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Timber.plant(new Timber.DebugTree());
 
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
-        switch (theme){
+        switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
@@ -65,22 +70,31 @@ public class Disciplines extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
+                title = "<font color=#FFFFFF>";
         }
 
         Intent intent = getIntent();
-        if (/*hasAsync =*/ !intent.getBooleanExtra("hasAsyncTask", false)) {
+        Timber.i("0 means error in getting title resource string ID through intent");
+        setTitle(Html.fromHtml(title + getString(intent.getIntExtra("nameID", 0))));
+
+        if (getString(intent.getIntExtra("nameID", 0)) == getString(R.string.e))
+            hasStandard = false;
+
+        Timber.i("dictionary loads before the contentview is set");
+        if (!intent.getBooleanExtra("hasAsyncTask", false)) {
             setContentView(R.layout.activity_disciplines);
             setButtons();
             if (intent.getBooleanExtra("hasSpinner", false)) {
                 makeSpinner(intent.getIntExtra("spinnerContent", 0));
             }
+            levelSpinner();
+            if (!hasStandard) {
+                findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
+                findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.level).setVisibility(View.GONE);
+            }
         }
 
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "0 means error in getting title resource string ID through intent");
-        }
-        setTitle(Html.fromHtml(title+getString(intent.getIntExtra("nameID", 0))));
 
         //setContentView(R.layout.activity_binary_digits); TODO: fix it!
         //setTitle("Binary Digits"); TODO: fix it!
@@ -91,18 +105,29 @@ public class Disciplines extends AppCompatActivity {
         a.add(0);
         a.add(0);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "Activity Created");
-        }
+        Timber.v("Activity Created");
     }
-    //EditText no_of_values
+
+    protected void levelSpinner() {
+        Timber.v("Entered levelSpinner()");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int level = preferences.getInt("level", 1);
+        ArrayList<String> levelList = new ArrayList<>();
+        levelList.add(getString(R.string.chose_level));
+        for (; level > 0; level--) levelList.add(String.valueOf(level));
+        ArrayAdapter<String> levelAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, levelList);
+        levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = (Spinner) findViewById(R.id.level);
+        spinner.setAdapter(levelAdapter);
+        Timber.v("levelSpinner() complete");
+    }
 
     protected void makeSpinner(int spinnerContent) {
         if (BuildConfig.DEBUG) {
             Log.i(LOG_TAG, "makeSpinner() entered");
         }
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.group);
         spinner.setVisibility(View.VISIBLE);
 
         spinner.setOnTouchListener(new View.OnTouchListener() {
@@ -137,8 +162,8 @@ public class Disciplines extends AppCompatActivity {
         categories.add("9");
         categories.add("10");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>
-                (this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, categories);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             }
@@ -157,10 +182,11 @@ public class Disciplines extends AppCompatActivity {
     protected void startCommon() {
         a.set(2, 1);
         (new MyAsyncTask()).execute(a);
+        findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
         findViewById(R.id.time).setVisibility(View.GONE);
         findViewById(R.id.start).setVisibility(View.GONE);
         findViewById(R.id.no_of_values).setVisibility(View.GONE);
-        findViewById(R.id.spinner).setVisibility(View.GONE);
+        findViewById(R.id.group).setVisibility(View.GONE);
         findViewById(R.id.recall).setVisibility(View.VISIBLE);
         numbersVisibility(View.VISIBLE);
 
@@ -176,9 +202,7 @@ public class Disciplines extends AppCompatActivity {
     }
 
     protected void Start() {
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "Start entered");
-        }
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Start entered");
         try {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                     hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
@@ -186,6 +210,11 @@ public class Disciplines extends AppCompatActivity {
             if (BuildConfig.DEBUG) Log.e(LOG_TAG, "Couldn't hide keypad ", e);
         }
         ((TextView) findViewById(clock_text)).setText("");
+
+        if (((RadioButton) findViewById(R.id.standard_radio)).isChecked() && hasStandard) {
+            startCommon();
+            return;
+        }
 
         if (((RadioButton) findViewById(R.id.timer)).isChecked()) {
             if (((EditText) (findViewById(R.id.clock_edit)).findViewById(R.id.min))
@@ -204,6 +233,7 @@ public class Disciplines extends AppCompatActivity {
                 return;
             }
         }
+
 
         if (((RadioButton) findViewById(R.id.sw)).isChecked()) {
             (findViewById(R.id.chronometer)).setVisibility(View.VISIBLE);
@@ -261,16 +291,18 @@ public class Disciplines extends AppCompatActivity {
             (findViewById(R.id.chronometer)).setVisibility(View.GONE);
         }
         a.set(2, 0);
-        (findViewById(R.id.start)).setVisibility(View.VISIBLE);
         (findViewById(R.id.reset)).setVisibility(View.GONE);
         (findViewById(R.id.stop)).setVisibility(View.GONE);
         (findViewById(R.id.resume)).setVisibility(View.GONE);
         (findViewById(R.id.save)).setVisibility(View.GONE);
-
-        (findViewById(R.id.no_of_values)).setVisibility(View.VISIBLE);
-        (findViewById(R.id.spinner)).setVisibility(View.VISIBLE);
-        (findViewById(R.id.time)).setVisibility(View.VISIBLE);
         numbersVisibility(View.GONE);
+
+        (findViewById(R.id.start)).setVisibility(View.VISIBLE);
+        (findViewById(R.id.no_of_values)).setVisibility(View.VISIBLE);
+        (findViewById(R.id.group)).setVisibility(View.VISIBLE);
+        (findViewById(R.id.time)).setVisibility(View.VISIBLE);
+        if (hasStandard)
+            findViewById(R.id.standard_custom_radio_group).setVisibility(View.VISIBLE);
         ((RadioGroup) findViewById(R.id.time)).clearCheck();
         ((TextView) findViewById(R.id.random_values)).setText("");
         isTimerRunning = false;
@@ -278,20 +310,32 @@ public class Disciplines extends AppCompatActivity {
 
 
     protected void setButtons() {
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "setButtons entered");
-        }
+        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "setButtons entered");
+
+        findViewById(R.id.standard_radio).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                findViewById(R.id.custom_layout).setVisibility(View.GONE);
+                findViewById(R.id.level).setVisibility(View.VISIBLE);
+                findViewById(R.id.custom_radio).setSelected(false);
+            }
+        });
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "standard_radio onClickListener set");
+
+        findViewById(R.id.custom_radio).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.level).setVisibility(View.GONE);
+                findViewById(R.id.standard_radio).setSelected(false);
+            }
+        });
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "standard_radio onClickListener set");
 
         findViewById(R.id.sw).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 findViewById(R.id.clock_edit).setVisibility(View.GONE);
             }
         });
-
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "Stopwatch onClickListener set");
-        }
-
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Stopwatch onClickListener set");
 
         findViewById(R.id.timer).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -300,40 +344,29 @@ public class Disciplines extends AppCompatActivity {
                 ((EditText) findViewById(R.id.sec)).setText("");
             }
         });
-
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "timer onClickListener set");
-        }
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "timer onClickListener set");
 
         findViewById(R.id.none).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 findViewById(R.id.clock_edit).setVisibility(View.GONE);
             }
         });
-
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "none onClickListener set");
-        }
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "none onClickListener set");
 
         (findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Start();
             }
         });
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "start onClickListener set");
 
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "start onClickListener set");
-        }
 
         (findViewById(R.id.reset)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 reset();
             }
         });
-
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "reset onClickListener set");
-        }
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reset onClickListener set");
 
         (findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -351,10 +384,7 @@ public class Disciplines extends AppCompatActivity {
                 (findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
             }
         });
-
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "stop onClickListener set");
-        }
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "stop onClickListener set");
 
         findViewById(R.id.resume).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -370,27 +400,21 @@ public class Disciplines extends AppCompatActivity {
                 a.set(2, 0);
             }
         });
-
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "resume onClickListener set");
-        }
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "resume onClickListener set");
 
         (findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 save();
             }
         });
-
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "save onClickListener set");
-        }
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "save onClickListener set");
 
         findViewById(R.id.recall).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Recall.class);
                 intent.putExtra("file exists", save());
-                intent.putExtra("discipline", getTitle());
+                intent.putExtra("discipline", "" + getTitle());
                 if (BuildConfig.DEBUG) {
                     Log.v(LOG_TAG, "recalling" + getTitle());
                 }
@@ -458,22 +482,26 @@ public class Disciplines extends AppCompatActivity {
         (findViewById(R.id.progress_bar_discipline)).setVisibility(View.VISIBLE);
         int noOfValues, size;
         try {
-            if ((((Spinner) findViewById(R.id.spinner)).getSelectedItemPosition() < 2)) {
+            if ((((Spinner) findViewById(R.id.group)).getSelectedItemPosition() < 2)) {
                 size = 1;
             } else {
-                size = Integer.parseInt(((Spinner) findViewById(R.id.spinner)).getSelectedItem().toString());
+                size = Integer.parseInt(((Spinner) findViewById(R.id.group)).getSelectedItem().toString());
             }
             a.set(0, size);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        if ((((EditText) findViewById(R.id.no_of_values)).getText().toString().length() > 0)) {
-            noOfValues = Integer.parseInt((((EditText) findViewById(R.id.no_of_values)).getText().toString()));
-        } else {
-            noOfValues = 100;
+        if (((RadioButton) findViewById(R.id.standard_radio)).isChecked() && hasStandard) {
+            String s = ((Spinner) findViewById(R.id.level)).getSelectedItem().toString();
+            noOfValues = (s == getString(R.string.chose_level)) ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
+            a.set(1, noOfValues);
+            return;
         }
-
+        if (((EditText) findViewById(R.id.no_of_values)).getText().toString().length() > 0)
+            noOfValues = Integer.parseInt((((EditText) findViewById(R.id.no_of_values)).getText().toString()));
+        else if (!hasStandard) noOfValues = 1;
+        else noOfValues = 100;
         a.set(1, noOfValues);
     }
 

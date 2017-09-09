@@ -21,18 +21,21 @@ public class Letters extends Disciplines {
 
     @Override
     protected String background() {
-        //String textString = "";
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder("");
         Random rand = new Random();
-        int n;
 
+        String s = "";
         for (int i = 0; i < a.get(1); i++) {
             for (int j = 0; j < a.get(0); j++) {
-                n = rand.nextInt(26) + 97;
-                stringBuilder.append((char) n).append(getString(R.string.tab));;
+                char c = (char) (rand.nextInt(26) + 97);
+                Log.v(LOG_TAG, "value of c = " + c);
+                if (c != 'm' && c != 'w') s += " ";
+                if (c == 'i' || c == 'j' || c == 'l' || c == 't' || c=='f') s += " ";
+                stringBuilder.append(String.valueOf(c));
                 if (a.get(2) == 0) break;
             }
-            stringBuilder.append("   ");
+            stringBuilder.append(s).append(getString(R.string.tab)).append("   ");
+            s="";
         }
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, stringBuilder.toString());
         return stringBuilder.toString();

@@ -23,7 +23,7 @@ public class Places extends Disciplines {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(getString(R.string.random) + " " + getString(R.string.g));
+        //setTitle(getString(R.string.g));
 
         //makeSpinner();
         (new DictionaryAsyncTask()).execute();
@@ -33,7 +33,7 @@ public class Places extends Disciplines {
     @Override
     protected void reset() {
         super.reset();
-        findViewById(R.id.spinner).setVisibility(View.GONE);
+        findViewById(R.id.group).setVisibility(View.GONE);
     }
 
     @Override
@@ -229,6 +229,7 @@ public class Places extends Disciplines {
             //(findViewById(R.id.progress_bar)).setVisibility(View.GONE);
             setContentView(R.layout.activity_disciplines);
             ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.places));
+            levelSpinner();
 
             setButtons();
             a.add(0);
@@ -240,32 +241,6 @@ public class Places extends Disciplines {
     }
 }
 /*
-    private static String LOG_TAG = "Position::--";
-    private CountDownTimer cdt;
-    long mTime = 0;
-    private boolean isTimerRunning = false;
-    myAsyncTask task = new myAsyncTask();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTitle(getString(R.string.random) + " " + getString(R.string.g));
-
-        (new DictionaryAsyncTask()).execute();
-        Log.i(LOG_TAG, "Activity Created");
-    }
-
-
-
-    void startCommon() {
-        a.set(2, 1);
-        (new myAsyncTask()).execute(a);
-        (findViewById(R.id.time)).setVisibility(View.GONE);
-        (findViewById(R.id.stop)).setVisibility(View.VISIBLE);
-        (findViewById(R.id.start)).setVisibility(View.GONE);
-        ((RadioGroup) findViewById(R.id.time)).clearCheck();
-    }
-
     void Start() {
         Log.i(LOG_TAG, "Start entered");
         try {
@@ -311,123 +286,6 @@ public class Places extends Disciplines {
         startCommon();
         (findViewById(R.id.numbers)).setVisibility(View.VISIBLE);
         Log.i(LOG_TAG, "Start complete");
-    }
-
-    void setButtons() {
-        Log.i(LOG_TAG, "setButtons entered");
-
-        findViewById(R.id.sw).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                findViewById(R.id.clock_edit).setVisibility(View.GONE);
-            }
-        });
-
-        findViewById(R.id.timer).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                findViewById(R.id.clock_edit).setVisibility(View.VISIBLE);
-                ((EditText) findViewById(R.id.min)).setText("");
-                ((EditText) findViewById(R.id.sec)).setText("");
-            }
-        });
-
-        findViewById(R.id.none).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                findViewById(R.id.clock_edit).setVisibility(View.GONE);
-            }
-        });
-
-        (findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Start();
-            }
-        });
-
-        (findViewById(R.id.reset)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (((RadioButton) findViewById(R.id.timer)).isChecked()) {
-                    cdt.cancel();
-                    (findViewById(clock_text)).setVisibility(View.GONE);
-                } else {
-                    ((Chronometer) findViewById(R.id.chronometer)).stop();
-                    (findViewById(R.id.chronometer)).setVisibility(View.GONE);
-                }
-                task.cancel(true);
-                (findViewById(R.id.start)).setVisibility(View.VISIBLE);
-                (findViewById(R.id.reset)).setVisibility(View.GONE);
-                (findViewById(R.id.stop)).setVisibility(View.GONE);
-                (findViewById(R.id.resume)).setVisibility(View.GONE);
-                (findViewById(R.id.save)).setVisibility(View.GONE);
-
-                (findViewById(R.id.no_of_values)).setVisibility(View.VISIBLE);
-                (findViewById(R.id.time)).setVisibility(View.VISIBLE);
-                (findViewById(R.id.numbers)).setVisibility(View.GONE);
-                ((TextView) findViewById(R.id.numbers)).setText("");
-                isTimerRunning = false;
-            }
-        });
-
-        (findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                a.set(2, 0);
-                if (isTimerRunning) {
-                    cdt.cancel();
-                } else {
-                    mTime = ((Chronometer) findViewById(R.id.chronometer)).getBase();
-                    ((Chronometer) findViewById(R.id.chronometer)).stop();
-                }
-                (findViewById(R.id.save)).setVisibility(View.VISIBLE);
-                (findViewById(R.id.resume)).setVisibility(View.VISIBLE);
-                (findViewById(R.id.reset)).setVisibility(View.VISIBLE);
-                (findViewById(R.id.stop)).setVisibility(View.GONE);
-                (findViewById(R.id.progress_bar)).setVisibility(View.GONE);
-            }
-        });
-
-        (findViewById(R.id.resume)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (isTimerRunning) {
-                    timer();
-                } else {
-                    ((Chronometer) findViewById(R.id.chronometer)).setBase(mTime);
-                    ((Chronometer) findViewById(R.id.chronometer)).start();
-                }
-                (findViewById(R.id.resume)).setVisibility(View.GONE);
-                (findViewById(R.id.stop)).setVisibility(View.VISIBLE);
-                (findViewById(R.id.reset)).setVisibility(View.GONE);
-                a.set(2, 0);
-            }
-        });
-
-        (findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                String string = findViewById(R.id.numbers).toString();
-
-                DateFormat df = new SimpleDateFormat("yyMMdd_HH:mm");
-                Date date = new Date();
-                String fname = (df.format(date));
-
-                FileOutputStream outputStream;
-
-                try {
-                    outputStream = openFileOutput(fname, Context.MODE_PRIVATE);
-                    outputStream.write(string.getBytes());
-
-                    outputStream.close();
-                    Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Couldn't save the file", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        (findViewById(R.id.save)).setVisibility(View.GONE);
-        (findViewById(R.id.reset)).setVisibility(View.GONE);
-        (findViewById(R.id.resume)).setVisibility(View.GONE);
-        (findViewById(R.id.stop)).setVisibility(View.GONE);
-        (findViewById(R.id.chronometer)).setVisibility(View.GONE);
-        (findViewById(clock_text)).setVisibility(View.GONE);
-        Log.i(LOG_TAG, "setButtons complete");
     }
 }
 

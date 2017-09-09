@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.recall;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -36,13 +37,10 @@ import java.util.Scanner;
 import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static com.memory_athlete.memoryassistant.R.layout.activity_recall;
-import static com.memory_athlete.memoryassistant.R.string.a;
 import static com.memory_athlete.memoryassistant.R.string.b;
+import static com.memory_athlete.memoryassistant.R.string.binary;
 import static com.memory_athlete.memoryassistant.R.string.c;
 import static com.memory_athlete.memoryassistant.R.string.e;
-import static com.memory_athlete.memoryassistant.R.string.f;
-import static com.memory_athlete.memoryassistant.R.string.i;
-import static com.memory_athlete.memoryassistant.R.string.j;
 import static com.memory_athlete.memoryassistant.R.string.k;
 import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
 import static java.lang.Integer.parseInt;
@@ -74,8 +72,8 @@ public class Recall extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
-        switch (theme){
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
@@ -85,7 +83,7 @@ public class Recall extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
+                title = "<font color=#FFFFFF>";
         }
         setContentView(activity_recall);
         findViewById(R.id.result).setVisibility(View.GONE);
@@ -100,17 +98,17 @@ public class Recall extends AppCompatActivity {
     void makeSpinner1(final Intent intent) {
         categories = new ArrayList<>();
         categories.add(getString(R.string.cd));
-        categories.add(getString(f));
+        categories.add(getString(binary));
         categories.add(getString(e));
         categories.add(getString(k));
         categories.add(getString(R.string.d));
         categories.add(getString(b));
         categories.add(getString(R.string.g));
         categories.add(getString(c));
-        categories.add(getString(j));
-        categories.add(getString(R.string.h));
-        categories.add(getString(i));
-        categories.add(getString(a));
+        //categories.add(getString(j));
+        //categories.add(getString(R.string.h));
+        //categories.add(getString(i));
+        //categories.add(getString(a));
 
         final Spinner spinner = (Spinner) findViewById(R.id.discipline_spinner);
 
@@ -131,10 +129,12 @@ public class Recall extends AppCompatActivity {
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-        String s;
-        if ((s = intent.getStringExtra("discipline")) != "")
-            spinner.setSelection(
-                    categories.indexOf(s));
+        mDiscipline = intent.getStringExtra("discipline");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "discipline is " + mDiscipline);
+        if (mDiscipline != null && mDiscipline != "") {
+            spinner.setSelection(categories.indexOf(mDiscipline));
+            //TODO:react when selection is set
+        }
 
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "spinner 1 set");
     }
@@ -165,13 +165,15 @@ public class Recall extends AppCompatActivity {
             return;
         }
         chose_file.setVisibility(View.VISIBLE);
-        for (File file : files) {
-            if (BuildConfig.DEBUG) Log.d("Files", "FileName:" + file.getName());
-            fileList.add(file.getName());
+        for (int i = files.length - 1; i >= 0; i--) {
+            if (BuildConfig.DEBUG) Log.d("Files", "FileName:" + files[i].getName());
+            fileList.add(files[i].getName());
         }
-        chose_file.setAdapter(null);
+        //chose_file.setAdapter(null);
         ArrayAdapter<String> fileAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, fileList);
+        fileAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        chose_file.setAdapter(fileAdapter);
         chose_file.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -194,11 +196,9 @@ public class Recall extends AppCompatActivity {
             }
 
         });
-        fileAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        chose_file.setAdapter(fileAdapter);
         if (intent != null && intent.getStringExtra("discipline") != "" &&
                 intent.getBooleanExtra("file exists", false)) {
-            chose_file.setSelection(fileList.size() - 1);
+            chose_file.setSelection(1);
         }
 
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "spinner 2 set");
@@ -216,7 +216,7 @@ public class Recall extends AppCompatActivity {
         responses.add(String.valueOf(card + selectedSuit));
         updateGridView();
         //mAdapter.notifyDataSetChanged();
-        if (BuildConfig.DEBUG)    Log.v(LOG_TAG, "cardSelected complete");
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "cardSelected complete");
     }
 
     void cardResponseLayout() {
@@ -298,14 +298,18 @@ public class Recall extends AppCompatActivity {
 
         switch (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString()) {
             case "Numbers":
-            case "Binary Digits":
                 responseFormat = 0;
+                compareFormat = 0;
+                editText.setRawInputType(TYPE_CLASS_NUMBER);
+                break;
+            case "Binary Digits":
+                responseFormat = 3;
                 compareFormat = 0;
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Letters":
                 compareFormat = 0;
-                responseFormat = 0;
+                responseFormat = 3;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
                 break;
@@ -355,7 +359,11 @@ public class Recall extends AppCompatActivity {
                 if (mDiscipline == getString(b) || mDiscipline == getString(e))
                     answers.add(String.valueOf(parseInt(string.trim())));
                     //else if (mDiscipline == getString(e))
-                else answers.add(string);
+                else if (mDiscipline.equalsIgnoreCase(getString(R.string.k)) ||
+                        mDiscipline.equalsIgnoreCase(getString(R.string.binary))) {
+                    for (char c : string.toCharArray())
+                        if (c != ' ') answers.add("" + c);
+                } else answers.add(string);
             }
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, String.valueOf(answers.size()));
             scanner.close();
@@ -373,6 +381,7 @@ public class Recall extends AppCompatActivity {
         String whitespace;
         switch (responseFormat) {
             case 0:
+            case 3:
                 whitespace = " " + getString(R.string.tab);
                 break;
             default:
@@ -384,9 +393,10 @@ public class Recall extends AppCompatActivity {
                     File.separator + mDiscipline + File.separator +
                     mSpinner.getSelectedItem().toString())).useDelimiter("\t|\t   \t|\n|\n\n");
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "scanner created");
-            if (mDiscipline==getString(R.string.e)) {
+            if (mDiscipline == getString(R.string.e)) {
                 String[] cards = makeCardString();
-                while (scanner.hasNext()) sb.append(cards[Integer.parseInt(scanner.next())]).append(whitespace);
+                while (scanner.hasNext())
+                    sb.append(cards[Integer.parseInt(scanner.next())]).append(whitespace);
             } else while (scanner.hasNext()) sb.append(scanner.next()).append(whitespace);
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "giveUp() complete, returns " + sb.toString());
             return sb.toString();
@@ -407,6 +417,13 @@ public class Recall extends AppCompatActivity {
         }
         EditText editText = (EditText) findViewById(R.id.response_input);
         String values = editText.getText().toString(), value = "";
+
+        if (responseFormat == 3) {
+            for (int i = 0; i < values.length(); i++) {
+                if (values.charAt(i) == ' ' || values.charAt(i) == '\n') continue;
+                responses.add(String.valueOf(values.charAt(i)));
+            }
+        }
         //while (responses.size() <= mResponsePosition) responses.add(" ");
         char delimiter = (responseFormat == 0 ? ' ' : '\n');
         for (int i = 0; i < values.length(); i++) {
@@ -427,12 +444,10 @@ public class Recall extends AppCompatActivity {
                 value = "";
             }
         }
-        //responses.set(mResponsePosition, value);
         String text = ((TextView) findViewById(R.id.responses_text)).getText() + " " + getString(R.string.tab) + value;
         ((TextView) findViewById(R.id.responses_text)).setText(text);
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "onEditorAction complete");
         editText.setText("");
-        //editText.setHint("Enter value no. " + (++mResponsePosition + 1));
     }
 
     void hideResponseLayout() {
@@ -453,16 +468,23 @@ public class Recall extends AppCompatActivity {
         mTextAnswer = new StringBuilder("");
         whitespace = compareFormat > 0 ? "\n" : getString(R.string.tab);
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "whitespace = " + whitespace + ".");
+
         for (int i = 0, j = 0; i < responses.size() && j < answers.size(); i++, j++) {
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
-            if (missed >= 10 && missed >= 10 * correct) break;
+            if (BuildConfig.DEBUG)
+                Log.v(LOG_TAG, "Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
+            if (missed > 8 && missed > correct) {
+                for (; i < responses.size(); i++)
+                    mTextResponse.append("<font color=#FF0000>")
+                            .append(responses.get(i)).append("</font>").append(" ").append(whitespace);
+                break;
+            }
             if (isLeft(i, j)) continue;
             if (isCorrect(i, j)) continue;
             if (words) {
                 if (isSpelling(i, j)) {
-                    mTextAnswer.append("<font color=#FFFF00>").append(answers.get(j)).
+                    mTextAnswer.append("<font color=#DDDD00>").append(answers.get(j)).
                             append("</font>").append(" ").append(whitespace);
-                    mTextResponse.append("<font color=#FFFF00>").append(responses.get(i)).
+                    mTextResponse.append("<font color=#DDDD00>").append(responses.get(i)).
                             append("</font>").append(" ").append(whitespace);
                     correct++;
                     continue;
@@ -493,7 +515,7 @@ public class Recall extends AppCompatActivity {
 
     boolean isMissOrWrong(int i, int j) {
         boolean miss = false;
-        for (int l = 1; l <= (answers.size() - responses.size()) / 10; l++) {
+        for (int l = 1; l <= (answers.size() - responses.size()) / 10; ) {
             int match = 0, k = l;
             for (; k <= 10 && i + k < responses.size() && j + k < answers.size(); k++) {
                 //if (i + k < responses.size() && j + k < answers.size()) {
@@ -505,13 +527,15 @@ public class Recall extends AppCompatActivity {
                 //}
             }
 
-            if (((float) match / k) > 0.5) {
+            if (((float) match / k) > 0.4) {
                 wrong++;
-                mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>").append(" ").append(whitespace);
-                mTextResponse.append("<font color=#FF0000>").append(responses.get(i)).append("</font>").append(" ").append(whitespace);
+                mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
+                        .append(" ").append(whitespace);
+                mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
+                        .append("</font>").append(" ").append(whitespace);
                 miss = false;
                 break;
-            } else if (((float) match / k) <= 0.5) {
+            } else if (((float) match / k) <= 0.4) {
                 missed++;
                 miss = true;
                 break;
@@ -620,7 +644,8 @@ public class Recall extends AppCompatActivity {
             getResponse();
             findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
             //Log.v(LOG_TAG, "answers.size() = " + String.valueOf(answers.size()));
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "responses.size() = " + String.valueOf(responses.size()));
+            if (BuildConfig.DEBUG)
+                Log.v(LOG_TAG, "responses.size() = " + String.valueOf(responses.size()));
         }
 
         @SafeVarargs
@@ -644,10 +669,19 @@ public class Recall extends AppCompatActivity {
             ((TextView) findViewById(R.id.answers_text)).setText(Html.fromHtml(mTextAnswer.toString()),
                     TextView.BufferType.SPANNABLE);
 
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "mTextResponse length = " + String.valueOf(mTextAnswer.toString().length()));
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
+            if (BuildConfig.DEBUG)
+                Log.v(LOG_TAG, "mTextResponse length = " + String.valueOf(mTextAnswer.toString().length()));
+            if (BuildConfig.DEBUG)
+                Log.v(LOG_TAG, "mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
 
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "answer 0 = " + answers.get(0));
+
+            if (correct == answers.size() && mDiscipline != getString(binary)){
+                SharedPreferences sharedPreferences = PreferenceManager
+                        .getDefaultSharedPreferences(getApplicationContext());
+                int i = sharedPreferences.getInt("level", 1);
+                sharedPreferences.edit().putInt("level", ++i).apply();
+            }
 
             findViewById(R.id.responses_text).setVisibility(View.VISIBLE);
             findViewById(R.id.result).setVisibility(View.VISIBLE);

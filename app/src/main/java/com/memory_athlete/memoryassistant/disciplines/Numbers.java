@@ -27,7 +27,6 @@ public class Numbers extends Disciplines {
 
     @Override
     protected String background() {
-        //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
         int n1 = 1, n2 = 0;
@@ -41,6 +40,8 @@ public class Numbers extends Disciplines {
             for (int i = 0; i < a.get(1); i++) {
                 n = round((rand.nextDouble() * n1 * (Math.pow(10, a.get(0)))
                         - n2 * Math.pow(10, a.get(0))), a.get(0));
+                if (((CheckBox) findViewById(R.id.negative)).isChecked() && n>=0 && i>0) stringBuilder.append("  ");
+
                 stringBuilder.append(n).append(getString(R.string.tab));
                 for (int j = 0; j <= a.get(0); j++) {
                     stringBuilder.append(" ");
@@ -59,6 +60,7 @@ public class Numbers extends Disciplines {
                 int n;
                 n = n1 * rand.nextInt((int) Math.pow(10, a.get(0)))
                         - n2 * ((int) Math.pow(10, a.get(0)) - 1);
+                if (((CheckBox) findViewById(R.id.negative)).isChecked() && n>=0 && i>0) stringBuilder.append(" ");
                 stringBuilder.append(n).append(getString(R.string.tab));
                 for (int j = 0; j <= a.get(0) / 2; j++) {
                     stringBuilder.append(" ");

@@ -87,6 +87,7 @@ public class Words extends Disciplines {
             super.onPostExecute(s);
             //(findViewById(R.id.progress_bar)).setVisibility(View.GONE);
             setContentView(R.layout.activity_disciplines);
+            levelSpinner();
 
             setButtons();
             ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.words_small));

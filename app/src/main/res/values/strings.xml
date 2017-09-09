@@ -19,7 +19,7 @@
     <string name="c">Words</string>
     <string name="d">Names</string>
     <string name="e">Cards</string>
-    <string name="f">Binary Digits</string>
+    <string name="binary">Binary Digits</string>
     <string name="g">Places</string>
     <string name="h">Dates</string>
     <string name="i">Foods</string>
@@ -72,6 +72,8 @@
     <string name="decimal">Include decimal numbers</string>
     <string name="start_timer">Start Timer</string>
     <string name="start_stopwatch">Start Stopwatch</string>
+    <string name="standard">Standard</string>
+    <string name="custom">Custom</string>
 
     <string name="majors">Major Systems</string>
     <string name="ben">Ben Systems</string>
@@ -105,5 +107,6 @@
 
     <string name="tab">\t</string>
     <string name="drop_down">Expand</string>
+    <string name="chose_level">Chose level</string>
 
 </resources>

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class Apply extends AppCompatActivity {
     private static final String LOG_TAG = "\tApply";
-    ArrayList<String> pathList =new ArrayList<>();
+    ArrayList<String> pathList = new ArrayList<>();
     private static final String TAG = "Log : ";
     int listViewId = 0;
 
@@ -34,7 +34,7 @@ public class Apply extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
-        switch (theme){
+        switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
@@ -44,7 +44,7 @@ public class Apply extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
+                title = "<font color=#FFFFFF>";
         }
         setContentView(R.layout.activity_apply);
         setTitle(Html.fromHtml(title + getString(R.string.apply)));
@@ -58,7 +58,7 @@ public class Apply extends AppCompatActivity {
     public void setAdapter() {
         try {
             StringBuilder path = new StringBuilder("");
-            for(String i : pathList) path.append(i);
+            for (String i : pathList) path.append(i);
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
             String[] list = listAssetFiles(path.toString());
             if (BuildConfig.DEBUG) Log.v(TAG, "list set");
@@ -81,18 +81,17 @@ public class Apply extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Item item = arrayList.get(position);
-                    String string = item.mItem;
 
-                    if (string.endsWith(".txt")) {
+                    if (item.mFileName.endsWith(".txt")) {
                         Intent intent = new Intent(getApplicationContext(), Lessons.class);
                         intent.putExtra("headerString", item.mItem);
                         intent.putExtra("webView", true);
                         StringBuilder path = new StringBuilder("");
-                        for(String i : pathList) path.append(i);
-                        intent.putExtra("fileString", path + "/" + string);
+                        for (String i : pathList) path.append(i);
+                        intent.putExtra("fileString", path + "/" + item.mFileName);
                         startActivity(intent);
                     } else {
-                        pathList.add("/" + string);
+                        pathList.add("/" + item.mFileName);
                         linearLayout.findViewById(listViewId).setVisibility(View.GONE);
                         listViewId++;
                         setAdapter();
@@ -118,11 +117,12 @@ public class Apply extends AppCompatActivity {
     }
 
     private class Item {
-        String mItem;
+        String mItem, mFileName;
         boolean webView = false;
 
         Item(String item, boolean wV) {
-            mItem = item;
+            mFileName = item;
+            mItem = item.endsWith(".txt") ? item.substring(0, item.length()-4) : item;
             webView = wV;
         }
     }
@@ -148,13 +148,13 @@ public class Apply extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(listViewId==0) {
+        if (listViewId == 0) {
             super.onBackPressed();
             return;
         }
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.apply_layout);
         linearLayout.removeViewAt(listViewId--);
         linearLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
-        pathList.remove(pathList.size()-1);
+        pathList.remove(pathList.size() - 1);
     }
 }

@@ -11,11 +11,11 @@ public class BinaryDigits extends Disciplines {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.st));
+        ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.st));
     }
 
-        @Override
-    protected String background(){
+    @Override
+    protected String background() {
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
@@ -26,11 +26,9 @@ public class BinaryDigits extends Disciplines {
                 n = rand.nextInt(2);
                 stringBuilder.append(n);
                 //textString += n;
-                if (j==a.get(0)) stringBuilder.append(" ").append(getString(R.string.tab));
-                //textString += " " + getString(R.string.tab);
-                stringBuilder.append(" ").append(getString(R.string.tab));
+                stringBuilder.append(" ");
             }
-
+            stringBuilder.append(getString(R.string.tab)).append("   ");
             if (a.get(2) == 0) break;
         }
         return stringBuilder.toString();

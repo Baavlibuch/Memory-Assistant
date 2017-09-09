@@ -72,7 +72,7 @@ public class Practice extends AppCompatActivity {
         disc.add(new Category(R.string.d, R.drawable.names, Names.class, false, true));
         disc.add(new Category(R.string.g, R.drawable.places, Places.class, false, true));
         disc.add(new Category(R.string.e, R.drawable.cards, Cards.class, false, false));
-        disc.add(new Category(R.string.f, R.drawable.binary, BinaryDigits.class, true, false));
+        disc.add(new Category(R.string.binary, R.drawable.binary, BinaryDigits.class, true, false));
         disc.add(new Category(R.string.k, R.drawable.letters, Letters.class, true, false));
         //disc.add(new Category(R.string.a, R.drawable.equations, Equations.class, false, false));
         //disc.add(new Category(R.string.h, R.drawable.dates, Dates.class, false, false));

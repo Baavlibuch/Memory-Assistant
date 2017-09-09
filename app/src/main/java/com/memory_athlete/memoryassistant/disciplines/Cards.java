@@ -22,7 +22,7 @@ import java.util.Scanner;
 public class Cards extends Disciplines {
 
     int mPosition = 0;
-    int[] cards = MakeList.makeCards(); //new int[52];
+    int[] cards = MakeList.makeCards();
     ArrayList<Integer> randomList = new ArrayList<>();
 
     @Override
@@ -73,10 +73,9 @@ public class Cards extends Disciplines {
             if (a.get(2) == 0) break;
         }
 
-        //String string="";
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (Integer i : cards)// 0; i < cards.size(); i++)
+        for (Integer i : cards)
             stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
         return stringBuilder.toString();
     }
@@ -87,7 +86,7 @@ public class Cards extends Disciplines {
         if (a.get(2) == 0) {
             return;
         }
-        String string="";
+        String string;
 
         Scanner scanner = new Scanner(s).useDelimiter(getString(R.string.tab));
 
@@ -146,48 +145,10 @@ public class Cards extends Disciplines {
         super.reset();
         mPosition = 0;
         randomList.clear();
-        findViewById(R.id.spinner).setVisibility(View.GONE);
+        findViewById(R.id.group).setVisibility(View.GONE);
         findViewById(R.id.prev).setVisibility(View.GONE);
         ((ImageView) findViewById(R.id.cards)).setImageDrawable(null);
         //findViewById(R.id.cards).setVisibility(View.GONE);
         //findViewById(R.id.progress_bar_discipline).setVisibility(View.GONE);
     }
 }
-
-/*
-
-    void setCard(){
-        ((ImageView) findViewById(R.id.numbers)).setImageResource(cards[randomList.get(mPosition)]);
-    }
-
-    public void previous(View view){
-        if(mPosition>0){
-            mPosition--;
-            setCard();
-        } else {
-            Toast.makeText(this, "This is the first card!", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void next(View view){
-        if(mPosition<a.get(1)*52){
-            mPosition++;
-            setCard();
-        } else {
-            Toast.makeText(this, "This is the last card!", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    void startCommon() {
-       if (BuildConfig.DEBUG) Log.v(LOG_TAG, "startCommon entered");
-        a.set(2, 1);
-        (new myAsyncTask()).execute(a);
-        (findViewById(R.id.time)).setVisibility(View.GONE);
-        (findViewById(R.id.stop)).setVisibility(View.VISIBLE);
-        (findViewById(R.id.start)).setVisibility(View.GONE);
-        ((RadioGroup) findViewById(R.id.time)).clearCheck();
-       if (BuildConfig.DEBUG) Log.v(LOG_TAG, "startCommon ended");
-    }
-}
-
-*/
