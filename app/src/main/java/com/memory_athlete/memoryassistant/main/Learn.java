@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -19,12 +20,20 @@ import com.memory_athlete.memoryassistant.lessons.Lessons;
 
 import java.util.ArrayList;
 
+import timber.log.Timber;
+
 
 public class Learn extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        theme();
+        setAdapter();
+    }
+
+    protected void theme(){
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
         switch (theme){
             case "Dark":
@@ -41,7 +50,6 @@ public class Learn extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
         setTitle(Html.fromHtml(title + getString(R.string.learn)));
 
-        setAdapter();
     }
 
     public void setAdapter() {

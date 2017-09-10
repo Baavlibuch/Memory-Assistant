@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.reminders.TimePreference;
+import com.memory_athlete.memoryassistant.preferences.TimePreference;
+
+import timber.log.Timber;
 
 public class Preferences extends AppCompatActivity {
     String theme;
@@ -17,9 +20,14 @@ public class Preferences extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        theme();
+    }
+
+    protected void theme() {
         theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        String title="";
-        switch (theme){
+        String title = "";
+        switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
@@ -29,7 +37,7 @@ public class Preferences extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
+                title = "<font color=#FFFFFF>";
         }
         setContentView(R.layout.activity_preferences);
         setTitle(Html.fromHtml(title + getString(R.string.preferences)));
@@ -66,7 +74,7 @@ public class Preferences extends AppCompatActivity {
                 String minutes = (min < 10) ? 0 + String.valueOf(min) : String.valueOf(min);
                 if (hour > 12) {
                     hour -= 12;
-                } else if(hour == 0){
+                } else if (hour == 0) {
                     hour = 12;
                 }
 
@@ -77,11 +85,12 @@ public class Preferences extends AppCompatActivity {
         }
 
     }
-        @Override
-        public void onStop() {
-            super.onStop();
-            if(PreferenceManager.getDefaultSharedPreferences(this)
-                    .getString(getString(R.string.theme), "AppTheme") != theme)
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), "AppTheme") != theme)
             Toast.makeText(this, "Please restart the app", Toast.LENGTH_SHORT).show();
-        }
+    }
 }

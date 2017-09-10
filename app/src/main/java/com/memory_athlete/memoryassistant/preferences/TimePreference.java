@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant.reminders;
+package com.memory_athlete.memoryassistant.preferences;
 
 /**
  * Created by Manik on 26/08/17.

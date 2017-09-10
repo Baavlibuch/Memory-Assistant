@@ -34,10 +34,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import timber.log.Timber;
+
 import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static com.memory_athlete.memoryassistant.R.layout.activity_recall;
-import static com.memory_athlete.memoryassistant.R.string.b;
+import static com.memory_athlete.memoryassistant.R.string.numbers;
 import static com.memory_athlete.memoryassistant.R.string.binary;
 import static com.memory_athlete.memoryassistant.R.string.c;
 import static com.memory_athlete.memoryassistant.R.string.e;
@@ -53,8 +55,8 @@ public class Recall extends AppCompatActivity {
     private ArrayList<String> answers = new ArrayList<>();
     private ArrayList<String> responses = new ArrayList<>();
     ArrayList<String> categories;
-    private Spinner mSpinner;
-    private String mDiscipline;
+    private Spinner mSpinner=null;
+    private String mDiscipline=null;
     private int selectedSuit = 0;
     private int[] cardImageIds;
 
@@ -66,33 +68,50 @@ public class Recall extends AppCompatActivity {
     int correct = 0, wrong = 0, missed = 0;
     private StringBuilder mTextAnswer = null, mTextResponse = null;
     private String whitespace;
+    private int mSuitBackground;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+
+        Intent intent = getIntent();
+        theme();
+        makeSpinner1(intent);
+
+        findViewById(R.id.result).setVisibility(View.GONE);
+        findViewById(R.id.reset).setVisibility(View.GONE);
+            Timber.v(LOG_TAG, "activity created");
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(findViewById(R.id.reset).getVisibility()==View.VISIBLE
+                || findViewById(R.id.response_layout).getVisibility()==View.VISIBLE) reset();
+        else super.onBackPressed();
+    }
+
+    protected void theme(){
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
+                mSuitBackground=R.color.color_suit_background_dark;
                 break;
             case "Night":
                 setTheme(R.style.pitch);
                 (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                mSuitBackground=R.color.color_suit_background_night;
                 break;
             default:
                 setTheme(R.style.light);
                 title = "<font color=#FFFFFF>";
+                mSuitBackground=R.color.color_suit_background_light;
         }
         setContentView(activity_recall);
-        findViewById(R.id.result).setVisibility(View.GONE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
-        Intent intent = getIntent();
         setTitle(Html.fromHtml(title + getString(R.string.recall)));
-        makeSpinner1(intent);
-
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "activity created");
+        Timber.v("theme() complete");
     }
 
     void makeSpinner1(final Intent intent) {
@@ -102,7 +121,7 @@ public class Recall extends AppCompatActivity {
         categories.add(getString(e));
         categories.add(getString(k));
         categories.add(getString(R.string.d));
-        categories.add(getString(b));
+        categories.add(getString(numbers));
         categories.add(getString(R.string.g));
         categories.add(getString(c));
         //categories.add(getString(j));
@@ -129,14 +148,13 @@ public class Recall extends AppCompatActivity {
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
+        spinner.setSelection(0);
         mDiscipline = intent.getStringExtra("discipline");
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "discipline is " + mDiscipline);
         if (mDiscipline != null && mDiscipline != "") {
             spinner.setSelection(categories.indexOf(mDiscipline));
-            //TODO:react when selection is set
         }
-
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "spinner 1 set");
+        Timber.v("spinner 1 set");
     }
 
     void spinnerReset() {
@@ -160,7 +178,7 @@ public class Recall extends AppCompatActivity {
         fileList.add(getString(R.string.cf));
         File[] files = dir.listFiles();
         if (files == null) {
-            Toast.makeText(getApplicationContext(), "Do you save what you practice", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Nothing saved. Try practicing", Toast.LENGTH_SHORT).show();
             chose_file.setVisibility(View.GONE);
             return;
         }
@@ -245,14 +263,14 @@ public class Recall extends AppCompatActivity {
                     for (int j = 0; j < 4; j++) {
                         findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
                     }
-                    view.setBackgroundColor(getResources().getColor(R.color.color_suit_background));
+                    view.setBackgroundColor(getResources().getColor(mSuitBackground));
                     selectedSuit = view.getId() * 13;
                     if (BuildConfig.DEBUG) Log.v(LOG_TAG, "selectedSuit = " + selectedSuit);
                 }
             });
             suitLayout.addView(imageView);
         }
-        suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(R.color.color_suit_background));
+        suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
 
         LinearLayout numberLayout = (LinearLayout) findViewById(R.id.card_numbers);
         for (int i = 0; i <= 13; i++) {
@@ -356,7 +374,7 @@ public class Recall extends AppCompatActivity {
 
             while (scanner.hasNext()) {
                 string = scanner.next();
-                if (mDiscipline == getString(b) || mDiscipline == getString(e))
+                if (mDiscipline == getString(numbers) || mDiscipline == getString(e))
                     answers.add(String.valueOf(parseInt(string.trim())));
                     //else if (mDiscipline == getString(e))
                 else if (mDiscipline.equalsIgnoreCase(getString(R.string.k)) ||
@@ -676,7 +694,7 @@ public class Recall extends AppCompatActivity {
 
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "answer 0 = " + answers.get(0));
 
-            if (correct == answers.size() && mDiscipline != getString(binary)){
+            if (correct == answers.size() && mDiscipline != getString(binary)) {
                 SharedPreferences sharedPreferences = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
                 int i = sharedPreferences.getInt("level", 1);

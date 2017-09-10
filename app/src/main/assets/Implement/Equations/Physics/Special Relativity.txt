@@ -1,0 +1,7 @@
+<h2>Special Relativity</h2>
+
+<p>$$\sin θ_{i_max}=√{μ_1^2-μ_2^2}/μ_0$$</p>
+<p>$$NA=μ_0\sin θ_0$$</p>
+<p>Lorentz Transformation $$x'={x-vt}/√{1-{v^2/c^2}}$$ $$t'={t-{xv}/{c^2}}/√{1-v^2/c^2}$$ $$k=±1/{1-v^2/c^2}$$</p>
+<p>$$u_x={u'_x+v}/{1+{vu'_x}/c^2}$$ $$u_y={u'_y√{1-{v^2/c^2}}}/{1+{{vu'_x}/c^2}}$$</p>
+<p>$$E_k=mc^2=m_0c^2$$ $$E=mc^2=E_k+m_0c^2$$</p>

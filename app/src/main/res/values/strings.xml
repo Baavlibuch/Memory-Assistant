@@ -15,7 +15,7 @@
 
     <string name="cd">Chose Discipline</string>
     <string name="a">Equations</string>
-    <string name="b">Numbers</string>
+    <string name="numbers">Numbers</string>
     <string name="c">Words</string>
     <string name="d">Names</string>
     <string name="e">Cards</string>
@@ -108,5 +108,6 @@
     <string name="tab">\t</string>
     <string name="drop_down">Expand</string>
     <string name="chose_level">Chose level</string>
+    <string name="clear_practice">Clear all practice cache</string>
 
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -27,29 +28,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import timber.log.Timber;
+
 public class Practice extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
-        switch (theme){
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
-        }
-        setContentView(R.layout.activity_practice);
-        setTitle(Html.fromHtml(title+getString(R.string.practice)));
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        theme();
         final ArrayList<Category> disc = new ArrayList<>();
         setList(disc);
-
         DisciplineAdapter discipline = new DisciplineAdapter(this, disc);
         ListView disciplineList = (ListView) findViewById(R.id.disciplines);
         disciplineList.setAdapter(discipline);
@@ -66,8 +55,26 @@ public class Practice extends AppCompatActivity {
         });
     }
 
+    protected void theme(){
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
+        setContentView(R.layout.activity_practice);
+        setTitle(Html.fromHtml(title+getString(R.string.practice)));
+    }
+
     private void setList(ArrayList<Category> disc) {
-        disc.add(new Category(R.string.b, R.drawable.numbers, Numbers.class, true, false, 1));
+        disc.add(new Category(R.string.numbers, R.drawable.numbers, Numbers.class, true, false, 1));
         disc.add(new Category(R.string.c, R.drawable.words, Words.class, false, true));
         disc.add(new Category(R.string.d, R.drawable.names, Names.class, false, true));
         disc.add(new Category(R.string.g, R.drawable.places, Places.class, false, true));

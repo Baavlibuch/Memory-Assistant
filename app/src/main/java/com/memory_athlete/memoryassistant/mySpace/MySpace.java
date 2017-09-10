@@ -23,17 +23,48 @@ import com.memory_athlete.memoryassistant.R;
 import java.io.File;
 import java.util.ArrayList;
 
+import timber.log.Timber;
+
 public class MySpace extends AppCompatActivity {
     private static final String LOG_TAG = "\tMySpace :";
     int listViewId = 0;
     File dir = null;
-    String title="";
+    String title = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        theme();
+        listViewId++;
+        //setAdapter();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Timber.v("listViewId = " + listViewId);
+        if (listViewId > 1) {
+            ((RelativeLayout) findViewById(R.id.my_space_relative_layout)).removeViewAt(listViewId);
+        }
+        setAdapter();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (listViewId==1) super.onBackPressed();
+        else {
+            Timber.v("listViewId = " + listViewId);
+            RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.my_space_relative_layout);
+            relativeLayout.removeViewAt(listViewId);
+            relativeLayout.findViewById(--listViewId).setVisibility(View.VISIBLE);
+            setTitle(Html.fromHtml(title + getString(R.string.my_space)));
+        }
+    }
+
+    protected void theme() {
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme){
+        switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
@@ -43,76 +74,76 @@ public class MySpace extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
+                title = "<font color=#FFFFFF>";
         }
         setContentView(R.layout.activity_my_space);
         setTitle(Html.fromHtml(title + getString(R.string.my_space)));
-        Intent intent = getIntent();
         //path = intent.getStringExtra(getString(R.string.apply));
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Title Set");
-
-        setAdapter();
     }
 
     public void setAdapter() {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "setAdapter started");
+        Timber.v("setAdapter started");
         ArrayList<Item> arrayList = new ArrayList<>();
-        if (listViewId == 0) arrayList = setList();
+        if (listViewId == 1) arrayList = setList();
         else {
             File[] files = dir.listFiles();
-            if (files==null){
+            if (files == null) {
                 return;
             }
-            if (files.length == 0){
+            if (files.length == 0) {
                 return;
             } else {
                 for (File file : files) {
-                    if (BuildConfig.DEBUG) Log.d(LOG_TAG, "FileName: " + file.getName());
+                    Timber.d("FileName: " + file.getName());
                     arrayList.add(new Item(file.getName(), WriteFile.class));
                 }
             }
         }
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "list set");
+        Timber.v("list set");
         MySpaceAdapter adapter = new MySpaceAdapter(this, arrayList);
         final ListView listView = new ListView(this);
         listView.setLayoutParams(new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
         listView.setId(listViewId);
-        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.my_space_linearLayout);
+        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.my_space_relative_layout);
         layout.addView(listView);
         listView.setAdapter(adapter);
         final ArrayList<Item> finalArrayList = arrayList;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = finalArrayList.get(position);
-                if (listViewId == 0) {
+                Timber.v("item.mItem = " + item.mItem);
+                if (listViewId == 1) {
                     dir = new File(getFilesDir().getAbsolutePath() + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
-                        setTitle(Html.fromHtml(title + item.mItem));
+                    setTitle(Html.fromHtml(title + item.mName));
                     findViewById(R.id.floatingActionButton).setVisibility(View.VISIBLE);
                     setAdapter();
+                    Timber.v("going to id 1, listViewId = " + listViewId);
                 } else {
+                    Timber.v("listViewId = " + listViewId);
                     String fileName = getFilesDir().getAbsolutePath() + File.separator + getTitle();
-                    String name = item.mItem;
                     Intent intent = new Intent(getApplicationContext(), WriteFile.class);
-                    intent.putExtra("mHeader", item.mItem);
-                    intent.putExtra("fileString", name);
+                    intent.putExtra("mHeader", item.mName);
+                    intent.putExtra("fileString", item.mItem);
                     intent.putExtra("path", fileName);
                     File file = new File(fileName);
                     boolean isDirectoryCreated = file.exists();
                     if (!isDirectoryCreated) {
                         isDirectoryCreated = file.mkdir();
                     }
-                    if(isDirectoryCreated) {
+                    if (isDirectoryCreated) {
                         startActivity(intent);
-                    } else Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    public void add(View view){
+    public void add(View view) {
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
         intent.putExtra("name", false);
@@ -135,11 +166,12 @@ public class MySpace extends AppCompatActivity {
     }
 
     private class Item {
-        String mItem;
+        String mItem, mName;
         Class mClass;
 
         Item(String itemName, Class class1) {
             mItem = itemName;
+            mName = itemName.endsWith(".txt") ? itemName.substring(0, itemName.length() - 4) : itemName;
             mClass = class1;
             if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Item set!");
         }
@@ -158,7 +190,7 @@ public class MySpace extends AppCompatActivity {
             }
 
             TextView textView = listItemView.findViewById(R.id.main_textView);
-            textView.setText(getItem(position).mItem);
+            textView.setText(getItem(position).mName);
 
             return listItemView;
         }

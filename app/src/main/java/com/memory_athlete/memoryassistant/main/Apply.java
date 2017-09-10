@@ -24,6 +24,8 @@ import com.memory_athlete.memoryassistant.lessons.Lessons;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import timber.log.Timber;
+
 public class Apply extends AppCompatActivity {
     private static final String LOG_TAG = "\tApply";
     ArrayList<String> pathList = new ArrayList<>();
@@ -33,6 +35,15 @@ public class Apply extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        Intent intent = getIntent();
+        theme();
+        pathList.add(intent.getStringExtra(getString(R.string.apply)));
+
+        setAdapter();
+    }
+
+    protected void theme(){
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
         switch (theme) {
             case "Dark":
@@ -48,11 +59,7 @@ public class Apply extends AppCompatActivity {
         }
         setContentView(R.layout.activity_apply);
         setTitle(Html.fromHtml(title + getString(R.string.apply)));
-        Intent intent = getIntent();
-        pathList.add(intent.getStringExtra(getString(R.string.apply)));
         if (BuildConfig.DEBUG) Log.v(TAG, "Title Set");
-
-        setAdapter();
     }
 
     public void setAdapter() {

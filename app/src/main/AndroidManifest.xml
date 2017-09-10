@@ -63,7 +63,7 @@
         <activity
             android:name="com.memory_athlete.memoryassistant.mySpace.WriteFile"
             android:parentActivityName="com.memory_athlete.memoryassistant.mySpace.MySpace"
-            tools:targetApi="jelly_bean" />
+             />
         <activity android:name="com.memory_athlete.memoryassistant.lessons.Lessons" />
 
         <!-- Practice Disciplines -->

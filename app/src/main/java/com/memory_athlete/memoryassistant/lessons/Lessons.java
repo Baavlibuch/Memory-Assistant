@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import timber.log.Timber;
+
 /**
  * Created by Manik on 14/04/17.
  */
@@ -49,26 +51,9 @@ public class Lessons extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
-        switch (theme){
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
-        }
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "theme = " + theme);
-        setContentView(R.layout.activity_lesson);
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         Intent intent = getIntent();
-        int header = intent.getIntExtra("mHeader", 0);
-        if (header != 0)
-            setTitle(Html.fromHtml(title + getString(header)));
-        else setTitle(Html.fromHtml(title + intent.getStringExtra("headerString")));
+        theme(intent);
 
         StringBuilder sb= new StringBuilder("");
         int fileInt = intent.getIntExtra("file", 0);
@@ -88,7 +73,7 @@ public class Lessons extends AppCompatActivity {
             sb = readAsset(sb, intent);
         }
         if (sb == null) {
-            if (BuildConfig.DEBUG) Log.w(LOG_TAG, "String Builder sb is empty");
+            Timber.e("String Builder sb is empty");
             finish();
             return;
         }
@@ -100,6 +85,29 @@ public class Lessons extends AppCompatActivity {
             ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
             findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
         }
+    }
+
+    protected void theme(Intent intent){
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
+        int header = intent.getIntExtra("mHeader", 0);
+        if (header != 0)
+            setTitle(Html.fromHtml(title + getString(header)));
+        else setTitle(Html.fromHtml(title + intent.getStringExtra("headerString")));
+
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "theme = " + theme);
+        setContentView(R.layout.activity_lesson);
     }
 
     void setWebView(StringBuilder sb){

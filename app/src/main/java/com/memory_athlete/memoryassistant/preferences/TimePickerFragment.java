@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant.reminders;
+package com.memory_athlete.memoryassistant.preferences;
 
 import android.app.Dialog;
 import android.app.DialogFragment;

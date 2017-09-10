@@ -10,7 +10,6 @@ import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +21,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 
+import timber.log.Timber;
+
 public class WriteFile extends AppCompatActivity {
     private final static String LOG_TAG = "\tWriteFile: ";
     String path;
@@ -29,24 +30,10 @@ public class WriteFile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
-        switch (theme){
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
-        }
-        setContentView(R.layout.activity_write_file);
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         Intent intent = getIntent();
-        String header = intent.getStringExtra("mHeader");
-        header = header.substring(0, header.length() - 4);
-        setTitle(Html.fromHtml(title + header));
+        theme(intent);
+
         path = intent.getStringExtra("path");
         if (intent.getBooleanExtra("name", true)) {
             ((EditText) findViewById(R.id.f_name)).setText(getTitle().toString());
@@ -62,7 +49,7 @@ public class WriteFile extends AppCompatActivity {
                 }
                 br.close();
                 ((EditText) findViewById(R.id.my_space_editText)).setText(text);
-                findViewById(R.id.saveFAB).setVisibility(View.VISIBLE);
+                //findViewById(R.id.saveFAB).setVisibility(View.VISIBLE);
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
@@ -78,26 +65,42 @@ public class WriteFile extends AppCompatActivity {
         return true;
     }
 
-    /*@Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-        if (mCurrentPetUri == null) {
-            MenuItem menuItem = menu.findItem(R.id.action_delete);
-            menuItem.setVisible(false);
-        }
-        return true;
-    }*/
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //switch (item.getItemId()) {
         //    case R.id.action_delete:
         File file = new File(path + File.separator + getTitle().toString() + ".txt");
         return !file.exists() || file.delete();
-//}
     }
 
-    public void save(View view) {
+    @Override
+    public void onBackPressed() {
+        save();
+        super.onBackPressed();
+    }
+
+    protected void theme(Intent intent){
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
+        switch (theme){
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title="<font color=#FFFFFF>";
+        }
+        setContentView(R.layout.activity_write_file);
+        String header = intent.getStringExtra("mHeader");
+        if(header==null) header = "New";
+        //header = header.substring(0, header.length() - 4);
+        setTitle(Html.fromHtml(title + header));
+    }
+
+    public void save() {
         String string = ((EditText) findViewById(R.id.my_space_editText)).getText().toString();
         String fname = ((EditText) findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {

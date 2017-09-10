@@ -57,30 +57,16 @@ public class Disciplines extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Timber.plant(new Timber.DebugTree());
-
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-                title = "<font color=#FFFFFF>";
-        }
+        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
 
         Intent intent = getIntent();
         Timber.i("0 means error in getting title resource string ID through intent");
-        setTitle(Html.fromHtml(title + getString(intent.getIntExtra("nameID", 0))));
+        theme(intent);
 
         if (getString(intent.getIntExtra("nameID", 0)) == getString(R.string.e))
             hasStandard = false;
 
-        Timber.i("dictionary loads before the contentview is set");
+        Timber.i("dictionary loads before the contentView is set");
         if (!intent.getBooleanExtra("hasAsyncTask", false)) {
             setContentView(R.layout.activity_disciplines);
             setButtons();
@@ -106,6 +92,23 @@ public class Disciplines extends AppCompatActivity {
         a.add(0);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         Timber.v("Activity Created");
+    }
+
+    protected void theme(Intent intent) {
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        switch (theme) {
+            case "Dark":
+                setTheme(R.style.dark);
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                setTheme(R.style.light);
+                title = "<font color=#FFFFFF>";
+        }
+        setTitle(Html.fromHtml(title + getString(intent.getIntExtra("nameID", 0))));
     }
 
     protected void levelSpinner() {
@@ -183,6 +186,7 @@ public class Disciplines extends AppCompatActivity {
         a.set(2, 1);
         (new MyAsyncTask()).execute(a);
         findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
+        findViewById(R.id.level).setVisibility(View.GONE);
         findViewById(R.id.time).setVisibility(View.GONE);
         findViewById(R.id.start).setVisibility(View.GONE);
         findViewById(R.id.no_of_values).setVisibility(View.GONE);
@@ -301,13 +305,14 @@ public class Disciplines extends AppCompatActivity {
         (findViewById(R.id.no_of_values)).setVisibility(View.VISIBLE);
         (findViewById(R.id.group)).setVisibility(View.VISIBLE);
         (findViewById(R.id.time)).setVisibility(View.VISIBLE);
-        if (hasStandard)
+        if (hasStandard) {
             findViewById(R.id.standard_custom_radio_group).setVisibility(View.VISIBLE);
+            findViewById(R.id.level).setVisibility(View.VISIBLE);
+        }
         ((RadioGroup) findViewById(R.id.time)).clearCheck();
         ((TextView) findViewById(R.id.random_values)).setText("");
         isTimerRunning = false;
     }
-
 
     protected void setButtons() {
         if (BuildConfig.DEBUG) Log.i(LOG_TAG, "setButtons entered");

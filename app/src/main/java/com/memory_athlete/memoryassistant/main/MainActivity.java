@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.compat.BuildConfig;
@@ -24,6 +25,8 @@ import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
 import java.util.ArrayList;
 
+import timber.log.Timber;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "MainActivity";
@@ -31,10 +34,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        Log.i(LOG_TAG, "BuildConfig.DEBUG is " + BuildConfig.DEBUG);
+        theme();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        e.putLong("last_opened", System.currentTimeMillis());
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Last opened on" + System.currentTimeMillis());
+        e.apply();
+        ReminderUtils.scheduleReminder(this);
+       // theme();
+    }
+
+    protected void theme(){
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
         switch (theme){
             case "Dark":
                 setTheme(R.style.dark);
+                Log.i(LOG_TAG, String.valueOf(((ColorDrawable) (this.getWindow().getDecorView()).getBackground()).getColor()));
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff333333);
                 break;
             case "Night":
                 setTheme(R.style.pitch);
@@ -42,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xffeaeaea);
                 title="<font color=#FFFFFF>";
         }
         setContentView(R.layout.activity_main);
@@ -112,15 +135,5 @@ public class MainActivity extends AppCompatActivity {
             return listItemView;
         }
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        e.putLong("last_opened", System.currentTimeMillis());
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Last opened on" + System.currentTimeMillis());
-        e.apply();
-        ReminderUtils.scheduleReminder(this);
     }
 }

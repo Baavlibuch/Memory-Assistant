@@ -1,0 +1,27 @@
+<h2></h2>
+
+<p>Peak factor $$I_0/I_{rms}$$</p>
+<p>Form factor $$I_{rms}/I{av}$$</p>
+<p>Admittance $$Y=1/Z$$</p>
+<p>Susceptance $$B=1/X$$</p>
+<p>Reactive power $$Q=I^2X$$</p>
+<p>Active power $$W=I^2/R$$</p>
+<p>Apparent/complex power $$S=I^2/Z$$</p>
+<p>Circuit volt-amperes $$S=VI=I^2Z=P+iQ=(P^2+Q^2)^{1/2}\tan ^{-1}{Q/P}$$</p>
+<p>$$PF=P/S=\cos θ=R/Z=V_R/V$$</p>
+<p>$$ω=1/√{LC}=2πf$$</p>
+<p>$$QF=V_L/V_R={ω_0L}/R=1/R√{L/C}=V_C/V_R$$</p>
+<p>$f'$ at $I=I_0/√2$</p>
+<p>$$ω'=ω_0±R/{2L}$$</p>
+<p>Selectivity $${\Δ f}/f_0$$</p>
+<p>Parallel $$θ=\tan ^{-1}{I_1\sin θ_1+I_2\sin θ_2}/{I_1\cos θ_1+I_2\cos θ_2}$$</p>
+<p>$$I_0=V/{L/{CR}}$$ $$ω_0=√{1/{LC}-R^2/L^2}$$</p>
+<p>Dynamic Impedance $$L/{CR}=\max Z$$</p>
+<p>$$Q_F=I_L/I_0=I_C/I_0=1/R√{L/C}$$</p>
+
+<p><b>Star</b> ($V_L$ leads by $30°$)</p>
+<p>$$V_L=√3V_{Ph}$$ $$I_L=I_{Ph}$$ $$3V_{Ph}I_{Ph}\cos θ=√3V_LI_L\cos θ$$</p>
+<p><b>Delta</b> ($I_L$ lags by $30°$)</p>
+<p>$$V_L=V_{Ph}$$ $$I_L=√3I_{Ph}$$ $$P=3V_{Ph}I_{Ph}\cos θ=√3V_LI_L\cos θ$$</p>
+<p><b>Wattmeter</b>: cc: VC: neutral</p>
+<p>$$P_1=3W$$ $$P_2=I_RV_{RN}=I_BV_{BN}+I_YV_{YN}$$</p>

@@ -6,11 +6,10 @@
         android:key="@string/remind"
         android:title="@string/remind"/>
 
-    <com.memory_athlete.memoryassistant.reminders.TimePreference
+    <com.memory_athlete.memoryassistant.preferences.TimePreference
         android:defaultValue="@string/default_time"
         android:key="@string/periodic"
-        android:title="@string/periodic"
-        />
+        android:title="@string/periodic" />
 
     <ListPreference
         android:defaultValue="@string/app_theme"
@@ -18,5 +17,10 @@
         android:title="@string/theme"
         android:entries="@array/themes"
         android:entryValues="@array/themes"/>
+
+    <com.memory_athlete.memoryassistant.preferences.ClearPracticePreference
+        android:title="@string/clear_practice"
+        android:summary="Clear all practice files"
+        android:key="abc"/>
 
 </PreferenceScreen>
