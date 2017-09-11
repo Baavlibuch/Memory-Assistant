@@ -18,6 +18,7 @@ import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.services.ReminderJobService;
 
 import java.util.Calendar;
+import java.util.Random;
 
 /**
  * Created by Manik on 26/08/17.
@@ -59,7 +60,7 @@ public class ReminderUtils {
                     s = "seconds";
             }
             if (diff1 < HOUR) diff1 += HOUR;
-
+            int rand = new Random().nextInt(HOUR/2);
 
             dispatcher.cancel(REMINDER_JOB_TAG + i);
             Job constraintReminderJob = dispatcher.newJobBuilder()
@@ -67,7 +68,7 @@ public class ReminderUtils {
                     .setTag(REMINDER_JOB_TAG + i)
                     .setLifetime(Lifetime.FOREVER)
                     .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1 - HOUR, diff1 + HOUR))
+                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR))
                     .setReplaceCurrent(true)
                     .build();
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
@@ -133,7 +134,9 @@ public class ReminderUtils {
                     diff1 = diff + 12 * MONTH;
                     s = "year";
             }
+            bundle.putString("Unit", s);
             if (diff1 < HOUR) diff1 += HOUR;
+            int rand = new Random().nextInt(HOUR/2);
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
 
             Job constraintReminderJob = dispatcher.newJobBuilder()
@@ -141,7 +144,7 @@ public class ReminderUtils {
                     .setTag(fname + i)
                     .setLifetime(Lifetime.FOREVER)
                     .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1 - HOUR, diff1 + HOUR))
+                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR))
                     .setReplaceCurrent(true)
                     .setExtras(bundle)
                     .build();

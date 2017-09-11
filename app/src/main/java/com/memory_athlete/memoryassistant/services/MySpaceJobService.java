@@ -20,7 +20,7 @@ public class MySpaceJobService extends JobService {
             protected Object doInBackground(Object[] objects) {
                 if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered doInBackground()");
                 Bundle bundle = job.getExtras();
-                if(bundle!=null) {
+                if (bundle != null) {
                     String fname = bundle.getString("fname");
                     NotificationUtils.createMySpaceNotification(MySpaceJobService.this, fname);
                     //ReminderTask.executeTask(context, ReminderTask.);
@@ -35,7 +35,8 @@ public class MySpaceJobService extends JobService {
             }
         };
         mBackgroundTask.execute();
-        return false;    }
+        return false;
+    }
 
     @Override
     public boolean onStopJob(JobParameters job) {

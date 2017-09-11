@@ -25,12 +25,13 @@ import timber.log.Timber;
 
 public class WriteFile extends AppCompatActivity {
     private final static String LOG_TAG = "\tWriteFile: ";
+    private boolean name = false;
     String path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         Intent intent = getIntent();
         theme(intent);
 
@@ -70,6 +71,7 @@ public class WriteFile extends AppCompatActivity {
         //switch (item.getItemId()) {
         //    case R.id.action_delete:
         File file = new File(path + File.separator + getTitle().toString() + ".txt");
+        finish();
         return !file.exists() || file.delete();
     }
 
@@ -79,9 +81,10 @@ public class WriteFile extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    protected void theme(Intent intent){
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
-        switch (theme){
+    protected void theme(Intent intent) {
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+
+        switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
@@ -91,21 +94,26 @@ public class WriteFile extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
+                title = "<font color=#FFFFFF>";
         }
         setContentView(R.layout.activity_write_file);
         String header = intent.getStringExtra("mHeader");
-        if(header==null) header = "New";
+        if (header == null) header = "New";
         //header = header.substring(0, header.length() - 4);
         setTitle(Html.fromHtml(title + header));
     }
 
-    public void save() {
+    public boolean save() {
         String string = ((EditText) findViewById(R.id.my_space_editText)).getText().toString();
         String fname = ((EditText) findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {
-            Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show();
-            return;
+            if (!name) {
+                Toast.makeText(this, "please enter a name", Toast.LENGTH_SHORT).show();
+                name = true;
+                return false;
+            }
+            Toast.makeText(this, "Didn't save nameless file", Toast.LENGTH_SHORT).show();
+            return true;
         }
         String dirPath = path;
         fname = path + File.separator + fname + ".txt";
@@ -124,7 +132,8 @@ public class WriteFile extends AppCompatActivity {
 
                 SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
                 e.putLong(fname, System.currentTimeMillis());
-                if (BuildConfig.DEBUG) Log.v(LOG_TAG, fname + "made at " + System.currentTimeMillis());
+                if (BuildConfig.DEBUG)
+                    Log.v(LOG_TAG, fname + "made at " + System.currentTimeMillis());
                 e.apply();
                 ReminderUtils.mySpaceReminder(this, fname);
             } catch (Exception e) {
@@ -134,6 +143,6 @@ public class WriteFile extends AppCompatActivity {
         } else Toast.makeText(getApplicationContext(),
                 "Couldn't find the parent directory!", Toast.LENGTH_SHORT).show();
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
-
+        return true;
     }
 }

@@ -14,6 +14,8 @@ import android.util.Log;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;
 
+import java.io.File;
+
 import static com.memory_athlete.memoryassistant.R.string.app_name;
 
 /**
@@ -37,7 +39,8 @@ abstract class NotificationUtils {
     }
 
     static void createNotification(Context context) {
-
+        if(!PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(context.getString(R.string.remind), false)) return;
         String text = text(context);
         if (BuildConfig.DEBUG) Log.d(LOG_TAG, text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
@@ -78,8 +81,11 @@ abstract class NotificationUtils {
         return "You haven't practiced for a week!";
     }
 
-    static void createMySpaceNotification(Context context, String fname) {
-        String text = mySpaceText(context, fname);
+    static void createMySpaceNotification(Context context, String fPath) {
+        if(!PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(context.getString(R.string.remind), false)) return;
+        if(!new File(fPath).exists()) return;
+        String text = mySpaceText(context, fPath);
         if (BuildConfig.DEBUG) Log.d(LOG_TAG, text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
@@ -114,15 +120,14 @@ abstract class NotificationUtils {
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 
-
-        if (diff / DAY < 2) return "It's time to revise " + fname;
-        if (diff / DAY < 5) return "It's been a few days since you learned " + fname;
-        if (diff / WEEK < 2) return "You learned " + fname + " a week ago. Consider revising.";
-        if (diff / MONTH < 1) return "You learned " + fname + " a month ago. Consider revising.";
+        if (diff / DAY < 2) return "You should revise " + fname + " now";
+        if (diff / DAY < 5) return "It's been a few days since you opened " + fname;
+        if (diff / WEEK < 2) return "You opened " + fname + " a week ago. Consider revising";
+        if (diff / MONTH < 1) return "You learned " + fname + " a month ago. Consider revising";
         if (diff / MONTH < 6)
-            return "It's been about 3 months since you created " + fname + ". You should revise now!";
+            return "It's been about 3 months since you created " + fname + ". Consider revising";
         if (diff / MONTH < 12)
-            return "It's been about 6 months since you created " + fname + ". You should revise now!";
-        return "A year ago you created " + fname + "! Revise it now and you'll never forget it!";
+            return "It's been about 6 months since you created " + fname + ". Consider revising";
+        return "A year ago you created " + fname + ". Consider revising";
     }
 }
