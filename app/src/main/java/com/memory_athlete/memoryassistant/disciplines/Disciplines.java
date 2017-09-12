@@ -63,7 +63,7 @@ public class Disciplines extends AppCompatActivity {
         Timber.i("0 means error in getting title resource string ID through intent");
         theme(intent);
 
-        if (getString(intent.getIntExtra("nameID", 0)) == getString(R.string.e))
+        if (getString(intent.getIntExtra("nameID", 0)) == getString(R.string.cards))
             hasStandard = false;
 
         Timber.i("dictionary loads before the contentView is set");

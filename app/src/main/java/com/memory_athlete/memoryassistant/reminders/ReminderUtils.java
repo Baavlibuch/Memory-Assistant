@@ -59,17 +59,17 @@ public class ReminderUtils {
                     diff1 = diff;
                     s = "seconds";
             }
-            if (diff1 < HOUR) diff1 += HOUR;
             int rand = new Random().nextInt(HOUR/2);
+            if (diff1 < rand) diff1 += rand;
 
             dispatcher.cancel(REMINDER_JOB_TAG + i);
             Job constraintReminderJob = dispatcher.newJobBuilder()
                     .setService(ReminderJobService.class)
                     .setTag(REMINDER_JOB_TAG + i)
                     .setLifetime(Lifetime.FOREVER)
-                    .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR))
-                    .setReplaceCurrent(true)
+                    .setRecurring(true)
+                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR - rand))
+                    .setReplaceCurrent(false)
                     .build();
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
             //.setConstraints()
@@ -135,17 +135,17 @@ public class ReminderUtils {
                     s = "year";
             }
             bundle.putString("Unit", s);
-            if (diff1 < HOUR) diff1 += HOUR;
             int rand = new Random().nextInt(HOUR/2);
+            if (diff1 < rand) diff1 += rand;
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
 
             Job constraintReminderJob = dispatcher.newJobBuilder()
                     .setService(ReminderJobService.class)
                     .setTag(fname + i)
                     .setLifetime(Lifetime.FOREVER)
-                    .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR))
-                    .setReplaceCurrent(true)
+                    .setRecurring(true)
+                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR - rand))
+                    .setReplaceCurrent(false)
                     .setExtras(bundle)
                     .build();
             //.setConstraints()

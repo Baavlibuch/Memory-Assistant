@@ -18,7 +18,7 @@
     <string name="numbers">Numbers</string>
     <string name="c">Words</string>
     <string name="d">Names</string>
-    <string name="e">Cards</string>
+    <string name="cards">Cards</string>
     <string name="binary">Binary Digits</string>
     <string name="g">Places</string>
     <string name="h">Dates</string>
@@ -101,7 +101,7 @@
     <string name="major_system">The Major System</string>
     <string name="equations">Equations</string>
     <string name="derivations">Derivations</string>
-    <string name="checkout">Check These Out!</string>
+    <string name="checkout">There\'s more to learn</string>
     <string name="pao">The PAO Memory System</string>
     <string name="wardrobe_method">Wardrobe Method</string>
 
@@ -109,5 +109,8 @@
     <string name="drop_down">Expand</string>
     <string name="chose_level">Chose level</string>
     <string name="clear_practice">Clear all practice cache</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

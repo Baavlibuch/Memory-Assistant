@@ -42,7 +42,7 @@ import static com.memory_athlete.memoryassistant.R.layout.activity_recall;
 import static com.memory_athlete.memoryassistant.R.string.numbers;
 import static com.memory_athlete.memoryassistant.R.string.binary;
 import static com.memory_athlete.memoryassistant.R.string.c;
-import static com.memory_athlete.memoryassistant.R.string.e;
+import static com.memory_athlete.memoryassistant.R.string.cards;
 import static com.memory_athlete.memoryassistant.R.string.k;
 import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
 import static java.lang.Integer.parseInt;
@@ -118,7 +118,7 @@ public class Recall extends AppCompatActivity {
         categories = new ArrayList<>();
         categories.add(getString(R.string.cd));
         categories.add(getString(binary));
-        categories.add(getString(e));
+        categories.add(getString(cards));
         categories.add(getString(k));
         categories.add(getString(R.string.d));
         categories.add(getString(numbers));
@@ -343,7 +343,7 @@ public class Recall extends AppCompatActivity {
     }
 
     void setResponseLayout() {
-        if (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString() == getString(R.string.e)) {
+        if (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString() == getString(R.string.cards)) {
             findViewById(R.id.result).setVisibility(View.GONE);
             findViewById(R.id.cards_responses).setVisibility(View.VISIBLE);
 
@@ -374,7 +374,7 @@ public class Recall extends AppCompatActivity {
 
             while (scanner.hasNext()) {
                 string = scanner.next();
-                if (mDiscipline == getString(numbers) || mDiscipline == getString(e))
+                if (mDiscipline == getString(numbers) || mDiscipline == getString(cards))
                     answers.add(String.valueOf(parseInt(string.trim())));
                     //else if (mDiscipline == getString(e))
                 else if (mDiscipline.equalsIgnoreCase(getString(R.string.k)) ||
@@ -411,7 +411,7 @@ public class Recall extends AppCompatActivity {
                     File.separator + mDiscipline + File.separator +
                     mSpinner.getSelectedItem().toString())).useDelimiter("\t|\t   \t|\n|\n\n");
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "scanner created");
-            if (mDiscipline == getString(R.string.e)) {
+            if (mDiscipline == getString(R.string.cards)) {
                 String[] cards = makeCardString();
                 while (scanner.hasNext())
                     sb.append(cards[Integer.parseInt(scanner.next())]).append(whitespace);

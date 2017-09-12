@@ -29,7 +29,7 @@ public class ClearPracticePreference extends Preference {
                 new File(path + resources.getString(R.string.numbers)),
                 new File(path + resources.getString(R.string.c)),
                 new File(path + resources.getString(R.string.d)),
-                new File(path + resources.getString(R.string.e)),
+                new File(path + resources.getString(R.string.cards)),
                 new File(path + resources.getString(R.string.binary)),
                 new File(path + resources.getString(R.string.g)),
                 new File(path + resources.getString(R.string.h)),

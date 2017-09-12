@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.compat.BuildConfig;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
 
@@ -35,11 +37,15 @@ public class Apply extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        //if(BuildConfig.DEBUG)
+        Timber.plant(new Timber.DebugTree());
         Intent intent = getIntent();
         theme();
         pathList.add(intent.getStringExtra(getString(R.string.apply)));
 
+        MySpaceFragment mySpaceFragment = new MySpaceFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.my_space_fragment, mySpaceFragment).commit();
         setAdapter();
     }
 
