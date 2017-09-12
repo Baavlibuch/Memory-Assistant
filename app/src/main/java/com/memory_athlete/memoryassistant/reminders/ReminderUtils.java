@@ -59,8 +59,6 @@ public class ReminderUtils {
                     diff1 = diff;
                     s = "seconds";
             }
-            int rand = new Random().nextInt(HOUR/2);
-            if (diff1 < rand) diff1 += rand;
 
             dispatcher.cancel(REMINDER_JOB_TAG + i);
             Job constraintReminderJob = dispatcher.newJobBuilder()
@@ -68,7 +66,7 @@ public class ReminderUtils {
                     .setTag(REMINDER_JOB_TAG + i)
                     .setLifetime(Lifetime.FOREVER)
                     .setRecurring(true)
-                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR - rand))
+                    .setTrigger(Trigger.executionWindow(diff1, diff1 + HOUR))
                     .setReplaceCurrent(false)
                     .build();
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
@@ -144,7 +142,7 @@ public class ReminderUtils {
                     .setTag(fname + i)
                     .setLifetime(Lifetime.FOREVER)
                     .setRecurring(true)
-                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR - rand))
+                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR))
                     .setReplaceCurrent(false)
                     .setExtras(bundle)
                     .build();
