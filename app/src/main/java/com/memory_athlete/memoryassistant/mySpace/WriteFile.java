@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.compat.BuildConfig;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
@@ -31,7 +32,7 @@ public class WriteFile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         Intent intent = getIntent();
         theme(intent);
 
@@ -68,11 +69,16 @@ public class WriteFile extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //switch (item.getItemId()) {
-        //    case R.id.action_delete:
-        File file = new File(path + File.separator + getTitle().toString() + ".txt");
-        finish();
-        return !file.exists() || file.delete();
+        switch (item.getItemId()) {
+            case R.id.action_delete:
+                File file = new File(path + File.separator + getTitle().toString() + ".txt");
+                finish();
+                return !file.exists() || file.delete();
+            case android.R.id.home:
+                save();
+                NavUtils.navigateUpFromSameTask(this);
+        }
+        return true;
     }
 
     @Override
@@ -141,7 +147,7 @@ public class WriteFile extends AppCompatActivity {
             }
         } else Toast.makeText(getApplicationContext(),
                 R.string.try_again, Toast.LENGTH_SHORT).show();
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
+        Timber.v("path = " + path);
         return true;
     }
 }

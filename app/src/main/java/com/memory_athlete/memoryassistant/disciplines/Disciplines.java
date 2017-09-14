@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
-import android.support.compat.BuildConfig;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -29,6 +28,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.recall.Recall;
@@ -105,9 +105,10 @@ public class Disciplines extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //switch (item.getItemId()) {
-        //    case R.id.action_delete:
-        startActivity(new Intent(this, MySpace.class));
+        switch (item.getItemId()) {
+            case R.id.visit_my_space:
+                startActivity(new Intent(this, MySpace.class));
+        }
         return true;
     }
 
