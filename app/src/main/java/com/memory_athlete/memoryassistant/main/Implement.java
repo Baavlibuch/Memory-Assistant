@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 import com.memory_athlete.memoryassistant.R;
@@ -90,12 +89,12 @@ public class Implement extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Item item = arrayList.get(position);
                     boolean webView, hasList;
-                    if(item.mFileName.equals("Vocabulary.txt")) {
-                        webView=false;
-                        hasList=true;
-                    } else{
-                        webView=true;
-                        hasList=false;
+                    if (item.mFileName.equals("Vocabulary.txt")) {
+                        webView = false;
+                        hasList = true;
+                    } else {
+                        webView = true;
+                        hasList = false;
                     }
 
                     if (item.mFileName.endsWith(".txt")) {
@@ -140,7 +139,7 @@ public class Implement extends AppCompatActivity {
 
         Item(String item, boolean wV) {
             mFileName = item;
-            mItem = item.endsWith(".txt") ? item.substring(0, item.length()-4) : item;
+            mItem = item.endsWith(".txt") ? item.substring(0, item.length() - 4) : item;
             webView = wV;
         }
     }

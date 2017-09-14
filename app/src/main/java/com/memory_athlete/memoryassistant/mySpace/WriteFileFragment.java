@@ -1,21 +1,14 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
@@ -31,10 +24,10 @@ import timber.log.Timber;
 
 public class WriteFileFragment extends Fragment {
     private final static String LOG_TAG = "\tWriteFile: ";
-    private boolean name = false;
+    private String mName;
     String path;
 
-    OnImageClickListener mCallback;
+    /*OnImageClickListener mCallback;
 
     public interface OnImageClickListener {
         void onImageSelected(int position);
@@ -48,8 +41,7 @@ public class WriteFileFragment extends Fragment {
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + "must implement OnImageClickListener");
         }
-    }
-
+    }*/
 
     public WriteFileFragment() {
     }
@@ -69,25 +61,87 @@ public class WriteFileFragment extends Fragment {
         if (intent.getBooleanExtra("name", true)) {
             ((EditText) findViewById(R.id.f_name)).setText(getTitle().toString());
             StringBuilder text = new StringBuilder();
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(new File(
-                        path + File.separator + getTitle().toString() + ".txt")));
-                String line;
 
-                while ((line = br.readLine()) != null) {
-                    text.append(line);
-                    text.append('\n');
-                }
-                br.close();
-                ((EditText) findViewById(R.id.my_space_editText)).setText(text);
-                //findViewById(R.id.saveFAB).setVisibility(View.VISIBLE);
+        Bundle bundle = getArguments();
+        path=bundle.getString("path");
+        mName =bundle.getString("mHeader");
+
+        ((EditText) rootView.findViewById(R.id.f_name)).setText(mName);
+        StringBuilder text = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(new File(
+                    path + File.separator + mName + ".txt")));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+            br.close();
+            ((EditText) rootView.findViewById(R.id.my_space_editText)).setText(text);
+            //findViewById(R.id.saveFAB).setVisibility(View.VISIBLE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+            //finish();
+        }
+
+        return rootView;
+    }
+
+    public boolean save(View rootView) {
+        String string = ((EditText) rootView.findViewById(R.id.my_space_editText)).getText().toString();
+        String dirPath = path;
+        String fname = path + File.separator + mName + ".txt";
+        if (BuildConfig.DEBUG) Log.d(LOG_TAG, "fname = " + fname);
+        File pDir = new File(dirPath);
+        boolean isDirectoryCreated = pDir.exists();
+        if (!isDirectoryCreated) {
+            isDirectoryCreated = pDir.mkdir();
+        }
+        if (isDirectoryCreated) {
+            try {
+                FileOutputStream outputStream = new FileOutputStream(new File(fname));
+                outputStream.write(string.getBytes());
+                outputStream.close();
+                Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+
+                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
+                e.putLong(fname, System.currentTimeMillis());
+                if (BuildConfig.DEBUG)
+                    Log.v(LOG_TAG, fname + "made at " + System.currentTimeMillis());
+                e.apply();
+                ReminderUtils.mySpaceReminder(getActivity(), fname);
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
-                finish();
+                Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
             }
-        }
-        //intent.getStringExtra()
+        } else Toast.makeText(getActivity(),
+                "Couldn't find the parent directory!", Toast.LENGTH_SHORT).show();
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
+        return true;
+    }
+
+
+    void back(View rootView){
+        rootView.findViewById(R.id.backFAB).setVisibility(View.VISIBLE);
+        rootView.findViewById(R.id.backFAB).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+    //{
+        //path = intent.getStringExtra("path");
+      //  intent.getStringExtra()
+    //}
+
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_write_file, menu);
+        return true;
     }
 
     @Override
@@ -124,9 +178,8 @@ public class WriteFileFragment extends Fragment {
         if (header == null) header = "New";
         //header = header.substring(0, header.length() - 4);
         setTitle(Html.fromHtml(title + header));
-    }
-*/
-
+    }*/
+/*
     public boolean save(View rootView) {
         String string = ((EditText) rootView.findViewById(R.id.my_space_editText)).getText().toString();
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
@@ -172,4 +225,5 @@ public class WriteFileFragment extends Fragment {
         Timber.v("path = " + path);
         return true;
     }
+    }*/
 }

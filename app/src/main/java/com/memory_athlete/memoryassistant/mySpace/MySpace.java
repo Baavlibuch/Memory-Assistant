@@ -37,6 +37,7 @@ public class MySpace extends AppCompatActivity {
         setTitle(title + getString(R.string.my_space));
         Timber.v("Title Set");
         listViewId++;
+        //findViewById(R.id.)
         //setAdapter();
     }
 
@@ -106,7 +107,7 @@ public class MySpace extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = finalArrayList.get(position);
-                Timber.v("item.mItem = " + item.mItem);
+                Timber.v("item.mPath = " + item.mItem);
                 if (listViewId == 1) {
                     dir = new File(getFilesDir().getAbsolutePath() + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
