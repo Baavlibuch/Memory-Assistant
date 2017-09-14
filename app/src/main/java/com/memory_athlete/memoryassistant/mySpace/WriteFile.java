@@ -117,7 +117,7 @@ public class WriteFile extends AppCompatActivity {
         }
         String dirPath = path;
         fname = path + File.separator + fname + ".txt";
-        if (BuildConfig.DEBUG) Log.d(LOG_TAG, "fname = " + fname);
+        Timber.v(LOG_TAG, "fname = " + fname);
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) {
@@ -128,7 +128,6 @@ public class WriteFile extends AppCompatActivity {
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
                 outputStream.write(string.getBytes());
                 outputStream.close();
-                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
 
                 SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
                 e.putLong(fname, System.currentTimeMillis());
@@ -138,10 +137,10 @@ public class WriteFile extends AppCompatActivity {
                 ReminderUtils.mySpaceReminder(this, fname);
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
         } else Toast.makeText(getApplicationContext(),
-                "Couldn't find the parent directory!", Toast.LENGTH_SHORT).show();
+                R.string.try_again, Toast.LENGTH_SHORT).show();
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
         return true;
     }

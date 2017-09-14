@@ -109,8 +109,7 @@
     <string name="drop_down">Expand</string>
     <string name="chose_level">Chose level</string>
     <string name="clear_practice">Clear all practice cache</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="visit_my_space">Visit My Space</string>
+    <string name="try_again">Try again</string>
 
 </resources>

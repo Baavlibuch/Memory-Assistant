@@ -19,8 +19,8 @@ android {
         applicationId "com.memory_athelte.memoryassistant"
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 8
-        versionName "0.7.8"
+        versionCode 9
+        versionName "0.7.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

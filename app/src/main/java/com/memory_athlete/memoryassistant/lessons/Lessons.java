@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.mySpace.MySpace;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -85,6 +88,20 @@ public class Lessons extends AppCompatActivity {
             ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
             findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_my_space, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //switch (item.getItemId()) {
+        //    case R.id.action_delete:
+        startActivity(new Intent(this, MySpace.class));
+        return true;
     }
 
     protected void theme(Intent intent){

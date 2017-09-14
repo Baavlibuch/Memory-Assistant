@@ -65,9 +65,9 @@ public class ReminderUtils {
                     .setService(ReminderJobService.class)
                     .setTag(REMINDER_JOB_TAG + i)
                     .setLifetime(Lifetime.FOREVER)
-                    .setRecurring(true)
+                    .setRecurring(false)
                     .setTrigger(Trigger.executionWindow(diff1, diff1 + HOUR))
-                    .setReplaceCurrent(false)
+                    .setReplaceCurrent(true)
                     .build();
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
             //.setConstraints()
@@ -133,17 +133,15 @@ public class ReminderUtils {
                     s = "year";
             }
             bundle.putString("Unit", s);
-            int rand = new Random().nextInt(HOUR/2);
-            if (diff1 < rand) diff1 += rand;
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
 
             Job constraintReminderJob = dispatcher.newJobBuilder()
                     .setService(ReminderJobService.class)
                     .setTag(fname + i)
                     .setLifetime(Lifetime.FOREVER)
-                    .setRecurring(true)
-                    .setTrigger(Trigger.executionWindow(diff1 - rand, diff1 + HOUR))
-                    .setReplaceCurrent(false)
+                    .setRecurring(false)
+                    .setTrigger(Trigger.executionWindow(diff1, diff1 + HOUR))
+                    .setReplaceCurrent(true)
                     .setExtras(bundle)
                     .build();
             //.setConstraints()

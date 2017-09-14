@@ -4,22 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.memory_athlete.memoryassistant.main.Apply"
     android:orientation="vertical"
-    tools:context="com.memory_athlete.memoryassistant.main.Apply">
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/my_space_fragment"
-        />
-
-    <LinearLayout
-        android:id="@+id/apply_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical" />
+    android:id="@+id/apply_layout">
 
 </LinearLayout>
