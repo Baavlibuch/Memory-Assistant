@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +13,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
 
 import java.util.ArrayList;
-
-import timber.log.Timber;
 
 
 public class Learn extends AppCompatActivity {
@@ -28,13 +24,14 @@ public class Learn extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         theme();
+        setContentView(R.layout.activity_learn);
+        setTitle(getString(R.string.learn));
         setAdapter();
     }
 
     protected void theme(){
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme){
             case "Dark":
                 setTheme(R.style.dark);
@@ -45,11 +42,7 @@ public class Learn extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
         }
-        setContentView(R.layout.activity_learn);
-        setTitle(Html.fromHtml(title + getString(R.string.learn)));
-
     }
 
     public void setAdapter() {

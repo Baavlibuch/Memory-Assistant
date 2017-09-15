@@ -5,28 +5,25 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
-import timber.log.Timber;
-
 public class Preferences extends AppCompatActivity {
-    String theme;
+    String mTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        mTheme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         theme();
+        setContentView(R.layout.activity_preferences);
+        setTitle(getString(R.string.preferences));
     }
 
     protected void theme() {
-        theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        String title = "";
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -37,10 +34,7 @@ public class Preferences extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title = "<font color=#FFFFFF>";
         }
-        setContentView(R.layout.activity_preferences);
-        setTitle(Html.fromHtml(title + getString(R.string.preferences)));
     }
 
     public static class MemoryPreferenceFragment extends PreferenceFragment implements
@@ -52,7 +46,7 @@ public class Preferences extends AppCompatActivity {
             addPreferencesFromResource(R.xml.settings_main);
 
             bindPreferenceSummaryToValue(findPreference(getString(R.string.periodic)));
-            //bindPreferenceSummaryToValue(findPreference(getString(R.string.theme)));
+            //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
         }
@@ -89,8 +83,8 @@ public class Preferences extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-        if (PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(getString(R.string.theme), "AppTheme") != theme)
+        if (!PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), "AppTheme").equals(mTheme))
             Toast.makeText(this, "Please restart the app", Toast.LENGTH_SHORT).show();
     }
 }

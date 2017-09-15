@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +23,8 @@ import com.memory_athlete.memoryassistant.lessons.Lessons;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import timber.log.Timber;
+
 public class Implement extends AppCompatActivity {
     private static final String LOG_TAG = "\tApply";
     ArrayList<String> pathList = new ArrayList<>();
@@ -35,6 +36,9 @@ public class Implement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         theme();
+        setContentView(R.layout.activity_apply);
+        setTitle(getString(R.string.apply));
+        Timber.v("Title Set");
         pathList.add(intent.getStringExtra(getString(R.string.apply)));
 
         setAdapter();
@@ -53,7 +57,7 @@ public class Implement extends AppCompatActivity {
     }
 
     protected void theme(){
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -64,11 +68,7 @@ public class Implement extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title = "<font color=#FFFFFF>";
         }
-        setContentView(R.layout.activity_apply);
-        setTitle(Html.fromHtml(title + getString(R.string.apply)));
-        if (BuildConfig.DEBUG) Log.v(TAG, "Title Set");
     }
 
     public void setAdapter() {

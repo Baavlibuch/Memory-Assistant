@@ -9,7 +9,6 @@ import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,13 +59,13 @@ public class Disciplines extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
 
         Intent intent = getIntent();
         Timber.i("0 means error in getting title resource string ID through intent");
-        theme(intent);
+        theme();
+        setTitle(getString(intent.getIntExtra("nameID", 0)));
 
-        if (getString(intent.getIntExtra("nameID", 0)) == getString(R.string.cards))
+        if (getString(intent.getIntExtra("nameID", 0)).equals(getString(R.string.cards)))
             hasStandard = false;
 
         Timber.i("dictionary loads before the contentView is set");
@@ -112,8 +111,8 @@ public class Disciplines extends AppCompatActivity {
         return true;
     }
 
-    protected void theme(Intent intent) {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+    protected void theme() {
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -124,9 +123,7 @@ public class Disciplines extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title = "<font color=#FFFFFF>";
         }
-        setTitle(Html.fromHtml(title + getString(intent.getIntExtra("nameID", 0))));
     }
 
     protected void levelSpinner() {

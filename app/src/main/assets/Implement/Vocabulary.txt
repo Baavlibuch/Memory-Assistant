@@ -489,7 +489,7 @@
 <p><b>barcarole</b><br/>A boat-song of Venetian gondoliers.</p>
 <p><b>barograph</b><br/>An instrument that registers graphically and continuously the atmospheric pressure.</p>
 <p><b>barometer</b><br/>An instrument for indicating the atmospheric pressure per unit of surface.</p>
-<p><b>barring prep. Apart from.</p>
+<p><b>barring</b><br/>Apart from.</p>
 <p><b>baritone</b><br/>Having a register higher than bass and lower than tenor.</p>
 <p><b>bask</b><br/>To make warm by genial heat.</p>
 <p><b>bass</b><br/>Low in tone or compass.</p>
@@ -1256,7 +1256,7 @@
 <p><b>desperado</b><br/>One without regard for law or life.</p>
 <p><b>desperate</b><br/>Resorted to in a last extremity, or as if prompted by utter despair.</p>
 <p><b>despicable</b><br/>Contemptible.</p>
-<p><b>despite prep. In spite of.</p>
+<p><b>despite</b><br/>In spite of.</p>
 <p><b>despond</b><br/>To lose spirit, courage, or hope.</p>
 <p><b>despondent</b><br/>Disheartened.</p>
 <p><b>despot</b><br/>An absolute and irresponsible monarch.</p>

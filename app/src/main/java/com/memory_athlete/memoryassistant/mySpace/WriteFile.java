@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,9 +31,13 @@ public class WriteFile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         Intent intent = getIntent();
-        theme(intent);
+        theme();
+        setContentView(R.layout.activity_write_file);
+        String header = intent.getStringExtra("mHeader");
+        if (header == null) header = "New";
+        //header = header.substring(0, header.length() - 4);
+        setTitle(header);
 
         path = intent.getStringExtra("path");
         if (intent.getBooleanExtra("name", true)) {
@@ -87,9 +90,8 @@ public class WriteFile extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    protected void theme(Intent intent) {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
-
+    protected void theme() {
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -100,13 +102,7 @@ public class WriteFile extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title = "<font color=#FFFFFF>";
         }
-        setContentView(R.layout.activity_write_file);
-        String header = intent.getStringExtra("mHeader");
-        if (header == null) header = "New";
-        //header = header.substring(0, header.length() - 4);
-        setTitle(Html.fromHtml(title + header));
     }
 
     public boolean save() {

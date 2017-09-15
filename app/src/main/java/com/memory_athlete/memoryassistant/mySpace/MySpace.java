@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +33,10 @@ public class MySpace extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         theme();
+        setContentView(R.layout.activity_my_space);
+        setTitle(title + getString(R.string.my_space));
+        Timber.v("Title Set");
         listViewId++;
         //setAdapter();
     }
@@ -52,14 +53,18 @@ public class MySpace extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (listViewId==1) super.onBackPressed();
-        else {
+        if (listViewId != 0) {
             Timber.v("listViewId = " + listViewId);
             RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.my_space_relative_layout);
-            relativeLayout.removeViewAt(listViewId);
-            relativeLayout.findViewById(--listViewId).setVisibility(View.VISIBLE);
-            setTitle(Html.fromHtml(title + getString(R.string.my_space)));
+            if (relativeLayout.findViewById(listViewId) != null)
+                relativeLayout.removeViewAt(listViewId);
+            if (relativeLayout.findViewById(--listViewId) != null) {
+                relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
+                setTitle(title + getString(R.string.my_space));
+                return;
+            }
         }
+        super.onBackPressed();
     }
 
     protected void theme() {
@@ -74,12 +79,7 @@ public class MySpace extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title = "<font color=#FFFFFF>";
         }
-        setContentView(R.layout.activity_my_space);
-        setTitle(Html.fromHtml(title + getString(R.string.my_space)));
-        //path = intent.getStringExtra(getString(R.string.apply));
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Title Set");
     }
 
     public void setAdapter() {
@@ -118,7 +118,7 @@ public class MySpace extends AppCompatActivity {
                     dir = new File(getFilesDir().getAbsolutePath() + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
-                    setTitle(Html.fromHtml(title + item.mName));
+                    setTitle(title + item.mName);
                     findViewById(R.id.floatingActionButton).setVisibility(View.VISIBLE);
                     setAdapter();
                     Timber.v("going to id 1, listViewId = " + listViewId);

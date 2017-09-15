@@ -64,20 +64,21 @@ public class Recall extends AppCompatActivity {
     //static byte submitDoubt = 0;
     private int responseFormat = 0;
     private byte compareFormat = 0;
+    private int mSuitBackground;
 
     int correct = 0, wrong = 0, missed = 0;
     private StringBuilder mTextAnswer = null, mTextResponse = null;
     private String whitespace;
-    private int mSuitBackground;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
-
         Intent intent = getIntent();
         theme();
+        setContentView(activity_recall);
+        setTitle(getString(R.string.recall));
+        Timber.v("theme() complete");
         makeSpinner1(intent);
 
         findViewById(R.id.result).setVisibility(View.GONE);
@@ -93,7 +94,7 @@ public class Recall extends AppCompatActivity {
     }
 
     protected void theme(){
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -106,12 +107,8 @@ public class Recall extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title = "<font color=#FFFFFF>";
                 mSuitBackground=R.color.color_suit_background_light;
         }
-        setContentView(activity_recall);
-        setTitle(Html.fromHtml(title + getString(R.string.recall)));
-        Timber.v("theme() complete");
     }
 
     void makeSpinner1(final Intent intent) {
@@ -151,7 +148,7 @@ public class Recall extends AppCompatActivity {
         spinner.setSelection(0);
         mDiscipline = intent.getStringExtra("discipline");
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "discipline is " + mDiscipline);
-        if (mDiscipline != null && mDiscipline != "") {
+        if (mDiscipline != null && !mDiscipline.equals("")) {
             spinner.setSelection(categories.indexOf(mDiscipline));
         }
         Timber.v("spinner 1 set");
@@ -169,8 +166,8 @@ public class Recall extends AppCompatActivity {
     void makeSpinner2(Intent intent) {
         spinnerReset();
         final String discipline = ((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString();
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "item : = = " + discipline);
-        if (discipline == getString(R.string.cd)) return;
+        Timber.v("item : = = " + discipline);
+        if (discipline.equals(getString(R.string.cd))) return;
 
         final Spinner chose_file = (Spinner) findViewById(R.id.chose_file);
         File dir = new File(getFilesDir().getAbsolutePath() + File.separator + discipline);
@@ -184,7 +181,7 @@ public class Recall extends AppCompatActivity {
         }
         chose_file.setVisibility(View.VISIBLE);
         for (int i = files.length - 1; i >= 0; i--) {
-            if (BuildConfig.DEBUG) Log.d("Files", "FileName:" + files[i].getName());
+            Timber.d("FileName:" + files[i].getName());
             fileList.add(files[i].getName());
         }
         //chose_file.setAdapter(null);
@@ -195,7 +192,8 @@ public class Recall extends AppCompatActivity {
         chose_file.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (chose_file.getSelectedItem().toString() == getString(R.string.cf)) return;
+                if (chose_file.getSelectedItem()!=null &&
+                        chose_file.getSelectedItem().toString().equals(getString(R.string.cf))) return;
 
                 //getAnswers(spinner, item);
                 mSpinner = chose_file;
@@ -214,12 +212,13 @@ public class Recall extends AppCompatActivity {
             }
 
         });
-        if (intent != null && intent.getStringExtra("discipline") != "" &&
+        if (intent != null && intent.getStringExtra("discipline")!=null &&
+                !intent.getStringExtra("discipline").equals("") &&
                 intent.getBooleanExtra("file exists", false)) {
             chose_file.setSelection(1);
         }
 
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "spinner 2 set");
+        Timber.v("spinner 2 set");
     }
 
 
@@ -343,6 +342,7 @@ public class Recall extends AppCompatActivity {
     }
 
     void setResponseLayout() {
+        Timber.v(((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString());
         if (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString() == getString(R.string.cards)) {
             findViewById(R.id.result).setVisibility(View.GONE);
             findViewById(R.id.cards_responses).setVisibility(View.VISIBLE);
@@ -360,7 +360,7 @@ public class Recall extends AppCompatActivity {
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.reset).setVisibility(View.GONE);
 
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "responseLayout set");
+        Timber.v("responseLayout set");
     }
 
     void getAnswers(Spinner spinner) {
@@ -481,15 +481,14 @@ public class Recall extends AppCompatActivity {
 
 
     void compare(boolean words) {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Comparing answers and responses in background");
+        Timber.v("Comparing answers and responses in background");
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
-        whitespace = compareFormat > 0 ? "\n" : getString(R.string.tab);
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "whitespace = " + whitespace + ".");
+        whitespace = compareFormat > 0 ? "<br/>" : getString(R.string.tab) + " &nbsp ";
+        Timber.v("whitespace = " + whitespace + ".");
 
         for (int i = 0, j = 0; i < responses.size() && j < answers.size(); i++, j++) {
-            if (BuildConfig.DEBUG)
-                Log.v(LOG_TAG, "Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
+            Timber.v("Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
             if (missed > 8 && missed > correct) {
                 for (; i < responses.size(); i++)
                     mTextResponse.append("<font color=#FF0000>")
@@ -532,9 +531,10 @@ public class Recall extends AppCompatActivity {
     }
 
     boolean isMissOrWrong(int i, int j) {
-        boolean miss = false;
-        for (int l = 1; l <= (answers.size() - responses.size()) / 10; ) {
-            int match = 0, k = l;
+        boolean miss;
+
+            int match = 0, k;
+            k= i>15 ? -10 : 1;
             for (; k <= 10 && i + k < responses.size() && j + k < answers.size(); k++) {
                 //if (i + k < responses.size() && j + k < answers.size()) {
                 if (!responses.get(i + k).equals(" ")) {
@@ -552,16 +552,14 @@ public class Recall extends AppCompatActivity {
                 mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
                 miss = false;
-                break;
-            } else if (((float) match / k) <= 0.4) {
+            } else {
                 missed++;
                 miss = true;
-                break;
             }
-        }
         if (miss) {
             mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
-            mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>").append(" ").append(whitespace);
+            mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
+                    .append(" ").append(whitespace);
             //mTextResponse += /*"<font color=#FF0000>" +*/ responses.get(i) /*+ "</font>"*/ + " " + getString(R.string.tab);
         }
         return miss;

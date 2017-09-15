@@ -14,7 +14,7 @@
         android:icon="@mipmap/launcher_ic"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Default">
+        android:theme="@style/light">
 
         <!-- android:largeHeap="true" -->
 
@@ -30,11 +30,11 @@
 
         <!-- Main Activity options -->
 
-        <activity android:name="com.memory_athlete.memoryassistant.main.GetPro" />
-        <activity
+        <!--<activity android:name="com.memory_athlete.memoryassistant.main.GetPro" />-->
+        <!--<activity
             android:name="com.memory_athlete.memoryassistant.main.Login"
             android:parentActivityName="com.memory_athlete.memoryassistant.main.MainActivity"
-            tools:targetApi="jelly_bean" />
+            tools:targetApi="jelly_bean" />-->
         <activity
             android:name="com.memory_athlete.memoryassistant.main.Learn"
             android:parentActivityName="com.memory_athlete.memoryassistant.main.MainActivity"
@@ -63,7 +63,7 @@
         <activity
             android:name="com.memory_athlete.memoryassistant.mySpace.WriteFile"
             android:parentActivityName="com.memory_athlete.memoryassistant.mySpace.MySpace"
-             />
+            tools:targetApi="jelly_bean" />
         <activity android:name="com.memory_athlete.memoryassistant.lessons.Lessons" />
 
         <!-- Practice Disciplines -->
@@ -124,6 +124,7 @@
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
 
+        <!-- Services -->
 
         <service
             android:name="com.memory_athlete.memoryassistant.services.ReminderJobService"

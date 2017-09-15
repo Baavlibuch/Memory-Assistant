@@ -116,7 +116,7 @@ public class Lessons extends AppCompatActivity {
     }
 
     protected void theme(Intent intent) {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -127,14 +127,13 @@ public class Lessons extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title = "<font color=#FFFFFF>";
         }
         int header = intent.getIntExtra("mHeader", 0);
         if (header != 0)
-            setTitle(Html.fromHtml(title + getString(header)));
-        else setTitle(Html.fromHtml(title + intent.getStringExtra("headerString")));
+            setTitle(getString(header));
+        else setTitle(intent.getStringExtra("headerString"));
 
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "theme = " + theme);
+        Timber.v("theme = " + theme);
         setContentView(R.layout.activity_lesson);
     }
 
@@ -230,7 +229,7 @@ public class Lessons extends AppCompatActivity {
     ArrayList<Item> readAssetList(Intent intent) {
         Timber.v("readAssetList() entered");
         String header = "", line = intent.getStringExtra("fileString"); //For assets and filesDir
-        if (line == null || line == "") return null;
+        if (line == null || line.equals("")) return null;
         BufferedReader reader = null;
         StringBuilder sb = new StringBuilder();
         ArrayList<Item> letterList = new ArrayList<>();
@@ -302,7 +301,7 @@ public class Lessons extends AppCompatActivity {
         @NonNull
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getView() entered");
+            Timber.v("getView() entered");
             if (listItemView == null)
                 listItemView = LayoutInflater.from(getContext()).inflate(
                         R.layout.lesson_list_item, null, true);
@@ -329,12 +328,15 @@ public class Lessons extends AppCompatActivity {
             Timber.v("mHeader = " + item.mHeader);
 
             TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
-            View view = listItemView.findViewById(R.id.lesson_item_header_layout);
-            if (item.mHeader == null || item.mHeader.equals(""))
-                view.setVisibility(View.GONE);
-            else {
+            View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
+            if (item.mHeader == null || item.mHeader.equals("")) {
+                headerLayout.setVisibility(View.GONE);
+                textView1.setText(Html.fromHtml(item.mText));
+                textView1.setVisibility(View.VISIBLE);
+                Timber.v("body = " + item.mText);
+            } else {
                 textView.setText(Html.fromHtml(item.mHeader));
-                view.setOnClickListener(new View.OnClickListener() {
+                headerLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (textView1.getVisibility() == View.GONE) {

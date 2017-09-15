@@ -16,6 +16,8 @@ import com.memory_athlete.memoryassistant.main.MainActivity;
 
 import java.io.File;
 
+import timber.log.Timber;
+
 import static com.memory_athlete.memoryassistant.R.string.app_name;
 
 /**
@@ -42,7 +44,7 @@ abstract class NotificationUtils {
         if(!PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(context.getString(R.string.remind), false)) return;
         String text = text(context);
-        if (BuildConfig.DEBUG) Log.d(LOG_TAG, text);
+        Timber.d(text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 //.setLargeIcon(largeIcon(context))
@@ -76,9 +78,9 @@ abstract class NotificationUtils {
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 
-        if (diff / DAY < 1) return "Time to practice!";
-        if (diff / DAY < 2) return "You haven't practiced for a day!";
-        return "You haven't practiced for a week!";
+        if (diff / DAY < 1) return "Time to practice";
+        if (diff / DAY < 2) return "You haven't practiced for a day";
+        return "You haven't practiced for a week";
     }
 
     static void createMySpaceNotification(Context context, String fPath) {
@@ -86,7 +88,7 @@ abstract class NotificationUtils {
                 .getBoolean(context.getString(R.string.remind), false)) return;
         if(!new File(fPath).exists()) return;
         String text = mySpaceText(context, fPath);
-        if (BuildConfig.DEBUG) Log.d(LOG_TAG, text);
+        Timber.d(text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 //.setLargeIcon(largeIcon(context))
