@@ -71,6 +71,7 @@ public class Learn extends AppCompatActivity {
         list.add(new Item(R.string.major_system, Lessons.class, R.raw.lesson_major_system));
         list.add(new Item(R.string.pao, Lessons.class, R.raw.lesson_pao));
         list.add(new Item(R.string.wardrobe_method, Lessons.class, R.raw.lesson_wardrobes));
+        list.add(new Item(R.string.vocab, Lessons.class, R.raw.lesson_vocabulary));
         list.add(new Item(R.string.equations, Lessons.class, R.raw.lesson_equations));
         list.add(new Item(R.string.derivations, Lessons.class, R.raw.lesson_derivations));
 

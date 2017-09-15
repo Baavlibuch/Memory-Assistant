@@ -27,7 +27,7 @@ public class ClearPracticePreference extends Preference {
         File[] arr = {
                 new File(path + resources.getString(R.string.equations)),
                 new File(path + resources.getString(R.string.numbers)),
-                new File(path + resources.getString(R.string.c)),
+                new File(path + resources.getString(R.string.words)),
                 new File(path + resources.getString(R.string.d)),
                 new File(path + resources.getString(R.string.cards)),
                 new File(path + resources.getString(R.string.binary)),

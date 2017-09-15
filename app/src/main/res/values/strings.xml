@@ -15,7 +15,6 @@
 
     <string name="cd">Chose Discipline</string>
     <string name="numbers">Numbers</string>
-    <string name="c">Words</string>
     <string name="d">Names</string>
     <string name="cards">Cards</string>
     <string name="binary">Binary Digits</string>
@@ -104,6 +103,7 @@
     <string name="checkout">There\'s more to learn</string>
     <string name="pao">The PAO Memory System</string>
     <string name="wardrobe_method">Wardrobe Method</string>
+    <string name="vocab">Vocabulary</string>
 
     <string name="tab">\t</string>
     <string name="drop_down">Expand</string>

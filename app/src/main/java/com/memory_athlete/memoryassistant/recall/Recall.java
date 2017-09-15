@@ -40,7 +40,7 @@ import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static com.memory_athlete.memoryassistant.R.layout.activity_recall;
 import static com.memory_athlete.memoryassistant.R.string.binary;
-import static com.memory_athlete.memoryassistant.R.string.c;
+import static com.memory_athlete.memoryassistant.R.string.words;
 import static com.memory_athlete.memoryassistant.R.string.cards;
 import static com.memory_athlete.memoryassistant.R.string.digits;
 import static com.memory_athlete.memoryassistant.R.string.k;
@@ -122,7 +122,7 @@ public class Recall extends AppCompatActivity {
         categories.add(getString(R.string.d));
         categories.add(getString(numbers));
         categories.add(getString(R.string.g));
-        categories.add(getString(c));
+        categories.add(getString(words));
         //categories.add(getString(j));
         //categories.add(getString(R.string.h));
         //categories.add(getString(i));
