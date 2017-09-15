@@ -432,13 +432,7 @@ public class Disciplines extends AppCompatActivity {
         findViewById(R.id.recall).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Recall.class);
-                intent.putExtra("file exists", save());
-                intent.putExtra("discipline", "" + getTitle());
-                if (BuildConfig.DEBUG) {
-                    Log.v(LOG_TAG, "recalling" + getTitle());
-                }
-                startActivity(intent);
+                recall();
             }
         });
 
@@ -449,9 +443,15 @@ public class Disciplines extends AppCompatActivity {
         findViewById(R.id.chronometer).setVisibility(View.GONE);
         findViewById(clock_text).setVisibility(View.GONE);
         findViewById(R.id.prev).setVisibility(View.GONE);
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "setButtons complete");
-        }
+        Timber.v("setButtons complete");
+    }
+
+    protected void recall(){
+        Intent intent = new Intent(getApplicationContext(), Recall.class);
+        intent.putExtra("file exists", save());
+        intent.putExtra("discipline", "" + getTitle());
+        Timber.v("recalling" + getTitle());
+        startActivity(intent);
     }
 
     protected void timer() {

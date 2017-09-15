@@ -42,6 +42,7 @@ import static com.memory_athlete.memoryassistant.R.layout.activity_recall;
 import static com.memory_athlete.memoryassistant.R.string.binary;
 import static com.memory_athlete.memoryassistant.R.string.c;
 import static com.memory_athlete.memoryassistant.R.string.cards;
+import static com.memory_athlete.memoryassistant.R.string.digits;
 import static com.memory_athlete.memoryassistant.R.string.k;
 import static com.memory_athlete.memoryassistant.R.string.numbers;
 import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
@@ -55,8 +56,8 @@ public class Recall extends AppCompatActivity {
     private ArrayList<String> answers = new ArrayList<>();
     private ArrayList<String> responses = new ArrayList<>();
     ArrayList<String> categories;
-    private Spinner mSpinner=null;
-    private String mDiscipline=null;
+    private Spinner mSpinner = null;
+    private String mDiscipline = null;
     private int selectedSuit = 0;
     private int[] cardImageIds;
 
@@ -83,37 +84,38 @@ public class Recall extends AppCompatActivity {
 
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.reset).setVisibility(View.GONE);
-            Timber.v(LOG_TAG, "activity created");
+        Timber.v(LOG_TAG, "activity created");
     }
 
     @Override
     public void onBackPressed() {
-        if(findViewById(R.id.reset).getVisibility()==View.VISIBLE
-                || findViewById(R.id.response_layout).getVisibility()==View.VISIBLE) reset();
+        if (findViewById(R.id.reset).getVisibility() == View.VISIBLE
+                || findViewById(R.id.response_layout).getVisibility() == View.VISIBLE) reset();
         else super.onBackPressed();
     }
 
-    protected void theme(){
+    protected void theme() {
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
-                mSuitBackground=R.color.color_suit_background_dark;
+                mSuitBackground = R.color.color_suit_background_dark;
                 break;
             case "Night":
                 setTheme(R.style.pitch);
                 (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                mSuitBackground=R.color.color_suit_background_night;
+                mSuitBackground = R.color.color_suit_background_night;
                 break;
             default:
                 setTheme(R.style.light);
-                mSuitBackground=R.color.color_suit_background_light;
+                mSuitBackground = R.color.color_suit_background_light;
         }
     }
 
     void makeSpinner1(final Intent intent) {
         categories = new ArrayList<>();
         categories.add(getString(R.string.cd));
+        categories.add(getString(digits));
         categories.add(getString(binary));
         categories.add(getString(cards));
         categories.add(getString(k));
@@ -192,8 +194,9 @@ public class Recall extends AppCompatActivity {
         chose_file.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (chose_file.getSelectedItem()!=null &&
-                        chose_file.getSelectedItem().toString().equals(getString(R.string.cf))) return;
+                if (chose_file.getSelectedItem() != null &&
+                        chose_file.getSelectedItem().toString().equals(getString(R.string.cf)))
+                    return;
 
                 //getAnswers(spinner, item);
                 mSpinner = chose_file;
@@ -212,7 +215,7 @@ public class Recall extends AppCompatActivity {
             }
 
         });
-        if (intent != null && intent.getStringExtra("discipline")!=null &&
+        if (intent != null && intent.getStringExtra("discipline") != null &&
                 !intent.getStringExtra("discipline").equals("") &&
                 intent.getBooleanExtra("file exists", false)) {
             chose_file.setSelection(1);
@@ -320,21 +323,22 @@ public class Recall extends AppCompatActivity {
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Binary Digits":
+            case "Digits":
                 responseFormat = 3;
                 compareFormat = 0;
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Letters":
-                compareFormat = 0;
                 responseFormat = 3;
+                compareFormat = 0;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
                 break;
             case "Words":
             case "Names":
             case "Places":
-                compareFormat = 1;
                 responseFormat = 1;
+                compareFormat = 1;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_NONE);
                 break;
@@ -364,7 +368,7 @@ public class Recall extends AppCompatActivity {
     }
 
     void getAnswers(Spinner spinner) {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getAnswersEntered");
+        Timber.v("getAnswersEntered");
         try {
             String string;
 
@@ -377,13 +381,14 @@ public class Recall extends AppCompatActivity {
                 if (mDiscipline == getString(numbers) || mDiscipline == getString(cards))
                     answers.add(String.valueOf(parseInt(string.trim())));
                     //else if (mDiscipline == getString(e))
-                else if (mDiscipline.equalsIgnoreCase(getString(R.string.k)) ||
-                        mDiscipline.equalsIgnoreCase(getString(R.string.binary))) {
+                else if (mDiscipline.equalsIgnoreCase(getString(R.string.k))
+                        || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
+                        || mDiscipline.equalsIgnoreCase(getString(R.string.digits))) {
                     for (char c : string.toCharArray())
                         if (c != ' ') answers.add("" + c);
                 } else answers.add(string);
             }
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, String.valueOf(answers.size()));
+            Timber.v(String.valueOf(answers.size()));
             scanner.close();
         } catch (Exception e) {
             //Toast.makeText(this, "Couldn't read the saved answers", Toast.LENGTH_SHORT).show();
@@ -438,33 +443,36 @@ public class Recall extends AppCompatActivity {
 
         if (responseFormat == 3) {
             for (int i = 0; i < values.length(); i++) {
-                if (values.charAt(i) == ' ' || values.charAt(i) == '\n') continue;
+                if (values.charAt(i) == ' ' || values.charAt(i) == '\n'
+                        || values.charAt(i) == R.string.tab) continue;
                 responses.add(String.valueOf(values.charAt(i)));
+                Timber.v("response = " + String.valueOf(values.charAt(i)));
+            }
+        } else {
+            //while (responses.size() <= mResponsePosition) responses.add(" ");
+            char delimiter = (responseFormat == 0 ? ' ' : '\n');
+            for (int i = 0; i < values.length(); i++) {
+                if (!(values.charAt(i) == delimiter)) {
+                    value += values.charAt(i);
+                }
+                if (i + 1 == values.length()) {
+                    responses.add(value);
+                    continue;
+                }
+                if ((values.charAt(i) == delimiter && values.charAt(i - 1) != delimiter)) {
+                    responses.add(value);
+                    value = "";
+                    continue;
+                }
+                if ((values.charAt(i) == delimiter && values.charAt(i + 1) == delimiter)) {
+                    responses.add(" ");
+                    value = "";
+                }
             }
         }
-        //while (responses.size() <= mResponsePosition) responses.add(" ");
-        char delimiter = (responseFormat == 0 ? ' ' : '\n');
-        for (int i = 0; i < values.length(); i++) {
-            if (!(values.charAt(i) == delimiter)) {
-                value += values.charAt(i);
-            }
-            if (i + 1 == values.length()) {
-                responses.add(value);
-                continue;
-            }
-            if ((values.charAt(i) == delimiter && values.charAt(i - 1) != delimiter)) {
-                responses.add(value);
-                value = "";
-                continue;
-            }
-            if ((values.charAt(i) == delimiter && values.charAt(i + 1) == delimiter)) {
-                responses.add(" ");
-                value = "";
-            }
-        }
-        String text = ((TextView) findViewById(R.id.responses_text)).getText() + " " + getString(R.string.tab) + value;
+        String text = ((TextView) findViewById(R.id.responses_text)).getText() + value + " " + getString(R.string.tab);
         ((TextView) findViewById(R.id.responses_text)).setText(text);
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "onEditorAction complete");
+        Timber.v("onEditorAction complete");
         editText.setText("");
     }
 
@@ -484,11 +492,12 @@ public class Recall extends AppCompatActivity {
         Timber.v("Comparing answers and responses in background");
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
-        whitespace = compareFormat > 0 ? "<br/>" : getString(R.string.tab) + " &nbsp ";
+        whitespace = compareFormat > 0 ? "<br/>" : " " + getString(R.string.tab);
         Timber.v("whitespace = " + whitespace + ".");
 
         for (int i = 0, j = 0; i < responses.size() && j < answers.size(); i++, j++) {
             Timber.v("Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
+            if (isCorrect(i, j)) continue;
             if (missed > 8 && missed > correct) {
                 for (; i < responses.size(); i++)
                     mTextResponse.append("<font color=#FF0000>")
@@ -496,7 +505,6 @@ public class Recall extends AppCompatActivity {
                 break;
             }
             if (isLeft(i, j)) continue;
-            if (isCorrect(i, j)) continue;
             if (words) {
                 if (isSpelling(i, j)) {
                     mTextAnswer.append("<font color=#DDDD00>").append(answers.get(j)).
@@ -533,29 +541,29 @@ public class Recall extends AppCompatActivity {
     boolean isMissOrWrong(int i, int j) {
         boolean miss;
 
-            int match = 0, k;
-            k= i>15 ? -10 : 1;
-            for (; k <= 10 && i + k < responses.size() && j + k < answers.size(); k++) {
-                //if (i + k < responses.size() && j + k < answers.size()) {
-                if (!responses.get(i + k).equals(" ")) {
-                    if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) {
-                        match++;
-                    }
+        int match = 0, k;
+        k = i > 15 ? -10 : 1;
+        for (; k <= 10 && i + k < responses.size() && j + k < answers.size(); k++) {
+            //if (i + k < responses.size() && j + k < answers.size()) {
+            if (!responses.get(i + k).equals(" ")) {
+                if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) {
+                    match++;
                 }
-                //}
             }
+            //}
+        }
 
-            if (((float) match / k) > 0.4) {
-                wrong++;
-                mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
-                        .append(" ").append(whitespace);
-                mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
-                        .append("</font>").append(" ").append(whitespace);
-                miss = false;
-            } else {
-                missed++;
-                miss = true;
-            }
+        if (((float) match / k) > 0.4) {
+            wrong++;
+            mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
+                    .append(" ").append(whitespace);
+            mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
+                    .append("</font>").append(" ").append(whitespace);
+            miss = false;
+        } else {
+            missed++;
+            miss = true;
+        }
         if (miss) {
             mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
             mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
@@ -685,14 +693,11 @@ public class Recall extends AppCompatActivity {
             ((TextView) findViewById(R.id.answers_text)).setText(Html.fromHtml(mTextAnswer.toString()),
                     TextView.BufferType.SPANNABLE);
 
-            if (BuildConfig.DEBUG)
-                Log.v(LOG_TAG, "mTextResponse length = " + String.valueOf(mTextAnswer.toString().length()));
-            if (BuildConfig.DEBUG)
-                Log.v(LOG_TAG, "mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
+            Timber.v("mTextResponse length = " + String.valueOf(mTextAnswer.toString().length()));
+            Timber.v("mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
+            Timber.v("answer 0 = " + answers.get(0));
 
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "answer 0 = " + answers.get(0));
-
-            if (correct == answers.size() && mDiscipline != getString(binary)) {
+            if (correct == answers.size() && !mDiscipline.equals(getString(binary))) {
                 SharedPreferences sharedPreferences = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
                 int i = sharedPreferences.getInt("level", 1);
@@ -702,6 +707,7 @@ public class Recall extends AppCompatActivity {
             findViewById(R.id.responses_text).setVisibility(View.VISIBLE);
             findViewById(R.id.result).setVisibility(View.VISIBLE);
             findViewById(R.id.recall_layout).setVisibility(View.VISIBLE);
+            findViewById(R.id.responses_text_layout).setVisibility(View.VISIBLE);
 
             ((TextView) findViewById(R.id.no_of_correct)).setText(String.valueOf(correct));
             ((TextView) findViewById(R.id.no_of_wrong)).setText(String.valueOf(wrong));

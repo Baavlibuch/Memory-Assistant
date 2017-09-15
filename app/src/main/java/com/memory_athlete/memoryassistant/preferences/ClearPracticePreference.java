@@ -25,7 +25,7 @@ public class ClearPracticePreference extends Preference {
         String path = getContext().getFilesDir() + File.separator;
         Resources resources = getContext().getResources();
         File[] arr = {
-                new File(path + resources.getString(R.string.a)),
+                new File(path + resources.getString(R.string.equations)),
                 new File(path + resources.getString(R.string.numbers)),
                 new File(path + resources.getString(R.string.c)),
                 new File(path + resources.getString(R.string.d)),

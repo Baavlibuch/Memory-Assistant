@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.compat.BuildConfig;
 import android.util.Log;
 
 import com.firebase.jobdispatcher.Driver;
@@ -14,11 +13,13 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
+import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.services.ReminderJobService;
 
 import java.util.Calendar;
-import java.util.Random;
+
+import timber.log.Timber;
 
 /**
  * Created by Manik on 26/08/17.
@@ -44,20 +45,16 @@ public class ReminderUtils {
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, "dispatcher created");
-        String s = "";
         for (int i = 0; i < 3; i++) {
             switch (i) {
                 case 1:
                     diff1 = (DAY + diff);
-                    s = "day";
                     break;
                 case 2:
                     diff1 = (WEEK + diff);
-                    s = "week";
                     break;
                 default:
                     diff1 = diff;
-                    s = "seconds";
             }
 
             dispatcher.cancel(REMINDER_JOB_TAG + i);
@@ -69,22 +66,22 @@ public class ReminderUtils {
                     .setTrigger(Trigger.executionWindow(diff1, diff1 + HOUR))
                     .setReplaceCurrent(true)
                     .build();
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
+            Timber.v("Notification is after " + diff1);
             //.setConstraints()
             //REMINDER_INTERVAL_SECS - SYNC_FLEXTIME_SECONDS,
             //REMINDER_INTERVAL_SECS + SYNC_FLEXTIME_SECONDS))
             //.setExtras(bundle)
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Job built");
+            Timber.v("Job built");
             dispatcher.schedule(constraintReminderJob);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "dispatcher scheduled");
+            Timber.v("dispatcher scheduled");
         }
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reminder set");
+        Timber.v("reminder set");
     }
 
     private static int next(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         String time = preferences.getString(context.getString(R.string.periodic), "22:30");
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reminder time - " + time);
+        Timber.v("reminder time - " + time);
         int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
         if (BuildConfig.DEBUG) Log.v(LOG_TAG, hour + " " + minutes);
@@ -101,39 +98,30 @@ public class ReminderUtils {
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
         int diff = next(context) * 60, diff1 = 0;
-        String s = "";
         for (int i = 0; i < 7; i++) {
             switch (i) {
                 case 0:
                     if (diff < 10 * HOUR) diff1 = diff + DAY;
-                    s = "seconds";
                     break;
                 case 1:
                     diff1 = diff + 3 * DAY;
-                    s = "days";
                     break;
                 case 2:
                     diff1 = diff + WEEK;
-                    s = "week";
                     break;
                 case 3:
                     diff1 = diff + MONTH;
-                    s = "month";
                     break;
                 case 4:
                     diff1 = diff + 3 * MONTH;
-                    s = "months";
                     break;
                 case 5:
                     diff1 = diff + 6 * MONTH;
-                    s = "6 months";
                     break;
                 case 6:
                     diff1 = diff + 12 * MONTH;
-                    s = "year";
             }
-            bundle.putString("Unit", s);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Notification is after " + diff1 + " " + s);
+            Timber.v("MySpace notification is after " + diff1);
 
             Job constraintReminderJob = dispatcher.newJobBuilder()
                     .setService(ReminderJobService.class)
@@ -148,9 +136,9 @@ public class ReminderUtils {
             //REMINDER_INTERVAL_SECS - SYNC_FLEXTIME_SECONDS,
             //REMINDER_INTERVAL_SECS + SYNC_FLEXTIME_SECONDS))
             //.setExtras(bundle)
-            Log.v(LOG_TAG, "Job built");
+            Timber.v("Job built");
             dispatcher.schedule(constraintReminderJob);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "dispatcher scheduled");
+            Timber.v("dispatcher scheduled");
         }
     }
 }

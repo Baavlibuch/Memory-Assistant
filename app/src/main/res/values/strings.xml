@@ -14,7 +14,6 @@
     <string name="title_activity_preferences">Preferences</string> <!--Weird error without this-->
 
     <string name="cd">Chose Discipline</string>
-    <string name="a">Equations</string>
     <string name="numbers">Numbers</string>
     <string name="c">Words</string>
     <string name="d">Names</string>
@@ -26,6 +25,7 @@
     <string name="j">Colours</string>
     <string name="k">Letters</string>
     <string name="random">Random</string>
+    <string name="digits">Digits</string>
     <string name="cf">Chose File</string>
 
     <string name="enter_ans">Enter responses</string>
