@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Item(R.string.learn, Learn.class));
         list.add(new Item(R.string.practice, Practice.class));
         list.add(new Item(R.string.recall, Recall.class));
-        list.add(new Item(R.string.apply, Apply.class));
+        list.add(new Item(R.string.apply, Implement.class));
         list.add(new Item(R.string.my_space, MySpace.class));
         //list.add(new Item(R.string.reminders, ))
         list.add(new Item(R.string.preferences, Preferences.class));

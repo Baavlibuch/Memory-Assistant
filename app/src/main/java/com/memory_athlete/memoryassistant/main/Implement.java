@@ -24,9 +24,7 @@ import com.memory_athlete.memoryassistant.lessons.Lessons;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import timber.log.Timber;
-
-public class Apply extends AppCompatActivity {
+public class Implement extends AppCompatActivity {
     private static final String LOG_TAG = "\tApply";
     ArrayList<String> pathList = new ArrayList<>();
     private static final String TAG = "Log : ";
@@ -35,7 +33,6 @@ public class Apply extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         Intent intent = getIntent();
         theme();
         pathList.add(intent.getStringExtra(getString(R.string.apply)));
@@ -100,11 +97,21 @@ public class Apply extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Item item = arrayList.get(position);
+                    boolean webView, hasList;
+                    if(item.mFileName.equals("Vocabulary.txt")) {
+                        webView=false;
+                        hasList=true;
+                    } else{
+                        webView=true;
+                        hasList=false;
+                    }
 
                     if (item.mFileName.endsWith(".txt")) {
                         Intent intent = new Intent(getApplicationContext(), Lessons.class);
                         intent.putExtra("headerString", item.mItem);
-                        intent.putExtra("webView", true);
+                        intent.putExtra("webView", webView);
+                        intent.putExtra("list", hasList);
+                        intent.putExtra("resource", true);
                         StringBuilder path = new StringBuilder("");
                         for (String i : pathList) path.append(i);
                         intent.putExtra("fileString", path + "/" + item.mFileName);

@@ -53,7 +53,7 @@
             android:parentActivityName="com.memory_athlete.memoryassistant.main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name="com.memory_athlete.memoryassistant.main.Apply"
+            android:name="com.memory_athlete.memoryassistant.main.Implement"
             android:parentActivityName="com.memory_athlete.memoryassistant.main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity

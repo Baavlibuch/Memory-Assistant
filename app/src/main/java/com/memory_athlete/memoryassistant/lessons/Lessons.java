@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -36,34 +37,32 @@ import timber.log.Timber;
 
 public class Lessons extends AppCompatActivity {
     private static final String LOG_TAG = "\tLessons";
-    private static final String TAG = "String builder =";
 
     ///*final String JQMATH_BEG = "<!DOCTYPE html>" +
-      //      "<html>\n" +
-        //    "    <head>\n" +
-          //  "        <meta charset=\"utf-8\">\n" +
-            //"        <link rel=\"stylesheet\" href=\"http://fonts.googleapis.com/css?family=UnifrakturMaguntia\">\n" +
-            //"        <link rel=\"stylesheet\" href=\"../jqmath/jqmath-0.4.3.css\">\n" +
-            //"        <script src=\"../jqmath/jquery-1.4.3.min.js\"></script>\n" +
-            //"        <script src=\"../jqmath/jqmath-etc-0.4.6.min.js\" charset=\"utf-8\"></script>\n" +
-            //"    </head>\n" +
-            //"    <body>";
+    //      "<html>\n" +
+    //    "    <head>\n" +
+    //  "        <meta charset=\"utf-8\">\n" +
+    //"        <link rel=\"stylesheet\" href=\"http://fonts.googleapis.com/css?family=UnifrakturMaguntia\">\n" +
+    //"        <link rel=\"stylesheet\" href=\"../jqmath/jqmath-0.4.3.css\">\n" +
+    //"        <script src=\"../jqmath/jquery-1.4.3.min.js\"></script>\n" +
+    //"        <script src=\"../jqmath/jqmath-etc-0.4.6.min.js\" charset=\"utf-8\"></script>\n" +
+    //"    </head>\n" +
+    //"    <body>";
     //final String JQMATH_END = "</body>" +
-      //      "</html>";*/
+    //      "</html>";*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         Intent intent = getIntent();
         theme(intent);
 
-        StringBuilder sb= new StringBuilder("");
+        StringBuilder sb = new StringBuilder("");
         int fileInt = intent.getIntExtra("file", 0);
-        if (fileInt != 0) {
+        if (fileInt != 0 && intent.getBooleanExtra("resource", true)) {
             if (intent.getBooleanExtra("list", false)) {
                 ListView listView = (ListView) findViewById(R.id.lesson_list);
-                ArrayList<Item> list = readList(fileInt);
+                ArrayList<Item> list = readResourceList(fileInt);
                 if (BuildConfig.DEBUG) Log.v(LOG_TAG, "list length = " + list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(this, list);
                 if (BuildConfig.DEBUG) Log.v(LOG_TAG, "adapter set");
@@ -73,6 +72,17 @@ public class Lessons extends AppCompatActivity {
                 return;
             } else sb = readResource(fileInt);//For raw files
         } else {
+            if (intent.getBooleanExtra("list", false)) {
+                ListView listView = (ListView) findViewById(R.id.lesson_list);
+                ArrayList<Item> list = readAssetList(intent);
+                //Timber.v("list length = " + list.size());
+                LessonAdapter lessonAdapter = new LessonAdapter(this, list);
+                Timber.v("adapter set");
+                listView.setAdapter(lessonAdapter);
+                listView.setVisibility(View.VISIBLE);
+                Timber.v("listView set");
+                return;
+            }
             sb = readAsset(sb, intent);
         }
         if (sb == null) {
@@ -105,9 +115,9 @@ public class Lessons extends AppCompatActivity {
         return true;
     }
 
-    protected void theme(Intent intent){
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title="";
-        switch (theme){
+    protected void theme(Intent intent) {
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme"), title = "";
+        switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
@@ -117,7 +127,7 @@ public class Lessons extends AppCompatActivity {
                 break;
             default:
                 setTheme(R.style.light);
-                title="<font color=#FFFFFF>";
+                title = "<font color=#FFFFFF>";
         }
         int header = intent.getIntExtra("mHeader", 0);
         if (header != 0)
@@ -128,7 +138,7 @@ public class Lessons extends AppCompatActivity {
         setContentView(R.layout.activity_lesson);
     }
 
-    void setWebView(StringBuilder sb){
+    void setWebView(StringBuilder sb) {
         WebView webView = (WebView) findViewById(R.id.web_view);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -182,8 +192,8 @@ public class Lessons extends AppCompatActivity {
         }
     }
 
-    ArrayList<Item> readList(int path) {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "readResource(int, Intent) entered");
+    ArrayList<Item> readResourceList(int path) {
+        Timber.v("readResource(int, Intent) entered");
         if (path == 0) return null;
         BufferedReader reader = null;
         String line, header = "";
@@ -217,7 +227,44 @@ public class Lessons extends AppCompatActivity {
         }
     }
 
-    StringBuilder readAsset(StringBuilder sb, Intent intent){
+    ArrayList<Item> readAssetList(Intent intent) {
+        Timber.v("readAssetList() entered");
+        String header = "", line = intent.getStringExtra("fileString"); //For assets and filesDir
+        if (line == null || line == "") return null;
+        BufferedReader reader = null;
+        StringBuilder sb = new StringBuilder();
+        ArrayList<Item> letterList = new ArrayList<>();
+        try {
+            reader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
+            while ((line = reader.readLine()) != null) {
+                if (line.length() > 6 && line.charAt(0) == '<' && line.charAt(1) == 'h') {
+                    letterList.add(new Item(header, sb.toString()));
+                    header = line;
+                    sb = new StringBuilder();
+                } else sb.append(line);
+            }
+            letterList.add(new Item(header, sb.toString()));
+            try {
+                reader.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return letterList;
+
+        } catch (IOException e) {
+            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        try {
+            if (reader != null)
+                reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    StringBuilder readAsset(StringBuilder sb, Intent intent) {
         String line = intent.getStringExtra("fileString"); //For assets and filesDir
         BufferedReader bufferedReader = null;
         try {
@@ -252,32 +299,55 @@ public class Lessons extends AppCompatActivity {
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "LessonAdapter() entered");
         }
 
+        @NonNull
         @Override
-        public View getView(int position, View listItemView, ViewGroup parent) {
+        public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getView() entered");
-            if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.lesson_list_item, null, true);
+            if (listItemView == null)
+                listItemView = LayoutInflater.from(getContext()).inflate(
+                        R.layout.lesson_list_item, null, true);
+
+            final Item item = getItem(position);
+            if (item==null){
+                finish();
+                return listItemView;
+            }
+            final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);
+            final View progressBar = listItemView.findViewById(R.id.lesson_list_progress_bar);
+
+            if (position > 0) {
+                textView1.setVisibility(View.GONE);
+                textView1.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        textView1.setVisibility(View.GONE);
+                        return false;
+                    }
+                });
             }
 
-            Item item = getItem(position);
-            final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);
-            textView1.setText(Html.fromHtml(item.mText));
-            if(position>0) textView1.setVisibility(View.GONE);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "mText = \t" + item.mText);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "mHeader = \t" + item.mHeader);
+            Timber.v("mHeader = " + item.mHeader);
 
             TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
             View view = listItemView.findViewById(R.id.lesson_item_header_layout);
-            if (item.mHeader == null || item.mHeader == "")
+            if (item.mHeader == null || item.mHeader.equals(""))
                 view.setVisibility(View.GONE);
             else {
                 textView.setText(Html.fromHtml(item.mHeader));
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (textView1.getVisibility() == View.GONE)
-                            textView1.setVisibility(View.VISIBLE);
-                        else textView1.setVisibility(View.GONE);
+                        if (textView1.getVisibility() == View.GONE) {
+                            progressBar.setVisibility(View.VISIBLE);
+                            textView1.post(new Runnable() {
+                                public void run() {
+                                    Timber.v("mText = " + item.mText);
+                                    textView1.setText(Html.fromHtml(item.mText));
+                                    progressBar.setVisibility(View.GONE);
+                                    textView1.setVisibility(View.VISIBLE);
+                                }
+                            });
+                        } else textView1.setVisibility(View.GONE);
                     }
                 });
             }
