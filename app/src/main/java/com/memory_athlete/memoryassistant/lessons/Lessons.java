@@ -307,10 +307,10 @@ public class Lessons extends AppCompatActivity {
                         R.layout.lesson_list_item, null, true);
 
             final Item item = getItem(position);
-            if (item==null){
-                finish();
-                return listItemView;
-            }
+            //if (item==null){
+              //  finish();
+                //return listItemView;
+            //}
             final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);
             final View progressBar = listItemView.findViewById(R.id.lesson_list_progress_bar);
 
@@ -323,6 +323,7 @@ public class Lessons extends AppCompatActivity {
                         return false;
                     }
                 });
+                //Timber.v("listitem " + position + "-1 visibility=" + getItem(position-1).)
             }
 
             Timber.v("mHeader = " + item.mHeader);
@@ -336,6 +337,7 @@ public class Lessons extends AppCompatActivity {
                 Timber.v("body = " + item.mText);
             } else {
                 textView.setText(Html.fromHtml(item.mHeader));
+                headerLayout.setVisibility(View.VISIBLE);
                 headerLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
