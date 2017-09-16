@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.recall;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -14,6 +15,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
@@ -40,11 +42,11 @@ import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static com.memory_athlete.memoryassistant.R.layout.activity_recall;
 import static com.memory_athlete.memoryassistant.R.string.binary;
-import static com.memory_athlete.memoryassistant.R.string.words;
 import static com.memory_athlete.memoryassistant.R.string.cards;
 import static com.memory_athlete.memoryassistant.R.string.digits;
 import static com.memory_athlete.memoryassistant.R.string.k;
 import static com.memory_athlete.memoryassistant.R.string.numbers;
+import static com.memory_athlete.memoryassistant.R.string.words;
 import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
@@ -494,16 +496,11 @@ public class Recall extends AppCompatActivity {
         mTextAnswer = new StringBuilder("");
         whitespace = compareFormat > 0 ? "<br/>" : " " + getString(R.string.tab);
         Timber.v("whitespace = " + whitespace + ".");
-
-        for (int i = 0, j = 0; i < responses.size() && j < answers.size(); i++, j++) {
+        int i=0, j=0;
+        for (; i < responses.size() && j < answers.size(); i++, j++) {
             Timber.v("Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
             if (isCorrect(i, j)) continue;
-            if (missed > 8 && missed > correct) {
-                for (; i < responses.size(); i++)
-                    mTextResponse.append("<font color=#FF0000>")
-                            .append(responses.get(i)).append("</font>").append(" ").append(whitespace);
-                break;
-            }
+            if (missed > 8 && missed > correct) break;
             if (isLeft(i, j)) continue;
             if (words) {
                 if (isSpelling(i, j)) {
@@ -517,6 +514,9 @@ public class Recall extends AppCompatActivity {
             }
             if (isMissOrWrong(i, j)) i--;
         }
+        for (; i < responses.size(); i++)
+            mTextResponse.append("<font color=#FF0000>")
+                    .append(responses.get(i)).append("</font>").append(" ").append(whitespace);
         Log.v(LOG_TAG, "compare() complete ");
     }
 
@@ -642,6 +642,11 @@ public class Recall extends AppCompatActivity {
     }
 
     public void check(View view) {
+        View v = this.getCurrentFocus();
+        if (v != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
         (new CompareAsyncTask()).execute();
     }
 
@@ -668,8 +673,7 @@ public class Recall extends AppCompatActivity {
             getResponse();
             findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
             //Log.v(LOG_TAG, "answers.size() = " + String.valueOf(answers.size()));
-            if (BuildConfig.DEBUG)
-                Log.v(LOG_TAG, "responses.size() = " + String.valueOf(responses.size()));
+            Timber.v("responses.size() = " + String.valueOf(responses.size()));
         }
 
         @SafeVarargs
@@ -700,8 +704,7 @@ public class Recall extends AppCompatActivity {
             if (correct == answers.size() && !mDiscipline.equals(getString(binary))) {
                 SharedPreferences sharedPreferences = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
-                int i = sharedPreferences.getInt("level", 1);
-                sharedPreferences.edit().putInt("level", ++i).apply();
+                sharedPreferences.edit().putInt("level", 1+sharedPreferences.getInt("level", 1)).apply();
             }
 
             findViewById(R.id.responses_text).setVisibility(View.VISIBLE);
