@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.recall.Recall;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -90,25 +92,26 @@ public class MainActivity extends AppCompatActivity {
 
     private void setList(ArrayList<Item> list) {
         //list.add(new Item(R.string.login, Login.class));
-        list.add(new Item(R.string.learn, Learn.class));
-        list.add(new Item(R.string.practice, Practice.class));
-        list.add(new Item(R.string.recall, Recall.class));
-        list.add(new Item(R.string.apply, Implement.class));
-        list.add(new Item(R.string.my_space, MySpace.class));
+        list.add(new Item(R.string.learn, R.drawable.learn, Learn.class));
+        list.add(new Item(R.string.practice, R.drawable.practice, Practice.class));
+        list.add(new Item(R.string.recall, R.drawable.recall, Recall.class));
+        list.add(new Item(R.string.apply, R.drawable.implement, Implement.class));
+        list.add(new Item(R.string.my_space, R.drawable.my_space, MySpace.class));
+        list.add(new Item(R.string.preferences, R.drawable.preferences, Preferences.class));
         //list.add(new Item(R.string.reminders, ))
-        list.add(new Item(R.string.preferences, Preferences.class));
         //list.add(new Item(R.string.get_pro, GetPro.class));
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "List set!");
+        Timber.v("List set!");
     }
 
     private class Item {
-        int mItem;
+        int mItem, mImageId;
         Class mClass;
 
-        Item(int itemName, Class class1) {
+        Item(int itemName, int im, Class class1) {
             mItem = itemName;
             mClass = class1;
-            if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Item set!");
+            mImageId = im;
+            Timber.v("Item set!");
         }
     }
 
@@ -122,12 +125,21 @@ public class MainActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             View listItemView = convertView;
             if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.main_item,
-                        parent, false);
+                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category //main_item
+                        ,parent, false);
             }
 
-            TextView textView = listItemView.findViewById(R.id.main_textView);
+            TextView textView = listItemView.findViewById(R.id.text);
             textView.setText(getString(getItem(position).mItem));
+            ImageView img = listItemView.findViewById(R.id.image);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(getItem(position).mImageId)
+                    .placeholder(R.mipmap.launcher_ic)
+                    .fit()
+                    .centerCrop()
+                    //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ
+                    .into(img);
 
             return listItemView;
         }

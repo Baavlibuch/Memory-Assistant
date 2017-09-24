@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:id="@+id/main_list"
         android:dividerHeight="0px"
+        android:layout_margin="16dp"
         />
 
 </RelativeLayout>
