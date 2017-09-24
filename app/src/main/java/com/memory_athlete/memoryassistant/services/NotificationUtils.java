@@ -105,20 +105,20 @@ abstract class NotificationUtils {
         NotificationManager notificationManager = (NotificationManager)
                 (context.getSystemService(Context.NOTIFICATION_SERVICE));
         notificationManager.notify(MY_SPACE_REMINDER_PENDING_INTENT_ID, notificationBuilder.build());
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "createNotification() complete");
+        Timber.v("createNotification() complete");
     }
 
     private static String mySpaceText(Context context, String fname) {
         long lastOpened = PreferenceManager.getDefaultSharedPreferences(context)
                 .getLong(fname, System.currentTimeMillis());
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "fname was created at " + String.valueOf(lastOpened));
+        Timber.v("fname was created at " + String.valueOf(lastOpened));
         String time = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext())
                 .getString(context.getString(R.string.periodic), "22:30");
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reminder time - " + time);
+        Timber.v("reminder time - " + time);
 
         int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, hour + " " + minutes);
+        Timber.v(hour + " " + minutes);
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 

@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
@@ -86,8 +84,7 @@ public class WriteFile extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        save();
-        super.onBackPressed();
+        if (save()) super.onBackPressed();
     }
 
     protected void theme() {
@@ -118,6 +115,14 @@ public class WriteFile extends AppCompatActivity {
             return true;
         }
         String dirPath = path;
+        if (fname.length() > 250) {
+            if(!name) {
+                Toast.makeText(this, "Try again with a shorter name", Toast.LENGTH_SHORT).show();
+                name = true;
+                return false;
+            } else return true;
+        }
+
         fname = path + File.separator + fname + ".txt";
         Timber.v(LOG_TAG, "fname = " + fname);
         File pDir = new File(dirPath);
@@ -133,8 +138,7 @@ public class WriteFile extends AppCompatActivity {
 
                 SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
                 e.putLong(fname, System.currentTimeMillis());
-                if (BuildConfig.DEBUG)
-                    Log.v(LOG_TAG, fname + "made at " + System.currentTimeMillis());
+                Timber.v(fname + "made at " + System.currentTimeMillis());
                 e.apply();
                 ReminderUtils.mySpaceReminder(this, fname);
             } catch (Exception e) {

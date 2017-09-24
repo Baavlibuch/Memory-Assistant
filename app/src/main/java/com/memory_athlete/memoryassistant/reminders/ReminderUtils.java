@@ -128,7 +128,7 @@ public class ReminderUtils {
                     .setTag(fname + i)
                     .setLifetime(Lifetime.FOREVER)
                     .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1, diff1 + HOUR))
+                    .setTrigger(Trigger.executionWindow(diff1 + 5 * MIN, diff1 + HOUR))
                     .setReplaceCurrent(true)
                     .setExtras(bundle)
                     .build();
