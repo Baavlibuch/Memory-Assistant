@@ -10,11 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -30,9 +32,9 @@ public class Learn extends AppCompatActivity {
         setAdapter();
     }
 
-    protected void theme(){
+    protected void theme() {
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme){
+        switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 break;
@@ -66,21 +68,20 @@ public class Learn extends AppCompatActivity {
     }
 
     private void setList(ArrayList<Item> list) {
-        list.add(new Item(R.string.method_of_loci, Lessons.class, R.raw.lesson_method_of_loci));
-        list.add(new Item(R.string.associations, Lessons.class, R.raw.lesson_perfect_association));
-        list.add(new Item(R.string.major_system, Lessons.class, R.raw.lesson_major_system));
-        list.add(new Item(R.string.pao, Lessons.class, R.raw.lesson_pao));
-        list.add(new Item(R.string.wardrobe_method, Lessons.class, R.raw.lesson_wardrobes));
-        list.add(new Item(R.string.vocab, Lessons.class, R.raw.lesson_vocabulary));
-        list.add(new Item(R.string.equations, Lessons.class, R.raw.lesson_equations));
-        list.add(new Item(R.string.derivations, Lessons.class, R.raw.lesson_derivations));
-
-        list.add(new Item(R.string.checkout, Lessons.class, R.raw.checkout));
+        list.add(new Item(R.string.method_of_loci, R.drawable.method_of_loci, Lessons.class, R.raw.lesson_method_of_loci));
+        list.add(new Item(R.string.associations, R.drawable.perfect_association, Lessons.class, R.raw.lesson_perfect_association));
+        list.add(new Item(R.string.major_system, R.drawable.major_system, Lessons.class, R.raw.lesson_major_system));
+        list.add(new Item(R.string.pao, R.drawable.pao, Lessons.class, R.raw.lesson_pao));
+        list.add(new Item(R.string.wardrobe_method, R.drawable.wardrobe_method, Lessons.class, R.raw.lesson_wardrobes));
+        list.add(new Item(R.string.vocab, R.drawable.vocabulary, Lessons.class, R.raw.lesson_vocabulary));
+        list.add(new Item(R.string.equations, R.drawable.equations, Lessons.class, R.raw.lesson_equations));
+        list.add(new Item(R.string.derivations, R.drawable.derive, Lessons.class, R.raw.lesson_derivations));
+        list.add(new Item(R.string.checkout, R.drawable.theres_more, Lessons.class, R.raw.checkout));
         //list.add(new Item(R.string.checkout, Lessons.class, R.raw.Important, true));
     }
 
     private class Item {
-        int mItem, mFile;
+        int mItem, mFile, mImageId;
         Class mClass;
         boolean mWebView = false;
 
@@ -88,6 +89,13 @@ public class Learn extends AppCompatActivity {
             mItem = item;
             mClass = class1;
             mFile = file;
+        }
+
+        Item(int item, int im, Class class1, int file) {
+            mItem = item;
+            mClass = class1;
+            mFile = file;
+            mImageId = im;
         }
 
         /*Item(int item, Class class1, int file, boolean webView) {
@@ -107,11 +115,20 @@ public class Learn extends AppCompatActivity {
         @Override
         public View getView(int position, View listItemView, ViewGroup parent) {
             if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.main_item, null, true);
+                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
             }
 
-            TextView textView = listItemView.findViewById(R.id.main_textView);
-            textView.setText(getString(getItem(position).mItem));
+            TextView textView = listItemView.findViewById(R.id.text);
+            textView.setText(getItem(position).mItem);
+            ImageView img = listItemView.findViewById(R.id.image);
+            Picasso
+                    .with(getApplicationContext())
+                    .load(getItem(position).mImageId)
+                    .placeholder(R.mipmap.launcher_ic)
+                    .fit()
+                    .centerCrop()
+                    .into(img);
+
 
             return listItemView;
         }

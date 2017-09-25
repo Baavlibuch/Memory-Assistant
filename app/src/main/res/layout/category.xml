@@ -4,15 +4,6 @@
     android:layout_height="64dp"
     android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:id="@+id/text"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
-
     <ImageView
         android:layout_width="56dp"
         android:layout_height="56dp"
@@ -21,7 +12,15 @@
         android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
         android:id="@+id/image"
-        />
 
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:id="@+id/text"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
 
 </LinearLayout>

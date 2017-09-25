@@ -5,19 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 public class MySpace extends AppCompatActivity {
-    private static final String LOG_TAG = "\tMySpace :";
     int listViewId = 0;
     File dir = null;
     String title = "";
@@ -60,6 +59,8 @@ public class MySpace extends AppCompatActivity {
                 relativeLayout.removeViewAt(listViewId);
             if (relativeLayout.findViewById(--listViewId) != null) {
                 relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
+                if (listViewId == 0)
+                    findViewById(R.id.floatingActionButton).setVisibility(View.GONE);
                 setTitle(title + getString(R.string.my_space));
                 return;
             }
@@ -103,8 +104,15 @@ public class MySpace extends AppCompatActivity {
         Timber.v("list set");
         MySpaceAdapter adapter = new MySpaceAdapter(this, arrayList);
         final ListView listView = new ListView(this);
-        listView.setLayoutParams(new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        if (listViewId==1) {
+            float scale = getResources().getDisplayMetrics().density;
+            int dpAsPixels = (int) (16 * scale + 0.5f);
+            layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
+        }
+        listView.setLayoutParams(layoutParams);
+        //if (listViewId==1) listView.MarginLayoutParams
         listView.setId(listViewId);
         final RelativeLayout layout = (RelativeLayout) findViewById(R.id.my_space_relative_layout);
         layout.addView(listView);
@@ -153,11 +161,11 @@ public class MySpace extends AppCompatActivity {
 
     ArrayList<Item> setList() {
         ArrayList<Item> list = new ArrayList<>();
-        list.add(new Item(getString(R.string.majors), WriteFile.class));
-        list.add(new Item(getString(R.string.ben), WriteFile.class));
-        list.add(new Item(getString(R.string.wardrobes), WriteFile.class));
-        list.add(new Item(getString(R.string.lists), WriteFile.class));
-        list.add(new Item(getString(R.string.words), WriteFile.class));
+        list.add(new Item(getString(R.string.majors), R.drawable.major_system, WriteFile.class));
+        list.add(new Item(getString(R.string.ben), R.drawable.ben_system, WriteFile.class));
+        list.add(new Item(getString(R.string.wardrobes), R.drawable.wardrobe_method, WriteFile.class));
+        list.add(new Item(getString(R.string.lists), R.drawable.lists, WriteFile.class));
+        list.add(new Item(getString(R.string.words), R.drawable.words1, WriteFile.class));
         //TODO:
         //list.add(new Item(getString(R.string.equations), WriteEquations.class));
         //list.add(new Item(getString(R.string.algos), WriteAlgo.class));
@@ -168,12 +176,21 @@ public class MySpace extends AppCompatActivity {
     private class Item {
         String mItem, mName;
         Class mClass;
+        int mImageId;
+
+        Item(String itemName, int im, Class class1) {
+            mItem = itemName;
+            mName = itemName.endsWith(".txt") ? itemName.substring(0, itemName.length() - 4) : itemName;
+            mClass = class1;
+            mImageId = im;
+            Timber.v("Item set!");
+        }
 
         Item(String itemName, Class class1) {
             mItem = itemName;
             mName = itemName.endsWith(".txt") ? itemName.substring(0, itemName.length() - 4) : itemName;
             mClass = class1;
-            if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Item set!");
+            Timber.v("Item set!");
         }
     }
 
@@ -185,6 +202,24 @@ public class MySpace extends AppCompatActivity {
 
         @Override
         public View getView(int position, View listItemView, ViewGroup parent) {
+            if (listViewId == 1) {
+                if (listItemView == null) {
+                    listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
+                }
+
+                TextView textView = listItemView.findViewById(R.id.text);
+                textView.setText(getItem(position).mName);
+                ImageView img = listItemView.findViewById(R.id.image);
+                Picasso
+                        .with(getApplicationContext())
+                        .load(getItem(position).mImageId)
+                        .placeholder(R.mipmap.launcher_ic)
+                        .fit()
+                        .centerCrop()
+                        .into(img);
+
+                return listItemView;
+            }
             if (listItemView == null) {
                 listItemView = LayoutInflater.from(getContext()).inflate(R.layout.main_item, null, true);
             }
