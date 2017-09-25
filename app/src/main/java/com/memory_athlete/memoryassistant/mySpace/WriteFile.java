@@ -124,7 +124,7 @@ public class WriteFile extends AppCompatActivity {
         }
 
         fname = path + File.separator + fname + ".txt";
-        Timber.v(LOG_TAG, "fname = " + fname);
+        Timber.v("fname = " + fname);
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) {

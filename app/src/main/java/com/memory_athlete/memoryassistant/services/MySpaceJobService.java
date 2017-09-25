@@ -8,17 +8,19 @@ import android.util.Log;
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 
+import timber.log.Timber;
+
 public class MySpaceJobService extends JobService {
     private final String LOG_TAG = getClass().getSimpleName();
     private AsyncTask mBackgroundTask;
 
     @Override
     public boolean onStartJob(final JobParameters job) {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "onStartJob() started");
+        Timber.v("onStartJob() started");
         mBackgroundTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered doInBackground()");
+                Timber.v("entered doInBackground()");
                 Bundle bundle = job.getExtras();
                 if (bundle != null) {
                     String fname = bundle.getString("fname");
@@ -42,6 +44,4 @@ public class MySpaceJobService extends JobService {
     public boolean onStopJob(JobParameters job) {
         return false;
     }
-
-
 }

@@ -15,6 +15,7 @@ import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.services.MySpaceJobService;
 import com.memory_athlete.memoryassistant.services.ReminderJobService;
 
 import java.util.Calendar;
@@ -84,7 +85,7 @@ public class ReminderUtils {
         Timber.v("reminder time - " + time);
         int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, hour + " " + minutes);
+        Timber.v(hour + " " + minutes);
         Calendar rightNow = Calendar.getInstance();
         int hr = rightNow.get(Calendar.HOUR_OF_DAY);
         int min = rightNow.get(Calendar.MINUTE);
@@ -124,7 +125,7 @@ public class ReminderUtils {
             Timber.v("MySpace notification is after " + diff1);
 
             Job constraintReminderJob = dispatcher.newJobBuilder()
-                    .setService(ReminderJobService.class)
+                    .setService(MySpaceJobService.class)
                     .setTag(fname + i)
                     .setLifetime(Lifetime.FOREVER)
                     .setRecurring(false)

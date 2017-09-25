@@ -1,12 +1,11 @@
 package com.memory_athlete.memoryassistant.services;
 
 import android.os.AsyncTask;
-import android.support.compat.BuildConfig;
-import android.util.Log;
 
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
 
+import timber.log.Timber;
 
 /**
  * Created by Manik on 26/08/17.
@@ -14,15 +13,14 @@ import com.firebase.jobdispatcher.JobService;
 
 public class ReminderJobService extends JobService {
     private final String LOG_TAG = getClass().getSimpleName();
-    private AsyncTask mBackgroundTask;
 
     @Override
     public boolean onStartJob(final JobParameters jobParameters) {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "onStartJob() started");
-        mBackgroundTask = new AsyncTask() {
+        Timber.v("onStartJob() started");
+        AsyncTask mBackgroundTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered doInBackground()");
+                Timber.v("entered doInBackground()");
                 NotificationUtils.createNotification(ReminderJobService.this);
                 //ReminderTask.executeTask(context, ReminderTask.);
                 return null;
@@ -30,7 +28,7 @@ public class ReminderJobService extends JobService {
 
             @Override
             protected void onPostExecute(Object o) {
-                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered onPostExecute()");
+                Timber.v("entered onPostExecute()");
                 jobFinished(jobParameters, false);
             }
         };
@@ -40,7 +38,7 @@ public class ReminderJobService extends JobService {
 
     @Override
     public boolean onStopJob(com.firebase.jobdispatcher.JobParameters job) {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Entered onStopJob()");
+        Timber.v("Entered onStopJob()");
         return false;
     }
 }
