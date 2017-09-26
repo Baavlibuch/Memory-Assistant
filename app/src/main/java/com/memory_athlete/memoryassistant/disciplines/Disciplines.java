@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -107,6 +108,9 @@ public class Disciplines extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.visit_my_space:
                 startActivity(new Intent(this, MySpace.class));
+                break;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
         }
         return true;
     }
@@ -142,9 +146,7 @@ public class Disciplines extends AppCompatActivity {
     }
 
     protected void makeSpinner(int spinnerContent) {
-        if (BuildConfig.DEBUG) {
-            Log.i(LOG_TAG, "makeSpinner() entered");
-        }
+        Timber.v("makeSpinner() entered");
         Spinner spinner = (Spinner) findViewById(R.id.group);
         spinner.setVisibility(View.VISIBLE);
 

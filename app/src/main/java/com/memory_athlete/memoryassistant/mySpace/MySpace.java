@@ -44,9 +44,8 @@ public class MySpace extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Timber.v("listViewId = " + listViewId);
-        if (listViewId > 1) {
+        if (listViewId > 1 && findViewById(R.id.my_space_relative_layout).findViewById(listViewId) != null)
             ((RelativeLayout) findViewById(R.id.my_space_relative_layout)).removeViewAt(listViewId);
-        }
         setAdapter();
     }
 
@@ -106,7 +105,7 @@ public class MySpace extends AppCompatActivity {
         final ListView listView = new ListView(this);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        if (listViewId==1) {
+        if (listViewId == 1) {
             float scale = getResources().getDisplayMetrics().density;
             int dpAsPixels = (int) (16 * scale + 0.5f);
             layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);

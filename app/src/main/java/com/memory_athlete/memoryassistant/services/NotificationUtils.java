@@ -48,7 +48,7 @@ abstract class NotificationUtils {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 //.setLargeIcon(largeIcon(context))
-                .setSmallIcon(R.mipmap.launcher_ic)
+                .setSmallIcon(R.drawable.ic_notify)
                 .setContentTitle(text)
                 //.setContentText(text)
                 //.setStyle(new NotificationCompat.BigTextStyle().bigText(text))
@@ -92,7 +92,7 @@ abstract class NotificationUtils {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 //.setLargeIcon(largeIcon(context))
-                .setSmallIcon(R.mipmap.launcher_ic)
+                .setSmallIcon(R.drawable.ic_notify)
                 .setContentTitle(context.getString(app_name))
                 //.setContentText(text)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
@@ -121,6 +121,8 @@ abstract class NotificationUtils {
         Timber.v(hour + " " + minutes);
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
+
+        fname = fname.substring(fname.lastIndexOf('/'), fname.length()-4);
 
         if (diff / DAY < 2) return "You should revise " + fname + " now";
         if (diff / DAY < 5) return "It's been a few days since you opened " + fname;
