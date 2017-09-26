@@ -50,7 +50,7 @@ public class Cards extends Disciplines {
     }
 
     public void next(View view) {
-        if (mPosition < a.get(1) * 52) {
+        if (mPosition < a.get(1) * 52 - 1) {
             mPosition++;
             setCard();
         } else {

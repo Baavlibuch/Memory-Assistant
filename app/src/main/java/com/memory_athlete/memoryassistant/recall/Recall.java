@@ -542,7 +542,7 @@ public class Recall extends AppCompatActivity {
         boolean miss;
 
         int match = 0, k;
-        k = i > 15 ? -10 : 1;
+        k = i > 8 ? -4 : 1;
         for (; k <= 10 && i + k < responses.size() && j + k < answers.size(); k++) {
             //if (i + k < responses.size() && j + k < answers.size()) {
             if (!responses.get(i + k).equals(" ")) {

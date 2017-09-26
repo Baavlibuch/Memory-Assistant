@@ -223,12 +223,12 @@ public class Disciplines extends AppCompatActivity {
     }
 
     protected void Start() {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Start entered");
+        Timber.v("Start entered");
         try {
             ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                     hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "Couldn't hide keypad ", e);
+            Timber.e("Couldn't hide keypad ", e);
         }
         ((TextView) findViewById(clock_text)).setText("");
 
