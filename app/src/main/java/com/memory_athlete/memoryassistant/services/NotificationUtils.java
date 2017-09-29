@@ -18,8 +18,6 @@ import java.io.File;
 
 import timber.log.Timber;
 
-import static com.memory_athlete.memoryassistant.R.string.app_name;
-
 /**
  * Created by Manik on 26/08/17.
  */
@@ -46,22 +44,22 @@ abstract class NotificationUtils {
         String text = text(context);
         Timber.d(text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                //.setLargeIcon(largeIcon(context))
-                .setSmallIcon(R.drawable.ic_notify)
+                .setSmallIcon(R.drawable.ic_notif_launcher)
                 .setContentTitle(text)
-                //.setContentText(text)
-                //.setStyle(new NotificationCompat.BigTextStyle().bigText(text))
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentIntent(contentIntent(context))
                 .setAutoCancel(true);
+                //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
+                //.setLargeIcon(largeIcon(context))
+                //.setContentText(text)
+                //.setStyle(new NotificationCompat.BigTextStyle().bigText(text))
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
         }
         NotificationManager notificationManager = (NotificationManager)
                 (context.getSystemService(Context.NOTIFICATION_SERVICE));
         notificationManager.notify(PERIODIC_REMINDER_PENDING_INTENT_ID, notificationBuilder.build());
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "createNotification() complete");
+        Timber.v("createNotification() complete");
     }
 
     private static String text(Context context) {
@@ -90,15 +88,15 @@ abstract class NotificationUtils {
         String text = mySpaceText(context, fPath);
         Timber.d(text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
-                //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                //.setLargeIcon(largeIcon(context))
-                .setSmallIcon(R.drawable.ic_notify)
-                .setContentTitle(context.getString(app_name))
-                //.setContentText(text)
+                .setSmallIcon(R.drawable.ic_notif_launcher)
+                .setContentTitle("My Space")
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentIntent(contentIntent(context))
                 .setAutoCancel(true);
+                //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
+                //.setLargeIcon(largeIcon(context))
+                //.setContentText(text)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
         }
@@ -122,7 +120,7 @@ abstract class NotificationUtils {
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 
-        fname = fname.substring(fname.lastIndexOf('/'), fname.length()-4);
+        fname = fname.substring(fname.lastIndexOf('/')+1, fname.length()-4);
 
         if (diff / DAY < 2) return "You should revise " + fname + " now";
         if (diff / DAY < 5) return "It's been a few days since you opened " + fname;
