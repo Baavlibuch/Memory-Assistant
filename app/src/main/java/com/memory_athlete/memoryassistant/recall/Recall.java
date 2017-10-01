@@ -496,7 +496,7 @@ public class Recall extends AppCompatActivity {
         mTextAnswer = new StringBuilder("");
         whitespace = compareFormat > 0 ? "<br/>" : " " + getString(R.string.tab);
         Timber.v("whitespace = " + whitespace + ".");
-        int i=0, j=0;
+        int i = 0, j = 0;
         for (; i < responses.size() && j < answers.size(); i++, j++) {
             Timber.v("Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
             if (isCorrect(i, j)) continue;
@@ -539,8 +539,6 @@ public class Recall extends AppCompatActivity {
     }
 
     boolean isMissOrWrong(int i, int j) {
-        boolean miss;
-
         int match = 0, k;
         k = i > 8 ? -4 : 1;
         for (; k <= 10 && i + k < responses.size() && j + k < answers.size(); k++) {
@@ -553,24 +551,20 @@ public class Recall extends AppCompatActivity {
             //}
         }
 
-        if (((float) match / k) > 0.4) {
+        if (((float) match / k) > 0.4) {        //Wrong
             wrong++;
             mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
                     .append(" ").append(whitespace);
             mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
                     .append("</font>").append(" ").append(whitespace);
-            miss = false;
-        } else {
-            missed++;
-            miss = true;
+            return false;
         }
-        if (miss) {
-            mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
-            mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
-                    .append(" ").append(whitespace);
-            //mTextResponse += /*"<font color=#FF0000>" +*/ responses.get(i) /*+ "</font>"*/ + " " + getString(R.string.tab);
-        }
-        return miss;
+        missed++;                               //Missed
+        mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
+        mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
+                .append(" ").append(whitespace);
+        //mTextResponse += /*"<font color=#FF0000>" +*/ responses.get(i) /*+ "</font>"*/ + " " + getString(R.string.tab);
+        return true;
     }
 
     boolean isSpelling(int i, int j) {
@@ -704,7 +698,7 @@ public class Recall extends AppCompatActivity {
             if (correct == answers.size() && !mDiscipline.equals(getString(binary))) {
                 SharedPreferences sharedPreferences = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
-                sharedPreferences.edit().putInt("level", 1+sharedPreferences.getInt("level", 1)).apply();
+                sharedPreferences.edit().putInt("level", 1 + sharedPreferences.getInt("level", 1)).apply();
             }
 
             findViewById(R.id.responses_text).setVisibility(View.VISIBLE);
@@ -714,7 +708,8 @@ public class Recall extends AppCompatActivity {
 
             ((TextView) findViewById(R.id.no_of_correct)).setText(String.valueOf(correct));
             ((TextView) findViewById(R.id.no_of_wrong)).setText(String.valueOf(wrong));
-            ((TextView) findViewById(R.id.value_of_score)).setText(String.valueOf(correct - 10 * (wrong + missed)));
+            ((TextView) findViewById(R.id.no_of_missed)).setText(String.valueOf(missed));
+            ((TextView) findViewById(R.id.value_of_score)).setText(String.valueOf(correct - 10 * wrong - 5 * missed));
 
             //((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
             //      .toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);

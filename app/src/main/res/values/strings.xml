@@ -2,6 +2,7 @@
 
     <string name="app_name">Memory Assistant</string>
 
+    <!--Main-->
     <string name="login">Login</string>
     <string name="learn">Learn</string>
     <string name="practice">Practice</string>
@@ -13,6 +14,7 @@
     <string name="reminders">Reminders</string>
     <string name="title_activity_preferences">Preferences</string> <!--Weird error without this-->
 
+    <!--Practice-->
     <string name="cd">Chose Discipline</string>
     <string name="numbers">Numbers</string>
     <string name="d">Names</string>
@@ -27,6 +29,7 @@
     <string name="digits">Digits</string>
     <string name="cf">Chose File</string>
 
+    <!--Recall-->
     <string name="enter_ans">Enter responses</string>
     <string name="score">Score</string>
     <string name="time_taken">Time taken</string>
@@ -39,7 +42,9 @@
     <string name="your_response">Your Responses</string>
     <string name="correct_answers">Correct Answers</string>
     <string name="delete">Delete</string>
+    <string name="missed">Missed</string>
 
+    <!--Practice-->
     <string name="enter">Enter the number of</string>
     <string name="st">values</string>
     <string name="decks">decks</string>
@@ -73,7 +78,9 @@
     <string name="start_stopwatch">Start Stopwatch</string>
     <string name="standard">Standard</string>
     <string name="custom">Custom</string>
+    <string name="chose_level">Chose level</string>
 
+    <!--MySpace-->
     <string name="majors">Major Systems</string>
     <string name="ben">Ben Systems</string>
     <string name="wardrobes">Wardrobes</string>
@@ -81,6 +88,10 @@
     <string name="algos">Algorithms</string>
     <string name="words">Words</string>
 
+    <string name="fname">Name</string>
+    <string name="here">Enter here</string>
+
+    <!--Preferences-->
     <string name="remind">Remind Me Periodically</string>
     <string name="periodic">I Like To Practice At</string>
     <string name="location_wise">Based On Location</string>
@@ -92,9 +103,7 @@
     <string name="dark">Dark</string>
     <string name="pitch">pitch</string>
 
-    <string name="fname">Name</string>
-    <string name="here">Enter here</string>
-
+    <!--Learn-->
     <string name="method_of_loci">Method Of Loci</string>
     <string name="associations">The Perfect Association</string>
     <string name="major_system">The Major System</string>
@@ -105,9 +114,9 @@
     <string name="wardrobe_method">Wardrobe Method</string>
     <string name="vocab">Vocabulary</string>
 
+    <!--other-->
     <string name="tab">\t</string>
     <string name="drop_down">Expand</string>
-    <string name="chose_level">Chose level</string>
     <string name="clear_practice">Clear all practice cache</string>
     <string name="visit_my_space">Visit My Space</string>
     <string name="try_again">Try again</string>
