@@ -1,4 +1,4 @@
-<h2>1</h2>
+<h2>Measuring Instruments</h2>
 
 <p><b>Ammeter</b></p>
 <p>$$I=I_g{{R_g+R_s}/R_s}$$</p>

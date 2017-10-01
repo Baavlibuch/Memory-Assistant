@@ -1,4 +1,4 @@
-<h2>1</h2>
+<h2>Differentiation</h2>
 
 <p>$$e^{ax}:a^{n-1}e^{ax}$$</p>
 <p>$$(ax+b)^m:{m!}/{(m-n)!}a^n(ax+b)^{m-n}$$</p>

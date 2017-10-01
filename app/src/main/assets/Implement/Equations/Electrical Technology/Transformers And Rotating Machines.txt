@@ -1,4 +1,4 @@
-<h2>2</h2>
+<h2>Transformers And Rotating Machines</h2>
 
 <p>Flux Density $$B_m$$</p>
 <p>Step Up Transformer $$N_1&lt;N_2$$</p>

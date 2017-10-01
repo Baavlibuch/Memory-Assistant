@@ -1,4 +1,4 @@
-<h4>A</h4>
+<h4>A-1</h4>
 <p><b>abase</b><br/>To lower in position, estimation, or the like; degrade.</p>
 <p><b>abbess</b><br/>The lady superior of a nunnery.</p>
 <p><b>abbey</b><br/>The group of buildings which collectively form the dwelling-place of a society of monks or nuns.</p>
@@ -99,6 +99,7 @@
 <p><b>acquisition</b><br/>Anything gained, or made one's own, usually by effort or labor.</p>
 <p><b>acquit</b><br/>To free or clear, as from accusation.</p>
 <p><b>acquittal</b><br/>A discharge from accusation by judicial action.</p>
+<h4>A-2</h4>
 <p><b>acquittance</b><br/>Release or discharge from indebtedness, obligation, or responsibility.</p>
 <p><b>acreage</b><br/>Quantity or extent of land, especially of cultivated land.</p>
 <p><b>acrid</b><br/>Harshly pungent or bitter.</p>
@@ -199,6 +200,7 @@
 <p><b>alkali</b><br/>Anything that will neutralize an acid, as lime, magnesia, etc.</p>
 <p><b>allay</b><br/>To calm the violence or reduce the intensity of; mitigate.</p>
 <p><b>allege</b><br/>To assert to be true, especially in a formal manner, as in court.</p>
+<h4>A-3</h4>
 <p><b>allegory</b><br/>The setting forth of a subject under the guise of another subject of aptly suggestive likeness.</p>
 <p><b>alleviate</b><br/>To make less burdensome or less hard to bear.</p>
 <p><b>alley</b><br/>A narrow street, garden path, walk, or the like.</p>
@@ -299,6 +301,7 @@
 <p><b>anteroom</b><br/>A room situated before and opening into another, usually larger.</p>
 <p><b>anthology</b><br/>A collection of extracts from the writings of various authors.</p>
 <p><b>anthracite</b><br/>Hard coal.</p>
+<h4>A-4</h4>
 <p><b>anthropology</b><br/>The science of man in general.</p>
 <p><b>anthropomorphous</b><br/>Having or resembling human form.</p>
 <p><b>antic</b><br/>A grotesque, ludicrous, or fantastic action.</p>
@@ -399,6 +402,7 @@
 <p><b>ashen</b><br/>Pale.</p>
 <p><b>askance</b><br/>With a side or indirect glance or meaning.</p>
 <p><b>asperity</b><br/>Harshness or roughness of temper.</p>
+<h4>A-5</h4>
 <p><b>aspirant</b><br/>One who seeks earnestly, as for advancement, honors, place.</p>
 <p><b>aspiration</b><br/>An earnest wish for that which is above one's present reach.</p>
 <p><b>aspire</b><br/>To have an earnest desire, wish, or longing, as for something high and good, not yet attained.</p>
@@ -474,7 +478,7 @@
 <p><b>aye</b><br/>An expression of assent.</p>
 <p><b>azalea</b><br/>A flowering shrub.</p>
 <p><b>azure</b><br/>The color of the sky.</p>
-<h4>B</h4>
+<h4>B-1</h4>
 <p><b>Baconian</b><br/>Of or pertaining to Lord Bacon or his system of philosophy.</p>
 <p><b>bacterium</b><br/>A microbe.</p>
 <p><b>badger</b><br/>To pester.</p>
@@ -575,6 +579,7 @@
 <p><b>blazon</b><br/>To make widely or generally known.</p>
 <p><b>bleak</b><br/>Desolate.</p>
 <p><b>blemish</b><br/>A mark that mars beauty.</p>
+<h4>B-2</h4>
 <p><b>blithe</b><br/>Joyous.</p>
 <p><b>blithesome</b><br/>Cheerful.</p>
 <p><b>blockade</b><br/>The shutting up of a town, a frontier, or a line of coast by hostile forces.</p>
@@ -659,7 +664,7 @@
 <p><b>butte</b><br/>A conspicuous hill, low mountain, or natural turret, generally isolated.</p>
 <p><b>buttress</b><br/>Any support or prop.</p>
 <p><b>by-law</b><br/>A rule or law adopted by an association, a corporation, or the like.</p>
-<h4>C</h4>
+<h4>C-1</h4>
 <p><b>cabal</b><br/>A number of persons secretly united for effecting by intrigue some private purpose.</p>
 <p><b>cabalism</b><br/>Superstitious devotion to one's religion.</p>
 <p><b>cabinet</b><br/>The body of men constituting the official advisors of the executive head of a nation.</p>
@@ -760,6 +765,7 @@
 <p><b>choral</b><br/>Pertaining to, intended for, or performed by a chorus or choir.</p>
 <p><b>Christ</b><br/>A title of Jesus</p>
 <p><b>christen</b><br/>To name in baptism.</p>
+<h4>C-2</h4>
 <p><b>Christendom</b><br/>That part of the world where Christianity is generally professed.</p>
 <p><b>chromatic</b><br/>Belonging, relating to, or abounding in color.</p>
 <p><b>chronology</b><br/>The science that treats of computation of time or of investigation and arrangement of events.</p>
@@ -860,6 +866,7 @@
 <p><b>comprehension</b><br/>Ability to know.</p>
 <p><b>comprehensive</b><br/>Large in scope or content.</p>
 <p><b>compress</b><br/>To press together or into smaller space.</p>
+<h4>C-3</h4>
 <p><b>compressible</b><br/>Capable of being pressed into smaller compass.</p>
 <p><b>compression</b><br/>Constraint, as by force or authority.</p>
 <p><b>comprise</b><br/>To consist of.</p>
@@ -960,6 +967,7 @@
 <p><b>consumption</b><br/>Gradual destruction, as by burning, eating, etc., or by using up, wearing out, etc.</p>
 <p><b>consumptive</b><br/>Designed for gradual destruction.</p>
 <p><b>contagion</b><br/>The communication of disease from person to person.</p>
+<h4>C-4</h4>
 <p><b>contagious</b><br/>Transmitting disease.</p>
 <p><b>contaminate</b><br/>To pollute.</p>
 <p><b>contemplate</b><br/>To consider thoughtfully.</p>
@@ -1060,6 +1068,7 @@
 <p><b>covenant</b><br/>An agreement entered into by two or more persons or parties.</p>
 <p><b>covert</b><br/>Concealed, especially for an evil purpose.</p>
 <p><b>covey</b><br/>A flock of quails or partridges.</p>
+<h4>C-5</h4>
 <p><b>cower</b><br/>To crouch down tremblingly, as through fear or shame.</p>
 <p><b>coxswain</b><br/>One who steers a rowboat, or one who has charge of a ship's boat and its crew under an officer.</p>
 <p><b>crag</b><br/>A rugged, rocky projection on a cliff or ledge.</p>
@@ -1105,7 +1114,7 @@
 <p><b>cynical</b><br/>Exhibiting moral skepticism.</p>
 <p><b>cynicism</b><br/>Contempt for the opinions of others and of what others value.</p>
 <p><b>cynosure</b><br/>That to which general interest or attention is directed.</p>
-<h4>D</h4>
+<h4>D-1</h4>
 <p><b>daring</b><br/>Brave.</p>
 <p><b>darkling</b><br/>Blindly.</p>
 <p><b>Darwinism</b><br/>The doctrine that natural selection has been the prime cause of evolution of higher forms.</p>
@@ -1206,6 +1215,7 @@
 <p><b>demulcent</b><br/>Any application soothing to an irritable surface</p>
 <p><b>demurrage</b><br/>the detention of a vessel beyond the specified time of sailing.</p>
 <p><b>dendroid</b><br/>Like a tree.</p>
+<h4>D-2</h4>
 <p><b>dendrology</b><br/>The natural history of trees.</p>
 <p><b>denizen</b><br/>Inhabitant.</p>
 <p><b>denominate</b><br/>To give a name or epithet to.</p>
@@ -1306,6 +1316,7 @@
 <p><b>dilate</b><br/>To enlarge in all directions.</p>
 <p><b>dilatory</b><br/>Tending to cause delay.</p>
 <p><b>dilemma</b><br/>A situation in which a choice between opposing modes of conduct is necessary.</p>
+<h4>D-3</h4>
 <p><b>dilettante</b><br/>A superficial amateur.</p>
 <p><b>diligence</b><br/>Careful and persevering effort to accomplish what is undertaken.</p>
 <p><b>dilute</b><br/>To make more fluid or less concentrated by admixture with something.</p>
@@ -1406,6 +1417,7 @@
 <p><b>disyllable</b><br/>A word of two syllables.</p>
 <p><b>distemper</b><br/>A disease or malady.</p>
 <p><b>distend</b><br/>To stretch out or expand in every direction.</p>
+<h4>D-4</h4>
 <p><b>distensible</b><br/>Capable of being stretched out or expanded in every direction.</p>
 <p><b>distention</b><br/>Expansion.</p>
 <p><b>distill</b><br/>To extract or produce by vaporization and condensation.</p>
@@ -1483,7 +1495,7 @@
 <p><b>dutiful</b><br/>Obedient.</p>
 <p><b>dwindle</b><br/>To diminish or become less.</p>
 <p><b>dyne</b><br/>The force which, applied to a mass of one gram for 1 second, would give it a velocity of 1 cm/s.</p>
-<h4>E</h4>
+<h4>E-1</h4>
 <p><b>earnest</b><br/>Ardent in spirit and speech.</p>
 <p><b>earthenware</b><br/>Anything made of clay and baked in a kiln or dried in the sun.</p>
 <p><b>eatable</b><br/>Edible.</p>
@@ -1584,6 +1596,7 @@
 <p><b>encyclical</b><br/>Intended for general circulation.</p>
 <p><b>encyclopedia</b><br/>A work containing information on subjects, or exhaustive of one subject.</p>
 <p><b>endanger</b><br/>To expose to peril.</p>
+<h4>E-2</h4>
 <p><b>endear</b><br/>To cause to be loved.</p>
 <p><b>endemic</b><br/>Peculiar to some specified country or people.</p>
 <p><b>endue</b><br/>To endow with some quality, gift, or grace, usually spiritual.</p>
@@ -1684,6 +1697,7 @@
 <p><b>evidential</b><br/>Indicative.</p>
 <p><b>evince</b><br/>To make manifest or evident.</p>
 <p><b>evoke</b><br/>To call or summon forth.</p>
+<h4>E-3</h4>
 <p><b>evolution</b><br/>Development or growth.</p>
 <p><b>evolve</b><br/>To unfold or expand.</p>
 <p><b>exacerbate</b><br/>To make more sharp, severe, or virulent.</p>
@@ -1786,7 +1800,7 @@
 <p><b>extrude</b><br/>To drive out or away.</p>
 <p><b>exuberance</b><br/>Rich supply.</p>
 <p><b>exuberant</b><br/>Marked by great plentifulness.</p>
-<h4>F</h4>
+<h4>F-1</h4>
 <p><b>fabricate</b><br/>To invent fancifully or falsely.</p>
 <p><b>fabulous</b><br/>Incredible.</p>
 <p><b>facet</b><br/>One of the small triangular plane surfaces of a diamond or other gem.</p>
@@ -1887,6 +1901,7 @@
 <p><b>foppery</b><br/>Dandyism.</p>
 <p><b>foppish</b><br/>Characteristic of one who is unduly devoted to dress and the niceties of manners.</p>
 <p><b>forbearance</b><br/>Patient endurance or toleration of offenses.</p>
+<h4>F-2</h4>
 <p><b>forby</b><br/>Besides.</p>
 <p><b>forcible</b><br/>Violent.</p>
 <p><b>forecourt</b><br/>A court opening directly from the street.</p>
@@ -1977,7 +1992,7 @@
 <p><b>fusible</b><br/>Capable of being melted by heat.</p>
 <p><b>futile</b><br/>Of no avail or effect.</p>
 <p><b>futurist</b><br/>A person of expectant temperament.</p>
-<h4>G</h4>
+<h4>G-1</h4>
 <p><b>gauge</b><br/>An instrument for measuring.</p>
 <p><b>gaiety</b><br/>Festivity.</p>
 <p><b>gaily</b><br/>Merrily.</p>
@@ -2078,6 +2093,7 @@
 <p><b>guise</b><br/>The external appearance as produced by garb or costume.</p>
 <p><b>gullible</b><br/>Credulous.</p>
 <p><b>gumption</b><br/>Common sense.</p>
+<h4>G-2</h4>
 <p><b>gusto</b><br/>Keen enjoyment.</p>
 <p><b>guy</b><br/>Stay-rope.</p>
 <p><b>guzzle</b><br/>To swallow greedily or hastily; gulp.</p>
@@ -2192,7 +2208,7 @@
 <p><b>hypotenuse</b><br/>The side of a right-angled triangle opposite the right angle.</p>
 <p><b>hypothesis</b><br/>A proposition taken for granted as a premise from which to reach a conclusion.</p>
 <p><b>hysteria</b><br/>A nervous affection occurring typically in paroxysms of laughing and crying.</p>
-<h4>I</h4>
+<h4>I-1</h4>
 <p><b>ichthyic</b><br/>Fish-like.</p>
 <p><b>ichthyology</b><br/>The branch of zoology that treats of fishes.</p>
 <p><b>ichthyosaurs</b><br/>A fossil reptile.</p>
@@ -2293,6 +2309,7 @@
 <p><b>improper</b><br/>Not appropriate, suitable, or becoming.</p>
 <p><b>impropriety</b><br/>The state or quality of being unfit, unseemly, or inappropriate.</p>
 <p><b>improvident</b><br/>Lacking foresight or thrift.</p>
+<h4>I-2</h4>
 <p><b>improvise</b><br/>To do anything extemporaneously or offhand.</p>
 <p><b>imprudent</b><br/>Heedless.</p>
 <p><b>impudence</b><br/>Insolent disrespect.</p>
@@ -2393,6 +2410,7 @@
 <p><b>inefficiency</b><br/>That which does not accomplish an intended purpose.</p>
 <p><b>ineligible</b><br/>Not suitable to be selected or chosen.</p>
 <p><b>inept</b><br/>Not fit or suitable.</p>
+<h4>I-3</h4>
 <p><b>inert</b><br/>Inanimate.</p>
 <p><b>inestimable</b><br/>Above price.</p>
 <p><b>inevitable</b><br/>Unavoidable.</p>
@@ -2493,6 +2511,7 @@
 <p><b>insufficient</b><br/>Inadequate for some need, purpose, or use.</p>
 <p><b>insular</b><br/>Pertaining to an island.</p>
 <p><b>insulate</b><br/>To place in a detached state or situation.</p>
+<h4>I-4</h4>
 <p><b>insuperable</b><br/>Invincible.</p>
 <p><b>insuppressible</b><br/>Incapable of being concealed.</p>
 <p><b>insurgence</b><br/>Uprising.</p>
@@ -2593,6 +2612,7 @@
 <p><b>irate</b><br/>Moved to anger.</p>
 <p><b>ire</b><br/>Wrath.</p>
 <p><b>iridescence</b><br/>A many-colored appearance.</p>
+<h4>I-5</h4>
 <p><b>iridescent</b><br/>Exhibiting changing rainbow-colors due to the interference of the light.</p>
 <p><b>irk</b><br/>To afflict with pain, vexation, or fatigue.</p>
 <p><b>irksome</b><br/>Wearisome.</p>
@@ -2678,7 +2698,7 @@
 <p><b>knickknack</b><br/>A small article, more for ornament that use.</p>
 <p><b>knight errant</b><br/>One of the wandering knights who in the middle ages went forth in search of adventure.</p>
 <p><b>knighthood</b><br/>Chivalry.</p>
-<h4>L</h4>
+<h4>L-1</h4>
 <p><b>laborious</b><br/>Toilsome.</p>
 <p><b>labyrinth</b><br/>A maze.</p>
 <p><b>lacerate</b><br/>To tear rudely or raggedly.</p>
@@ -2779,6 +2799,7 @@
 <p><b>liquor</b><br/>Any alcoholic or intoxicating liquid.</p>
 <p><b>listless</b><br/>Inattentive.</p>
 <p><b>literacy</b><br/>The state or condition of knowing how to read and write.</p>
+<h4>L-2</h4>
 <p><b>literal</b><br/>Following the exact words.</p>
 <p><b>literature</b><br/>The written or printed productions of the human mind collectively.</p>
 <p><b>lithe</b><br/>Supple.</p>
@@ -2835,7 +2856,7 @@
 <p><b>lying</b><br/>Untruthfulness.</p>
 <p><b>lyre</b><br/>One of the most ancient of stringed instruments of the harp class.</p>
 <p><b>lyric</b><br/>Fitted for expression in song.</p>
-<h4>M</h4>
+<h4>M-1</h4>
 <p><b>macadamize</b><br/>To cover or pave, as a path or roadway, with small broken stone.</p>
 <p><b>machinery</b><br/>The parts of a machine or engine, taken collectively.</p>
 <p><b>machinist</b><br/>One who makes or repairs machines, or uses metal-working tools.</p>
@@ -2936,6 +2957,7 @@
 <p><b>memento</b><br/>A souvenir.</p>
 <p><b>memorable</b><br/>Noteworthy.</p>
 <p><b>menace</b><br/>A threat.</p>
+<h4>M-2</h4>
 <p><b>menagerie</b><br/>A collection of wild animals, especially when kept for exhibition.</p>
 <p><b>mendacious</b><br/>Untrue.</p>
 <p><b>mendicant</b><br/>A beggar.</p>
@@ -3036,6 +3058,7 @@
 <p><b>modernity</b><br/>The state or character of being modern.</p>
 <p><b>modernize</b><br/>To make characteristic of the present or of recent times.</p>
 <p><b>modification</b><br/>A change.</p>
+<h4>M-3</h4>
 <p><b>modify</b><br/>To make somewhat different.</p>
 <p><b>modish</b><br/>Fashionable.</p>
 <p><b>modulate</b><br/>To vary in tone, inflection, pitch or other quality of sound.</p>
@@ -3206,7 +3229,7 @@
 <p><b>nurture</b><br/>The process of fostering or promoting growth.</p>
 <p><b>nutriment</b><br/>That which nourishes.</p>
 <p><b>nutritive</b><br/>Having nutritious properties.</p>
-<h4>O</h4>
+<h4>O-1</h4>
 <p><b>oaken</b><br/>Made of or from oak.</p>
 <p><b>oakum</b><br/>Hemp-fiber obtained by untwisting and picking out loosely the yarns of old hemp rope.</p>
 <p><b>obdurate</b><br/>Impassive to feelings of humanity or pity.</p>
@@ -3307,6 +3330,7 @@
 <p><b>orator</b><br/>One who delivers an elaborate or formal speech.</p>
 <p><b>oratorio</b><br/>A composition for solo voices, chorus, and orchestra, generally taken from the Scriptures.</p>
 <p><b>oratory</b><br/>The art of public speaking.</p>
+<h4>O-2</h4>
 <p><b>ordeal</b><br/>Anything that severely tests courage, strength, patience, conscience, etc.</p>
 <p><b>ordinal</b><br/>That form of the numeral that shows the order of anything in a series, as first, second, third.</p>
 <p><b>ordination</b><br/>A consecration to the ministry.</p>
@@ -3371,7 +3395,7 @@
 <p><b>overtone</b><br/>A harmonic.</p>
 <p><b>overture</b><br/>An instrumental prelude to an opera, oratorio, or ballet.</p>
 <p><b>overweight</b><br/>Preponderance.</p>
-<h4>P</h4>
+<h4>P-1</h4>
 <p><b>pacify</b><br/>To bring into a peaceful state.</p>
 <p><b>packet</b><br/>A bundle, as of letters.</p>
 <p><b>pact</b><br/>A covenant.</p>
@@ -3472,6 +3496,7 @@
 <p><b>pedestrian</b><br/>One who journeys on foot.</p>
 <p><b>pediatrics</b><br/>The department of medical science that relates to the treatment of diseases of childhood.</p>
 <p><b>pedigree</b><br/>One's line of ancestors.</p>
+<h4>P-2</h4>
 <p><b>peddler</b><br/>One who travels from house to house with an assortment of goods for retail.</p>
 <p><b>peerage</b><br/>The nobility.</p>
 <p><b>peerless</b><br/>Of unequaled excellence or worth.</p>
@@ -3572,6 +3597,7 @@
 <p><b>peter</b><br/>To fail or lose power, efficiency, or value.</p>
 <p><b>petrify</b><br/>To convert into a substance of stony hardness and character.</p>
 <p><b>petulance</b><br/>The character or condition of being impatient, capricious or petulant.</p>
+<h4>P-3</h4>
 <p><b>petulant</b><br/>Displaying impatience.</p>
 <p><b>pharmacopoeia</b><br/>A book containing the formulas and methods of preparation of medicines for the use of druggists.</p>
 <p><b>pharmacy</b><br/>The art or business of compounding and dispensing medicines.</p>
@@ -3672,6 +3698,7 @@
 <p><b>pomposity</b><br/>The quality of being marked by an assumed stateliness and impressiveness of manner.</p>
 <p><b>pompous</b><br/>Marked by an assumed stateliness and impressiveness of manner.</p>
 <p><b>ponder</b><br/>To meditate or reflect upon.</p>
+<h4>P-4</h4>
 <p><b>ponderous</b><br/>Unusually weighty or forcible.</p>
 <p><b>pontiff</b><br/>The Pope.</p>
 <p><b>populace</b><br/>The common people.</p>
@@ -3772,6 +3799,7 @@
 <p><b>presentiment</b><br/>Foreboding.</p>
 <p><b>presentment</b><br/>Semblance.</p>
 <p><b>preservation</b><br/>Conservation.</p>
+<h4>P-5</h4>
 <p><b>presumption</b><br/>That which may be logically assumed to be true until disproved.</p>
 <p><b>presumptuous</b><br/>Assuming too much.</p>
 <p><b>pretension</b><br/>A bold or presumptuous assertion.</p>
@@ -3872,6 +3900,7 @@
 <p><b>protoplasm</b><br/>The substance that forms the principal portion of an animal or vegetable cell.</p>
 <p><b>prototype</b><br/>A work, original in character, afterward imitated in form or spirit.</p>
 <p><b>protract</b><br/>To prolong.</p>
+<h4>P-6</h4>
 <p><b>protrude</b><br/>To push out or thrust forth.</p>
 <p><b>protrusion</b><br/>The act of protruding.</p>
 <p><b>protuberance</b><br/>Something that swells out from a surrounding surface.</p>
@@ -3947,7 +3976,7 @@
 <p><b>quintet</b><br/>Musical composition arranged for five voices or instruments.</p>
 <p><b>quite</b><br/>Fully.</p>
 <p><b>Quixotic</b><br/>Chivalrous or romantic to a ridiculous or extravagant degree.</p>
-<h4>R</h4>
+<h4>R-1</h4>
 <p><b>rabid</b><br/>Affected with rabies or hydrophobia.</p>
 <p><b>racy</b><br/>Exciting or exhilarating to the mind.</p>
 <p><b>radiance</b><br/>Brilliant or sparkling luster.</p>
@@ -4048,6 +4077,7 @@
 <p><b>refractory</b><br/>Not amenable to control.</p>
 <p><b>refragable</b><br/>Capable of being refuted.</p>
 <p><b>refringency</b><br/>Power to refract.</p>
+<h4>R-2</h4>
 <p><b>refringent</b><br/>Having the power to refract.</p>
 <p><b>refusal</b><br/>Denial of what is asked.</p>
 <p><b>refute</b><br/>To prove to be wrong.</p>
@@ -4148,6 +4178,7 @@
 <p><b>resistant</b><br/>Offering or tending to produce resistance.</p>
 <p><b>resistive</b><br/>Having or exercising the power of resistance.</p>
 <p><b>resistless</b><br/>Powerless.</p>
+<h4>R-3</h4>
 <p><b>resonance</b><br/>The quality of being able to reinforce sound by sympathetic vibrations.</p>
 <p><b>resonance</b><br/>Able to reinforce sound by sympathetic vibrations.</p>
 <p><b>resonate</b><br/>To have or produce resonance.</p>
@@ -4219,7 +4250,7 @@
 <p><b>rupture</b><br/>To separate the parts of by violence.</p>
 <p><b>rustic</b><br/>Characteristic of dwelling in the country.</p>
 <p><b>ruth</b><br/>Sorrow for another's misery.</p>
-<h4>S</h4>
+<h4>S-1</h4>
 <p><b>sacrifice</b><br/>To make an offering of to deity, especially by presenting on an altar.</p>
 <p><b>sacrificial</b><br/>Offering or offered as an atonement for sin.</p>
 <p><b>sacrilege</b><br/>The act of violating or profaning anything sacred.</p>
@@ -4320,6 +4351,7 @@
 <p><b>sentience</b><br/>Capacity for sensation or sense-perception.</p>
 <p><b>sentient</b><br/>Possessing the power of sense or sense-perception.</p>
 <p><b>sentinel</b><br/>Any guard or watch stationed for protection.</p>
+<h4>S-2</h4>
 <p><b>separable</b><br/>Capable of being disjoined or divided.</p>
 <p><b>separate</b><br/>To take apart.</p>
 <p><b>separatist</b><br/>A seceder.</p>
@@ -4420,6 +4452,7 @@
 <p><b>specie</b><br/>A coin or coins of gold, silver, copper, or other metal.</p>
 <p><b>species</b><br/>A classificatory group of animals or plants subordinate to a genus.</p>
 <p><b>specimen</b><br/>One of a class of persons or things regarded as representative of the class.</p>
+<h4>S-3</h4>
 <p><b>specious</b><br/>Plausible.</p>
 <p><b>spectator</b><br/>One who beholds or looks on.</p>
 <p><b>specter</b><br/>Apparition.</p>
@@ -4520,6 +4553,7 @@
 <p><b>succumb</b><br/>To cease to resist.</p>
 <p><b>sufferance</b><br/>Toleration.</p>
 <p><b>sufficiency</b><br/>An ample or adequate supply.</p>
+<h4>S-4</h4>
 <p><b>suffrage</b><br/>The right or privilege of voting.</p>
 <p><b>suffuse</b><br/>To cover or fill the surface of.</p>
 <p><b>suggestible</b><br/>That can be suggested.</p>
@@ -4590,7 +4624,7 @@
 <p><b>synonym</b><br/>A word having the same or almost the same meaning as some other.</p>
 <p><b>synopsis</b><br/>A syllabus or summary.</p>
 <p><b>systematic</b><br/>Methodical.</p>
-<h4>T</h4>
+<h4>T-1</h4>
 <p><b>tableau</b><br/>An arrangement of inanimate figures representing a scene from real life.</p>
 <p><b>tacit</b><br/>Understood.</p>
 <p><b>taciturn</b><br/>Disinclined to conversation.</p>
@@ -4691,6 +4725,7 @@
 <p><b>trajectory</b><br/>The path described by a projectile moving under given forces.</p>
 <p><b>trammel</b><br/>An impediment.</p>
 <p><b>tranquil</b><br/>Calm.</p>
+<h4>T-2</h4>
 <p><b>tranquilize</b><br/>To soothe.</p>
 <p><b>tranquility</b><br/>Calmness.</p>
 <p><b>transalpine</b><br/>Situated on the other side of the Alps.</p>
