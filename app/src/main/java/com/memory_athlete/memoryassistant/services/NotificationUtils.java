@@ -7,9 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.preference.PreferenceManager;
-import android.support.compat.BuildConfig;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;
@@ -65,14 +63,14 @@ abstract class NotificationUtils {
     private static String text(Context context) {
         long lastOpened = PreferenceManager.getDefaultSharedPreferences(context)
                 .getLong("last_opened", System.currentTimeMillis());
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "last opened - " + String.valueOf(lastOpened));
+        Timber.v("last opened - " + String.valueOf(lastOpened));
         String time = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext())
                 .getString(context.getString(R.string.periodic), "22:30");
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "reminder time - " + time);
+        Timber.v("reminder time - " + time);
 
         int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, hour + " " + minutes);
+        Timber.v(hour + " " + minutes);
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 

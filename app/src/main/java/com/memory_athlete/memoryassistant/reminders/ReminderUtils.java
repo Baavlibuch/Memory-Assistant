@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.firebase.jobdispatcher.Driver;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -13,7 +12,6 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.services.MySpaceJobService;
 import com.memory_athlete.memoryassistant.services.ReminderJobService;
@@ -45,7 +43,6 @@ public class ReminderUtils {
 
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "dispatcher created");
         for (int i = 0; i < 3; i++) {
             switch (i) {
                 case 1:

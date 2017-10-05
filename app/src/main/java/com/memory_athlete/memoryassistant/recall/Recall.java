@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.recall;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -123,7 +125,7 @@ public class Recall extends AppCompatActivity {
         categories.add(getString(k));
         categories.add(getString(R.string.d));
         categories.add(getString(numbers));
-        categories.add(getString(R.string.g));
+        categories.add(getString(R.string.places_capital));
         categories.add(getString(words));
         //categories.add(getString(j));
         //categories.add(getString(R.string.h));
@@ -179,7 +181,30 @@ public class Recall extends AppCompatActivity {
         fileList.add(getString(R.string.cf));
         File[] files = dir.listFiles();
         if (files == null) {
-            Toast.makeText(getApplicationContext(), "Nothing saved. Try practicing", Toast.LENGTH_SHORT).show();
+            Snackbar.make(chose_file, "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
+                    .setAction(R.string.practice, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String s = discipline;
+                            if (s.equals(getString(R.string.digits)))
+                                s = getString(R.string.numbers);
+                            s = s.replaceAll("\\s","");
+                            Timber.v("s= " + s);
+                            try {
+                                Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
+                                Intent i = new Intent(getApplicationContext(), Class.forName(
+                                        "com.memory_athlete.memoryassistant.disciplines." + s));
+                                i.putExtra("name", discipline);
+                                startActivity(i);
+                            } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
+                                Toast.makeText(Recall.this, R.string.report_to_dev, Toast.LENGTH_SHORT).show();
+                            } catch (ActivityNotFoundException e){
+                                e.printStackTrace();
+                            }
+                        }
+                    }).show();
+            //Toast.makeText(getApplicationContext(), "Nothing saved. Try practicing", Toast.LENGTH_SHORT).show();
             chose_file.setVisibility(View.GONE);
             return;
         }

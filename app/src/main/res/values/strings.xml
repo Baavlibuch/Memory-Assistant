@@ -20,7 +20,7 @@
     <string name="d">Names</string>
     <string name="cards">Cards</string>
     <string name="binary">Binary Digits</string>
-    <string name="g">Places</string>
+    <string name="places_capital">Places</string>
     <string name="h">Dates</string>
     <string name="i">Foods</string>
     <string name="j">Colours</string>
@@ -49,7 +49,7 @@
     <string name="st">values</string>
     <string name="decks">decks</string>
     <string name="words_small">words</string>
-    <string name="places">places</string>
+    <string name="places_small">places</string>
     <string name="nm">names</string>
     <string name="sz">Select maximum digits in a value</string>
     <string name="clump">How many values to group together</string>
@@ -120,5 +120,6 @@
     <string name="clear_practice">Clear all practice cache</string>
     <string name="visit_my_space">Visit My Space</string>
     <string name="try_again">Try again</string>
+    <string name="report_to_dev">There was an error, please report this to the developer</string>
 
 </resources>

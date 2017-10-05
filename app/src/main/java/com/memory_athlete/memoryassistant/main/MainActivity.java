@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
@@ -45,12 +46,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
+
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(this);
+        if (s.getLong("last_opened", 0) == 0)
+            Toast.makeText(this, "If you find that something is too complex, just start at the top",
+                    Toast.LENGTH_LONG).show();
+
+        SharedPreferences.Editor e = s.edit();
         e.putLong("last_opened", System.currentTimeMillis());
-        Timber.v(LOG_TAG, "Last opened on" + System.currentTimeMillis());
+        Timber.v("Last opened on" + System.currentTimeMillis());
         e.apply();
         ReminderUtils.scheduleReminder(this);
-       // mTheme();
+        Timber.d(this.getLocalClassName() + " " + this.getClass().getName());
     }
 
     void theme(){
@@ -87,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Adapter set!");
+        Timber.v("Adapter set!");
     }
 
     private void setList(ArrayList<Item> list) {

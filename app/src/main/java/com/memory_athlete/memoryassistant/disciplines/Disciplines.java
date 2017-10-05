@@ -63,10 +63,16 @@ public class Disciplines extends AppCompatActivity {
         Intent intent = getIntent();
         Timber.i("0 means error in getting title resource string ID through intent");
         theme();
-        setTitle(getString(intent.getIntExtra("nameID", 0)));
+        try {
+            setTitle(getString(intent.getIntExtra("nameID", 0)));
+            if (getString(intent.getIntExtra("nameID", 0)).equals(getString(R.string.cards)))
+                hasStandard = false;
+        } catch (Exception e) {
+            setTitle(intent.getStringExtra("name"));
+            if (intent.getStringExtra("name").equals(getString(R.string.cards)))
+                hasStandard = false;
+        }
 
-        if (getString(intent.getIntExtra("nameID", 0)).equals(getString(R.string.cards)))
-            hasStandard = false;
 
         Timber.i("dictionary loads before the contentView is set");
         if (!intent.getBooleanExtra("hasAsyncTask", false)) {
@@ -455,7 +461,7 @@ public class Disciplines extends AppCompatActivity {
         ((TextView) findViewById(clock_text)).setText("");
         if (!isTimerRunning) {
             String s = ((EditText) findViewById(R.id.sec)).getText().toString();
-            if (s.length()==0) s="0";
+            if (s.length() == 0) s = "0";
             cdt = new CountDownTimer(((Long.parseLong(((EditText) findViewById(R.id.min)).getText()
                     .toString()) * 60000 + Integer.parseInt(s) * 1000)), 1000) {
 

@@ -228,7 +228,7 @@ public class Places extends Disciplines {
             super.onPostExecute(s);
             //(findViewById(R.id.progress_bar)).setVisibility(View.GONE);
             setContentView(R.layout.activity_disciplines);
-            ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.places));
+            ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.places_small));
             levelSpinner();
 
             setButtons();
