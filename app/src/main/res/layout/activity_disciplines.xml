@@ -11,137 +11,138 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.memory_athlete.memoryassistant.disciplines.Disciplines">
 
-
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/standard_custom_radio_group">
-
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:checked="true"
-                android:text="@string/standard"
-                android:id="@+id/standard_radio"/>
-
-            <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="@string/custom"
-                android:id="@+id/custom_radio"/>
-
-        </RadioGroup>
-
-        <Spinner
-            android:id="@+id/level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp" />
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/custom_layout"
-            android:visibility="gone"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/no_of_values"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:inputType="number" />
-
-            <Spinner
-                android:id="@+id/group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:visibility="gone" />
-
-            <CheckBox
-                android:id="@+id/negative"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/negative"
-                android:visibility="gone" />
-
-            <CheckBox
-                android:id="@+id/decimal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="@string/decimal"
-                android:visibility="gone" />
-
             <RadioGroup
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
+                android:id="@+id/standard_custom_radio_group"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="@string/clock">
+                android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/sw"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/standard_radio"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/sw" />
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/standard" />
 
                 <RadioButton
-                    android:id="@+id/timer"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/custom_radio"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/tm" />
-
-                <RadioButton
-                    android:id="@+id/none"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/none" />
+                    android:layout_weight="1"
+                    android:text="@string/custom" />
 
             </RadioGroup>
 
+            <Spinner
+                android:id="@+id/level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp" />
+
             <LinearLayout
-                android:id="@+id/clock_edit"
+                android:id="@+id/custom_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <EditText
-                    android:id="@+id/min"
+                    android:id="@+id/no_of_values"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_minutes"
+                    android:layout_margin="8dp"
                     android:inputType="number" />
 
-                <EditText
-                    android:id="@+id/sec"
+                <Spinner
+                    android:id="@+id/group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_minutes"
-                    android:inputType="number" />
+                    android:layout_margin="8dp"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/negative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/negative"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/decimal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/decimal"
+                    android:visibility="gone" />
+
+                <RadioGroup
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/clock">
+
+                    <RadioButton
+                        android:id="@+id/sw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sw" />
+
+                    <RadioButton
+                        android:id="@+id/timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tm" />
+
+                    <RadioButton
+                        android:id="@+id/none"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none" />
+
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/clock_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_minutes"
+                        android:imeOptions="actionNext"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/sec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_seconds"
+                        android:imeOptions="actionDone"
+                        android:inputType="number" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -159,29 +160,31 @@
 
             </ScrollView>
 
-            <ImageView
-                android:id="@+id/cards"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:onClick="next"
-                android:visibility="gone" />  <!--Used only in cards so there wont be any error-->
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
+    </android.support.v4.widget.NestedScrollView>
 
-                <ProgressBar
-                    android:id="@+id/progress_bar_discipline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone" />
-                <!--Don't use "layout-gravity=canter", it is buggy-->
+    <ImageView
+        android:id="@+id/cards"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:onClick="next"
+        android:visibility="gone" />
+    <!--Used only in cards so there wont be any error;
+         everywhere else, keep visibility gone-->
 
-            </LinearLayout>
+    <LinearLayout
+        android:id="@+id/progress_bar_discipline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone">
 
-
-        </RelativeLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!--Don't use "layout-gravity=center", it is buggy-->
 
     </LinearLayout>
 
@@ -200,8 +203,8 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fadingEdgeLength="16dp"
         android:layout_gravity="center"
+        android:fadingEdgeLength="16dp"
         android:requiresFadingEdge="horizontal">
 
         <LinearLayout

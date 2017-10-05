@@ -21,7 +21,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -83,8 +82,6 @@ public class Disciplines extends AppCompatActivity {
                 findViewById(R.id.level).setVisibility(View.GONE);
             }
         }
-
-
         //setContentView(R.layout.activity_binary_digits); TODO: fix it!
         //setTitle("Binary Digits"); TODO: fix it!
 
@@ -156,10 +153,8 @@ public class Disciplines extends AppCompatActivity {
                 try {
                     ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
                             hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                } catch (Exception e) {
-                    if (BuildConfig.DEBUG) {
-                        Log.e(LOG_TAG, "Couldn't hide keypad ", e);
-                    }
+                } catch (NullPointerException e) {
+                    Timber.e("Couldn't hide keypad ", e);
                 }
                 return false;
             }
@@ -201,7 +196,7 @@ public class Disciplines extends AppCompatActivity {
 
     protected void startCommon() {
         a.set(2, 1);
-        (new MyAsyncTask()).execute(a);
+        (new GenerateRandomAsyncTask()).execute(a);
         findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
         findViewById(R.id.level).setVisibility(View.GONE);
         findViewById(R.id.time).setVisibility(View.GONE);
@@ -238,10 +233,7 @@ public class Disciplines extends AppCompatActivity {
         }
 
         if (((RadioButton) findViewById(R.id.timer)).isChecked()) {
-            if (((EditText) (findViewById(R.id.clock_edit)).findViewById(R.id.min))
-                    .getText().toString().length() > 0 &&
-                    ((EditText) (findViewById(R.id.clock_edit))
-                            .findViewById(R.id.sec)).getText().toString().length() > 0) {
+            if (((EditText) findViewById(R.id.min)).getText().toString().length() > 0) {
                 startCommon();
                 timer();
                 isTimerRunning = true;
@@ -251,6 +243,7 @@ public class Disciplines extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "Please enter the duration",
                         Toast.LENGTH_SHORT).show();
+                findViewById(R.id.min).requestFocus();
                 return;
             }
         }
@@ -271,12 +264,12 @@ public class Disciplines extends AppCompatActivity {
         }
 
         startCommon();
-        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Start complete");
+        Timber.v("Start complete");
     }
 
     protected boolean save() {
         String string = ((TextView) findViewById(R.id.random_values)).getText().toString();
-        if (string == "") return false;
+        if (string.equals("")) return false;
 
         String fname = getFilesDir().getAbsolutePath() + File.separator + getTitle() + File.separator +
                 ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
@@ -324,7 +317,8 @@ public class Disciplines extends AppCompatActivity {
         (findViewById(R.id.time)).setVisibility(View.VISIBLE);
         if (hasStandard) {
             findViewById(R.id.standard_custom_radio_group).setVisibility(View.VISIBLE);
-            findViewById(R.id.level).setVisibility(View.VISIBLE);
+            if (((RadioButton) findViewById(R.id.standard_radio)).isChecked())
+                findViewById(R.id.level).setVisibility(View.VISIBLE);
         }
         ((RadioGroup) findViewById(R.id.time)).clearCheck();
         ((TextView) findViewById(R.id.random_values)).setText("");
@@ -448,7 +442,7 @@ public class Disciplines extends AppCompatActivity {
         Timber.v("setButtons complete");
     }
 
-    protected void recall(){
+    protected void recall() {
         Intent intent = new Intent(getApplicationContext(), Recall.class);
         intent.putExtra("file exists", save());
         intent.putExtra("discipline", "" + getTitle());
@@ -457,13 +451,13 @@ public class Disciplines extends AppCompatActivity {
     }
 
     protected void timer() {
-        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "timer() entered");
+        Timber.v("timer() entered");
         ((TextView) findViewById(clock_text)).setText("");
         if (!isTimerRunning) {
-            cdt = new CountDownTimer(((Long.parseLong(((EditText)
-                    ((LinearLayout) findViewById(R.id.clock_edit)).findViewById(R.id.min)).getText().
-                    toString()) * 60000 + Integer.parseInt(((EditText) ((LinearLayout) findViewById
-                    (R.id.clock_edit)).findViewById(R.id.sec)).getText().toString()) * 1000)), 1000) {
+            String s = ((EditText) findViewById(R.id.sec)).getText().toString();
+            if (s.length()==0) s="0";
+            cdt = new CountDownTimer(((Long.parseLong(((EditText) findViewById(R.id.min)).getText()
+                    .toString()) * 60000 + Integer.parseInt(s) * 1000)), 1000) {
 
                 boolean isRunning = true;
 
@@ -476,9 +470,9 @@ public class Disciplines extends AppCompatActivity {
                 public void onFinish() {
                     ((TextView) findViewById(clock_text)).setText(R.string.time_up);
                     numbersVisibility(View.GONE);
-                    (findViewById(R.id.time)).setVisibility(View.VISIBLE);
-                    (findViewById(R.id.start)).setVisibility(View.VISIBLE);
-                    (findViewById(R.id.stop)).setVisibility(View.INVISIBLE);
+                    findViewById(R.id.stop).setVisibility(View.GONE);
+                    findViewById(R.id.reset).setVisibility(View.VISIBLE);
+                    findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
                     isRunning = false;
                 }
             }.start();
@@ -497,7 +491,7 @@ public class Disciplines extends AppCompatActivity {
                 }
             }.start();
         }
-        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "timer() complete");
+        Timber.v("timer() complete");
     }
 
     protected void preExecute() {
@@ -541,7 +535,7 @@ public class Disciplines extends AppCompatActivity {
         numbersVisibility(View.VISIBLE);
     }
 
-    private class MyAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
+    private class GenerateRandomAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
 
         @Override
         protected void onPreExecute() {

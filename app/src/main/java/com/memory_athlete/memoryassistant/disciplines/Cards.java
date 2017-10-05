@@ -106,7 +106,7 @@ public class Cards extends Disciplines {
 
     @Override
     protected boolean save() {
-        if(randomList.isEmpty()) return false;
+        if (randomList.isEmpty()) return false;
         StringBuilder stringBuilder = new StringBuilder("");
 
         String fname = getFilesDir().getAbsolutePath() + File.separator + getTitle() + File.separator +
@@ -147,8 +147,15 @@ public class Cards extends Disciplines {
         randomList.clear();
         findViewById(R.id.group).setVisibility(View.GONE);
         findViewById(R.id.prev).setVisibility(View.GONE);
+        findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
         ((ImageView) findViewById(R.id.cards)).setImageDrawable(null);
         //findViewById(R.id.cards).setVisibility(View.GONE);
         //findViewById(R.id.progress_bar_discipline).setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void startCommon() {
+        super.startCommon();
+        findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
     }
 }
