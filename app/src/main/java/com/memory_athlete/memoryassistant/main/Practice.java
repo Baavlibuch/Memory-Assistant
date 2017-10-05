@@ -3,7 +3,6 @@ package com.memory_athlete.memoryassistant.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
 import com.memory_athlete.memoryassistant.disciplines.Letters;
@@ -31,7 +31,7 @@ public class Practice extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        theme();
+        MakeList.theme(this, Practice.this);
         setContentView(R.layout.activity_practice);
         setTitle(getString(R.string.practice));
         final ArrayList<Category> disc = new ArrayList<>();
@@ -50,21 +50,6 @@ public class Practice extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    protected void theme(){
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme){
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-        }
     }
 
     private void setList(ArrayList<Category> disc) {

@@ -1,13 +1,13 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
-import android.support.compat.BuildConfig;
-import android.util.Log;
 import android.widget.EditText;
 
 import com.memory_athlete.memoryassistant.R;
 
 import java.util.Random;
+
+import timber.log.Timber;
 
 public class Letters extends Disciplines {
 
@@ -16,7 +16,7 @@ public class Letters extends Disciplines {
         super.onCreate(savedInstanceState);
 
         ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.st));
-        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Activity Created");
+        Timber.v("Activity Created");
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Letters extends Disciplines {
         for (int i = 0; i < a.get(1); i++) {
             for (int j = 0; j < a.get(0); j++) {
                 char c = (char) (rand.nextInt(26) + 97);
-                Log.v(LOG_TAG, "value of c = " + c);
+                Timber.v("value of c = " + c);
                 if (c != 'm' && c != 'w') s += " ";
                 if (c == 'i' || c == 'j' || c == 'l' || c == 't' || c=='f') s += " ";
                 stringBuilder.append(String.valueOf(c));
@@ -37,7 +37,7 @@ public class Letters extends Disciplines {
             stringBuilder.append(s).append(getString(R.string.tab)).append("   ");
             s="";
         }
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, stringBuilder.toString());
+        Timber.v(stringBuilder.toString());
         return stringBuilder.toString();
     }
 }

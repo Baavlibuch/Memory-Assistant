@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
 public class Preferences extends AppCompatActivity {
@@ -17,24 +18,9 @@ public class Preferences extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mTheme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        theme();
+        MakeList.theme(this, Preferences.this);
         setContentView(R.layout.activity_preferences);
         setTitle(getString(R.string.preferences));
-    }
-
-    protected void theme() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-        }
     }
 
     public static class MemoryPreferenceFragment extends PreferenceFragment implements

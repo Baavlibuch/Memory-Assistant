@@ -80,7 +80,7 @@ public class Recall extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        theme();
+        MakeList.theme(this, Recall.this);
         setContentView(activity_recall);
         setTitle(getString(R.string.recall));
         Timber.v("theme() complete");
@@ -96,24 +96,6 @@ public class Recall extends AppCompatActivity {
         if (findViewById(R.id.reset).getVisibility() == View.VISIBLE
                 || findViewById(R.id.response_layout).getVisibility() == View.VISIBLE) reset();
         else super.onBackPressed();
-    }
-
-    protected void theme() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                mSuitBackground = R.color.color_suit_background_dark;
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                mSuitBackground = R.color.color_suit_background_night;
-                break;
-            default:
-                setTheme(R.style.light);
-                mSuitBackground = R.color.color_suit_background_light;
-        }
     }
 
     void makeSpinner1(final Intent intent) {

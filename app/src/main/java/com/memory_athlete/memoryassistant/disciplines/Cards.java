@@ -1,8 +1,6 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
-import android.support.compat.BuildConfig;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
+
+import timber.log.Timber;
 
 public class Cards extends Disciplines {
 
@@ -60,9 +60,7 @@ public class Cards extends Disciplines {
 
     @Override
     protected String background() {
-        if (BuildConfig.DEBUG) {
-            Log.v(LOG_TAG, "do in background entered to create string");
-        }
+        Timber.v("do in background entered to create string");
         ArrayList<Integer> cards = new ArrayList<>();
         //Random rand = new Random();
         int n;

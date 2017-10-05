@@ -3,7 +3,6 @@ package com.memory_athlete.memoryassistant.mySpace;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.main.Learn;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -32,7 +33,7 @@ public class MySpace extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        theme();
+        MakeList.theme(this, MySpace.this);
         setContentView(R.layout.activity_my_space);
         setTitle(title + getString(R.string.my_space));
         Timber.v("Title Set");
@@ -67,20 +68,6 @@ public class MySpace extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    protected void theme() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-        }
-    }
 
     public void setAdapter() {
         Timber.v("setAdapter started");

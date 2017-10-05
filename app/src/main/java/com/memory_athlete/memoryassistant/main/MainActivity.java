@@ -3,11 +3,9 @@ package com.memory_athlete.memoryassistant.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +18,7 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.recall.Recall;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
-        theme();
+        MakeList.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name));
         setAdapter();
@@ -58,24 +57,6 @@ public class MainActivity extends AppCompatActivity {
         e.apply();
         ReminderUtils.scheduleReminder(this);
         Timber.d(this.getLocalClassName() + " " + this.getClass().getName());
-    }
-
-    void theme(){
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme){
-            case "Dark":
-                setTheme(R.style.dark);
-                Log.i(LOG_TAG, String.valueOf(((ColorDrawable) (this.getWindow().getDecorView()).getBackground()).getColor()));
-  //              (this.getWindow().getDecorView()).setBackgroundColor(0xff333333);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-//                (this.getWindow().getDecorView()).setBackgroundColor(0xffeaeaea);
-        }
     }
 
     public void setAdapter() {

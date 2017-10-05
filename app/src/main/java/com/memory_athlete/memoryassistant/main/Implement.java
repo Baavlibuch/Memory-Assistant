@@ -3,7 +3,6 @@ package com.memory_athlete.memoryassistant.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
 
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class Implement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        theme();
+        MakeList.theme(this, Implement.this);
         setContentView(R.layout.activity_apply);
         setTitle(getString(R.string.apply));
         Timber.v("Title Set");
@@ -54,21 +54,6 @@ public class Implement extends AppCompatActivity {
         linearLayout.removeViewAt(listViewId--);
         linearLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
         pathList.remove(pathList.size() - 1);
-    }
-
-    protected void theme(){
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-        }
     }
 
     public void setAdapter() {

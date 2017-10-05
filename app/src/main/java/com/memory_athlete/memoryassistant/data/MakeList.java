@@ -1,5 +1,9 @@
 package com.memory_athlete.memoryassistant.data;
 
+import android.app.Activity;
+import android.content.Context;
+import android.preference.PreferenceManager;
+
 import com.memory_athlete.memoryassistant.R;
 
 /**
@@ -129,5 +133,21 @@ public class MakeList {
         cards[50]="King of Clubs";
         cards[51]="Ace of Clubs";
         return cards;
+    }
+
+    public static void theme(Context context, Activity activity){
+        String theme = PreferenceManager.getDefaultSharedPreferences(context).getString(
+                context.getString(R.string.theme), "AppTheme");
+        switch (theme) {
+            case "Dark":
+                context.setTheme(R.style.dark);
+                break;
+            case "Night":
+                context.setTheme(R.style.pitch);
+                (activity.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                break;
+            default:
+                context.setTheme(R.style.light);
+        }
     }
 }

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
 import java.io.BufferedReader;
@@ -30,7 +31,7 @@ public class WriteFile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        theme();
+        MakeList.theme(this, WriteFile.this);
         setContentView(R.layout.activity_write_file);
         String header = intent.getStringExtra("mHeader");
         if (header == null) header = "New";
@@ -85,21 +86,6 @@ public class WriteFile extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (save()) super.onBackPressed();
-    }
-
-    protected void theme() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-        }
     }
 
     public boolean save() {
