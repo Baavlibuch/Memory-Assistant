@@ -1,5 +1,15 @@
 <h2>Differentiation</h2>
 
+<p>$${\d y}/{\d x}={\d y}/{\d u}×{\d u}/{\d x}$$ $${\d (cy)}/{\d x}=c{\d y}/{\d x}$$</p>
+<p>$${\d (uv)}/{\d x}=u{\d v}/{\d x}×v{\d u}/{\d x}$$ $${\d (u/v)}/{\d x}=1/v^2{\d u}/{\d x}×1/u^2{\d v}/{\d x}$$</p>
+<p>$$\d/{\d x}\e ^x=\e ^x$$</p>
+<p>$$\d/{\d x}\sin x=\cos x$$ $$\d/{\d x}\cos x=-\sin x$$ $$\d/{\d x}\tan x=\sec ^2x$$ $$\d/{\d x}\cot x=-\cosec ^2x$$ $$\d/{\d x}\sec x=\tan x\sec x$$ $$\d/{\d x}\cosec x=-\cot x\cosec x$$</p>
+<p>$$\d/{\d x}y^n=ny^{n-1}{\d y}/{\d x}$$ $$\d/{\d x}\ln y = 1/y$$</p>
+<p>$$∫x^n{\d x}=x^{n+1}/{n+1}$$ $$∫1/x\d x=\ln x$$</p>
+<p>$$∫\sin x{\d x}=-\cos x$$ $$∫\cos x{\d x}=-\sin x$$</p>
+<p>$$\e ^x{\d x}=\e ^x$$</p>
+<p>$$$$</p>
+<p>$$$$</p>
 <p>$$e^{ax}:a^{n-1}e^{ax}$$</p>
 <p>$$(ax+b)^m:{m!}/{(m-n)!}a^n(ax+b)^{m-n}$$</p>
 <p>$$\log (ax+b):(-1)^{n-1}{(n-1)!a^n}/{ax+b}^n$$</p>

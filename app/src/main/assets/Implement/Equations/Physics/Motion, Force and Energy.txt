@@ -1,0 +1,15 @@
+<p><b>1D motion</b>$$v=u+at$$ $$x=ut+1/2at^2$$ $$v^2-u^2=2ax$$</p>
+<p><b>Projectile Motion</b>$$T_M={v_0\sin θ_0}/g$$ $$R={v_0^2\sin 2θ_0}/g$$ $$R_M=v_0^2/g$$</p>
+<p><b>Circular Motion</b>$$ω={∆θ}/{∆t}$$ $$v=Rω$$ $$a_c=v^2/R=ω^2R$$ $$f_c=mv^2/R$$</p>
+<p>$$F=k{d\ p}/{\d t}$$</p>
+<p>$$f_k=μN$$</p>
+
+<p>$$W=(F\cos θ)d=F\↖{→}.x\↖{→}=∆KE$$</p>
+<p>For a conservative force $∆(K+V)=0$</p>
+<p><b>Spring</b>$$F=kx$$ $$U=1/2kx^2$$</p>
+<p>$$P={\d W}/{\d t}=F.v$$</p>
+<h4>Collision</h4>
+<p><b>1D</b>$$m_1u_1=m_1v_1+m_2v_2$$</p>
+<p>For elastic collision $$m_1u_1^2=m_1v_1^2+m_2v_2^2$$</p>
+<p>$$v_1={m_1-m_2}/{m_1+m_2}u_1$$ $$v_2={2m_1u_1}/{m_1+m_2}$$</p>
+<p><b>2D</b>$$m_1u_1=m_1v_1\cos θ_1+m_2v_2\cos θ_2$$ $$0=m_1v_1\sin θ_1+m_2v_2\sin θ_2$$</p>

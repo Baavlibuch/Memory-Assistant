@@ -64,9 +64,10 @@ public class Disciplines extends AppCompatActivity {
         Timber.i("0 means error in getting title resource string ID through intent");
         theme();
         try {
-            setTitle(getString(intent.getIntExtra("nameID", 0)));
-            if (getString(intent.getIntExtra("nameID", 0)).equals(getString(R.string.cards)))
-                hasStandard = false;
+            String s = getString(intent.getIntExtra("nameID", 0));
+            if (s.equals(getString(R.string.cards))) hasStandard = false;
+            else if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
+            setTitle(s);
         } catch (Exception e) {
             setTitle(intent.getStringExtra("name"));
             if (intent.getStringExtra("name").equals(getString(R.string.cards)))

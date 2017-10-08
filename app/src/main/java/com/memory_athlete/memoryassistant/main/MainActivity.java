@@ -30,8 +30,6 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String LOG_TAG = "MainActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,15 +46,13 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(this);
         if (s.getLong("last_opened", 0) == 0)
-            Toast.makeText(this, "If you find that something is too complex, just start at the top",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.confused, Toast.LENGTH_LONG).show();
 
         SharedPreferences.Editor e = s.edit();
         e.putLong("last_opened", System.currentTimeMillis());
         Timber.v("Last opened on" + System.currentTimeMillis());
         e.apply();
         ReminderUtils.scheduleReminder(this);
-        Timber.d(this.getLocalClassName() + " " + this.getClass().getName());
     }
 
     public void setAdapter() {

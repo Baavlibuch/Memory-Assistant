@@ -1,0 +1,18 @@
+<p><b>Center of mass (centroid)</b>$$R={∑m_ir_i}/{∑m_i}$$</p>
+
+<p>Angular momentum$$l=rp\sin θ$$</p>
+<p>$$τ=F.r\sin θ$$</p>
+<p>Moment of couple $$(r_2-r_1)×F$$</p>
+<p>Mechanical advantage $$MA=F_1/F_2=d_2/d_1$$</p>
+<p>Moment of inertia$$I=∑↖n↙{i=1}m_ir_i^2$$</p>
+<p>$$KE=1/2Iω^2$$</p>
+<p>$$I=Mk^2$$</p>
+<p>$$τ=Iα$$</p>
+
+<p>Point mass $$mr^2$$</p>
+<p>Thin circular ring (z) $$MR^2$$</p>
+<p>Hollow cylinder (z) $$MR^2$$</p>
+<p>Thin rod (z) $$ML^2/12$$</p>
+<p>Circular disc (z) $$MR^2/2$$</p>
+<p>Solid cylinder (z) $$MR^2/2$$</p>
+<p>Solid sphere $$2MR^2/5$$</p>

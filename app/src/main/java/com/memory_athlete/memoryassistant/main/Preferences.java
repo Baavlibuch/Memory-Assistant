@@ -63,7 +63,6 @@ public class Preferences extends AppCompatActivity {
             }
             return true;
         }
-
     }
 
     @Override

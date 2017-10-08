@@ -21,7 +21,6 @@ import timber.log.Timber;
  */
 
 abstract class NotificationUtils {
-    private static final String LOG_TAG = "\tNotificationUtils : ";
     private static final int PERIODIC_REMINDER_PENDING_INTENT_ID = 3417;
     private static final int MY_SPACE_REMINDER_PENDING_INTENT_ID = 3418;
     private static final long MIN = 60000;

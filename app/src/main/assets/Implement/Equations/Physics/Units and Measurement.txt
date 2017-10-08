@@ -1,0 +1,5 @@
+<h2>Units and Measurement</h2>
+
+<p>$$\d θ=\d s/r \radian$$</p>
+<p>$$\d \Ω=\d A/r^2 \steradian$$</p>
+<p>Parallax method : $$D=b/θ$$ $$α=d/D$$</p>

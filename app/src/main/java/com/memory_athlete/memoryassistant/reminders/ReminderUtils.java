@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import com.firebase.jobdispatcher.Driver;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -12,6 +13,7 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.firebase.jobdispatcher.Lifetime;
 import com.firebase.jobdispatcher.Trigger;
+import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.services.MySpaceJobService;
 import com.memory_athlete.memoryassistant.services.ReminderJobService;
@@ -95,30 +97,31 @@ public class ReminderUtils {
 
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
-        int diff = next(context) * 60, diff1 = 0;
+        int diff = next(context) * 60;
+        if (BuildConfig.DEBUG) Toast.makeText(context, "diff= " + diff, Toast.LENGTH_SHORT).show();
         for (int i = 0; i < 7; i++) {
+            int diff1 = diff;
             switch (i) {
                 case 0:
-                    diff1 = diff;
                     if (diff < 10 * HOUR) diff1 += DAY;
                     break;
                 case 1:
-                    diff1 = diff + 3 * DAY;
+                    diff1 += 3 * DAY;
                     break;
                 case 2:
-                    diff1 = diff + WEEK;
+                    diff1 += WEEK;
                     break;
                 case 3:
-                    diff1 = diff + MONTH;
+                    diff1 += MONTH;
                     break;
                 case 4:
-                    diff1 = diff + 3 * MONTH;
+                    diff1 += 3 * MONTH;
                     break;
                 case 5:
-                    diff1 = diff + 6 * MONTH;
+                    diff1 += 6 * MONTH;
                     break;
                 case 6:
-                    diff1 = diff + 12 * MONTH;
+                    diff1 += 12 * MONTH;
             }
             Timber.v("MySpace notification is after " + diff1);
 
@@ -127,7 +130,7 @@ public class ReminderUtils {
                     .setTag(fname + i)
                     .setLifetime(Lifetime.FOREVER)
                     .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1 + 5 * MIN, diff1 + HOUR))
+                    .setTrigger(Trigger.executionWindow(diff1 - 5 * MIN, diff1 + HOUR))
                     .setReplaceCurrent(true)
                     .setExtras(bundle)
                     .build();

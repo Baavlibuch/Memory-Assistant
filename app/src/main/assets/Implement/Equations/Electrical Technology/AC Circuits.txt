@@ -13,7 +13,7 @@
 <p>$$QF=V_L/V_R={ω_0L}/R=1/R√{L/C}=V_C/V_R$$</p>
 <p>$f'$ at $I=I_0/√2$</p>
 <p>$$ω'=ω_0±R/{2L}$$</p>
-<p>Selectivity $${\Δ f}/f_0$$</p>
+<p>Selectivity $${∆f}/f_0$$</p>
 <p>Parallel $$θ=\tan ^{-1}{I_1\sin θ_1+I_2\sin θ_2}/{I_1\cos θ_1+I_2\cos θ_2}$$</p>
 <p>$$I_0=V/{L/{CR}}$$ $$ω_0=√{1/{LC}-R^2/L^2}$$</p>
 <p>Dynamic Impedance $$L/{CR}=\max Z$$</p>

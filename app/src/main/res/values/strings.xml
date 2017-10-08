@@ -121,5 +121,6 @@
     <string name="visit_my_space">Visit My Space</string>
     <string name="try_again">Try again</string>
     <string name="report_to_dev">There was an error, please report this to the developer</string>
+    <string name="confused">Confused? Start from the top</string>
 
 </resources>

@@ -1,0 +1,10 @@
+<p>$$∆A=1/2r×v∆t$$</p>
+<p>$$F={Gm_1m_2}/r^2$$</p>
+<p>$$g={GM_E}/R_E^2$$</p>
+<p>Above the surface $$g_h=g(1+h/R_E)^{-2}≅g(1-{2h}/R_E)$$Below the surface $$g_d=g(1-d/R_E)$$</p>
+<p>Escape velocity $$√{2gR_E}$$</p>
+<h4>Satellite</h4>
+<p>$$V_2={GM_E}/(R_E+h)$$</p>
+<p>$$T={2π(R_E+h)}/V={2π(R_E+h)^{3/2}}/{GM_E}$$ $$T_0=2π√{R+E/g}$$</p>
+<p>Total Energy$$-GmM_E/{2(R_E+h)}$$</p>
+<p>Geodtationary satellite$$R_E+h=({T^2GM_E}/{4π^2})^{1/3}$$</p>
