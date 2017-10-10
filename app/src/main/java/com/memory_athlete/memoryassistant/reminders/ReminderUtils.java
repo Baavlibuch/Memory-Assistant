@@ -93,7 +93,7 @@ public class ReminderUtils {
 
     synchronized public static void mySpaceReminder(@NonNull final Context context, String fname) {
         Bundle bundle = new Bundle();
-        bundle.putString("fname", fname);
+        bundle.putString("fPath", fname);
 
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);

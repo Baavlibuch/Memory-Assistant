@@ -2,8 +2,6 @@ package com.memory_athlete.memoryassistant.services;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.compat.BuildConfig;
-import android.util.Log;
 
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
@@ -11,7 +9,6 @@ import com.firebase.jobdispatcher.JobService;
 import timber.log.Timber;
 
 public class MySpaceJobService extends JobService {
-    private final String LOG_TAG = getClass().getSimpleName();
     private AsyncTask mBackgroundTask;
 
     @Override
@@ -23,8 +20,8 @@ public class MySpaceJobService extends JobService {
                 Timber.v("entered doInBackground()");
                 Bundle bundle = job.getExtras();
                 if (bundle != null) {
-                    String fname = bundle.getString("fname");
-                    NotificationUtils.createMySpaceNotification(MySpaceJobService.this, fname);
+                    String fPath = bundle.getString("fPath");
+                    NotificationUtils.createMySpaceNotification(MySpaceJobService.this, fPath);
                     //ReminderTask.executeTask(context, ReminderTask.);
                 }
                 return null;
@@ -32,7 +29,7 @@ public class MySpaceJobService extends JobService {
 
             @Override
             protected void onPostExecute(Object o) {
-                if (BuildConfig.DEBUG) Log.v(LOG_TAG, "entered onPostExecute()");
+                Timber.v("entered onPostExecute()");
                 jobFinished(job, false);
             }
         };

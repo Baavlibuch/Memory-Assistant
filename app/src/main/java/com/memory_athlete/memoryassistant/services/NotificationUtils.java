@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;
@@ -22,7 +23,7 @@ import timber.log.Timber;
 
 abstract class NotificationUtils {
     private static final int PERIODIC_REMINDER_PENDING_INTENT_ID = 3417;
-    private static final int MY_SPACE_REMINDER_PENDING_INTENT_ID = 3418;
+    private static final int MY_SPACE_REMINDER_PENDING_INTENT_ID = 3518;
     private static final long MIN = 60000;
     private static final long HOUR = MIN * 60;
     private static final long DAY = HOUR * 24;
@@ -36,7 +37,7 @@ abstract class NotificationUtils {
     }
 
     static void createNotification(Context context) {
-        if(!PreferenceManager.getDefaultSharedPreferences(context)
+        if (!PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(context.getString(R.string.remind), false)) return;
         String text = text(context);
         Timber.d(text);
@@ -46,10 +47,10 @@ abstract class NotificationUtils {
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentIntent(contentIntent(context))
                 .setAutoCancel(true);
-                //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                //.setLargeIcon(largeIcon(context))
-                //.setContentText(text)
-                //.setStyle(new NotificationCompat.BigTextStyle().bigText(text))
+        //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
+        //.setLargeIcon(largeIcon(context))
+        //.setContentText(text)
+        //.setStyle(new NotificationCompat.BigTextStyle().bigText(text))
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
         }
@@ -79,9 +80,12 @@ abstract class NotificationUtils {
     }
 
     static void createMySpaceNotification(Context context, String fPath) {
-        if(!PreferenceManager.getDefaultSharedPreferences(context)
+        if (!PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(context.getString(R.string.remind), false)) return;
-        if(!new File(fPath).exists()) return;
+        if (!new File(fPath).exists()) {
+            Toast.makeText(context, fPath + " no longer exists", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String text = mySpaceText(context, fPath);
         Timber.d(text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
@@ -91,9 +95,9 @@ abstract class NotificationUtils {
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentIntent(contentIntent(context))
                 .setAutoCancel(true);
-                //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                //.setLargeIcon(largeIcon(context))
-                //.setContentText(text)
+        //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
+        //.setLargeIcon(largeIcon(context))
+        //.setContentText(text)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
         }
@@ -103,10 +107,10 @@ abstract class NotificationUtils {
         Timber.v("createNotification() complete");
     }
 
-    private static String mySpaceText(Context context, String fname) {
+    private static String mySpaceText(Context context, String fPath) {
         long lastOpened = PreferenceManager.getDefaultSharedPreferences(context)
-                .getLong(fname, System.currentTimeMillis());
-        Timber.v("fname was created at " + String.valueOf(lastOpened));
+                .getLong(fPath, System.currentTimeMillis());
+        Timber.v("fPath was created at " + String.valueOf(lastOpened));
         String time = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext())
                 .getString(context.getString(R.string.periodic), "22:30");
         Timber.v("reminder time - " + time);
@@ -117,16 +121,17 @@ abstract class NotificationUtils {
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 
-        fname = fname.substring(fname.lastIndexOf('/')+1, fname.length()-4);
+        fPath = fPath.substring(fPath.lastIndexOf('/') + 1, fPath.length() - 4);
+        Timber.v("fName = " + fPath);
 
-        if (diff / DAY < 2) return "You should revise " + fname + " now";
-        if (diff / DAY < 5) return "It's been a few days since you opened " + fname;
-        if (diff / WEEK < 2) return "You opened " + fname + " a week ago. Consider revising";
-        if (diff / MONTH < 1) return "You learned " + fname + " a month ago. Consider revising";
+        if (diff / DAY < 2) return "You should revise " + fPath + " now";
+        if (diff / DAY < 5) return "It's been a few days since you opened " + fPath;
+        if (diff / WEEK < 2) return "You opened " + fPath + " a week ago. Consider revising";
+        if (diff / MONTH < 1) return "You learned " + fPath + " a month ago. Consider revising";
         if (diff / MONTH < 6)
-            return "It's been about 3 months since you created " + fname + ". Consider revising";
+            return "It's been about 3 months since you created " + fPath + ". Consider revising";
         if (diff / MONTH < 12)
-            return "It's been about 6 months since you created " + fname + ". Consider revising";
-        return "A year ago you created " + fname + ". Consider revising";
+            return "It's been about 6 months since you created " + fPath + ". Consider revising";
+        return "A year ago you created " + fPath + ". Consider revising";
     }
 }

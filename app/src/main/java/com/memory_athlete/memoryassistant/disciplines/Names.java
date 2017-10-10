@@ -15,6 +15,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 
+import timber.log.Timber;
+
 import static com.memory_athlete.memoryassistant.R.raw.first;
 
 public class Names extends Disciplines {
@@ -27,7 +29,7 @@ public class Names extends Disciplines {
         super.onCreate(savedInstanceState);
 
         (new DictionaryAsyncTask()).execute();
-        Log.i(LOG_TAG, "Activity Created");
+        Timber.v("Activity Created");
     }
 
     private void createDictionary() {
@@ -75,19 +77,19 @@ public class Names extends Disciplines {
 
     @Override
     protected String background() {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "doInBackground() entered");
+        Timber.v("doInBackground() entered");
 
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
         int n;
 
-        for (int i = 0; i < a.get(1); i++) {
+        for (int i = 0; i < a.get(1);) {
             n = rand.nextInt(mFirstName.size());
             stringBuilder.append(mFirstName.get(n)).append(" ");
             n = rand.nextInt(mLastName.size());
             stringBuilder.append(mLastName.get(n)).append("\n");
-            if((1+i)%20 == 0) stringBuilder.append("\n");
+            if ((++i) % 20 == 0) stringBuilder.append("\n");
             if (a.get(2) == 0) break;
         }
         return stringBuilder.toString();

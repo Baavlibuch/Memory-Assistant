@@ -511,9 +511,9 @@ public class Recall extends AppCompatActivity {
             if (isLeft(i, j)) continue;
             if (words) {
                 if (isSpelling(i, j)) {
-                    mTextAnswer.append("<font color=#DDDD00>").append(answers.get(j)).
+                    mTextAnswer.append("<font color=#CCCC00>").append(answers.get(j)).
                             append("</font>").append(" ").append(whitespace);
-                    mTextResponse.append("<font color=#DDDD00>").append(responses.get(i)).
+                    mTextResponse.append("<font color=#CCCC00>").append(responses.get(i)).
                             append("</font>").append(" ").append(whitespace);
                     correct++;
                     continue;
@@ -524,7 +524,7 @@ public class Recall extends AppCompatActivity {
         for (; i < responses.size(); i++)
             mTextResponse.append("<font color=#FF0000>")
                     .append(responses.get(i)).append("</font>").append(" ").append(whitespace);
-        Log.v(LOG_TAG, "compare() complete ");
+        Timber.v("compare() complete ");
     }
 
     boolean isLeft(int i, int j) {

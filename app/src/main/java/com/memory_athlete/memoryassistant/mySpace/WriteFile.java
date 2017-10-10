@@ -122,10 +122,10 @@ public class WriteFile extends AppCompatActivity {
                 outputStream.write(string.getBytes());
                 outputStream.close();
 
-                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
-                e.putLong(fname, System.currentTimeMillis());
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+                editor.putLong(fname, System.currentTimeMillis());
                 Timber.v(fname + "made at " + System.currentTimeMillis());
-                e.apply();
+                editor.apply();
                 ReminderUtils.mySpaceReminder(this, fname);
             } catch (Exception e) {
                 e.printStackTrace();
