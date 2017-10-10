@@ -170,7 +170,7 @@ public class Recall extends AppCompatActivity {
                             String s = discipline;
                             if (s.equals(getString(R.string.digits)))
                                 s = getString(R.string.numbers);
-                            s = s.replaceAll("\\s","");
+                            s = s.replaceAll("\\s", "");
                             Timber.v("s= " + s);
                             try {
                                 Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
@@ -181,7 +181,7 @@ public class Recall extends AppCompatActivity {
                             } catch (ClassNotFoundException e) {
                                 e.printStackTrace();
                                 Toast.makeText(Recall.this, R.string.report_to_dev, Toast.LENGTH_SHORT).show();
-                            } catch (ActivityNotFoundException e){
+                            } catch (ActivityNotFoundException e) {
                                 e.printStackTrace();
                             }
                         }
@@ -511,10 +511,10 @@ public class Recall extends AppCompatActivity {
             if (isLeft(i, j)) continue;
             if (words) {
                 if (isSpelling(i, j)) {
-                    mTextAnswer.append("<font color=#CCCC00>").append(answers.get(j)).
-                            append("</font>").append(" ").append(whitespace);
-                    mTextResponse.append("<font color=#CCCC00>").append(responses.get(i)).
-                            append("</font>").append(" ").append(whitespace);
+                    mTextAnswer.append("<font color=#EEEE00>").append(answers.get(j))
+                            .append("</font>").append(" ").append(whitespace);
+                    mTextResponse.append("<font color=#EEEE00>").append(responses.get(i))
+                            .append("</font>").append(" ").append(whitespace);
                     correct++;
                     continue;
                 }
@@ -575,25 +575,30 @@ public class Recall extends AppCompatActivity {
     }
 
     boolean isSpelling(int i, int j) {
-        if ((float) abs((responses.get(i).length() - answers.get(j).length()) / answers.get(j).length()) > 0.3)
+        if ((float) abs((responses.get(i).length() - answers.get(j).length()) / answers.get(j).length()) > 0.3) {
             return false;
-        else {
+        } else {
             int count = 0;
             for (int a = 0; a < responses.get(i).length() && a < answers.get(j).length(); a++) {
-                if (responses.get(i).charAt(a) == answers.get(j).charAt(a)) {
+                if (Character.toLowerCase(responses.get(i).charAt(a)) == Character.toLowerCase(answers.get(j).charAt(a))) {
                     count++;
+                    Timber.v("Match for " + answers.get(j).charAt(a) + "  count = " + count);
                     continue;
                 }
-                for (int b = -2; b < 2; b++) {
+                Timber.d("Not a match");
+                for (int b = -2; b < 3; b++) {
+                    Timber.v("" + b);
                     if (a + b > 0 && a + b < responses.get(i).length() && a + b < answers.get(j).length()) {
                         if (responses.get(i).charAt(a) == answers.get(j).charAt(a + b)) {
                             count++;
+                            Timber.v("match for " + answers.get(j).charAt(a + b) + "  count = " + count);
                             break;
                         }
                     }
                 }
             }
-            return ((float) count / answers.get(j).length()) > 0.7;
+            Timber.v("Count = " + count);
+            return ((float) count / answers.get(j).length()) > 0.6;
         }
     }
 
