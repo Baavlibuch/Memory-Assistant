@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
-import com.memory_athlete.memoryassistant.main.Learn;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -45,7 +44,7 @@ public class MySpace extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Timber.v("listViewId = " + listViewId);
-        if (listViewId > 1 && findViewById(R.id.my_space_relative_layout).findViewById(listViewId) != null)
+        if (findViewById(R.id.my_space_relative_layout).findViewById(listViewId) != null)
             ((RelativeLayout) findViewById(R.id.my_space_relative_layout)).removeViewAt(listViewId);
         setAdapter();
     }
