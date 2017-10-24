@@ -3,17 +3,17 @@
 <p>$\N_\A$ = 6.022 140 9 × $10^23$</p>
 <p>e = 1.602 176 62 × $10^{-19}$ C</p>
 <p>1 u = $1.66×16^{-27}$ kg</p>
-<p>$\m_\e$ = 9.109 383 56 × $10^{-31}$ kg<br/>&nbsp&nbsp&nbsp = 0.000 548 579 9 u</p>
-<p>$\m_\p$ = 1.672 621 898 × $10^{-27}$ kg<br/>&nbsp&nbsp&nbsp = 1.007 276 466 879 u</p>
-<p>$\m_\n$ = 1.674 927 471 × $10^{−27}$ kg<br/>&nbsp&nbsp&nbsp = 1.008 664 915 88 u</p>
-<p>h = 6.626 070 04 × $10^{-34} \m^2\kg$/s</p>
+<p>$\m_\e$&nbsp = 9.109 383 56 × $10^{-31}$ kg<br/>&nbsp&nbsp&nbsp = 0.000 548 579 9 u</p>
+<p>$\m_\p$&nbsp = 1.672 621 898 × $10^{-27}$ kg<br/>&nbsp&nbsp&nbsp = 1.007 276 466 879 u</p>
+<p>$\m_\n$&nbsp = 1.674 927 471 × $10^{−27}$ kg<br/>&nbsp&nbsp&nbsp = 1.008 664 915 88 u</p>
+<p>h = 6.626 070 04 × $10^{-34} \, \m^2\kg$/s</p>
 <p>R = 10 973 731.6 $\m^{-1}$</p>
 <p>Bohr Radius ($a_0$) = 5.291 77 × $10^{-11}$</p>
-<p>Stefan-Boltzmann Constant<br/>&nbsp&nbsp&nbsp $(σ) = 5.670 \W\,\m^{-2} \K^{-4}$</p>
-<p>Wien's constant (b)<br/>&nbsp&nbsp&nbsp = 2.897 772 9 × $10^{−3}$ m K </p>
-<p>$ε_0$ = 8.854 187 817 620 × $10^{-12} \C^2 \N^{-1} \m^{-2}$</p>
-<p>$1/{4πε_0}$ = 8.987 551 787 37 × $10^9 \N\,\m \C^{-2}$<br/>&nbsp&nbsp&nbsp $≅ 9 × 10^9 \N\,\m \C^{-2}$</p>
-<p>$μ_0 = 4π×10^{-7} \T\,\m\,\A^{-1}$<br/>&nbsp&nbsp&nbsp = 1.256 637 061 44 × $10^{-6} \T\,\m\,\A^{-1}\,\or \Wb\,\m^{-1} \A^{-1}$</p>
+<p>Stefan-Boltzmann Constant<br/>&nbsp&nbsp&nbsp σ = 5.670 $\W\,\m^{-2} \K^{-4}$</p>
+<p>Wien's constant <br/>&nbsp&nbsp&nbsp b = 2.897 772 9 × $10^{−3}$ m K </p>
+<p>$ε_0$ = 8.854 187 817 620 × $10^{-12} \,\C^2 \N^{-1} \m^{-2}$</p>
+<p>$1/{4πε_0}$ = 8.987 551 787 37 × $10^9 \,\N\,\m \C^{-2}$<br/>&nbsp&nbsp&nbsp&nbsp&nbsp ≅ $9 × 10^9 \N\,\m \C^{-2}$</p>
+<p>$μ_0 = 4π×10^{-7} \,\T\,\m\,\A^{-1}$<br/>&nbsp&nbsp&nbsp&nbsp = 1.256 637 061 44 × $10^{-6} \T\,\m\,\A^{-1}$ <br/>&nbsp&nbsp&nbsp&nbsp or &nbsp&nbsp&nbsp&nbsp $\,\Wb\,\m^{-1} \A^{-1}$</p>
 <p>1 G = $10^{-4}$ T</p>
 <p>1 T = 1 Wb $\m^{-2}$</p>
 <p>F = 96 485.332 89 C<br/>&nbsp&nbsp&nbsp = 9.648 533 289 × $10^4$ C</p>
@@ -21,7 +21,7 @@
 <p>R = 8.314 459 8 $\J\,\K^{−1} \mol^{−1}$<br/>&nbsp&nbsp&nbsp = 8.205 733 8 × $10^{−2} \L\,\atm\,\K^{−1} \mol{−1}$</p>
 <p>1 erg = $10^{−7}$ J</p>
 <p>1 calorie = 4.184 J</p>
-<p>1 atm = 1.01325 bar<br/>&nbsp&nbsp&nbsp = 760 mm Hg<br/>&nbsp&nbsp&nbsp = 14.7 psi</p>
+<p>1 atm = 1.01325 bar<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp = 760 mm Hg<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp = 14.7 psi</p>
 <p>1 torr = 1 mm Hg</p>
 <p>1 psi = 6.895 kPa</p>
 

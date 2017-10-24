@@ -50,288 +50,17 @@
     </library-updates>
     <last-search-timestamp>1498829229979</last-search-timestamp>
   </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/app" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="37817797-208a-4257-b7e9-66e813937200" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/design_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/firebase_jobdispatcher_0_5_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_compat_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_core_ui_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_core_utils_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_fragment_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_media_compat_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_26_0_0_alpha1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/transition_26_0_0_alpha1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/launcher_ic-web.png" afterPath="$PROJECT_DIR$/app/src/main/launcher_ic-web.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi-v11/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi-v11/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi-v11/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi-v11/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi-v9/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi-v9/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi-v9/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi-v9/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_add.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_add.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_drop_down.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_drop_down.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_save.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_save.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi-v11/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi-v11/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi-v11/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi-v11/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi-v9/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi-v9/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi-v9/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi-v9/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_add.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_add.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_drop_down.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_drop_down.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_save.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_save.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi-v11/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi-v11/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi-v11/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi-v11/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi-v9/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi-v9/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi-v9/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi-v9/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_add.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_add.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_drop_down.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_drop_down.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_save.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_save.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v11/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v11/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v11/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v11/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v9/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v9/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v9/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi-v9/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_add.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_add.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_drop_down.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_drop_down.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_save.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_action_save.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_notif_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_notif_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_notify.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_notify.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ben_system.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ben_system.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/binary.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/binary.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c10.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c6.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c7.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/c9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/c9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ca.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ca.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/cards.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cards.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/cj.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cj.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ck.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ck.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/colours.jpg" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/colours.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/cq.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/cq.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d10.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d6.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d7.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/d9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/d9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/da.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/da.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/dates.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dates.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/derive.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/derive.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/dj.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dj.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/dk.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dk.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/dq.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/dq.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/equations.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/equations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/foods.jpg" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/foods.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h10.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h6.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h7.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/h9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/h9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ha.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ha.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/hj.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/hj.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/hk.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/hk.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/hq.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/hq.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/implement.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/implement.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/learn.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/learn.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/letters.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/letters.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/lists.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/lists.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/major_system.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/major_system.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/method_of_loci.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/method_of_loci.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/my_space.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/my_space.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/names.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/names.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/numbers.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/numbers.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/pao.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/pao.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/perfect_association.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/perfect_association.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/places.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/places.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/practice.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/practice.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/preferences.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/preferences.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/recall.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/recall.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s10.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s10.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s3.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s4.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s6.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s6.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s7.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s7.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s8.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s8.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/s9.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/s9.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/sa.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/sa.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/sj.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/sj.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/sk.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/sk.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/sq.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/sq.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/theres_more.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/theres_more.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/vocabulary.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/vocabulary.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/wardrobe_method.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/wardrobe_method.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/words.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/words.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/words1.jpg" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/words1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/launcher_ic.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/launcher_ic.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/launcher_ic.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/launcher_ic.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/launcher_ic.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/launcher_ic.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/launcher_ic.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/launcher_ic.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/launcher_ic.png" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/launcher_ic.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/constraint_layout_1_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/constraint_layout_1_0_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/constraint_layout_solver_1_0_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/constraint_layout_solver_1_0_2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/espresso_core_2_3_alpha.xml" afterPath="$PROJECT_DIR$/.idea/libraries/espresso_core_2_3_alpha.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/espresso_idling_resource_2_3_alpha.xml" afterPath="$PROJECT_DIR$/.idea/libraries/espresso_idling_resource_2_3_alpha.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/exposed_instrumentation_api_publish_0_6_alpha.xml" afterPath="$PROJECT_DIR$/.idea/libraries/exposed_instrumentation_api_publish_0_6_alpha.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/rules_0_6_alpha.xml" afterPath="$PROJECT_DIR$/.idea/libraries/rules_0_6_alpha.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/runner_0_6_alpha.xml" afterPath="$PROJECT_DIR$/.idea/libraries/runner_0_6_alpha.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/timber_4_5_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/timber_4_5_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android.iml" afterPath="$PROJECT_DIR$/Android.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/proguard-rules.pro" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/memory_athlete/memoryassistant/ExampleInstrumentedTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/memory_athlete/memoryassistant/ExampleInstrumentedTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Atomic Structure.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/._.DS_Store" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Stoichiometry.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Stoichiometry.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/DC Circuits.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/DC Circuits.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/Measuring Instruments.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/Measuring Instruments.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/Transformers And Rotating Machines.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/Transformers And Rotating Machines.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Differentiation.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Differentiation.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Important.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Important.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Matrices.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Matrices.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Partial Differential Equations.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Partial Differential Equations.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Series.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Math/Series.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Gravitation.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Gravitation.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Interference and Diffraction.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Interference and Diffraction.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Motion, Force and Energy.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Motion, Force and Energy.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Nuclear Reactions.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Nuclear Reactions.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Polarisation.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Polarisation.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Rotational Motion.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Rotational Motion.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Special Relativity.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Special Relativity.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Units and Measurement.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Units and Measurement.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Values/Chemistry.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Values/Chemistry.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Values/Physics.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Values/Physics.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Vocabulary.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Vocabulary.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/COPY-ME.html" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/COPY-ME.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/index.html" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/jqmath-0.4.3.css" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/jqmath-0.4.3.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/jqmath-0.4.6.js" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/jqmath-0.4.6.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/jqmath-etc-0.4.6.min.js" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/jqmath-etc-0.4.6.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/jquery-1.4.3.js" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/jquery-1.4.3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/jquery-1.4.3.min.js" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/jquery-1.4.3.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/jscurry-0.4.5.js" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/jscurry-0.4.5.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/jscurry-0.4.5.min.js" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/jscurry-0.4.5.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/jqmath/jscurry-documentation.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/jqmath/jscurry-documentation.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/data/MakeList.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/data/MakeList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/BinaryDigits.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/BinaryDigits.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Colours.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Colours.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Dates.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Dates.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Disciplines.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Disciplines.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Equations.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Equations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Foods.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Foods.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Names.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Names.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Places.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Places.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Words.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Words.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/lessons/Lessons.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/lessons/Lessons.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/GetPro.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/GetPro.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Implement.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Implement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Learn.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Learn.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Login.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Login.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Practice.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Practice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Preferences.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Preferences.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpace.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/preferences/ClearPracticePreference.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/preferences/ClearPracticePreference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/preferences/TimePickerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/preferences/TimePickerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/preferences/TimePreference.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/preferences/TimePreference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/recall/Recall.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/recall/Recall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/reminders/ReminderUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/reminders/ReminderUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/MySpaceJobService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/MySpaceJobService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/NotificationUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/NotificationUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/ReminderJobService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/ReminderJobService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_apply.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_apply.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_disciplines.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_disciplines.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_get_pro.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_get_pro.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_learn.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_learn.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lesson.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lesson.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_space.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_space.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_practice.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_practice.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_preferences.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_preferences.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_write_file.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_write_file.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/category.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/category.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/lesson_list_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/lesson_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/loading.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/loading.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/save_failed.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/save_failed.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_my_space.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_my_space.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_write_file.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_write_file.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/checkout.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/checkout.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/cities.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/cities.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/countries.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/countries.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/first.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/first.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/heritage.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/heritage.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/islands.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/islands.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/jqmath_beg.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/jqmath_beg.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/jqmath_end.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/jqmath_end.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lakes.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lakes.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/last.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/last.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lesson_derivations.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lesson_derivations.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lesson_equations.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lesson_equations.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lesson_major_system.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lesson_major_system.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lesson_method_of_loci.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lesson_method_of_loci.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lesson_pao.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lesson_pao.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lesson_perfect_association.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lesson_perfect_association.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lesson_vocabulary.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lesson_vocabulary.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/lesson_wardrobes.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lesson_wardrobes.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/longest_rivers.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/longest_rivers.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/mountains.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/mountains.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/rivers.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/rivers.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/waterfalls.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/waterfalls.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/raw/words.txt" afterPath="$PROJECT_DIR$/app/src/main/res/raw/words.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/bool.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/bool.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/xml/settings_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/xml/settings_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/test/java/com/memory_athlete/memoryassistant/ExampleUnitTest.java" afterPath="$PROJECT_DIR$/app/src/test/java/com/memory_athlete/memoryassistant/ExampleUnitTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle.properties" afterPath="$PROJECT_DIR$/gradle.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradlew.bat" afterPath="$PROJECT_DIR$/gradlew.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
     </list>
     <ignored path="Memory Athletes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -382,11 +111,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="378">
+              <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
               <folding>
                 <element signature="e#251#517#0" expanded="false" />
                 <element signature="e#268#511#0" expanded="false" />
@@ -398,11 +127,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Stoichiometry.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Stoichiometry.txt">
+      <file leaf-file-name="Atomic Structure.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Atomic Structure.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+            <state relative-caret-position="162">
+              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Physics.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Values/Physics.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="63" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Chemistry.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Values/Chemistry.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -2199,7 +1948,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_learn.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/category.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/ReminderJobService.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Vocabulary.txt" />
@@ -2248,15 +1996,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpace.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Values/Physics.txt" />
-        <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Values/Chemistry.txt" />
         <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Stoichiometry.txt" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Values/Chemistry.txt" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Atomic Structure.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="61" />
-    <option name="y" value="-776" />
-    <option name="width" value="1219" />
+    <option name="y" value="24" />
+    <option name="width" value="1280" />
     <option name="height" value="776" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -2312,6 +2060,126 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Implement" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Implement" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Equations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Implement" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Equations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Chemistry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Production">
           <PATH>
@@ -2331,58 +2199,18 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
     <property name="device.picker.selection" value="C4ATAS000000" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlEditorPanel.SHOW" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Pets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Android 1" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -2748,23 +2576,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="61" y="-776" width="1219" height="776" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="24" width="1280" height="776" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30329043" sideWeight="0.48465267" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24040921" sideWeight="0.29384616" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.31944445" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36827195" sideWeight="0.50646204" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3838527" sideWeight="0.47980613" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48441926" sideWeight="0.4951535" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23692308" sideWeight="0.49353796" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.49353796" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3611898" sideWeight="0.51130855" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24040921" sideWeight="0.70615387" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.6805556" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2864,13 +2692,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/ReminderJobService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_add.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -3067,13 +2888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Gravitation.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Motion, Force and Energy.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -3169,24 +2983,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Values/Physics.txt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="132" column="32" selection-start-line="132" selection-start-column="32" selection-end-line="132" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Stoichiometry.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Physics/Gravitation.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Values/Physics.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="63" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Values/Chemistry.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="36">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Atomic Structure.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="378">
+          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
           <folding>
             <element signature="e#251#517#0" expanded="false" />
             <element signature="e#268#511#0" expanded="false" />
@@ -3194,22 +3041,6 @@
             <element signature="e#879#1065#0" expanded="false" />
             <element signature="e#1091#1098#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="132" column="32" selection-start-line="132" selection-start-column="32" selection-end-line="132" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Chemistry/Stoichiometry.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>

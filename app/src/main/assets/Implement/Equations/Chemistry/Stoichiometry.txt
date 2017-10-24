@@ -1,5 +1,4 @@
-<p>Mass percentage $$m/M*100$$</p>
-<p>Mole fraction (χ)=n_A/{n_A+n_B}$$$$</p>
+<p>Mass percentage $$m/M×100$$</p>
+<p>Mole fraction (χ)=$n_A/{n_A+n_B}$</p>
 <p>Molarity $$\M = w/{M×V}×1000 = n/V×1000$$</p>
-<p>Molality $$m = {w/{M×mass_solvent }}×1000 = n/mass_solvent×1000$$</p>
-<p>$$$$</p>
+<p>Molality $$m = {w/{M×mass_{solvent}}}×1000 = n/{mass_{solvent}}×1000$$</p>
