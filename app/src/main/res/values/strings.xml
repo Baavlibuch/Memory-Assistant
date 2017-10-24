@@ -123,4 +123,7 @@
     <string name="report_to_dev">There was an error, please report this to the developer</string>
     <string name="confused">Confused? Start from the top</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

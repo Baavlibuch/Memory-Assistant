@@ -3,6 +3,8 @@ package com.memory_athlete.memoryassistant.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +17,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.memory_athlete.memoryassistant.BuildConfig;
+import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
@@ -41,6 +45,9 @@ public class Implement extends AppCompatActivity {
         Timber.v("Title Set");
         pathList.add(intent.getStringExtra(getString(R.string.apply)));
 
+        MySpaceFragment mySpaceFragment = new MySpaceFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.my_space_fragment, mySpaceFragment).commit();
         setAdapter();
     }
 
