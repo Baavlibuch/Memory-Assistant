@@ -58,7 +58,6 @@ public class MySpace extends AppCompatActivity {
                 relativeLayout.removeViewAt(listViewId);
             if (relativeLayout.findViewById(--listViewId) != null) {
                 relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
-                if (listViewId == 0)
                     findViewById(R.id.floatingActionButton).setVisibility(View.GONE);
                 setTitle(title + getString(R.string.my_space));
                 return;
