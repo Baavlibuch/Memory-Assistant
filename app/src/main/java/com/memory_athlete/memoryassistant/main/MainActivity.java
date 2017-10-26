@@ -26,7 +26,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import timber.log.BuildConfig;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {

@@ -25,9 +25,6 @@ import timber.log.Timber;
 
 import static android.view.View.GONE;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MySpaceFragment extends Fragment {
     int fragListViewId = 0;
     File dir = null;
@@ -48,7 +45,8 @@ public class MySpaceFragment extends Fragment {
             mySpaceFragment.setArguments(bundle);
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             Timber.v("beginning transaction");
-            fragmentManager.beginTransaction().replace(R.id.my_space_fragment, mySpaceFragment).commit();
+            Timber.i("Commit disabled");
+            //fragmentManager.beginTransaction().replace(R.id.my_space_fragment, mySpaceFragment).commit();
         }
     };
 
