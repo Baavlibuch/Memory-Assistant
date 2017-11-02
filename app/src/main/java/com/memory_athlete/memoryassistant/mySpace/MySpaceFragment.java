@@ -1,10 +1,8 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,27 +27,17 @@ public class MySpaceFragment extends Fragment {
     File dir = null;
     String title = "";
 
-    public interface FileSelected {
-        void openWriteFile(String mName, String mPath, String fileName);
-    }
-
-    FileSelected mCallback = new FileSelected(){
-        public void openWriteFile(String mName, String mPath, String fileName) {
-
-        }
-    };
-
     public MySpaceFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //if(savedInstanceState != null){}
-        View rootView = inflater.inflate(R.layout.activity_my_space, container, false);
-        //final ImageView imageView = (ImageView) rootView.findViewById(R.id.body_part_image_view);
+        View rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
         rootView.findViewById(R.id.floatingActionButton).setVisibility(GONE);//.removeViewAt(0);
 
-        if (fragListViewId > 0)
-            ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
+        //if (fragListViewId > 0)
+          //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
+        fragListViewId++;
         setAdapter(rootView);
         backButton(rootView);
         return rootView;
@@ -58,7 +46,11 @@ public class MySpaceFragment extends Fragment {
     public void setAdapter(final View rootView) {
         Timber.v("setAdapter started");
         ArrayList<Item> arrayList = new ArrayList<>();
-        if (fragListViewId == 0) arrayList = setList();
+        if(fragListViewId == 0) {
+            getActivity().finish();
+            Timber.wtf("increment fragListViewId in onCreateView()");
+        }
+        if (fragListViewId == 1) arrayList = setList();
         else {
             File[] files = dir.listFiles();
             if (files == null) {
@@ -76,8 +68,15 @@ public class MySpaceFragment extends Fragment {
         Timber.v("list set");
         MySpaceAdapter adapter = new MySpaceAdapter(getActivity(), arrayList);
         final ListView listView = new ListView(getActivity());
-        listView.setLayoutParams(new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        if (fragListViewId == 1) {
+            float scale = getResources().getDisplayMetrics().density;
+            int dpAsPixels = (int) (16 * scale + 0.5f);
+            layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
+        }
+        listView.setLayoutParams(layoutParams);
+        //if (listViewId==1) listView.MarginLayoutParams
         listView.setId(fragListViewId);
         final RelativeLayout layout = rootView.findViewById(R.id.my_space_relative_layout);
         layout.addView(listView);
@@ -85,36 +84,36 @@ public class MySpaceFragment extends Fragment {
         final ArrayList<Item> finalArrayList = arrayList;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                Timber.d("listView id = " + listView.getId());
                 Item item = finalArrayList.get(position);
                 Timber.v("item.mPath = " + item.mPath);
-                if (fragListViewId == 0) {
+                if (fragListViewId == 1) {
                     dir = new File(getActivity().getFilesDir().getAbsolutePath() + File.separator + item.mPath);
-                    layout.findViewById(fragListViewId).setVisibility(GONE);
+                    layout.findViewById(fragListViewId).setVisibility(View.GONE);
                     fragListViewId++;
-                    getActivity().setTitle(Html.fromHtml(title + item.mName));
+                    title = title+item.mName;
                     rootView.findViewById(R.id.floatingActionButton).setVisibility(View.VISIBLE);
                     setAdapter(rootView);
-                    //rootView.findViewById(R.id.back_button).setVisibility(View.VISIBLE);
                     Timber.v("going to id 1, listViewId = " + fragListViewId);
+                    rootView.findViewById(R.id.back_button).setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.back_button).bringToFront();
                 } else {
                     Timber.v("listViewId = " + fragListViewId);
-                    String fileName = getActivity().getFilesDir().getAbsolutePath()
-                            + File.separator + getActivity().getTitle();
-                    Intent intent = new Intent(getActivity(), WriteFile.class);
-                    intent.putExtra("mHeader", item.mName);
-                    intent.putExtra("fileString", item.mPath);
-                    intent.putExtra("path", fileName);
+                    String fileName = getActivity().getFilesDir().getAbsolutePath() + File.separator + title;
+                    //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
+                    //intent.putExtra("mHeader", item.mName);
+                    //intent.putExtra("fileString", item.mItem);
+                    //intent.putExtra("path", fileName);
                     File file = new File(fileName);
                     boolean isDirectoryCreated = file.exists();
                     if (!isDirectoryCreated) {
                         isDirectoryCreated = file.mkdir();
                     }
                     if (isDirectoryCreated) {
-                        Timber.v("now calling back");
-                        mCallback.openWriteFile(item.mName, item.mPath, fileName);
                         //startActivity(intent);
                     } else
                         Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                    rootView.findViewById(R.id.back_button).bringToFront();
                 }
             }
         });
@@ -124,14 +123,16 @@ public class MySpaceFragment extends Fragment {
         rootView.findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (fragListViewId==0) {
-                    Timber.v("fragListViewId = " + fragListViewId);
-                } else {
-                    Timber.v("listViewId = " + fragListViewId);
-                    RelativeLayout relativeLayout = rootView.findViewById(R.id.my_space_relative_layout);
-                    relativeLayout.removeViewAt(fragListViewId);
-                    relativeLayout.findViewById(--fragListViewId).setVisibility(View.VISIBLE);
-                    getActivity().setTitle(Html.fromHtml(title + getString(R.string.my_space)));
+                Timber.v("back_button clicked, fragListViewId = " + fragListViewId);
+
+                if (rootView.findViewById(fragListViewId) != null)
+                    ((RelativeLayout) rootView).removeViewAt(fragListViewId);
+                if (rootView.findViewById(--fragListViewId) != null) {
+                    rootView.findViewById(fragListViewId).setVisibility(View.VISIBLE);
+                    if (fragListViewId == 1) {
+                        rootView.findViewById(R.id.floatingActionButton).setVisibility(View.GONE);
+                        rootView.findViewById(R.id.back_button).setVisibility(GONE);
+                    }
                 }
             }
         });

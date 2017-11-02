@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.memory_athlete.memoryassistant.lessons.LessonFragment;
+import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,7 @@ public class ExperimentActivity extends AppCompatActivity
         theme(intent);
 
         tabTitles.add("Implement");
+        tabTitles.add("MySpace");
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -76,11 +78,13 @@ public class ExperimentActivity extends AppCompatActivity
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-                default:
+                case 0:
                     Bundle bundle = intent.getExtras();
                     LessonFragment lessonFragment = new LessonFragment();
                     lessonFragment.setArguments(bundle);
                     return lessonFragment;
+                default:
+                    return new MySpaceFragment();
                 /*default :
                     finish();
                     Timber.w("couldn't open lessonFragment");
@@ -109,7 +113,7 @@ public class ExperimentActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.visit_my_space:
-                //TODO:
+                tabTitles.add("MySpace");
         }
         return true;
     }
