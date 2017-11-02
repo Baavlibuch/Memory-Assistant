@@ -16,9 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
+import com.memory_athlete.memoryassistant.ExperimentActivity;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
-import com.memory_athlete.memoryassistant.lessons.Lessons;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,17 +60,17 @@ public class Implement extends AppCompatActivity {
         try {
             StringBuilder path = new StringBuilder("");
             for (String i : pathList) path.append(i);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
+            Timber.v("path = " + path);
             String[] list = listAssetFiles(path.toString());
-            if (BuildConfig.DEBUG) Log.v(TAG, "list set");
+            Timber.v("list set");
             if (list == null) {
                 Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (BuildConfig.DEBUG) Log.v(TAG, "list.size() = " + list.length);
+            Timber.v("list.size() = " + list.length);
             final ArrayList<Item> arrayList = new ArrayList<>();
             for (String i : list) arrayList.add(new Item(i, true));
-            if (BuildConfig.DEBUG) Log.v(TAG, "arrayList set");
+            Timber.v("arrayList set");
             ApplyAdapter adapter = new ApplyAdapter(this, arrayList);
             ListView listView = new ListView(this);
             listView.setLayoutParams(new LinearLayout.LayoutParams(
@@ -92,7 +92,7 @@ public class Implement extends AppCompatActivity {
                     }
 
                     if (item.mFileName.endsWith(".txt")) {
-                        Intent intent = new Intent(getApplicationContext(), Lessons.class);
+                        Intent intent = new Intent(getApplicationContext(), ExperimentActivity.class);
                         intent.putExtra("headerString", item.mItem);
                         intent.putExtra("webView", webView);
                         intent.putExtra("list", hasList);

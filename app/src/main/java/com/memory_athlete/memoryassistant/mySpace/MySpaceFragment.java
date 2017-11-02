@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,22 +35,11 @@ public class MySpaceFragment extends Fragment {
 
     FileSelected mCallback = new FileSelected(){
         public void openWriteFile(String mName, String mPath, String fileName) {
-            Timber.v("Entered openWriteFile");
-            WriteFileFragment mySpaceFragment = new WriteFileFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString("mHeader", mName);
-            bundle.putString("fileString", mPath);
-            bundle.putString("path", fileName);
-            mySpaceFragment.setArguments(bundle);
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            Timber.v("beginning transaction");
-            Timber.i("Commit disabled");
-            //fragmentManager.beginTransaction().replace(R.id.my_space_fragment, mySpaceFragment).commit();
+
         }
     };
 
-    public MySpaceFragment() {
-    }
+    public MySpaceFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

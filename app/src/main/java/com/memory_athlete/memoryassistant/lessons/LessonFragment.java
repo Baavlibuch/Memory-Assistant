@@ -1,16 +1,12 @@
 package com.memory_athlete.memoryassistant.lessons;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
@@ -20,9 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.mySpace.MySpace;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,112 +26,94 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 /**
- * Created by Manik on 14/04/17.
+ * A simple {@link Fragment} subclass.
  */
 
-public class Lessons extends AppCompatActivity {
-    private static final String LOG_TAG = "\tLessons";
+public class LessonFragment extends Fragment {
+
+    public LessonFragment() {
+    }
+
+    public interface OnImageClickListener {
+        void onImageSelected();
+    }
+
+    OnImageClickListener mCallback;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        theme(intent);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mCallback = (OnImageClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + "must implement OnImageClickListener");
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_lesson, container, false);
+        Bundle bundle = getArguments();
 
         StringBuilder sb = new StringBuilder("");
-        int fileInt = intent.getIntExtra("file", 0);
-        if (fileInt != 0 && intent.getBooleanExtra("resource", true)) {
-            if (intent.getBooleanExtra("list", false)) {
-                ListView listView = (ListView) findViewById(R.id.lesson_list);
-                ArrayList<Item> list = readResourceList(fileInt);
+        int fileInt = bundle.getInt("file", 0);
+        if (fileInt != 0 && bundle.getBoolean("resource", true)) {
+            if (bundle.getBoolean("list", false)) {
+                ListView listView = rootView.findViewById(R.id.lesson_list);
+                ArrayList<Item> list = readResourceList(fileInt, rootView);
                 Timber.v("list length = " + list.size());
-                LessonAdapter lessonAdapter = new LessonAdapter(this, list);
+                LessonAdapter lessonAdapter = new LessonAdapter(getActivity(), list);
                 Timber.v("adapter set");
                 listView.setAdapter(lessonAdapter);
                 listView.setVisibility(View.VISIBLE);
                 Timber.v("listView set");
-                return;
+                return rootView;
             } else sb = readResource(fileInt);//For raw files
         } else {
-            if (intent.getBooleanExtra("list", false)) {
-                ListView listView = (ListView) findViewById(R.id.lesson_list);
-                ArrayList<Item> list = readAssetList(intent);
+            if (bundle.getBoolean("list", false)) {
+                ListView listView = rootView.findViewById(R.id.lesson_list);
+                ArrayList<Item> list = readAssetList(bundle);
                 //Timber.v("list length = " + list.size());
-                LessonAdapter lessonAdapter = new LessonAdapter(this, list);
+                LessonAdapter lessonAdapter = new LessonAdapter(getActivity(), list);
                 Timber.v("adapter set");
                 listView.setAdapter(lessonAdapter);
                 listView.setVisibility(View.VISIBLE);
                 Timber.v("listView set");
-                return;
+                return rootView;
             }
-            sb = readAsset(sb, intent);
+            sb = readAsset(sb, bundle);
         }
         if (sb == null) {
             Timber.e("String Builder sb is empty");
-            finish();
-            return;
+            getActivity().finish();
+            return rootView;
         }
 
-        if (intent.getBooleanExtra("webView", false)) {     //For JQMath
-            setWebView(sb);
+        if (bundle.getBoolean("webView", false)) {     //For JQMath
+            setWebView(sb, rootView);
         } else {
             Timber.v("list is false");
-            ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
-            findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
+            ((TextView) rootView.findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
+            rootView.findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
         }
+        return rootView;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_my_space, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.visit_my_space:
-                startActivity(new Intent(this, MySpace.class));
-        }
-        return true;
-    }
-
-    protected void theme(Intent intent) {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-        }
-        int header = intent.getIntExtra("mHeader", 0);
-        if (header != 0)
-            setTitle(getString(header));
-        else setTitle(intent.getStringExtra("headerString"));
-
-        Timber.v("theme = " + theme);
-        setContentView(R.layout.activity_lesson);
-    }
-
-    void setWebView(StringBuilder sb) {
-        WebView webView = (WebView) findViewById(R.id.web_view);
+    void setWebView(StringBuilder sb, View rootView) {
+        WebView webView = rootView.findViewById(R.id.web_view);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         StringBuilder sb1 = readResource(R.raw.jqmath_beg);
         if (sb1 == null) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "jqmath read error");
-            finish();
+            Timber.v("jqmath read error");
+            getActivity().finish();
             return;
         }
         StringBuilder sb2 = readResource(R.raw.jqmath_end);
         if (sb2 == null) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "jqmath read error");
-            finish();
+            Timber.v("jqmath read error");
+            getActivity().finish();
             return;
         }
         String js = sb1.toString() + sb.toString() + sb2.toString();
@@ -172,13 +148,13 @@ public class Lessons extends AppCompatActivity {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
-            finish();
+            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+            getActivity().finish();
             return sb;
         }
     }
 
-    ArrayList<Item> readResourceList(int path) {
+    ArrayList<Item> readResourceList(int path, View rootView) {
         Timber.v("readResource(int, Intent) entered");
         if (path == 0) return null;
         BufferedReader reader = null;
@@ -207,21 +183,21 @@ public class Lessons extends AppCompatActivity {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
-            finish();
+            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+            getActivity().finish();
             return null;
         }
     }
 
-    ArrayList<Item> readAssetList(Intent intent) {
+    ArrayList<Item> readAssetList(Bundle bundle) {
         Timber.v("readAssetList() entered");
-        String header = "", line = intent.getStringExtra("fileString"); //For assets and filesDir
+        String header = "", line = bundle.getString("fileString"); //For assets and filesDir
         if (line == null || line.equals("")) return null;
         BufferedReader reader = null;
         StringBuilder sb = new StringBuilder();
         ArrayList<Item> letterList = new ArrayList<>();
         try {
-            reader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
+            reader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open(line)));
             while ((line = reader.readLine()) != null) {
                 if (line.length() > 6 && line.charAt(0) == '<' && line.charAt(1) == 'h') {
                     letterList.add(new Item(header, sb.toString()));
@@ -238,8 +214,8 @@ public class Lessons extends AppCompatActivity {
             return letterList;
 
         } catch (IOException e) {
-            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
-            finish();
+            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+            getActivity().finish();
         }
         try {
             if (reader != null)
@@ -250,15 +226,15 @@ public class Lessons extends AppCompatActivity {
         return null;
     }
 
-    StringBuilder readAsset(StringBuilder sb, Intent intent) {
-        String line = intent.getStringExtra("fileString"); //For assets and filesDir
+    StringBuilder readAsset(StringBuilder sb, Bundle intent) {
+        String line = intent.getString("fileString"); //For assets and filesDir
         BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
+            bufferedReader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open(line)));
             while ((line = bufferedReader.readLine()) != null) sb.append(line);
         } catch (IOException e) {
-            Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
-            finish();
+            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+            getActivity().finish();
         }
         try {
             if (bufferedReader != null)
@@ -282,7 +258,7 @@ public class Lessons extends AppCompatActivity {
 
         LessonAdapter(Activity context, ArrayList<Item> list) {
             super(context, 0, list);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "LessonAdapter() entered");
+            Timber.v("LessonAdapter() entered");
         }
 
         @NonNull
@@ -295,8 +271,8 @@ public class Lessons extends AppCompatActivity {
 
             final Item item = getItem(position);
             //if (item==null){
-              //  finish();
-                //return listItemView;
+            //  finish();
+            //return listItemView;
             //}
             final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);
             final View progressBar = listItemView.findViewById(R.id.lesson_list_progress_bar);
@@ -345,4 +321,5 @@ public class Lessons extends AppCompatActivity {
             return listItemView;
         }
     }
+
 }

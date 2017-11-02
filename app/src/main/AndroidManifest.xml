@@ -145,7 +145,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".main.Implement"></activity>
+        <activity android:name=".main.Implement" />
+        <activity android:name=".ExperimentActivity"></activity>
     </application>
 
 </manifest>
