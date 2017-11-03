@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 public class Implement extends AppCompatActivity {
-    private static final String LOG_TAG = "\tApply";
     ArrayList<String> pathList = new ArrayList<>();
     private static final String TAG = "Log : ";
     int listViewId = 0;

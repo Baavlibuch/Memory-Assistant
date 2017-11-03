@@ -23,7 +23,6 @@ import java.io.FileReader;
 import timber.log.Timber;
 
 public class WriteFile extends AppCompatActivity {
-    private final static String LOG_TAG = "\tWriteFile: ";
     private boolean name = false;
     String path;
 

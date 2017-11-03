@@ -60,7 +60,7 @@ public class MySpace extends AppCompatActivity {
             if (relativeLayout.findViewById(--listViewId) != null) {
                 relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
                 if (listViewId == 0)
-                    findViewById(R.id.floatingActionButton).setVisibility(View.GONE);
+                    findViewById(R.id.add).setVisibility(View.GONE);
                 setTitle(title + getString(R.string.my_space));
                 return;
             }
@@ -113,7 +113,7 @@ public class MySpace extends AppCompatActivity {
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
                     setTitle(title + item.mName);
-                    findViewById(R.id.floatingActionButton).setVisibility(View.VISIBLE);
+                    findViewById(R.id.add).setVisibility(View.VISIBLE);
                     setAdapter();
                     Timber.v("going to id 1, listViewId = " + listViewId);
                 } else {
