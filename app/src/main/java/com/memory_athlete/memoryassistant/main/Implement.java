@@ -16,9 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
+import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
-import com.memory_athlete.memoryassistant.lessons.Lessons;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 public class Implement extends AppCompatActivity {
-    private static final String LOG_TAG = "\tApply";
     ArrayList<String> pathList = new ArrayList<>();
     private static final String TAG = "Log : ";
     int listViewId = 0;
@@ -36,7 +35,7 @@ public class Implement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         MakeList.theme(this, Implement.this);
-        setContentView(R.layout.activity_apply);
+        setContentView(R.layout.activity_implement_list);
         setTitle(getString(R.string.apply));
         Timber.v("Title Set");
         pathList.add(intent.getStringExtra(getString(R.string.apply)));
@@ -60,17 +59,17 @@ public class Implement extends AppCompatActivity {
         try {
             StringBuilder path = new StringBuilder("");
             for (String i : pathList) path.append(i);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
+            Timber.v("path = " + path);
             String[] list = listAssetFiles(path.toString());
-            if (BuildConfig.DEBUG) Log.v(TAG, "list set");
+            Timber.v("list set");
             if (list == null) {
                 Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (BuildConfig.DEBUG) Log.v(TAG, "list.size() = " + list.length);
+            Timber.v("list.size() = " + list.length);
             final ArrayList<Item> arrayList = new ArrayList<>();
             for (String i : list) arrayList.add(new Item(i, true));
-            if (BuildConfig.DEBUG) Log.v(TAG, "arrayList set");
+            Timber.v("arrayList set");
             ApplyAdapter adapter = new ApplyAdapter(this, arrayList);
             ListView listView = new ListView(this);
             listView.setLayoutParams(new LinearLayout.LayoutParams(
@@ -83,16 +82,16 @@ public class Implement extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Item item = arrayList.get(position);
                     boolean webView, hasList;
-                    if(item.mFileName.equals("Vocabulary.txt")) {
-                        webView=false;
-                        hasList=true;
-                    } else{
-                        webView=true;
-                        hasList=false;
+                    if (item.mFileName.equals("Vocabulary.txt")) {
+                        webView = false;
+                        hasList = true;
+                    } else {
+                        webView = true;
+                        hasList = false;
                     }
 
                     if (item.mFileName.endsWith(".txt")) {
-                        Intent intent = new Intent(getApplicationContext(), Lessons.class);
+                        Intent intent = new Intent(getApplicationContext(), ImplementLesson.class);
                         intent.putExtra("headerString", item.mItem);
                         intent.putExtra("webView", webView);
                         intent.putExtra("list", hasList);
@@ -133,7 +132,7 @@ public class Implement extends AppCompatActivity {
 
         Item(String item, boolean wV) {
             mFileName = item;
-            mItem = item.endsWith(".txt") ? item.substring(0, item.length()-4) : item;
+            mItem = item.endsWith(".txt") ? item.substring(0, item.length() - 4) : item;
             webView = wV;
         }
     }

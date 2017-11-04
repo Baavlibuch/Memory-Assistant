@@ -16,4 +16,7 @@
     <color name="color_suit_background_dark">#55111111</color>
     <color name="color_suit_background_light">#33111111</color>
     <color name="color_suit_background_night">#55555555</color>
+
+    <color name="color_transparent">#00FFFFFF</color>
+    <color name="color_translucent">#33AAAAAA</color>
 </resources>

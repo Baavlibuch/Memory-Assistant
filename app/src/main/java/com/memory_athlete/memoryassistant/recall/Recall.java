@@ -42,13 +42,6 @@ import timber.log.Timber;
 
 import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
-import static com.memory_athlete.memoryassistant.R.layout.activity_recall;
-import static com.memory_athlete.memoryassistant.R.string.binary;
-import static com.memory_athlete.memoryassistant.R.string.cards;
-import static com.memory_athlete.memoryassistant.R.string.digits;
-import static com.memory_athlete.memoryassistant.R.string.k;
-import static com.memory_athlete.memoryassistant.R.string.numbers;
-import static com.memory_athlete.memoryassistant.R.string.words;
 import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
@@ -81,7 +74,7 @@ public class Recall extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         MakeList.theme(this, Recall.this);
-        setContentView(activity_recall);
+        setContentView(R.layout.activity_recall);
         setTitle(getString(R.string.recall));
         Timber.v("theme() complete");
         makeSpinner1(intent);
@@ -101,14 +94,14 @@ public class Recall extends AppCompatActivity {
     void makeSpinner1(final Intent intent) {
         categories = new ArrayList<>();
         categories.add(getString(R.string.cd));
-        categories.add(getString(digits));
-        categories.add(getString(binary));
-        categories.add(getString(cards));
-        categories.add(getString(k));
+        categories.add(getString(R.string.digits));
+        categories.add(getString(R.string.binary));
+        categories.add(getString(R.string.cards));
+        categories.add(getString(R.string.k));
         categories.add(getString(R.string.d));
-        categories.add(getString(numbers));
+        categories.add(getString(R.string.numbers));
         categories.add(getString(R.string.places_capital));
-        categories.add(getString(words));
+        categories.add(getString(R.string.words));
         //categories.add(getString(j));
         //categories.add(getString(R.string.h));
         //categories.add(getString(i));
@@ -387,7 +380,7 @@ public class Recall extends AppCompatActivity {
 
             while (scanner.hasNext()) {
                 string = scanner.next();
-                if (mDiscipline == getString(numbers) || mDiscipline == getString(cards))
+                if (mDiscipline == getString(R.string.numbers) || mDiscipline == getString(R.string.cards))
                     answers.add(String.valueOf(parseInt(string.trim())));
                     //else if (mDiscipline == getString(e))
                 else if (mDiscipline.equalsIgnoreCase(getString(R.string.k))
@@ -707,7 +700,7 @@ public class Recall extends AppCompatActivity {
             Timber.v("mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
             Timber.v("answer 0 = " + answers.get(0));
 
-            if (correct == answers.size() && !mDiscipline.equals(getString(binary))) {
+            if (correct == answers.size() && !mDiscipline.equals(getString(R.string.binary))) {
                 SharedPreferences sharedPreferences = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
                 sharedPreferences.edit().putInt("level", 1 + sharedPreferences.getInt("level", 1)).apply();

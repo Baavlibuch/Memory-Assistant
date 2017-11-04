@@ -19,6 +19,7 @@ import com.memory_athlete.memoryassistant.services.MySpaceJobService;
 import com.memory_athlete.memoryassistant.services.ReminderJobService;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import timber.log.Timber;
 
@@ -37,7 +38,6 @@ public class ReminderUtils {
     //      REMINDER_INTERVAL_HOURS);
     //private static final int SYNC_FLEXTIME_SECONDS = 5 * 60;
     private static final String REMINDER_JOB_TAG = "practice_time_";
-    private static final String LOG_TAG = "\tReminderUtils: ";
 
     synchronized public static void scheduleReminder(@NonNull final Context context) {
         int diff = next(context) * 60, diff1;
@@ -123,8 +123,8 @@ public class ReminderUtils {
                 case 6:
                     diff1 += 12 * MONTH;
             }
-            Timber.v("MySpace notification is after " + diff1);
 
+            Timber.v("MySpace notification is after " + diff1);
             Job constraintReminderJob = dispatcher.newJobBuilder()
                     .setService(MySpaceJobService.class)
                     .setTag(fname + i)

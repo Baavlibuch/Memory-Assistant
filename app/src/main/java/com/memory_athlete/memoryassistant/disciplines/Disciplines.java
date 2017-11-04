@@ -74,7 +74,6 @@ public class Disciplines extends AppCompatActivity {
                 hasStandard = false;
         }
 
-
         Timber.i("dictionary loads before the contentView is set");
         if (!intent.getBooleanExtra("hasAsyncTask", false)) {
             setContentView(R.layout.activity_disciplines);

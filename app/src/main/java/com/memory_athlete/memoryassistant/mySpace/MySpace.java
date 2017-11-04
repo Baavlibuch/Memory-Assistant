@@ -37,6 +37,7 @@ public class MySpace extends AppCompatActivity {
         setTitle(title + getString(R.string.my_space));
         Timber.v("Title Set");
         listViewId++;
+        //findViewById(R.id.)
         //setAdapter();
     }
 
@@ -58,7 +59,8 @@ public class MySpace extends AppCompatActivity {
                 relativeLayout.removeViewAt(listViewId);
             if (relativeLayout.findViewById(--listViewId) != null) {
                 relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
-                    findViewById(R.id.floatingActionButton).setVisibility(View.GONE);
+                if (listViewId == 0)
+                    findViewById(R.id.add).setVisibility(View.GONE);
                 setTitle(title + getString(R.string.my_space));
                 return;
             }
@@ -105,13 +107,13 @@ public class MySpace extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = finalArrayList.get(position);
-                Timber.v("item.mItem = " + item.mItem);
+                Timber.v("item.mPath = " + item.mItem);
                 if (listViewId == 1) {
                     dir = new File(getFilesDir().getAbsolutePath() + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
                     setTitle(title + item.mName);
-                    findViewById(R.id.floatingActionButton).setVisibility(View.VISIBLE);
+                    findViewById(R.id.add).setVisibility(View.VISIBLE);
                     setAdapter();
                     Timber.v("going to id 1, listViewId = " + listViewId);
                 } else {
@@ -120,7 +122,7 @@ public class MySpace extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                     intent.putExtra("mHeader", item.mName);
                     intent.putExtra("fileString", item.mItem);
-                    intent.putExtra("path", fileName);
+                    intent.putExtra("fileName", fileName);
                     File file = new File(fileName);
                     boolean isDirectoryCreated = file.exists();
                     if (!isDirectoryCreated) {
@@ -139,7 +141,7 @@ public class MySpace extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
         intent.putExtra("name", false);
-        intent.putExtra("path", getFilesDir().getAbsolutePath() + File.separator + getTitle());
+        intent.putExtra("fileName", getFilesDir().getAbsolutePath() + File.separator + getTitle());
         startActivity(intent);
     }
 

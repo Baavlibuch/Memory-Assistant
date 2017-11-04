@@ -4,8 +4,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.memory_athlete.memoryassistant.main.Implement"
     android:orientation="vertical"
-    android:id="@+id/apply_layout">
-
-</LinearLayout>
+    android:id="@+id/apply_layout"/>

@@ -18,6 +18,13 @@
         android:entries="@array/themes"
         android:entryValues="@array/themes"/>
 
+    <ListPreference
+        android:defaultValue="1"
+        android:key="@string/no_my_space_frags"
+        android:title="@string/no_my_space_frags"
+        android:entries="@array/one_to_five"
+        android:entryValues="@array/one_to_five"/>
+
     <com.memory_athlete.memoryassistant.preferences.ClearPracticePreference
         android:title="@string/clear_practice"
         android:summary="Clear all practice files"

@@ -23,7 +23,6 @@ import java.io.FileReader;
 import timber.log.Timber;
 
 public class WriteFile extends AppCompatActivity {
-    private final static String LOG_TAG = "\tWriteFile: ";
     private boolean name = false;
     String path;
 
@@ -38,7 +37,7 @@ public class WriteFile extends AppCompatActivity {
         //header = header.substring(0, header.length() - 4);
         setTitle(header);
 
-        path = intent.getStringExtra("path");
+        path = intent.getStringExtra("fileName");
         if (intent.getBooleanExtra("name", true)) {
             ((EditText) findViewById(R.id.f_name)).setText(getTitle().toString());
             StringBuilder text = new StringBuilder();
@@ -133,7 +132,7 @@ public class WriteFile extends AppCompatActivity {
             }
         } else Toast.makeText(getApplicationContext(),
                 R.string.try_again, Toast.LENGTH_SHORT).show();
-        Timber.v("path = " + path);
+        Timber.v("fileName = " + path);
         return true;
     }
 }

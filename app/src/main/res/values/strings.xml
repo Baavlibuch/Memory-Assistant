@@ -94,6 +94,7 @@
     <!--Preferences-->
     <string name="remind">Remind Me Periodically</string>
     <string name="periodic">I Like To Practice At</string>
+    <string name="no_my_space_frags">Number of mySpace screens</string>
     <string name="location_wise">Based On Location</string>
     <string name="transit">During Transit</string>
     <string name="default_time">22:30</string>
