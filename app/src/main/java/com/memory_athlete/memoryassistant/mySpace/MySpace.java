@@ -59,7 +59,7 @@ public class MySpace extends AppCompatActivity {
                 relativeLayout.removeViewAt(listViewId);
             if (relativeLayout.findViewById(--listViewId) != null) {
                 relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
-                if (listViewId == 0)
+                if (listViewId == 1)
                     findViewById(R.id.add).setVisibility(View.GONE);
                 setTitle(title + getString(R.string.my_space));
                 return;
@@ -109,7 +109,8 @@ public class MySpace extends AppCompatActivity {
                 Item item = finalArrayList.get(position);
                 Timber.v("item.mPath = " + item.mItem);
                 if (listViewId == 1) {
-                    dir = new File(getFilesDir().getAbsolutePath() + File.separator + item.mItem);
+                    dir = new File(getFilesDir().getAbsolutePath() + File.separator
+                            + getString(R.string.my_space) + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
                     setTitle(title + item.mName);
@@ -118,7 +119,8 @@ public class MySpace extends AppCompatActivity {
                     Timber.v("going to id 1, listViewId = " + listViewId);
                 } else {
                     Timber.v("listViewId = " + listViewId);
-                    String fileName = getFilesDir().getAbsolutePath() + File.separator + getTitle();
+                    String fileName = getFilesDir().getAbsolutePath() + File.separator
+                            + getString(R.string.my_space) + File.separator + getTitle();
                     Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                     intent.putExtra("mHeader", item.mName);
                     intent.putExtra("fileString", item.mItem);
@@ -141,7 +143,8 @@ public class MySpace extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
         intent.putExtra("name", false);
-        intent.putExtra("fileName", getFilesDir().getAbsolutePath() + File.separator + getTitle());
+        intent.putExtra("fileName", getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.my_space) + File.separator + getTitle());
         startActivity(intent);
     }
 

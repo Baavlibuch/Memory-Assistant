@@ -122,7 +122,8 @@ public class MySpaceFragment extends Fragment {
                 Item item = finalArrayList.get(position);
                 Timber.v("item.mPath = " + item.mPath);
                 if (fragListViewId == 3) {
-                    dir = new File(getActivity().getFilesDir().getAbsolutePath() + File.separator + item.mPath);
+                    dir = new File(getActivity().getFilesDir().getAbsolutePath() + File.separator
+                            + getString(R.string.my_space) + File.separator + item.mPath);
                     layout.findViewById(fragListViewId).setVisibility(View.GONE);
                     fragListViewId++;
                     title = item.mName;
@@ -133,7 +134,8 @@ public class MySpaceFragment extends Fragment {
                     rootView.findViewById(R.id.back_button).bringToFront();
                 } else {
                     Timber.v("listViewId = " + fragListViewId);
-                    fileName = getActivity().getFilesDir().getAbsolutePath() + File.separator + title;
+                    fileName = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                            + getString(R.string.my_space) + File.separator + title;
                     //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                     //intent.putExtra("mHeader", item.mName);
                     //intent.putExtra("fileString", item.mItem);
@@ -189,6 +191,8 @@ public class MySpaceFragment extends Fragment {
             public void onClick(View v) {
                 Timber.v("add button clicked");
                 name = false;
+                fileName = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                        + getString(R.string.my_space) + File.separator + title;
                 rootView.findViewById(R.id.add).setVisibility(View.GONE);
                 rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
                 rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
