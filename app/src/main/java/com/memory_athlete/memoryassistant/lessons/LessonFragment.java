@@ -1,7 +1,6 @@
 package com.memory_athlete.memoryassistant.lessons;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -31,24 +30,7 @@ import timber.log.Timber;
 
 public class LessonFragment extends Fragment {
 
-    public LessonFragment() {
-    }
-
-    public interface OnImageClickListener {
-        void onImageSelected();
-    }
-
-    OnImageClickListener mCallback;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            mCallback = (OnImageClickListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + "must implement OnImageClickListener");
-        }
-    }
+    public LessonFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -321,5 +303,4 @@ public class LessonFragment extends Fragment {
             return listItemView;
         }
     }
-
 }

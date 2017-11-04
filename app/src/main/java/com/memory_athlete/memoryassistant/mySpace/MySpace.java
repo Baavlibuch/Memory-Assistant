@@ -122,7 +122,7 @@ public class MySpace extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                     intent.putExtra("mHeader", item.mName);
                     intent.putExtra("fileString", item.mItem);
-                    intent.putExtra("path", fileName);
+                    intent.putExtra("fileName", fileName);
                     File file = new File(fileName);
                     boolean isDirectoryCreated = file.exists();
                     if (!isDirectoryCreated) {
@@ -141,7 +141,7 @@ public class MySpace extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
         intent.putExtra("name", false);
-        intent.putExtra("path", getFilesDir().getAbsolutePath() + File.separator + getTitle());
+        intent.putExtra("fileName", getFilesDir().getAbsolutePath() + File.separator + getTitle());
         startActivity(intent);
     }
 

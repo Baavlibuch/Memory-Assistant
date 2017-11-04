@@ -57,20 +57,20 @@ public class WriteFileFragment extends Fragment {
 
    /* {
 
-        path = intent.getStringExtra("path");
+        fileName = intent.getStringExtra("fileName");
         if (intent.getBooleanExtra("name", true)) {
             ((EditText) findViewById(R.id.f_name)).setText(getTitle().toString());
             StringBuilder text = new StringBuilder();
 
         Bundle bundle = getArguments();
-        path=bundle.getString("path");
+        fileName=bundle.getString("fileName");
         mName =bundle.getString("mHeader");
 
         ((EditText) rootView.findViewById(R.id.f_name)).setText(mName);
         StringBuilder text = new StringBuilder();
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File(
-                    path + File.separator + mName + ".txt")));
+                    fileName + File.separator + mName + ".txt")));
             String line;
 
             while ((line = br.readLine()) != null) {
@@ -91,8 +91,8 @@ public class WriteFileFragment extends Fragment {
 
     public boolean save(View rootView) {
         String string = ((EditText) rootView.findViewById(R.id.my_space_editText)).getText().toString();
-        String dirPath = path;
-        String fname = path + File.separator + mName + ".txt";
+        String dirPath = fileName;
+        String fname = fileName + File.separator + mName + ".txt";
         if (BuildConfig.DEBUG) Log.d(LOG_TAG, "fname = " + fname);
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
@@ -118,7 +118,7 @@ public class WriteFileFragment extends Fragment {
             }
         } else Toast.makeText(getActivity(),
                 "Couldn't find the parent directory!", Toast.LENGTH_SHORT).show();
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "path = " + path);
+        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "fileName = " + fileName);
         return true;
     }
 
@@ -134,7 +134,7 @@ public class WriteFileFragment extends Fragment {
     }
 
     //{
-        //path = intent.getStringExtra("path");
+        //fileName = intent.getStringExtra("fileName");
       //  intent.getStringExtra()
     //}
 
@@ -148,7 +148,7 @@ public class WriteFileFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         //switch (item.getItemId()) {
         //    case R.id.action_delete:
-        File file = new File(path + File.separator + getTitle().toString() + ".txt");
+        File file = new File(fileName + File.separator + getTitle().toString() + ".txt");
         finish();
         return !file.exists() || file.delete();
     }
@@ -193,8 +193,8 @@ public class WriteFileFragment extends Fragment {
             Toast.makeText(getActivity(), "Didn't save nameless file", Toast.LENGTH_SHORT).show();
             return true;
         }
-        String dirPath = path;
-        fname = path + File.separator + fname + ".txt";
+        String dirPath = fileName;
+        fname = fileName + File.separator + fname + ".txt";
         if (BuildConfig.DEBUG) Log.d(LOG_TAG, "fname = " + fname);
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
@@ -222,7 +222,7 @@ public class WriteFileFragment extends Fragment {
             }
         } else Toast.makeText(getActivity(),
                 "Couldn't find the parent directory!", Toast.LENGTH_SHORT).show();
-        Timber.v("path = " + path);
+        Timber.v("fileName = " + fileName);
         return true;
     }
     }*/

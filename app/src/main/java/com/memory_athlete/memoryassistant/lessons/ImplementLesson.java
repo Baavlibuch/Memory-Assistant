@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant;
+package com.memory_athlete.memoryassistant.lessons;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,25 +9,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.memory_athlete.memoryassistant.lessons.LessonFragment;
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;
 
 import timber.log.Timber;
 
-public class ExperimentActivity extends AppCompatActivity
-        implements LessonFragment.OnImageClickListener {
-        private ArrayList<String> tabTitles = new ArrayList<>();
+public class ImplementLesson extends AppCompatActivity {
+    private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
-
-    @Override
-    public void onImageSelected() {
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +29,9 @@ public class ExperimentActivity extends AppCompatActivity
         theme(intent);
 
         tabTitles.add("Implement");
-        tabTitles.add("MySpace");
+        for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.no_my_space_frags), "1")); i++)
+            tabTitles.add("MySpace " + (i + 1));
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -104,17 +98,15 @@ public class ExperimentActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_my_space, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.visit_my_space:
-                tabTitles.add("MySpace");
+    public void onBackPressed() {
+        if (tabTitles.size() == 0) {
+            super.onBackPressed();
+            return;
         }
-        return true;
+        for (int i = 1; i < tabTitles.size(); i++) {
+            String tag = "android:switcher:" + R.id.viewpager + ":" + i;
+            MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
+            if (fragment.save()) super.onBackPressed();
+        }
     }
 }

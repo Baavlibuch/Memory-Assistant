@@ -35,18 +35,25 @@ public class MySpaceFragment extends Fragment {
     File dir = null;
     String title = "", fileName;
     Boolean name;
+    View rootView;
 
     public MySpaceFragment() {}
+
+    public boolean save(){
+        if (rootView.findViewById(R.id.f_name).getVisibility()!=VISIBLE) return true;
+        Timber.v("Received back from the activity");
+        return save(rootView);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //if(savedInstanceState != null){}
-        View rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
+        rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
         rootView.findViewById(R.id.add).setVisibility(GONE);//.removeViewAt(0);
 
         //if (fragListViewId > 0)
         //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
-        fragListViewId+=3;                          //There are three other views with ids 0,1,2
+        fragListViewId += 3;                          //There are three other views with ids 0,1,2
         setAdapter(rootView);
         backButton(rootView);
         return rootView;
@@ -54,11 +61,11 @@ public class MySpaceFragment extends Fragment {
 
     ArrayList<Item> setList() {
         ArrayList<Item> list = new ArrayList<>();
-        list.add(new Item(getString(R.string.majors), WriteFile.class));
-        list.add(new Item(getString(R.string.ben), WriteFile.class));
-        list.add(new Item(getString(R.string.wardrobes), WriteFile.class));
-        list.add(new Item(getString(R.string.lists), WriteFile.class));
-        list.add(new Item(getString(R.string.words), WriteFile.class));
+        list.add(new Item(getActivity().getString(R.string.majors), WriteFile.class));
+        list.add(new Item(getActivity().getString(R.string.ben), WriteFile.class));
+        list.add(new Item(getActivity().getString(R.string.wardrobes), WriteFile.class));
+        list.add(new Item(getActivity().getString(R.string.lists), WriteFile.class));
+        list.add(new Item(getActivity().getString(R.string.words), WriteFile.class));
         //TODO:
         //list.add(new Item(getString(R.string.equations), WriteEquations.class));
         //list.add(new Item(getString(R.string.algos), WriteAlgo.class));
@@ -75,6 +82,10 @@ public class MySpaceFragment extends Fragment {
         }
         if (fragListViewId == 3) arrayList = setList();
         else {
+            if (dir==null) {
+                Toast.makeText(getActivity(), "Please try again", Toast.LENGTH_SHORT).show();
+                return;
+            }
             File[] files = dir.listFiles();
             if (files == null) {
                 return;
@@ -94,7 +105,7 @@ public class MySpaceFragment extends Fragment {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         if (fragListViewId == 3) {
-            float scale = getResources().getDisplayMetrics().density;
+            float scale = getActivity().getResources().getDisplayMetrics().density;
             int dpAsPixels = (int) (16 * scale + 0.5f);
             layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
         }
@@ -126,7 +137,7 @@ public class MySpaceFragment extends Fragment {
                     //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                     //intent.putExtra("mHeader", item.mName);
                     //intent.putExtra("fileString", item.mItem);
-                    //intent.putExtra("path", fileName);
+                    //intent.putExtra("fileName", fileName);
                     File file = new File(fileName);
                     boolean isDirectoryCreated = file.exists();
                     if (!isDirectoryCreated) {
@@ -153,7 +164,9 @@ public class MySpaceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Timber.v("back_button clicked, fragListViewId = " + fragListViewId);
-                if(rootView.findViewById(R.id.f_name).getVisibility()==VISIBLE) {
+                if (rootView.findViewById(R.id.f_name).getVisibility() == VISIBLE) {
+                    Timber.v("fileName = " + fileName);
+                    if (!save(rootView)) return;
                     rootView.findViewById(R.id.f_name).setVisibility(GONE);
                     rootView.findViewById(R.id.my_space_editText).setVisibility(GONE);
                 }
@@ -166,11 +179,7 @@ public class MySpaceFragment extends Fragment {
                     if (fragListViewId == 3) {
                         rootView.findViewById(R.id.add).setVisibility(View.GONE);
                         rootView.findViewById(R.id.back_button).setVisibility(GONE);
-                    } else {
-                        rootView.findViewById(R.id.add).setVisibility(VISIBLE);
-                        if(fileName!=null) save(rootView, fileName);
-                        Timber.v("fileName = " + fileName);
-                    }
+                    } else rootView.findViewById(R.id.add).setVisibility(VISIBLE);
                 }
             }
         });
@@ -179,7 +188,7 @@ public class MySpaceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Timber.v("add button clicked");
-                name=false;
+                name = false;
                 rootView.findViewById(R.id.add).setVisibility(View.GONE);
                 rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
                 rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
@@ -215,29 +224,29 @@ public class MySpaceFragment extends Fragment {
         //intent.getStringExtra()
     }
 
-    public boolean save(View rootView, String path) {
+    public boolean save(View rootView) {
         Timber.v("entered save()");
         String string = ((EditText) rootView.findViewById(R.id.my_space_editText)).getText().toString();
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {
             if (!name) {
-                //Toast.makeText(getActivity(), "please enter a name", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "please enter a name", Toast.LENGTH_SHORT).show();
                 name = true;
                 return false;
             }
-            //Toast.makeText(getActivity(), "Didn't save nameless file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Didn't save nameless file", Toast.LENGTH_SHORT).show();
             return true;
         }
-        String dirPath = path;
+        String dirPath = fileName;
         if (fname.length() > 250) {
             if (!name) {
-                //Toast.makeText(getActivity(), "Try again with a shorter name", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Try again with a shorter name", Toast.LENGTH_SHORT).show();
                 name = true;
                 return false;
             } else return true;
         }
 
-        fname = path + File.separator + fname + ".txt";
+        fname = fileName + File.separator + fname + ".txt";
         Timber.v("fname = " + fname);
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
@@ -261,7 +270,7 @@ public class MySpaceFragment extends Fragment {
             }
         } else Toast.makeText(getActivity(),
                 R.string.try_again, Toast.LENGTH_SHORT).show();
-        Timber.v("path = " + path);
+        Timber.v("fileName = " + fileName);
         return true;
     }
 

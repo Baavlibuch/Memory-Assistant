@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
-import com.memory_athlete.memoryassistant.ExperimentActivity;
+import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
 
@@ -35,7 +35,7 @@ public class Implement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         MakeList.theme(this, Implement.this);
-        setContentView(R.layout.activity_apply);
+        setContentView(R.layout.activity_implement_list);
         setTitle(getString(R.string.apply));
         Timber.v("Title Set");
         pathList.add(intent.getStringExtra(getString(R.string.apply)));
@@ -91,7 +91,7 @@ public class Implement extends AppCompatActivity {
                     }
 
                     if (item.mFileName.endsWith(".txt")) {
-                        Intent intent = new Intent(getApplicationContext(), ExperimentActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ImplementLesson.class);
                         intent.putExtra("headerString", item.mItem);
                         intent.putExtra("webView", webView);
                         intent.putExtra("list", hasList);

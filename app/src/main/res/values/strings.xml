@@ -94,6 +94,7 @@
     <!--Preferences-->
     <string name="remind">Remind Me Periodically</string>
     <string name="periodic">I Like To Practice At</string>
+    <string name="no_my_space_frags">Number of mySpace screens</string>
     <string name="location_wise">Based On Location</string>
     <string name="transit">During Transit</string>
     <string name="default_time">22:30</string>
@@ -122,8 +123,5 @@
     <string name="try_again">Try again</string>
     <string name="report_to_dev">There was an error, please report this to the developer</string>
     <string name="confused">Confused? Start from the top</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

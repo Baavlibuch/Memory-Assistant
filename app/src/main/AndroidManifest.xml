@@ -54,7 +54,7 @@
         <activity android:name=".main.Implement"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean"/>
-        <activity android:name=".ExperimentActivity"/>
+        <activity android:name=".lessons.ImplementLesson"/>
 
         <activity
             android:name=".mySpace.MySpace"
