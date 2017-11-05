@@ -1,7 +1,9 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -19,42 +21,54 @@ import java.util.Scanner;
 
 import timber.log.Timber;
 
-public class Cards extends Disciplines {
-
+public class Cards extends DisciplineFragment {
     int mPosition = 0;
     int[] cards = MakeList.makeCards();
     ArrayList<Integer> randomList = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.decks));
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.decks));
+        rootView.findViewById(R.id.cards).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next();
+            }
+        });
+        rootView.findViewById(R.id.prev).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                previous();
+            }
+        });
+        return rootView;
     }
 
     @Override
     protected void numbersVisibility(int v) {
-        (findViewById(R.id.cards)).setVisibility(v);
+        (rootView.findViewById(R.id.cards)).setVisibility(v);
     }
 
     void setCard() {
-        ((ImageView) findViewById(R.id.cards)).setImageResource(cards[randomList.get(mPosition)]);
+        ((ImageView) rootView.findViewById(R.id.cards)).setImageResource(cards[randomList.get(mPosition)]);
     }
 
-    public void previous(View view) {
+    public void previous() {
         if (mPosition > 0) {
             mPosition--;
             setCard();
         } else {
-            Toast.makeText(this, "This is the first card!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "This is the first card!", Toast.LENGTH_LONG).show();
         }
     }
 
-    public void next(View view) {
+    public void next() {
         if (mPosition < a.get(1) * 52 - 1) {
             mPosition++;
             setCard();
         } else {
-            Toast.makeText(this, "This is the last card!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "This is the last card!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -80,7 +94,7 @@ public class Cards extends Disciplines {
 
     @Override
     protected void postExecute(String s) {
-        (findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
+        (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
         if (a.get(2) == 0) {
             return;
         }
@@ -95,11 +109,11 @@ public class Cards extends Disciplines {
 
         setCard();
         //((TextView) findViewById(R.id.numbers)).setText(s);
-        (findViewById(R.id.save)).setVisibility(View.VISIBLE);
+        (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         numbersVisibility(View.VISIBLE);
-        (findViewById(R.id.prev)).setVisibility(View.VISIBLE);
-        (findViewById(R.id.no_of_values)).setVisibility(View.GONE);
-        Toast.makeText(getApplicationContext(), "Tap the image for the next card", Toast.LENGTH_SHORT).show();
+        (rootView.findViewById(R.id.prev)).setVisibility(View.VISIBLE);
+        (rootView.findViewById(R.id.no_of_values)).setVisibility(View.GONE);
+        Toast.makeText(getActivity(), "Tap the image for the next card", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -107,9 +121,9 @@ public class Cards extends Disciplines {
         if (randomList.isEmpty()) return false;
         StringBuilder stringBuilder = new StringBuilder("");
 
-        String fname = getFilesDir().getAbsolutePath() + File.separator + getTitle() + File.separator +
+        String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator + getActivity().getTitle() + File.separator +
                 ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
-        String dirPath = getFilesDir().getAbsolutePath() + File.separator + getTitle();
+        String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator + getActivity().getTitle();
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
 
@@ -127,14 +141,14 @@ public class Cards extends Disciplines {
                 outputStream.write(stringBuilder.toString().getBytes());
 
                 outputStream.close();
-                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
             }
         } else
-            Toast.makeText(getApplicationContext(), "Couldn't save the card list", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Couldn't save the card list", Toast.LENGTH_SHORT).show();
         return false;
     }
 
@@ -143,10 +157,10 @@ public class Cards extends Disciplines {
         super.reset();
         mPosition = 0;
         randomList.clear();
-        findViewById(R.id.group).setVisibility(View.GONE);
-        findViewById(R.id.prev).setVisibility(View.GONE);
-        findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
-        ((ImageView) findViewById(R.id.cards)).setImageDrawable(null);
+        rootView.findViewById(R.id.group).setVisibility(View.GONE);
+        rootView.findViewById(R.id.prev).setVisibility(View.GONE);
+        rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
+        ((ImageView) rootView.findViewById(R.id.cards)).setImageDrawable(null);
         //findViewById(R.id.cards).setVisibility(View.GONE);
         //findViewById(R.id.progress_bar_discipline).setVisibility(View.GONE);
     }
@@ -154,6 +168,6 @@ public class Cards extends Disciplines {
     @Override
     protected void startCommon() {
         super.startCommon();
-        findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
+        rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
     }
 }

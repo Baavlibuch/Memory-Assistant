@@ -1,13 +1,16 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class Dates extends AppCompatActivity {
+public class Dates extends DisciplineFragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         //setContentView(R.layout.activity_random_dates);
+        return rootView;
     }
 }

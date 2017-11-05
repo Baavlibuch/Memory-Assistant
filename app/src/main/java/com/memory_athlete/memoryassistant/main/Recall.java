@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant.recall;
+package com.memory_athlete.memoryassistant.main;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.disciplines.DisciplineActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -42,6 +43,7 @@ import timber.log.Timber;
 
 import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
+import static com.memory_athlete.memoryassistant.R.id.chose_file;
 import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
@@ -97,8 +99,8 @@ public class Recall extends AppCompatActivity {
         categories.add(getString(R.string.digits));
         categories.add(getString(R.string.binary));
         categories.add(getString(R.string.cards));
-        categories.add(getString(R.string.k));
-        categories.add(getString(R.string.d));
+        categories.add(getString(R.string.letters));
+        categories.add(getString(R.string.names));
         categories.add(getString(R.string.numbers));
         categories.add(getString(R.string.places_capital));
         categories.add(getString(R.string.words));
@@ -156,31 +158,7 @@ public class Recall extends AppCompatActivity {
         fileList.add(getString(R.string.cf));
         File[] files = dir.listFiles();
         if (files == null) {
-            Snackbar.make(chose_file, "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
-                    .setAction(R.string.practice, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            String s = discipline;
-                            if (s.equals(getString(R.string.digits)))
-                                s = getString(R.string.numbers);
-                            s = s.replaceAll("\\s", "");
-                            Timber.v("s= " + s);
-                            try {
-                                Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
-                                Intent i = new Intent(getApplicationContext(), Class.forName(
-                                        "com.memory_athlete.memoryassistant.disciplines." + s));
-                                i.putExtra("name", discipline);
-                                startActivity(i);
-                            } catch (ClassNotFoundException e) {
-                                e.printStackTrace();
-                                Toast.makeText(Recall.this, R.string.report_to_dev, Toast.LENGTH_SHORT).show();
-                            } catch (ActivityNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }).show();
-            //Toast.makeText(getApplicationContext(), "Nothing saved. Try practicing", Toast.LENGTH_SHORT).show();
-            chose_file.setVisibility(View.GONE);
+            practice(chose_file, discipline);
             return;
         }
         chose_file.setVisibility(View.VISIBLE);
@@ -224,6 +202,56 @@ public class Recall extends AppCompatActivity {
         }
 
         Timber.v("spinner 2 set");
+    }
+
+    void practice(Spinner chose_file, final String discipline){
+        Snackbar.make(chose_file, "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
+                .setAction(R.string.practice, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String s = discipline;
+                        if (s.equals(getString(R.string.digits)))
+                            s = getString(R.string.numbers);
+                        s = s.replaceAll("\\s", "");
+                        Timber.v("s= " + s);
+
+                        int classId;
+                        if (discipline.equals(getString(R.string.numbers))){
+                            classId = 1;
+                        }else if (discipline.equals(getString(R.string.digits))){
+                            classId = 1;
+                        }else if (discipline.equals(getString(R.string.words))){
+                            classId = 2;
+                        }else if (discipline.equals(getString(R.string.names))){
+                            classId = 3;
+                        }else if (discipline.equals(getString(R.string.places_capital))){
+                            classId = 4;
+                        }else if (discipline.equals(getString(R.string.cards))){
+                            classId = 5;
+                        }else if (discipline.equals(getString(R.string.binary))){
+                            classId = 6;
+                        }else //(discipline.equals(getString(R.string.letters)))
+                        {
+                            classId = 7;
+                        }
+
+                        Timber.v("classId = " + classId);
+                        try {
+                            //Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
+                            Intent i = new Intent(getApplicationContext(), DisciplineActivity.class);
+                            i.putExtra("class", classId);
+                            i.putExtra("name", s);
+                            startActivity(i);
+                        }/* catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                            Toast.makeText(Recall.this, R.string.report_to_dev, Toast.LENGTH_SHORT).show();
+                        }*/ catch (ActivityNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).show();
+        //Toast.makeText(getApplicationContext(), "Nothing saved. Try practicing", Toast.LENGTH_SHORT).show();
+        chose_file.setVisibility(View.GONE);
     }
 
 
@@ -383,7 +411,7 @@ public class Recall extends AppCompatActivity {
                 if (mDiscipline == getString(R.string.numbers) || mDiscipline == getString(R.string.cards))
                     answers.add(String.valueOf(parseInt(string.trim())));
                     //else if (mDiscipline == getString(e))
-                else if (mDiscipline.equalsIgnoreCase(getString(R.string.k))
+                else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
                         || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
                         || mDiscipline.equalsIgnoreCase(getString(R.string.digits))) {
                     for (char c : string.toCharArray())
@@ -483,7 +511,7 @@ public class Recall extends AppCompatActivity {
         //findViewById(R.id.check).setVisibility(View.GONE);
         findViewById(R.id.discipline_spinner).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
-        findViewById(R.id.chose_file).setVisibility(View.GONE);
+        findViewById(chose_file).setVisibility(View.GONE);
         findViewById(R.id.reset).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_text_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_layout).setVisibility(View.VISIBLE);

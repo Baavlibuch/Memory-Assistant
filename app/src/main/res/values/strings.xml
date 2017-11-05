@@ -17,14 +17,14 @@
     <!--Practice-->
     <string name="cd">Chose Discipline</string>
     <string name="numbers">Numbers</string>
-    <string name="d">Names</string>
+    <string name="names">Names</string>
     <string name="cards">Cards</string>
     <string name="binary">Binary Digits</string>
     <string name="places_capital">Places</string>
     <string name="h">Dates</string>
     <string name="i">Foods</string>
     <string name="j">Colours</string>
-    <string name="k">Letters</string>
+    <string name="letters">Letters</string>
     <string name="random">Random</string>
     <string name="digits">Digits</string>
     <string name="cf">Chose File</string>

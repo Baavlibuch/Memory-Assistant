@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant.lessons;
+package com.memory_athlete.memoryassistant.disciplines;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +11,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;
 
 import timber.log.Timber;
 
-public class ImplementLesson extends AppCompatActivity {
+public class DisciplineActivity extends AppCompatActivity {
+
     private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
 
@@ -27,11 +29,13 @@ public class ImplementLesson extends AppCompatActivity {
         Timber.v("entered onCreate()");
         intent = getIntent();
         theme(intent);
-
-        tabTitles.add(getString(R.string.apply));
+        int fragIndex = intent.getIntExtra("class", 0);
+        Timber.v("fragIndex = " + fragIndex + "tabTitles.size() = " + tabTitles.size());
+        tabTitles.add(getString(MakeList.makePracticeFrags()[fragIndex - 1]));
         for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.no_my_space_frags), "1")); i++)
             tabTitles.add("MySpace " + (i + 1));
+        Timber.v("tabTitles.size() = " + tabTitles.size());
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -74,9 +78,37 @@ public class ImplementLesson extends AppCompatActivity {
             switch (position) {
                 case 0:
                     Bundle bundle = intent.getExtras();
-                    LessonFragment lessonFragment = new LessonFragment();
-                    lessonFragment.setArguments(bundle);
-                    return lessonFragment;
+                    Fragment fragment;
+                    switch (intent.getIntExtra("class", 0)) {
+                        case 1:
+                        fragment = new Numbers();
+                            break;
+                        case 2:
+                        fragment = new Words();
+                            break;
+                        case 3:
+                        fragment = new Names();
+                            break;
+                        case 4:
+                        fragment = new Places();
+                            break;
+                        case 5:
+                        fragment = new Cards();
+                            break;
+                        case 6:
+                        fragment = new BinaryDigits();
+                            break;
+                        case 7:
+                        fragment = new Letters();
+                            break;
+                        default:
+                            Timber.wtf("Wrong practice fragment case - " + intent.getIntExtra("class", 0));
+                            finish();
+                            fragment = new Fragment();
+                            return fragment;
+                    }
+                    fragment.setArguments(bundle);
+                    return fragment;
                 default:
                     return new MySpaceFragment();
                 /*default :

@@ -15,13 +15,7 @@ import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
-import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
-import com.memory_athlete.memoryassistant.disciplines.Cards;
-import com.memory_athlete.memoryassistant.disciplines.Letters;
-import com.memory_athlete.memoryassistant.disciplines.Names;
-import com.memory_athlete.memoryassistant.disciplines.Numbers;
-import com.memory_athlete.memoryassistant.disciplines.Places;
-import com.memory_athlete.memoryassistant.disciplines.Words;
+import com.memory_athlete.memoryassistant.disciplines.DisciplineActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -42,7 +36,8 @@ public class Practice extends AppCompatActivity {
         disciplineList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Category cat = disc.get(position);
-                Intent intent = new Intent(Practice.this, cat.mClass);
+                Intent intent = new Intent(Practice.this, DisciplineActivity.class);
+                intent.putExtra("class", cat.mClass);
                 intent.putExtra("hasSpinner", cat.hasSpinner);
                 intent.putExtra("hasAsyncTask", cat.hasAsyncTask);
                 intent.putExtra("nameID", cat.mNameId);
@@ -53,13 +48,13 @@ public class Practice extends AppCompatActivity {
     }
 
     private void setList(ArrayList<Category> disc) {
-        disc.add(new Category(R.string.numbers, R.drawable.numbers, Numbers.class, true, false, 1));
-        disc.add(new Category(R.string.words, R.drawable.words, Words.class, false, true));
-        disc.add(new Category(R.string.d, R.drawable.names, Names.class, false, true));
-        disc.add(new Category(R.string.places_capital, R.drawable.places, Places.class, false, true));
-        disc.add(new Category(R.string.cards, R.drawable.cards, Cards.class, false, false));
-        disc.add(new Category(R.string.binary, R.drawable.binary, BinaryDigits.class, true, false));
-        disc.add(new Category(R.string.k, R.drawable.letters, Letters.class, true, false));
+        disc.add(new Category(R.string.numbers, R.drawable.numbers, 1, true, false, 1));
+        disc.add(new Category(R.string.words, R.drawable.words, 2, false, true));
+        disc.add(new Category(R.string.names, R.drawable.names, 3, false, true));
+        disc.add(new Category(R.string.places_capital, R.drawable.places, 4, false, true));
+        disc.add(new Category(R.string.cards, R.drawable.cards, 5, false, false));
+        disc.add(new Category(R.string.binary, R.drawable.binary, 6, true, false));
+        disc.add(new Category(R.string.letters, R.drawable.letters, 7, true, false));
         //disc.add(new Category(R.string.a, R.drawable.equations, Equations.class, false, false));
         //disc.add(new Category(R.string.h, R.drawable.dates, Dates.class, false, false));
         //disc.add(new Category(R.string.i, R.drawable.foods, Foods.class, false, false));
@@ -70,22 +65,22 @@ public class Practice extends AppCompatActivity {
         private int mNameId;
         private int mImageId;
         private int mDifferentString=0;
-        private Class mClass;
+        private int mClass;
         private boolean hasSpinner;
         private boolean hasAsyncTask;
 
-        Category(int nm, int im, Class<?> cid, boolean spinner, boolean async){
+        Category(int nm, int im, int classId, boolean spinner, boolean async){
             mNameId = nm;
             mImageId = im;
-            mClass = cid;
+            mClass = classId;
             hasSpinner = spinner;
             hasAsyncTask = async;
         }
 
-        Category(int nm, int im, Class<?> cid, boolean spinner, boolean async, int num){
+        Category(int nm, int im, int classId, boolean spinner, boolean async, int num){
             mNameId = nm;
             mImageId = im;
-            mClass = cid;
+            mClass = classId;
             hasSpinner = spinner;
             hasAsyncTask = async;
             mDifferentString = num;

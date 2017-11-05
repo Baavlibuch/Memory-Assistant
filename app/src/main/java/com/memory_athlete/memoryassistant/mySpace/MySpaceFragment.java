@@ -50,9 +50,9 @@ public class MySpaceFragment extends Fragment {
         //if(savedInstanceState != null){}
         rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
         rootView.findViewById(R.id.add).setVisibility(GONE);//.removeViewAt(0);
-
         //if (fragListViewId > 0)
         //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
+
         fragListViewId += 3;                          //There are three other views with ids 0,1,2
         setAdapter(rootView);
         backButton(rootView);

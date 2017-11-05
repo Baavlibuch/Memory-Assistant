@@ -29,14 +29,14 @@ public class ClearPracticePreference extends Preference {
                 new File(path + resources.getString(R.string.equations)),
                 new File(path + resources.getString(R.string.numbers)),
                 new File(path + resources.getString(R.string.words)),
-                new File(path + resources.getString(R.string.d)),
+                new File(path + resources.getString(R.string.names)),
                 new File(path + resources.getString(R.string.cards)),
                 new File(path + resources.getString(R.string.binary)),
                 new File(path + resources.getString(R.string.places_capital)),
                 new File(path + resources.getString(R.string.h)),
                 new File(path + resources.getString(R.string.i)),
                 new File(path + resources.getString(R.string.j)),
-                new File(path + resources.getString(R.string.k)),
+                new File(path + resources.getString(R.string.letters)),
         };
 
         for (File file : arr) {

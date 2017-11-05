@@ -38,24 +38,28 @@
             android:parentActivityName="com.memory_athlete.memoryassistant.main.MainActivity"
             tools:targetApi="jelly_bean" />
         -->
-        <activity android:name=".main.Learn"
+        <activity
+            android:name=".main.Learn"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".recall.Recall"
+        <activity
+            android:name=".main.Recall"
             android:parentActivityName=".main.MainActivity"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.Practice"
+        <activity
+            android:name=".main.Practice"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.Preferences"
+        <activity
+            android:name=".main.Preferences"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.Implement"
+        <activity
+            android:name=".main.Implement"
             android:parentActivityName=".mySpace.MySpace"
-            tools:targetApi="jelly_bean"/>
-        <activity android:name=".lessons.ImplementLesson"/>
-
+            tools:targetApi="jelly_bean" />
+        <activity android:name=".lessons.ImplementLesson" />
         <activity
             android:name=".mySpace.MySpace"
             android:parentActivityName=".main.MainActivity"
@@ -66,69 +70,83 @@
             tools:targetApi="jelly_bean" />
         <activity android:name=".lessons.Lessons" />
 
-
         <!-- Practice Disciplines -->
 
-        <activity android:name=".disciplines.Numbers"
+        <activity
+            android:name=".disciplines.Numbers"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Equations"
+        <activity
+            android:name=".disciplines.Equations"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Words"
+        <activity
+            android:name=".disciplines.Words"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Names"
+        <activity
+            android:name=".disciplines.Names"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Cards"
+        <activity
+            android:name=".disciplines.Cards"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.BinaryDigits"
+        <activity
+            android:name=".disciplines.BinaryDigits"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Places"
+        <activity
+            android:name=".disciplines.Places"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Foods"
+        <activity
+            android:name=".disciplines.Foods"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Dates"
+        <activity
+            android:name=".disciplines.Dates"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Colours"
+        <activity
+            android:name=".disciplines.Colours"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.Letters"
+        <activity
+            android:name=".disciplines.Letters"
             android:parentActivityName=".main.Practice"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
 
         <!-- Services -->
 
-        <service android:name=".services.ReminderJobService"
+        <service
+            android:name=".services.ReminderJobService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
-        <service android:name=".services.MySpaceJobService"
+        <service
+            android:name=".services.MySpaceJobService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+
+        <activity android:name=".disciplines.DisciplineActivity"></activity>
     </application>
 
 </manifest>

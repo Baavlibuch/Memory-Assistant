@@ -2,8 +2,9 @@ package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.compat.BuildConfig;
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 
@@ -18,15 +19,16 @@ import java.util.Random;
 import timber.log.Timber;
 
 
-public class Words extends Disciplines {
+public class Words extends DisciplineFragment {
     private ArrayList<String> mDictionary = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
 
         new DictionaryAsyncTask().execute();
         Timber.v("Activity Created");
+        return rootView;
     }
 
     @Override
@@ -65,7 +67,7 @@ public class Words extends Disciplines {
         try {
             dict.close(); //had if (dict!=null)
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
     }
 
@@ -74,8 +76,8 @@ public class Words extends Disciplines {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            setContentView(R.layout.loading);
-//            (findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
+            //setContentView(R.layout.loading);
+//            (rootView.findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -87,13 +89,13 @@ public class Words extends Disciplines {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            //(findViewById(R.id.progress_bar)).setVisibility(View.GONE);
-            setContentView(R.layout.activity_disciplines);
+            //(rootView.findViewById(R.id.progress_bar)).setVisibility(View.GONE);
+            //setContentView(R.layout.activity_disciplines);
             levelSpinner();
 
             setButtons();
-            ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.words_small));
-            Words.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.words_small));
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         }
     }
 

@@ -20,7 +20,6 @@ import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
-import com.memory_athlete.memoryassistant.recall.Recall;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 

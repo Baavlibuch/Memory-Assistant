@@ -4,7 +4,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.compat.BuildConfig;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 
@@ -16,29 +18,34 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Places extends Disciplines {
+import timber.log.Timber;
+
+import static com.memory_athlete.memoryassistant.disciplines.Disciplines.LOG_TAG;
+
+public class Places extends DisciplineFragment {
 
     private ArrayList<String> mPlace = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         //setTitle(getString(R.string.g));
 
         //makeSpinner();
         (new DictionaryAsyncTask()).execute();
-        if (BuildConfig.DEBUG) Log.i(LOG_TAG, "Activity Created");
+        Timber.v("Activity Created");
+        return rootView;
     }
 
     @Override
     protected void reset() {
         super.reset();
-        findViewById(R.id.group).setVisibility(View.GONE);
+        rootView.findViewById(R.id.group).setVisibility(View.GONE);
     }
 
     @Override
     protected String background() {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "doInBackground() entered");
+        Timber.v("doInBackground() entered");
 
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
@@ -213,8 +220,8 @@ public class Places extends Disciplines {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            setContentView(R.layout.loading);
-//            (findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
+            //setContentView(R.layout.loading);
+//            (rootView.findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -226,9 +233,9 @@ public class Places extends Disciplines {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            //(findViewById(R.id.progress_bar)).setVisibility(View.GONE);
-            setContentView(R.layout.activity_disciplines);
-            ((EditText) findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.places_small));
+            //(rootView.findViewById(R.id.progress_bar)).setVisibility(View.GONE);
+            //setContentView(R.layout.activity_disciplines);
+            ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.places_small));
             levelSpinner();
 
             setButtons();
@@ -236,7 +243,7 @@ public class Places extends Disciplines {
             a.add(0);
             a.add(0);
             a.add(0);
-            Places.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         }
     }
 }
