@@ -2,8 +2,6 @@ package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.compat.BuildConfig;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,6 @@ import java.util.Random;
 
 import timber.log.Timber;
 
-import static com.memory_athlete.memoryassistant.disciplines.Disciplines.LOG_TAG;
 
 public class Places extends DisciplineFragment {
 
@@ -78,7 +75,7 @@ public class Places extends DisciplineFragment {
         try {
             dict.close();
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
 
         dict = null;
@@ -97,7 +94,7 @@ public class Places extends DisciplineFragment {
         try {
             dict.close();
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
 
         dict = null;
@@ -116,7 +113,7 @@ public class Places extends DisciplineFragment {
         try {
             dict.close();
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
 
         dict = null;
@@ -135,7 +132,7 @@ public class Places extends DisciplineFragment {
         try {
             dict.close();
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
 
         dict = null;
@@ -154,7 +151,7 @@ public class Places extends DisciplineFragment {
         try {
             dict.close();
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
 
         dict = null;
@@ -173,7 +170,7 @@ public class Places extends DisciplineFragment {
         try {
             dict.close();
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
 
         dict = null;
@@ -192,7 +189,7 @@ public class Places extends DisciplineFragment {
         try {
             dict.close();
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
 
         dict = null;
@@ -211,7 +208,7 @@ public class Places extends DisciplineFragment {
         try {
             dict.close();
         } catch (IOException e) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "File not closed");
+            Timber.e("File not closed");
         }
     }
 
