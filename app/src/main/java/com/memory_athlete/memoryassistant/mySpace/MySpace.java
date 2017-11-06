@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 public class MySpace extends AppCompatActivity {
-    int listViewId = 0;
+    int listViewId = 0, MIN_DYNAMIC_VIEW_ID = 1;
     File dir = null;
     String title = "";
 
@@ -59,7 +59,7 @@ public class MySpace extends AppCompatActivity {
                 relativeLayout.removeViewAt(listViewId);
             if (relativeLayout.findViewById(--listViewId) != null) {
                 relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
-                if (listViewId == 1)
+                if (listViewId == MIN_DYNAMIC_VIEW_ID)
                     findViewById(R.id.add).setVisibility(View.GONE);
                 setTitle(title + getString(R.string.my_space));
                 return;
@@ -72,7 +72,7 @@ public class MySpace extends AppCompatActivity {
     public void setAdapter() {
         Timber.v("setAdapter started");
         ArrayList<Item> arrayList = new ArrayList<>();
-        if (listViewId == 1) arrayList = setList();
+        if (listViewId == MIN_DYNAMIC_VIEW_ID) arrayList = setList();
         else {
             File[] files = dir.listFiles();
             if (files == null) {
@@ -92,13 +92,13 @@ public class MySpace extends AppCompatActivity {
         final ListView listView = new ListView(this);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        if (listViewId == 1) {
+        if (listViewId == MIN_DYNAMIC_VIEW_ID) {
             float scale = getResources().getDisplayMetrics().density;
             int dpAsPixels = (int) (16 * scale + 0.5f);
             layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
         }
         listView.setLayoutParams(layoutParams);
-        //if (listViewId==1) listView.MarginLayoutParams
+        //if (listViewId==MIN_DYNAMIC_VIEW_ID) listView.MarginLayoutParams
         listView.setId(listViewId);
         final RelativeLayout layout = (RelativeLayout) findViewById(R.id.my_space_relative_layout);
         layout.addView(listView);
@@ -108,7 +108,7 @@ public class MySpace extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = finalArrayList.get(position);
                 Timber.v("item.mPath = " + item.mItem);
-                if (listViewId == 1) {
+                if (listViewId == MIN_DYNAMIC_VIEW_ID) {
                     dir = new File(getFilesDir().getAbsolutePath() + File.separator
                             + getString(R.string.my_space) + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
@@ -191,7 +191,7 @@ public class MySpace extends AppCompatActivity {
 
         @Override
         public View getView(int position, View listItemView, ViewGroup parent) {
-            if (listViewId == 1) {
+            if (listViewId == MIN_DYNAMIC_VIEW_ID) {
                 if (listItemView == null) {
                     listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
                 }
