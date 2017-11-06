@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 
 import timber.log.Timber;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
@@ -176,6 +178,10 @@ public class MySpaceFragment extends Fragment {
 
     void back() {
         Timber.v("back_button clicked, fragListViewId = " + fragListViewId);
+        if(getActivity().getCurrentFocus()!=null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+        }
         if (rootView.findViewById(R.id.f_name).getVisibility() == VISIBLE) {
             Timber.v("fileName = " + fileName);
             if (!save(rootView)) return;
