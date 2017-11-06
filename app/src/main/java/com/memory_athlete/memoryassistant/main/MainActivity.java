@@ -28,6 +28,16 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
+    boolean backPressed = false;
+
+    @Override
+    public void onBackPressed() {
+        if(PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.double_back_to_exit), false) && !backPressed){
+            backPressed=true;
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+        } else super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
