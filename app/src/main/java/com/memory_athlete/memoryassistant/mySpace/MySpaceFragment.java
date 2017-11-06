@@ -37,10 +37,11 @@ public class MySpaceFragment extends Fragment {
     Boolean name;
     View rootView;
 
-    public MySpaceFragment() {}
+    public MySpaceFragment() {
+    }
 
-    public boolean save(){
-        if (rootView.findViewById(R.id.f_name).getVisibility()!=VISIBLE) return true;
+    public boolean save() {
+        if (rootView.findViewById(R.id.f_name).getVisibility() != VISIBLE) return true;
         Timber.v("Received back from the activity");
         return save(rootView);
     }
@@ -55,7 +56,7 @@ public class MySpaceFragment extends Fragment {
         //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
         fragListViewId += 3;                          //There are three other views with ids 0,1,2
         setAdapter(rootView);
-        backButton(rootView);
+        setButtons(rootView);
         return rootView;
     }
 
@@ -82,7 +83,7 @@ public class MySpaceFragment extends Fragment {
         }
         if (fragListViewId == 3) arrayList = setList();
         else {
-            if (dir==null) {
+            if (dir == null) {
                 Toast.makeText(getActivity(), "Please try again", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -161,7 +162,7 @@ public class MySpaceFragment extends Fragment {
         });
     }
 
-    void backButton(final View rootView) {
+    void setButtons(final View rootView) {
         rootView.findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,12 +178,15 @@ public class MySpaceFragment extends Fragment {
                     Timber.v("Removed view at fragListViewId " + fragListViewId);
                 }
                 if (rootView.findViewById(--fragListViewId) != null) {
-                    rootView.findViewById(fragListViewId).setVisibility(View.VISIBLE);
+                    ((RelativeLayout) rootView).removeViewAt(fragListViewId);
+                    // findViewById(fragListViewId).setVisibility(View.VISIBLE);
                     if (fragListViewId == 3) {
                         rootView.findViewById(R.id.add).setVisibility(View.GONE);
                         rootView.findViewById(R.id.back_button).setVisibility(GONE);
-                    } else rootView.findViewById(R.id.add).setVisibility(VISIBLE);
+                    }
                 }
+                    setAdapter(rootView);
+                if (fragListViewId != 3) rootView.findViewById(R.id.add).setVisibility(VISIBLE);
             }
         });
 
@@ -194,7 +198,9 @@ public class MySpaceFragment extends Fragment {
                 fileName = getActivity().getFilesDir().getAbsolutePath() + File.separator
                         + getString(R.string.my_space) + File.separator + title;
                 rootView.findViewById(R.id.add).setVisibility(View.GONE);
-                rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
+                if (rootView.findViewById(fragListViewId) != null)
+                    rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
+                else fragListViewId++;
                 rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
                 rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
                 writeFile(rootView, fileName, title);
