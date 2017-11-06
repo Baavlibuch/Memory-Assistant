@@ -25,6 +25,13 @@
         android:entries="@array/one_to_five"
         android:entryValues="@array/one_to_five"/>
 
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/double_back_to_exit"
+        android:title="@string/double_back_to_exit"
+        android:summaryOff="@string/double_back_on"
+        android:summaryOn="@string/double_back_off"/>
+
     <com.memory_athlete.memoryassistant.preferences.ClearPracticePreference
         android:title="@string/clear_practice"
         android:summary="Clear all practice files"
