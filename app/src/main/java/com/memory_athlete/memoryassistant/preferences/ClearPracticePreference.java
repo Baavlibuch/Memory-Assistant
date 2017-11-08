@@ -45,6 +45,7 @@ public class ClearPracticePreference extends Preference {
                 deleteRecursive(file);
             }
         }
+        (new File(path + resources.getString(R.string.practice))).mkdir();
     }
 
     private void deleteRecursive(File fileOrDirectory) {

@@ -67,7 +67,7 @@ public class DisciplineFragment extends Fragment {
             getActivity().setTitle(s);
         } catch (Exception e) {
             getActivity().setTitle(bundle.getString("name"));
-            if (bundle.getString("name") == getString(R.string.cards))
+            if (bundle.getString("name").equals(getString(R.string.cards)))
                 hasStandard = false;
         }
 
@@ -276,9 +276,10 @@ public class DisciplineFragment extends Fragment {
         if (string.equals("")) return false;
 
         String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice) + File.separator + getActivity().getTitle()
+                + getString(R.string.practice) + File.separator + getActivity().getTitle().toString()
                 + File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
-        String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator + getActivity().getTitle();
+        String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.practice) + File.separator + getActivity().getTitle().toString();
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) {
@@ -296,8 +297,7 @@ public class DisciplineFragment extends Fragment {
                 e.printStackTrace();
                 Toast.makeText(getActivity().getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
             }
-        } else
-            Toast.makeText(getActivity().getApplicationContext(), "Couldn't save the list", Toast.LENGTH_SHORT).show();
+        } else throw new RuntimeException("Couldn't create the directory of the discipline");
         return false;
     }
 
@@ -515,7 +515,7 @@ public class DisciplineFragment extends Fragment {
 
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked() && hasStandard) {
             String s = ((Spinner) rootView.findViewById(R.id.level)).getSelectedItem().toString();
-            noOfValues = (s == getString(R.string.chose_level)) ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
+            noOfValues = (s.equals(getString(R.string.chose_level))) ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
             a.set(1, noOfValues);
             return;
         }

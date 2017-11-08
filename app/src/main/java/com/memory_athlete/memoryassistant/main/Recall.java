@@ -12,7 +12,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.disciplines.DisciplineActivity;
@@ -51,7 +49,6 @@ import static java.lang.Math.abs;
 
 public class Recall extends AppCompatActivity {
 
-    private static final String LOG_TAG = "\tRecall: ";
     private ArrayList<String> answers = new ArrayList<>();
     private ArrayList<String> responses = new ArrayList<>();
     ArrayList<String> categories;
@@ -267,12 +264,12 @@ public class Recall extends AppCompatActivity {
         responses.add(String.valueOf(card + selectedSuit));
         updateGridView();
         //mAdapter.notifyDataSetChanged();
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "cardSelected complete");
+        Timber.v("cardSelected complete");
     }
 
     void cardResponseLayout() {
         cardImageIds = MakeList.makeCards();
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "setting card layout...");
+        Timber.v("cardResponseLayout() started");
         findViewById(R.id.response_input).setVisibility(View.GONE);
         findViewById(R.id.cards_responses).setVisibility(View.VISIBLE);
         compareFormat = 2;
@@ -296,14 +293,14 @@ public class Recall extends AppCompatActivity {
                     for (int j = 0; j < 4; j++) {
                         findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
                     }
-                    view.setBackgroundColor(getResources().getColor(mSuitBackground));
+          //          view.setBackgroundColor(getResources().getColor(mSuitBackground));
                     selectedSuit = view.getId() * 13;
-                    if (BuildConfig.DEBUG) Log.v(LOG_TAG, "selectedSuit = " + selectedSuit);
+                    Timber.v("selectedSuit = " + selectedSuit);
                 }
             });
             suitLayout.addView(imageView);
         }
-        suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
+        //suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
 
         LinearLayout numberLayout = (LinearLayout) findViewById(R.id.card_numbers);
         for (int i = 0; i <= 13; i++) {
@@ -325,13 +322,13 @@ public class Recall extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     cardSelected(view.getId());
-                    if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Selected Card = " + view.getId());
+                    Timber.v("Selected Card = " + view.getId());
                 }
             });
             numberLayout.addView(textView);
         }
 
-        Log.v(LOG_TAG, "Card layout set");
+        Timber.v("Card layout set");
     }
 
     void simpleResponseLayout() {
@@ -426,11 +423,11 @@ public class Recall extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getAnswers() complete");
+        Timber.v("getAnswers() complete");
     }
 
     String giveUp() {
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Give Up! pressed");
+        Timber.v("Give Up! pressed");
         Scanner scanner = null;
         String whitespace;
         switch (responseFormat) {
@@ -460,7 +457,7 @@ public class Recall extends AppCompatActivity {
             if (scanner != null)
                 scanner.close();
         }
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "giveUp() complete, returns null");
+        Timber.v("giveUp() complete, returns null");
         return null;
     }
 
@@ -662,7 +659,7 @@ public class Recall extends AppCompatActivity {
         //((TextView) findViewById(R.id.answers_text)).setText("");
 
 
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "Recall Reset Complete");
+        Timber.v("Recall Reset Complete");
     }
 
     public void reset(View view) {
@@ -818,7 +815,7 @@ public class Recall extends AppCompatActivity {
                     .into(imageView);
             //imageView.setImageResource(cardImageIds[parseInt(responses.get(position))]);
 
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "getView() complete");
+            Timber.v("getView() complete");
 
             //((ImageView) listItemView.findViewById(R.id.card_image)).setImageResource(
             //      cardImageIds[parseInt(responses.get(position))]);

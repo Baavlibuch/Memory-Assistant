@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.EditText;
 
 import com.memory_athlete.memoryassistant.R;
 
@@ -110,21 +108,6 @@ public class Names extends DisciplineFragment {
         protected String doInBackground(Void... a) {
             createDictionary();
             return "";
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            //(findViewById(R.id.progress_bar)).setVisibility(View.GONE);
-            //setContentView(R.layout.activity_disciplines);
-            ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.nm));
-            levelSpinner();
-            setButtons();
-            a.add(0);
-            a.add(0);
-            a.add(0);
-            a.add(0);
-            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         }
     }
 

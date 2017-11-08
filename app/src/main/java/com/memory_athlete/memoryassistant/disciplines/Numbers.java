@@ -120,7 +120,8 @@ public class Numbers extends DisciplineFragment {
             String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice) + File.separator + "Digits" + File.separator
                     + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
-            String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator + "Digits";
+            String dirPath = getActivity().getFilesDir().getAbsolutePath()  + File.separator
+                    + getString(R.string.practice) + File.separator + "Digits";
             File pDir = new File(dirPath);
             boolean isDirectoryCreated = pDir.exists();
             if (!isDirectoryCreated) {
