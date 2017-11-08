@@ -72,7 +72,7 @@ public class Recall extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        MakeList.theme(this, Recall.this);
+        theme();
         setContentView(R.layout.activity_recall);
         setTitle(getString(R.string.recall));
         Timber.v("theme() complete");
@@ -88,6 +88,24 @@ public class Recall extends AppCompatActivity {
         if (findViewById(R.id.reset).getVisibility() == View.VISIBLE
                 || findViewById(R.id.response_layout).getVisibility() == View.VISIBLE) reset();
         else super.onBackPressed();
+    }
+
+    protected void theme() {
+        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
+        switch (theme) {
+            case "Dark":
+                setTheme(R.style.dark);
+                mSuitBackground = R.color.color_suit_background_dark;
+                break;
+            case "Night":
+                setTheme(R.style.pitch);
+                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                mSuitBackground = R.color.color_suit_background_night;
+                break;
+            default:
+                setTheme(R.style.light);
+                mSuitBackground = R.color.color_suit_background_light;
+        }
     }
 
     void makeSpinner1(final Intent intent) {
@@ -293,14 +311,14 @@ public class Recall extends AppCompatActivity {
                     for (int j = 0; j < 4; j++) {
                         findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
                     }
-          //          view.setBackgroundColor(getResources().getColor(mSuitBackground));
+                    view.setBackgroundColor(getResources().getColor(mSuitBackground));
                     selectedSuit = view.getId() * 13;
                     Timber.v("selectedSuit = " + selectedSuit);
                 }
             });
             suitLayout.addView(imageView);
         }
-        //suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
+        suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
 
         LinearLayout numberLayout = (LinearLayout) findViewById(R.id.card_numbers);
         for (int i = 0; i <= 13; i++) {
