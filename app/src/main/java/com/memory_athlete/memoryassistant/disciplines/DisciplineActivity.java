@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
@@ -35,6 +36,7 @@ public class DisciplineActivity extends AppCompatActivity {
         for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.no_my_space_frags), "1")); i++)
             tabTitles.add("MySpace " + (i + 1));
+        if (tabTitles.size()==1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         Timber.v("tabTitles.size() = " + tabTitles.size());
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
@@ -131,7 +133,7 @@ public class DisciplineActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (tabTitles.size() == 0) {
+        if (tabTitles.size() == 1) {
             super.onBackPressed();
             return;
         }

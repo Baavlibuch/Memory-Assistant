@@ -3,7 +3,6 @@ package com.memory_athlete.memoryassistant.mySpace;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -89,17 +88,7 @@ public class MySpaceFragment extends Fragment {
             if (dir == null) {
                 Toast.makeText(getActivity(), "Please try again", Toast.LENGTH_SHORT).show();
                 back();
-                new CountDownTimer(2000, 1000) {
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
                         throw new RuntimeException("Still getting null directory");
-                    }
-                }.start();
             }
             File[] files = dir.listFiles();
             if (files == null) {
@@ -168,8 +157,7 @@ public class MySpaceFragment extends Fragment {
                         rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
                         rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
                         writeFile(rootView, fileName, item.mName);
-                    } else
-                        Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                    } else throw new RuntimeException("Directory not created in MySpace");
                     rootView.findViewById(R.id.back_button).bringToFront();
                 }
             }

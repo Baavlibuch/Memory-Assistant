@@ -83,7 +83,7 @@ public class Recall extends AppCompatActivity {
 
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.reset).setVisibility(View.GONE);
-        Timber.v(LOG_TAG, "activity created");
+        Timber.v("activity created");
     }
 
     @Override
@@ -130,7 +130,7 @@ public class Recall extends AppCompatActivity {
         spinner.setAdapter(dataAdapter);
         spinner.setSelection(0);
         mDiscipline = intent.getStringExtra("discipline");
-        if (BuildConfig.DEBUG) Log.v(LOG_TAG, "discipline is " + mDiscipline);
+        Timber.v("discipline is " + mDiscipline);
         if (mDiscipline != null && !mDiscipline.equals("")) {
             spinner.setSelection(categories.indexOf(mDiscipline));
         }
@@ -153,7 +153,8 @@ public class Recall extends AppCompatActivity {
         if (discipline.equals(getString(R.string.cd))) return;
 
         final Spinner chose_file = (Spinner) findViewById(R.id.chose_file);
-        File dir = new File(getFilesDir().getAbsolutePath() + File.separator + discipline);
+        File dir = new File(getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice)
+                + File.separator + discipline);
         ArrayList<String> fileList = new ArrayList<>();
         fileList.add(getString(R.string.cf));
         File[] files = dir.listFiles();
@@ -402,13 +403,13 @@ public class Recall extends AppCompatActivity {
         try {
             String string;
 
-            Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath() +
-                    File.separator + mDiscipline + File.separator +
-                    spinner.getSelectedItem().toString())).useDelimiter("\t|\n|\n\n");
+            Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath() + File.separator
+                    + getString(R.string.practice) + File.separator + mDiscipline + File.separator
+                    + spinner.getSelectedItem().toString())).useDelimiter("\t|\n|\n\n");
 
             while (scanner.hasNext()) {
                 string = scanner.next();
-                if (mDiscipline == getString(R.string.numbers) || mDiscipline == getString(R.string.cards))
+                if (mDiscipline.equals(getString(R.string.numbers)) || mDiscipline.equals(getString(R.string.cards)))
                     answers.add(String.valueOf(parseInt(string.trim())));
                     //else if (mDiscipline == getString(e))
                 else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
@@ -442,16 +443,16 @@ public class Recall extends AppCompatActivity {
         }
         try {
             StringBuilder sb = new StringBuilder("");
-            scanner = new Scanner(new File(getFilesDir().getAbsolutePath() +
-                    File.separator + mDiscipline + File.separator +
-                    mSpinner.getSelectedItem().toString())).useDelimiter("\t|\t   \t|\n|\n\n");
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "scanner created");
-            if (mDiscipline == getString(R.string.cards)) {
+            scanner = new Scanner(new File(getFilesDir().getAbsolutePath() + File.separator
+                    + getString(R.string.practice) + File.separator + mDiscipline + File.separator
+                    + mSpinner.getSelectedItem().toString())).useDelimiter("\t|\t   \t|\n|\n\n");
+            Timber.v("scanner created");
+            if (mDiscipline.equals(getString(R.string.cards))) {
                 String[] cards = makeCardString();
                 while (scanner.hasNext())
                     sb.append(cards[Integer.parseInt(scanner.next())]).append(whitespace);
             } else while (scanner.hasNext()) sb.append(scanner.next()).append(whitespace);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "giveUp() complete, returns " + sb.toString());
+            Timber.v("giveUp() complete, returns " + sb.toString());
             return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();
@@ -825,9 +826,6 @@ public class Recall extends AppCompatActivity {
         }
     }
 }
-
-//TODO: key
-//TODO: receive intent from Disciplines
 
 //orange:FFA500
 // textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);

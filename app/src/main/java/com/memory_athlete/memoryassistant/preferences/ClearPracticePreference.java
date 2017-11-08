@@ -37,6 +37,7 @@ public class ClearPracticePreference extends Preference {
                 new File(path + resources.getString(R.string.i)),
                 new File(path + resources.getString(R.string.j)),
                 new File(path + resources.getString(R.string.letters)),
+                new File(path + resources.getString(R.string.practice))
         };
 
         for (File file : arr) {

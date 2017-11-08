@@ -38,95 +38,33 @@
             android:parentActivityName="com.memory_athlete.memoryassistant.main.MainActivity"
             tools:targetApi="jelly_bean" />
         -->
-        <activity
-            android:name=".main.Learn"
+        <activity android:name=".main.Learn"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".main.Recall"
+        <activity android:name=".main.Recall"
             android:parentActivityName=".main.MainActivity"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".main.Practice"
+        <activity android:name=".main.Practice"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".main.Preferences"
+        <activity android:name=".disciplines.DisciplineActivity"
+            android:parentActivityName=".main.Practice"
+            tools:targetApi="jelly_bean" />
+        <activity android:name=".main.Preferences"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".main.Implement"
+        <activity android:name=".main.Implement"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
         <activity android:name=".lessons.ImplementLesson" />
-        <activity
-            android:name=".mySpace.MySpace"
+        <activity android:name=".mySpace.MySpace"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".mySpace.WriteFile"
+        <activity android:name=".mySpace.WriteFile"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
         <activity android:name=".lessons.Lessons" />
-
-        <!-- Practice Disciplines -->
-
-        <activity
-            android:name=".disciplines.Numbers"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Equations"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Words"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Names"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Cards"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.BinaryDigits"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Places"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Foods"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Dates"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Colours"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".disciplines.Letters"
-            android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
-            tools:targetApi="jelly_bean" />
 
         <!-- Services -->
 
@@ -146,7 +84,6 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".disciplines.DisciplineActivity"></activity>
     </application>
 
 </manifest>

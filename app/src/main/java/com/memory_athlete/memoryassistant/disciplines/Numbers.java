@@ -117,7 +117,8 @@ public class Numbers extends DisciplineFragment {
             String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
             if (string.equals("")) return false;
 
-            String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator + "Digits" + File.separator
+            String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                    + getString(R.string.practice) + File.separator + "Digits" + File.separator
                     + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
             String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator + "Digits";
             File pDir = new File(dirPath);

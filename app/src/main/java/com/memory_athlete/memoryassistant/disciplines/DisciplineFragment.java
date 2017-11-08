@@ -275,8 +275,9 @@ public class DisciplineFragment extends Fragment {
         String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
         if (string.equals("")) return false;
 
-        String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator + getActivity().getTitle() + File.separator +
-                ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
+        String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.practice) + File.separator + getActivity().getTitle()
+                + File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
         String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator + getActivity().getTitle();
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();

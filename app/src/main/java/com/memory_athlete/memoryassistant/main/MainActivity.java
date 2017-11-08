@@ -23,18 +23,20 @@ import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import timber.log.Timber;
+
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
 
     @Override
     public void onBackPressed() {
-        if(PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean(getString(R.string.double_back_to_exit), false) && !backPressed){
-            backPressed=true;
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.double_back_to_exit), false) && !backPressed) {
+            backPressed = true;
             Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
         } else super.onBackPressed();
     }
@@ -42,10 +44,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
         MakeList.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name));
+
+        firstStart();
         setAdapter();
     }
 
@@ -53,15 +57,68 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(this);
-        if (s.getLong("last_opened", 0) == 0)
-            Toast.makeText(this, R.string.confused, Toast.LENGTH_LONG).show();
-
-        SharedPreferences.Editor e = s.edit();
+        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
         e.putLong("last_opened", System.currentTimeMillis());
         Timber.v("Last opened on" + System.currentTimeMillis());
         e.apply();
-        ReminderUtils.scheduleReminder(this);
+        ReminderUtils.scheduleReminder(getApplicationContext());
+    }
+
+    void firstStart() {
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(this);
+        if (s.getLong("last_opened", 0) == 0) {//return;
+            Toast.makeText(this, R.string.confused, Toast.LENGTH_LONG).show();
+        }
+
+        Timber.v("moving files");
+        String filesDir = getFilesDir().getAbsolutePath() + File.separator,
+                mySpaceDir = filesDir + getString(R.string.my_space) + File.separator,
+                folder;
+
+        File file = new File(filesDir + getString(R.string.my_space));
+        boolean isDirectoryCreated = file.exists();
+        if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
+        if (isDirectoryCreated) {
+
+            for (int i = 0; i < 6; i++) {
+                switch (i) {
+                    case 0:
+                        folder = getString(R.string.major_system);
+                        break;
+                    case 1:
+                        folder = getString(R.string.major_system);
+                        break;
+                    case 2:
+                        folder = getString(R.string.ben);
+                        break;
+                    case 3:
+                        folder = getString(R.string.wardrobes);
+                        break;
+                    case 4:
+                        folder = getString(R.string.lists);
+                        break;
+                    case 5:
+                        folder = getString(R.string.words);
+                        break;
+                    default:
+                        continue;
+                }
+
+                File from = new File(filesDir + folder);
+                if (from.exists()) {
+                    File to = new File(mySpaceDir + folder);
+                    from.renameTo(to);
+                }
+            }
+        } else throw new RuntimeException("couldn't create the MySpace directory");
+
+        file = new File(getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.practice));
+        isDirectoryCreated = file.exists();
+        if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
+        if (!isDirectoryCreated) {
+            throw new RuntimeException("couldn't create the MySpace directory");
+        }
     }
 
     public void setAdapter() {
@@ -119,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             View listItemView = convertView;
             if (listItemView == null) {
                 listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category //main_item
-                        ,parent, false);
+                        , parent, false);
             }
 
             TextView textView = listItemView.findViewById(R.id.text);

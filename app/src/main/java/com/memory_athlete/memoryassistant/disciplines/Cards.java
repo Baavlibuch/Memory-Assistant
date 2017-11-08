@@ -121,8 +121,9 @@ public class Cards extends DisciplineFragment {
         if (randomList.isEmpty()) return false;
         StringBuilder stringBuilder = new StringBuilder("");
 
-        String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator + getActivity().getTitle() + File.separator +
-                ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
+        String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.practice) + File.separator + getActivity().getTitle() + File.separator
+                + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
         String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator + getActivity().getTitle();
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
