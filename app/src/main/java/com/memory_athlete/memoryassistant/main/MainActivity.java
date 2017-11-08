@@ -83,21 +83,18 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < 6; i++) {
                 switch (i) {
                     case 0:
-                        folder = getString(R.string.major_system);
+                        folder = getString(R.string.majors);
                         break;
                     case 1:
-                        folder = getString(R.string.major_system);
-                        break;
-                    case 2:
                         folder = getString(R.string.ben);
                         break;
-                    case 3:
+                    case 2:
                         folder = getString(R.string.wardrobes);
                         break;
-                    case 4:
+                    case 3:
                         folder = getString(R.string.lists);
                         break;
-                    case 5:
+                    case 4:
                         folder = getString(R.string.words);
                         break;
                     default:
