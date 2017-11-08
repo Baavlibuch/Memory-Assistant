@@ -140,7 +140,7 @@ public class DisciplineActivity extends AppCompatActivity {
         for (int i = 1; i < tabTitles.size(); i++) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + i;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
-            if (fragment.save()) super.onBackPressed();
+            if (fragment == null || fragment.save()) super.onBackPressed();
         }
     }
 }

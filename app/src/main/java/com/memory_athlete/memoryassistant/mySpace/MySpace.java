@@ -68,7 +68,6 @@ public class MySpace extends AppCompatActivity {
         super.onBackPressed();
     }
 
-
     public void setAdapter() {
         Timber.v("setAdapter started");
         ArrayList<Item> arrayList = new ArrayList<>();
