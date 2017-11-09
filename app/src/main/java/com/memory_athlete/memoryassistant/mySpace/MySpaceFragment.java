@@ -50,13 +50,14 @@ public class MySpaceFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Timber.v("onCreateView() started");
         //if(savedInstanceState != null){}
         rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
         rootView.findViewById(R.id.add).setVisibility(GONE);//.removeViewAt(0);
         //if (fragListViewId > 0)
         //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
 
-        fragListViewId += MIN_DYNAMIC_VIEW_ID;                          //There are three other views with ids 0,1,2
+        fragListViewId = MIN_DYNAMIC_VIEW_ID;                          //There are three other views with ids 0,1,2
         setAdapter(rootView);
         setButtons(rootView);
         return rootView;
@@ -79,16 +80,12 @@ public class MySpaceFragment extends Fragment {
     public void setAdapter(final View rootView) {
         Timber.v("setAdapter started");
         ArrayList<Item> arrayList = new ArrayList<>();
-        if (fragListViewId == 0) {
-            getActivity().finish();
-            Timber.wtf("increment fragListViewId in onCreateView()");
-        }
+        if (fragListViewId == 0) throw new NullPointerException("increment fragListViewId");
         if (fragListViewId == MIN_DYNAMIC_VIEW_ID) arrayList = setList();
         else {
             if (dir == null) {
                 Toast.makeText(getActivity(), "Please try again", Toast.LENGTH_SHORT).show();
                 back();
-                        throw new RuntimeException("Still getting null directory");
             }
             File[] files = dir.listFiles();
             if (files == null) {
@@ -240,7 +237,7 @@ public class MySpaceFragment extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
-                getActivity().finish();
+                back();
             }
         }
         //intent.getStringExtra()

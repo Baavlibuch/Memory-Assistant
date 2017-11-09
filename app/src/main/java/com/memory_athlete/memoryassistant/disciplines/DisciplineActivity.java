@@ -104,19 +104,12 @@ public class DisciplineActivity extends AppCompatActivity {
                         fragment = new Letters();
                             break;
                         default:
-                            Timber.wtf("Wrong practice fragment case - " + intent.getIntExtra("class", 0));
-                            finish();
-                            fragment = new Fragment();
-                            return fragment;
+                            throw new RuntimeException("wrong practice");
                     }
                     fragment.setArguments(bundle);
                     return fragment;
                 default:
                     return new MySpaceFragment();
-                /*default :
-                    finish();
-                    Timber.w("couldn't open lessonFragment");
-                    return null;*/
             }
         }
 

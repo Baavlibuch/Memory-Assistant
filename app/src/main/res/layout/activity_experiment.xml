@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:tabMaxWidth="0dp"
         app:tabGravity="fill"
-        app:tabMode="fixed"
+        app:tabMode="scrollable"
         />
         <!--app:tabTextColor="#A8A19E"
         app:tabIndicatorColor="#FFFFFF"-->
