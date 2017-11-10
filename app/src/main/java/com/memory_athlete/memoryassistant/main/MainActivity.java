@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name));
 
-        firstStart();
+        firstStart();                           //TODO
         setAdapter();
     }
 

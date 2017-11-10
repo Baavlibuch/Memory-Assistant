@@ -12,6 +12,7 @@
     <color name="pitchColorPrimaryDark">#0F055F</color>
     <color name="pitchColorAccent">#1976D2</color>
     <color name="black">#000000</color>
+    <color name="text">#c1c1c1</color>
 
     <color name="color_suit_background_dark">#55111111</color>
     <color name="color_suit_background_light">#33111111</color>

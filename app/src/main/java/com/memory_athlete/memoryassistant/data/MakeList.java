@@ -159,6 +159,7 @@ public class MakeList {
             case "Night":
                 context.setTheme(R.style.pitch);
                 (activity.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                //(activity.col)
                 break;
             default:
                 context.setTheme(R.style.light);

@@ -17,6 +17,7 @@
         <item name="colorPrimary">@color/pitchColorPrimary</item>
         <item name="colorPrimaryDark">@color/pitchColorPrimaryDark</item>
         <item name="colorAccent">@color/pitchColorAccent</item>
+        <item name="android:textColor">@color/text</item>
     </style>
 
 </resources>

@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.lessons;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -87,18 +88,10 @@ public class LessonFragment extends Fragment {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         StringBuilder sb1 = readResource(R.raw.jqmath_beg);
-        if (sb1 == null) {
-            Timber.v("jqmath read error");
-            getActivity().finish();
-            return;
-        }
+        if (sb1 == null) throw new RuntimeException("jqMath read error");
         StringBuilder sb2 = readResource(R.raw.jqmath_end);
-        if (sb2 == null) {
-            Timber.v("jqmath read error");
-            getActivity().finish();
-            return;
-        }
-        String js = sb1.toString() + sb.toString() + sb2.toString();
+        if (sb2 == null) throw new RuntimeException("jqmath read error");
+        String js = sb1.toString() + themeForWebView() + sb.toString() + sb2.toString();
         //String js = JQMATH_BEG + "asfd $$u_n/v_n$$" + JQMATH_END;
         //webView.loadUrl("file:///android_asset/jqmath/index.html");
         //((TextView) findViewById(R.id.lesson)).setText(js);
@@ -106,6 +99,24 @@ public class LessonFragment extends Fragment {
 
         webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "mText/html", "UTF-8", null);
         webView.setVisibility(View.VISIBLE);
+    }
+
+    String themeForWebView(){
+        String theme = PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .getString(getString(R.string.theme), "AppTheme");
+        switch (theme) {
+            case "Dark":
+                return "<style>\n" +
+                        "body {background-color: #303030;}\n" +
+                        "p    {color: #c1c1c1;}\n" +
+                        "</style>\n";
+            case "Night":
+                return "<style>\n" +
+                        "body {background-color: #000000;}\n" +
+                        "p    {color: #c1c1c1;}\n" +
+                        "</style>\n";
+            default: return "";
+        }
     }
 
     StringBuilder readResource(int path) {
