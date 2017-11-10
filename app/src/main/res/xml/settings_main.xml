@@ -16,7 +16,7 @@
         android:key="@string/theme"
         android:title="@string/theme"
         android:entries="@array/themes"
-        android:entryValues="@array/themes"/>
+        android:entryValues="@array/themes" />
 
     <ListPreference
         android:defaultValue="1"

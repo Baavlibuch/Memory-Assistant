@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,16 @@ public class Cards extends DisciplineFragment {
                 previous();
             }
         });
+        String theme = PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .getString(getString(R.string.theme), getString(R.string.light));
+        switch (theme){
+            case "Dark":
+                rootView.findViewById(R.id.cards).setAlpha((float) 0.8);
+                break;
+            case "Night":
+                rootView.findViewById(R.id.cards).setAlpha((float) 0.7);
+        }
+
         return rootView;
     }
 

@@ -72,7 +72,6 @@ public class Recall extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         theme();
-        setContentView(R.layout.activity_recall);
         setTitle(getString(R.string.recall));
         Timber.v("theme() complete");
         makeSpinner1(intent);
@@ -95,15 +94,20 @@ public class Recall extends AppCompatActivity {
             case "Dark":
                 setTheme(R.style.dark);
                 mSuitBackground = R.color.color_suit_background_dark;
+                setContentView(R.layout.activity_recall);
+                findViewById(R.id.cards_responses).setAlpha((float) 0.8);
                 break;
             case "Night":
                 setTheme(R.style.pitch);
                 (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
                 mSuitBackground = R.color.color_suit_background_night;
+                setContentView(R.layout.activity_recall);
+                findViewById(R.id.cards_responses).setAlpha((float) 0.7);
                 break;
             default:
                 setTheme(R.style.light);
                 mSuitBackground = R.color.color_suit_background_light;
+                setContentView(R.layout.activity_recall);
         }
     }
 
@@ -219,7 +223,7 @@ public class Recall extends AppCompatActivity {
         Timber.v("spinner 2 set");
     }
 
-    void practice(Spinner chose_file, final String discipline){
+    void practice(Spinner chose_file, final String discipline) {
         Snackbar.make(chose_file, "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
                 .setAction(R.string.practice, new View.OnClickListener() {
                     @Override
@@ -231,21 +235,21 @@ public class Recall extends AppCompatActivity {
                         Timber.v("s= " + s);
 
                         int classId;
-                        if (discipline.equals(getString(R.string.numbers))){
+                        if (discipline.equals(getString(R.string.numbers))) {
                             classId = 1;
-                        }else if (discipline.equals(getString(R.string.digits))){
+                        } else if (discipline.equals(getString(R.string.digits))) {
                             classId = 1;
-                        }else if (discipline.equals(getString(R.string.words))){
+                        } else if (discipline.equals(getString(R.string.words))) {
                             classId = 2;
-                        }else if (discipline.equals(getString(R.string.names))){
+                        } else if (discipline.equals(getString(R.string.names))) {
                             classId = 3;
-                        }else if (discipline.equals(getString(R.string.places_capital))){
+                        } else if (discipline.equals(getString(R.string.places_capital))) {
                             classId = 4;
-                        }else if (discipline.equals(getString(R.string.cards))){
+                        } else if (discipline.equals(getString(R.string.cards))) {
                             classId = 5;
-                        }else if (discipline.equals(getString(R.string.binary))){
+                        } else if (discipline.equals(getString(R.string.binary))) {
                             classId = 6;
-                        }else //(discipline.equals(getString(R.string.letters)))
+                        } else //(discipline.equals(getString(R.string.letters)))
                         {
                             classId = 7;
                         }
