@@ -128,7 +128,7 @@
                         android:id="@+id/min"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/enter_minutes"
+                        android:hint="@string/minutes"
                         android:imeOptions="actionNext"
                         android:inputType="number" />
 
@@ -136,7 +136,7 @@
                         android:id="@+id/sec"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/enter_seconds"
+                        android:hint="@string/seconds"
                         android:imeOptions="actionDone"
                         android:inputType="number" />
 

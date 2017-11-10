@@ -249,7 +249,9 @@ public class MySpaceFragment extends Fragment {
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {
             if (!name) {
-                Toast.makeText(getActivity(), "please enter a name", Toast.LENGTH_SHORT).show();
+                ((EditText) rootView.findViewById(R.id.f_name)).setError("please enter a name");
+                rootView.findViewById(R.id.f_name).requestFocus();
+                //Toast.makeText(getActivity(), "please enter a name", Toast.LENGTH_SHORT).show();
                 name = true;
                 return false;
             }

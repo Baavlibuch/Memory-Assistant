@@ -68,8 +68,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="none">No time constraint</string>
-    <string name="enter_minutes">Enter minutes</string>
-    <string name="enter_seconds">Enter seconds</string>
+    <string name="minutes">Minutes</string>
+    <string name="seconds">Seconds</string>
     <string name="next">Next</string>
     <string name="prev">Previous</string>
     <string name="negative">Include negative numbers</string>

@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 public class DisciplineActivity extends AppCompatActivity {
+    boolean backPressed = false;
 
     private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
@@ -44,7 +46,7 @@ public class DisciplineActivity extends AppCompatActivity {
         for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.no_my_space_frags), "1")); i++)
             tabTitles.add("MySpace " + (i + 1));
-        if (tabTitles.size()==1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
+        if (tabTitles.size() == 1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         Timber.v("tabTitles.size() = " + tabTitles.size());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(5);
@@ -92,25 +94,25 @@ public class DisciplineActivity extends AppCompatActivity {
                     Fragment fragment;
                     switch (intent.getIntExtra("class", 0)) {
                         case 1:
-                        fragment = new Numbers();
+                            fragment = new Numbers();
                             break;
                         case 2:
-                        fragment = new Words();
+                            fragment = new Words();
                             break;
                         case 3:
-                        fragment = new Names();
+                            fragment = new Names();
                             break;
                         case 4:
-                        fragment = new Places();
+                            fragment = new Places();
                             break;
                         case 5:
-                        fragment = new Cards();
+                            fragment = new Cards();
                             break;
                         case 6:
-                        fragment = new BinaryDigits();
+                            fragment = new BinaryDigits();
                             break;
                         case 7:
-                        fragment = new Letters();
+                            fragment = new Letters();
                             break;
                         default:
                             throw new RuntimeException("wrong practice");
@@ -136,18 +138,25 @@ public class DisciplineActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (tabTitles.size() == 1) {
-            super.onBackPressed();
-            return;
-        }
-        if (viewPager.getCurrentItem()!=0){
+        if (viewPager.getCurrentItem() != 0) {
             viewPager.setCurrentItem(0, true);
             return;
         }
         for (int i = 1; i < tabTitles.size(); i++) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + i;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
-            if (fragment == null || fragment.save()) super.onBackPressed();
+            if (fragment==null) continue;
+            if (!fragment.save()) {
+                viewPager.setCurrentItem(i, true);
+                return;
+            }
         }
+        if (PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.double_back_to_exit), false) && !backPressed) {
+            backPressed = true;
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        super.onBackPressed();
     }
 }

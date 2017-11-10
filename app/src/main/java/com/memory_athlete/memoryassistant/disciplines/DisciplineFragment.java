@@ -212,8 +212,9 @@ public class DisciplineFragment extends Fragment {
                 (rootView.findViewById(R.id.clock_text)).setVisibility(View.VISIBLE);
                 return;
             } else {
-                Toast.makeText(getActivity().getApplicationContext(), "Please enter the duration",
-                        Toast.LENGTH_SHORT).show();
+                ((EditText) rootView.findViewById(R.id.sec)).setError("Please enter the duration");
+                //Toast.makeText(getActivity().getApplicationContext(), "Please enter the duration",
+                  //      Toast.LENGTH_SHORT).show();
                 rootView.findViewById(R.id.min).requestFocus();
                 return;
             }

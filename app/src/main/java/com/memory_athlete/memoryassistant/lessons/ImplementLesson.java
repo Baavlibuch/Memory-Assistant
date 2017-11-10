@@ -22,6 +22,7 @@ public class ImplementLesson extends AppCompatActivity {
     private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
     ViewPager viewPager;
+    boolean backPressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,10 +104,6 @@ public class ImplementLesson extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (tabTitles.size() == 1) {
-            super.onBackPressed();
-            return;
-        }
         if (viewPager.getCurrentItem() != 0) {
             viewPager.setCurrentItem(0, true);
             return;
@@ -114,7 +111,12 @@ public class ImplementLesson extends AppCompatActivity {
         for (int i = 1; i < tabTitles.size(); i++) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + i;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
-            if (fragment == null || fragment.save()) super.onBackPressed();
+            if (fragment == null) continue;
+            if (!fragment.save()) {
+                viewPager.setCurrentItem(i, true);
+                return;
+            }
         }
+        super.onBackPressed();
     }
 }

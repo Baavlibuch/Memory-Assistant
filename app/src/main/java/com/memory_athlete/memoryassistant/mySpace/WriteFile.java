@@ -92,7 +92,9 @@ public class WriteFile extends AppCompatActivity {
         String fname = ((EditText) findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {
             if (!name) {
-                Toast.makeText(this, "please enter a name", Toast.LENGTH_SHORT).show();
+                ((EditText) findViewById(R.id.f_name)).setError("please enter a name");
+                findViewById(R.id.f_name).requestFocus();
+                //Toast.makeText(this, "please enter a name", Toast.LENGTH_SHORT).show();
                 name = true;
                 return false;
             }
