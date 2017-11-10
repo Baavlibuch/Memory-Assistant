@@ -123,7 +123,7 @@
     <string name="try_again">Try again</string>
     <string name="report_to_dev">There was an error, please report this to the developer</string>
     <string name="confused">Confused? Start from the top</string>
-    <string name="double_back_to_exit">Prevent sudden app exits</string>
+    <string name="double_back_to_exit">Prevent accidental app exits</string>
     <string name="double_back_on">Press back twice to exit from the main screen</string>
     <string name="double_back_off">Press back just once to exit from the main screen</string>
 

@@ -30,6 +30,7 @@ public class DisciplineActivity extends AppCompatActivity {
 
     private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class DisciplineActivity extends AppCompatActivity {
             tabTitles.add("MySpace " + (i + 1));
         if (tabTitles.size()==1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         Timber.v("tabTitles.size() = " + tabTitles.size());
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(5);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -130,12 +131,17 @@ public class DisciplineActivity extends AppCompatActivity {
         public int getCount() {
             return tabTitles.size();
         }
+
     }
 
     @Override
     public void onBackPressed() {
         if (tabTitles.size() == 1) {
             super.onBackPressed();
+            return;
+        }
+        if (viewPager.getCurrentItem()!=0){
+            viewPager.setCurrentItem(0, true);
             return;
         }
         for (int i = 1; i < tabTitles.size(); i++) {

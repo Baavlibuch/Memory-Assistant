@@ -21,6 +21,7 @@ import timber.log.Timber;
 public class ImplementLesson extends AppCompatActivity {
     private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,8 @@ public class ImplementLesson extends AppCompatActivity {
         for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.no_my_space_frags), "1")); i++)
             tabTitles.add("MySpace " + (i + 1));
-        if (tabTitles.size()==1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        if (tabTitles.size() == 1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(5);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -104,6 +105,10 @@ public class ImplementLesson extends AppCompatActivity {
     public void onBackPressed() {
         if (tabTitles.size() == 1) {
             super.onBackPressed();
+            return;
+        }
+        if (viewPager.getCurrentItem() != 0) {
+            viewPager.setCurrentItem(0, true);
             return;
         }
         for (int i = 1; i < tabTitles.size(); i++) {
