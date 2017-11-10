@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant.disciplines;
+package com.memory_athlete.memoryassistant.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,13 @@ import android.view.View;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
+import com.memory_athlete.memoryassistant.disciplines.Cards;
+import com.memory_athlete.memoryassistant.disciplines.Letters;
+import com.memory_athlete.memoryassistant.disciplines.Names;
+import com.memory_athlete.memoryassistant.disciplines.Numbers;
+import com.memory_athlete.memoryassistant.disciplines.Places;
+import com.memory_athlete.memoryassistant.disciplines.Words;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;
@@ -39,6 +46,7 @@ public class DisciplineActivity extends AppCompatActivity {
         if (tabTitles.size()==1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         Timber.v("tabTitles.size() = " + tabTitles.size());
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(5);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         Timber.v("adapter set");

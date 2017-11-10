@@ -48,7 +48,7 @@
         <activity android:name=".main.Practice"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".disciplines.DisciplineActivity"
+        <activity android:name=".main.DisciplineActivity"
             android:parentActivityName=".main.Practice"
             tools:targetApi="jelly_bean" />
         <activity android:name=".main.Preferences"

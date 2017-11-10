@@ -35,6 +35,7 @@ public class ImplementLesson extends AppCompatActivity {
             tabTitles.add("MySpace " + (i + 1));
         if (tabTitles.size()==1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(5);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         Timber.v("adapter set");
