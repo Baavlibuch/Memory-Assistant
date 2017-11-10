@@ -31,7 +31,7 @@ public class BinaryDigits extends DisciplineFragment {
                 n = rand.nextInt(2);
                 stringBuilder.append(n);
                 //textString += n;
-                stringBuilder.append(" ");
+                //stringBuilder.append(" ");
             }
             stringBuilder.append(getString(R.string.tab)).append("   ");
             if (a.get(2) == 0) break;

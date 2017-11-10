@@ -98,39 +98,6 @@ public class DisciplineFragment extends Fragment {
         return rootView;
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_my_space, menu);
-        return true;
-    }                                                 //TODO
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.visit_my_space:
-                startActivity(new Intent(this, MySpace.class));
-                break;
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-        }
-        return true;
-    }
-
-    protected void theme() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
-        }
-    }*/
-
     protected void levelSpinner() {
         Timber.v("Entered levelSpinner()");
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
