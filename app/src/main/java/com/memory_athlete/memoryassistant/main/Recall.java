@@ -45,7 +45,6 @@ import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
 
-
 public class Recall extends AppCompatActivity {
 
     private ArrayList<String> answers = new ArrayList<>();
@@ -588,7 +587,7 @@ public class Recall extends AppCompatActivity {
     boolean isMissOrWrong(int i, int j) {
         int match = 0, k;
         k = i > 8 ? -4 : 1;
-        for (; k <= 10 && i + k < responses.size() && j + k < answers.size(); k++) {
+        for (; k <= 15 && i + k < responses.size() && j + k < answers.size(); k++) {
             //if (i + k < responses.size() && j + k < answers.size()) {
             if (!responses.get(i + k).equals(" ")) {
                 if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) {
