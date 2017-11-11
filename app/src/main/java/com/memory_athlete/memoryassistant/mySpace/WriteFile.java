@@ -24,7 +24,7 @@ import timber.log.Timber;
 
 public class WriteFile extends AppCompatActivity {
     private boolean name = false;
-    String path;
+    String path, oldName = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class WriteFile extends AppCompatActivity {
         setContentView(R.layout.activity_write_file);
         String header = intent.getStringExtra("mHeader");
         if (header == null) header = "New";
+        else oldName = header;
         //header = header.substring(0, header.length() - 4);
         setTitle(header);
 
@@ -103,11 +104,19 @@ public class WriteFile extends AppCompatActivity {
         }
         String dirPath = path;
         if (fname.length() > 250) {
-            if(!name) {
+            if (!name) {
                 Toast.makeText(this, "Try again with a shorter name", Toast.LENGTH_SHORT).show();
                 name = true;
                 return false;
             } else return true;
+        }
+
+        if (oldName != null && !fname.equals(oldName)){
+            File from = new File(path + File.separator + oldName + ".txt");
+            if (from.exists()) {
+                File to = new File(path + File.separator + fname + ".txt");
+                from.renameTo(to);
+            }
         }
 
         fname = path + File.separator + fname + ".txt";

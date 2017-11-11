@@ -36,7 +36,7 @@ import static android.view.View.VISIBLE;
 public class MySpaceFragment extends Fragment {
     int fragListViewId = 0, MIN_DYNAMIC_VIEW_ID = 3;
     File dir = null;
-    String title = "", fileName, oldTabTitle;
+    String title = "", fileName, oldTabTitle, oldName = null;
     Boolean name;
     View rootView;
 
@@ -210,7 +210,8 @@ public class MySpaceFragment extends Fragment {
         rootView.findViewById(R.id.back_button).bringToFront();
         if (fragListViewId != MIN_DYNAMIC_VIEW_ID)
             rootView.findViewById(R.id.add).setVisibility(VISIBLE);
-        if (oldTabTitle == null) mCallback.tabTitleUpdate(getString(R.string.my_space));
+        if (oldTabTitle == null || fragListViewId == 3)
+            mCallback.tabTitleUpdate(getString(R.string.my_space));
         else mCallback.tabTitleUpdate(oldTabTitle);
     }
 
@@ -242,8 +243,9 @@ public class MySpaceFragment extends Fragment {
     }
 
     void writeFile(View rootView, String path, String header) {
-        oldTabTitle = header;
+        oldTabTitle = title;
         mCallback.tabTitleUpdate(header);
+        oldName = header;
         ((TextView) rootView.findViewById(R.id.my_space_editText)).setText("");
         ((TextView) rootView.findViewById(R.id.f_name)).setText("");
         if (name) {
@@ -291,6 +293,14 @@ public class MySpaceFragment extends Fragment {
                 name = true;
                 return false;
             } else return true;
+        }
+
+        if (!fname.equals(oldName)){
+            File from = new File(fileName + File.separator + oldName + ".txt");
+            if (from.exists()) {
+                File to = new File(fileName + File.separator + fname + ".txt");
+                from.renameTo(to);
+            }
         }
 
         fname = fileName + File.separator + fname + ".txt";

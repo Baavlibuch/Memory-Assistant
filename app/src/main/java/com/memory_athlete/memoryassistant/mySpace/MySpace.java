@@ -27,7 +27,6 @@ import timber.log.Timber;
 public class MySpace extends AppCompatActivity {
     int listViewId = 0, MIN_DYNAMIC_VIEW_ID = 1;
     File dir = null;
-    String title = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
