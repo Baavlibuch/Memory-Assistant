@@ -22,8 +22,8 @@
         android:defaultValue="1"
         android:key="@string/no_my_space_frags"
         android:title="@string/no_my_space_frags"
-        android:entries="@array/one_to_five"
-        android:entryValues="@array/one_to_five"/>
+        android:entries="@array/zero_to_nine"
+        android:entryValues="@array/zero_to_nine"/>
 
     <SwitchPreference
         android:defaultValue="false"

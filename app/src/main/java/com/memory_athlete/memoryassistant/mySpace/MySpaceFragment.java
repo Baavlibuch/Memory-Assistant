@@ -34,7 +34,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MySpaceFragment extends Fragment {
-    int fragListViewId = 0, MIN_DYNAMIC_VIEW_ID = 3;
+    public int fragListViewId = 0, MIN_DYNAMIC_VIEW_ID = 3;
     File dir = null;
     String title = "", fileName, oldTabTitle, oldName = null;
     Boolean name;
@@ -149,8 +149,8 @@ public class MySpaceFragment extends Fragment {
                     rootView.findViewById(R.id.add).setVisibility(View.VISIBLE);
                     setAdapter(rootView);
                     Timber.v("going to id 1, listViewId = " + fragListViewId);
-                    rootView.findViewById(R.id.back_button).setVisibility(View.VISIBLE);
-                    rootView.findViewById(R.id.back_button).bringToFront();
+                    //rootView.findViewById(R.id.back_button).setVisibility(View.VISIBLE);
+                    //rootView.findViewById(R.id.back_button).bringToFront();
                 } else {
                     Timber.v("listViewId = " + fragListViewId);
                     fileName = getActivity().getFilesDir().getAbsolutePath() + File.separator
@@ -174,13 +174,13 @@ public class MySpaceFragment extends Fragment {
                         rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
                         writeFile(rootView, fileName, item.mName);
                     } else throw new RuntimeException("Directory not created in MySpace");
-                    rootView.findViewById(R.id.back_button).bringToFront();
+                    //rootView.findViewById(R.id.back_button).bringToFront();
                 }
             }
         });
     }
 
-    void back() {
+    public void back() {
         Timber.v("back_button clicked, fragListViewId = " + fragListViewId);
         if (getActivity().getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
@@ -202,12 +202,12 @@ public class MySpaceFragment extends Fragment {
             // findViewById(fragListViewId).setVisibility(View.VISIBLE);
             if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
                 rootView.findViewById(R.id.add).setVisibility(View.GONE);
-                rootView.findViewById(R.id.back_button).setVisibility(GONE);
+                //rootView.findViewById(R.id.back_button).setVisibility(GONE);
                 mCallback.tabTitleUpdate(getString(R.string.my_space));
             }
         }
         setAdapter(rootView);
-        rootView.findViewById(R.id.back_button).bringToFront();
+        //rootView.findViewById(R.id.back_button).bringToFront();
         if (fragListViewId != MIN_DYNAMIC_VIEW_ID)
             rootView.findViewById(R.id.add).setVisibility(VISIBLE);
         if (oldTabTitle == null || fragListViewId == 3)
@@ -216,12 +216,12 @@ public class MySpaceFragment extends Fragment {
     }
 
     void setButtons(final View rootView) {
-        rootView.findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
+        /*rootView.findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 back();
             }
-        });
+        });*/
 
         rootView.findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
             @Override

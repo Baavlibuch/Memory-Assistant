@@ -35,7 +35,6 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     ViewPager viewPager;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +50,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         if (tabTitles.size() == 1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         Timber.v("tabTitles.size() = " + tabTitles.size());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setOffscreenPageLimit(5);
+        viewPager.setOffscreenPageLimit(9);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         Timber.v("adapter set");
@@ -149,14 +148,19 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
     @Override
     public void onBackPressed() {
-        if (viewPager.getCurrentItem() != 0) {
-            viewPager.setCurrentItem(0, true);
+        int cur = viewPager.getCurrentItem();
+        if (cur != 0) {
+            String tag = "android:switcher:" + R.id.viewpager + ":" + cur;
+            MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
+            if (fragment.fragListViewId == 0 || fragment.fragListViewId == fragment.MIN_DYNAMIC_VIEW_ID)
+                viewPager.setCurrentItem(0, true);
+            else fragment.back();
             return;
         }
         for (int i = 1; i < tabTitles.size(); i++) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + i;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
-            if (fragment==null) continue;
+            if (fragment == null) continue;
             if (!fragment.save()) {
                 viewPager.setCurrentItem(i, true);
                 return;

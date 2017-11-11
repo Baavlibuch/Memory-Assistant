@@ -57,7 +57,9 @@
         <activity android:name=".main.Implement"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".lessons.ImplementLesson" />
+        <activity android:name=".lessons.ImplementLesson"
+            android:parentActivityName=".main.Implement"
+            tools:targetApi="jelly_bean" />
         <activity android:name=".mySpace.MySpace"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />

@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context="com.memory_athlete.memoryassistant.mySpace.MySpace">
 
+    <!--
     <ImageView
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
@@ -17,7 +18,7 @@
         android:visibility="gone"
         app:srcCompat="@drawable/ic_action_back" />
 
-    <!--<LinearLayout
+    <LinearLayout
         android:id="@+id/fragmentTitleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
