@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +14,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.BuildConfig;
-import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -118,10 +116,10 @@ public class Implement extends AppCompatActivity {
         String[] list = new String[0];
         try {
             list = getAssets().list(path);
-            if (BuildConfig.DEBUG) Log.v(TAG, "got assets");
+            Timber.v("got assets");
         } catch (IOException e) {
             Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();
-            if (BuildConfig.DEBUG) Log.v(TAG, "couldn't get assets");
+            Timber.v("couldn't get assets");
         }
         return list;
     }

@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -173,5 +175,27 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             return;
         }
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            for (int i = 1; i < tabTitles.size(); i++) {
+                String tag = "android:switcher:" + R.id.viewpager + ":" + i;
+                MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
+                if (fragment == null) continue;
+                if (!fragment.save()) {
+                    viewPager.setCurrentItem(i, true);
+                    return true;
+                    //super.onOptionsItemSelected(item)
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

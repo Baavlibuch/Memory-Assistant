@@ -98,8 +98,10 @@ public class Lessons extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.visit_my_space:
                 startActivity(new Intent(this, MySpace.class));
+                break;
+            case android.R.id.home:
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
     protected void theme(Intent intent) {

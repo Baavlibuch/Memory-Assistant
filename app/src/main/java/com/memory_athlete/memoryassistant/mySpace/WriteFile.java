@@ -77,8 +77,7 @@ public class WriteFile extends AppCompatActivity {
                 finish();
                 return !file.exists() || file.delete();
             case android.R.id.home:
-                save();
-                NavUtils.navigateUpFromSameTask(this);
+                if (save()) NavUtils.navigateUpFromSameTask(this);
         }
         return true;
     }

@@ -55,6 +55,7 @@
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity android:name=".main.Implement"
+            android:launchMode="singleTop"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
         <activity android:name=".lessons.ImplementLesson"
@@ -66,7 +67,9 @@
         <activity android:name=".mySpace.WriteFile"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".lessons.Lessons" />
+        <activity android:name=".lessons.Lessons"
+            android:parentActivityName=".main.Learn"
+            tools:targetApi="jelly_bean" />
 
         <!-- Services -->
 
