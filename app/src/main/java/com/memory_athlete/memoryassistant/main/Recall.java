@@ -585,9 +585,10 @@ public class Recall extends AppCompatActivity {
     }
 
     boolean isMissOrWrong(int i, int j) {
-        int match = 0, k;
+        int match = 0, k, checkRange = 10 + missed;
+
         k = i > 8 ? -4 : 1;
-        for (; k <= 15 && i + k < responses.size() && j + k < answers.size(); k++) {
+        for (; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
             //if (i + k < responses.size() && j + k < answers.size()) {
             if (!responses.get(i + k).equals(" ")) {
                 if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) {

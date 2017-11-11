@@ -34,7 +34,7 @@ public class MySpace extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         MakeList.theme(this, MySpace.this);
         setContentView(R.layout.activity_my_space);
-        setTitle(title + getString(R.string.my_space));
+        setTitle(getString(R.string.my_space));
         Timber.v("Title Set");
         listViewId++;
         //findViewById(R.id.)
@@ -61,7 +61,7 @@ public class MySpace extends AppCompatActivity {
                 relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
                 if (listViewId == MIN_DYNAMIC_VIEW_ID)
                     findViewById(R.id.add).setVisibility(View.GONE);
-                setTitle(title + getString(R.string.my_space));
+                setTitle(getString(R.string.my_space));
                 return;
             }
         }
@@ -112,7 +112,7 @@ public class MySpace extends AppCompatActivity {
                             + getString(R.string.my_space) + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
-                    setTitle(title + item.mName);
+                    setTitle(item.mName);
                     findViewById(R.id.add).setVisibility(View.VISIBLE);
                     setAdapter();
                     Timber.v("going to id 1, listViewId = " + listViewId);

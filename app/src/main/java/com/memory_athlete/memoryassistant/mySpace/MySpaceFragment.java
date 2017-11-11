@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -35,9 +36,25 @@ import static android.view.View.VISIBLE;
 public class MySpaceFragment extends Fragment {
     int fragListViewId = 0, MIN_DYNAMIC_VIEW_ID = 3;
     File dir = null;
-    String title = "", fileName;
+    String title = "", fileName, oldTabTitle;
     Boolean name;
     View rootView;
+
+    public interface TabTitleUpdater {
+        void tabTitleUpdate(String title);
+    }
+
+    TabTitleUpdater mCallback;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mCallback = (TabTitleUpdater) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + "must implement TabTitleUpdater");
+        }
+    }
 
     public MySpaceFragment() {
     }
@@ -128,6 +145,7 @@ public class MySpaceFragment extends Fragment {
                     layout.findViewById(fragListViewId).setVisibility(View.GONE);
                     fragListViewId++;
                     title = item.mName;
+                    mCallback.tabTitleUpdate(title);
                     rootView.findViewById(R.id.add).setVisibility(View.VISIBLE);
                     setAdapter(rootView);
                     Timber.v("going to id 1, listViewId = " + fragListViewId);
@@ -163,7 +181,7 @@ public class MySpaceFragment extends Fragment {
 
     void back() {
         Timber.v("back_button clicked, fragListViewId = " + fragListViewId);
-        if(getActivity().getCurrentFocus()!=null) {
+        if (getActivity().getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
         }
@@ -183,12 +201,15 @@ public class MySpaceFragment extends Fragment {
             if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
                 rootView.findViewById(R.id.add).setVisibility(View.GONE);
                 rootView.findViewById(R.id.back_button).setVisibility(GONE);
+                mCallback.tabTitleUpdate(getString(R.string.my_space));
             }
         }
         setAdapter(rootView);
         rootView.findViewById(R.id.back_button).bringToFront();
         if (fragListViewId != MIN_DYNAMIC_VIEW_ID)
             rootView.findViewById(R.id.add).setVisibility(VISIBLE);
+        if (oldTabTitle == null) mCallback.tabTitleUpdate(getString(R.string.my_space));
+        else mCallback.tabTitleUpdate(oldTabTitle);
     }
 
     void setButtons(final View rootView) {
@@ -218,6 +239,8 @@ public class MySpaceFragment extends Fragment {
     }
 
     void writeFile(View rootView, String path, String header) {
+        oldTabTitle = header;
+        mCallback.tabTitleUpdate(header);
         ((TextView) rootView.findViewById(R.id.my_space_editText)).setText("");
         ((TextView) rootView.findViewById(R.id.f_name)).setText("");
         if (name) {
@@ -327,4 +350,3 @@ public class MySpaceFragment extends Fragment {
         }
     }
 }
-

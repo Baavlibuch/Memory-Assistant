@@ -18,11 +18,20 @@ import java.util.ArrayList;
 
 import timber.log.Timber;
 
-public class ImplementLesson extends AppCompatActivity {
+public class ImplementLesson extends AppCompatActivity implements MySpaceFragment.TabTitleUpdater {
     private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
     ViewPager viewPager;
     boolean backPressed = false;
+
+    @Override
+    public void tabTitleUpdate(String title) {
+        if (title.equals(getString(R.string.my_space))) title += " " + viewPager.getCurrentItem();
+        Timber.v("updating tabTitles");
+        tabTitles.set(viewPager.getCurrentItem(), title);
+        TabLayout slidingTabs = (TabLayout) findViewById(R.id.sliding_tabs);
+        slidingTabs.getTabAt(viewPager.getCurrentItem()).setText(title);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

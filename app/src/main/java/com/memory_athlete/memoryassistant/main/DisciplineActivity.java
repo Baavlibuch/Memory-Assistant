@@ -27,12 +27,14 @@ import java.util.ArrayList;
 
 import timber.log.Timber;
 
-public class DisciplineActivity extends AppCompatActivity {
+public class DisciplineActivity extends AppCompatActivity implements MySpaceFragment.TabTitleUpdater {
     boolean backPressed = false;
 
     private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
     ViewPager viewPager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class DisciplineActivity extends AppCompatActivity {
         tabTitles.add(getString(MakeList.makePracticeFrags()[fragIndex - 1]));
         for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.no_my_space_frags), "1")); i++)
-            tabTitles.add("MySpace " + (i + 1));
+            tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
         if (tabTitles.size() == 1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         Timber.v("tabTitles.size() = " + tabTitles.size());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -78,6 +80,15 @@ public class DisciplineActivity extends AppCompatActivity {
 
         Timber.v("theme = " + theme);
         setContentView(R.layout.activity_experiment);
+    }
+
+    @Override
+    public void tabTitleUpdate(String title) {
+        if (title.equals(getString(R.string.my_space))) title += " " + viewPager.getCurrentItem();
+        Timber.v("updating tabTitles");
+        tabTitles.set(viewPager.getCurrentItem(), title);
+        TabLayout slidingTabs = (TabLayout) findViewById(R.id.sliding_tabs);
+        slidingTabs.getTabAt(viewPager.getCurrentItem()).setText(title);
     }
 
     private class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
