@@ -8,14 +8,14 @@
     android:orientation="vertical"
     tools:context="com.memory_athlete.memoryassistant.mySpace.MySpace">
 
-        <ImageView
-            android:id="@+id/back_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:visibility="gone"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@drawable/ic_action_back" />
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_action_back" />
 
     <!--<LinearLayout
         android:id="@+id/fragmentTitleBar"
@@ -54,20 +54,28 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:visibility="gone"
-        android:hint="@string/fname" />
+        android:hint="@string/fname"
+        android:visibility="gone" />
 
-    <EditText
-        android:id="@+id/my_space_editText"
-        android:visibility="gone"
+    <ScrollView
+        android:id="@+id/my_space_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/f_name"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:hint="@string/here"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/f_name">
+
+        <EditText
+            android:id="@+id/my_space_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/f_name"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/here"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+    </ScrollView>
 
 </RelativeLayout>
