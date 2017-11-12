@@ -8,6 +8,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -60,8 +61,11 @@ public class WriteFile extends AppCompatActivity {
                 finish();
             }
         }
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         //intent.getStringExtra()
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,6 +89,12 @@ public class WriteFile extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (save()) super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        save();
     }
 
     public boolean save() {

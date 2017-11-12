@@ -149,6 +149,17 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        for (int i = 1; i < tabTitles.size(); i++) {
+            String tag = "android:switcher:" + R.id.viewpager + ":" + i;
+            MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
+            if (fragment == null) continue;
+            fragment.save();
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         int cur = viewPager.getCurrentItem();
         if (cur != 0) {

@@ -395,7 +395,7 @@ public class Recall extends AppCompatActivity {
 
     void setResponseLayout() {
         Timber.v(((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString());
-        if (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString() == getString(R.string.cards)) {
+        if (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString().equals(getString(R.string.cards))) {
             findViewById(R.id.result).setVisibility(View.GONE);
             findViewById(R.id.cards_responses).setVisibility(View.VISIBLE);
 
