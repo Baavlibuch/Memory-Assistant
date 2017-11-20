@@ -28,6 +28,8 @@ import java.util.ArrayList;
 
 import timber.log.Timber;
 
+import static android.widget.Toast.makeText;
+
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         if (PreferenceManager.getDefaultSharedPreferences(this)
                 .getBoolean(getString(R.string.double_back_to_exit), false) && !backPressed) {
             backPressed = true;
-            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
         } else super.onBackPressed();
     }
 
@@ -66,56 +68,97 @@ public class MainActivity extends AppCompatActivity {
 
     void firstStart() {
         SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(this);
-        if (s.getLong("last_opened", 0) == 0) {//return;
-            Toast.makeText(this, R.string.confused, Toast.LENGTH_LONG).show();
-        }
+        if (s.getLong("last_opened", 0) != 0) return;
 
-        Timber.v("moving files");
-        String filesDir = getFilesDir().getAbsolutePath() + File.separator,
-                mySpaceDir = filesDir + getString(R.string.my_space) + File.separator,
-                folder;
+        makeText(this, R.string.confused, Toast.LENGTH_LONG).show();
 
+        String filesDir = getFilesDir().getAbsolutePath() + File.separator;
         File file = new File(filesDir + getString(R.string.my_space));
         boolean isDirectoryCreated = file.exists();
         if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
-        if (isDirectoryCreated) {
-
-            for (int i = 0; i < 6; i++) {
-                switch (i) {
-                    case 0:
-                        folder = getString(R.string.majors);
-                        break;
-                    case 1:
-                        folder = getString(R.string.ben);
-                        break;
-                    case 2:
-                        folder = getString(R.string.wardrobes);
-                        break;
-                    case 3:
-                        folder = getString(R.string.lists);
-                        break;
-                    case 4:
-                        folder = getString(R.string.words);
-                        break;
-                    default:
-                        continue;
-                }
-
-                File from = new File(filesDir + folder);
-                if (from.exists()) {
-                    File to = new File(mySpaceDir + folder);
-                    from.renameTo(to);
-                }
-            }
-        } else throw new RuntimeException("couldn't create the MySpace directory");
-
+        if (!isDirectoryCreated) {
+            MakeList.fixBug(this);
+            throw new RuntimeException("couldn't create the MySpace directory");
+        }
         file = new File(getFilesDir().getAbsolutePath() + File.separator
                 + getString(R.string.practice));
         isDirectoryCreated = file.exists();
         if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
         if (!isDirectoryCreated) {
+            MakeList.fixBug(this);
             throw new RuntimeException("couldn't create the MySpace directory");
         }
+
+/*
+        Timber.d("deleting files");
+
+        for (int i = 0; i < 19; i++) {
+            switch (i) {
+                case 0:
+                    folder = getString(R.string.majors);
+                    break;
+                case 1:
+                    folder = getString(R.string.ben);
+                    break;
+                case 2:
+                    folder = getString(R.string.wardrobes);
+                    break;
+                case 3:
+                    folder = getString(R.string.lists);
+                    break;
+                case 4:
+                    folder = getString(R.string.words);
+                    break;
+                case 5:
+                    folder = getString(R.string.digits);
+                    break;
+                case 7:
+                    folder = getString(R.string.equations);
+                    break;
+                case 8:
+                    folder = getString(R.string.numbers);
+                    break;
+                case 9:
+                    folder = getString(R.string.words);
+                    break;
+                case 10:
+                    folder = getString(R.string.names);
+                    break;
+                case 11:
+                    folder = getString(R.string.cards);
+                    break;
+                case 12:
+                    folder = getString(R.string.binary);
+                    break;
+                case 13:
+                    folder = getString(R.string.places_capital);
+                    break;
+                case 14:
+                    folder = getString(R.string.h);
+                    break;
+                case 15:
+                    folder = getString(R.string.i);
+                    break;
+                case 16:
+                    folder = getString(R.string.j);
+                    break;
+                case 17:
+                    folder = getString(R.string.letters);
+                    break;
+                case 18:
+                    folder = getString(R.string.practice);
+                    break;
+                default:
+                    continue;
+            }
+
+            File from = new File(filesDir + folder);
+            if (from.exists()) {
+                if (!from.delete()) {
+                    Timber.e(from.getAbsolutePath() + " not deleted");
+                }
+            }
+        }*/
     }
 
     public void setAdapter() {
