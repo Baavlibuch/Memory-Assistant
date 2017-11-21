@@ -75,7 +75,9 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
         else setTitle(intent.getStringExtra("headerString"));
 
         Timber.v("theme = " + theme);
-        setContentView(R.layout.activity_experiment);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.bottom_tabs), false))
+            setContentView(R.layout.activity_view_pager_bottom_tab);
+        else setContentView(R.layout.activity_view_pager);
     }
 
     private class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
