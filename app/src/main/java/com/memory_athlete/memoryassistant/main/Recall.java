@@ -558,11 +558,28 @@ public class Recall extends AppCompatActivity {
                     continue;
                 }
             }
-            if (isMissOrWrong(i, j)) i--;
+            if (isMiss(i, j)) {
+                if (isExtra(i, j)) {
+                    j--;
+                    continue;
+                }
+                Timber.v("missed");
+                missed++;
+                mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
+                mTextResponse.append("<font color=#FF9500>").append(answers.get(j))
+                        .append("</font>").append(" ").append(whitespace);
+                i--;
+                continue;
+            }
+            isWrong(i, j);
         }
         for (; i < responses.size(); i++)
             mTextResponse.append("<font color=#FF0000>")
                     .append(responses.get(i)).append("</font>").append(" ").append(whitespace);
+        for (int k = 0; k < 20 && j < answers.size(); j++, k++) {
+            mTextAnswer.append("<font color=#FF9500>")
+                    .append(answers.get(j)).append("</font>").append(" ").append(whitespace);
+        }
         Timber.v("compare() complete ");
     }
 
@@ -584,34 +601,63 @@ public class Recall extends AppCompatActivity {
         } else return false;
     }
 
-    boolean isMissOrWrong(int i, int j) {
+    boolean isMiss(int i, int j) {
         int match = 0, k, checkRange = 10 + missed;
 
-        k = i > 8 ? -4 : 1;
+        if (i < 3) k = 1;
+        else if (responses.size() - i < 5) k = -1;
+        else if (i < 10) k = -(i / 3);
+        else k = -4;
+
         for (; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
-            //if (i + k < responses.size() && j + k < answers.size()) {
+            Timber.v("j = " + j + " k = " + k);
             if (!responses.get(i + k).equals(" ")) {
                 if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) {
                     match++;
                 }
             }
-            //}
         }
+        Timber.v(match + "");
+        return ((float) match / k) <= 0.5;
+    }
 
-        if (((float) match / k) > 0.4) {        //Wrong
-            wrong++;
-            mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
-                    .append(" ").append(whitespace);
-            mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
-                    .append("</font>").append(" ").append(whitespace);
-            return false;
+    boolean isExtra(int i, int j) {
+        int match = 0, k, checkRange = 10, l = 0;
+
+        for (; l < 5; l++) {
+            //if (i < 3) k = 1;
+            //else if (responses.size() - i < 4 || answers.size() - j < 4) k = -1;
+            //else if (i < 10) k = -(i / 3);
+            //else k = -4;
+
+            for (k=0; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
+                if (i == -k || j == -k) continue;
+                if (!responses.get(i + k).equals(" ")) {
+                    if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k - 1))) {
+                        match++;
+                    }
+                }
+            }
+            Timber.v(match + "");
+            if (((float) match / k) > 0.3) {
+                mTextResponse.append("<font color=#FF5500>").append(responses.get(i))
+                        .append("</font>").append(" ").append(whitespace);
+                mTextAnswer.append("<font color=#FF5500>").append(responses.get(i))
+                        .append("</font>").append(" ").append(whitespace);
+                wrong++;
+                return true;
+            }
         }
-        missed++;                               //Missed
-        mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
-        mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
+        return false;
+    }
+
+    boolean isWrong(int i, int j) {
+        wrong++;
+        mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
                 .append(" ").append(whitespace);
-        //mTextResponse += /*"<font color=#FF0000>" +*/ responses.get(i) /*+ "</font>"*/ + " " + getString(R.string.tab);
-        return true;
+        mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
+                .append("</font>").append(" ").append(whitespace);
+        return false;
     }
 
     boolean isSpelling(int i, int j) {

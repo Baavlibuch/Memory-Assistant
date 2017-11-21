@@ -201,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
             mItem = itemName;
             mClass = class1;
             mImageId = im;
-            Timber.v("Item set!");
         }
     }
 
