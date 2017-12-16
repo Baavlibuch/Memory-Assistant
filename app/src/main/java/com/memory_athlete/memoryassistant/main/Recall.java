@@ -62,7 +62,7 @@ public class Recall extends AppCompatActivity {
     private byte compareFormat = 0;
     private int mSuitBackground;
 
-    int correct = 0, wrong = 0, missed = 0;
+    int correct = 0, wrong = 0, missed = 0, extra = 0, spelling;
     private StringBuilder mTextAnswer = null, mTextResponse = null;
     private String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
@@ -551,6 +551,7 @@ public class Recall extends AppCompatActivity {
             if (isLeft(i, j)) continue;
             if (words) {
                 if (isSpelling(i, j)) {
+                    spelling++;
                     mTextAnswer.append("<font color=#EEEE00>").append(answers.get(j))
                             .append("</font>").append(" ").append(whitespace);
                     mTextResponse.append("<font color=#EEEE00>").append(responses.get(i))
@@ -645,7 +646,7 @@ public class Recall extends AppCompatActivity {
                         .append("</font>").append(" ").append(whitespace);
                 mTextAnswer.append("<font color=#FF5500>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
-                wrong++;
+                extra++;
                 return true;
             }
         }
@@ -757,6 +758,7 @@ public class Recall extends AppCompatActivity {
     public void startTimer(View view) {
     } //TODO: USe this!
 
+
     private class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Void> {
 
         @Override
@@ -809,8 +811,9 @@ public class Recall extends AppCompatActivity {
             ((TextView) findViewById(R.id.no_of_correct)).setText(String.valueOf(correct));
             ((TextView) findViewById(R.id.no_of_wrong)).setText(String.valueOf(wrong));
             ((TextView) findViewById(R.id.no_of_missed)).setText(String.valueOf(missed));
-            ((TextView) findViewById(R.id.value_of_score)).setText(String.valueOf(correct - 10 * wrong - 5 * missed));
-
+            ((TextView) findViewById(R.id.no_of_extra)).setText(String.valueOf(extra));
+            ((TextView) findViewById(R.id.value_of_score)).setText(String.valueOf(
+                    correct - 10 * wrong - 5 * missed - 2 * extra - spelling));
             //((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
             //      .toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
         }

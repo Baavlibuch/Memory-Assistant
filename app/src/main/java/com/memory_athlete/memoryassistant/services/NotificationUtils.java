@@ -45,6 +45,7 @@ abstract class NotificationUtils {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_notif_launcher)
                 .setContentTitle(text)
+                //.addAction(R.drawable.ic_notif_launcher, "Don't disturb me", contentIntent(context))
                 .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentIntent(contentIntent(context))
                 .setAutoCancel(true);
@@ -91,6 +92,7 @@ abstract class NotificationUtils {
         Timber.d(text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_notif_launcher)
+                //.addAction(R.drawable.ic_notif_launcher, "Don't disturb me", contentIntent(context))
                 .setContentTitle("My Space")
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
                 .setDefaults(Notification.DEFAULT_VIBRATE)

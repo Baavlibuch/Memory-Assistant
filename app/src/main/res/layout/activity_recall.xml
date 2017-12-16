@@ -175,55 +175,7 @@
 
                     </HorizontalScrollView>
 
-                    <HorizontalScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fadingEdge="horizontal"
-                        android:fadingEdgeLength="16dp"
-                        android:requiresFadingEdge="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <!--<Button
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:mText="@string/start_timer"
-                                android:onClick="startTimer"/>-->
-
-                            <Button
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:onClick="startSW"
-                                android:text="@string/start_stopwatch" />
-
-                            <Button
-                                android:id="@+id/check"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:onClick="check"
-                                android:text="@string/check" />
-
-                            <Button
-                                android:id="@+id/just_answers"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:onClick="giveUp"
-                                android:text="@string/just_answers" />
-
-                            <Button
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|bottom"
-                                android:onClick="reset"
-                                android:text="@string/reset" />
-
-                        </LinearLayout>
-
-                    </HorizontalScrollView>
 
                 </LinearLayout>
 
@@ -238,82 +190,97 @@
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
 
-                <ImageView
-                    android:id="@+id/correct_image"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone" />
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal">
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/correct"
+                        android:textColor="#00ff00" />
+
+                    <TextView
+                        android:id="@+id/no_of_correct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/correct"
-                    android:textColor="#00ff00" />
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/no_of_correct"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wrong"
+                        android:textColor="#FF0000" />
+
+                    <TextView
+                        android:id="@+id/no_of_wrong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/missed"
+                        android:textColor="#FF9500" />
+
+                    <TextView
+                        android:id="@+id/no_of_missed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/extra"
+                        android:textColor="#FF5500" />
+
+                    <TextView
+                        android:id="@+id/no_of_extra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/wrong_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/wrong"
-                    android:textColor="#FF0000" />
-
-                <TextView
-                    android:id="@+id/no_of_wrong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/missed_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/missed"
-                    android:textColor="#FF9500" />
-
-                <TextView
-                    android:id="@+id/no_of_missed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -354,7 +321,60 @@
 
             </LinearLayout>
 
+            </LinearLayout>
+
         </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadingEdge="horizontal"
+            android:id="@+id/button_bar"
+            android:fadingEdgeLength="16dp"
+            android:requiresFadingEdge="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--<Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:mText="@string/start_timer"
+                    android:onClick="startTimer"/>-->
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="startSW"
+                    android:text="@string/start_stopwatch" />
+
+                <Button
+                    android:id="@+id/check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="check"
+                    android:text="@string/check" />
+
+                <Button
+                    android:id="@+id/just_answers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="giveUp"
+                    android:text="@string/just_answers" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:onClick="reset"
+                    android:text="@string/reset" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
         <Button
             android:id="@+id/reset"
