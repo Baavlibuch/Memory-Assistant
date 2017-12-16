@@ -100,7 +100,7 @@ public class ReminderUtils {
             int diff1 = diff;
             switch (i) {
                 case 0:
-                    if (diff < 10 * HOUR) diff1 += DAY;
+                    if (diff < 10 * HOUR) diff1 = diff += DAY;
                     break;
                 case 1:
                     diff1 += 3 * DAY;
@@ -119,6 +119,7 @@ public class ReminderUtils {
                     break;
                 case 6:
                     diff1 += 12 * MONTH;
+                    break;
             }
 
             Timber.v("MySpace notification is after " + diff1);
@@ -127,7 +128,7 @@ public class ReminderUtils {
                     .setTag(fname + i)
                     .setLifetime(Lifetime.FOREVER)
                     .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1 - 5 * MIN, diff1 + HOUR))
+                    .setTrigger(Trigger.executionWindow(diff1 - 10 * MIN, diff1 + HOUR))
                     .setReplaceCurrent(true)
                     .setExtras(bundle)
                     .build();
@@ -137,7 +138,7 @@ public class ReminderUtils {
             //.setExtras(bundle)
             Timber.v("Job built");
             dispatcher.schedule(constraintReminderJob);
-            Timber.v("dispatcher scheduled");
+            Timber.v("dispatcher scheduled, tag = " + fname + i);
         }
     }
 }

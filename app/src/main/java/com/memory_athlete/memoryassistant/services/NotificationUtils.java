@@ -14,6 +14,7 @@ import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;
 
 import java.io.File;
+import java.util.Random;
 
 import timber.log.Timber;
 
@@ -23,7 +24,7 @@ import timber.log.Timber;
 
 abstract class NotificationUtils {
     private static final int PERIODIC_REMINDER_PENDING_INTENT_ID = 3417;
-    private static final int MY_SPACE_REMINDER_PENDING_INTENT_ID = 3518;
+    //private static final int MY_SPACE_REMINDER_PENDING_INTENT_ID;
     private static final long MIN = 60000;
     private static final long HOUR = MIN * 60;
     private static final long DAY = HOUR * 24;
@@ -103,7 +104,7 @@ abstract class NotificationUtils {
         }
         NotificationManager notificationManager = (NotificationManager)
                 (context.getSystemService(Context.NOTIFICATION_SERVICE));
-        notificationManager.notify(MY_SPACE_REMINDER_PENDING_INTENT_ID, notificationBuilder.build());
+        notificationManager.notify(new Random().nextInt(), notificationBuilder.build());
         Timber.v("createNotification() complete");
     }
 
