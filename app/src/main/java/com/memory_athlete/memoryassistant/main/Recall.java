@@ -44,6 +44,7 @@ import static com.memory_athlete.memoryassistant.R.id.chose_file;
 import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
+import static java.lang.Math.pow;
 
 public class Recall extends AppCompatActivity {
 
@@ -796,6 +797,7 @@ public class Recall extends AppCompatActivity {
             if (correct == answers.size() && !mDiscipline.equals(getString(R.string.binary))) {
                 SharedPreferences sharedPreferences = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
+                if (pow(2, sharedPreferences.getInt("level", 1) + 2) == correct)
                 sharedPreferences.edit().putInt("level", 1 + sharedPreferences.getInt("level", 1)).apply();
             }
 

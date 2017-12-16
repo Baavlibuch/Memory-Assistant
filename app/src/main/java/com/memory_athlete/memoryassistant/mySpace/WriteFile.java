@@ -80,6 +80,8 @@ public class WriteFile extends AppCompatActivity {
                 File file = new File(path + File.separator + getTitle().toString() + ".txt");
                 finish();
                 return !file.exists() || file.delete();
+            case R.id.dont_save:
+                NavUtils.navigateUpFromSameTask(this);
             case android.R.id.home:
                 if (save()) NavUtils.navigateUpFromSameTask(this);
         }
