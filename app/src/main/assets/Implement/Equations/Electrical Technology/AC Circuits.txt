@@ -1,7 +1,7 @@
 <h2>AC Circuits</h2>
 
 <p>Peak factor $$I_0/I_{rms}$$</p>
-<p>Form factor $$I_{rms}/I{av}$$</p>
+<p>Form factor $$I_{rms}/I_{av}$$</p>
 <p>Admittance $$Y=1/Z$$</p>
 <p>Susceptance $$B=1/X$$</p>
 <p>Reactive power $$Q=I^2X$$</p>

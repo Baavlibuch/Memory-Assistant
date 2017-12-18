@@ -13,10 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="37817797-208a-4257-b7e9-66e813937200" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/NotificationUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/NotificationUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt" afterPath="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt" />
     </list>
     <ignored path="Memory Athletes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,8 +50,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+            <state relative-caret-position="252">
+              <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
               <folding>
                 <element signature="e#251#517#0" expanded="false" />
                 <element signature="e#268#511#0" expanded="false" />
@@ -68,72 +65,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_recall.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
+      <file leaf-file-name="AC Circuits.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="333" column="42" selection-start-line="333" selection-start-column="42" selection-end-line="333" selection-end-column="42" />
-              <folding>
-                <element signature="e#696#909#0" expanded="false" />
-                <element signature="e#923#1170#0" expanded="false" />
-                <element signature="e#1465#4614#0" expanded="false" />
-                <element signature="e#1701#4583#0" expanded="false" />
-                <element signature="e#2086#3302#0" expanded="false" />
-                <element signature="e#2551#2832#0" expanded="false" />
-                <element signature="e#2806#2829#0" expanded="true" />
-                <element signature="e#2862#3261#0" expanded="false" />
-                <element signature="e#3328#4546#0" expanded="false" />
-                <element signature="e#3792#4078#0" expanded="false" />
-                <element signature="e#4050#4075#0" expanded="true" />
-                <element signature="e#4108#4505#0" expanded="false" />
-                <element signature="e#4632#5041#0" expanded="false" />
-                <element signature="e#5059#5694#0" expanded="false" />
-                <element signature="e#5396#5585#0" expanded="false" />
-                <element signature="e#6075#6644#0" expanded="false" />
-                <element signature="e#6275#6609#0" expanded="false" />
-                <element signature="e#6587#6606#0" expanded="true" />
-                <element signature="e#6666#6996#0" expanded="false" />
-                <element signature="e#7018#7558#0" expanded="false" />
-                <element signature="e#7187#7513#0" expanded="false" />
-                <element signature="e#8159#8490#0" expanded="false" />
-                <element signature="e#8520#8796#0" expanded="false" />
-                <element signature="e#8768#8793#0" expanded="true" />
-                <element signature="e#8826#9146#0" expanded="false" />
-                <element signature="e#9128#9143#0" expanded="true" />
-                <element signature="e#9176#9511#0" expanded="false" />
-                <element signature="e#9486#9508#0" expanded="true" />
-                <element signature="e#9541#9887#0" expanded="false" />
-                <element signature="e#9869#9884#0" expanded="true" />
-                <element signature="e#10410#11328#0" expanded="false" />
-                <element signature="e#10638#10862#0" expanded="false" />
-                <element signature="e#10880#11104#0" expanded="false" />
-                <element signature="e#11036#11053#0" expanded="true" />
-                <element signature="e#11122#11299#0" expanded="false" />
-                <element signature="e#11342#12254#0" expanded="false" />
-                <element signature="e#11570#11792#0" expanded="false" />
-                <element signature="e#11810#12032#0" expanded="false" />
-                <element signature="e#11966#11981#0" expanded="true" />
-                <element signature="e#12050#12225#0" expanded="false" />
-                <element signature="e#12268#13183#0" expanded="false" />
-                <element signature="e#12496#12719#0" expanded="false" />
-                <element signature="e#12737#12960#0" expanded="false" />
-                <element signature="e#12893#12909#0" expanded="true" />
-                <element signature="e#12978#13154#0" expanded="false" />
-                <element signature="e#13821#13836#0" expanded="true" />
-                <element signature="e#14123#14794#0" expanded="false" />
-                <element signature="e#14351#14569#0" expanded="false" />
-                <element signature="e#14551#14566#0" expanded="true" />
-                <element signature="e#14587#14765#0" expanded="false" />
-                <element signature="e#14808#15561#0" expanded="false" />
-                <element signature="e#15090#15329#0" expanded="false" />
-                <element signature="e#15304#15326#0" expanded="true" />
-                <element signature="e#15347#15532#0" expanded="false" />
-                <element signature="e#15596#15878#0" expanded="false" />
-                <element signature="e#15860#15875#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="54">
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1958,13 +1895,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/NotificationUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/reminders/ReminderUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
+    <option name="x" value="2560" />
     <option name="y" value="24" />
     <option name="width" value="1280" />
     <option name="height" value="776" />
@@ -2065,35 +2003,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2107,11 +2017,11 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="memoryassistant" />
+              <option name="myItemId" value="Implement" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2125,16 +2035,52 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="memoryassistant" />
+              <option name="myItemId" value="Implement" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="Equations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Implement" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Equations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Electrical Technology" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2467,7 +2413,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="24" width="1280" height="776" extended-state="6" />
+    <frame x="2560" y="24" width="1280" height="776" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2578,13 +2524,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Dates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Equations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -3053,26 +2992,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-          <folding>
-            <element signature="e#251#517#0" expanded="false" />
-            <element signature="e#268#511#0" expanded="false" />
-            <element signature="e#861#1071#0" expanded="false" />
-            <element signature="e#879#1065#0" expanded="false" />
-            <element signature="e#1091#1098#0" expanded="false" />
-            <element signature="e#1115#1154#0" expanded="false" />
-            <element signature="e#1115#1154#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
-          <caret line="539" column="32" selection-start-line="539" selection-start-column="32" selection-end-line="539" selection-end-column="32" />
+        <state relative-caret-position="558">
+          <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
           <folding>
             <element signature="method#onCreate#0;class#Recall#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#Recall#0" expanded="false" />
@@ -3114,17 +3037,17 @@
             <element signature="method#startTimer#0;class#Recall#0" expanded="false" />
             <element signature="class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="method#onPreExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-            <element signature="e#32364#32376#0" expanded="false" />
+            <element signature="e#32365#32377#0" expanded="false" />
             <element signature="method#doInBackground#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="method#onPostExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-            <element signature="e#34739#34810#0" expanded="false" />
+            <element signature="e#34740#34811#0" expanded="false" />
             <element signature="class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="method#onPreExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="method#onPostExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="class#CardAdapter#0;class#Recall#0" expanded="false" />
-            <element signature="e#36135#36143#0" expanded="false" />
+            <element signature="e#36136#36144#0" expanded="false" />
             <element signature="method#getView#0;class#CardAdapter#0;class#Recall#0" expanded="false" />
-            <element signature="e#37682#37758#0" expanded="false" />
+            <element signature="e#37683#37759#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3134,11 +3057,12 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="333" column="42" selection-start-line="333" selection-start-column="42" selection-end-line="333" selection-end-column="42" />
+        <state relative-caret-position="-50">
+          <caret line="330" column="43" selection-start-line="330" selection-start-column="43" selection-end-line="330" selection-end-column="43" />
           <folding>
             <element signature="e#696#909#0" expanded="false" />
             <element signature="e#923#1170#0" expanded="false" />
+            <element signature="e#1184#7622#0" expanded="false" />
             <element signature="e#1465#4614#0" expanded="false" />
             <element signature="e#1701#4583#0" expanded="false" />
             <element signature="e#2086#3302#0" expanded="false" />
@@ -3158,42 +3082,65 @@
             <element signature="e#6666#6996#0" expanded="false" />
             <element signature="e#7018#7558#0" expanded="false" />
             <element signature="e#7187#7513#0" expanded="false" />
-            <element signature="e#8159#8490#0" expanded="false" />
-            <element signature="e#8520#8796#0" expanded="false" />
-            <element signature="e#8768#8793#0" expanded="true" />
-            <element signature="e#8826#9146#0" expanded="false" />
-            <element signature="e#9128#9143#0" expanded="true" />
-            <element signature="e#9176#9511#0" expanded="false" />
-            <element signature="e#9486#9508#0" expanded="true" />
-            <element signature="e#9541#9887#0" expanded="false" />
-            <element signature="e#9869#9884#0" expanded="true" />
-            <element signature="e#10410#11328#0" expanded="false" />
-            <element signature="e#10638#10862#0" expanded="false" />
-            <element signature="e#10880#11104#0" expanded="false" />
-            <element signature="e#11036#11053#0" expanded="true" />
-            <element signature="e#11122#11299#0" expanded="false" />
-            <element signature="e#11342#12254#0" expanded="false" />
-            <element signature="e#11570#11792#0" expanded="false" />
-            <element signature="e#11810#12032#0" expanded="false" />
-            <element signature="e#11966#11981#0" expanded="true" />
-            <element signature="e#12050#12225#0" expanded="false" />
-            <element signature="e#12268#13183#0" expanded="false" />
-            <element signature="e#12496#12719#0" expanded="false" />
-            <element signature="e#12737#12960#0" expanded="false" />
-            <element signature="e#12893#12909#0" expanded="true" />
-            <element signature="e#12978#13154#0" expanded="false" />
-            <element signature="e#13821#13836#0" expanded="true" />
-            <element signature="e#14123#14794#0" expanded="false" />
-            <element signature="e#14351#14569#0" expanded="false" />
-            <element signature="e#14551#14566#0" expanded="true" />
-            <element signature="e#14587#14765#0" expanded="false" />
-            <element signature="e#14808#15561#0" expanded="false" />
-            <element signature="e#15090#15329#0" expanded="false" />
-            <element signature="e#15304#15326#0" expanded="true" />
-            <element signature="e#15347#15532#0" expanded="false" />
-            <element signature="e#15596#15878#0" expanded="false" />
-            <element signature="e#15860#15875#0" expanded="true" />
+            <element signature="e#7657#12986#0" expanded="false" />
+            <element signature="e#8233#8968#0" expanded="false" />
+            <element signature="e#8484#8724#0" expanded="false" />
+            <element signature="e#8652#8669#0" expanded="true" />
+            <element signature="e#8746#8935#0" expanded="false" />
+            <element signature="e#8986#9717#0" expanded="false" />
+            <element signature="e#9237#9475#0" expanded="false" />
+            <element signature="e#9405#9420#0" expanded="true" />
+            <element signature="e#9497#9684#0" expanded="false" />
+            <element signature="e#9735#10468#0" expanded="false" />
+            <element signature="e#9986#10225#0" expanded="false" />
+            <element signature="e#10154#10170#0" expanded="true" />
+            <element signature="e#10247#10435#0" expanded="false" />
+            <element signature="e#10486#11217#0" expanded="false" />
+            <element signature="e#10905#10920#0" expanded="true" />
+            <element signature="e#11494#12165#0" expanded="false" />
+            <element signature="e#11722#11940#0" expanded="false" />
+            <element signature="e#11922#11937#0" expanded="true" />
+            <element signature="e#11958#12136#0" expanded="false" />
+            <element signature="e#12179#12932#0" expanded="false" />
+            <element signature="e#12461#12700#0" expanded="false" />
+            <element signature="e#12675#12697#0" expanded="true" />
+            <element signature="e#12718#12903#0" expanded="false" />
+            <element signature="e#13496#13767#0" expanded="false" />
+            <element signature="e#13785#14013#0" expanded="false" />
+            <element signature="e#13985#14010#0" expanded="true" />
+            <element signature="e#14031#14291#0" expanded="false" />
+            <element signature="e#14273#14288#0" expanded="true" />
+            <element signature="e#14309#14584#0" expanded="false" />
+            <element signature="e#14559#14581#0" expanded="true" />
+            <element signature="e#14602#14888#0" expanded="false" />
+            <element signature="e#14870#14885#0" expanded="true" />
+            <element signature="e#14960#15242#0" expanded="false" />
+            <element signature="e#15224#15239#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="e#251#517#0" expanded="false" />
+            <element signature="e#268#511#0" expanded="false" />
+            <element signature="e#861#1071#0" expanded="false" />
+            <element signature="e#879#1065#0" expanded="false" />
+            <element signature="e#1091#1098#0" expanded="false" />
+            <element signature="e#1115#1154#0" expanded="false" />
+            <element signature="e#1115#1154#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
