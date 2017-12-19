@@ -84,7 +84,7 @@ public class Recall extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (findViewById(R.id.reset).getVisibility() == View.VISIBLE
-                || findViewById(R.id.response_layout).getVisibility() == View.VISIBLE) reset();
+                || findViewById(R.id.button_bar).getVisibility() == View.VISIBLE) reset();
         else super.onBackPressed();
     }
 
@@ -135,6 +135,7 @@ public class Recall extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 findViewById(R.id.response_layout).setVisibility(View.GONE);
+                findViewById(R.id.button_bar).setVisibility(View.GONE);
                 findViewById(R.id.cards_responses).setVisibility(View.GONE);
                 makeSpinner2(intent);
             }
@@ -207,6 +208,7 @@ public class Recall extends AppCompatActivity {
                 setResponseLayout();
                 findViewById(R.id.discipline_spinner).setVisibility(View.GONE);
                 findViewById(R.id.chose_file).setVisibility(View.GONE);
+                findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -411,6 +413,7 @@ public class Recall extends AppCompatActivity {
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
         findViewById(R.id.reset).setVisibility(View.GONE);
 
         Timber.v("responseLayout set");
@@ -527,6 +530,8 @@ public class Recall extends AppCompatActivity {
 
     void hideResponseLayout() {
         findViewById(R.id.response_layout).setVisibility(View.GONE);
+        findViewById(R.id.button_bar).setVisibility(View.GONE);
+        findViewById(R.id.button_bar).setVisibility(View.GONE);
         //findViewById(R.id.check).setVisibility(View.GONE);
         findViewById(R.id.discipline_spinner).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
@@ -641,10 +646,10 @@ public class Recall extends AppCompatActivity {
                 }
             }
             Timber.v(match + "");
-            if (((float) match / k) > 0.3) {
-                mTextResponse.append("<font color=#FF5500>").append(responses.get(i))
+            if (((float) match / k) > 0.3) {            //Extra
+                mTextResponse.append("<font color=#2E7D32>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
-                mTextAnswer.append("<font color=#FF5500>").append(responses.get(i))
+                mTextAnswer.append("<font color=#2E7D32>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
                 extra++;
                 return true;
@@ -720,6 +725,7 @@ public class Recall extends AppCompatActivity {
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.GONE);
+        findViewById(R.id.button_bar).setVisibility(View.GONE);
         findViewById(R.id.discipline_spinner).setVisibility(View.VISIBLE);
         makeSpinner2(null);
         //findViewById(R.id.response_layout).setVisibility(View.VISIBLE);

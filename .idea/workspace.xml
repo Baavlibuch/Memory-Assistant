@@ -2,7 +2,12 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <devices>
+          <device id="Nexus 4" />
+          <device id="Nexus One" />
+        </devices>
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
@@ -14,8 +19,9 @@
     <list default="true" id="37817797-208a-4257-b7e9-66e813937200" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
     </list>
     <ignored path="Memory Athletes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,8 +58,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="206">
+              <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
               <folding>
                 <element signature="e#251#517#0" expanded="false" />
                 <element signature="e#268#511#0" expanded="false" />
@@ -62,6 +68,116 @@
                 <element signature="e#1091#1098#0" expanded="false" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Recall.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="649" column="57" selection-start-line="649" selection-start-column="57" selection-end-line="649" selection-end-column="57" />
+              <folding>
+                <element signature="method#onBackPressed#0;class#Recall#0" expanded="false" />
+                <element signature="method#theme#0;class#Recall#0" expanded="false" />
+                <element signature="method#makeSpinner1#0;class#Recall#0" expanded="false" />
+                <element signature="e#4737#4768#0" expanded="false" />
+                <element signature="class#5163:5713" expanded="false" />
+                <element signature="method#onItemSelected#0;class#5163:5713" expanded="false" />
+                <element signature="method#onNothingSelected#0;class#5163:5713" expanded="false" />
+                <element signature="method#spinnerReset#0;class#Recall#0" expanded="false" />
+                <element signature="e#6207#6249#0" expanded="false" />
+                <element signature="method#makeSpinner2#0;class#Recall#0" expanded="false" />
+                <element signature="method#onNothingSelected#0;class#7743:8726" expanded="false" />
+                <element signature="method#practice#0;class#Recall#0" expanded="false" />
+                <element signature="method#updateGridView#0;class#Recall#0" expanded="false" />
+                <element signature="method#cardSelected#0;class#Recall#0" expanded="false" />
+                <element signature="method#cardResponseLayout#0;class#Recall#0" expanded="false" />
+                <element signature="method#simpleResponseLayout#0;class#Recall#0" expanded="false" />
+                <element signature="method#setResponseLayout#0;class#Recall#0" expanded="false" />
+                <element signature="method#getAnswers#0;class#Recall#0" expanded="false" />
+                <element signature="method#giveUp#0;class#Recall#0" expanded="false" />
+                <element signature="method#getResponse#0;class#Recall#0" expanded="false" />
+                <element signature="method#hideResponseLayout#0;class#Recall#0" expanded="false" />
+                <element signature="method#compare#0;class#Recall#0" expanded="false" />
+                <element signature="method#isLeft#0;class#Recall#0" expanded="false" />
+                <element signature="method#isCorrect#0;class#Recall#0" expanded="false" />
+                <element signature="method#isMiss#0;class#Recall#0" expanded="false" />
+                <element signature="e#27075#27094#0" expanded="false" />
+                <element signature="method#isWrong#0;class#Recall#0" expanded="false" />
+                <element signature="method#isSpelling#0;class#Recall#0" expanded="false" />
+                <element signature="method#compareCards#0;class#Recall#0" expanded="false" />
+                <element signature="method#reset#0;class#Recall#0" expanded="false" />
+                <element signature="method#check#0;class#Recall#0" expanded="false" />
+                <element signature="method#startSW#0;class#Recall#0" expanded="false" />
+                <element signature="method#startTimer#0;class#Recall#0" expanded="false" />
+                <element signature="class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
+                <element signature="e#32785#32797#0" expanded="false" />
+                <element signature="method#doInBackground#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
+                <element signature="e#35160#35231#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
+                <element signature="class#CardAdapter#0;class#Recall#0" expanded="false" />
+                <element signature="e#36556#36564#0" expanded="false" />
+                <element signature="method#getView#0;class#CardAdapter#0;class#Recall#0" expanded="false" />
+                <element signature="e#38103#38179#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_recall.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="210" column="48" selection-start-line="210" selection-start-column="48" selection-end-line="210" selection-end-column="48" />
+              <folding>
+                <element signature="e#499#7646#0" expanded="false" />
+                <element signature="e#696#909#0" expanded="false" />
+                <element signature="e#923#1170#0" expanded="false" />
+                <element signature="e#1184#7621#0" expanded="false" />
+                <element signature="e#1465#4614#0" expanded="false" />
+                <element signature="e#1701#4583#0" expanded="false" />
+                <element signature="e#2086#3302#0" expanded="false" />
+                <element signature="e#2551#2832#0" expanded="false" />
+                <element signature="e#2862#3261#0" expanded="false" />
+                <element signature="e#3328#4546#0" expanded="false" />
+                <element signature="e#3792#4078#0" expanded="false" />
+                <element signature="e#4108#4505#0" expanded="false" />
+                <element signature="e#4632#5041#0" expanded="false" />
+                <element signature="e#5059#5694#0" expanded="false" />
+                <element signature="e#5396#5585#0" expanded="false" />
+                <element signature="e#6075#6644#0" expanded="false" />
+                <element signature="e#6275#6609#0" expanded="false" />
+                <element signature="e#6666#6996#0" expanded="false" />
+                <element signature="e#7018#7558#0" expanded="false" />
+                <element signature="e#7187#7513#0" expanded="false" />
+                <element signature="e#8785#9087#0" expanded="false" />
+                <element signature="e#9138#10074#0" expanded="false" />
+                <element signature="e#9481#9719#0" expanded="false" />
+                <element signature="e#10092#11030#0" expanded="false" />
+                <element signature="e#10435#10674#0" expanded="false" />
+                <element signature="e#11652#11952#0" expanded="false" />
+                <element signature="e#12028#13853#0" expanded="false" />
+                <element signature="e#12266#12993#0" expanded="false" />
+                <element signature="e#12514#12748#0" expanded="false" />
+                <element signature="e#12770#12960#0" expanded="false" />
+                <element signature="e#13011#13824#0" expanded="false" />
+                <element signature="e#13317#13572#0" expanded="false" />
+                <element signature="e#13594#13791#0" expanded="false" />
+                <element signature="e#13888#15842#0" expanded="false" />
+                <element signature="e#14388#14659#0" expanded="false" />
+                <element signature="e#14677#14905#0" expanded="false" />
+                <element signature="e#14923#15183#0" expanded="false" />
+                <element signature="e#15201#15476#0" expanded="false" />
+                <element signature="e#15494#15780#0" expanded="false" />
+                <element signature="e#15852#16134#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
@@ -1627,7 +1743,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4533925189294" />
+        <entry key="$PROJECT_DIR$" value="4533933335217" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1884,15 +2000,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/NotificationUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/reminders/ReminderUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
     <option name="y" value="24" />
     <option name="width" value="1280" />
     <option name="height" value="776" />
@@ -1928,6 +2043,62 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Android" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="memoryassistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2299,23 +2470,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="24" width="1280" height="776" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="24" width="1280" height="776" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30307692" sideWeight="0.48136142" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19448946" sideWeight="0.40615386" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.41384616" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43076923" sideWeight="0.5267423" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58615386" sideWeight="0.4732577" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48307693" sideWeight="0.4886548" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31538463" sideWeight="0.49353796" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31538463" sideWeight="0.49353796" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3611898" sideWeight="0.51130855" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.59384614" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.58615386" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2334,7 +2506,6 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="100" y="100" width="1080" height="600" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2405,7 +2576,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="556" />
+      <option name="time" value="557" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2719,6 +2890,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#Practice#0" expanded="false" />
+            <element signature="method#setList#0;class#Practice#0" expanded="false" />
+            <element signature="e#2575#2665#0" expanded="false" />
+            <element signature="class#Category#0;class#Practice#0" expanded="false" />
+            <element signature="method#Category#0;class#Category#0;class#Practice#0" expanded="false" />
+            <element signature="method#Category#1;class#Category#0;class#Practice#0" expanded="false" />
+            <element signature="class#DisciplineAdapter#0;class#Practice#0" expanded="false" />
+            <element signature="method#getView#0;class#DisciplineAdapter#0;class#Practice#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2726,6 +2907,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="46" column="88" selection-start-line="46" selection-start-column="88" selection-end-line="46" selection-end-column="88" />
+          <folding>
+            <element signature="method#theme#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2783,6 +2973,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+          <folding>
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#firstStart#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setList#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#7128#7170#0" expanded="false" />
+            <element signature="class#Item#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Item#0;class#Item#0;class#MainActivity#0" expanded="false" />
+            <element signature="class#MainAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#getView#0;class#MainAdapter#0;class#MainActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2792,81 +2994,6 @@
           <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
           <folding>
             <element signature="e#1062#1083#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-50">
-          <caret line="330" column="43" selection-start-line="330" selection-start-column="43" selection-end-line="330" selection-end-column="43" />
-          <folding>
-            <element signature="e#696#909#0" expanded="false" />
-            <element signature="e#923#1170#0" expanded="false" />
-            <element signature="e#1184#7622#0" expanded="false" />
-            <element signature="e#1465#4614#0" expanded="false" />
-            <element signature="e#1701#4583#0" expanded="false" />
-            <element signature="e#2086#3302#0" expanded="false" />
-            <element signature="e#2551#2832#0" expanded="false" />
-            <element signature="e#2806#2829#0" expanded="false" />
-            <element signature="e#2862#3261#0" expanded="false" />
-            <element signature="e#3328#4546#0" expanded="false" />
-            <element signature="e#3792#4078#0" expanded="false" />
-            <element signature="e#4050#4075#0" expanded="false" />
-            <element signature="e#4108#4505#0" expanded="false" />
-            <element signature="e#4632#5041#0" expanded="false" />
-            <element signature="e#5059#5694#0" expanded="false" />
-            <element signature="e#5396#5585#0" expanded="false" />
-            <element signature="e#6075#6644#0" expanded="false" />
-            <element signature="e#6275#6609#0" expanded="false" />
-            <element signature="e#6587#6606#0" expanded="false" />
-            <element signature="e#6666#6996#0" expanded="false" />
-            <element signature="e#7018#7558#0" expanded="false" />
-            <element signature="e#7187#7513#0" expanded="false" />
-            <element signature="e#7657#12986#0" expanded="false" />
-            <element signature="e#8233#8968#0" expanded="false" />
-            <element signature="e#8484#8724#0" expanded="false" />
-            <element signature="e#8652#8669#0" expanded="false" />
-            <element signature="e#8746#8935#0" expanded="false" />
-            <element signature="e#8986#9717#0" expanded="false" />
-            <element signature="e#9237#9475#0" expanded="false" />
-            <element signature="e#9405#9420#0" expanded="false" />
-            <element signature="e#9497#9684#0" expanded="false" />
-            <element signature="e#9735#10468#0" expanded="false" />
-            <element signature="e#9986#10225#0" expanded="false" />
-            <element signature="e#10154#10170#0" expanded="false" />
-            <element signature="e#10247#10435#0" expanded="false" />
-            <element signature="e#10486#11217#0" expanded="false" />
-            <element signature="e#10905#10920#0" expanded="false" />
-            <element signature="e#11494#12165#0" expanded="false" />
-            <element signature="e#11722#11940#0" expanded="false" />
-            <element signature="e#11922#11937#0" expanded="false" />
-            <element signature="e#11958#12136#0" expanded="false" />
-            <element signature="e#12179#12932#0" expanded="false" />
-            <element signature="e#12461#12700#0" expanded="false" />
-            <element signature="e#12675#12697#0" expanded="false" />
-            <element signature="e#12718#12903#0" expanded="false" />
-            <element signature="e#13496#13767#0" expanded="false" />
-            <element signature="e#13785#14013#0" expanded="false" />
-            <element signature="e#13985#14010#0" expanded="false" />
-            <element signature="e#14031#14291#0" expanded="false" />
-            <element signature="e#14273#14288#0" expanded="false" />
-            <element signature="e#14309#14584#0" expanded="false" />
-            <element signature="e#14559#14581#0" expanded="false" />
-            <element signature="e#14602#14888#0" expanded="false" />
-            <element signature="e#14870#14885#0" expanded="false" />
-            <element signature="e#14960#15242#0" expanded="false" />
-            <element signature="e#15224#15239#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2917,10 +3044,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="210" column="48" selection-start-line="210" selection-start-column="48" selection-end-line="210" selection-end-column="48" />
+          <folding>
+            <element signature="e#499#7646#0" expanded="false" />
+            <element signature="e#696#909#0" expanded="false" />
+            <element signature="e#923#1170#0" expanded="false" />
+            <element signature="e#1184#7621#0" expanded="false" />
+            <element signature="e#1465#4614#0" expanded="false" />
+            <element signature="e#1701#4583#0" expanded="false" />
+            <element signature="e#2086#3302#0" expanded="false" />
+            <element signature="e#2551#2832#0" expanded="false" />
+            <element signature="e#2862#3261#0" expanded="false" />
+            <element signature="e#3328#4546#0" expanded="false" />
+            <element signature="e#3792#4078#0" expanded="false" />
+            <element signature="e#4108#4505#0" expanded="false" />
+            <element signature="e#4632#5041#0" expanded="false" />
+            <element signature="e#5059#5694#0" expanded="false" />
+            <element signature="e#5396#5585#0" expanded="false" />
+            <element signature="e#6075#6644#0" expanded="false" />
+            <element signature="e#6275#6609#0" expanded="false" />
+            <element signature="e#6666#6996#0" expanded="false" />
+            <element signature="e#7018#7558#0" expanded="false" />
+            <element signature="e#7187#7513#0" expanded="false" />
+            <element signature="e#8785#9087#0" expanded="false" />
+            <element signature="e#9138#10074#0" expanded="false" />
+            <element signature="e#9481#9719#0" expanded="false" />
+            <element signature="e#10092#11030#0" expanded="false" />
+            <element signature="e#10435#10674#0" expanded="false" />
+            <element signature="e#11652#11952#0" expanded="false" />
+            <element signature="e#12028#13853#0" expanded="false" />
+            <element signature="e#12266#12993#0" expanded="false" />
+            <element signature="e#12514#12748#0" expanded="false" />
+            <element signature="e#12770#12960#0" expanded="false" />
+            <element signature="e#13011#13824#0" expanded="false" />
+            <element signature="e#13317#13572#0" expanded="false" />
+            <element signature="e#13594#13791#0" expanded="false" />
+            <element signature="e#13888#15842#0" expanded="false" />
+            <element signature="e#14388#14659#0" expanded="false" />
+            <element signature="e#14677#14905#0" expanded="false" />
+            <element signature="e#14923#15183#0" expanded="false" />
+            <element signature="e#15201#15476#0" expanded="false" />
+            <element signature="e#15494#15780#0" expanded="false" />
+            <element signature="e#15852#16134#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="649" column="57" selection-start-line="649" selection-start-column="57" selection-end-line="649" selection-end-column="57" />
+          <folding>
+            <element signature="method#onBackPressed#0;class#Recall#0" expanded="false" />
+            <element signature="method#theme#0;class#Recall#0" expanded="false" />
+            <element signature="method#makeSpinner1#0;class#Recall#0" expanded="false" />
+            <element signature="e#4737#4768#0" expanded="false" />
+            <element signature="class#5163:5713" expanded="false" />
+            <element signature="method#onItemSelected#0;class#5163:5713" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#5163:5713" expanded="false" />
+            <element signature="method#spinnerReset#0;class#Recall#0" expanded="false" />
+            <element signature="e#6207#6249#0" expanded="false" />
+            <element signature="method#makeSpinner2#0;class#Recall#0" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#7743:8726" expanded="false" />
+            <element signature="method#practice#0;class#Recall#0" expanded="false" />
+            <element signature="method#updateGridView#0;class#Recall#0" expanded="false" />
+            <element signature="method#cardSelected#0;class#Recall#0" expanded="false" />
+            <element signature="method#cardResponseLayout#0;class#Recall#0" expanded="false" />
+            <element signature="method#simpleResponseLayout#0;class#Recall#0" expanded="false" />
+            <element signature="method#setResponseLayout#0;class#Recall#0" expanded="false" />
+            <element signature="method#getAnswers#0;class#Recall#0" expanded="false" />
+            <element signature="method#giveUp#0;class#Recall#0" expanded="false" />
+            <element signature="method#getResponse#0;class#Recall#0" expanded="false" />
+            <element signature="method#hideResponseLayout#0;class#Recall#0" expanded="false" />
+            <element signature="method#compare#0;class#Recall#0" expanded="false" />
+            <element signature="method#isLeft#0;class#Recall#0" expanded="false" />
+            <element signature="method#isCorrect#0;class#Recall#0" expanded="false" />
+            <element signature="method#isMiss#0;class#Recall#0" expanded="false" />
+            <element signature="e#27075#27094#0" expanded="false" />
+            <element signature="method#isWrong#0;class#Recall#0" expanded="false" />
+            <element signature="method#isSpelling#0;class#Recall#0" expanded="false" />
+            <element signature="method#compareCards#0;class#Recall#0" expanded="false" />
+            <element signature="method#reset#0;class#Recall#0" expanded="false" />
+            <element signature="method#check#0;class#Recall#0" expanded="false" />
+            <element signature="method#startSW#0;class#Recall#0" expanded="false" />
+            <element signature="method#startTimer#0;class#Recall#0" expanded="false" />
+            <element signature="class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
+            <element signature="e#32785#32797#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
+            <element signature="e#35160#35231#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
+            <element signature="class#CardAdapter#0;class#Recall#0" expanded="false" />
+            <element signature="e#36556#36564#0" expanded="false" />
+            <element signature="method#getView#0;class#CardAdapter#0;class#Recall#0" expanded="false" />
+            <element signature="e#38103#38179#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="206">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
           <folding>
             <element signature="e#251#517#0" expanded="false" />
             <element signature="e#268#511#0" expanded="false" />
