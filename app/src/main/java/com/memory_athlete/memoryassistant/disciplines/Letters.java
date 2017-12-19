@@ -29,7 +29,7 @@ public class Letters extends DisciplineFragment {
         Random rand = new Random();
 
         String s = "";
-        for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
+        for (int i = 0; i < a.get(NO_OF_VALUES)/a.get(GROUP_SIZE); i++) {
             for (int j = 0; j < a.get(GROUP_SIZE); j++) {
                 char c = (char) (rand.nextInt(26) + 97);
                 Timber.v("value of c = " + c);

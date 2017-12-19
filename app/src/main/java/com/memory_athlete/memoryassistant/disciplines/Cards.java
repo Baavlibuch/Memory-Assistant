@@ -61,7 +61,7 @@ public class Cards extends DisciplineFragment {
         (rootView.findViewById(R.id.cards)).setVisibility(v);
     }
 
-    //Display a card
+
     void setCard() {
         ((ImageView) rootView.findViewById(R.id.cards)).setImageResource(cards[randomList.get(mPosition)]);
     }

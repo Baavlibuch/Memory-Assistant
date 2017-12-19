@@ -46,12 +46,14 @@ public class DisciplineFragment extends Fragment {
     protected CountDownTimer cdt;
     protected long mTime = 0;
     protected boolean isTimerRunning = false, hasStandard = true;
-    protected ArrayList<Integer> a = new ArrayList<>();             //Instructs the background thread
-    protected final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
+    public ArrayList<Integer> a = new ArrayList<>();             //Instructs the background thread
+    public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -140,17 +142,6 @@ public class DisciplineFragment extends Fragment {
             //categories.add("1");
         }
         for (int i = 2; i < 11; i++) categories.add(i, Integer.toString(i));
-        /*
-        categories.add("2");
-        categories.add("3");
-        categories.add("4");
-        categories.add("5");
-        categories.add("6");
-        categories.add("7");
-        categories.add("8");
-        categories.add("9");
-        categories.add("10");
-        */
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
                 getActivity(), android.R.layout.simple_spinner_item, categories);
@@ -289,7 +280,7 @@ public class DisciplineFragment extends Fragment {
             ((Chronometer) rootView.findViewById(R.id.chronometer)).stop();
             (rootView.findViewById(R.id.chronometer)).setVisibility(View.GONE);
         }
-        a.set(2, 0);
+        a.set(RUNNING, FALSE);
         (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
         (rootView.findViewById(R.id.stop)).setVisibility(View.GONE);
         (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
@@ -343,6 +334,7 @@ public class DisciplineFragment extends Fragment {
                 rootView.findViewById(R.id.clock_edit).setVisibility(View.VISIBLE);
                 ((EditText) rootView.findViewById(R.id.min)).setText("");
                 ((EditText) rootView.findViewById(R.id.sec)).setText("");
+                rootView.findViewById(R.id.min).requestFocus();
             }
         });
         Timber.v("timer onClickListener set");
@@ -371,7 +363,7 @@ public class DisciplineFragment extends Fragment {
 
         (rootView.findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                a.set(2, 0);
+                a.set(RUNNING, FALSE);
                 if (isTimerRunning) {
                     cdt.cancel();
                 } else {
@@ -398,7 +390,7 @@ public class DisciplineFragment extends Fragment {
                 (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
                 (rootView.findViewById(R.id.stop)).setVisibility(View.VISIBLE);
                 (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
-                a.set(2, 0);
+                //a.set(RUNNING, FALSE);
             }
         });
         Timber.v("resume onClickListener set");
@@ -521,6 +513,7 @@ public class DisciplineFragment extends Fragment {
         (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
         if (a.get(RUNNING) == FALSE) {
+            reset();
             return;
         }
         ((TextView) rootView.findViewById(R.id.random_values)).setText(s);

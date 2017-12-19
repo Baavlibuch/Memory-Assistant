@@ -19,6 +19,12 @@
     <list default="true" id="37817797-208a-4257-b7e9-66e813937200" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Names.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Names.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Places.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Places.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Words.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Words.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" />
     </list>
     <list id="ff122b7f-314e-4267-a347-d01c377186b1" name="Revert: cade cleanup" comment="" />
     <ignored path="Memory Athletes.iws" />
@@ -71,79 +77,108 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DisciplineFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DisciplineFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="89" column="24" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
+            <state relative-caret-position="306">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#DisciplineFragment#0" expanded="false" />
-                <element signature="e#2608#2658#0" expanded="false" />
-                <element signature="e#3242#3245#0" expanded="false" />
+                <element signature="method#DisciplineFragment#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#onCreateView#0;class#DisciplineFragment#0" expanded="false" />
                 <element signature="method#levelSpinner#0;class#DisciplineFragment#0" expanded="false" />
                 <element signature="method#makeSpinner#0;class#DisciplineFragment#0" expanded="false" />
-                <element signature="method#onItemSelected#0;class#6675:6919" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#6675:6919" expanded="false" />
+                <element signature="method#onItemSelected#0;class#6108:6352" expanded="false" />
+                <element signature="method#onNothingSelected#0;class#6108:6352" expanded="false" />
+                <element signature="method#startCommon#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#numbersVisibility#0;class#DisciplineFragment#0" expanded="false" />
                 <element signature="method#Start#0;class#DisciplineFragment#0" expanded="false" />
-                <element signature="e#9688#9772#0" expanded="false" />
+                <element signature="e#8499#8517#0" expanded="false" />
+                <element signature="e#9100#9184#0" expanded="false" />
                 <element signature="method#save#0;class#DisciplineFragment#0" expanded="false" />
-                <marker date="1513674929092" expanded="false" signature="1693:1700" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="5992:6014" ph="&quot;Select maximum digits in a value&quot;" />
-                <marker date="1513674929092" expanded="false" signature="7191:8170" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="8272:8349" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="12503:13991" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="14025:19152" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="19218:19521" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="19574:21652" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="20037:20931" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="20144:20411" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="20452:20917" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="20534:20550" ph="&quot;Time's Up&quot;" />
-                <marker date="1513674929092" expanded="false" signature="21008:21589" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="21071:21366" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="21407:21575" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="21489:21505" ph="&quot;Time's Up&quot;" />
-                <marker date="1513674929092" expanded="false" signature="21720:23000" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="22500:22531" ph="&quot;Chose level&quot;" />
-                <marker date="1513674929092" expanded="false" signature="23114:23125" ph=" { " />
-                <marker date="1513674929092" expanded="false" signature="23135:23141" ph=" }" />
-                <marker date="1513674929092" expanded="false" signature="23241:23586" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="23723:24157" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="23782:23853" ph="{...}" />
-                <marker date="1513674929092" expanded="false" signature="23863:23893" ph="@{...}" />
-                <marker date="1513674929092" expanded="false" signature="23964:23979" ph=" { " />
-                <marker date="1513674929092" expanded="false" signature="23999:24009" ph=" }" />
-                <marker date="1513674929092" expanded="false" signature="24076:24151" ph="{...}" />
+                <element signature="method#reset#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="e#17976#18121#0" expanded="true" />
+                <element signature="e#18120#18121#0" expanded="true" />
+                <element signature="method#recall#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#timer#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#onFinish#0;class#19375:20435" expanded="false" />
+                <element signature="class#20484:21093" expanded="false" />
+                <element signature="method#onTick#0;class#20484:21093" expanded="false" />
+                <element signature="method#onFinish#0;class#20484:21093" expanded="false" />
+                <element signature="method#preExecute#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#postExecute#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="e#23510#23522#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+                <marker date="1513685133303" expanded="false" signature="5709:5731" ph="&quot;Select maximum digits in a value&quot;" />
+                <marker date="1513685133303" expanded="false" signature="20038:20054" ph="&quot;Time's Up&quot;" />
+                <marker date="1513685133303" expanded="false" signature="20993:21009" ph="&quot;Time's Up&quot;" />
+                <marker date="1513685133303" expanded="false" signature="22098:22129" ph="&quot;Chose level&quot;" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Cards.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java">
+      <file leaf-file-name="DisciplineActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+              <folding>
+                <element signature="method#theme#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MakeList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/data/MakeList.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <caret line="89" column="36" selection-start-line="89" selection-start-column="36" selection-end-line="89" selection-end-column="36" />
               <folding>
-                <element signature="method#onCreateView#0;class#Cards#0" expanded="false" />
-                <element signature="e#1062#1087#0" expanded="true" />
-                <element signature="e#1096#1121#0" expanded="true" />
-                <element signature="e#1388#1532#0" expanded="true" />
-                <element signature="e#1531#1532#0" expanded="true" />
-                <element signature="e#1646#1671#0" expanded="true" />
-                <element signature="e#1673#1698#0" expanded="true" />
-                <element signature="method#numbersVisibility#0;class#Cards#0" expanded="false" />
-                <element signature="method#setCard#0;class#Cards#0" expanded="false" />
-                <element signature="method#previous#0;class#Cards#0" expanded="false" />
-                <element signature="method#next#0;class#Cards#0" expanded="false" />
-                <element signature="method#background#0;class#Cards#0" expanded="false" />
-                <element signature="e#3281#3304#0" expanded="true" />
-                <element signature="method#postExecute#0;class#Cards#0" expanded="false" />
-                <element signature="e#3637#3660#0" expanded="true" />
-                <element signature="method#save#0;class#Cards#0" expanded="false" />
-                <element signature="e#4512#4540#0" expanded="true" />
-                <element signature="e#4798#4826#0" expanded="true" />
-                <element signature="method#reset#0;class#Cards#0" expanded="false" />
+                <element signature="docComment;class#MakeList#0" expanded="false" />
+                <element signature="method#makeCards#0;class#MakeList#0" expanded="false" />
+                <element signature="method#makeSuits#0;class#MakeList#0" expanded="false" />
+                <element signature="method#makeCardString#0;class#MakeList#0" expanded="false" />
+                <element signature="method#fixBug#0;class#MakeList#0" expanded="false" />
+                <element signature="method#theme#0;class#MakeList#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Numbers.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="557">
+              <caret line="87" column="50" selection-start-line="87" selection-start-column="50" selection-end-line="87" selection-end-column="50" />
+              <folding>
+                <element signature="method#onCreateView#0;class#Numbers#0" expanded="false" />
+                <element signature="method#round#0;class#Numbers#0" expanded="false" />
+                <element signature="method#startCommon#0;class#Numbers#0" expanded="false" />
+                <element signature="method#reset#0;class#Numbers#0" expanded="false" />
+                <element signature="method#save#0;class#Numbers#0" expanded="false" />
+                <element signature="method#recall#0;class#Numbers#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Letters.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+              <folding>
+                <element signature="method#onCreateView#0;class#Letters#0" expanded="false" />
+                <element signature="e#617#642#0" expanded="true" />
+                <element signature="e#651#673#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1711,7 +1746,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4533933335217" />
+        <entry key="$PROJECT_DIR$" value="4533947328182" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1927,13 +1962,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFileFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_my_space.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/ExperimentActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/data/SimpleFragmentPagerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Practice.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Words.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Places.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Names.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Dates.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Colours.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Equations.java" />
@@ -1944,8 +1974,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Preferences.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/BinaryDigits.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_write_file.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_space.xml" />
@@ -1968,10 +1996,17 @@
         <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/BinaryDigits.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Names.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Places.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Words.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" />
       </list>
     </option>
   </component>
@@ -2074,7 +2109,51 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="memoryassistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="disciplines" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="memoryassistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2447,11 +2526,20 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="24" width="1280" height="776" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30307692" sideWeight="0.48136142" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.41384616" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2461,11 +2549,12 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48307693" sideWeight="0.4886548" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31538463" sideWeight="0.49353796" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34615386" sideWeight="0.49353796" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3611898" sideWeight="0.51130855" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.58615386" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2484,7 +2573,6 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="100" y="100" width="1080" height="600" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2562,45 +2650,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Equations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Names.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Places.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1764">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Foods.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
           <caret line="9" column="29" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Colours.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2673,20 +2726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/BinaryDigits.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_write_file.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -2701,16 +2740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_disciplines.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -2762,13 +2791,6 @@
             <element signature="e#3430#3726#0" expanded="false" />
             <element signature="e#3579#3707#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/data/MakeList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="151" column="47" selection-start-line="151" selection-start-column="47" selection-end-line="151" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -2882,13 +2904,6 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpace.java">
@@ -3051,21 +3066,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
-          <folding>
-            <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
@@ -3121,6 +3121,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/BinaryDigits.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding>
+            <element signature="method#onCreateView#0;class#BinaryDigits#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreateView#0;class#Cards#0" expanded="false" />
+            <element signature="e#1062#1087#0" expanded="true" />
+            <element signature="e#1096#1121#0" expanded="true" />
+            <element signature="e#1646#1671#0" expanded="true" />
+            <element signature="e#1673#1698#0" expanded="true" />
+            <element signature="method#numbersVisibility#0;class#Cards#0" expanded="false" />
+            <element signature="method#setCard#0;class#Cards#0" expanded="false" />
+            <element signature="method#previous#0;class#Cards#0" expanded="false" />
+            <element signature="method#next#0;class#Cards#0" expanded="false" />
+            <element signature="method#background#0;class#Cards#0" expanded="false" />
+            <element signature="method#postExecute#0;class#Cards#0" expanded="false" />
+            <element signature="method#save#0;class#Cards#0" expanded="false" />
+            <element signature="e#4618#4646#0" expanded="true" />
+            <element signature="e#4904#4932#0" expanded="true" />
+            <element signature="method#reset#0;class#Cards#0" expanded="false" />
+            <element signature="e#6435#6487#0" expanded="false" />
+            <element signature="method#startCommon#0;class#Cards#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Colours.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -3137,76 +3181,194 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        <state relative-caret-position="216">
+          <caret line="51" column="47" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_disciplines.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
-            <element signature="method#onCreateView#0;class#Cards#0" expanded="false" />
-            <element signature="e#1062#1087#0" expanded="true" />
-            <element signature="e#1096#1121#0" expanded="true" />
-            <element signature="e#1388#1532#0" expanded="true" />
-            <element signature="e#1531#1532#0" expanded="true" />
-            <element signature="e#1646#1671#0" expanded="true" />
-            <element signature="e#1673#1698#0" expanded="true" />
-            <element signature="method#numbersVisibility#0;class#Cards#0" expanded="false" />
-            <element signature="method#setCard#0;class#Cards#0" expanded="false" />
-            <element signature="method#previous#0;class#Cards#0" expanded="false" />
-            <element signature="method#next#0;class#Cards#0" expanded="false" />
-            <element signature="method#background#0;class#Cards#0" expanded="false" />
-            <element signature="e#3281#3304#0" expanded="true" />
-            <element signature="method#postExecute#0;class#Cards#0" expanded="false" />
-            <element signature="e#3637#3660#0" expanded="true" />
-            <element signature="method#save#0;class#Cards#0" expanded="false" />
-            <element signature="e#4512#4540#0" expanded="true" />
-            <element signature="e#4798#4826#0" expanded="true" />
-            <element signature="method#reset#0;class#Cards#0" expanded="false" />
+            <element signature="e#1049#1963#0" expanded="false" />
+            <element signature="e#1339#1652#0" expanded="false" />
+            <element signature="e#1670#1936#0" expanded="false" />
+            <element signature="e#2754#3016#0" expanded="false" />
+            <element signature="e#3034#3352#0" expanded="false" />
+            <element signature="e#3370#3686#0" expanded="false" />
+            <element signature="e#3704#4766#0" expanded="false" />
+            <element signature="e#3991#4222#0" expanded="false" />
+            <element signature="e#4244#4478#0" expanded="false" />
+            <element signature="e#4500#4735#0" expanded="false" />
+            <element signature="e#4784#5818#0" expanded="false" />
+            <element signature="e#5081#5422#0" expanded="false" />
+            <element signature="e#5444#5785#0" expanded="false" />
+            <element signature="e#5861#6402#0" expanded="false" />
+            <element signature="e#5996#6317#0" expanded="false" />
+            <element signature="e#6484#6677#0" expanded="false" />
+            <element signature="e#6682#6782#0" expanded="false" />
+            <element signature="e#6788#7213#0" expanded="false" />
+            <element signature="e#7018#7130#0" expanded="false" />
+            <element signature="e#7219#7408#0" expanded="false" />
+            <element signature="e#7414#7607#0" expanded="false" />
+            <element signature="e#7613#9640#0" expanded="false" />
+            <element signature="e#7862#9611#0" expanded="false" />
+            <element signature="e#8104#8302#0" expanded="false" />
+            <element signature="e#8316#8516#0" expanded="false" />
+            <element signature="e#8530#8728#0" expanded="false" />
+            <element signature="e#8742#8944#0" expanded="false" />
+            <element signature="e#8958#9158#0" expanded="false" />
+            <element signature="e#9172#9370#0" expanded="false" />
+            <element signature="e#9384#9586#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Names.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+          <folding>
+            <element signature="method#createDictionary#0;class#Names#0" expanded="false" />
+            <element signature="method#background#0;class#Names#0" expanded="false" />
+            <element signature="class#DictionaryAsyncTask#0;class#Names#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#DictionaryAsyncTask#0;class#Names#0" expanded="false" />
+            <element signature="e#3412#3447#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#DictionaryAsyncTask#0;class#Names#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Places.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="29" column="70" selection-start-line="29" selection-start-column="70" selection-end-line="29" selection-end-column="70" />
+          <folding>
+            <element signature="method#reset#0;class#Places#0" expanded="false" />
+            <element signature="method#background#0;class#Places#0" expanded="false" />
+            <element signature="method#createDictionary#0;class#Places#0" expanded="false" />
+            <element signature="class#DictionaryAsyncTask#0;class#Places#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#DictionaryAsyncTask#0;class#Places#0" expanded="false" />
+            <element signature="e#5946#5981#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#DictionaryAsyncTask#0;class#Places#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Words.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="26" column="67" selection-start-line="26" selection-start-column="67" selection-end-line="26" selection-end-column="67" />
+          <folding>
+            <element signature="method#background#0;class#Words#0" expanded="false" />
+            <element signature="method#createDictionary#0;class#Words#0" expanded="false" />
+            <element signature="class#DictionaryAsyncTask#0;class#Words#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#DictionaryAsyncTask#0;class#Words#0" expanded="false" />
+            <element signature="e#2323#2358#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Letters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+          <folding>
+            <element signature="method#onCreateView#0;class#Letters#0" expanded="false" />
+            <element signature="e#617#642#0" expanded="true" />
+            <element signature="e#651#673#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="87" column="50" selection-start-line="87" selection-start-column="50" selection-end-line="87" selection-end-column="50" />
+          <folding>
+            <element signature="method#onCreateView#0;class#Numbers#0" expanded="false" />
+            <element signature="method#round#0;class#Numbers#0" expanded="false" />
+            <element signature="method#startCommon#0;class#Numbers#0" expanded="false" />
+            <element signature="method#reset#0;class#Numbers#0" expanded="false" />
+            <element signature="method#save#0;class#Numbers#0" expanded="false" />
+            <element signature="method#recall#0;class#Numbers#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="89" column="24" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
+        <state relative-caret-position="306">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#DisciplineFragment#0" expanded="false" />
-            <element signature="e#2608#2658#0" expanded="false" />
-            <element signature="e#3242#3245#0" expanded="false" />
+            <element signature="method#DisciplineFragment#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#onCreateView#0;class#DisciplineFragment#0" expanded="false" />
             <element signature="method#levelSpinner#0;class#DisciplineFragment#0" expanded="false" />
             <element signature="method#makeSpinner#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#onItemSelected#0;class#6675:6919" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#6675:6919" expanded="false" />
+            <element signature="method#onItemSelected#0;class#6108:6352" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#6108:6352" expanded="false" />
+            <element signature="method#startCommon#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#numbersVisibility#0;class#DisciplineFragment#0" expanded="false" />
             <element signature="method#Start#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="e#9688#9772#0" expanded="false" />
+            <element signature="e#8499#8517#0" expanded="false" />
+            <element signature="e#9100#9184#0" expanded="false" />
             <element signature="method#save#0;class#DisciplineFragment#0" expanded="false" />
-            <marker date="1513674929092" expanded="false" signature="1693:1700" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="5992:6014" ph="&quot;Select maximum digits in a value&quot;" />
-            <marker date="1513674929092" expanded="false" signature="7191:8170" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="8272:8349" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="12503:13991" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="14025:19152" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="19218:19521" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="19574:21652" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="20037:20931" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="20144:20411" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="20452:20917" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="20534:20550" ph="&quot;Time's Up&quot;" />
-            <marker date="1513674929092" expanded="false" signature="21008:21589" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="21071:21366" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="21407:21575" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="21489:21505" ph="&quot;Time's Up&quot;" />
-            <marker date="1513674929092" expanded="false" signature="21720:23000" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="22500:22531" ph="&quot;Chose level&quot;" />
-            <marker date="1513674929092" expanded="false" signature="23114:23125" ph=" { " />
-            <marker date="1513674929092" expanded="false" signature="23135:23141" ph=" }" />
-            <marker date="1513674929092" expanded="false" signature="23241:23586" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="23723:24157" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="23782:23853" ph="{...}" />
-            <marker date="1513674929092" expanded="false" signature="23863:23893" ph="@{...}" />
-            <marker date="1513674929092" expanded="false" signature="23964:23979" ph=" { " />
-            <marker date="1513674929092" expanded="false" signature="23999:24009" ph=" }" />
-            <marker date="1513674929092" expanded="false" signature="24076:24151" ph="{...}" />
+            <element signature="method#reset#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="e#17976#18121#0" expanded="true" />
+            <element signature="e#18120#18121#0" expanded="true" />
+            <element signature="method#recall#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#timer#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#onFinish#0;class#19375:20435" expanded="false" />
+            <element signature="class#20484:21093" expanded="false" />
+            <element signature="method#onTick#0;class#20484:21093" expanded="false" />
+            <element signature="method#onFinish#0;class#20484:21093" expanded="false" />
+            <element signature="method#preExecute#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#postExecute#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="e#23510#23522#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+            <marker date="1513685133303" expanded="false" signature="5709:5731" ph="&quot;Select maximum digits in a value&quot;" />
+            <marker date="1513685133303" expanded="false" signature="20038:20054" ph="&quot;Time's Up&quot;" />
+            <marker date="1513685133303" expanded="false" signature="20993:21009" ph="&quot;Time's Up&quot;" />
+            <marker date="1513685133303" expanded="false" signature="22098:22129" ph="&quot;Chose level&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/data/MakeList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="89" column="36" selection-start-line="89" selection-start-column="36" selection-end-line="89" selection-end-column="36" />
+          <folding>
+            <element signature="docComment;class#MakeList#0" expanded="false" />
+            <element signature="method#makeCards#0;class#MakeList#0" expanded="false" />
+            <element signature="method#makeSuits#0;class#MakeList#0" expanded="false" />
+            <element signature="method#makeCardString#0;class#MakeList#0" expanded="false" />
+            <element signature="method#fixBug#0;class#MakeList#0" expanded="false" />
+            <element signature="method#theme#0;class#MakeList#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding>
+            <element signature="method#theme#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>

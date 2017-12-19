@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.memory_athlete.memoryassistant.R;
 
@@ -26,6 +27,8 @@ public class Places extends DisciplineFragment {
         //setTitle(getString(R.string.g));
 
         //makeSpinner();
+        ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.places_small));
+
         (new DictionaryAsyncTask()).execute();
         Timber.v("Activity Created");
         return rootView;

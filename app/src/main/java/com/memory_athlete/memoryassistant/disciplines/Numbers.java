@@ -85,7 +85,7 @@ public class Numbers extends DisciplineFragment {
                 if (a.get(RUNNING) == FALSE) break;
             }
         } else {                                        //handling int
-            for (int i = 0; i < a.get(GROUP_SIZE); i++) {
+            for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
                 int n;
                 //-1 to ensure that the numbers fill the entire range
                 n = n1 * rand.nextInt((int) Math.pow(10, a.get(GROUP_SIZE)))

@@ -15,9 +15,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
+import com.memory_athlete.memoryassistant.disciplines.DisciplineFragment;
 import com.memory_athlete.memoryassistant.disciplines.Letters;
 import com.memory_athlete.memoryassistant.disciplines.Names;
 import com.memory_athlete.memoryassistant.disciplines.Numbers;
@@ -44,7 +44,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         theme(intent);
         int fragIndex = intent.getIntExtra("class", 0);
         Timber.v("fragIndex = " + fragIndex + "tabTitles.size() = " + tabTitles.size());
-        tabTitles.add(getString(MakeList.makePracticeFrags()[fragIndex - 1]));
+        tabTitles.add(getString(R.string.practice));
         for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.no_my_space_frags), "1")); i++)
             tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
@@ -163,6 +163,8 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     @Override
     public void onBackPressed() {
         int cur = viewPager.getCurrentItem();
+
+        //go back in current fragment
         if (cur != 0) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + cur;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
@@ -171,6 +173,8 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             else fragment.back();
             return;
         }
+
+        //Check if everything is saved
         for (int i = 1; i < tabTitles.size(); i++) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + i;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
@@ -180,6 +184,16 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                 return;
             }
         }
+
+        //Stop the loading
+        String tag = "android:switcher:" + R.id.viewpager + ":" + 0;
+        DisciplineFragment frag = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
+        if (frag.a.get(frag.RUNNING) == frag.TRUE) {
+            frag.a.set(frag.RUNNING, frag.FALSE);
+            return;
+        }
+
+        //Check if sudden exit is enabled
         if (PreferenceManager.getDefaultSharedPreferences(this)
                 .getBoolean(getString(R.string.double_back_to_exit), false) && !backPressed) {
             backPressed = true;
