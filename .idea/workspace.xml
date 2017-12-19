@@ -17,10 +17,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37817797-208a-4257-b7e9-66e813937200" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java" />
     </list>
     <ignored path="Memory Athletes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,130 +70,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DisciplineActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
+      <file leaf-file-name="DisciplineFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+            <state relative-caret-position="35">
+              <caret line="61" column="76" selection-start-line="61" selection-start-column="76" selection-end-line="61" selection-end-column="76" />
               <folding>
-                <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
-                <element signature="class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
-                <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
-                <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
-                <element signature="method#onBackPressed#0;class#DisciplineActivity#0" expanded="false" />
-                <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="docComment;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#DisciplineFragment#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#onCreateView#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="e#2784#2809#0" expanded="true" />
+                <element signature="e#3258#3308#0" expanded="false" />
+                <element signature="e#3892#3895#0" expanded="false" />
+                <element signature="method#levelSpinner#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#makeSpinner#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="class#6774:7018" expanded="false" />
+                <element signature="method#onItemSelected#0;class#6774:7018" expanded="false" />
+                <element signature="method#onNothingSelected#0;class#6774:7018" expanded="false" />
+                <element signature="method#startCommon#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#numbersVisibility#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#Start#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="e#9511#9595#0" expanded="false" />
+                <element signature="method#save#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#reset#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#recall#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#timer#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="class#18977:20037" expanded="false" />
+                <element signature="method#onTick#0;class#18977:20037" expanded="false" />
+                <element signature="method#onFinish#0;class#18977:20037" expanded="false" />
+                <element signature="class#20086:20695" expanded="false" />
+                <element signature="method#onTick#0;class#20086:20695" expanded="false" />
+                <element signature="method#onFinish#0;class#20086:20695" expanded="false" />
+                <element signature="method#preExecute#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#postExecute#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+                <element signature="e#22704#22716#0" expanded="false" />
+                <element signature="method#onPostExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Recall.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="649" column="57" selection-start-line="649" selection-start-column="57" selection-end-line="649" selection-end-column="57" />
-              <folding>
-                <element signature="method#onBackPressed#0;class#Recall#0" expanded="false" />
-                <element signature="method#theme#0;class#Recall#0" expanded="false" />
-                <element signature="method#makeSpinner1#0;class#Recall#0" expanded="false" />
-                <element signature="e#4737#4768#0" expanded="false" />
-                <element signature="class#5163:5713" expanded="false" />
-                <element signature="method#onItemSelected#0;class#5163:5713" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#5163:5713" expanded="false" />
-                <element signature="method#spinnerReset#0;class#Recall#0" expanded="false" />
-                <element signature="e#6207#6249#0" expanded="false" />
-                <element signature="method#makeSpinner2#0;class#Recall#0" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#7743:8726" expanded="false" />
-                <element signature="method#practice#0;class#Recall#0" expanded="false" />
-                <element signature="method#updateGridView#0;class#Recall#0" expanded="false" />
-                <element signature="method#cardSelected#0;class#Recall#0" expanded="false" />
-                <element signature="method#cardResponseLayout#0;class#Recall#0" expanded="false" />
-                <element signature="method#simpleResponseLayout#0;class#Recall#0" expanded="false" />
-                <element signature="method#setResponseLayout#0;class#Recall#0" expanded="false" />
-                <element signature="method#getAnswers#0;class#Recall#0" expanded="false" />
-                <element signature="method#giveUp#0;class#Recall#0" expanded="false" />
-                <element signature="method#getResponse#0;class#Recall#0" expanded="false" />
-                <element signature="method#hideResponseLayout#0;class#Recall#0" expanded="false" />
-                <element signature="method#compare#0;class#Recall#0" expanded="false" />
-                <element signature="method#isLeft#0;class#Recall#0" expanded="false" />
-                <element signature="method#isCorrect#0;class#Recall#0" expanded="false" />
-                <element signature="method#isMiss#0;class#Recall#0" expanded="false" />
-                <element signature="e#27075#27094#0" expanded="false" />
-                <element signature="method#isWrong#0;class#Recall#0" expanded="false" />
-                <element signature="method#isSpelling#0;class#Recall#0" expanded="false" />
-                <element signature="method#compareCards#0;class#Recall#0" expanded="false" />
-                <element signature="method#reset#0;class#Recall#0" expanded="false" />
-                <element signature="method#check#0;class#Recall#0" expanded="false" />
-                <element signature="method#startSW#0;class#Recall#0" expanded="false" />
-                <element signature="method#startTimer#0;class#Recall#0" expanded="false" />
-                <element signature="class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="method#onPreExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="e#32785#32797#0" expanded="false" />
-                <element signature="method#doInBackground#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="method#onPostExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="e#35160#35231#0" expanded="false" />
-                <element signature="method#onPreExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="method#onPostExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="class#CardAdapter#0;class#Recall#0" expanded="false" />
-                <element signature="e#36556#36564#0" expanded="false" />
-                <element signature="method#getView#0;class#CardAdapter#0;class#Recall#0" expanded="false" />
-                <element signature="e#38103#38179#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_recall.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="210" column="48" selection-start-line="210" selection-start-column="48" selection-end-line="210" selection-end-column="48" />
-              <folding>
-                <element signature="e#499#7646#0" expanded="false" />
-                <element signature="e#696#909#0" expanded="false" />
-                <element signature="e#923#1170#0" expanded="false" />
-                <element signature="e#1184#7621#0" expanded="false" />
-                <element signature="e#1465#4614#0" expanded="false" />
-                <element signature="e#1701#4583#0" expanded="false" />
-                <element signature="e#2086#3302#0" expanded="false" />
-                <element signature="e#2551#2832#0" expanded="false" />
-                <element signature="e#2862#3261#0" expanded="false" />
-                <element signature="e#3328#4546#0" expanded="false" />
-                <element signature="e#3792#4078#0" expanded="false" />
-                <element signature="e#4108#4505#0" expanded="false" />
-                <element signature="e#4632#5041#0" expanded="false" />
-                <element signature="e#5059#5694#0" expanded="false" />
-                <element signature="e#5396#5585#0" expanded="false" />
-                <element signature="e#6075#6644#0" expanded="false" />
-                <element signature="e#6275#6609#0" expanded="false" />
-                <element signature="e#6666#6996#0" expanded="false" />
-                <element signature="e#7018#7558#0" expanded="false" />
-                <element signature="e#7187#7513#0" expanded="false" />
-                <element signature="e#8785#9087#0" expanded="false" />
-                <element signature="e#9138#10074#0" expanded="false" />
-                <element signature="e#9481#9719#0" expanded="false" />
-                <element signature="e#10092#11030#0" expanded="false" />
-                <element signature="e#10435#10674#0" expanded="false" />
-                <element signature="e#11652#11952#0" expanded="false" />
-                <element signature="e#12028#13853#0" expanded="false" />
-                <element signature="e#12266#12993#0" expanded="false" />
-                <element signature="e#12514#12748#0" expanded="false" />
-                <element signature="e#12770#12960#0" expanded="false" />
-                <element signature="e#13011#13824#0" expanded="false" />
-                <element signature="e#13317#13572#0" expanded="false" />
-                <element signature="e#13594#13791#0" expanded="false" />
-                <element signature="e#13888#15842#0" expanded="false" />
-                <element signature="e#14388#14659#0" expanded="false" />
-                <element signature="e#14677#14905#0" expanded="false" />
-                <element signature="e#14923#15183#0" expanded="false" />
-                <element signature="e#15201#15476#0" expanded="false" />
-                <element signature="e#15494#15780#0" expanded="false" />
-                <element signature="e#15852#16134#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
           </provider>
         </entry>
       </file>
@@ -1997,7 +1910,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/BinaryDigits.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_write_file.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_space.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" />
@@ -2014,7 +1926,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpaceFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_write_file.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/services/NotificationUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/reminders/ReminderUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/Implement/Equations/Electrical Technology/AC Circuits.txt" />
@@ -2022,6 +1933,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java" />
       </list>
     </option>
   </component>
@@ -2124,7 +2037,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="disciplines" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2784,13 +2697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="510" column="27" selection-start-line="510" selection-start-column="27" selection-end-line="510" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/lessons/Lessons.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="53">
@@ -2980,25 +2886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-          <folding>
-            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#firstStart#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#setAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#setList#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#7128#7170#0" expanded="false" />
-            <element signature="class#Item#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#Item#0;class#Item#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#MainAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#getView#0;class#MainAdapter#0;class#MainActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/settings_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -3107,10 +2994,49 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="46" column="55" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
+          <folding>
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onStart#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#1956#2376#0" expanded="true" />
+            <element signature="e#2375#2376#0" expanded="true" />
+            <element signature="method#firstStart#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#2417#3770#0" expanded="true" />
+            <element signature="e#3769#3770#0" expanded="true" />
+            <element signature="method#setAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#setList#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#7582#7624#0" expanded="false" />
+            <element signature="class#Item#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#Item#0;class#Item#0;class#MainActivity#0" expanded="false" />
+            <element signature="class#MainAdapter#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#getView#0;class#MainAdapter#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+          <folding>
+            <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="649" column="57" selection-start-line="649" selection-start-column="57" selection-end-line="649" selection-end-column="57" />
+        <state relative-caret-position="332">
+          <caret line="827" column="79" selection-start-line="827" selection-start-column="79" selection-end-line="827" selection-end-column="79" />
           <folding>
             <element signature="method#onBackPressed#0;class#Recall#0" expanded="false" />
             <element signature="method#theme#0;class#Recall#0" expanded="false" />
@@ -3151,6 +3077,7 @@
             <element signature="method#doInBackground#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="method#onPostExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="e#35160#35231#0" expanded="false" />
+            <element signature="class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="method#onPreExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="method#onPostExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
             <element signature="class#CardAdapter#0;class#Recall#0" expanded="false" />
@@ -3177,17 +3104,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/DisciplineFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+        <state relative-caret-position="35">
+          <caret line="61" column="76" selection-start-line="61" selection-start-column="76" selection-end-line="61" selection-end-column="76" />
           <folding>
-            <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="docComment;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#DisciplineFragment#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#onCreateView#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="e#2784#2809#0" expanded="true" />
+            <element signature="e#3258#3308#0" expanded="false" />
+            <element signature="e#3892#3895#0" expanded="false" />
+            <element signature="method#levelSpinner#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#makeSpinner#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="class#6774:7018" expanded="false" />
+            <element signature="method#onItemSelected#0;class#6774:7018" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#6774:7018" expanded="false" />
+            <element signature="method#startCommon#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#numbersVisibility#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#Start#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="e#9511#9595#0" expanded="false" />
+            <element signature="method#save#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#reset#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#recall#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#timer#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="class#18977:20037" expanded="false" />
+            <element signature="method#onTick#0;class#18977:20037" expanded="false" />
+            <element signature="method#onFinish#0;class#18977:20037" expanded="false" />
+            <element signature="class#20086:20695" expanded="false" />
+            <element signature="method#onTick#0;class#20086:20695" expanded="false" />
+            <element signature="method#onFinish#0;class#20086:20695" expanded="false" />
+            <element signature="method#preExecute#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#postExecute#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
+            <element signature="e#22704#22716#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
           </folding>
         </state>
       </provider>
