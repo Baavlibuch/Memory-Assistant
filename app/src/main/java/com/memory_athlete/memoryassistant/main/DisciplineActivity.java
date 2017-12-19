@@ -33,9 +33,8 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     boolean backPressed = false;
 
     private ArrayList<String> tabTitles = new ArrayList<>();
-    Intent intent;
+    Intent intent;                                      //Contains data sent to this activity
     ViewPager viewPager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +60,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    //Function to set the theme
     protected void theme(Intent intent) {
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
@@ -75,8 +75,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                 setTheme(R.style.light);
         }
         int header = intent.getIntExtra("mHeader", 0);
-        if (header != 0)
-            setTitle(getString(header));
+        if (header != 0) setTitle(getString(header));
         else setTitle(intent.getStringExtra("headerString"));
 
         Timber.v("theme = " + theme);

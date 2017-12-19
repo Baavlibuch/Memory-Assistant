@@ -59,35 +59,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        new Runnable(){
+            @Override
+            public void run() {
+        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
         e.putLong("last_opened", System.currentTimeMillis());
         Timber.v("Last opened on" + System.currentTimeMillis());
         e.apply();
         ReminderUtils.scheduleReminder(getApplicationContext());
+            }
+        };
     }
 
     void firstStart() {
-        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(this);
-        if (s.getLong("last_opened", 0) != 0) return;
+        new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                if (s.getLong("last_opened", 0) != 0) return;
 
-        makeText(this, R.string.confused, Toast.LENGTH_LONG).show();
+                makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
 
-        String filesDir = getFilesDir().getAbsolutePath() + File.separator;
-        File file = new File(filesDir + getString(R.string.my_space));
-        boolean isDirectoryCreated = file.exists();
-        if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
-        if (!isDirectoryCreated) {
-            MakeList.fixBug(this);
-            throw new RuntimeException("couldn't create the MySpace directory");
-        }
-        file = new File(getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice));
-        isDirectoryCreated = file.exists();
-        if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
-        if (!isDirectoryCreated) {
-            MakeList.fixBug(this);
-            throw new RuntimeException("couldn't create the MySpace directory");
-        }
+                String filesDir = getFilesDir().getAbsolutePath() + File.separator;
+                File file = new File(filesDir + getString(R.string.my_space));
+                boolean isDirectoryCreated = file.exists();
+                if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
+                if (!isDirectoryCreated) {
+                    MakeList.fixBug(getApplicationContext());
+                    throw new RuntimeException("couldn't create the MySpace directory");
+                }
+                file = new File(getFilesDir().getAbsolutePath() + File.separator
+                        + getString(R.string.practice));
+                isDirectoryCreated = file.exists();
+                if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
+                if (!isDirectoryCreated) {
+                    MakeList.fixBug(getApplicationContext());
+                    throw new RuntimeException("couldn't create the MySpace directory");
+                }
+            }
+        };
 
 /*
         Timber.d("deleting files");

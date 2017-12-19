@@ -19,9 +19,8 @@
     <list default="true" id="37817797-208a-4257-b7e9-66e813937200" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" />
     </list>
     <ignored path="Memory Athletes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,10 +54,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
+            <state relative-caret-position="252">
               <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
               <folding>
                 <element signature="e#251#517#0" expanded="false" />
@@ -66,6 +65,25 @@
                 <element signature="e#861#1071#0" expanded="false" />
                 <element signature="e#879#1065#0" expanded="false" />
                 <element signature="e#1091#1098#0" expanded="false" />
+                <element signature="e#1115#1154#0" expanded="false" />
+                <element signature="e#1115#1154#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DisciplineActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+              <folding>
+                <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="method#onBackPressed#0;class#DisciplineActivity#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1992,7 +2010,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_pager.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_view_pager_bottom_tab.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/settings_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/lessons/ImplementLesson.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpaceFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java" />
@@ -2004,10 +2021,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recall.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="1280" />
     <option name="y" value="24" />
     <option name="width" value="1280" />
     <option name="height" value="776" />
@@ -2054,20 +2073,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Android" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2099,6 +2104,28 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="memoryassistant" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="memoryassistant" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2470,7 +2497,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1280" height="776" extended-state="6" />
+    <frame x="1280" y="24" width="1280" height="776" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2903,22 +2930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="46" column="88" selection-start-line="46" selection-start-column="88" selection-end-line="46" selection-end-column="88" />
-          <folding>
-            <element signature="method#theme#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onBackPressed#0;class#DisciplineActivity#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_write_file.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -3152,7 +3163,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
+        <state relative-caret-position="252">
           <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
           <folding>
             <element signature="e#251#517#0" expanded="false" />
@@ -3160,6 +3171,23 @@
             <element signature="e#861#1071#0" expanded="false" />
             <element signature="e#879#1065#0" expanded="false" />
             <element signature="e#1091#1098#0" expanded="false" />
+            <element signature="e#1115#1154#0" expanded="false" />
+            <element signature="e#1115#1154#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/DisciplineActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+          <folding>
+            <element signature="method#tabTitleUpdate#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#getItem#0;class#SimpleFragmentPagerAdapter#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onPause#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onBackPressed#0;class#DisciplineActivity#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#DisciplineActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
