@@ -29,14 +29,14 @@ public class Letters extends DisciplineFragment {
         Random rand = new Random();
 
         String s = "";
-        for (int i = 0; i < a.get(1); i++) {
-            for (int j = 0; j < a.get(0); j++) {
+        for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
+            for (int j = 0; j < a.get(GROUP_SIZE); j++) {
                 char c = (char) (rand.nextInt(26) + 97);
                 Timber.v("value of c = " + c);
                 if (c != 'm' && c != 'w') s += " ";
                 if (c == 'i' || c == 'j' || c == 'l' || c == 't' || c=='f') s += " ";
                 stringBuilder.append(String.valueOf(c));
-                if (a.get(2) == 0) break;
+                if (a.get(RUNNING) == FALSE) break;
             }
             stringBuilder.append(s).append(getString(R.string.tab)).append("   ");
             s="";

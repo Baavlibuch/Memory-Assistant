@@ -32,14 +32,15 @@ public class Names extends DisciplineFragment {
         return rootView;
     }
 
+    //Read files and make a list of names
     private void createDictionary() {
-        BufferedReader dict = null;
+        BufferedReader dict = null;                 //Reads a line from the file
 
         try {
             dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(first)));
             String first;
             while ((first = dict.readLine()) != null) {
-                mFirstName.add(first.substring(0, 1) + first.substring(1).toLowerCase());
+                mFirstName.add(first.substring(0, 1) + first.substring(1).toLowerCase());//All were in caps
             }
 
         } catch (IOException e) {
@@ -47,7 +48,7 @@ public class Names extends DisciplineFragment {
         }
 
         try {
-            if (dict != null) dict.close();
+            dict.close();
         } catch (IOException e) {
             Timber.e("File not closed");
         }
@@ -69,7 +70,7 @@ public class Names extends DisciplineFragment {
         }
 
         try {
-            if (dict != null) dict.close();
+            dict.close();
         } catch (IOException e) {
             Timber.e("File not closed");
         }
@@ -84,13 +85,13 @@ public class Names extends DisciplineFragment {
         Random rand = new Random();
         int n;
 
-        for (int i = 0; i < a.get(1);) {
+        for (int i = 0; i < a.get(NO_OF_VALUES);) {
             n = rand.nextInt(mFirstName.size());
             stringBuilder.append(mFirstName.get(n)).append(" ");
             n = rand.nextInt(mLastName.size());
             stringBuilder.append(mLastName.get(n)).append("\n");
-            if ((++i) % 20 == 0) stringBuilder.append("\n");
-            if (a.get(2) == 0) break;
+            if ((++i) % 20 == 0) stringBuilder.append("\n");        //empty line between 20 names
+            if (a.get(RUNNING) == FALSE) break;
         }
         return stringBuilder.toString();
     }
@@ -110,5 +111,4 @@ public class Names extends DisciplineFragment {
             return "";
         }
     }
-
 }

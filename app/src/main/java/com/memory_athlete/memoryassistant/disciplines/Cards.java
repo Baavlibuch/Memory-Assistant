@@ -61,10 +61,12 @@ public class Cards extends DisciplineFragment {
         (rootView.findViewById(R.id.cards)).setVisibility(v);
     }
 
+    //Display a card
     void setCard() {
         ((ImageView) rootView.findViewById(R.id.cards)).setImageResource(cards[randomList.get(mPosition)]);
     }
 
+    //Button to show previous
     public void previous() {
         if (mPosition > 0) {
             mPosition--;
@@ -74,8 +76,9 @@ public class Cards extends DisciplineFragment {
         }
     }
 
+    //Show the next card
     public void next() {
-        if (mPosition < a.get(1) * 52 - 1) {
+        if (mPosition < a.get(NO_OF_VALUES) * 52 - 1) {
             mPosition++;
             setCard();
         } else {
@@ -90,23 +93,22 @@ public class Cards extends DisciplineFragment {
         //Random rand = new Random();
         int n;
 
-        for (int i = 0; i < (a.get(1)) * 52; i++) {
+        for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
             n = (new Random()).nextInt(52);
             cards.add(n);
-            if (a.get(2) == 0) break;
+            if (a.get(RUNNING) == FALSE) break;
         }
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (Integer i : cards)
-            stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
+        for (Integer i : cards) stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
         return stringBuilder.toString();
     }
 
     @Override
     protected void postExecute(String s) {
         (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
-        if (a.get(2) == 0) {
+        if (a.get(RUNNING) == FALSE) {
             return;
         }
         String string;
@@ -140,9 +142,7 @@ public class Cards extends DisciplineFragment {
         File pDir = new File(dirPath);
         boolean isDirectoryCreated = pDir.exists();
 
-        if (!isDirectoryCreated) {
-            isDirectoryCreated = pDir.mkdir();
-        }
+        if (!isDirectoryCreated) isDirectoryCreated = pDir.mkdir();
 
         if (isDirectoryCreated) {
             try {
@@ -150,6 +150,7 @@ public class Cards extends DisciplineFragment {
 
                 for (Integer i : randomList)// 0; i < randomList.size(); i++)
                     stringBuilder.append(Integer.toString(i)).append("\n");
+                //\n is also a delimiter used in recall
 
                 outputStream.write(stringBuilder.toString().getBytes());
 
@@ -160,8 +161,7 @@ public class Cards extends DisciplineFragment {
                 e.printStackTrace();
                 Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
             }
-        } else
-            Toast.makeText(getActivity(), "Couldn't save the card list", Toast.LENGTH_SHORT).show();
+        } else throw new RuntimeException("Couldn't create the directory of the discipline");
         return false;
     }
 

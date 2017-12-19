@@ -10,6 +10,8 @@ import com.memory_athlete.memoryassistant.R;
 
 import java.util.Random;
 
+import static com.memory_athlete.memoryassistant.R.string.tab;
+
 public class BinaryDigits extends DisciplineFragment {
 
     @Override
@@ -26,17 +28,16 @@ public class BinaryDigits extends DisciplineFragment {
         Random rand = new Random();
         int n;
 
-        for (int i = 0; i < a.get(1) / a.get(0); i++) {
-            for (int j = 0; j < a.get(0); j++) {
+        for (int i = 0; i < a.get(NO_OF_VALUES) / a.get(GROUP_SIZE); i++) {
+            for (int j = 0; j < a.get(GROUP_SIZE); j++) {
                 n = rand.nextInt(2);
                 stringBuilder.append(n);
                 //textString += n;
                 //stringBuilder.append(" ");
             }
-            stringBuilder.append(getString(R.string.tab)).append("   ");
-            if (a.get(2) == 0) break;
+            stringBuilder.append(getString(tab)).append("   ");          //tab is the delimiter used in recall
+            if (a.get(RUNNING) == FALSE) break;
         }
         return stringBuilder.toString();
     }
-
 }

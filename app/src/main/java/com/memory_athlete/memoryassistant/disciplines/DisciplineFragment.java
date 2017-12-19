@@ -2,7 +2,6 @@ package com.memory_athlete.memoryassistant.disciplines;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -42,81 +41,16 @@ import static java.lang.Math.pow;
  * Created by manik on 5/11/17.
  */
 
-public class DisciplineFragment extends Fragment implements View.OnClickListener{
-    View rootView;
+public class DisciplineFragment extends Fragment {
+    View rootView;                                  //This view contains the fragment
     protected CountDownTimer cdt;
     protected long mTime = 0;
     protected boolean isTimerRunning = false, hasStandard = true;
-    protected ArrayList<Integer> a = new ArrayList<>();
+    protected ArrayList<Integer> a = new ArrayList<>();             //Instructs the background thread
+    protected final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
-    }
-
-    @Override
-    public void onClick(View v) {
-        Timber.v("onClick entered");
-        switch (v.getId()){
-            case R.id.standard_radio:
-                rootView.findViewById(R.id.custom_layout).setVisibility(View.GONE);
-                rootView.findViewById(R.id.level).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.custom_radio).setSelected(false);
-                break;
-            case R.id.custom_radio:
-                rootView.findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.level).setVisibility(View.GONE);
-                rootView.findViewById(R.id.standard_radio).setSelected(false);
-                break;
-            case R.id.sw:
-                rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
-                break;
-            case R.id.timer:
-                rootView.findViewById(R.id.clock_edit).setVisibility(View.VISIBLE);
-                ((EditText) rootView.findViewById(R.id.min)).setText("");
-                ((EditText) rootView.findViewById(R.id.sec)).setText("");
-                break;
-            case R.id.none:
-                rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
-                break;
-            case R.id.start:
-                Start();
-                break;
-            case R.id.reset:
-                reset();
-                break;
-            case R.id.stop:
-                a.set(2, 0);
-                if (isTimerRunning) {
-                    cdt.cancel();
-                } else {
-                    mTime = ((Chronometer) rootView.findViewById(R.id.chronometer)).getBase();
-                    ((Chronometer) rootView.findViewById(R.id.chronometer)).stop();
-                }
-                (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
-                (rootView.findViewById(R.id.resume)).setVisibility(View.VISIBLE);
-                (rootView.findViewById(R.id.reset)).setVisibility(View.VISIBLE);
-                (rootView.findViewById(R.id.stop)).setVisibility(View.GONE);
-                (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
-                break;
-            case R.id.resume:
-                if (isTimerRunning) {
-                    timer();
-                } else {
-                    ((Chronometer) rootView.findViewById(R.id.chronometer)).setBase(mTime);
-                    ((Chronometer) rootView.findViewById(R.id.chronometer)).start();
-                }
-                (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
-                (rootView.findViewById(R.id.stop)).setVisibility(View.VISIBLE);
-                (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
-                a.set(2, 0);
-                break;
-            case R.id.save:
-                save();
-                break;
-            case R.id.recall:
-                recall();
-                break;
-        }
     }
 
     @Override
@@ -125,11 +59,8 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
 
         Bundle bundle = getArguments();
         Timber.i("0 means error in getting title resource string ID through bundle");
-
         try {
             String s = getString(bundle.getInt("nameID", 0));
-
-            //standard form has levels. Cards doesn't have levels
             if (s.equals(getString(R.string.cards))) hasStandard = false;
             else if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
             getActivity().setTitle(s);
@@ -140,23 +71,17 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         }
 
         Timber.i("dictionary loads before the contentView is set");
-        //if (!bundle.getBoolean("hasAsyncTask", false)) {
-            //setContentView(R.layout.activity_disciplines);            TODO
-            setButtons();
-            if (bundle.getBoolean("hasSpinner", false)) {
-                makeSpinner(bundle.getInt("spinnerContent", 0));
-            }
-            levelSpinner();
-            if (!hasStandard) {
-                rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
-                rootView.findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.level).setVisibility(View.GONE);
-            }
-        //}
-        //setContentView(R.layout.activity_binary_digits); TODO: fix it!
-        //setTitle("Binary Digits"); TODO: fix it!
-
-        //makeSpinner();
+        setButtons();
+        if (bundle.getBoolean("hasSpinner", false)) {
+            makeSpinner(bundle.getInt("spinnerContent", 0));
+        }
+        levelSpinner();
+        if (!hasStandard) {
+            rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
+            rootView.findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
+            rootView.findViewById(R.id.level).setVisibility(View.GONE);
+        }
+        //initialise a
         a.add(0);
         a.add(0);
         a.add(0);
@@ -166,10 +91,11 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         return rootView;
     }
 
+    //Build the levelSpinner
     protected void levelSpinner() {
         Timber.v("Entered levelSpinner()");
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        int level = preferences.getInt("level", 1);
+        //Get the current level
+        int level = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("level", 1);
         ArrayList<String> levelList = new ArrayList<>();
         levelList.add(getString(R.string.chose_level));
         for (; level > 0; level--) levelList.add(String.valueOf(level));
@@ -181,6 +107,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         Timber.v("levelSpinner() complete");
     }
 
+    //Builds the spinner to select the size of groupings
     protected void makeSpinner(int spinnerContent) {
         Timber.v("makeSpinner() entered");
         Spinner spinner = rootView.findViewById(R.id.group);
@@ -200,14 +127,20 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
                 return false;
             }
         });
-        ArrayList<String> categories = new ArrayList<>();
-        if (spinnerContent == 0) {
-            categories.add(getString(R.string.clump));
-            categories.add("Don't group");
-        } else {
-            categories.add(getString(R.string.sz));
-            categories.add("1");
+        ArrayList<String> categories = new ArrayList<>(11);
+        if (spinnerContent == NORMAL) {                         //All the disciplines
+            //categories.add(getString(R.string.clump));
+            //categories.add("Don't group");
+            categories.add(0, getString(R.string.clump));
+            categories.add(1, "Don't group");
+        } else {                                                //Discipline is numbers
+            categories.add(0, getString(R.string.sz));
+            categories.add(1, "1");
+            //categories.add(getString(R.string.sz));
+            //categories.add("1");
         }
+        for (int i = 2; i < 11; i++) categories.add(i, Integer.toString(i));
+        /*
         categories.add("2");
         categories.add("3");
         categories.add("4");
@@ -217,9 +150,11 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         categories.add("8");
         categories.add("9");
         categories.add("10");
+        */
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
                 getActivity(), android.R.layout.simple_spinner_item, categories);
+        //Can't recall why this is here but it is important
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             }
@@ -233,8 +168,9 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         Timber.i("makeSpinner() complete");
     }
 
+    //Everything common in different start methods
     protected void startCommon() {
-        a.set(2, 1);
+        a.set(RUNNING, TRUE);
         (new GenerateRandomAsyncTask()).execute(a);
         rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
         rootView.findViewById(R.id.level).setVisibility(View.GONE);
@@ -252,6 +188,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         }
     }
 
+    //Make the list of randoms visible, just to be lazy
     protected void numbersVisibility(int v) {
         (rootView.findViewById(R.id.random_values)).setVisibility(v);
     }
@@ -259,6 +196,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
     protected void Start() {
         Timber.v("Start entered");
         try {
+            //Hide the keypad
             ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).
                     hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
@@ -266,12 +204,14 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         }
         ((TextView) rootView.findViewById(R.id.clock_text)).setText("");
 
+        //Start with levels
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked() && hasStandard) {
             startCommon();
             return;
         }
 
-        if (((RadioButton) rootView.findViewById(R.id.timer)).isChecked()) {
+        if (((RadioButton) rootView.findViewById(R.id.timer)).isChecked()) {    //Start with timer
+            //Check if all the required entries are filled
             if (((EditText) rootView.findViewById(R.id.min)).getText().toString().length() > 0) {
                 startCommon();
                 timer();
@@ -282,13 +222,13 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
             } else {
                 ((EditText) rootView.findViewById(R.id.sec)).setError("Please enter the duration");
                 //Toast.makeText(getActivity().getApplicationContext(), "Please enter the duration",
-                  //      Toast.LENGTH_SHORT).show();
+                //      Toast.LENGTH_SHORT).show();
                 rootView.findViewById(R.id.min).requestFocus();
                 return;
             }
         }
 
-
+        //Start with stopwatch
         if (((RadioButton) rootView.findViewById(R.id.sw)).isChecked()) {
             (rootView.findViewById(R.id.chronometer)).setVisibility(View.VISIBLE);
             ((Chronometer) rootView.findViewById(R.id.chronometer)).setBase(SystemClock.
@@ -303,17 +243,21 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
             return;
         }
 
+        //Just start
         startCommon();
         Timber.v("Start complete");
     }
 
+    //Saves the list
     protected boolean save() {
         String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
         if (string.equals("")) return false;
 
+        //Set the path
         String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
                 + getString(R.string.practice) + File.separator + getActivity().getTitle().toString()
                 + File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
+        //Parent directory
         String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator
                 + getString(R.string.practice) + File.separator + getActivity().getTitle().toString();
         File pDir = new File(dirPath);
@@ -321,7 +265,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         if (!isDirectoryCreated) {
             isDirectoryCreated = pDir.mkdir();
         }
-        if (isDirectoryCreated) {
+        if (isDirectoryCreated) {                                       //Write the file
             try {
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
                 outputStream.write(string.getBytes());
@@ -368,6 +312,111 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
 
     protected void setButtons() {
         Timber.v("setButtons entered");
+
+        rootView.findViewById(R.id.standard_radio).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                rootView.findViewById(R.id.custom_layout).setVisibility(View.GONE);
+                rootView.findViewById(R.id.level).setVisibility(View.VISIBLE);
+                rootView.findViewById(R.id.custom_radio).setSelected(false);
+            }
+        });
+        Timber.v("standard_radio onClickListener set");
+
+        rootView.findViewById(R.id.custom_radio).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                rootView.findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
+                rootView.findViewById(R.id.level).setVisibility(View.GONE);
+                rootView.findViewById(R.id.standard_radio).setSelected(false);
+            }
+        });
+        Timber.v("standard_radio onClickListener set");
+
+        rootView.findViewById(R.id.sw).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
+            }
+        });
+        Timber.v("Stopwatch onClickListener set");
+
+        rootView.findViewById(R.id.timer).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                rootView.findViewById(R.id.clock_edit).setVisibility(View.VISIBLE);
+                ((EditText) rootView.findViewById(R.id.min)).setText("");
+                ((EditText) rootView.findViewById(R.id.sec)).setText("");
+            }
+        });
+        Timber.v("timer onClickListener set");
+
+        rootView.findViewById(R.id.none).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
+            }
+        });
+        Timber.v("none onClickListener set");
+
+        (rootView.findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Start();
+            }
+        });
+        Timber.v("start onClickListener set");
+
+
+        (rootView.findViewById(R.id.reset)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                reset();
+            }
+        });
+        Timber.v("reset onClickListener set");
+
+        (rootView.findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                a.set(2, 0);
+                if (isTimerRunning) {
+                    cdt.cancel();
+                } else {
+                    mTime = ((Chronometer) rootView.findViewById(R.id.chronometer)).getBase();
+                    ((Chronometer) rootView.findViewById(R.id.chronometer)).stop();
+                }
+                (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.resume)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.reset)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.stop)).setVisibility(View.GONE);
+                (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
+            }
+        });
+        Timber.v("stop onClickListener set");
+
+        rootView.findViewById(R.id.resume).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isTimerRunning) {
+                    timer();
+                } else {
+                    ((Chronometer) rootView.findViewById(R.id.chronometer)).setBase(mTime);
+                    ((Chronometer) rootView.findViewById(R.id.chronometer)).start();
+                }
+                (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
+                (rootView.findViewById(R.id.stop)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
+                a.set(2, 0);
+            }
+        });
+        Timber.v("resume onClickListener set");
+
+        (rootView.findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                save();
+            }
+        });
+        Timber.v("save onClickListener set");
+
+        rootView.findViewById(R.id.recall).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recall();
+            }
+        });
+
         rootView.findViewById(R.id.save).setVisibility(View.GONE);
         rootView.findViewById(R.id.reset).setVisibility(View.GONE);
         rootView.findViewById(R.id.resume).setVisibility(View.GONE);
@@ -378,6 +427,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         Timber.v("setButtons complete");
     }
 
+    //When recall button is pressed
     protected void recall() {
         Intent intent = new Intent(getActivity().getApplicationContext(), Recall.class);
         intent.putExtra("file exists", save());
@@ -386,6 +436,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         startActivity(intent);
     }
 
+    //To set the timer.
     protected void timer() {
         Timber.v("timer() entered");
         ((TextView) rootView.findViewById(R.id.clock_text)).setText("");
@@ -430,47 +481,53 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         Timber.v("timer() complete");
     }
 
+    //Runs before the list thread
     protected void preExecute() {
-        (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.VISIBLE);
+        (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.VISIBLE);//Loading icon
         int noOfValues, size;
         try {
             if ((((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2)) {
-                size = 1;
+                size = 1;   //default
             } else {
                 size = Integer.parseInt(((Spinner) rootView.findViewById(R.id.group)).getSelectedItem().toString());
             }
-            a.set(0, size);
+            a.set(GROUP_SIZE, size);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        //set NO_OF_Values based on level, level 1 is 8, every level doubles the values
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked() && hasStandard) {
             String s = ((Spinner) rootView.findViewById(R.id.level)).getSelectedItem().toString();
             noOfValues = (s.equals(getString(R.string.chose_level))) ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
-            a.set(1, noOfValues);
+            a.set(NO_OF_VALUES, noOfValues);
             return;
         }
+        //set NO_OF_Values based on input
         if (((EditText) rootView.findViewById(R.id.no_of_values)).getText().toString().length() > 0)
             noOfValues = Integer.parseInt((((EditText) rootView.findViewById(R.id.no_of_values)).getText().toString()));
         else if (!hasStandard) noOfValues = 1;
         else noOfValues = 100;
-        a.set(1, noOfValues);
+        a.set(NO_OF_VALUES, noOfValues);
     }
 
+    //Function to generate the random list. It is inherited by other fragments
     protected String background() {
         return "";
     }
 
+    //Runs when the random generating thread is complete
     protected void postExecute(String s) {
         (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
-        if (a.get(2) == 0) {
+        if (a.get(RUNNING) == FALSE) {
             return;
         }
         ((TextView) rootView.findViewById(R.id.random_values)).setText(s);
         numbersVisibility(View.VISIBLE);
     }
 
+    //Thread to generate the random list
     private class GenerateRandomAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
 
         @Override

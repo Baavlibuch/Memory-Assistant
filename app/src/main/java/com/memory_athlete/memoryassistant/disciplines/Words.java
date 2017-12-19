@@ -38,11 +38,11 @@ public class Words extends DisciplineFragment {
         Random rand = new Random();
         short n;
 
-        for (int i = 0; i < a.get(1);) {
+        for (int i = 0; i < a.get(NO_OF_VALUES);) {
             n = (short) rand.nextInt(mDictionary.size());
             stringBuilder.append(mDictionary.get(n)).append("\n");
             if ((++i) % 20 == 0) stringBuilder.append("\n");
-            if (a.get(2) == 0) break;
+            if (a.get(RUNNING) == FALSE) break;
         }
         return stringBuilder.toString();
     }
@@ -55,7 +55,6 @@ public class Words extends DisciplineFragment {
             String word;
             while ((word = dict.readLine()) != null) {
                 mDictionary.add(word);
-           //     Log.v(LOG_TAG, word);
             }
 
         } catch (IOException e) {
@@ -63,7 +62,7 @@ public class Words extends DisciplineFragment {
         }
 
         try {
-            dict.close(); //had if (dict!=null)
+            dict.close();
         } catch (IOException e) {
             Timber.e("File not closed");
         }

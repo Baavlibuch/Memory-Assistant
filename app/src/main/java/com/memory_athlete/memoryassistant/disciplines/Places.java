@@ -16,7 +16,6 @@ import java.util.Random;
 
 import timber.log.Timber;
 
-
 public class Places extends DisciplineFragment {
 
     private ArrayList<String> mPlace = new ArrayList<>();
@@ -47,15 +46,16 @@ public class Places extends DisciplineFragment {
         Random rand = new Random();
         int n;
 
-        for (int i = 0; i < a.get(1); i++) {
+        for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
             n = rand.nextInt(mPlace.size());
             stringBuilder.append(mPlace.get(n)).append(" \n");
             if((i+1)%20 == 0) stringBuilder.append("\n");
-            if (a.get(2) == 0) break;
+            if (a.get(RUNNING) == FALSE) break;
         }
         return stringBuilder.toString();
     }
 
+    //Read files and make a list of places
     private void createDictionary() {
         BufferedReader dict = null;
 

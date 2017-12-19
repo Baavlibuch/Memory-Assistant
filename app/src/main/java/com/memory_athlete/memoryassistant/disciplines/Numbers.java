@@ -24,6 +24,8 @@ import java.util.Random;
 
 import timber.log.Timber;
 
+import static com.memory_athlete.memoryassistant.R.string.j;
+
 
 public class Numbers extends DisciplineFragment {
 
@@ -40,51 +42,77 @@ public class Numbers extends DisciplineFragment {
 
     @Override
     protected String background() {
+        //Text
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
-        int n1 = 1, n2 = 0;
+        int n1 = 1, n2 = 0;         //n1* for upper limit, n2* for lower limit
         if (((CheckBox) rootView.findViewById(R.id.negative)).isChecked()) {
-            n1 = 2;
-            n2 = 1;
+            n1 = 2;                 //Double the max value of random
+            n2 = 1;                 //Subtract from from random to get negative
         }
-        //                                                          /t doesn't work with setText()
-        if (((CheckBox) rootView.findViewById(R.id.decimal)).isChecked()) {
+
+        //Study the else statement first, its simpler
+        if (((CheckBox) rootView.findViewById(R.id.decimal)).isChecked()) {//handling floats numbers
             double n;
-            for (int i = 0; i < a.get(1); i++) {
-                n = round((rand.nextDouble() * n1 * (Math.pow(10, a.get(0)))
-                        - n2 * Math.pow(10, a.get(0))), a.get(0));
+            //-1 to ensure that the numbers fill the entire range
+            for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
+                //Group size is the size of a number
+                n = round((rand.nextDouble() * n1 * (Math.pow(10, a.get(GROUP_SIZE)))
+                        - n2 * Math.pow(10, a.get(GROUP_SIZE))), a.get(GROUP_SIZE));
+
+                //Handling extra characters to keep numbers tabulated
+                //Extra spaces are added when numbers are smaller in length
+
+                //Handling - sign
                 if (((CheckBox) rootView.findViewById(R.id.negative)).isChecked() && n >= 0 && i > 0)
                     stringBuilder.append("  ");
 
-                stringBuilder.append(n).append(getString(R.string.tab));
-                for (int j = 0; j <= a.get(0); j++) {
+                //Adding the number to the final string
+                stringBuilder.append(n).append(getString(R.string.tab));    //\t is the delimiter for recall
+
+                //Minimum space between 2 numbers
+                for (int j = 0; j <= a.get(GROUP_SIZE); j++) {
                     stringBuilder.append(" ");
                 }
-                int j;
-                for (j = 0; j / 2 <= 2 * a.get(0) - Double.toString(n).length() + 1; j++) {
+
+                //Bigger numbers should have more space between them to look nice
+                for (int j = 0; j / 2 <= 2 * a.get(GROUP_SIZE) - Double.toString(n).length() + 1; j++) {
                     stringBuilder.append(" ");
                 }
                 Timber.v("Entered " + j);
-                if (n < 0) stringBuilder.append(" ");
-                if (a.get(2) == 0) break;
-            }
-        } else {
+                if (n < 0) stringBuilder.append(" ");   //handling negatives
 
-            for (int i = 0; i < a.get(1); i++) {
+                if (a.get(RUNNING) == FALSE) break;
+            }
+        } else {                                        //handling int
+            for (int i = 0; i < a.get(GROUP_SIZE); i++) {
                 int n;
-                n = n1 * rand.nextInt((int) Math.pow(10, a.get(0)))
-                        - n2 * ((int) Math.pow(10, a.get(0)) - 1);
+                //-1 to ensure that the numbers fill the entire range
+                n = n1 * rand.nextInt((int) Math.pow(10, a.get(GROUP_SIZE)))
+                        - n2 * ((int) Math.pow(10, a.get(GROUP_SIZE)) - 1);
+
+                //Handling extra characters to keep numbers tabulated
+                //extra spaces are added when numbers are smaller in length
+
+                //Handling - sign
                 if (((CheckBox) rootView.findViewById(R.id.negative)).isChecked() && n >= 0 && i > 0)
                     stringBuilder.append(" ");
-                stringBuilder.append(n).append(getString(R.string.tab));
-                for (int j = 0; j <= a.get(0) / 2; j++) {
+
+                //Adding the value to the final string
+                stringBuilder.append(n).append(getString(R.string.tab));            //\t is the delimiter for recall
+
+                //Minimum space between 2 numbers
+                for (int j = 0; j <= a.get(GROUP_SIZE) / 2; j++) {
                     stringBuilder.append(" ");
                 }
-                for (int j = 0; j / 2 <= a.get(0) - Integer.toString(n).length(); j++) {
+
+                //Bigger numbers should have more space between them to look nice
+                for (int j = 0; j / 2 <= a.get(GROUP_SIZE) - Integer.toString(n).length(); j++) {
                     stringBuilder.append(" ");
                 }
+
                 if (n < 0) stringBuilder.append(" ");
-                if (a.get(2) == 0) break;
+                if (a.get(RUNNING) == FALSE) break;
             }
         }
         return stringBuilder.toString();
@@ -114,9 +142,12 @@ public class Numbers extends DisciplineFragment {
     protected boolean save() {
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked()
                 || ((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2) {
+            //Case with single digits
+
             String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
             if (string.equals("")) return false;
 
+            //Directory is Digits, not Numbers
             String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice) + File.separator + "Digits" + File.separator
                     + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
@@ -139,10 +170,10 @@ public class Numbers extends DisciplineFragment {
                     e.printStackTrace();
                     Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
                 }
-            } else
-                Toast.makeText(getActivity(), "Couldn't save the list", Toast.LENGTH_SHORT).show();
+            } else throw new RuntimeException("Couldn't create the directory of the discipline");
             return false;
         }
+        //Case with more digits than 1 or Custom
         return super.save();
     }
 
@@ -150,11 +181,12 @@ public class Numbers extends DisciplineFragment {
     protected void recall() {
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked()
                 || ((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2) {
+            //Recall Digits
             Intent intent = new Intent(getActivity(), Recall.class);
             intent.putExtra("file exists", save());
             intent.putExtra("discipline", "Digits");
             Timber.v("recalling " + "Digits");
             startActivity(intent);
-        } else super.recall();
+        } else super.recall();  //Recall Numbers
     }
 }
