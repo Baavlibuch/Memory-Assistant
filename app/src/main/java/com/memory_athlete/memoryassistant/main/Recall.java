@@ -127,7 +127,7 @@ public class Recall extends AppCompatActivity {
         //categories.add(getString(i));
         //categories.add(getString(a));
 
-        final Spinner spinner = (Spinner) findViewById(R.id.discipline_spinner);
+        final Spinner spinner = findViewById(R.id.discipline_spinner);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_spinner_item, categories);
@@ -171,7 +171,7 @@ public class Recall extends AppCompatActivity {
         Timber.v("item : = = " + discipline);
         if (discipline.equals(getString(R.string.cd))) return;
 
-        final Spinner chose_file = (Spinner) findViewById(R.id.chose_file);
+        final Spinner chose_file = findViewById(R.id.chose_file);
         File dir = new File(getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice)
                 + File.separator + discipline);
         ArrayList<String> fileList = new ArrayList<>();
@@ -277,7 +277,7 @@ public class Recall extends AppCompatActivity {
 
 
     void updateGridView() {
-        GridView gridView = (GridView) findViewById(R.id.cards_responses);
+        GridView gridView = findViewById(R.id.cards_responses);
         CardAdapter adapter = new CardAdapter(this, responses);
         gridView.setAdapter(adapter);
     }
@@ -298,7 +298,7 @@ public class Recall extends AppCompatActivity {
         compareFormat = 2;
         responseFormat = 2;
 
-        LinearLayout suitLayout = (LinearLayout) findViewById(R.id.card_suit);
+        LinearLayout suitLayout = findViewById(R.id.card_suit);
         if (suitLayout.getChildCount() != 0) return;
         for (int i = 0; i < 4; i++) {
             final ImageView imageView = new ImageView(this);
@@ -317,7 +317,7 @@ public class Recall extends AppCompatActivity {
                         findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
                     }
                     view.setBackgroundColor(getResources().getColor(mSuitBackground));
-                    selectedSuit = view.getId() * 13;
+                    selectedSuit = (int) view.getId() * 13;
                     Timber.v("selectedSuit = " + selectedSuit);
                 }
             });
@@ -325,7 +325,7 @@ public class Recall extends AppCompatActivity {
         }
         suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
 
-        LinearLayout numberLayout = (LinearLayout) findViewById(R.id.card_numbers);
+        LinearLayout numberLayout = findViewById(R.id.card_numbers);
         for (int i = 0; i <= 13; i++) {
             TextView textView = new TextView(this);
             textView.setId(i);
@@ -355,7 +355,7 @@ public class Recall extends AppCompatActivity {
     }
 
     void simpleResponseLayout() {
-        final EditText editText = (EditText) findViewById(R.id.response_input);
+        final EditText editText = findViewById(R.id.response_input);
 
 /*        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -490,7 +490,7 @@ public class Recall extends AppCompatActivity {
             return;
             //The responses were stored when they were entered
         }
-        EditText editText = (EditText) findViewById(R.id.response_input);
+        EditText editText = findViewById(R.id.response_input);
         String values = editText.getText().toString(), value = "";
 
         if (responseFormat == 3) {
@@ -848,7 +848,7 @@ public class Recall extends AppCompatActivity {
             hideResponseLayout();
             findViewById(R.id.responses_text_layout).setVisibility(View.GONE);
             findViewById(R.id.cards_responses).setVisibility(View.GONE);
-            TextView textAnswers = (TextView) findViewById(R.id.answers_text);
+            TextView textAnswers = findViewById(R.id.answers_text);
             textAnswers.setText(s);
             textAnswers.setVisibility(View.VISIBLE);
 
