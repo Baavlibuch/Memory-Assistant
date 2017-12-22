@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 
+import java.io.File;
+
 /**
  * Created by Manik on 15/07/17.
  */
@@ -168,5 +170,16 @@ public class MakeList {
             default:
                 context.setTheme(R.style.light);
         }
+    }
+
+    public static boolean makeDirectory(String path) {
+        File pDir = new File(path);
+        boolean isDirectoryCreated = pDir.exists();
+        if (!isDirectoryCreated) {
+            isDirectoryCreated = pDir.mkdir();
+        }
+        if (isDirectoryCreated) {                                       //Write the file
+            return true;
+        } else throw new RuntimeException("Couldn't create the directory");
     }
 }

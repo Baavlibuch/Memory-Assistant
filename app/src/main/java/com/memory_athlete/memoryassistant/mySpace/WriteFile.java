@@ -66,7 +66,6 @@ public class WriteFile extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_write_file, menu);
@@ -122,7 +121,7 @@ public class WriteFile extends AppCompatActivity {
             } else return true;
         }
 
-        if (oldName != null && !fname.equals(oldName)){
+        if (oldName != null && !fname.equals(oldName)) {
             File from = new File(path + File.separator + oldName + ".txt");
             if (from.exists()) {
                 File to = new File(path + File.separator + fname + ".txt");
@@ -132,28 +131,25 @@ public class WriteFile extends AppCompatActivity {
 
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = " + fname);
-        File pDir = new File(dirPath);
-        boolean isDirectoryCreated = pDir.exists();
-        if (!isDirectoryCreated) {
-            isDirectoryCreated = pDir.mkdir();
-        }
-        if (isDirectoryCreated) {
-            try {
-                FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                outputStream.write(string.getBytes());
-                outputStream.close();
+        if (MakeList.makeDirectory(getApplication().getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.practice))) {
+            if (MakeList.makeDirectory(dirPath)) {
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
+                    outputStream.write(string.getBytes());
+                    outputStream.close();
 
-                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-                editor.putLong(fname, System.currentTimeMillis());
-                Timber.v(fname + "made at " + System.currentTimeMillis());
-                editor.apply();
-                ReminderUtils.mySpaceReminder(this, fname);
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+                    editor.putLong(fname, System.currentTimeMillis());
+                    Timber.v(fname + "made at " + System.currentTimeMillis());
+                    editor.apply();
+                    ReminderUtils.mySpaceReminder(this, fname);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                }
             }
-        } else Toast.makeText(getApplicationContext(),
-                R.string.try_again, Toast.LENGTH_SHORT).show();
+        }
         Timber.v("fileName = " + path);
         return true;
     }

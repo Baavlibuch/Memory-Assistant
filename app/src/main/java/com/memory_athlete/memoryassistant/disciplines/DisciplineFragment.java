@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.main.Recall;
 
 import java.io.File;
@@ -52,7 +53,6 @@ public class DisciplineFragment extends Fragment {
 
     public DisciplineFragment() {
     }
-
 
 
     @Override
@@ -244,31 +244,30 @@ public class DisciplineFragment extends Fragment {
         String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
         if (string.equals("")) return false;
 
-        //Set the path
-        String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice) + File.separator + getActivity().getTitle().toString()
-                + File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
-        //Parent directory
-        String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice) + File.separator + getActivity().getTitle().toString();
-        File pDir = new File(dirPath);
-        boolean isDirectoryCreated = pDir.exists();
-        if (!isDirectoryCreated) {
-            isDirectoryCreated = pDir.mkdir();
-        }
-        if (isDirectoryCreated) {                                       //Write the file
-            try {
-                FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                outputStream.write(string.getBytes());
+        //Directory of practice
+        String path = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.practice);
+        if (MakeList.makeDirectory(path)) {
+            //Directory of the discipline
+            path = path + File.separator + getActivity().getTitle().toString();
+            if (MakeList.makeDirectory(path)) {
+                path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))
+                        + ".txt";
 
-                outputStream.close();
-                Toast.makeText(getActivity().getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                return true;
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(getActivity().getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                //Write the file
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(new File(path));
+                    outputStream.write(string.getBytes());
+
+                    outputStream.close();
+                    Toast.makeText(getActivity().getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                    return true;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity().getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                }
             }
-        } else throw new RuntimeException("Couldn't create the directory of the discipline");
+        }
         return false;
     }
 

@@ -23,7 +23,6 @@ import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import timber.log.Timber;
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
                 makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
 
-                String filesDir = getFilesDir().getAbsolutePath() + File.separator;
+                /*String filesDir = getFilesDir().getAbsolutePath() + File.separator;
                 File file = new File(filesDir + getString(R.string.my_space));
                 boolean isDirectoryCreated = file.exists();
                 if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!isDirectoryCreated) {
                     MakeList.fixBug(getApplicationContext());
                     throw new RuntimeException("couldn't create the MySpace directory");
-                }
+                }*/
             }
         };
 

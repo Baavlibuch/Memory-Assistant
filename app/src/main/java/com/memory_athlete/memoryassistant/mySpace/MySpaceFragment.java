@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
 import java.io.BufferedReader;
@@ -295,7 +296,7 @@ public class MySpaceFragment extends Fragment {
             } else return true;
         }
 
-        if (!fname.equals(oldName)){
+        if (!fname.equals(oldName)) {
             File from = new File(fileName + File.separator + oldName + ".txt");
             if (from.exists()) {
                 File to = new File(fileName + File.separator + fname + ".txt");
@@ -304,29 +305,25 @@ public class MySpaceFragment extends Fragment {
         }
 
         fname = fileName + File.separator + fname + ".txt";
-        Timber.v("fname = " + fname);
-        File pDir = new File(dirPath);
-        boolean isDirectoryCreated = pDir.exists();
-        if (!isDirectoryCreated) {
-            isDirectoryCreated = pDir.mkdir();
-        }
-        if (isDirectoryCreated) {
-            try {
-                FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                outputStream.write(string.getBytes());
-                outputStream.close();
+        if (MakeList.makeDirectory(getActivity().getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.practice))) {
+            if (MakeList.makeDirectory(dirPath)) {
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
+                    outputStream.write(string.getBytes());
+                    outputStream.close();
 
-                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
-                editor.putLong(fname, System.currentTimeMillis());
-                Timber.v(fname + "made at " + System.currentTimeMillis());
-                editor.apply();
-                ReminderUtils.mySpaceReminder(getActivity(), fname);
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
+                    editor.putLong(fname, System.currentTimeMillis());
+                    Timber.v(fname + "made at " + System.currentTimeMillis());
+                    editor.apply();
+                    ReminderUtils.mySpaceReminder(getActivity(), fname);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                }
             }
-        } else Toast.makeText(getActivity(),
-                R.string.try_again, Toast.LENGTH_SHORT).show();
+        }
         Timber.v("fileName = " + fileName);
         return true;
     }

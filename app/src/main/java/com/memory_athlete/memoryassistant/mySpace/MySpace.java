@@ -53,7 +53,7 @@ public class MySpace extends AppCompatActivity {
     public void onBackPressed() {
         if (listViewId != 0) {
             Timber.v("listViewId = " + listViewId);
-            RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.my_space_relative_layout);
+            RelativeLayout relativeLayout = findViewById(R.id.my_space_relative_layout);
             if (relativeLayout.findViewById(listViewId) != null)
                 relativeLayout.removeViewAt(listViewId);
             if (relativeLayout.findViewById(--listViewId) != null) {

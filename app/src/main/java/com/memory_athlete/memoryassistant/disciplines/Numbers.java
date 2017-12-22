@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.MakeList;
 import com.memory_athlete.memoryassistant.main.Recall;
 
 import java.io.File;
@@ -146,31 +147,31 @@ public class Numbers extends DisciplineFragment {
 
             String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
             if (string.equals("")) return false;
+            //Practice Directory
+            String path = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                    + getString(R.string.practice);
 
-            //Directory is Digits, not Numbers
-            String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
-                    + getString(R.string.practice) + File.separator + "Digits" + File.separator
-                    + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
-            String dirPath = getActivity().getFilesDir().getAbsolutePath()  + File.separator
-                    + getString(R.string.practice) + File.separator + "Digits";
-            File pDir = new File(dirPath);
-            boolean isDirectoryCreated = pDir.exists();
-            if (!isDirectoryCreated) {
-                isDirectoryCreated = pDir.mkdir();
-            }
-            if (isDirectoryCreated) {
-                try {
-                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                    outputStream.write(string.getBytes());
+            if (MakeList.makeDirectory(path)) {
+                //Dicipline Directory
+                path += File.separator + "Digits";
+                if (MakeList.makeDirectory(path)) {
+                    //FilePath
+                    path += File.separator
+                            + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))
+                            + ".txt";
+                    try {
+                        FileOutputStream outputStream = new FileOutputStream(new File(path));
+                        outputStream.write(string.getBytes());
 
-                    outputStream.close();
-                    Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
-                    return true;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                        outputStream.close();
+                        Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+                        return true;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            } else throw new RuntimeException("Couldn't create the directory of the discipline");
+            }
             return false;
         }
         //Case with more digits than 1 or Custom

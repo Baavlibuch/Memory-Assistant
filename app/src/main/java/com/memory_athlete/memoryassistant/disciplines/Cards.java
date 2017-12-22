@@ -45,7 +45,7 @@ public class Cards extends DisciplineFragment {
         });
         String theme = PreferenceManager.getDefaultSharedPreferences(getActivity())
                 .getString(getString(R.string.theme), getString(R.string.light));
-        switch (theme){
+        switch (theme) {
             case "Dark":
                 rootView.findViewById(R.id.cards).setAlpha((float) 0.8);
                 break;
@@ -101,7 +101,8 @@ public class Cards extends DisciplineFragment {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (Integer i : cards) stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
+        for (Integer i : cards)
+            stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
         return stringBuilder.toString();
     }
 
@@ -134,34 +135,37 @@ public class Cards extends DisciplineFragment {
         if (randomList.isEmpty()) return false;
         StringBuilder stringBuilder = new StringBuilder("");
 
-        String fname = getActivity().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice) + File.separator + getActivity().getTitle() + File.separator
-                + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date())) + ".txt";
-        String dirPath = getActivity().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice) + File.separator + getActivity().getTitle();
-        File pDir = new File(dirPath);
-        boolean isDirectoryCreated = pDir.exists();
+        //Practice Directory
+        String path = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                + getString(R.string.practice);
 
-        if (!isDirectoryCreated) isDirectoryCreated = pDir.mkdir();
 
-        if (isDirectoryCreated) {
-            try {
-                FileOutputStream outputStream = new FileOutputStream(new File(fname));
+        if (MakeList.makeDirectory(path)) {
+            //Discipline Directory
+            path += File.separator + getActivity().getTitle();
+            if (MakeList.makeDirectory(path)) {
+                //File Path
+                path += File.separator
+                        + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))
+                        + ".txt";
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(new File(path));
 
-                for (Integer i : randomList)// 0; i < randomList.size(); i++)
-                    stringBuilder.append(Integer.toString(i)).append("\n");
-                //\n is also a delimiter used in recall
+                    for (Integer i : randomList)// 0; i < randomList.size(); i++)
+                        stringBuilder.append(Integer.toString(i)).append("\n");
+                    //\n is also a delimiter used in recall
 
-                outputStream.write(stringBuilder.toString().getBytes());
+                    outputStream.write(stringBuilder.toString().getBytes());
 
-                outputStream.close();
-                Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
-                return true;
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                    outputStream.close();
+                    Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+                    return true;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                }
             }
-        } else throw new RuntimeException("Couldn't create the directory of the discipline");
+        }
         return false;
     }
 
