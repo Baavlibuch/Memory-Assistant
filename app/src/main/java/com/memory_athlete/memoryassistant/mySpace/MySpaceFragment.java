@@ -306,7 +306,7 @@ public class MySpaceFragment extends Fragment {
 
         fname = fileName + File.separator + fname + ".txt";
         if (MakeList.makeDirectory(getActivity().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice))) {
+                + getString(R.string.my_space))) {
             if (MakeList.makeDirectory(dirPath)) {
                 try {
                     FileOutputStream outputStream = new FileOutputStream(new File(fname));

@@ -132,7 +132,7 @@ public class WriteFile extends AppCompatActivity {
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = " + fname);
         if (MakeList.makeDirectory(getApplication().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice))) {
+                + getString(R.string.my_space))) {
             if (MakeList.makeDirectory(dirPath)) {
                 try {
                     FileOutputStream outputStream = new FileOutputStream(new File(fname));

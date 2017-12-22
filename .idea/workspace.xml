@@ -16,11 +16,7 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37817797-208a-4257-b7e9-66e813937200" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
-    </list>
+    <list default="true" id="37817797-208a-4257-b7e9-66e813937200" name="Default" comment="" />
     <list id="ff122b7f-314e-4267-a347-d01c377186b1" name="Revert: cade cleanup" comment="" />
     <ignored path="Memory Athletes.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,62 +50,70 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Recall.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
+      <file leaf-file-name="MySpaceFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpaceFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="323" column="42" lean-forward="false" selection-start-line="323" selection-start-column="42" selection-end-line="323" selection-end-column="42" />
+            <state relative-caret-position="-9">
+              <caret line="308" column="46" lean-forward="false" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="46" />
               <folding>
-                <element signature="method#onCreate#0;class#Recall#0" expanded="false" />
-                <element signature="method#onBackPressed#0;class#Recall#0" expanded="false" />
-                <element signature="method#theme#0;class#Recall#0" expanded="false" />
-                <element signature="method#makeSpinner1#0;class#Recall#0" expanded="false" />
-                <element signature="e#4737#4768#0" expanded="false" />
-                <element signature="class#5153:5703" expanded="false" />
-                <element signature="method#onItemSelected#0;class#5153:5703" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#5153:5703" expanded="false" />
-                <element signature="method#spinnerReset#0;class#Recall#0" expanded="false" />
-                <element signature="e#6197#6239#0" expanded="false" />
-                <element signature="method#makeSpinner2#0;class#Recall#0" expanded="false" />
-                <element signature="class#7723:8706" expanded="false" />
-                <element signature="method#onItemSelected#0;class#7723:8706" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#7723:8706" expanded="false" />
-                <element signature="method#practice#0;class#Recall#0" expanded="false" />
-                <element signature="method#updateGridView#0;class#Recall#0" expanded="false" />
-                <element signature="method#cardSelected#0;class#Recall#0" expanded="false" />
-                <element signature="method#simpleResponseLayout#0;class#Recall#0" expanded="false" />
-                <element signature="method#setResponseLayout#0;class#Recall#0" expanded="false" />
-                <element signature="method#getAnswers#0;class#Recall#0" expanded="false" />
-                <element signature="method#giveUp#0;class#Recall#0" expanded="false" />
-                <element signature="method#getResponse#0;class#Recall#0" expanded="false" />
-                <element signature="method#hideResponseLayout#0;class#Recall#0" expanded="false" />
-                <element signature="method#compare#0;class#Recall#0" expanded="false" />
-                <element signature="method#isLeft#0;class#Recall#0" expanded="false" />
-                <element signature="method#isCorrect#0;class#Recall#0" expanded="false" />
-                <element signature="method#isMiss#0;class#Recall#0" expanded="false" />
-                <element signature="method#isExtra#0;class#Recall#0" expanded="false" />
-                <element signature="e#26998#27017#0" expanded="false" />
-                <element signature="method#isWrong#0;class#Recall#0" expanded="false" />
-                <element signature="method#isSpelling#0;class#Recall#0" expanded="false" />
-                <element signature="method#compareCards#0;class#Recall#0" expanded="false" />
-                <element signature="method#reset#0;class#Recall#0" expanded="false" />
-                <element signature="e#31015#31080#0" expanded="false" />
-                <element signature="method#check#0;class#Recall#0" expanded="false" />
-                <element signature="method#startSW#0;class#Recall#0" expanded="false" />
-                <element signature="method#startTimer#0;class#Recall#0" expanded="false" />
-                <element signature="class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="method#onPreExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="e#32708#32720#0" expanded="false" />
-                <element signature="method#doInBackground#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="method#onPostExecute#0;class#CompareAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="e#35083#35154#0" expanded="false" />
-                <element signature="class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="method#onPreExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="method#onPostExecute#0;class#JustAnswersAsyncTask#0;class#Recall#0" expanded="false" />
-                <element signature="class#CardAdapter#0;class#Recall#0" expanded="false" />
-                <element signature="e#36468#36476#0" expanded="false" />
-                <element signature="method#getView#0;class#CardAdapter#0;class#Recall#0" expanded="false" />
-                <element signature="e#38015#38091#0" expanded="false" />
+                <element signature="class#TabTitleUpdater#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="method#onAttach#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="method#MySpaceFragment#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="method#save#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="method#onCreateView#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="e#2407#2432#0" expanded="false" />
+                <element signature="method#setList#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="e#2864#2904#0" expanded="false" />
+                <element signature="e#2951#2988#0" expanded="false" />
+                <element signature="e#3035#3078#0" expanded="false" />
+                <element signature="e#3125#3164#0" expanded="false" />
+                <element signature="e#3211#3250#0" expanded="false" />
+                <element signature="e#3279#3286#0" expanded="false" />
+                <element signature="method#setAdapter#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="e#6026#6054#0" expanded="false" />
+                <element signature="e#6522#6592#0" expanded="false" />
+                <element signature="e#6884#6912#0" expanded="false" />
+                <element signature="e#6959#7030#0" expanded="false" />
+                <element signature="method#back#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="e#9866#9894#0" expanded="false" />
+                <element signature="e#10229#10257#0" expanded="false" />
+                <element signature="method#setButtons#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="e#10926#10954#0" expanded="false" />
+                <element signature="method#writeFile#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="e#14353#14381#0" expanded="false" />
+                <element signature="e#15165#15183#0" expanded="false" />
+                <element signature="class#Item#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="method#Item#0;class#Item#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="class#MySpaceAdapter#0;class#MySpaceFragment#0" expanded="false" />
+                <element signature="method#getView#0;class#MySpaceAdapter#0;class#MySpaceFragment#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WriteFile.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-9">
+              <caret line="109" column="29" lean-forward="false" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="29" />
+              <folding>
+                <element signature="e#4888#4916#0" expanded="false" />
+                <element signature="e#5692#5710#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+              <folding>
+                <element signature="e#251#517#0" expanded="false" />
+                <element signature="e#268#511#0" expanded="false" />
+                <element signature="e#879#1065#0" expanded="false" />
+                <element signature="e#1091#1098#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1777,19 +1781,19 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/data/MakeList.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Numbers.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpaceFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpaceFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="-4" />
+    <option name="x" value="1279" />
+    <option name="y" value="-11" />
     <option name="width" value="1282" />
-    <option name="height" value="805" />
+    <option name="height" value="812" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -1817,8 +1821,8 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+              <option name="myItemId" value="Gradle Scripts" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidBuildScriptsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1830,14 +1834,9 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Production">
           <PATH>
@@ -1870,12 +1869,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="device.picker.selection" value="C4ATAS000000" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="VectorAssetImportPath" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="RunDashboard">
@@ -1958,7 +1958,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513946799203" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513948963516" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2003,7 +2003,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513946799208" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513948963516" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2037,27 +2037,6 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <envs />
@@ -2076,31 +2055,6 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Android" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
       <envs />
       <method />
     </configuration>
@@ -2183,7 +2137,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513946799219" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1513948963517" />
       </method>
     </configuration>
     <list size="1">
@@ -2235,28 +2189,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-4" width="1282" height="805" extended-state="6" />
+    <frame x="1279" y="-11" width="1282" height="812" extended-state="6" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30307692" sideWeight="0.48136142" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.4353846" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30307692" sideWeight="0.48136142" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.44470587" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43076923" sideWeight="0.5267423" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43076923" sideWeight="0.5267423" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48307693" sideWeight="0.4886548" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34615386" sideWeight="0.49353796" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4815951" sideWeight="0.4886548" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34615386" sideWeight="0.49353796" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3611898" sideWeight="0.51130855" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3611898" sideWeight="0.51130855" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.56461537" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19448946" sideWeight="0.5552941" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298217" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36" sideWeight="0.48869145" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44444445" sideWeight="0.25070822" order="6" side_tool="true" content_ui="tabs" />
@@ -2264,16 +2219,15 @@
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58615386" sideWeight="0.4732577" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58615386" sideWeight="0.4732577" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find Sample Code" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find Sample Code" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286119" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="100" y="100" width="1080" height="600" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2676,15 +2630,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="174" column="39" lean-forward="false" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="39" />
-          <folding>
-            <element signature="docComment;class#MakeList#0" expanded="false" />
-            <element signature="method#makeCards#0;class#MakeList#0" expanded="false" />
-            <element signature="method#makeSuits#0;class#MakeList#0" expanded="false" />
-            <element signature="method#makePracticeFrags#0;class#MakeList#0" expanded="false" />
-            <element signature="method#makeCardString#0;class#MakeList#0" expanded="false" />
-            <element signature="method#fixBug#0;class#MakeList#0" expanded="false" />
-            <element signature="method#theme#0;class#MakeList#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2716,20 +2661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpaceFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1480">
-          <caret line="325" column="9" lean-forward="false" selection-start-line="325" selection-start-column="9" selection-end-line="325" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/disciplines/Cards.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
@@ -2748,57 +2679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-220">
           <caret line="243" column="0" lean-forward="false" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#DisciplineFragment#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#onCreateView#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#levelSpinner#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#makeSpinner#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="e#5323#5344#0" expanded="false" />
-            <element signature="e#5742#5783#0" expanded="false" />
-            <element signature="class#6158:6402" expanded="false" />
-            <element signature="method#onItemSelected#0;class#6158:6402" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#6158:6402" expanded="false" />
-            <element signature="method#startCommon#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#numbersVisibility#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#Start#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="e#8549#8567#0" expanded="false" />
-            <element signature="e#9150#9234#0" expanded="false" />
-            <element signature="method#reset#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#setButtons#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="class#13323:13653" expanded="false" />
-            <element signature="method#onClick#0;class#13323:13653" expanded="false" />
-            <element signature="class#13785:14117" expanded="false" />
-            <element signature="method#onClick#0;class#13785:14117" expanded="false" />
-            <element signature="class#14239:14410" expanded="false" />
-            <element signature="method#onClick#0;class#14239:14410" expanded="false" />
-            <element signature="class#14530:14916" expanded="false" />
-            <element signature="method#onClick#0;class#14530:14916" expanded="false" />
-            <element signature="class#15031:15202" expanded="false" />
-            <element signature="method#onClick#0;class#15031:15202" expanded="false" />
-            <element signature="class#15319:15434" expanded="false" />
-            <element signature="class#15553:15668" expanded="false" />
-            <element signature="class#15785:16624" expanded="false" />
-            <element signature="method#onClick#0;class#15785:16624" expanded="false" />
-            <element signature="class#16740:17395" expanded="false" />
-            <element signature="method#onClick#0;class#16740:17395" expanded="false" />
-            <element signature="class#17513:17627" expanded="false" />
-            <element signature="class#17743:17884" expanded="false" />
-            <element signature="method#recall#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#timer#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="class#19138:20198" expanded="false" />
-            <element signature="method#onTick#0;class#19138:20198" expanded="false" />
-            <element signature="method#onFinish#0;class#19138:20198" expanded="false" />
-            <element signature="class#20247:20856" expanded="false" />
-            <element signature="method#onTick#0;class#20247:20856" expanded="false" />
-            <element signature="method#onFinish#0;class#20247:20856" expanded="false" />
-            <element signature="method#preExecute#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#postExecute#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
-            <element signature="e#23294#23306#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#GenerateRandomAsyncTask#0;class#DisciplineFragment#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2806,45 +2686,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="72" column="22" lean-forward="false" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
-          <folding>
-            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreate#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onStart#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#firstStart#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#setAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#setList#0;class#MainActivity#0" expanded="false" />
-            <element signature="e#7565#7607#0" expanded="false" />
-            <element signature="class#Item#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#Item#0;class#Item#0;class#MainActivity#0" expanded="false" />
-            <element signature="class#MainAdapter#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#getView#0;class#MainAdapter#0;class#MainActivity#0" expanded="false" />
-            <marker date="1513943221209" expanded="false" signature="1215:1254" ph="&quot;Prevent accidental app exits&quot;" />
-            <marker date="1513943221209" expanded="false" signature="1740:1768" ph="&quot;Memory Assistant&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding>
-            <element signature="e#251#517#0" expanded="false" />
-            <element signature="e#268#511#0" expanded="false" />
-            <element signature="e#879#1065#0" expanded="false" />
-            <element signature="e#1091#1098#0" expanded="false" />
-            <element signature="e#1115#1154#0" expanded="false" />
-            <element signature="e#1115#1154#0" expanded="false" />
-            <element signature="e#1311#1394#0" expanded="false" />
-            <element signature="e#1311#1394#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/main/Recall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="323" column="42" lean-forward="false" selection-start-line="323" selection-start-column="42" selection-end-line="323" selection-end-column="42" />
+        <state relative-caret-position="20">
+          <caret line="319" column="59" lean-forward="false" selection-start-line="319" selection-start-column="59" selection-end-line="319" selection-end-column="59" />
           <folding>
             <element signature="method#onCreate#0;class#Recall#0" expanded="false" />
             <element signature="method#onBackPressed#0;class#Recall#0" expanded="false" />
@@ -2896,6 +2744,69 @@
             <element signature="e#36468#36476#0" expanded="false" />
             <element signature="method#getView#0;class#CardAdapter#0;class#Recall#0" expanded="false" />
             <element signature="e#38015#38091#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/MySpaceFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="308" column="46" lean-forward="false" selection-start-line="308" selection-start-column="18" selection-end-line="308" selection-end-column="46" />
+          <folding>
+            <element signature="class#TabTitleUpdater#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="method#onAttach#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="method#MySpaceFragment#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="method#save#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="method#onCreateView#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="e#2407#2432#0" expanded="false" />
+            <element signature="method#setList#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="e#2864#2904#0" expanded="false" />
+            <element signature="e#2951#2988#0" expanded="false" />
+            <element signature="e#3035#3078#0" expanded="false" />
+            <element signature="e#3125#3164#0" expanded="false" />
+            <element signature="e#3211#3250#0" expanded="false" />
+            <element signature="e#3279#3286#0" expanded="false" />
+            <element signature="method#setAdapter#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="e#6026#6054#0" expanded="false" />
+            <element signature="e#6522#6592#0" expanded="false" />
+            <element signature="e#6884#6912#0" expanded="false" />
+            <element signature="e#6959#7030#0" expanded="false" />
+            <element signature="method#back#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="e#9866#9894#0" expanded="false" />
+            <element signature="e#10229#10257#0" expanded="false" />
+            <element signature="method#setButtons#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="e#10926#10954#0" expanded="false" />
+            <element signature="method#writeFile#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="e#14353#14381#0" expanded="false" />
+            <element signature="e#15165#15183#0" expanded="false" />
+            <element signature="class#Item#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="method#Item#0;class#Item#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="class#MySpaceAdapter#0;class#MySpaceFragment#0" expanded="false" />
+            <element signature="method#getView#0;class#MySpaceAdapter#0;class#MySpaceFragment#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/memory_athlete/memoryassistant/mySpace/WriteFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="109" column="29" lean-forward="false" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="29" />
+          <folding>
+            <element signature="e#4888#4916#0" expanded="false" />
+            <element signature="e#5692#5710#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding>
+            <element signature="e#251#517#0" expanded="false" />
+            <element signature="e#268#511#0" expanded="false" />
+            <element signature="e#879#1065#0" expanded="false" />
+            <element signature="e#1091#1098#0" expanded="false" />
           </folding>
         </state>
       </provider>
