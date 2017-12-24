@@ -618,10 +618,10 @@ public class Recall extends AppCompatActivity {
 
         for (; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
             Timber.v("j = " + j + " k = " + k);
-            if (!responses.get(i + k).equals(" ")) {
-                if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) {
-                    match++;
-                }
+            if (j + k < 0) continue;
+            if (responses.get(i + k).equals(" ")) continue;
+            if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) {
+                match++;
             }
         }
         Timber.v(match + "");
@@ -637,7 +637,7 @@ public class Recall extends AppCompatActivity {
             //else if (i < 10) k = -(i / 3);
             //else k = -4;
 
-            for (k=0; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
+            for (k = 0; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
                 if (i == -k || j == -k) continue;
                 if (!responses.get(i + k).equals(" ")) {
                     if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k - 1))) {
@@ -806,7 +806,7 @@ public class Recall extends AppCompatActivity {
                 SharedPreferences sharedPreferences = PreferenceManager
                         .getDefaultSharedPreferences(getApplicationContext());
                 if (pow(2, sharedPreferences.getInt("level", 1) + 2) == correct)
-                sharedPreferences.edit().putInt("level", 1 + sharedPreferences.getInt("level", 1)).apply();
+                    sharedPreferences.edit().putInt("level", 1 + sharedPreferences.getInt("level", 1)).apply();
             }
 
             findViewById(R.id.responses_text).setVisibility(View.VISIBLE);
