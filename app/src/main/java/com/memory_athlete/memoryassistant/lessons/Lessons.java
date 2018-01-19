@@ -47,8 +47,9 @@ public class Lessons extends AppCompatActivity {
         StringBuilder sb = new StringBuilder("");
         int fileInt = intent.getIntExtra("file", 0);
         if (fileInt != 0 && intent.getBooleanExtra("resource", true)) {
+
             if (intent.getBooleanExtra("list", false)) {
-                ListView listView = (ListView) findViewById(R.id.lesson_list);
+                ListView listView = findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readResourceList(fileInt);
                 Timber.v("list length = " + list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(this, list);
@@ -57,10 +58,13 @@ public class Lessons extends AppCompatActivity {
                 listView.setVisibility(View.VISIBLE);
                 Timber.v("listView set");
                 return;
-            } else sb = readResource(fileInt);//For raw files
+            }
+
+            sb = readResource(fileInt);//For raw files
         } else {
+
             if (intent.getBooleanExtra("list", false)) {
-                ListView listView = (ListView) findViewById(R.id.lesson_list);
+                ListView listView = findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readAssetList(intent);
                 //Timber.v("list length = " + list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(this, list);
@@ -70,6 +74,7 @@ public class Lessons extends AppCompatActivity {
                 Timber.v("listView set");
                 return;
             }
+
             sb = readAsset(sb, intent);
         }
         if (sb == null) {
@@ -127,7 +132,7 @@ public class Lessons extends AppCompatActivity {
     }
 
     void setWebView(StringBuilder sb) {
-        WebView webView = (WebView) findViewById(R.id.web_view);
+        WebView webView = findViewById(R.id.web_view);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         StringBuilder sb1 = readResource(R.raw.jqmath_beg);
@@ -289,7 +294,7 @@ public class Lessons extends AppCompatActivity {
 
         @NonNull
         @Override
-        public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
+        public View getView(final int position, View listItemView, @NonNull final ViewGroup parent) {
             Timber.v("getView() entered");
             if (listItemView == null)
                 listItemView = LayoutInflater.from(getContext()).inflate(
@@ -312,7 +317,7 @@ public class Lessons extends AppCompatActivity {
                         return false;
                     }
                 });
-                //Timber.v("listitem " + position + "-1 visibility=" + getItem(position-1).)
+                //Timber.v("listItem " + position + "-1 visibility=" + getItem(position-1).)
             }
 
             Timber.v("mHeader = " + item.mHeader);
@@ -338,6 +343,7 @@ public class Lessons extends AppCompatActivity {
                                     textView1.setText(Html.fromHtml(item.mText));
                                     progressBar.setVisibility(View.GONE);
                                     textView1.setVisibility(View.VISIBLE);
+                                    ((ListView) parent).smoothScrollToPosition(position);
                                 }
                             });
                         } else textView1.setVisibility(View.GONE);

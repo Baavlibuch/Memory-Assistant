@@ -81,7 +81,7 @@ public class MakeList {
         return suits;
     }
 
-    public static int[] makePracticeFrags() {
+    /*public static int[] makePracticeFrags() {
         int[] frags = new int[7];
         frags[0] = R.string.numbers;
         frags[1] = R.string.words;
@@ -91,7 +91,7 @@ public class MakeList {
         frags[5] = R.string.binary;
         frags[6] = R.string.letters;
         return frags;
-    }
+    }*/
 
     public static String[] makeCardString() {
         String[] cards = new String[52];
