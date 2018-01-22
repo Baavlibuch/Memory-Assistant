@@ -1,4 +1,4 @@
-<p>Source : http://memory-sports.com</p>
+<p>Source : <a href="http://memory-sports.com">http://memory-sports.com</a></p>
 
 <p>It is a powerful tool which is used by the majority of mental athletes. Since it is based on a phonetic system, you will easily memorize all the images and go on to use it in action.</p>
 

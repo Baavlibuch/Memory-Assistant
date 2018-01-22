@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -301,14 +302,13 @@ public class Lessons extends AppCompatActivity {
                         R.layout.lesson_list_item, null, true);
 
             final Item item = getItem(position);
-            //if (item==null){
-              //  finish();
-                //return listItemView;
-            //}
             final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);
             final View progressBar = listItemView.findViewById(R.id.lesson_list_progress_bar);
+            TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
+            View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
 
-            if (position > 0) {
+            if (position == 0) textView1.setMovementMethod(LinkMovementMethod.getInstance());
+            else {
                 textView1.setVisibility(View.GONE);
                 textView1.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
@@ -317,13 +317,9 @@ public class Lessons extends AppCompatActivity {
                         return false;
                     }
                 });
-                //Timber.v("listItem " + position + "-1 visibility=" + getItem(position-1).)
             }
-
             Timber.v("mHeader = " + item.mHeader);
 
-            TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
-            View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
             if (item.mHeader == null || item.mHeader.equals("")) {
                 headerLayout.setVisibility(View.GONE);
                 textView1.setText(Html.fromHtml(item.mText));

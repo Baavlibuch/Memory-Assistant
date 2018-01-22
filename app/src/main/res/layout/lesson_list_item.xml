@@ -38,6 +38,7 @@
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:textAppearance="?android:textAppearanceMedium"
+        android:linksClickable="true"
         />
 
     <ProgressBar
