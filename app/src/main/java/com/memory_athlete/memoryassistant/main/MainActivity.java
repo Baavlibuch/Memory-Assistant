@@ -27,6 +27,11 @@ import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 
 import timber.log.Timber;
@@ -38,7 +43,7 @@ import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
-    private final int REQUEST_READ_STORAGE = 444;
+    private final int REQUEST_STORAGE_ACCESS = 444;
 
     @Override
     public void onBackPressed() {
@@ -78,23 +83,84 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void firstStart() {
-        if (mayAccessStorage())
-            //if (isExternalStorageWritable())
-            Helper.makeDirectory(Helper.APP_FOLDER);
+        if (mayAccessStorage()) Helper.makeDirectory(Helper.APP_FOLDER);
+        else return;
+        //if (isExternalStorageWritable())
         //new Runnable() {
         //  @Override
         //public void run() {
 
         SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if (s.getLong("last_opened", 0) == 0)
+        if (s.getLong("last_opened", 0) == 0) {
             makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG)
                     .show();
-        //    }
-        //};
+            Timber.e("firstStart");
+        } else {
+            String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.my_space) + File.separator;
+            String mySpaceDir = Helper.APP_FOLDER + File.separator + getString(R.string.my_space) + File.separator;
+            Helper.makeDirectory(mySpaceDir);
+            String folder;
+
+            for (int i = 0; i < 6; i++) {
+                switch (i) {
+                    case 0:
+                        folder = getString(R.string.majors);
+                        break;
+                    case 1:
+                        folder = getString(R.string.ben);
+                        break;
+                    case 2:
+                        folder = getString(R.string.wardrobes);
+                        break;
+                    case 3:
+                        folder = getString(R.string.lists);
+                        break;
+                    case 4:
+                        folder = getString(R.string.words);
+                        break;
+                    default:
+                        continue;
+                }
+                Timber.v("Folder " + folder);
+                File from = new File(filesDir + folder);
+
+                if (from.exists()) {
+                    File[] files = from.listFiles();
+                    Helper.makeDirectory(mySpaceDir + folder);
+                    try {
+                        for (File f : files) {
+                            File to = new File(mySpaceDir + folder + File.separator + f.getName());
+                            copyFile(f, to);
+                            f.delete();
+                        }
+                    } catch (IOException e) {
+                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                }
+                from.delete();
+            }
+            (new File(filesDir)).delete();
+        }
+
+//    }
+//};
 
     }
 
+    public static void copyFile(File src, File dst) throws IOException {
+        FileChannel inChannel = new FileInputStream(src).getChannel();
+        FileChannel outChannel = new FileOutputStream(dst).getChannel();
+        try {
+            inChannel.transferTo(0, inChannel.size(), outChannel);
+        } finally {
+            if (inChannel != null) inChannel.close();
+            if (outChannel != null) outChannel.close();
+        }
+    }
+
     /* Checks if external storage is available for read and write */
+
     public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(state);
@@ -107,16 +173,16 @@ public class MainActivity extends AppCompatActivity {
         if (checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return true;
         if (shouldShowRequestPermissionRationale(READ_EXTERNAL_STORAGE)) {
-            requestPermissions(new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_READ_STORAGE);
+            requestPermissions(new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
         } else {
-            requestPermissions(new String[]{READ_EXTERNAL_STORAGE}, REQUEST_READ_STORAGE);
+            requestPermissions(new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
         }
         return false;
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == REQUEST_READ_STORAGE) {
+        if (requestCode == REQUEST_STORAGE_ACCESS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                 Helper.makeDirectory(Helper.APP_FOLDER);
@@ -125,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                         Snackbar.LENGTH_SHORT).setAction("Grant", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        mayAccessStorage();
+                        firstStart();
                     }
                 });
             }
