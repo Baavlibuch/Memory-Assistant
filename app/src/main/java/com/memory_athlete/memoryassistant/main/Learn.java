@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +26,7 @@ public class Learn extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MakeList.theme(this, Learn.this);
+        Helper.theme(this, Learn.this);
         setContentView(R.layout.activity_learn);
         setTitle(getString(R.string.learn));
         setAdapter();

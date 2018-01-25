@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,7 +24,7 @@ import timber.log.Timber;
 
 public class Cards extends DisciplineFragment {
     int mPosition = 0;
-    int[] cards = MakeList.makeCards();
+    int[] cards = Helper.makeCards();
     ArrayList<Integer> randomList = new ArrayList<>();
 
     @Override
@@ -140,10 +140,10 @@ public class Cards extends DisciplineFragment {
                 + getString(R.string.practice);
 
 
-        if (MakeList.makeDirectory(path)) {
+        if (Helper.makeDirectory(path)) {
             //Discipline Directory
             path += File.separator + getActivity().getTitle();
-            if (MakeList.makeDirectory(path)) {
+            if (Helper.makeDirectory(path)) {
                 //File Path
                 path += File.separator
                         + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))

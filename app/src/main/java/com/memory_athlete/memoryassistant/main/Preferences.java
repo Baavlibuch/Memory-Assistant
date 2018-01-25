@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
 public class Preferences extends AppCompatActivity {
@@ -18,7 +18,7 @@ public class Preferences extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mTheme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        MakeList.theme(this, Preferences.this);
+        Helper.theme(this, Preferences.this);
         setContentView(R.layout.activity_preferences);
         setTitle(getString(R.string.preferences));
     }

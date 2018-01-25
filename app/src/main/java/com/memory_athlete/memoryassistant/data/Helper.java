@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.data;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
@@ -13,7 +14,9 @@ import java.io.File;
  * Created by Manik on 15/07/17.
  */
 
-public class MakeList {
+public class Helper {
+    public static final String APP_FOLDER = Environment.getExternalStorageDirectory().toString()
+            + "/Memory Assistant/";
 
     public static int[] makeCards() {
         int[] cards = new int[52];
@@ -175,11 +178,9 @@ public class MakeList {
     public static boolean makeDirectory(String path) {
         File pDir = new File(path);
         boolean isDirectoryCreated = pDir.exists();
-        if (!isDirectoryCreated) {
+        if (!isDirectoryCreated)
             isDirectoryCreated = pDir.mkdir();
-        }
-        if (isDirectoryCreated) {                                       //Write the file
-            return true;
-        } else throw new RuntimeException("Couldn't create the directory");
+        if (isDirectoryCreated) return true;                //Write the file
+        else throw new RuntimeException("Couldn't create the directory");
     }
 }

@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
 import java.io.BufferedReader;
@@ -31,7 +31,7 @@ public class WriteFile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        MakeList.theme(this, WriteFile.this);
+        Helper.theme(this, WriteFile.this);
         setContentView(R.layout.activity_write_file);
         String header = intent.getStringExtra("mHeader");
         if (header == null) header = "New";
@@ -131,25 +131,26 @@ public class WriteFile extends AppCompatActivity {
 
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = " + fname);
-        if (MakeList.makeDirectory(getApplication().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.my_space))) {
-            if (MakeList.makeDirectory(dirPath)) {
-                try {
-                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                    outputStream.write(string.getBytes());
-                    outputStream.close();
+        if (Helper.makeDirectory(Helper.APP_FOLDER))
+            if (Helper.makeDirectory(Helper.APP_FOLDER + File.separator
+                    + getString(R.string.my_space))) {
+                if (Helper.makeDirectory(dirPath)) {
+                    try {
+                        FileOutputStream outputStream = new FileOutputStream(new File(fname));
+                        outputStream.write(string.getBytes());
+                        outputStream.close();
 
-                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-                    editor.putLong(fname, System.currentTimeMillis());
-                    Timber.v(fname + "made at " + System.currentTimeMillis());
-                    editor.apply();
-                    ReminderUtils.mySpaceReminder(this, fname);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+                        editor.putLong(fname, System.currentTimeMillis());
+                        Timber.v(fname + "made at " + System.currentTimeMillis());
+                        editor.apply();
+                        ReminderUtils.mySpaceReminder(this, fname);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
-        }
         Timber.v("fileName = " + path);
         return true;
     }

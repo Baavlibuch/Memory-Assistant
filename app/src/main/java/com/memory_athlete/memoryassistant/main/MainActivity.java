@@ -3,8 +3,12 @@ package com.memory_athlete.memoryassistant.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +22,7 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
@@ -27,11 +31,14 @@ import java.util.ArrayList;
 
 import timber.log.Timber;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.widget.Toast.makeText;
 
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
+    private final int REQUEST_READ_STORAGE = 444;
 
     @Override
     public void onBackPressed() {
@@ -46,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
-        MakeList.theme(this, MainActivity.this);
+        Helper.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name));
 
@@ -58,124 +65,80 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        new Runnable(){
+        new Runnable() {
             @Override
             public void run() {
-        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-        e.putLong("last_opened", System.currentTimeMillis());
-        Timber.v("Last opened on" + System.currentTimeMillis());
-        e.apply();
-        ReminderUtils.scheduleReminder(getApplicationContext());
+                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
+                e.putLong("last_opened", System.currentTimeMillis());
+                Timber.v("Last opened on" + System.currentTimeMillis());
+                e.apply();
+                ReminderUtils.scheduleReminder(getApplicationContext());
             }
         };
     }
 
     void firstStart() {
-        new Runnable() {
-            @Override
-            public void run() {
-                SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                if (s.getLong("last_opened", 0) != 0) return;
+        if (mayAccessStorage())
+            //if (isExternalStorageWritable())
+            Helper.makeDirectory(Helper.APP_FOLDER);
+        //new Runnable() {
+        //  @Override
+        //public void run() {
 
-                makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (s.getLong("last_opened", 0) == 0)
+            makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG)
+                    .show();
+        //    }
+        //};
 
-                /*String filesDir = getFilesDir().getAbsolutePath() + File.separator;
-                File file = new File(filesDir + getString(R.string.my_space));
-                boolean isDirectoryCreated = file.exists();
-                if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
-                if (!isDirectoryCreated) {
-                    MakeList.fixBug(getApplicationContext());
-                    throw new RuntimeException("couldn't create the MySpace directory");
-                }
-                file = new File(getFilesDir().getAbsolutePath() + File.separator
-                        + getString(R.string.practice));
-                isDirectoryCreated = file.exists();
-                if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
-                if (!isDirectoryCreated) {
-                    MakeList.fixBug(getApplicationContext());
-                    throw new RuntimeException("couldn't create the MySpace directory");
-                }*/
-            }
-        };
-
-/*
-        Timber.d("deleting files");
-
-        for (int i = 0; i < 19; i++) {
-            switch (i) {
-                case 0:
-                    folder = getString(R.string.majors);
-                    break;
-                case 1:
-                    folder = getString(R.string.ben);
-                    break;
-                case 2:
-                    folder = getString(R.string.wardrobes);
-                    break;
-                case 3:
-                    folder = getString(R.string.lists);
-                    break;
-                case 4:
-                    folder = getString(R.string.words);
-                    break;
-                case 5:
-                    folder = getString(R.string.digits);
-                    break;
-                case 7:
-                    folder = getString(R.string.equations);
-                    break;
-                case 8:
-                    folder = getString(R.string.numbers);
-                    break;
-                case 9:
-                    folder = getString(R.string.words);
-                    break;
-                case 10:
-                    folder = getString(R.string.names);
-                    break;
-                case 11:
-                    folder = getString(R.string.cards);
-                    break;
-                case 12:
-                    folder = getString(R.string.binary);
-                    break;
-                case 13:
-                    folder = getString(R.string.places_capital);
-                    break;
-                case 14:
-                    folder = getString(R.string.h);
-                    break;
-                case 15:
-                    folder = getString(R.string.i);
-                    break;
-                case 16:
-                    folder = getString(R.string.j);
-                    break;
-                case 17:
-                    folder = getString(R.string.letters);
-                    break;
-                case 18:
-                    folder = getString(R.string.practice);
-                    break;
-                default:
-                    continue;
-            }
-
-            File from = new File(filesDir + folder);
-            if (from.exists()) {
-                if (!from.delete()) {
-                    Timber.e(from.getAbsolutePath() + " not deleted");
-                }
-            }
-        }*/
     }
+
+    /* Checks if external storage is available for read and write */
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
+    }
+
+    private boolean mayAccessStorage() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true;
+        }
+        if (checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+            return true;
+        if (shouldShowRequestPermissionRationale(READ_EXTERNAL_STORAGE)) {
+            requestPermissions(new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_READ_STORAGE);
+        } else {
+            requestPermissions(new String[]{READ_EXTERNAL_STORAGE}, REQUEST_READ_STORAGE);
+        }
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == REQUEST_READ_STORAGE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                    grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                Helper.makeDirectory(Helper.APP_FOLDER);
+            } else {
+                Snackbar.make(findViewById(R.id.main_list), "The app might crash without these permissions",
+                        Snackbar.LENGTH_SHORT).setAction("Grant", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mayAccessStorage();
+                    }
+                });
+            }
+        }
+    }
+
 
     public void setAdapter() {
         final ArrayList<Item> list = new ArrayList<>();
         setList(list);
 
         MainAdapter adapter = new MainAdapter(this, list);
-        ListView listView = (ListView) findViewById(R.id.main_list);
+        ListView listView = findViewById(R.id.main_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {

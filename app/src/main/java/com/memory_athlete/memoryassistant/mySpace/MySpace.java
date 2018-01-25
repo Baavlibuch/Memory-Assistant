@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -31,7 +31,7 @@ public class MySpace extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MakeList.theme(this, MySpace.this);
+        Helper.theme(this, MySpace.this);
         setContentView(R.layout.activity_my_space);
         setTitle(getString(R.string.my_space));
         Timber.v("Title Set");
@@ -98,7 +98,7 @@ public class MySpace extends AppCompatActivity {
         listView.setLayoutParams(layoutParams);
         //if (listViewId==MIN_DYNAMIC_VIEW_ID) listView.MarginLayoutParams
         listView.setId(listViewId);
-        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.my_space_relative_layout);
+        final RelativeLayout layout = findViewById(R.id.my_space_relative_layout);
         layout.addView(listView);
         listView.setAdapter(adapter);
         final ArrayList<Item> finalArrayList = arrayList;
@@ -107,7 +107,7 @@ public class MySpace extends AppCompatActivity {
                 Item item = finalArrayList.get(position);
                 Timber.v("item.mPath = " + item.mItem);
                 if (listViewId == MIN_DYNAMIC_VIEW_ID) {
-                    dir = new File(getFilesDir().getAbsolutePath() + File.separator
+                    dir = new File(Helper.APP_FOLDER + File.separator
                             + getString(R.string.my_space) + File.separator + item.mItem);
                     layout.findViewById(listViewId).setVisibility(View.GONE);
                     listViewId++;
@@ -117,7 +117,7 @@ public class MySpace extends AppCompatActivity {
                     Timber.v("going to id 1, listViewId = " + listViewId);
                 } else {
                     Timber.v("listViewId = " + listViewId);
-                    String fileName = getFilesDir().getAbsolutePath() + File.separator
+                    String fileName = Helper.APP_FOLDER + File.separator
                             + getString(R.string.my_space) + File.separator + getTitle();
                     Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                     intent.putExtra("mHeader", item.mName);
@@ -141,12 +141,12 @@ public class MySpace extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
         intent.putExtra("name", false);
-        intent.putExtra("fileName", getFilesDir().getAbsolutePath() + File.separator
+        intent.putExtra("fileName", Helper.APP_FOLDER + File.separator
                 + getString(R.string.my_space) + File.separator + getTitle());
         startActivity(intent);
     }
 
-    ArrayList<Item> setList() {
+    private ArrayList<Item> setList() {
         ArrayList<Item> list = new ArrayList<>();
         list.add(new Item(getString(R.string.majors), R.drawable.major_system, WriteFile.class));
         list.add(new Item(getString(R.string.ben), R.drawable.ben_system, WriteFile.class));

@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class Implement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        MakeList.theme(this, Implement.this);
+        Helper.theme(this, Implement.this);
         setContentView(R.layout.activity_implement_list);
         setTitle(getString(R.string.apply));
         Timber.v("Title Set");

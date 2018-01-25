@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class Practice extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MakeList.theme(this, Practice.this);
+        Helper.theme(this, Practice.this);
         setContentView(R.layout.activity_practice);
         setTitle(getString(R.string.practice));
         final ArrayList<Category> disc = new ArrayList<>();

@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
 import java.io.BufferedReader;
@@ -141,7 +141,7 @@ public class MySpaceFragment extends Fragment {
                 Item item = finalArrayList.get(position);
                 Timber.v("item.mPath = " + item.mPath);
                 if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
-                    dir = new File(getActivity().getFilesDir().getAbsolutePath() + File.separator
+                    dir = new File(Helper.APP_FOLDER + File.separator
                             + getString(R.string.my_space) + File.separator + item.mPath);
                     layout.findViewById(fragListViewId).setVisibility(View.GONE);
                     fragListViewId++;
@@ -154,7 +154,7 @@ public class MySpaceFragment extends Fragment {
                     //rootView.findViewById(R.id.back_button).bringToFront();
                 } else {
                     Timber.v("listViewId = " + fragListViewId);
-                    fileName = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                    fileName = Helper.APP_FOLDER + File.separator
                             + getString(R.string.my_space) + File.separator + title;
                     //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                     //intent.putExtra("mHeader", item.mName);
@@ -229,7 +229,7 @@ public class MySpaceFragment extends Fragment {
             public void onClick(View v) {
                 Timber.v("add button clicked");
                 name = false;
-                fileName = getActivity().getFilesDir().getAbsolutePath() + File.separator
+                fileName = Helper.APP_FOLDER + File.separator
                         + getString(R.string.my_space) + File.separator + title;
                 rootView.findViewById(R.id.add).setVisibility(View.GONE);
                 if (rootView.findViewById(fragListViewId) != null)
@@ -305,25 +305,26 @@ public class MySpaceFragment extends Fragment {
         }
 
         fname = fileName + File.separator + fname + ".txt";
-        if (MakeList.makeDirectory(getActivity().getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.my_space))) {
-            if (MakeList.makeDirectory(dirPath)) {
-                try {
-                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                    outputStream.write(string.getBytes());
-                    outputStream.close();
+        if (Helper.makeDirectory(Helper.APP_FOLDER))
+            if (Helper.makeDirectory(Helper.APP_FOLDER + File.separator
+                    + getString(R.string.my_space))) {
+                if (Helper.makeDirectory(dirPath)) {
+                    try {
+                        FileOutputStream outputStream = new FileOutputStream(new File(fname));
+                        outputStream.write(string.getBytes());
+                        outputStream.close();
 
-                    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
-                    editor.putLong(fname, System.currentTimeMillis());
-                    Timber.v(fname + "made at " + System.currentTimeMillis());
-                    editor.apply();
-                    ReminderUtils.mySpaceReminder(getActivity(), fname);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
+                        editor.putLong(fname, System.currentTimeMillis());
+                        Timber.v(fname + "made at " + System.currentTimeMillis());
+                        editor.apply();
+                        ReminderUtils.mySpaceReminder(getActivity(), fname);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
-        }
         Timber.v("fileName = " + fileName);
         return true;
     }

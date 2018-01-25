@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.main.Recall;
 
 import java.io.File;
@@ -151,10 +151,10 @@ public class Numbers extends DisciplineFragment {
             String path = getActivity().getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice);
 
-            if (MakeList.makeDirectory(path)) {
+            if (Helper.makeDirectory(path)) {
                 //Dicipline Directory
                 path += File.separator + "Digits";
-                if (MakeList.makeDirectory(path)) {
+                if (Helper.makeDirectory(path)) {
                     //FilePath
                     path += File.separator
                             + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))

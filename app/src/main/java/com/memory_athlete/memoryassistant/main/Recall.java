@@ -29,7 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -41,7 +41,7 @@ import timber.log.Timber;
 import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static com.memory_athlete.memoryassistant.R.id.chose_file;
-import static com.memory_athlete.memoryassistant.data.MakeList.makeCardString;
+import static com.memory_athlete.memoryassistant.data.Helper.makeCardString;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
@@ -291,7 +291,7 @@ public class Recall extends AppCompatActivity {
     }
 
     void cardResponseLayout() {
-        cardImageIds = MakeList.makeCards();
+        cardImageIds = Helper.makeCards();
         Timber.v("cardResponseLayout() started");
         findViewById(R.id.response_input).setVisibility(View.GONE);
         findViewById(R.id.cards_responses).setVisibility(View.VISIBLE);
@@ -302,7 +302,7 @@ public class Recall extends AppCompatActivity {
         if (suitLayout.getChildCount() != 0) return;
         for (int i = 0; i < 4; i++) {
             final ImageView imageView = new ImageView(this);
-            imageView.setImageResource(MakeList.makeSuits()[i]);
+            imageView.setImageResource(Helper.makeSuits()[i]);
             imageView.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);

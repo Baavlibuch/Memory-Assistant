@@ -6,6 +6,8 @@
     <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
     <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -38,36 +40,46 @@
             android:parentActivityName="com.memory_athlete.memoryassistant.main.MainActivity"
             tools:targetApi="jelly_bean" />
         -->
-        <activity android:name=".main.Learn"
+        <activity
+            android:name=".main.Learn"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.Recall"
+        <activity
+            android:name=".main.Recall"
             android:parentActivityName=".main.MainActivity"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.Practice"
+        <activity
+            android:name=".main.Practice"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.DisciplineActivity"
+        <activity
+            android:name=".main.DisciplineActivity"
             android:parentActivityName=".main.Practice"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.Preferences"
+        <activity
+            android:name=".main.Preferences"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.Implement"
+        <activity
+            android:name=".main.Implement"
             android:launchMode="singleTop"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".lessons.ImplementLesson"
+        <activity
+            android:name=".lessons.ImplementLesson"
             android:parentActivityName=".main.Implement"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".mySpace.MySpace"
+        <activity
+            android:name=".mySpace.MySpace"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".mySpace.WriteFile"
+        <activity
+            android:name=".mySpace.WriteFile"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".lessons.Lessons"
+        <activity
+            android:name=".lessons.Lessons"
             android:parentActivityName=".main.Learn"
             tools:targetApi="jelly_bean" />
 

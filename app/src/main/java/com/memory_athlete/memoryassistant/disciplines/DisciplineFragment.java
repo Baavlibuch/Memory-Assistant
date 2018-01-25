@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -25,7 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.MakeList;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.main.Recall;
 
 import java.io.File;
@@ -247,10 +248,10 @@ public class DisciplineFragment extends Fragment {
         //Directory of practice
         String path = getActivity().getFilesDir().getAbsolutePath() + File.separator
                 + getString(R.string.practice);
-        if (MakeList.makeDirectory(path)) {
+        if (Helper.makeDirectory(path)) {
             //Directory of the discipline
             path = path + File.separator + getActivity().getTitle().toString();
-            if (MakeList.makeDirectory(path)) {
+            if (Helper.makeDirectory(path)) {
                 path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))
                         + ".txt";
 
@@ -267,6 +268,25 @@ public class DisciplineFragment extends Fragment {
                     Toast.makeText(getActivity().getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
                 }
             }
+        }
+        return false;
+    }
+
+    /* Checks if external storage is available for read and write */
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+    /* Checks if external storage is available to at least read */
+    public boolean isExternalStorageReadable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            return true;
         }
         return false;
     }
