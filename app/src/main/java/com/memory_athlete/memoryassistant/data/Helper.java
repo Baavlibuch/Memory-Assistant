@@ -183,4 +183,9 @@ public class Helper {
         if (isDirectoryCreated) return true;                //Write the file
         else throw new RuntimeException("Couldn't create the directory");
     }
+
+    public static boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(state);
+    }
 }

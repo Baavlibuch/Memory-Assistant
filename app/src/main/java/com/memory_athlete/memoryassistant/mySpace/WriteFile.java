@@ -114,11 +114,12 @@ public class WriteFile extends AppCompatActivity {
         }
         String dirPath = path;
         if (fname.length() > 250) {
-            if (!name) {
+            if (name) return true;
+            else {
                 Toast.makeText(this, "Try again with a shorter name", Toast.LENGTH_SHORT).show();
                 name = true;
                 return false;
-            } else return true;
+            }
         }
 
         if (oldName != null && !fname.equals(oldName)) {
@@ -131,6 +132,15 @@ public class WriteFile extends AppCompatActivity {
 
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = " + fname);
+        if (!Helper.isExternalStorageWritable()) {
+            Toast.makeText(this, "Please check the permissions and storage space"
+                    , Toast.LENGTH_SHORT).show();
+            if (name) return true;
+            else {
+                name = true;
+                return false;
+            }
+        }
         if (Helper.makeDirectory(Helper.APP_FOLDER))
             if (Helper.makeDirectory(Helper.APP_FOLDER + File.separator
                     + getString(R.string.my_space))) {
@@ -140,7 +150,8 @@ public class WriteFile extends AppCompatActivity {
                         outputStream.write(string.getBytes());
                         outputStream.close();
 
-                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+                        SharedPreferences.Editor editor = PreferenceManager
+                                .getDefaultSharedPreferences(this).edit();
                         editor.putLong(fname, System.currentTimeMillis());
                         Timber.v(fname + "made at " + System.currentTimeMillis());
                         editor.apply();

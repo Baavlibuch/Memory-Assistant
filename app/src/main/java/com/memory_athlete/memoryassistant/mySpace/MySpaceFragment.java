@@ -304,6 +304,16 @@ public class MySpaceFragment extends Fragment {
             }
         }
 
+        if (!Helper.isExternalStorageWritable()) {
+            Toast.makeText(getActivity(), "Please check the permissions and storage space",
+                    Toast.LENGTH_SHORT).show();
+            if (name) return true;
+            else {
+                name = true;
+                return false;
+            }
+        }
+
         fname = fileName + File.separator + fname + ".txt";
         if (Helper.makeDirectory(Helper.APP_FOLDER))
             if (Helper.makeDirectory(Helper.APP_FOLDER + File.separator
