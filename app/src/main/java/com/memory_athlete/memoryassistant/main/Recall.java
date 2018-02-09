@@ -556,7 +556,10 @@ public class Recall extends AppCompatActivity {
         for (; i < responses.size() && j < answers.size(); i++, j++) {
             Timber.v("Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
             if (isCorrect(i, j)) continue;
-            if (missed > 8 && missed > correct) break;
+            if (missed > 8 && missed > correct) {
+                Toast.makeText(this, "Very less accuracy", Toast.LENGTH_SHORT).show();
+                break;
+            }
             if (isLeft(i, j)) continue;
             if (words) {
                 if (isSpelling(i, j)) {
