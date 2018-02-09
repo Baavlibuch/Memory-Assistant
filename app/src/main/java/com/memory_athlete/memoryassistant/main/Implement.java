@@ -25,7 +25,6 @@ import timber.log.Timber;
 
 public class Implement extends AppCompatActivity {
     ArrayList<String> pathList = new ArrayList<>();
-    private static final String TAG = "Log : ";
     int listViewId = 0;
 
     @Override

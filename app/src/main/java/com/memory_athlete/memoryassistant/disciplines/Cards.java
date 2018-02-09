@@ -92,9 +92,13 @@ public class Cards extends DisciplineFragment {
         ArrayList<Integer> cards = new ArrayList<>();
         //Random rand = new Random();
         int n;
-
+        int[] occurenceCount = new int[52];
         for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
             n = (new Random()).nextInt(52);
+            if(occurenceCount[i]>NO_OF_VALUES){
+                i--;
+                continue;
+            }
             cards.add(n);
             if (a.get(RUNNING) == FALSE) break;
         }
