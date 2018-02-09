@@ -96,13 +96,18 @@
     <string name="periodic">I Like To Practice At</string>
     <string name="no_my_space_frags">Number of mySpace screens</string>
     <string name="location_wise">Based On Location</string>
-    <string name="transit">During Transit</string>
+    <string name="transit">During transit</string>
     <string name="default_time">22:30</string>
     <string name="theme">Theme</string>
     <string name="app_theme">AppTheme</string>
     <string name="light">Light</string>
     <string name="dark">Dark</string>
     <string name="pitch">pitch</string>
+    <string name="single_card">Single card</string>
+    <string name="single_card_off">Show grid when practicing cards</string>
+    <string name="single_card_on">Show single card when practicing cards</string>
+    <string name="practice_grid_columns">Number of columns in Practice Cards</string>
+    <string name="recall_grid_columns">Number of columns in Recall Cards</string>
 
     <!--Learn-->
     <string name="method_of_loci">Method Of Loci</string>

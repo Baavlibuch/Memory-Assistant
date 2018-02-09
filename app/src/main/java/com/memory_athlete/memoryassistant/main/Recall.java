@@ -66,6 +66,8 @@ public class Recall extends AppCompatActivity {
     private StringBuilder mTextAnswer = null, mTextResponse = null;
     private String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
+    
+    private GridView gridView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,14 +97,14 @@ public class Recall extends AppCompatActivity {
                 setTheme(R.style.dark);
                 mSuitBackground = R.color.color_suit_background_dark;
                 setContentView(R.layout.activity_recall);
-                findViewById(R.id.cards_responses).setAlpha((float) 0.8);
+                gridView.setAlpha((float) 0.8);
                 break;
             case "Night":
                 setTheme(R.style.pitch);
                 (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
                 mSuitBackground = R.color.color_suit_background_night;
                 setContentView(R.layout.activity_recall);
-                findViewById(R.id.cards_responses).setAlpha((float) 0.7);
+                gridView.setAlpha((float) 0.7);
                 break;
             default:
                 setTheme(R.style.light);
@@ -136,7 +138,7 @@ public class Recall extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 findViewById(R.id.response_layout).setVisibility(View.GONE);
                 findViewById(R.id.button_bar).setVisibility(View.GONE);
-                findViewById(R.id.cards_responses).setVisibility(View.GONE);
+                gridView.setVisibility(View.GONE);
                 makeSpinner2(intent);
             }
 
@@ -277,7 +279,7 @@ public class Recall extends AppCompatActivity {
 
 
     void updateGridView() {
-        GridView gridView = findViewById(R.id.cards_responses);
+        gridView = findViewById(R.id.cards_responses);
         CardAdapter adapter = new CardAdapter(this, responses);
         gridView.setAdapter(adapter);
     }
@@ -291,10 +293,12 @@ public class Recall extends AppCompatActivity {
     }
 
     void cardResponseLayout() {
+        gridView.setNumColumns(PreferenceManager.getDefaultSharedPreferences(this).getInt(
+                getString(R.string.practice_grid_columns), 4));
         cardImageIds = Helper.makeCards();
         Timber.v("cardResponseLayout() started");
         findViewById(R.id.response_input).setVisibility(View.GONE);
-        findViewById(R.id.cards_responses).setVisibility(View.VISIBLE);
+        gridView.setVisibility(View.VISIBLE);
         compareFormat = 2;
         responseFormat = 2;
 
@@ -400,13 +404,13 @@ public class Recall extends AppCompatActivity {
         Timber.v(((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString());
         if (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString().equals(getString(R.string.cards))) {
             findViewById(R.id.result).setVisibility(View.GONE);
-            findViewById(R.id.cards_responses).setVisibility(View.VISIBLE);
+            gridView.setVisibility(View.VISIBLE);
 
             cardResponseLayout();
         } else {
             findViewById(R.id.card_suit).setVisibility(View.GONE);
             findViewById(R.id.card_numbers).setVisibility(View.GONE);
-            findViewById(R.id.cards_responses).setVisibility(View.GONE);
+            gridView.setVisibility(View.GONE);
 
             simpleResponseLayout();
         }
@@ -770,7 +774,7 @@ public class Recall extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            findViewById(R.id.cards_responses).setVisibility(View.GONE);
+            gridView.setVisibility(View.GONE);
             getResponse();
             findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
             //Log.v(LOG_TAG, "answers.size() = " + String.valueOf(answers.size()));
@@ -847,7 +851,7 @@ public class Recall extends AppCompatActivity {
             }
             hideResponseLayout();
             findViewById(R.id.responses_text_layout).setVisibility(View.GONE);
-            findViewById(R.id.cards_responses).setVisibility(View.GONE);
+            gridView.setVisibility(View.GONE);
             TextView textAnswers = findViewById(R.id.answers_text);
             textAnswers.setText(s);
             textAnswers.setVisibility(View.VISIBLE);

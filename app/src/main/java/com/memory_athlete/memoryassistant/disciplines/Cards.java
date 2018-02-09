@@ -1,16 +1,21 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,6 +31,8 @@ public class Cards extends DisciplineFragment {
     int mPosition = 0;
     int[] cards = Helper.makeCards();
     ArrayList<Integer> randomList = new ArrayList<>();
+    private boolean mSingleCard = false;
+    GridView gridView = rootView.findViewById(R.id.cards_practice_grid);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,12 +60,21 @@ public class Cards extends DisciplineFragment {
                 rootView.findViewById(R.id.cards).setAlpha((float) 0.7);
         }
 
+        mSingleCard = PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(
+                getString(R.string.single_card), false);
+
+        gridView.setNumColumns(PreferenceManager.getDefaultSharedPreferences(getContext()).getInt(
+                getString(R.string.practice_grid_columns), 4));
+
         return rootView;
     }
 
     @Override
-    protected void numbersVisibility(int v) {
-        (rootView.findViewById(R.id.cards)).setVisibility(v);
+    protected void numbersVisibility(int visibility) {
+        if (mSingleCard) {
+            (rootView.findViewById(R.id.cards)).setVisibility(visibility);
+            (rootView.findViewById(R.id.prev)).setVisibility(visibility);
+        } else gridView.setVisibility(visibility);
     }
 
 
@@ -95,7 +111,7 @@ public class Cards extends DisciplineFragment {
         int[] occurenceCount = new int[52];
         for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
             n = (new Random()).nextInt(52);
-            if(occurenceCount[i]>NO_OF_VALUES){
+            if (occurenceCount[i] > NO_OF_VALUES) {
                 i--;
                 continue;
             }
@@ -125,11 +141,16 @@ public class Cards extends DisciplineFragment {
             randomList.add(Integer.parseInt(string));
         }
 
-        setCard();
+        if (mSingleCard) setCard();
+        else {
+            numbersVisibility(View.VISIBLE);
+            CardAdapter adapter = new CardAdapter(getActivity(), randomList);
+            gridView.setAdapter(adapter);
+            Timber.v("postExecute() complete");
+        }
         //((TextView) findViewById(R.id.numbers)).setText(s);
-        (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         numbersVisibility(View.VISIBLE);
-        (rootView.findViewById(R.id.prev)).setVisibility(View.VISIBLE);
+        (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.no_of_values)).setVisibility(View.GONE);
         Toast.makeText(getActivity(), "Tap the image for the next card", Toast.LENGTH_SHORT).show();
     }
@@ -178,8 +199,8 @@ public class Cards extends DisciplineFragment {
         super.reset();
         mPosition = 0;
         randomList.clear();
+        numbersVisibility(View.GONE);
         rootView.findViewById(R.id.group).setVisibility(View.GONE);
-        rootView.findViewById(R.id.prev).setVisibility(View.GONE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
         ((ImageView) rootView.findViewById(R.id.cards)).setImageDrawable(null);
         //findViewById(R.id.cards).setVisibility(View.GONE);
@@ -191,4 +212,45 @@ public class Cards extends DisciplineFragment {
         super.startCommon();
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
     }
+
+    private class CardAdapter extends ArrayAdapter<Integer> {
+
+        CardAdapter(Activity context, ArrayList<Integer> cards) {
+            super(context, 0, cards);
+        }
+
+        @NonNull
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            ImageView imageView = (ImageView) convertView;
+            if (convertView == null) {
+                imageView = new ImageView(getContext());
+                imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+                imageView.setVisibility(View.VISIBLE);
+                //imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                imageView.setAdjustViewBounds(true);
+
+                //imageView.setPadding(8, 8, 8, 8);
+            }
+
+            Picasso
+                    //.setLoggingEnabled(true)
+                    .with(getContext())
+                    .load(cards[randomList.get(position)])
+                    .placeholder(R.drawable.sa)
+                    .fit()
+                    //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ
+                    .into(imageView);
+            //imageView.setImageResource(cardImageIds[parseInt(responses.get(position))]);
+
+            Timber.v("getView() complete");
+
+            //((ImageView) listItemView.findViewById(R.id.card_image)).setImageResource(
+            //      cardImageIds[parseInt(responses.get(position))]);
+            return imageView;//listItemView;
+        }
+    }
+
 }
+//TODO: uses cutom theme, don't remove this comment

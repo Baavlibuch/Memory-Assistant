@@ -32,6 +32,27 @@
 
     <SwitchPreference
         android:defaultValue="false"
+        android:key="@string/single_card"
+        android:title="@string/single_card"
+        android:summaryOff="@string/single_card_off"
+        android:summaryOn="@string/single_card_on"/>
+
+    <ListPreference
+        android:defaultValue="4"
+        android:key="@string/practice_grid_columns"
+        android:title="@string/practice_grid_columns"
+        android:entries="@array/two_to_six"
+        android:entryValues="@array/two_to_six"/>
+
+    <ListPreference
+        android:defaultValue="6"
+        android:key="@string/recall_grid_columns"
+        android:title="@string/recall_grid_columns"
+        android:entries="@array/two_to_six"
+        android:entryValues="@array/two_to_six"/>
+
+    <SwitchPreference
+        android:defaultValue="false"
         android:key="@string/double_back_to_exit"
         android:title="@string/double_back_to_exit"
         android:summaryOff="@string/double_back_on"

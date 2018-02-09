@@ -561,3 +561,5 @@ public class DisciplineFragment extends Fragment {
         }
     }
 }
+
+//TODO: set text spacing based on the level

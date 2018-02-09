@@ -173,6 +173,16 @@
     <!--Used only in cards so there wont be any error;
          everywhere else, keep visibility gone-->
 
+    <GridView
+        android:id="@+id/cards_practice_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:horizontalSpacing="10dp"
+        android:numColumns="4"
+        android:verticalSpacing="10dp"
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/progress_bar_discipline"
         android:layout_width="match_parent"
