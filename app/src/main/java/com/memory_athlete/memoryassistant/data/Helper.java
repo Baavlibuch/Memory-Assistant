@@ -2,6 +2,8 @@ package com.memory_athlete.memoryassistant.data;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
@@ -10,6 +12,11 @@ import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.support.v4.app.ActivityCompat.requestPermissions;
+import static android.support.v4.content.PermissionChecker.checkSelfPermission;
+
 /**
  * Created by Manik on 15/07/17.
  */
@@ -17,6 +24,7 @@ import java.io.File;
 public class Helper {
     public static final String APP_FOLDER = Environment.getExternalStorageDirectory().toString()
             + "/Memory Assistant/";
+    private final int REQUEST_STORAGE_ACCESS = 555;
 
     public static int[] makeCards() {
         int[] cards = new int[52];
@@ -187,5 +195,21 @@ public class Helper {
     public static boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(state);
+    }
+
+    public static boolean mayAccessStorage(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true;
+        }
+        if (checkSelfPermission(context, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+            return true;
+        //if (shouldShowRequestPermissionRationale((Activity) context, READ_EXTERNAL_STORAGE)) {
+            requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
+                    WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
+        //} else {
+        //    requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
+        //            WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
+        //}
+        return false;
     }
 }

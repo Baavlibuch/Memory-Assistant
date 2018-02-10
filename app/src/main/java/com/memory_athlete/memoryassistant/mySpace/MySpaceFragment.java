@@ -289,11 +289,11 @@ public class MySpaceFragment extends Fragment {
         }
         String dirPath = fileName;
         if (fname.length() > 250) {
-            if (!name) {
-                Toast.makeText(getActivity(), "Try again with a shorter name", Toast.LENGTH_SHORT).show();
-                name = true;
-                return false;
-            } else return true;
+            if (name) return true;
+
+            Toast.makeText(getActivity(), "Try again with a shorter name", Toast.LENGTH_SHORT).show();
+            name = true;
+            return false;
         }
 
         if (!fname.equals(oldName)) {
@@ -303,15 +303,18 @@ public class MySpaceFragment extends Fragment {
                 from.renameTo(to);
             }
         }
-
-        if (!Helper.isExternalStorageWritable()) {
-            Toast.makeText(getActivity(), "Please check the permissions and storage space",
-                    Toast.LENGTH_SHORT).show();
+        if (!Helper.mayAccessStorage(getContext())) {
             if (name) return true;
-            else {
-                name = true;
-                return false;
-            }
+
+            name = true;
+            return false;
+        }
+        if (!Helper.isExternalStorageWritable()) {
+            Toast.makeText(getActivity(), "Please check storage", Toast.LENGTH_SHORT).show();
+            if (name) return true;
+
+            name = true;
+            return false;
         }
 
         fname = fileName + File.separator + fname + ".txt";

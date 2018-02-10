@@ -57,7 +57,7 @@ public class WriteFile extends AppCompatActivity {
                 //findViewById(R.id.saveFAB).setVisibility(View.VISIBLE);
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
                 finish();
             }
         }
@@ -115,11 +115,10 @@ public class WriteFile extends AppCompatActivity {
         String dirPath = path;
         if (fname.length() > 250) {
             if (name) return true;
-            else {
-                Toast.makeText(this, "Try again with a shorter name", Toast.LENGTH_SHORT).show();
-                name = true;
-                return false;
-            }
+
+            Toast.makeText(this, "Try again with a shorter name", Toast.LENGTH_SHORT).show();
+            name = true;
+            return false;
         }
 
         if (oldName != null && !fname.equals(oldName)) {
@@ -132,14 +131,19 @@ public class WriteFile extends AppCompatActivity {
 
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = " + fname);
+        if (!Helper.mayAccessStorage(this)) {
+            if (name) return true;
+
+            name = true;
+            return false;
+        }
         if (!Helper.isExternalStorageWritable()) {
-            Toast.makeText(this, "Please check the permissions and storage space"
+            Toast.makeText(this, "Please check the storage"
                     , Toast.LENGTH_SHORT).show();
             if (name) return true;
-            else {
-                name = true;
-                return false;
-            }
+
+            name = true;
+            return false;
         }
         if (Helper.makeDirectory(Helper.APP_FOLDER))
             if (Helper.makeDirectory(Helper.APP_FOLDER + File.separator
