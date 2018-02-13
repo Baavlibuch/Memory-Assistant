@@ -51,8 +51,6 @@ public class Recall extends AppCompatActivity {
     private ArrayList<String> answers = new ArrayList<>();
     private ArrayList<String> responses = new ArrayList<>();
     ArrayList<String> categories;
-    private Spinner mSpinner = null;
-    private String mDiscipline = null;
     private int selectedSuit = 0;
     private int[] cardImageIds;
 
@@ -67,6 +65,8 @@ public class Recall extends AppCompatActivity {
     private String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
 
+    private Spinner mSpinner = null;
+    private String mDiscipline = null;
     private GridView gridView;
 
     @Override
@@ -91,6 +91,7 @@ public class Recall extends AppCompatActivity {
     }
 
     protected void theme() {
+        gridView = findViewById(R.id.cards_responses);
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
@@ -111,7 +112,6 @@ public class Recall extends AppCompatActivity {
                 mSuitBackground = R.color.color_suit_background_light;
                 setContentView(R.layout.activity_recall);
         }
-        gridView = findViewById(R.id.cards_responses);
     }
 
     void makeSpinner1(final Intent intent) {
@@ -911,3 +911,4 @@ public class Recall extends AppCompatActivity {
 
 //orange:FFA500
 // textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
+// TODO: uses custom theme(), don't remove this comment

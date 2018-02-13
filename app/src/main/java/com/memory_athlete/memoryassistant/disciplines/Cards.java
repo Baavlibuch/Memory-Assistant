@@ -33,13 +33,15 @@ public class Cards extends DisciplineFragment {
     ArrayList<Integer> randomList = new ArrayList<>();
     private boolean mSingleCard = false;
     GridView gridView;
+    ImageView cardImageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         gridView = rootView.findViewById(R.id.cards_practice_grid);
+        cardImageView = rootView.findViewById(R.id.cards);
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.decks));
-        rootView.findViewById(R.id.cards).setOnClickListener(new View.OnClickListener() {
+        cardImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 next();
@@ -55,10 +57,12 @@ public class Cards extends DisciplineFragment {
                 .getString(getString(R.string.theme), getString(R.string.light));
         switch (theme) {
             case "Dark":
-                rootView.findViewById(R.id.cards).setAlpha((float) 0.8);
+                cardImageView.setAlpha((float) 0.8);
+                gridView.setAlpha((float) 0.8);
                 break;
             case "Night":
-                rootView.findViewById(R.id.cards).setAlpha((float) 0.7);
+                cardImageView.setAlpha((float) 0.7);
+                gridView.setAlpha((float) 0.8);
         }
 
         mSingleCard = PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(
@@ -73,14 +77,14 @@ public class Cards extends DisciplineFragment {
     @Override
     protected void numbersVisibility(int visibility) {
         if (mSingleCard) {
-            (rootView.findViewById(R.id.cards)).setVisibility(visibility);
+            cardImageView.setVisibility(visibility);
             (rootView.findViewById(R.id.prev)).setVisibility(visibility);
         } else gridView.setVisibility(visibility);
     }
 
 
     void setCard() {
-        ((ImageView) rootView.findViewById(R.id.cards)).setImageResource(cards[randomList.get(mPosition)]);
+        cardImageView.setImageResource(cards[randomList.get(mPosition)]);
     }
 
     //Button to show previous
@@ -204,7 +208,7 @@ public class Cards extends DisciplineFragment {
         numbersVisibility(View.GONE);
         rootView.findViewById(R.id.group).setVisibility(View.GONE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
-        ((ImageView) rootView.findViewById(R.id.cards)).setImageDrawable(null);
+        cardImageView.setImageDrawable(null);
         return super.reset();
         //findViewById(R.id.cards).setVisibility(View.GONE);
         //findViewById(R.id.progress_bar_discipline).setVisibility(View.GONE);
@@ -256,4 +260,4 @@ public class Cards extends DisciplineFragment {
     }
 
 }
-//TODO: uses cutom theme, don't remove this comment
+//TODO: uses custom theme(), don't remove this comment
