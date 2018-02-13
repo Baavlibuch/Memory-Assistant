@@ -75,7 +75,6 @@ public class Recall extends AppCompatActivity {
         Intent intent = getIntent();
         theme();
         setTitle(getString(R.string.recall));
-        Timber.v("theme() complete");
         makeSpinner1(intent);
 
         findViewById(R.id.result).setVisibility(View.GONE);
@@ -91,13 +90,13 @@ public class Recall extends AppCompatActivity {
     }
 
     protected void theme() {
-        gridView = findViewById(R.id.cards_responses);
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
                 mSuitBackground = R.color.color_suit_background_dark;
                 setContentView(R.layout.activity_recall);
+                gridView = findViewById(R.id.cards_responses);
                 gridView.setAlpha((float) 0.8);
                 break;
             case "Night":
@@ -105,13 +104,16 @@ public class Recall extends AppCompatActivity {
                 (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
                 mSuitBackground = R.color.color_suit_background_night;
                 setContentView(R.layout.activity_recall);
+                gridView = findViewById(R.id.cards_responses);
                 gridView.setAlpha((float) 0.7);
                 break;
             default:
                 setTheme(R.style.light);
                 mSuitBackground = R.color.color_suit_background_light;
                 setContentView(R.layout.activity_recall);
+                gridView = findViewById(R.id.cards_responses);
         }
+        Timber.v("theme() complete");
     }
 
     void makeSpinner1(final Intent intent) {
