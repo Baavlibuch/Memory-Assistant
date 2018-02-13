@@ -304,7 +304,11 @@ public class MySpaceFragment extends Fragment {
             }
         }
         if (!Helper.mayAccessStorage(getContext())) {
-            if (name) return true;
+            if (name) {
+                Toast.makeText(getContext(), "Permission to access storage is needed",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
 
             name = true;
             return false;

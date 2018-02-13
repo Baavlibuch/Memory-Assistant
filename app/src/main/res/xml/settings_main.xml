@@ -35,6 +35,7 @@
         android:key="@string/single_card"
         android:title="@string/single_card"
         android:summaryOff="@string/single_card_off"
+        android:disableDependentsState="true"
         android:summaryOn="@string/single_card_on"/>
 
     <ListPreference
@@ -42,14 +43,16 @@
         android:key="@string/practice_grid_columns"
         android:title="@string/practice_grid_columns"
         android:entries="@array/two_to_six"
-        android:entryValues="@array/two_to_six"/>
+        android:dependency="@string/single_card"
+        android:entryValues="@array/two_to_six"
+        />
 
     <ListPreference
         android:defaultValue="6"
         android:key="@string/recall_grid_columns"
         android:title="@string/recall_grid_columns"
-        android:entries="@array/two_to_six"
-        android:entryValues="@array/two_to_six"/>
+        android:entries="@array/two_to_eight"
+        android:entryValues="@array/two_to_eight"/>
 
     <SwitchPreference
         android:defaultValue="false"

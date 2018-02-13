@@ -2,7 +2,10 @@ package com.memory_athlete.memoryassistant.mySpace;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +39,22 @@ public class MySpace extends AppCompatActivity {
         setTitle(getString(R.string.my_space));
         Timber.v("Title Set");
         listViewId++;
+
+        if (!Helper.mayAccessStorage(this)) {
+            Snackbar.make(findViewById(R.id.my_space_relative_layout),
+                    "Storage permissions are required", Snackbar.LENGTH_SHORT)
+            .setAction("Grant", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }
+            })
+            .show();
+        }
         //findViewById(R.id.)
         //setAdapter();
     }

@@ -3,3 +3,5 @@ app/build
 .idea
 .gradle
 app/google-services.json
+*.iml
+local.properties

@@ -132,14 +132,17 @@ public class WriteFile extends AppCompatActivity {
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = " + fname);
         if (!Helper.mayAccessStorage(this)) {
-            if (name) return true;
+            if (name) {
+                Toast.makeText(this, "Permission to access storage is needed",
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
 
             name = true;
             return false;
         }
         if (!Helper.isExternalStorageWritable()) {
-            Toast.makeText(this, "Please check the storage"
-                    , Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please check the storage", Toast.LENGTH_SHORT).show();
             if (name) return true;
 
             name = true;

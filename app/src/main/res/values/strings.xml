@@ -27,7 +27,7 @@
     <string name="letters">Letters</string>
     <string name="random">Random</string>
     <string name="digits">Digits</string>
-    <string name="cf">Chose File</string>
+    <string name="chose_file">Chose File</string>
 
     <!--Recall-->
     <string name="enter_ans">Enter responses</string>

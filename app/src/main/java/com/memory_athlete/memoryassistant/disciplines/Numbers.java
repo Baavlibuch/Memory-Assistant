@@ -133,10 +133,10 @@ public class Numbers extends DisciplineFragment {
     }
 
     @Override
-    protected void reset() {
-        super.reset();
+    public boolean reset() {
         rootView.findViewById(R.id.decimal).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.negative).setVisibility(View.VISIBLE);
+        return super.reset();
     }
 
     @Override

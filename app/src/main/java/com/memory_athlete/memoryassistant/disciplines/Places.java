@@ -35,9 +35,9 @@ public class Places extends DisciplineFragment {
     }
 
     @Override
-    protected void reset() {
-        super.reset();
+    public boolean reset() {
         rootView.findViewById(R.id.group).setVisibility(View.GONE);
+        return super.reset();
     }
 
     @Override

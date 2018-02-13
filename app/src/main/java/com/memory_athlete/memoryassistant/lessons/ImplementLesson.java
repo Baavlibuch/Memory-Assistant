@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
         if (title.equals(getString(R.string.my_space))) title += " " + viewPager.getCurrentItem();
         Timber.v("updating tabTitles");
         tabTitles.set(viewPager.getCurrentItem(), title);
-        TabLayout slidingTabs = (TabLayout) findViewById(R.id.sliding_tabs);
+        TabLayout slidingTabs = findViewById(R.id.sliding_tabs);
         slidingTabs.getTabAt(viewPager.getCurrentItem()).setText(title);
     }
 
@@ -42,17 +43,21 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
         theme(intent);
 
         tabTitles.add(getString(R.string.apply));
-        for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(getString(R.string.no_my_space_frags), "1")); i++)
-            tabTitles.add("MySpace " + (i + 1));
-        if (tabTitles.size() == 1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        int noOfMySpaceScreens = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
+                this).getString(getString(R.string.no_my_space_frags), "1"));
+        for (int i = 0; i < noOfMySpaceScreens; i++) {
+            if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
+            else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
+        }
+        if (tabTitles.size() == 1 || !Helper.mayAccessStorage(this))
+            findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
+        viewPager = findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(9);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         Timber.v("adapter set");
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        TabLayout tabLayout = findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
     }
 
@@ -110,6 +115,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
 
         @Override
         public int getCount() {
+            if(!Helper.mayAccessStorage(ImplementLesson.this)) return 1;
             return tabTitles.size();
         }
     }

@@ -32,11 +32,12 @@ public class Cards extends DisciplineFragment {
     int[] cards = Helper.makeCards();
     ArrayList<Integer> randomList = new ArrayList<>();
     private boolean mSingleCard = false;
-    GridView gridView = rootView.findViewById(R.id.cards_practice_grid);
+    GridView gridView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        gridView = rootView.findViewById(R.id.cards_practice_grid);
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.decks));
         rootView.findViewById(R.id.cards).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +64,8 @@ public class Cards extends DisciplineFragment {
         mSingleCard = PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(
                 getString(R.string.single_card), false);
 
-        gridView.setNumColumns(PreferenceManager.getDefaultSharedPreferences(getContext()).getInt(
-                getString(R.string.practice_grid_columns), 4));
+        gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
+                getContext()).getString(getString(R.string.practice_grid_columns), "4")));
 
         return rootView;
     }
@@ -108,11 +109,12 @@ public class Cards extends DisciplineFragment {
         ArrayList<Integer> cards = new ArrayList<>();
         //Random rand = new Random();
         int n;
-        int[] occurenceCount = new int[52];
+        int[] occurrenceCount = new int[52];
         for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
             n = (new Random()).nextInt(52);
-            if (occurenceCount[i] > NO_OF_VALUES) {
+            if (occurrenceCount[n] >= NO_OF_VALUES) {
                 i--;
+                occurrenceCount[n]++;
                 continue;
             }
             cards.add(n);
@@ -152,6 +154,7 @@ public class Cards extends DisciplineFragment {
         numbersVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.no_of_values)).setVisibility(View.GONE);
+        if(mSingleCard)
         Toast.makeText(getActivity(), "Tap the image for the next card", Toast.LENGTH_SHORT).show();
     }
 
@@ -195,14 +198,14 @@ public class Cards extends DisciplineFragment {
     }
 
     @Override
-    protected void reset() {
-        super.reset();
+    public boolean reset() {
         mPosition = 0;
         randomList.clear();
         numbersVisibility(View.GONE);
         rootView.findViewById(R.id.group).setVisibility(View.GONE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
         ((ImageView) rootView.findViewById(R.id.cards)).setImageDrawable(null);
+        return super.reset();
         //findViewById(R.id.cards).setVisibility(View.GONE);
         //findViewById(R.id.progress_bar_discipline).setVisibility(View.GONE);
     }

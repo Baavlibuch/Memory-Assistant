@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
 import com.memory_athlete.memoryassistant.disciplines.DisciplineFragment;
@@ -45,18 +46,22 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         int fragIndex = intent.getIntExtra("class", 0);
         Timber.v("fragIndex = " + fragIndex + "tabTitles.size() = " + tabTitles.size());
         tabTitles.add(getString(R.string.practice));
-        for (int i = 0; i < Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(getString(R.string.no_my_space_frags), "1")); i++)
-            tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
-        if (tabTitles.size() == 1) findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
+        int noOfMySpaceScreens = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
+                this).getString(getString(R.string.no_my_space_frags), "1"));
+        for (int i = 0; i < noOfMySpaceScreens; i++) {
+            if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
+            else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
+        }
+        if (tabTitles.size() == 1 || !Helper.mayAccessStorage(this))
+            findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         Timber.v("tabTitles.size() = " + tabTitles.size());
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(9);
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         Timber.v("adapter set");
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        TabLayout tabLayout = findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
     }
 
@@ -89,7 +94,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         if (title.equals(getString(R.string.my_space))) title += " " + viewPager.getCurrentItem();
         Timber.v("updating tabTitles");
         tabTitles.set(viewPager.getCurrentItem(), title);
-        TabLayout slidingTabs = (TabLayout) findViewById(R.id.sliding_tabs);
+        TabLayout slidingTabs = findViewById(R.id.sliding_tabs);
         slidingTabs.getTabAt(viewPager.getCurrentItem()).setText(title);
     }
 
@@ -144,6 +149,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         @Override
         public int getCount() {
+            if (!Helper.mayAccessStorage(DisciplineActivity.this)) return 1;
             return tabTitles.size();
         }
 
@@ -163,20 +169,23 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     @Override
     public void onBackPressed() {
         int cur = viewPager.getCurrentItem();
+            String tag = "android:switcher:" + R.id.viewpager + ":" + cur;
 
         //go back in current fragment
         if (cur != 0) {
-            String tag = "android:switcher:" + R.id.viewpager + ":" + cur;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
             if (fragment.fragListViewId == 0 || fragment.fragListViewId == fragment.MIN_DYNAMIC_VIEW_ID)
                 viewPager.setCurrentItem(0, true);
             else fragment.back();
             return;
+        } else {
+            DisciplineFragment fragment = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
+            if (!fragment.reset()) return;
         }
 
         //Check if everything is saved
         for (int i = 1; i < tabTitles.size(); i++) {
-            String tag = "android:switcher:" + R.id.viewpager + ":" + i;
+            tag = "android:switcher:" + R.id.viewpager + ":" + i;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
             if (fragment == null) continue;
             if (!fragment.save()) {
@@ -186,7 +195,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         }
 
         //Stop the loading
-        String tag = "android:switcher:" + R.id.viewpager + ":" + 0;
+        tag = "android:switcher:" + R.id.viewpager + ":" + 0;
         DisciplineFragment frag = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
         if (frag.a.get(frag.RUNNING) == frag.TRUE) {
             frag.a.set(frag.RUNNING, frag.FALSE);

@@ -24,7 +24,7 @@ import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 public class Helper {
     public static final String APP_FOLDER = Environment.getExternalStorageDirectory().toString()
             + "/Memory Assistant/";
-    private final int REQUEST_STORAGE_ACCESS = 555;
+    private static final int REQUEST_STORAGE_ACCESS = 555;
 
     public static int[] makeCards() {
         int[] cards = new int[52];

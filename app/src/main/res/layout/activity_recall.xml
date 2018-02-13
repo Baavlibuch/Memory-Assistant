@@ -277,7 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/extra"
-                        android:textColor="#2E7D32" />
+                        android:textColor="#1D6C21" />
 
                     <TextView
                         android:id="@+id/no_of_extra"

@@ -291,7 +291,8 @@ public class DisciplineFragment extends Fragment {
         return false;
     }
 
-    protected void reset() {
+    public boolean reset() {
+        if(rootView.findViewById(R.id.reset).getVisibility()==View.GONE) return true;
         if (((RadioButton) rootView.findViewById(R.id.timer)).isChecked()) {
             cdt.cancel();
             (rootView.findViewById(R.id.clock_text)).setVisibility(View.GONE);
@@ -318,6 +319,7 @@ public class DisciplineFragment extends Fragment {
         ((RadioGroup) rootView.findViewById(R.id.time)).clearCheck();
         ((TextView) rootView.findViewById(R.id.random_values)).setText("");
         isTimerRunning = false;
+        return false;
     }
 
     protected void setButtons() {

@@ -66,7 +66,7 @@ public class Recall extends AppCompatActivity {
     private StringBuilder mTextAnswer = null, mTextResponse = null;
     private String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
-    
+
     private GridView gridView;
 
     @Override
@@ -111,6 +111,7 @@ public class Recall extends AppCompatActivity {
                 mSuitBackground = R.color.color_suit_background_light;
                 setContentView(R.layout.activity_recall);
         }
+        gridView = findViewById(R.id.cards_responses);
     }
 
     void makeSpinner1(final Intent intent) {
@@ -177,7 +178,7 @@ public class Recall extends AppCompatActivity {
         File dir = new File(getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice)
                 + File.separator + discipline);
         ArrayList<String> fileList = new ArrayList<>();
-        fileList.add(getString(R.string.cf));
+        fileList.add(getString(R.string.chose_file));
         File[] files = dir.listFiles();
         if (files == null) {
             practice(chose_file, discipline);
@@ -197,7 +198,7 @@ public class Recall extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (chose_file.getSelectedItem() != null &&
-                        chose_file.getSelectedItem().toString().equals(getString(R.string.cf)))
+                        chose_file.getSelectedItem().toString().equals(getString(R.string.chose_file)))
                     return;
 
                 //getAnswers(spinner, item);
@@ -279,7 +280,6 @@ public class Recall extends AppCompatActivity {
 
 
     void updateGridView() {
-        gridView = findViewById(R.id.cards_responses);
         CardAdapter adapter = new CardAdapter(this, responses);
         gridView.setAdapter(adapter);
     }
@@ -293,11 +293,10 @@ public class Recall extends AppCompatActivity {
     }
 
     void cardResponseLayout() {
-        gridView.setNumColumns(PreferenceManager.getDefaultSharedPreferences(this).getInt(
-                getString(R.string.practice_grid_columns), 4));
+        gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
+                this).getString(getString(R.string.recall_grid_columns), "6")));
         cardImageIds = Helper.makeCards();
         Timber.v("cardResponseLayout() started");
-        findViewById(R.id.response_input).setVisibility(View.GONE);
         gridView.setVisibility(View.VISIBLE);
         compareFormat = 2;
         responseFormat = 2;
@@ -404,10 +403,14 @@ public class Recall extends AppCompatActivity {
         Timber.v(((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString());
         if (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString().equals(getString(R.string.cards))) {
             findViewById(R.id.result).setVisibility(View.GONE);
+            findViewById(R.id.response_input).setVisibility(View.GONE);
+            findViewById(R.id.card_suit).setVisibility(View.VISIBLE);
+            findViewById(R.id.card_numbers).setVisibility(View.VISIBLE);
             gridView.setVisibility(View.VISIBLE);
 
             cardResponseLayout();
         } else {
+            findViewById(R.id.response_input).setVisibility(View.VISIBLE);
             findViewById(R.id.card_suit).setVisibility(View.GONE);
             findViewById(R.id.card_numbers).setVisibility(View.GONE);
             gridView.setVisibility(View.GONE);
@@ -554,12 +557,9 @@ public class Recall extends AppCompatActivity {
         Timber.v("whitespace = " + whitespace + ".");
         int i = 0, j = 0;
         for (; i < responses.size() && j < answers.size(); i++, j++) {
-            Timber.v("Entered loop - response" + responses.get(i) + "answer – " + answers.get(j));
+            Timber.v("Entered loop " + (i + j) + " - response " + responses.get(i) + ", answer " + answers.get(j));
             if (isCorrect(i, j)) continue;
-            if (missed > 8 && missed > correct) {
-                Toast.makeText(this, "Very less accuracy", Toast.LENGTH_SHORT).show();
-                break;
-            }
+            if (missed > 8 && missed > correct) break;
             if (isLeft(i, j)) continue;
             if (words) {
                 if (isSpelling(i, j)) {
@@ -654,9 +654,9 @@ public class Recall extends AppCompatActivity {
             }
             Timber.v(match + "");
             if (((float) match / k) > 0.3) {            //Extra
-                mTextResponse.append("<font color=#2E7D32>").append(responses.get(i))
+                mTextResponse.append("<font color=#1D6C21>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
-                mTextAnswer.append("<font color=#2E7D32>").append(responses.get(i))
+                mTextAnswer.append("<font color=#1D6C21>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
                 extra++;
                 return true;
@@ -665,13 +665,12 @@ public class Recall extends AppCompatActivity {
         return false;
     }
 
-    boolean isWrong(int i, int j) {
+    void isWrong(int i, int j) {
         wrong++;
         mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
                 .append(" ").append(whitespace);
         mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
                 .append("</font>").append(" ").append(whitespace);
-        return false;
     }
 
     boolean isSpelling(int i, int j) {
@@ -711,6 +710,7 @@ public class Recall extends AppCompatActivity {
             answers.set(i, cardStrings[Integer.parseInt(answers.get(i))]);
         }
         compare(false);
+        Timber.v("compareCards() complete");
     }
 
 
@@ -827,6 +827,9 @@ public class Recall extends AppCompatActivity {
             ((TextView) findViewById(R.id.no_of_extra)).setText(String.valueOf(extra));
             ((TextView) findViewById(R.id.value_of_score)).setText(String.valueOf(
                     correct - 10 * wrong - 5 * missed - 2 * extra - spelling));
+
+            if (missed > 8 && missed > correct) Toast.makeText(getApplicationContext(),
+                    "Very less accuracy", Toast.LENGTH_SHORT).show();
             //((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
             //      .toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
         }
@@ -890,15 +893,12 @@ public class Recall extends AppCompatActivity {
                 //imageView.setPadding(8, 8, 8, 8);
             }
 
-            Picasso
-                    //.setLoggingEnabled(true)
-                    .with(getApplicationContext())
+            Picasso.with(getApplicationContext())
                     .load(cardImageIds[parseInt(responses.get(position))])
                     .placeholder(R.drawable.sa)
                     .fit()
                     //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ
                     .into(imageView);
-            //imageView.setImageResource(cardImageIds[parseInt(responses.get(position))]);
 
             Timber.v("getView() complete");
 
