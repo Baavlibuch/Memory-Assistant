@@ -70,16 +70,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        new Runnable() {
+        //Handler handler = new Handler();
+        Runnable r = new Runnable() {
             @Override
             public void run() {
-                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
+                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(
+                        getApplicationContext()).edit();
                 e.putLong("last_opened", System.currentTimeMillis());
                 Timber.v("Last opened on" + System.currentTimeMillis());
                 e.apply();
                 ReminderUtils.scheduleReminder(getApplicationContext());
             }
         };
+        r.run();
     }
 
     void firstStart() {

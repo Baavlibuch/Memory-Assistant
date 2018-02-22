@@ -676,31 +676,30 @@ public class Recall extends AppCompatActivity {
     }
 
     boolean isSpelling(int i, int j) {
-        if ((float) abs((responses.get(i).length() - answers.get(j).length()) / answers.get(j).length()) > 0.3) {
-            return false;
-        } else {
-            int count = 0;
-            for (int a = 0; a < responses.get(i).length() && a < answers.get(j).length(); a++) {
-                if (Character.toLowerCase(responses.get(i).charAt(a)) == Character.toLowerCase(answers.get(j).charAt(a))) {
-                    count++;
-                    Timber.v("Match for " + answers.get(j).charAt(a) + "  count = " + count);
-                    continue;
-                }
-                Timber.d("Not a match");
-                for (int b = -2; b < 3; b++) {
-                    Timber.v("" + b);
-                    if (a + b > 0 && a + b < responses.get(i).length() && a + b < answers.get(j).length()) {
-                        if (responses.get(i).charAt(a) == answers.get(j).charAt(a + b)) {
-                            count++;
-                            Timber.v("match for " + answers.get(j).charAt(a + b) + "  count = " + count);
-                            break;
-                        }
+        if ((float) abs((responses.get(i).length() - answers.get(j).length())
+                / answers.get(j).length()) > 0.3) return false;
+        int count = 0;
+        for (int a = 0; a < responses.get(i).length() && a < answers.get(j).length(); a++) {
+            if (Character.toLowerCase(responses.get(i).charAt(a)) == Character.toLowerCase(answers.get(j).charAt(a))) {
+                count++;
+                Timber.v("Match for " + answers.get(j).charAt(a) + "  count = " + count);
+                continue;
+            }
+            Timber.d("Not a match");
+            for (int b = -2; b < 3; b++) {
+                Timber.v("" + b);
+                if (a + b > 0 && a + b < responses.get(i).length() && a + b < answers.get(j).length()) {
+                    if (responses.get(i).charAt(a) == answers.get(j).charAt(a + b)) {
+                        count++;
+                        Timber.v("match for " + answers.get(j).charAt(a + b) + "  count = " + count);
+                        break;
                     }
                 }
             }
-            Timber.v("Count = " + count);
-            return ((float) count / answers.get(j).length()) > 0.6;
         }
+        Timber.v("Count = " + count);
+        return ((float) count / answers.get(j).length()) > 0.6;
+
     }
 
     void compareCards() {
