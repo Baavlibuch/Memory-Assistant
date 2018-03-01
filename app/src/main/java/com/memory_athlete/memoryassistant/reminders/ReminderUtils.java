@@ -100,7 +100,7 @@ public class ReminderUtils {
             int diff1 = diff;
             switch (i) {
                 case 0:
-                    if (diff < 10 * HOUR) diff1 = diff += DAY;
+                    if (diff < 10 * HOUR) diff1 += DAY;
                     break;
                 case 1:
                     diff1 += 3 * DAY;

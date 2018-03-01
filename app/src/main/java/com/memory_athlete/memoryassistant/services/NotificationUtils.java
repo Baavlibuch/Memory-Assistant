@@ -76,8 +76,8 @@ abstract class NotificationUtils {
         long cur = System.currentTimeMillis();
         long diff = cur - lastOpened;
 
-        if (diff / DAY < 1) return "Time to practice";
-        if (diff / DAY < 2) return "You haven't practiced for a day";
+        if (diff / DAY < 2) return "Time to practice";
+        //if (diff / DAY < 2) return "You haven't practiced for a day";
         return "You haven't practiced for a week";
     }
 
@@ -127,14 +127,6 @@ abstract class NotificationUtils {
         fPath = fPath.substring(fPath.lastIndexOf('/') + 1, fPath.length() - 4);
         Timber.v("fName = " + fPath);
 
-        if (diff / DAY < 2) return "You should revise " + fPath + " now";
-        if (diff / DAY < 5) return "It's been a few days since you opened " + fPath;
-        if (diff / WEEK < 2) return "You opened " + fPath + " a week ago. Consider revising";
-        if (diff / MONTH < 1) return "You learned " + fPath + " a month ago. Consider revising";
-        if (diff / MONTH < 6)
-            return "It's been about 3 months since you created " + fPath + ". Consider revising";
-        if (diff / MONTH < 12)
-            return "It's been about 6 months since you created " + fPath + ". Consider revising";
-        return "A year ago you created " + fPath + ". Consider revising";
+        return "Consider revising " + fPath;
     }
 }
