@@ -108,6 +108,11 @@
     <string name="single_card_on">Show single card when practicing cards</string>
     <string name="practice_grid_columns">Number of columns in Practice Cards</string>
     <string name="recall_grid_columns">Number of columns in Recall Cards</string>
+    <string name="tabs_bottom">My Space tabs will be at the bottom of the screen</string>
+    <string name="tabs_top">My Space tabs will be at the top of the screen</string>
+    <string name="preceding_zeros">Preceding zeros</string>
+    <string name="no_preceding_zeros">Don\'t add zeros before a small number</string>
+    <string name="show_preceding_zeros">Add zeros before a small number</string>
 
     <!--Learn-->
     <string name="method_of_loci">Method Of Loci</string>
@@ -134,5 +139,6 @@
     <string name="bottom_tabs">Tabs on bottom</string>
     <string name="dont_save">Exit without saving</string>
     <string name="extra">Extra</string>
+
 
 </resources>

@@ -1,3 +1,6 @@
+<p><b>This contains errors. Use it at your discretion and feel free to suggest corrections.</b><br/><p>
+
+<!--Person-->
 <p><b>Ich</b><br/>I</p>
 <p><b>Bin</b><br/>Am</p>
 <p><b>Er</b><br/>He</p>
@@ -6,6 +9,7 @@
 <p><b>Sie</b><br/>You, They, Them, She</p>
 <p><b>Es</b><br/>It</p>
 
+<!--Prepositions-->
 <p><b>Weil</b><br/>Because</p>
 <p><b>Dann</b><br/>Then</p>
 <p><b>Im</b><br/>In</p>
@@ -20,26 +24,48 @@
 <p><b>Da</b><br/>Since</p>
 <p><b>Bis</b><br/>Until</p>
 <p><b>Dabei</b><br/>With it, Yet</p>
+<p><b>Einer</b><br/>Either, One</p>
+<p><b>Ein</b><br/>Or</p>
+<p><b>Um</b><br/>Around</p>
+<p><b>Der</b><br/>Of the</p>
+<p><b>Zwischen</b><br/>Between</p>
 
+<!--Helping verbs-->
 <p><b>Kann</b><br/>Can, Know</p>
 <p><b>Nur</b><br/>Just</p>
+<p><b>Möchten</b><br/>Would</p>
 
+<!--Adjectives and adverbs-->
+<p><b>Die</b><br/>The</p>
 <p><b>Nicht</b><br/>Not</p>
 <p><b>Guten</b><br/>Good</p>
 <p><b>Gut</b><br/>Well, Fine</p>
 <p><b>Viel</b><br/>Much, A lot</p>
+<p><b>Billigeres</b><br/>Cheaper</p>
+<p><b>Kleineren</b><br/>Smaller</p>
+<p><b>Größeren</b><br/>Larger</p>
+<p><b>Größe</b><br/>Size</p>
+<p><b>Einen</b><br/>A, Unite</p>
+<p><b>Gern</b><br/>Gladly</p>
 
+<!--Time related-->
 <p><b>Morgen</b><br/>Morning</p>
 <p><b>Tag</b><br/>Day</p>
 <p><b>Abend</b><br/>Evening</p>
 <p><b>Wochen</b><br/>Week</p>
 <p><b>Später</b><br/>Later</p>
 
+<!--Salutations-->
 <p><b>Hallo</b><br/>Hello</p>
 <p><b>Tschüß</b><br/>Bye</p>
 <p><b>Heiße</b><br/>Am called, Hot, Go</p>
 <p><b>Wie</b><br/>How, When, As, Like</p>
+<p><b>Was</b><br/>What</p>
+<p><b>Darf</b><br/>May</p>
+<p><b>Mit</b><br/>With</p>
+<p><b>Bitte</b><br/>Plea, Welcome, Request</p>
 
+<!--Verbs-->
 <p><b>Geht</b><br/>Go, Walk, Move</p>
 <p><b>Komme</b><br/>Come, Happen</p>
 <p><b>Lange</b><br/>Long</p>
@@ -50,12 +76,27 @@
 <p><b>Habe</b><br/>Have</p>
 <p><b>Kaufen</b><br/>Buy</p>
 <p><b>Verkaufen</b><br/>Sell</p>
+<p><b>Öffnet</b><br/>Opens</p>
+<p><b>Schließt</b><br/>Closes</p>
+<p><b>Suchen</b><br/>Search</p>
+<p><b>Reserviert</b><br/>Reserved</p>
+<p><b>Sehen</b><br/>See</p>
+<p><b>Hätte</b><br/>Have, Own, Would have</p>
 
+<!--Nouns-->
 <p><b>Andenken</b><br/>Souvenirs</p>
 <p><b>Habe</b><br/>Belongings, Goods</p>
 <p><b>Etwas</b><br/>Something</p>
-<p><b>Billigeres</b><br/>Cheaper</p>
+<p><b>Uhr</b><br/>Clock, Watch, Meter</p>
+<p><b>Bargeld</b><br/>Cash</p>
+<p><b>Kreditkarte</b><br/>Credit Card</p>
+<p><b>Tisch</b><br/>Table</p>
+<p><b>Speisekarte</b><br/>Menu</p>
+<p><b>Weinkarte</b><br/>Wine list</p>
+<p><b>Unterschied</b><br/>Difference</p>
+<p><b>Laktosefreier</b><br/>Lactose free</p>
 
+<!--Countries-->
 <p><b>Deutschland</b><br/>Germany</p>
 <p><b>Österreich</b><br/>Austria</p>
 <p><b>der Schweiz</b><br/>Switzerland</p>
@@ -65,7 +106,9 @@
 <p><b>Großbritannien</b><br/>Great Britain</p>
 <p><b>Indien</b><br/>India</p>
 <p><b>Frankreich</b><br/>France</p>
+<p><b>Milch</b><br/>Milk</p>
 
+<!--Numbers-->
 <p><b>Null</b><br/>Zero</p>
 <p><b>Ein</b><br/>One</p>
 <p><b>Zwei</b><br/>Two</p>
@@ -98,14 +141,7 @@
 <p><b>Billiarde</b><br/>Quadrillion</p>
 <p><b>Trillion</b><br/>Quintillion</p>
 
-<p><b></b><br/></p>
-<p><b></b><br/></p>
-<p><b></b><br/></p>
-<p><b></b><br/></p>
-<p><b></b><br/></p>
-<p><b></b><br/></p>
-<p><b></b><br/></p>
-
+<!--Phrases-->
 <p><b>Guten Morgen</b><br/>Good Morning</p>
 <p><b>Guten Tag</b><br/>Good day</p>
 <p><b>Guten Abend</b><br/>Good Evening</p>
@@ -125,24 +161,24 @@
 <p><b>Ich habe nur X Euro dabei.</b><br/>I only have X euros with me.</p>
 <p><b>Kann ich es für X Euro kaufen?</b><br/>Can I buy it for X euros?</p>
 <p><b>Haben Sie etwas Billigeres?</b><br/>Do you have something cheaper?</p>
-
-
-
-
-
-
-<p><b>Haben Sie das in einer [kleineren/größeren] Größe?</b><br/>Do you have that in a [smaller/bigger] size?</p>
-<p><b>Um wieviel Uhr [öffnet/schließt] das Geschäft?</b><br/>What time does the shop [open/close]?</p>
+<p><b>Haben Sie das in einer kleineren/größeren Größe?</b><br/>Do you have that in a smaller/bigger size?</p>
+<p><b>Um wie viel Uhr öffnet/schließt das Geschäft?</b><br/>What time does the shop open/close?</p>
 <p><b>Was möchten Sie?</b><br/>What would you like?</p>
 <p><b>Was suchen Sie?</b><br/>What are you looking for?</p>
 <p><b>Darf ich mit Bargeld bezahlen?</b><br/>May I pay with cash?</p>
 <p><b>Darf ich mit Kreditkarte bezahlen?</b><br/>May I pay with credit card?</p>
-<p><b>Einen Tisch für [zwei/drei/vier], bitte.</b><br/> A table for [two/three/four], please.</p>
+<p><b>Einen Tisch für …, bitte.</b><br/> A table for …, please.</p>
 <p><b>Ich habe einen Tisch reserviert.</b><br/>I reserved a table.</p>
-<p><b>Kann ich bitte die [Speisekarte/Weinkarte] sehen?</b><br/>Can I see the [menu/wine list], please?</p>
+<p><b>Kann ich bitte die Speisekarte/Weinkarte sehen?</b><br/>Can I see the menu/wine list, please?</p>
 <p><b>Ich hätte gern…</b><br/>I would like…</p>
 <p><b>Was ist der Unterschied zwischen X und Y?</b><br/>What’s the difference between X and Y?</p>
 <p><b>Mit laktosefreier Milch, bitte.</b><br/>With lactose-free milk, please.</p>
+
+
+
+
+
+
 <p><b>Ist das glutenfrei?</b><br/>Is that gluten-free?</p>
 <p><b>Haben Sie vegetarisches Essen?</b><br/>Do you have vegetarian food?</p>
 <p><b>Ein Glas Wasser, bitte.</b><br/>A glass of water, please.</p>

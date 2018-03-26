@@ -1,7 +1,9 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,10 +49,14 @@ public class Numbers extends DisciplineFragment {
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
         int n1 = 1, n2 = 0;         //n1* for upper limit, n2* for lower limit
-        if (((CheckBox) rootView.findViewById(R.id.negative)).isChecked()) {
+        boolean addZeros = checkPrecedingZeros(),          //To Pad zeros if the setting is enabled
+                negative = ((CheckBox) rootView.findViewById(R.id.negative)).isChecked();
+
+        if (negative) {
             n1 = 2;                 //Double the max value of random
             n2 = 1;                 //Subtract from from random to get negative
         }
+
 
         //Study the else statement first, its simpler
         if (((CheckBox) rootView.findViewById(R.id.decimal)).isChecked()) {//handling floats numbers
@@ -65,11 +71,12 @@ public class Numbers extends DisciplineFragment {
                 //Extra spaces are added when numbers are smaller in length
 
                 //Handling - sign
-                if (((CheckBox) rootView.findViewById(R.id.negative)).isChecked() && n >= 0 && i > 0)
-                    stringBuilder.append("  ");
+                if (negative && n >= 0 && i > 0) stringBuilder.append(" ");
 
                 //Adding the number to the final string
-                stringBuilder.append(n).append(getString(R.string.tab));    //\t is the delimiter for recall
+                if (addZeros) stringBuilder.append(formatDouble(n)).append(getString(R.string.tab));
+                else stringBuilder.append(n).append(getString(R.string.tab));
+                //\t is the delimiter for recall
 
                 //Minimum space between 2 numbers
                 for (int j = 0; j <= a.get(GROUP_SIZE); j++) {
@@ -77,11 +84,14 @@ public class Numbers extends DisciplineFragment {
                 }
 
                 //Bigger numbers should have more space between them to look nice
-                for (int j = 0; j / 2 <= 2 * a.get(GROUP_SIZE) - Double.toString(n).length() + 1; j++) {
+                if (!addZeros) for (int j = 0;
+                                    j / 2 <= 2 * a.get(GROUP_SIZE) - Double.toString(n).length() + 1; j++)
                     stringBuilder.append(" ");
-                }
+
                 Timber.v("Entered " + j);
-                if (n < 0) stringBuilder.append(" ");   //handling negatives
+                if (n < 0) stringBuilder.append(" ");                   //handling negatives
+                else if (addZeros) stringBuilder.append("  ");
+                stringBuilder.append(" ");
 
                 if (a.get(RUNNING) == FALSE) break;
             }
@@ -96,11 +106,12 @@ public class Numbers extends DisciplineFragment {
                 //extra spaces are added when numbers are smaller in length
 
                 //Handling - sign
-                if (((CheckBox) rootView.findViewById(R.id.negative)).isChecked() && n >= 0 && i > 0)
-                    stringBuilder.append(" ");
+                if (negative && n >= 0 && i > 0) stringBuilder.append(" ");
 
                 //Adding the value to the final string
-                stringBuilder.append(n).append(getString(R.string.tab));            //\t is the delimiter for recall
+                if (addZeros) stringBuilder.append(formatInt(n)).append(getString(R.string.tab));
+                else stringBuilder.append(n).append(getString(R.string.tab));
+                //\t is the delimiter for recall
 
                 //Minimum space between 2 numbers
                 for (int j = 0; j <= a.get(GROUP_SIZE) / 2; j++) {
@@ -108,11 +119,15 @@ public class Numbers extends DisciplineFragment {
                 }
 
                 //Bigger numbers should have more space between them to look nice
-                for (int j = 0; j / 2 <= a.get(GROUP_SIZE) - Integer.toString(n).length(); j++) {
-                    stringBuilder.append(" ");
-                }
+                if (!addZeros)
+                    for (int j = 0; j / 2 <= a.get(GROUP_SIZE) - Integer.toString(n).length(); j++)
+                        stringBuilder.append(" ");
+
 
                 if (n < 0) stringBuilder.append(" ");
+                else if (addZeros) stringBuilder.append("  ");
+                stringBuilder.append(" ");
+
                 if (a.get(RUNNING) == FALSE) break;
             }
         }
@@ -123,6 +138,24 @@ public class Numbers extends DisciplineFragment {
         BigDecimal bd = new BigDecimal(Double.toString(d));
         bd = bd.setScale(decimalPlace, BigDecimal.ROUND_DOWN);
         return bd.doubleValue();
+    }
+
+    private boolean checkPrecedingZeros() {
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        return s.getBoolean(getActivity().getString(R.string.preceding_zeros), false);
+    }
+
+    //pad 0s
+    private String formatInt(int n) {
+        if (n < 0) return ("-" + String.format("%0" + a.get(GROUP_SIZE) + "d", Math.abs(n)));
+        return String.format("%0" + a.get(GROUP_SIZE) + "d", n);
+    }
+
+    //pad 0s
+    private String formatDouble(double n) {
+        if (n < 0) return ("-" + String.format("%0" + (2 * a.get(GROUP_SIZE) + 1) + "."
+                + a.get(GROUP_SIZE) + "f", Math.abs(n)));
+        return String.format("%0" + (2 * a.get(GROUP_SIZE) + 1) + "." + a.get(GROUP_SIZE) + "f", n);
     }
 
     @Override
@@ -191,3 +224,5 @@ public class Numbers extends DisciplineFragment {
         } else super.recall();  //Recall Numbers
     }
 }
+
+//TODO: add zeros if needed

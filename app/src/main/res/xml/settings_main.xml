@@ -28,7 +28,17 @@
     <SwitchPreference
         android:defaultValue="false"
         android:key="@string/bottom_tabs"
-        android:title="@string/bottom_tabs"/>
+        android:title="@string/bottom_tabs"
+        android:summaryOn="@string/tabs_bottom"
+        android:summaryOff="@string/tabs_top"/>
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="@string/preceding_zeros"
+        android:title="@string/preceding_zeros"
+        android:summaryOff="@string/no_preceding_zeros"
+        android:summaryOn="@string/show_preceding_zeros"
+        />
 
     <SwitchPreference
         android:defaultValue="false"

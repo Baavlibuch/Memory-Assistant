@@ -603,7 +603,8 @@ public class Recall extends AppCompatActivity {
         if (responses.get(i).equals(" ")) {
             missed++;
             mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
-            mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>").append(" ").append(whitespace);
+            mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
+                    .append(" ").append(whitespace);
             return true;
         } else return false;
     }
