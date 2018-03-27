@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -134,32 +135,11 @@ public class Cards extends DisciplineFragment {
 
     @Override
     protected void postExecute(String s) {
-        (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
         if (a.get(RUNNING) == FALSE) {
+            reset();
             return;
         }
-        String string;
-
-        Scanner scanner = new Scanner(s).useDelimiter(getString(R.string.tab));
-
-        while (scanner.hasNext()) {
-            string = scanner.next();
-            randomList.add(Integer.parseInt(string));
-        }
-
-        if (mSingleCard) setCard();
-        else {
-            numbersVisibility(View.VISIBLE);
-            CardAdapter adapter = new CardAdapter(getActivity(), randomList);
-            gridView.setAdapter(adapter);
-            Timber.v("postExecute() complete");
-        }
-        //((TextView) findViewById(R.id.numbers)).setText(s);
-        numbersVisibility(View.VISIBLE);
-        (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
-        (rootView.findViewById(R.id.no_of_values)).setVisibility(View.GONE);
-        if(mSingleCard)
-        Toast.makeText(getActivity(), "Tap the image for the next card", Toast.LENGTH_SHORT).show();
+        (new RandomArrayScanner()).execute(s);
     }
 
     @Override
@@ -204,12 +184,14 @@ public class Cards extends DisciplineFragment {
     @Override
     public boolean reset() {
         mPosition = 0;
+        gridView.setAdapter(new CardAdapter(getActivity(), new ArrayList<Integer>()));
         randomList.clear();
         numbersVisibility(View.GONE);
-        rootView.findViewById(R.id.group).setVisibility(View.GONE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
         cardImageView.setImageDrawable(null);
-        return super.reset();
+        boolean b = super.reset();
+        rootView.findViewById(R.id.group).setVisibility(View.GONE);
+        return b;
         //findViewById(R.id.cards).setVisibility(View.GONE);
         //findViewById(R.id.progress_bar_discipline).setVisibility(View.GONE);
     }
@@ -259,5 +241,48 @@ public class Cards extends DisciplineFragment {
         }
     }
 
+    private class RandomArrayScanner extends AsyncTask<String, Void, ArrayList<Integer>> {
+
+        @Override
+        protected ArrayList<Integer> doInBackground(String... strings) {
+            Scanner scanner = new Scanner(strings[0]).useDelimiter(getString(R.string.tab));
+            ArrayList<Integer> list = new ArrayList<>();
+
+            while (scanner.hasNext()) {
+                list.add(Integer.parseInt(scanner.next()));
+                if (a.get(RUNNING) == FALSE) return list;
+            }
+
+            return list;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Integer> list) {
+            super.onPostExecute(list);
+            (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
+            (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
+
+            if (a.get(RUNNING) == FALSE){
+                reset();
+                return;
+            }
+
+            randomList = list;
+
+            if (mSingleCard) setCard();
+            else {
+                numbersVisibility(View.VISIBLE);
+                Timber.v("Setting the card adapter");
+                CardAdapter adapter = new CardAdapter(getActivity(), randomList);
+                gridView.setAdapter(adapter);
+                Timber.v("card adapter set");
+            }
+            //((TextView) findViewById(R.id.numbers)).setText(s);
+            numbersVisibility(View.VISIBLE);
+            (rootView.findViewById(R.id.no_of_values)).setVisibility(View.GONE);
+            if(mSingleCard) Toast.makeText(getActivity(), "Tap the card for the next card",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 }
 //TODO: uses custom theme(), don't remove this comment

@@ -502,7 +502,6 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
 
     //Runs when the random generating thread is complete
     protected void postExecute(String s) {
-        if(getActivity() == null) return;
         (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
         if (a.get(RUNNING) == FALSE) {
@@ -514,7 +513,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
     }
 
     //Thread to generate the random list
-    private class GenerateRandomAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
+    protected class GenerateRandomAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
 
         @Override
         protected void onPreExecute() {

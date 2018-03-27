@@ -20,7 +20,6 @@ import timber.log.Timber;
 import static com.memory_athlete.memoryassistant.R.raw.first;
 
 public class Names extends DisciplineFragment {
-
     private ArrayList<String> mFirstName = new ArrayList<>();
     private ArrayList<String> mLastName = new ArrayList<>();
 
