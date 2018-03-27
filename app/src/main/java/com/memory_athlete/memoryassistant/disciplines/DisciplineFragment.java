@@ -43,8 +43,8 @@ import static java.lang.Math.pow;
  * Created by manik on 5/11/17.
  */
 
-public class DisciplineFragment extends Fragment {
-    View rootView;                                  //This view contains the fragment
+public class DisciplineFragment extends Fragment implements View.OnClickListener {
+    View rootView;                                               //This view contains the fragment
     protected CountDownTimer cdt;
     protected long mTime = 0;
     protected boolean isTimerRunning = false, hasStandard = true;
@@ -55,10 +55,75 @@ public class DisciplineFragment extends Fragment {
     public DisciplineFragment() {
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.standard_radio:
+                rootView.findViewById(R.id.custom_layout).setVisibility(View.GONE);
+                rootView.findViewById(R.id.level).setVisibility(View.VISIBLE);
+                rootView.findViewById(R.id.custom_radio).setSelected(false);
+                break;
+            case R.id.custom_radio:
+                rootView.findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
+                rootView.findViewById(R.id.level).setVisibility(View.GONE);
+                rootView.findViewById(R.id.standard_radio).setSelected(false);
+                break;
+            case R.id.sw:
+                rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
+                break;
+            case R.id.timer:
+                rootView.findViewById(R.id.clock_edit).setVisibility(View.VISIBLE);
+                ((EditText) rootView.findViewById(R.id.min)).setText("");
+                ((EditText) rootView.findViewById(R.id.sec)).setText("");
+                rootView.findViewById(R.id.min).requestFocus();
+                break;
+            case R.id.none:
+                rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
+                break;
+            case R.id.stop:
+                a.set(RUNNING, FALSE);
+                if (isTimerRunning) {
+                    cdt.cancel();
+                } else {
+                    mTime = ((Chronometer) rootView.findViewById(R.id.chronometer)).getBase();
+                    ((Chronometer) rootView.findViewById(R.id.chronometer)).stop();
+                }
+                (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.resume)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.reset)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.stop)).setVisibility(View.GONE);
+                (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
+                break;
+            case R.id.resume:
+                if (isTimerRunning) {
+                    timer();
+                } else {
+                    ((Chronometer) rootView.findViewById(R.id.chronometer)).setBase(mTime);
+                    ((Chronometer) rootView.findViewById(R.id.chronometer)).start();
+                }
+                (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
+                (rootView.findViewById(R.id.stop)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
+                //a.set(RUNNING, FALSE);
+                break;
+            case R.id.start:
+                Start();
+                break;
+            case R.id.reset:
+                reset();
+                break;
+            case R.id.save:
+                save();
+                break;
+            case R.id.recall:
+                recall();
+                break;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.activity_disciplines, container, false);
+        rootView = inflater.inflate(R.layout.fragment_disciplines, container, false);
 
         Bundle bundle = getArguments();
         Timber.i("0 means error in getting title resource string ID through bundle");
@@ -91,6 +156,7 @@ public class DisciplineFragment extends Fragment {
         a.add(0);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         Timber.v("Activity Created");
+        rootView.setOnClickListener(this);
         return rootView;
     }
 
@@ -292,7 +358,7 @@ public class DisciplineFragment extends Fragment {
     }
 
     public boolean reset() {
-        if(rootView.findViewById(R.id.reset).getVisibility()==View.GONE) return true;
+        if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE) return true;
         if (((RadioButton) rootView.findViewById(R.id.timer)).isChecked()) {
             cdt.cancel();
             (rootView.findViewById(R.id.clock_text)).setVisibility(View.GONE);
@@ -323,112 +389,17 @@ public class DisciplineFragment extends Fragment {
     }
 
     protected void setButtons() {
-        Timber.v("setButtons entered");
-
-        rootView.findViewById(R.id.standard_radio).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                rootView.findViewById(R.id.custom_layout).setVisibility(View.GONE);
-                rootView.findViewById(R.id.level).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.custom_radio).setSelected(false);
-            }
-        });
-        Timber.v("standard_radio onClickListener set");
-
-        rootView.findViewById(R.id.custom_radio).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                rootView.findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.level).setVisibility(View.GONE);
-                rootView.findViewById(R.id.standard_radio).setSelected(false);
-            }
-        });
-        Timber.v("standard_radio onClickListener set");
-
-        rootView.findViewById(R.id.sw).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
-            }
-        });
-        Timber.v("Stopwatch onClickListener set");
-
-        rootView.findViewById(R.id.timer).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                rootView.findViewById(R.id.clock_edit).setVisibility(View.VISIBLE);
-                ((EditText) rootView.findViewById(R.id.min)).setText("");
-                ((EditText) rootView.findViewById(R.id.sec)).setText("");
-                rootView.findViewById(R.id.min).requestFocus();
-            }
-        });
-        Timber.v("timer onClickListener set");
-
-        rootView.findViewById(R.id.none).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
-            }
-        });
-        Timber.v("none onClickListener set");
-
-        (rootView.findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Start();
-            }
-        });
-        Timber.v("start onClickListener set");
-
-
-        (rootView.findViewById(R.id.reset)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                reset();
-            }
-        });
-        Timber.v("reset onClickListener set");
-
-        (rootView.findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                a.set(RUNNING, FALSE);
-                if (isTimerRunning) {
-                    cdt.cancel();
-                } else {
-                    mTime = ((Chronometer) rootView.findViewById(R.id.chronometer)).getBase();
-                    ((Chronometer) rootView.findViewById(R.id.chronometer)).stop();
-                }
-                (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
-                (rootView.findViewById(R.id.resume)).setVisibility(View.VISIBLE);
-                (rootView.findViewById(R.id.reset)).setVisibility(View.VISIBLE);
-                (rootView.findViewById(R.id.stop)).setVisibility(View.GONE);
-                (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
-            }
-        });
-        Timber.v("stop onClickListener set");
-
-        rootView.findViewById(R.id.resume).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (isTimerRunning) {
-                    timer();
-                } else {
-                    ((Chronometer) rootView.findViewById(R.id.chronometer)).setBase(mTime);
-                    ((Chronometer) rootView.findViewById(R.id.chronometer)).start();
-                }
-                (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
-                (rootView.findViewById(R.id.stop)).setVisibility(View.VISIBLE);
-                (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
-                //a.set(RUNNING, FALSE);
-            }
-        });
-        Timber.v("resume onClickListener set");
-
-        (rootView.findViewById(R.id.save)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                save();
-            }
-        });
-        Timber.v("save onClickListener set");
-
-        rootView.findViewById(R.id.recall).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recall();
-            }
-        });
+        rootView.findViewById(R.id.standard_radio).setOnClickListener(this);
+        rootView.findViewById(R.id.custom_radio).setOnClickListener(this);
+        rootView.findViewById(R.id.sw).setOnClickListener(this);
+        rootView.findViewById(R.id.timer).setOnClickListener(this);
+        rootView.findViewById(R.id.none).setOnClickListener(this);
+        rootView.findViewById(R.id.stop).setOnClickListener(this);
+        rootView.findViewById(R.id.resume).setOnClickListener(this);
+        rootView.findViewById(R.id.start).setOnClickListener(this);
+        rootView.findViewById(R.id.reset).setOnClickListener(this);
+        rootView.findViewById(R.id.save).setOnClickListener(this);
+        rootView.findViewById(R.id.recall).setOnClickListener(this);
 
         rootView.findViewById(R.id.save).setVisibility(View.GONE);
         rootView.findViewById(R.id.reset).setVisibility(View.GONE);
@@ -531,6 +502,7 @@ public class DisciplineFragment extends Fragment {
 
     //Runs when the random generating thread is complete
     protected void postExecute(String s) {
+        if(getActivity() == null) return;
         (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
         if (a.get(RUNNING) == FALSE) {

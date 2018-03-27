@@ -198,6 +198,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         tag = "android:switcher:" + R.id.viewpager + ":" + 0;
         DisciplineFragment frag = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
         if (frag.a.get(frag.RUNNING) == frag.TRUE) {
+            //Stop the generation of the random list if it were being generated
             frag.a.set(frag.RUNNING, frag.FALSE);
             return;
         }
@@ -220,9 +221,16 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+            String tag = "android:switcher:" + R.id.viewpager + ":" + 0;
+            DisciplineFragment frag = (DisciplineFragment) getSupportFragmentManager().
+                    findFragmentByTag(tag);
+            if (frag.a.get(frag.RUNNING) == frag.TRUE) frag.a.set(frag.RUNNING, frag.FALSE);
+            //Stopped the generation of the random list
+
             for (int i = 1; i < tabTitles.size(); i++) {
-                String tag = "android:switcher:" + R.id.viewpager + ":" + i;
-                MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
+                tag = "android:switcher:" + R.id.viewpager + ":" + i;
+                MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager()
+                        .findFragmentByTag(tag);
                 if (fragment == null) continue;
                 if (!fragment.save()) {
                     viewPager.setCurrentItem(i, true);
