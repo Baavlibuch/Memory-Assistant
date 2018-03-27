@@ -19,7 +19,7 @@ import timber.log.Timber;
 
 public class Places extends DisciplineFragment {
 
-    private ArrayList<String> mPlace = new ArrayList<>();
+    public ArrayList<String> mPlace = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class Places extends DisciplineFragment {
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + getString(R.string.places_small));
 
         (new DictionaryAsyncTask()).execute();
-        Timber.v("Activity Created");
+        hasGroup = false;
         return rootView;
     }
 
@@ -42,8 +42,6 @@ public class Places extends DisciplineFragment {
 
     @Override
     protected String background() {
-        Timber.v("doInBackground() entered");
-
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
@@ -214,14 +212,6 @@ public class Places extends DisciplineFragment {
     }
 
     private class DictionaryAsyncTask extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //setContentView(R.layout.loading);
-//            (rootView.findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
-        }
-
         @Override
         protected String doInBackground(Void... a) {
             createDictionary();

@@ -29,7 +29,7 @@ public class Names extends DisciplineFragment {
 
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.nm));
         (new DictionaryAsyncTask()).execute();
-        Timber.v("Activity Created");
+        hasGroup = false;
         return rootView;
     }
 
@@ -79,14 +79,12 @@ public class Names extends DisciplineFragment {
 
     @Override
     protected String background() {
-        Timber.v("doInBackground() entered");
-
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
         int n;
 
-        for (int i = 0; i < a.get(NO_OF_VALUES);) {
+        for (int i = 0; i < a.get(NO_OF_VALUES); ) {
             n = rand.nextInt(mFirstName.size());
             stringBuilder.append(mFirstName.get(n)).append(" ");
             n = rand.nextInt(mLastName.size());

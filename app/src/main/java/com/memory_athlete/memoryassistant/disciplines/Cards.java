@@ -72,6 +72,8 @@ public class Cards extends DisciplineFragment {
         gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
                 getContext()).getString(getString(R.string.practice_grid_columns), "4")));
 
+        hasGroup = false;
+
         return rootView;
     }
 
@@ -189,9 +191,7 @@ public class Cards extends DisciplineFragment {
         numbersVisibility(View.GONE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
         cardImageView.setImageDrawable(null);
-        boolean b = super.reset();
-        rootView.findViewById(R.id.group).setVisibility(View.GONE);
-        return b;
+        return super.reset();
         //findViewById(R.id.cards).setVisibility(View.GONE);
         //findViewById(R.id.progress_bar_discipline).setVisibility(View.GONE);
     }

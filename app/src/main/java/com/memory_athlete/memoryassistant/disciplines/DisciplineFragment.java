@@ -47,7 +47,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
     View rootView;                                               //This view contains the fragment
     protected CountDownTimer cdt;
     protected long mTime = 0;
-    protected boolean isTimerRunning = false, hasStandard = true;
+    protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true;
     public ArrayList<Integer> a = new ArrayList<>();             //Instructs the background thread
     public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
     //protected boolean hasAsync;
@@ -375,8 +375,8 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
 
         (rootView.findViewById(R.id.start)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.no_of_values)).setVisibility(View.VISIBLE);
-        (rootView.findViewById(R.id.group)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.time)).setVisibility(View.VISIBLE);
+        if (hasGroup) (rootView.findViewById(R.id.group)).setVisibility(View.VISIBLE);
         if (hasStandard) {
             rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.VISIBLE);
             if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked())
@@ -508,6 +508,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
             reset();
             return;
         }
+        Timber.v("Setting text");
         ((TextView) rootView.findViewById(R.id.random_values)).setText(s);
         numbersVisibility(View.VISIBLE);
     }
@@ -524,6 +525,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         @SafeVarargs
         @Override
         protected final String doInBackground(ArrayList<Integer>... a) {
+            Timber.v("doInBackground entered");
             return background();
         }
 
@@ -531,6 +533,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             postExecute(s);
+            Timber.v("onPostExecute() complete");
         }
     }
 }

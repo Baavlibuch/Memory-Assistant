@@ -27,7 +27,7 @@ public class Words extends DisciplineFragment {
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.words_small));
 
         new DictionaryAsyncTask().execute();
-        Timber.v("Activity Created");
+        hasGroup = false;
         return rootView;
     }
 
@@ -71,14 +71,6 @@ public class Words extends DisciplineFragment {
     }
 
     private class DictionaryAsyncTask extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //setContentView(R.layout.loading);
-//            (rootView.findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
-        }
-
         @Override
         protected String doInBackground(Void... a) {
             createDictionary();

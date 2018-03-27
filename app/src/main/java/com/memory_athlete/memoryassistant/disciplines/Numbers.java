@@ -27,8 +27,6 @@ import java.util.Random;
 
 import timber.log.Timber;
 
-import static com.memory_athlete.memoryassistant.R.string.j;
-
 
 public class Numbers extends DisciplineFragment {
 
@@ -88,7 +86,6 @@ public class Numbers extends DisciplineFragment {
                                     j / 2 <= 2 * a.get(GROUP_SIZE) - Double.toString(n).length() + 1; j++)
                     stringBuilder.append(" ");
 
-                Timber.v("Entered " + j);
                 if (n < 0) stringBuilder.append(" ");                   //handling negatives
                 else if (addZeros) stringBuilder.append("  ");
                 stringBuilder.append(" ");
