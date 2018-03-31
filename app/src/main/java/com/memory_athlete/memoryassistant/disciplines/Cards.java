@@ -117,14 +117,16 @@ public class Cards extends DisciplineFragment {
         //Random rand = new Random();
         int n;
         int[] occurrenceCount = new int[52];
-        for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
-            n = (new Random()).nextInt(52);
-            if (occurrenceCount[n] >= NO_OF_VALUES) {
-                i--;
-                occurrenceCount[n]++;
-                continue;
+        ArrayList<Integer> indexList = new ArrayList<>();
+        for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
+            for (int j = 0; j < 52; j++) {
+                indexList.add(j);
             }
-            cards.add(n);
+        }
+        for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
+            n = (new Random()).nextInt(indexList.size());
+            cards.add(indexList.get(n));
+            indexList.remove(n);
             if (a.get(RUNNING) == FALSE) break;
         }
 
@@ -262,7 +264,7 @@ public class Cards extends DisciplineFragment {
             (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
             (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
 
-            if (a.get(RUNNING) == FALSE){
+            if (a.get(RUNNING) == FALSE) {
                 reset();
                 return;
             }
@@ -280,7 +282,7 @@ public class Cards extends DisciplineFragment {
             //((TextView) findViewById(R.id.numbers)).setText(s);
             numbersVisibility(View.VISIBLE);
             (rootView.findViewById(R.id.no_of_values)).setVisibility(View.GONE);
-            if(mSingleCard) Toast.makeText(getActivity(), "Tap the card for the next card",
+            if (mSingleCard) Toast.makeText(getActivity(), "Tap the card for the next card",
                     Toast.LENGTH_SHORT).show();
         }
     }
