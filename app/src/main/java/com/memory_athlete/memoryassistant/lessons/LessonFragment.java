@@ -107,12 +107,12 @@ public class LessonFragment extends Fragment {
         switch (theme) {
             case "Dark":
                 return "<style>\n" +
-                        "body {background-color: #303030;}\n" +
+                        "body {backgroundString-color: #303030;}\n" +
                         "p    {color: #c1c1c1;}\n" +
                         "</style>\n";
             case "Night":
                 return "<style>\n" +
-                        "body {background-color: #000000;}\n" +
+                        "body {backgroundString-color: #000000;}\n" +
                         "p    {color: #c1c1c1;}\n" +
                         "</style>\n";
             default: return "";
@@ -260,7 +260,7 @@ public class LessonFragment extends Fragment {
             Timber.v("getView() entered");
             if (listItemView == null)
                 listItemView = LayoutInflater.from(getContext()).inflate(
-                        R.layout.lesson_list_item, null, true);
+                        R.layout.item_lesson_list, null, true);
 
             final Item item = getItem(position);
             //if (item==null){

@@ -552,7 +552,7 @@ public class Recall extends AppCompatActivity {
 
 
     void compare(boolean words) {
-        Timber.v("Comparing answers and responses in background");
+        Timber.v("Comparing answers and responses in backgroundString");
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
         whitespace = compareFormat > 0 ? "<br/>" : " " + getString(R.string.tab);

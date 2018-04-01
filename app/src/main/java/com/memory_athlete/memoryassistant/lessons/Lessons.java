@@ -299,7 +299,7 @@ public class Lessons extends AppCompatActivity {
             Timber.v("getView() entered");
             if (listItemView == null)
                 listItemView = LayoutInflater.from(getContext()).inflate(
-                        R.layout.lesson_list_item, null, true);
+                        R.layout.item_lesson_list, null, true);
 
             final Item item = getItem(position);
             final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);

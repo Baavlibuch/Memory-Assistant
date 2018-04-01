@@ -111,8 +111,8 @@ public class Cards extends DisciplineFragment {
     }
 
     @Override
-    protected String background() {
-        Timber.v("do in background entered to create string");
+    protected String backgroundString() {
+        Timber.v("do in backgroundString entered to create string");
         ArrayList<Integer> cards = new ArrayList<>();
         //Random rand = new Random();
         int n;
@@ -138,7 +138,7 @@ public class Cards extends DisciplineFragment {
     }
 
     @Override
-    protected void postExecute(String s) {
+    protected void postExecuteString(String s) {
         if (a.get(RUNNING) == FALSE) {
             reset();
             return;

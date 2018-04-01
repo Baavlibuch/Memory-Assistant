@@ -22,7 +22,7 @@ public class BinaryDigits extends DisciplineFragment {
     }
 
     @Override
-    protected String background() {
+    protected String backgroundString() {
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();

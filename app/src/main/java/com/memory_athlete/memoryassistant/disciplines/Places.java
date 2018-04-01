@@ -18,8 +18,7 @@ import java.util.Random;
 import timber.log.Timber;
 
 public class Places extends DisciplineFragment {
-
-    public ArrayList<String> mPlace = new ArrayList<>();
+    private ArrayList<String> mPlace = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,19 +40,34 @@ public class Places extends DisciplineFragment {
     }
 
     @Override
-    protected String background() {
+    protected void numbersVisibility(int visibility) {
+        rootView.findViewById(R.id.practice_list_view).setVisibility(visibility);
+    }
+
+    @Override
+    protected ArrayList backgroundArray() {
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
+        ArrayList<String> arrayList = new ArrayList<>();
         int n;
 
-        for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
+        for (int i = 0; i < a.get(NO_OF_VALUES); ) {
             n = rand.nextInt(mPlace.size());
             stringBuilder.append(mPlace.get(n)).append(" \n");
-            if((i+1)%20 == 0) stringBuilder.append("\n");
+            if ((++i) % 20 == 0){
+                arrayList.add(stringBuilder.toString());
+                stringBuilder = new StringBuilder();
+            }
             if (a.get(RUNNING) == FALSE) break;
         }
-        return stringBuilder.toString();
+        arrayList.add(stringBuilder.toString());
+        return arrayList;
+    }
+
+    @Override
+    protected void generateRandom() {
+        (new GenerateRandomArrayListAsyncTask()).execute(a);
     }
 
     //Read files and make a list of places

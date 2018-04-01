@@ -65,8 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:maxLength="6"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLength="6" />
 
                 <Spinner
                     android:id="@+id/group"
@@ -153,7 +153,6 @@
                     android:id="@+id/random_values"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:justificationMode="inter_word"
                     android:textSize="24sp"
                     tools:targetApi="o" />
@@ -182,6 +181,14 @@
         android:horizontalSpacing="10dp"
         android:numColumns="4"
         android:verticalSpacing="10dp"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/practice_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
         android:visibility="gone" />
 
     <LinearLayout

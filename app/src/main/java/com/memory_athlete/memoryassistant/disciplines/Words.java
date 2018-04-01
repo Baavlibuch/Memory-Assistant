@@ -32,21 +32,33 @@ public class Words extends DisciplineFragment {
     }
 
     @Override
-    protected String background() {
-        Timber.v("doInBackground() entered");
+    protected void numbersVisibility(int visibility) {
+        rootView.findViewById(R.id.practice_list_view).setVisibility(visibility);
+    }
 
+    @Override
+    protected ArrayList backgroundArray() {
         StringBuilder stringBuilder = new StringBuilder();
-        //String textString = "";
         Random rand = new Random();
+        ArrayList<String> arrayList = new ArrayList<>();
         short n;
 
         for (int i = 0; i < a.get(NO_OF_VALUES);) {
             n = (short) rand.nextInt(mDictionary.size());
             stringBuilder.append(mDictionary.get(n)).append("\n");
-            if ((++i) % 20 == 0) stringBuilder.append("\n");
+            if ((++i) % 20 == 0) {
+                arrayList.add(stringBuilder.toString());
+                stringBuilder = new StringBuilder();
+            }
             if (a.get(RUNNING) == FALSE) break;
         }
-        return stringBuilder.toString();
+        arrayList.add(stringBuilder.toString());
+        return arrayList;
+    }
+
+    @Override
+    protected void generateRandom() {
+        (new GenerateRandomArrayListAsyncTask()).execute(a);
     }
 
     private void createDictionary() {

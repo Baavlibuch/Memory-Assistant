@@ -143,7 +143,7 @@ public class Implement extends AppCompatActivity {
         @Override
         public View getView(int position, View listItemView, ViewGroup parent) {
             if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.main_item, null, true);
+                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_main, null, true);
             }
 
             TextView textView = listItemView.findViewById(R.id.main_textView);

@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             View listItemView = convertView;
             if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category //main_item
+                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category //item_main
                         , parent, false);
             }
 

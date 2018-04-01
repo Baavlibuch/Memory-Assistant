@@ -24,7 +24,7 @@ public class Letters extends DisciplineFragment {
     }
 
     @Override
-    protected String background() {
+    protected String backgroundString() {
         StringBuilder stringBuilder = new StringBuilder("");
         Random rand = new Random();
 

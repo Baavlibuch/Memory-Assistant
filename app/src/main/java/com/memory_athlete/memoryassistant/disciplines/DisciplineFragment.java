@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -48,7 +51,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
     protected CountDownTimer cdt;
     protected long mTime = 0;
     protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true;
-    public ArrayList<Integer> a = new ArrayList<>();             //Instructs the background thread
+    public ArrayList<Integer> a = new ArrayList<>();             //Instructs the backgroundString thread
     public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
     //protected boolean hasAsync;
 
@@ -226,10 +229,14 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         Timber.i("makeSpinner() complete");
     }
 
+    protected void generateRandom() {
+        (new GenerateRandomStringAsyncTask()).execute(a);
+    }
+
     //Everything common in different start methods
     protected void startCommon() {
         a.set(RUNNING, TRUE);
-        (new GenerateRandomAsyncTask()).execute(a);
+        generateRandom();
         rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
         rootView.findViewById(R.id.level).setVisibility(View.GONE);
         rootView.findViewById(R.id.time).setVisibility(View.GONE);
@@ -308,7 +315,17 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
 
     //Saves the list
     protected boolean save() {
-        String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
+        String string;
+        //practice_list_view is visible if arrays are used, gone if a single string is used
+        if (rootView.findViewById(R.id.practice_list_view).getVisibility() == View.VISIBLE)
+            string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
+        else {
+            ListView l = rootView.findViewById(R.id.practice_list_view);
+            StringBuilder s = new StringBuilder();
+            for (int i = 0; i < l.getAdapter().getCount(); i++)
+                s.append(((TextView) l.getChildAt(i)).getText().toString());
+            string = s.toString();
+        }
         if (string.equals("")) return false;
 
         //Directory of practice
@@ -384,6 +401,7 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         }
         ((RadioGroup) rootView.findViewById(R.id.time)).clearCheck();
         ((TextView) rootView.findViewById(R.id.random_values)).setText("");
+        rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
         isTimerRunning = false;
         return false;
     }
@@ -496,12 +514,16 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
     }
 
     //Function to generate the random list. It is inherited by other fragments
-    protected String background() {
+    protected String backgroundString() {
         return "";
     }
 
+    protected ArrayList backgroundArray() {
+        return null;
+    }
+
     //Runs when the random generating thread is complete
-    protected void postExecute(String s) {
+    protected void postExecuteString(String s) {
         (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
         if (a.get(RUNNING) == FALSE) {
@@ -513,9 +535,23 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         numbersVisibility(View.VISIBLE);
     }
 
-    //Thread to generate the random list
-    protected class GenerateRandomAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
+    protected void postExecuteArrayList(ArrayList list) {
+        (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
+        (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
+        if (a.get(RUNNING) == FALSE) {
+            reset();
+            return;
+        }
+        numbersVisibility(View.VISIBLE);
+        Timber.v("Setting text");
+        RandomAdapter adapter = new RandomAdapter(getActivity(), list);
+        ((ListView) rootView.findViewById(R.id.practice_list_view)).setAdapter(adapter);
+        //((TextView) rootView.findViewById(R.id.random_values)).setText(s);
+        //numbersVisibility(View.VISIBLE);
+    }
 
+    //Thread to generate the random list as string
+    protected class GenerateRandomStringAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -526,14 +562,63 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         @Override
         protected final String doInBackground(ArrayList<Integer>... a) {
             Timber.v("doInBackground entered");
-            return background();
+            return backgroundString();
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            postExecute(s);
+            postExecuteString(s);
             Timber.v("onPostExecute() complete");
+        }
+    }
+
+    //Thread to generate the random list as arrayList
+    protected class GenerateRandomArrayListAsyncTask extends AsyncTask<ArrayList<Integer>, Void, ArrayList> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            preExecute();
+            rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
+        }
+
+        @Override
+        protected ArrayList doInBackground(ArrayList<Integer>[] a) {
+            return backgroundArray();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList list) {
+            super.onPostExecute(list);
+            postExecuteArrayList(list);
+        }
+    }
+
+
+    protected class RandomAdapter extends ArrayAdapter {
+
+        RandomAdapter(Activity context, ArrayList cards) {
+            super(context, 0, cards);
+        }
+
+        @NonNull
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            TextView textView = (TextView) convertView;
+            if (convertView == null) {
+                textView = new TextView(getContext());
+                textView.setLayoutParams(new ListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
+                textView.setTextSize(24);
+                textView.setVisibility(View.VISIBLE);
+            }
+
+            Timber.v((String) getItem(position));
+            textView.setText((String) getItem(position));
+
+            Timber.v("getView() complete");
+
+            return textView;
         }
     }
 }

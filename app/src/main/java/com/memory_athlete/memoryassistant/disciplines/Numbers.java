@@ -42,7 +42,7 @@ public class Numbers extends DisciplineFragment {
     }
 
     @Override
-    protected String background() {
+    protected String backgroundString() {
         //Text
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();

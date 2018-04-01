@@ -78,10 +78,16 @@ public class Names extends DisciplineFragment {
     }
 
     @Override
-    protected String background() {
+    protected void numbersVisibility(int visibility) {
+        rootView.findViewById(R.id.practice_list_view).setVisibility(visibility);
+    }
+
+    @Override
+    protected ArrayList backgroundArray() {
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
+        ArrayList<String> arrayList = new ArrayList<>();
         int n;
 
         for (int i = 0; i < a.get(NO_OF_VALUES); ) {
@@ -89,10 +95,19 @@ public class Names extends DisciplineFragment {
             stringBuilder.append(mFirstName.get(n)).append(" ");
             n = rand.nextInt(mLastName.size());
             stringBuilder.append(mLastName.get(n)).append("\n");
-            if ((++i) % 20 == 0) stringBuilder.append("\n");        //empty line between 20 names
+            if ((++i) % 20 == 0) {
+                arrayList.add(stringBuilder.toString());
+                stringBuilder = new StringBuilder();
+            }
             if (a.get(RUNNING) == FALSE) break;
         }
-        return stringBuilder.toString();
+        arrayList.add(stringBuilder.toString());
+        return arrayList;
+    }
+
+    @Override
+    protected void generateRandom() {
+        (new GenerateRandomArrayListAsyncTask()).execute(a);
     }
 
     private class DictionaryAsyncTask extends AsyncTask<Void, Void, String> {
