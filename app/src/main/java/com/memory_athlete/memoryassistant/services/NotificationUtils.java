@@ -8,12 +8,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;
 
-import java.io.File;
 import java.util.Random;
 
 import timber.log.Timber;
@@ -84,10 +82,7 @@ abstract class NotificationUtils {
     static void createMySpaceNotification(Context context, String fPath) {
         if (!PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(context.getString(R.string.remind), false)) return;
-        if (!new File(fPath).exists()) {
-            Toast.makeText(context, fPath + " no longer exists", Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         String text = mySpaceText(context, fPath);
         Timber.d(text);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
