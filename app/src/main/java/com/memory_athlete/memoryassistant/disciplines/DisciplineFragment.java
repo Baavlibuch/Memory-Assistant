@@ -317,15 +317,15 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
     protected boolean save() {
         String string;
         //practice_list_view is visible if arrays are used, gone if a single string is used
-        if (rootView.findViewById(R.id.practice_list_view).getVisibility() == View.VISIBLE)
-            string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
-        else {
+        if (rootView.findViewById(R.id.practice_list_view).getVisibility() == View.VISIBLE) {
             ListView l = rootView.findViewById(R.id.practice_list_view);
             StringBuilder s = new StringBuilder();
-            for (int i = 0; i < l.getAdapter().getCount(); i++)
-                s.append(((TextView) l.getChildAt(i)).getText().toString());
+            int count = l.getAdapter().getCount();
+            Timber.v("view count = " + count);
+            for (int i = 0; i < count; i++) s.append(l.getAdapter().getItem(i));
             string = s.toString();
-        }
+        } else string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
+
         if (string.equals("")) return false;
 
         //Directory of practice
@@ -335,8 +335,8 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
             //Directory of the discipline
             path = path + File.separator + getActivity().getTitle().toString();
             if (Helper.makeDirectory(path)) {
-                path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))
-                        + ".txt";
+                path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm"))
+                        .format(new Date())) + ".txt";
 
                 //Write the file
                 try {
