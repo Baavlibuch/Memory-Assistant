@@ -51,6 +51,7 @@
     <string name="words_small">words</string>
     <string name="places_small">places</string>
     <string name="nm">names</string>
+    <string name="events">events</string>
     <string name="sz">Select maximum digits in a value</string>
     <string name="clump">How many values to group together</string>
     <string name="sw">Stopwatch</string>
@@ -72,6 +73,7 @@
     <string name="seconds">Seconds</string>
     <string name="next">Next</string>
     <string name="prev">Previous</string>
+    <string name="show_only_the_year">Show only the year</string>
     <string name="negative">Include negative numbers</string>
     <string name="decimal">Include decimal numbers</string>
     <string name="start_timer">Start Timer</string>
@@ -139,6 +141,8 @@
     <string name="bottom_tabs">Tabs on bottom</string>
     <string name="dont_save">Exit without saving</string>
     <string name="extra">Extra</string>
+    <string name="start_year">Select start year</string>
+    <string name="end_year">Select end year</string>
 
 
 </resources>

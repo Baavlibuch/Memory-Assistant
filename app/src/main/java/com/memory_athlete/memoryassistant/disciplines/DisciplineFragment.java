@@ -184,7 +184,6 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         Timber.v("makeSpinner() entered");
         Spinner spinner = rootView.findViewById(R.id.group);
         spinner.setVisibility(View.VISIBLE);
-
         spinner.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -201,15 +200,11 @@ public class DisciplineFragment extends Fragment implements View.OnClickListener
         });
         ArrayList<String> categories = new ArrayList<>(11);
         if (spinnerContent == NORMAL) {                         //All the disciplines
-            //categories.add(getString(R.string.clump));
-            //categories.add("Don't group");
             categories.add(0, getString(R.string.clump));
             categories.add(1, "Don't group");
         } else {                                                //Discipline is numbers
             categories.add(0, getString(R.string.sz));
             categories.add(1, "1");
-            //categories.add(getString(R.string.sz));
-            //categories.add("1");
         }
         for (int i = 2; i < 11; i++) categories.add(i, Integer.toString(i));
 

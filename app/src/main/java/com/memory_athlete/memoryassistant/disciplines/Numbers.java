@@ -34,7 +34,7 @@ public class Numbers extends DisciplineFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.st));
-        rootView.findViewById(R.id.negative).setVisibility(View.VISIBLE);
+        rootView.findViewById(R.id.negative_or_date).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.decimal).setVisibility(View.VISIBLE);
 
         Timber.v("Activity Created");
@@ -48,13 +48,12 @@ public class Numbers extends DisciplineFragment {
         Random rand = new Random();
         int n1 = 1, n2 = 0;         //n1* for upper limit, n2* for lower limit
         boolean addZeros = checkPrecedingZeros(),          //To Pad zeros if the setting is enabled
-                negative = ((CheckBox) rootView.findViewById(R.id.negative)).isChecked();
+                negative = ((CheckBox) rootView.findViewById(R.id.negative_or_date)).isChecked();
 
         if (negative) {
             n1 = 2;                 //Double the max value of random
             n2 = 1;                 //Subtract from from random to get negative
         }
-
 
         //Study the else statement first, its simpler
         if (((CheckBox) rootView.findViewById(R.id.decimal)).isChecked()) {//handling floats numbers
@@ -158,14 +157,14 @@ public class Numbers extends DisciplineFragment {
     @Override
     protected void startCommon() {
         super.startCommon();
-        rootView.findViewById(R.id.negative).setVisibility(View.GONE);
+        rootView.findViewById(R.id.negative_or_date).setVisibility(View.GONE);
         rootView.findViewById(R.id.decimal).setVisibility(View.GONE);
     }
 
     @Override
     public boolean reset() {
         rootView.findViewById(R.id.decimal).setVisibility(View.VISIBLE);
-        rootView.findViewById(R.id.negative).setVisibility(View.VISIBLE);
+        rootView.findViewById(R.id.negative_or_date).setVisibility(View.VISIBLE);
         return super.reset();
     }
 

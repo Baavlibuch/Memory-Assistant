@@ -1,6 +1,5 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,22 +18,20 @@ import timber.log.Timber;
 
 import static com.memory_athlete.memoryassistant.R.raw.first;
 
-public class Names extends DisciplineFragment {
+public class Names extends WordDisciplineFragment {
     private ArrayList<String> mFirstName = new ArrayList<>();
     private ArrayList<String> mLastName = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.nm));
-        (new DictionaryAsyncTask()).execute();
-        hasGroup = false;
         return rootView;
     }
 
     //Read files and make a list of names
-    private void createDictionary() {
+    @Override
+    protected void createDictionary() {
         BufferedReader dict = null;                 //Reads a line from the file
 
         try {
@@ -78,11 +75,6 @@ public class Names extends DisciplineFragment {
     }
 
     @Override
-    protected void numbersVisibility(int visibility) {
-        rootView.findViewById(R.id.practice_list_view).setVisibility(visibility);
-    }
-
-    @Override
     protected ArrayList backgroundArray() {
         //String textString = "";
         StringBuilder stringBuilder = new StringBuilder();
@@ -103,26 +95,5 @@ public class Names extends DisciplineFragment {
         }
         arrayList.add(stringBuilder.toString());
         return arrayList;
-    }
-
-    @Override
-    protected void generateRandom() {
-        (new GenerateRandomArrayListAsyncTask()).execute(a);
-    }
-
-    private class DictionaryAsyncTask extends AsyncTask<Void, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //setContentView(R.layout.loading);
-//            (findViewById(R.id.progress_bar)).setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected String doInBackground(Void... a) {
-            createDictionary();
-            return "";
-        }
     }
 }

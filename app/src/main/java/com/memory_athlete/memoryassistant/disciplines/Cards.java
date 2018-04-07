@@ -116,7 +116,6 @@ public class Cards extends DisciplineFragment {
         ArrayList<Integer> cards = new ArrayList<>();
         //Random rand = new Random();
         int n;
-        int[] occurrenceCount = new int[52];
         ArrayList<Integer> indexList = new ArrayList<>();
         for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
             for (int j = 0; j < 52; j++) {

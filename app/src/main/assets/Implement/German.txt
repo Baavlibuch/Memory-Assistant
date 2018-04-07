@@ -1,5 +1,5 @@
 <p><b>This contains many errors. Use it at your discretion and feel free to suggest corrections.</b><br/><p>
-
+<h4>1</h4>
 <!--Pronouns-->
 <p><b>Ich</b><br/>I</p>
 <p><b>Mich</b><br/>Me, Myself</p>
@@ -14,13 +14,15 @@
 <p><b>Es</b><br/>It</p>
 <p><b>Dieser</b><br/>This</p>
 <p><b>Anderes</b><br/>Other</p>
+<h4>2</h4>
+<!--People>
 <p><b>Männer</b><br/>Men</p>
 <p><b>Herren</b><br/>Gentlemen</p>
 <p><b>Frauen</b><br/>Women</p>
 <p><b>Damen</b><br/>Ladies</p>
 <p><b>Kellner</b><br/>Waiter</p>
 <p><b>Kellnerin</b><br/>Waitress</p>
-
+<h4>3</h4>
 <!--Prepositions-->
 <p><b>Dann</b><br/>Then</p>
 <p><b>In</b><br/>In</p>
@@ -59,26 +61,22 @@
 <p><b>Süd</b><br/>South</p>
 <p><b>Ost</b><br/>East</p>
 <p><b>West</b><br/>West</p>
-
+<h4>4</h4>
 <!--Conjunctions-->
 <p><b>Geworden</b><br/>Because</p>
 <p><b>Weil</b><br/>Because</p>
-
 <!--Helping verbs-->
-
 <p><b>Kann</b><br/>Can, Know</p>
 <p><b>Möchten</b><br/>Would</p>
 <p><b>Sollte</b><br/>Should</p>
 <p><b>Nur</b><br/>Just</p>
 <p><b>Tu</b><br/>To</p>
 <p><b>Zum</b><br/>To the</p>
-
 <!--Gerunds-->
 <p><b>Die</b><br/>The</p>
 <p><b>Dem</b><br/>The</p>
-
+<h4>5</h4>
 <!--Adjectives and adverbs-->
-
 <p><b>Nicht</b><br/>Not</p>
 <p><b>Guten</b><br/>Good</p>
 <p><b>Gut</b><br/>Well, Fine</p>
@@ -103,9 +101,8 @@
 <p><b>Beste</b><br/>Best</p>
 <p><b>Leckerste</b><br/>Delicious</p>
 <p><b>Krank</b><br/>Sick</p>
-
+<h4>6</h4>
 <!--Salutations-->
-
 <p><b>Hallo</b><br/>Hello</p>
 <p><b>Tschüß</b><br/>Bye</p>
 <p><b>Prost</b><br/>Cheers</p>
@@ -116,9 +113,8 @@
 <p><b>Darf</b><br/>May</p>
 <p><b>Bitte</b><br/>Plea, Welcome, Request</p>
 <p><b>Entschuldigung</b><br/>Excuse me</p>
-
+<h4>7</h4>
 <!--Verbs-->
-
 <p><b>Ist</b><br/>Is</p>
 <p><b>Bin</b><br/>Am</p>
 <p><b>Geht</b><br/>Go, Walk, Move</p>
@@ -156,9 +152,8 @@
 <p><b>Wiederholen</b><br/>Repeat</p>
 <p><b>Sprechen</b><br/>Speak</p>
 <p><b>Übersetzen</b><br/>Translate</p>
-
+<h4>8</h4>
 <!--Nouns-->
-
 <p><b>Andenken</b><br/>Souvenirs</p>
 <p><b>Habe</b><br/>Belongings, Goods</p>
 <p><b>Etwas</b><br/>Something</p>
@@ -185,7 +180,7 @@
 <p><b>Tasche</b><br/>Bag</p>
 <p><b>Portemonnaie</b><br/>Wallet</p>
 <p><b>Reise</b><br/>Trip, Travel</p>
-
+<h4>9</h4>
 <p><b>Ruhe</b><br/>Quiet</p>
 <p><b>Notfall</b><br/>Emergency</p>
 
@@ -198,7 +193,7 @@
 <p><b>Abend</b><br/>Evening</p>
 <p><b>Wochen</b><br/>Week</p>
 <p><b>Nacht</b><br/>Night</p>
-
+<h4>10</h4>
 <!--Kitchen-->
 <p><b>Tisch</b><br/>Table</p>
 <p><b>Speisekarte</b><br/>Menu</p>
@@ -232,7 +227,7 @@
 <p><b>Einzelzimmer</b><br/>Single room</p>
 <p><b>Klimaanlage</b><br/>Air conditioning</p>
 <p><b>Schlüssel</b><br/>Key</p>
-
+<h4>11</h4>
 <!--Places-->
 <p><b>Nähe</b><br/>Neighborhood</p>
 <p><b>Eingang</b><br/>Entrance, Beginning</p>
@@ -249,7 +244,7 @@
 <p><b>Krankenhaus</b><br/>Hospital</p>
 <p><b>Apotheke</b><br/>Pharmacy</p>
 <p><b>Konsulaten</b><br/>Consulates</p>
-
+<h4>12</h4>
 <!--Countries-->
 <p><b>Deutschland</b><br/>Germany</p>
 <p><b>Deutsche</b><br/>German</p>
@@ -283,7 +278,7 @@
 <p><b>Kantonesisch</b><br/>Cantonese</p>
 <p><b>Japan</b><br/>Japan</p>
 <p><b>Japanisch</b><br/>Japanese</p>
-
+<h4>13</h4>
 <!--Numbers-->
 <p><b>Null</b><br/>Zero</p>
 <p><b>Ein</b><br/>One</p>
@@ -316,7 +311,7 @@
 <p><b>Billion</b><br/>Trillion</p>
 <p><b>Billiarde</b><br/>Quadrillion</p>
 <p><b>Trillion</b><br/>Quintillion</p>
-
+<h4>14</h4>
 <!--Phrases-->
 <p><b>Guten Morgen</b><br/>Good Morning</p>
 <p><b>Guten Tag</b><br/>Good day</p>
@@ -350,6 +345,7 @@
 <p><b>Was ist der Unterschied zwischen X und Y?</b><br/>What’s the difference between X and Y?</p>
 <p><b>Mit laktosefreier Milch, bitte.</b><br/>With lactose-free milk, please.</p>
 <p><b>Ist das glutenfrei?</b><br/>Is that gluten-free?</p>
+<h4>15</h4>
 <p><b>Haben Sie vegetarisches Essen?</b><br/>Do you have vegetarian food?</p>
 <p><b>Ein Glas Wasser, bitte.</b><br/>A glass of water, please.</p>
 <p><b>[Mit/ohne] Sprudel, bitte.</b><br/>[Sparkling/not sparkling], please.</p>
@@ -385,6 +381,7 @@
 <p><b>Muss ich umsteigen?</b><br/>Do I have to change?</p>
 <p><b>Ich habe eine Reservierung.</b><br/>I have a reservation.</p>
 <p><b>Haben Sie noch ein Zimmer frei?</b><br/>Do you have a free room?</p>
+<h4>16</h4>
 <p><b>Können Sie mir ein anderes Hotel empfehlen?</b><br/>Can you recommend another hotel?</p>
 <p><b>Ich hätte gern ein Zimmer.</b><br/>I would like a room.</p>
 <p><b>Ich bleibe [eine Nacht/zwei Nächte/drei Nächte].</b><br/>I am staying [one night/two nights/three nights].</p>

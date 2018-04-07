@@ -1,6 +1,5 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,22 +17,14 @@ import java.util.Random;
 import timber.log.Timber;
 
 
-public class Words extends DisciplineFragment {
+public class Words extends WordDisciplineFragment {
     private ArrayList<String> mDictionary = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.words_small));
-
-        new DictionaryAsyncTask().execute();
-        hasGroup = false;
         return rootView;
-    }
-
-    @Override
-    protected void numbersVisibility(int visibility) {
-        rootView.findViewById(R.id.practice_list_view).setVisibility(visibility);
     }
 
     @Override
@@ -57,11 +48,7 @@ public class Words extends DisciplineFragment {
     }
 
     @Override
-    protected void generateRandom() {
-        (new GenerateRandomArrayListAsyncTask()).execute(a);
-    }
-
-    private void createDictionary() {
+    protected void createDictionary() {
         BufferedReader dict = null;
 
         try {
@@ -81,13 +68,4 @@ public class Words extends DisciplineFragment {
             Timber.e("File not closed");
         }
     }
-
-    private class DictionaryAsyncTask extends AsyncTask<Void, Void, String> {
-        @Override
-        protected String doInBackground(Void... a) {
-            createDictionary();
-            return "";
-        }
-    }
-
 }
