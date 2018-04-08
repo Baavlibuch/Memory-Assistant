@@ -36,8 +36,8 @@ public class Letters extends DisciplineFragment {
             for (int j = 0; j < a.get(GROUP_SIZE); j++) {
                 char c = (char) (rand.nextInt(26) + letterA);
                 Timber.v("value of c = " + c);
-                if (c != 'm' && c != 'w') s.append(" ");
-                if (c == 'i' || c == 'j' || c == 'l' || c == 't' || c=='f') s.append(" ");
+                if (c != 'm' && c != 'w' && c != 'M' && c!= 'W') s.append(" ");
+                if (c == 'i' || c == 'j' || c == 'l' || c == 't' || c=='f' || c=='I') s.append(" ");
                 stringBuilder.append(String.valueOf(c));
                 if (a.get(RUNNING) == FALSE) break;
             }
