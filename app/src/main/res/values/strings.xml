@@ -115,6 +115,7 @@
     <string name="preceding_zeros">Preceding zeros</string>
     <string name="no_preceding_zeros">Don\'t add zeros before a small number</string>
     <string name="show_preceding_zeros">Add zeros before a small number</string>
+    <string name="capital_letters">Use capital letters in letters discipline</string>
 
     <!--Learn-->
     <string name="method_of_loci">Method Of Loci</string>

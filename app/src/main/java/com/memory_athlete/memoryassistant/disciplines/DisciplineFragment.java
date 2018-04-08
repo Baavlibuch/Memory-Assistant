@@ -46,7 +46,7 @@ import static java.lang.Math.pow;
  * Created by manik on 5/11/17.
  */
 
-public class DisciplineFragment extends Fragment implements View.OnClickListener {
+public abstract class DisciplineFragment extends Fragment implements View.OnClickListener {
     View rootView;                                               //This view contains the fragment
     protected CountDownTimer cdt;
     protected long mTime = 0;

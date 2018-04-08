@@ -4,7 +4,7 @@
     <SwitchPreference
         android:defaultValue="true"
         android:key="@string/remind"
-        android:title="@string/remind"/>
+        android:title="@string/remind" />
 
     <com.memory_athlete.memoryassistant.preferences.TimePreference
         android:defaultValue="@string/default_time"
@@ -13,67 +13,70 @@
 
     <ListPreference
         android:defaultValue="@string/app_theme"
-        android:key="@string/theme"
-        android:title="@string/theme"
         android:entries="@array/themes"
-        android:entryValues="@array/themes" />
+        android:entryValues="@array/themes"
+        android:key="@string/theme"
+        android:title="@string/theme" />
 
     <ListPreference
         android:defaultValue="1"
-        android:key="@string/no_my_space_frags"
-        android:title="@string/no_my_space_frags"
         android:entries="@array/zero_to_nine"
-        android:entryValues="@array/zero_to_nine"/>
+        android:entryValues="@array/zero_to_nine"
+        android:key="@string/no_my_space_frags"
+        android:title="@string/no_my_space_frags" />
 
     <SwitchPreference
         android:defaultValue="false"
         android:key="@string/bottom_tabs"
-        android:title="@string/bottom_tabs"
+        android:summaryOff="@string/tabs_top"
         android:summaryOn="@string/tabs_bottom"
-        android:summaryOff="@string/tabs_top"/>
+        android:title="@string/bottom_tabs" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/capital_letters"
+        android:title="@string/capital_letters" />
 
     <SwitchPreference
         android:defaultValue="true"
         android:key="@string/preceding_zeros"
-        android:title="@string/preceding_zeros"
         android:summaryOff="@string/no_preceding_zeros"
         android:summaryOn="@string/show_preceding_zeros"
-        />
+        android:title="@string/preceding_zeros" />
 
     <SwitchPreference
         android:defaultValue="false"
-        android:key="@string/single_card"
-        android:title="@string/single_card"
-        android:summaryOff="@string/single_card_off"
         android:disableDependentsState="true"
-        android:summaryOn="@string/single_card_on"/>
+        android:key="@string/single_card"
+        android:summaryOff="@string/single_card_off"
+        android:summaryOn="@string/single_card_on"
+        android:title="@string/single_card" />
 
     <ListPreference
         android:defaultValue="4"
-        android:key="@string/practice_grid_columns"
-        android:title="@string/practice_grid_columns"
-        android:entries="@array/two_to_six"
         android:dependency="@string/single_card"
+        android:entries="@array/two_to_six"
         android:entryValues="@array/two_to_six"
-        />
+        android:key="@string/practice_grid_columns"
+        android:title="@string/practice_grid_columns" />
 
     <ListPreference
         android:defaultValue="6"
-        android:key="@string/recall_grid_columns"
-        android:title="@string/recall_grid_columns"
         android:entries="@array/two_to_eight"
-        android:entryValues="@array/two_to_eight"/>
+        android:entryValues="@array/two_to_eight"
+        android:key="@string/recall_grid_columns"
+        android:title="@string/recall_grid_columns" />
 
     <SwitchPreference
         android:defaultValue="false"
         android:key="@string/double_back_to_exit"
-        android:title="@string/double_back_to_exit"
         android:summaryOff="@string/double_back_on"
-        android:summaryOn="@string/double_back_off"/>
+        android:summaryOn="@string/double_back_off"
+        android:title="@string/double_back_to_exit" />
 
     <com.memory_athlete.memoryassistant.preferences.ClearPracticePreference
-        android:title="@string/clear_practice"
+        android:key="abc"
         android:summary="Clear all practice files"
-        android:key="abc"/>
+        android:title="@string/clear_practice" />
 
 </PreferenceScreen>
