@@ -46,7 +46,7 @@ public class Implement extends AppCompatActivity {
             super.onBackPressed();
             return;
         }
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.apply_layout);
+        LinearLayout linearLayout = findViewById(R.id.apply_layout);
         linearLayout.removeViewAt(listViewId--);
         linearLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
         pathList.remove(pathList.size() - 1);
@@ -72,7 +72,7 @@ public class Implement extends AppCompatActivity {
             listView.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1));
             listView.setId(listViewId);
-            final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.apply_layout);
+            final LinearLayout linearLayout = findViewById(R.id.apply_layout);
             linearLayout.addView(listView);
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

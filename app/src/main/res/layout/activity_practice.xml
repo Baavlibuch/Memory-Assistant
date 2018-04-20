@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cd"
+        android:text="@string/chose_discipline"
         android:id="@+id/cd"
         android:textSize="32sp"
         android:gravity="center"

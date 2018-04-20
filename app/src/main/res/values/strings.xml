@@ -15,7 +15,7 @@
     <string name="title_activity_preferences">Preferences</string> <!--Weird error without this-->
 
     <!--Practice-->
-    <string name="cd">Chose Discipline</string>
+    <string name="chose_discipline">Chose Discipline</string>
     <string name="numbers">Numbers</string>
     <string name="names">Names</string>
     <string name="cards">Cards</string>

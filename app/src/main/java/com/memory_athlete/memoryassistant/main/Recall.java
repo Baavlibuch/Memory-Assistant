@@ -1,7 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.TypedValue;
@@ -17,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
 import android.widget.EditText;
@@ -50,7 +47,6 @@ public class Recall extends AppCompatActivity {
 
     private ArrayList<String> answers = new ArrayList<>();
     private ArrayList<String> responses = new ArrayList<>();
-    ArrayList<String> categories;
     private int selectedSuit = 0;
     private int[] cardImageIds;
 
@@ -65,17 +61,19 @@ public class Recall extends AppCompatActivity {
     private String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
 
-    private Spinner mSpinner = null;
     private String mDiscipline = null;
+    private String mFileName;
     private GridView gridView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
+        mFileName = intent.getStringExtra("name");
+        mDiscipline = intent.getStringExtra("discipline");
+
         theme();
         setTitle(getString(R.string.recall));
-        makeSpinner1(intent);
 
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.reset).setVisibility(View.GONE);
@@ -114,172 +112,6 @@ public class Recall extends AppCompatActivity {
                 gridView = findViewById(R.id.cards_responses);
         }
         Timber.v("theme() complete");
-    }
-
-    void makeSpinner1(final Intent intent) {
-        categories = new ArrayList<>();
-        categories.add(getString(R.string.cd));
-        categories.add(getString(R.string.digits));
-        categories.add(getString(R.string.binary));
-        categories.add(getString(R.string.cards));
-        categories.add(getString(R.string.letters));
-        categories.add(getString(R.string.names));
-        categories.add(getString(R.string.numbers));
-        categories.add(getString(R.string.places_capital));
-        categories.add(getString(R.string.words));
-        categories.add(getString(R.string.dates));
-        //categories.add(getString(j));
-        //categories.add(getString(i));
-        //categories.add(getString(a));
-
-        final Spinner spinner = findViewById(R.id.discipline_spinner);
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>
-                (this, android.R.layout.simple_spinner_item, categories);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                findViewById(R.id.response_layout).setVisibility(View.GONE);
-                findViewById(R.id.button_bar).setVisibility(View.GONE);
-                gridView.setVisibility(View.GONE);
-                makeSpinner2(intent);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
-        spinner.setSelection(0);
-        mDiscipline = intent.getStringExtra("discipline");
-        Timber.v("discipline is " + mDiscipline);
-        if (mDiscipline != null && !mDiscipline.equals("")) {
-            spinner.setSelection(categories.indexOf(mDiscipline));
-        }
-        Timber.v("spinner 1 set");
-    }
-
-    void spinnerReset() {
-        //if (!answers.isEmpty()) answers.clear();
-        //if (!responses.isEmpty()) responses.clear();
-        //mResponsePosition = 0;
-        correct = 0;
-        wrong = 0;
-        missed = 0;
-    }
-
-    void makeSpinner2(Intent intent) {
-        spinnerReset();
-        final String discipline = ((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString();
-        Timber.v("item : = = " + discipline);
-        if (discipline.equals(getString(R.string.cd))) return;
-
-        final Spinner chose_file = findViewById(R.id.chose_file);
-        File dir = new File(getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice)
-                + File.separator + discipline);
-        ArrayList<String> fileList = new ArrayList<>();
-        fileList.add(getString(R.string.chose_file));
-        File[] files = dir.listFiles();
-        if (files == null) {
-            practice(chose_file, discipline);
-            return;
-        }
-        chose_file.setVisibility(View.VISIBLE);
-        for (int i = files.length - 1; i >= 0; i--) {
-            Timber.d("FileName:" + files[i].getName());
-            fileList.add(files[i].getName());
-        }
-        //chose_file.setAdapter(null);
-        ArrayAdapter<String> fileAdapter = new ArrayAdapter<>
-                (this, android.R.layout.simple_spinner_item, fileList);
-        fileAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        chose_file.setAdapter(fileAdapter);
-        chose_file.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (chose_file.getSelectedItem() != null &&
-                        chose_file.getSelectedItem().toString().equals(getString(R.string.chose_file)))
-                    return;
-
-                //getAnswers(spinner, item);
-                mSpinner = chose_file;
-                mDiscipline = discipline;
-                mTextAnswer = mTextResponse = null;
-                answers.clear();
-                responses.clear();
-
-                setResponseLayout();
-                findViewById(R.id.discipline_spinner).setVisibility(View.GONE);
-                findViewById(R.id.chose_file).setVisibility(View.GONE);
-                findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-
-        });
-        if (intent != null && intent.getStringExtra("discipline") != null &&
-                !intent.getStringExtra("discipline").equals("") &&
-                intent.getBooleanExtra("file exists", false)) {
-            chose_file.setSelection(1);
-        }
-
-        Timber.v("spinner 2 set");
-    }
-
-    void practice(Spinner chose_file, final String discipline) {
-        Snackbar.make(chose_file, "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
-                .setAction(R.string.practice, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String s = discipline;
-                        if (s.equals(getString(R.string.digits)))
-                            s = getString(R.string.numbers);
-                        s = s.replaceAll("\\s", "");
-                        Timber.v("s= " + s);
-
-                        int classId;
-                        if (discipline.equals(getString(R.string.numbers))) {
-                            classId = 1;
-                        } else if (discipline.equals(getString(R.string.digits))) {
-                            classId = 1;
-                        } else if (discipline.equals(getString(R.string.words))) {
-                            classId = 2;
-                        } else if (discipline.equals(getString(R.string.names))) {
-                            classId = 3;
-                        } else if (discipline.equals(getString(R.string.places_capital))) {
-                            classId = 4;
-                        } else if (discipline.equals(getString(R.string.cards))) {
-                            classId = 5;
-                        } else if (discipline.equals(getString(R.string.binary))) {
-                            classId = 6;
-                        } else if(discipline.equals(getString(R.string.letters))) {
-                            classId = 7;
-                        } else //if(discipline.equals(getString(R.string.dates)))
-                        {
-                            classId = 8;
-                        }
-
-                        Timber.v("classId = " + classId);
-                        try {
-                            //Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
-                            Intent i = new Intent(getApplicationContext(), DisciplineActivity.class);
-                            i.putExtra("class", classId);
-                            i.putExtra("name", s);
-                            startActivity(i);
-                        }/* catch (ClassNotFoundException e) {
-                            e.printStackTrace();
-                            Toast.makeText(Recall.this, R.string.report_to_dev, Toast.LENGTH_SHORT).show();
-                        }*/ catch (ActivityNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }).show();
-        //Toast.makeText(getApplicationContext(), "Nothing saved. Try practicing", Toast.LENGTH_SHORT).show();
-        chose_file.setVisibility(View.GONE);
     }
 
 
@@ -433,14 +265,14 @@ public class Recall extends AppCompatActivity {
         Timber.v("responseLayout set");
     }
 
-    void getAnswers(Spinner spinner) {
+    void getAnswers() {
         Timber.v("getAnswersEntered");
         try {
             String string;
 
             Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline + File.separator
-                    + spinner.getSelectedItem().toString())).useDelimiter("\t|\n|\n\n");
+                    + mFileName)).useDelimiter("\t|\n|\n\n");
 
             while (scanner.hasNext()) {
                 string = scanner.next();
@@ -476,25 +308,30 @@ public class Recall extends AppCompatActivity {
             default:
                 whitespace = " \n";
         }
+
         try {
             StringBuilder sb = new StringBuilder("");
             scanner = new Scanner(new File(getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline + File.separator
-                    + mSpinner.getSelectedItem().toString())).useDelimiter("\t|\t   \t|\n|\n\n");
+                    + mFileName)).useDelimiter("\t|\t   \t|\n|\n\n");
             Timber.v("scanner created");
+
             if (mDiscipline.equals(getString(R.string.cards))) {
                 String[] cards = makeCardString();
                 while (scanner.hasNext())
                     sb.append(cards[Integer.parseInt(scanner.next())]).append(whitespace);
             } else while (scanner.hasNext()) sb.append(scanner.next()).append(whitespace);
+
             Timber.v("giveUp() complete, returns " + sb.toString());
             return sb.toString();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (scanner != null)
                 scanner.close();
         }
+
         Timber.v("giveUp() complete, returns null");
         return null;
     }
@@ -729,24 +566,23 @@ public class Recall extends AppCompatActivity {
         correct = 0;
         wrong = 0;
         missed = 0;
+
         setResponseLayout();
-        if (compareFormat == 2) {
-            updateGridView();
-        } else {
-            findViewById(R.id.reset).setVisibility(View.GONE);
-        }
+
+        if (compareFormat == 2) updateGridView();
+        else findViewById(R.id.reset).setVisibility(View.GONE);
+
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.GONE);
         findViewById(R.id.button_bar).setVisibility(View.GONE);
         findViewById(R.id.discipline_spinner).setVisibility(View.VISIBLE);
-        makeSpinner2(null);
+
         //findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
 
         //((TextView) findViewById(R.id.responses_text)).setText("");
         //((TextView) findViewById(R.id.answers_text)).setText("");
-
 
         Timber.v("Recall Reset Complete");
     }
@@ -794,7 +630,7 @@ public class Recall extends AppCompatActivity {
         @SafeVarargs
         @Override
         protected final Void doInBackground(ArrayList<Integer>... a) {
-            getAnswers(mSpinner);
+            getAnswers();
             if (compareFormat == 0) compare(false);
             else if (compareFormat == 1) compare(true);
             else compareCards();

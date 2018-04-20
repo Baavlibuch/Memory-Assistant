@@ -101,6 +101,7 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".main.RecallSelector"></activity>
     </application>
 
 </manifest>
