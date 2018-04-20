@@ -127,8 +127,8 @@ public class Recall extends AppCompatActivity {
         categories.add(getString(R.string.numbers));
         categories.add(getString(R.string.places_capital));
         categories.add(getString(R.string.words));
+        categories.add(getString(R.string.dates));
         //categories.add(getString(j));
-        //categories.add(getString(R.string.h));
         //categories.add(getString(i));
         //categories.add(getString(a));
 
@@ -256,9 +256,11 @@ public class Recall extends AppCompatActivity {
                             classId = 5;
                         } else if (discipline.equals(getString(R.string.binary))) {
                             classId = 6;
-                        } else //(discipline.equals(getString(R.string.letters)))
-                        {
+                        } else if(discipline.equals(getString(R.string.letters))) {
                             classId = 7;
+                        } else //if(discipline.equals(getString(R.string.dates)))
+                        {
+                            classId = 8;
                         }
 
                         Timber.v("classId = " + classId);
@@ -398,6 +400,9 @@ public class Recall extends AppCompatActivity {
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_NONE);
                 break;
+            case "Dates":
+                responseFormat = 4;
+                compareFormat = 2;
         }
     }
 

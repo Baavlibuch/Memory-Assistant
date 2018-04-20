@@ -18,6 +18,7 @@ import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
+import com.memory_athlete.memoryassistant.disciplines.Dates;
 import com.memory_athlete.memoryassistant.disciplines.DisciplineFragment;
 import com.memory_athlete.memoryassistant.disciplines.Letters;
 import com.memory_athlete.memoryassistant.disciplines.Names;
@@ -131,6 +132,9 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                             break;
                         case 7:
                             fragment = new Letters();
+                            break;
+                        case 8:
+                            fragment = new Dates();
                             break;
                         default:
                             throw new RuntimeException("wrong practice");

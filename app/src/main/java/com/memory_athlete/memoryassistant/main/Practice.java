@@ -30,7 +30,7 @@ public class Practice extends AppCompatActivity {
         final ArrayList<Category> disc = new ArrayList<>();
         setList(disc);
         DisciplineAdapter discipline = new DisciplineAdapter(this, disc);
-        ListView disciplineList = (ListView) findViewById(R.id.disciplines);
+        ListView disciplineList = findViewById(R.id.disciplines);
         disciplineList.setAdapter(discipline);
         disciplineList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -52,10 +52,10 @@ public class Practice extends AppCompatActivity {
         disc.add(new Category(R.string.names, R.drawable.names, 3, false, true));
         disc.add(new Category(R.string.places_capital, R.drawable.places, 4, false, true));
         disc.add(new Category(R.string.cards, R.drawable.cards, 5, false, false));
+        disc.add(new Category(R.string.dates, R.drawable.dates, 8, false, true));
         disc.add(new Category(R.string.binary, R.drawable.binary, 6, true, false));
         disc.add(new Category(R.string.letters, R.drawable.letters, 7, true, false));
         //disc.add(new Category(R.string.a, R.drawable.equations, Equations.class, false, false));
-        //disc.add(new Category(R.string.h, R.drawable.dates, Dates.class, false, false));
         //disc.add(new Category(R.string.i, R.drawable.foods, Foods.class, false, false));
         //disc.add(new Category(R.string.j, R.drawable.colours, Colours.class, false, false));
     }
@@ -113,5 +113,4 @@ public class Practice extends AppCompatActivity {
             return listView;
         }
     }
-
 }

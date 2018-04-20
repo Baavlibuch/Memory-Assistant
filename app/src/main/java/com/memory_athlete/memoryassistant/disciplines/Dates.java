@@ -171,4 +171,6 @@ public class Dates extends WordDisciplineFragment {
         arrayList.add(stringBuilder.toString());
         return arrayList;
     }
+
+    //TODO create dictionary
 }

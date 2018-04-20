@@ -26,6 +26,9 @@ public class Helper {
             + "/Memory Assistant/";
     private static final int REQUEST_STORAGE_ACCESS = 555;
 
+    //App constants
+    public static final String TYPE = "type";
+
     public static int[] makeCards() {
         int[] cards = new int[52];
         cards[0] = R.drawable.s2;

@@ -213,8 +213,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = list.get(position);
                 Intent intent = new Intent(MainActivity.this, item.mClass);
-                if (item.mItem == R.string.apply)
-                    intent.putExtra(getString(R.string.apply), getString(R.string.apply));
+                if (item.mItem == R.string.apply) intent.putExtra(getString(R.string.apply), getString(R.string.apply));
+                intent.putExtra(Helper.TYPE, item.mItem);
                 startActivity(intent);
             }
         });
