@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.recall.RecallCards;
+import com.memory_athlete.memoryassistant.recall.RecallComplex;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -120,48 +122,51 @@ public class RecallSelector extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Item item = finalArrayList.get(position);
-                Timber.v("item.mPath = " + item.mFileName);
-                if (listViewId == MIN_DYNAMIC_VIEW_ID) {
-                    mDiscipline = item.mFileName;
-                    dir = new File(Helper.APP_FOLDER + File.separator
-                            + getString(R.string.practice) + File.separator + mDiscipline);
-
-                    File[] files = dir.listFiles();
-                    if (files == null) throw new RuntimeException("the discipline contains null " +
-                            "instead of the practice folder");
-                    if (files.length == 0) {
-                        practice(Helper.APP_FOLDER + File.separator
-                                + getString(R.string.practice) + File.separator + mDiscipline);
-                        return;
-                    }
-
-                    layout.findViewById(listViewId).setVisibility(View.GONE);
-                    listViewId++;
-                    setTitle(item.mName);
-                    findViewById(R.id.add).setVisibility(View.VISIBLE);
-                    setTitle(R.string.chose_file);
-                    setAdapter();
-                    Timber.v("going to id 1, listViewId = " + listViewId);
-                } else {
-                    Timber.v("listViewId = " + listViewId);
-                    String filePath = Helper.APP_FOLDER + File.separator
-                            + getString(R.string.practice) + File.separator + getTitle();
-                    Intent intent = new Intent(getApplicationContext(), Recall.class);
-                    intent.putExtra("name", item.mName);
-                    intent.putExtra("file", item.mFileName);
-                    intent.putExtra("filePath", filePath);
-                    intent.putExtra("discipline", mDiscipline);
-
-                    File file = new File(filePath);
-                    boolean isDirectoryCreated = file.exists();
-                    if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
-                    if (isDirectoryCreated) startActivity(intent);
-                    else Toast.makeText(getApplicationContext(), "Try again",
-                            Toast.LENGTH_SHORT).show();
-                }
+                onMyItemClick(finalArrayList, position, layout);
             }
         });
+    }
+
+    private void onMyItemClick(ArrayList<Item> finalArrayList, int position, RelativeLayout layout) {
+        Item item = finalArrayList.get(position);
+        Timber.v("item.mPath = " + item.mFileName);
+        if (listViewId == MIN_DYNAMIC_VIEW_ID) {
+            mDiscipline = item.mFileName;
+            dir = new File(Helper.APP_FOLDER + File.separator
+                    + getString(R.string.practice) + File.separator + mDiscipline);
+
+            File[] files = dir.listFiles();
+            if (files == null) throw new RuntimeException("the discipline contains null " +
+                    "instead of the practice folder");
+            if (files.length == 0) {
+                practice(Helper.APP_FOLDER + File.separator
+                        + getString(R.string.practice) + File.separator + mDiscipline);
+                return;
+            }
+
+            layout.findViewById(listViewId).setVisibility(View.GONE);
+            listViewId++;
+            setTitle(item.mName);
+            findViewById(R.id.add).setVisibility(View.VISIBLE);
+            setTitle(R.string.chose_file);
+            setAdapter();
+            Timber.v("going to id 1, listViewId = " + listViewId);
+        } else {
+            Timber.v("listViewId = " + listViewId);
+            String filePath = Helper.APP_FOLDER + File.separator
+                    + getString(R.string.practice) + File.separator + getTitle();
+            Intent intent = new Intent(getApplicationContext(), RecallSimple.class);
+            intent.putExtra("name", item.mName);
+            intent.putExtra("file", item.mFileName);
+            intent.putExtra("discipline", mDiscipline);
+
+            File file = new File(filePath);
+            boolean isDirectoryCreated = file.exists();
+            if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
+            if (isDirectoryCreated) startActivity(intent);
+            else Toast.makeText(getApplicationContext(), "Try again",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     void practice(final String discipline) {
@@ -215,20 +220,17 @@ public class RecallSelector extends AppCompatActivity {
     }
 
     private ArrayList<Item> setList() {
-        String[] list = {
-                getString(R.string.digits),
-                getString(R.string.binary),
-                getString(R.string.cards),
-                getString(R.string.letters),
-                getString(R.string.names),
-                getString(R.string.numbers),
-                getString(R.string.places_capital),
-                getString(R.string.words),
-                getString(R.string.dates)
-        };
-        ArrayList<Item> list1 = new ArrayList<>();
-        for (String item : list) list1.add(new Item(item));
-        return list1;
+        ArrayList<Item> list = new ArrayList<>();
+        list.add(new Item(getString(R.string.digits), RecallSimple.class));
+        list.add(new Item(getString(R.string.binary), RecallSimple.class));
+        list.add(new Item(getString(R.string.cards), RecallCards.class));
+        list.add(new Item(getString(R.string.letters), RecallSimple.class));
+        list.add(new Item(getString(R.string.names), RecallSimple.class));
+        list.add(new Item(getString(R.string.numbers), RecallSimple.class));
+        list.add(new Item(getString(R.string.places_capital), RecallSimple.class));
+        list.add(new Item(getString(R.string.words), RecallSimple.class));
+        list.add(new Item(getString(R.string.dates), RecallComplex.class));
+        return list;
     }
 
     private class MySpaceAdapter extends ArrayAdapter<Item> {
@@ -258,10 +260,18 @@ public class RecallSelector extends AppCompatActivity {
 
     private class Item {
         String mFileName, mName;
+        Class mClass;
 
         Item(String fileName) {
             mFileName = fileName;
             mName = fileName.endsWith(".txt") ? fileName.substring(0, fileName.length() - 4) : fileName;
+            Timber.v("Item set!");
+        }
+
+        Item(String fileName, Class myClass) {
+            mFileName = fileName;
+            mName = fileName.endsWith(".txt") ? fileName.substring(0, fileName.length() - 4) : fileName;
+            mClass = myClass;
             Timber.v("Item set!");
         }
     }

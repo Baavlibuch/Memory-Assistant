@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
         //list.add(new Item(R.string.login, Login.class));
         list.add(new Item(R.string.learn, R.drawable.learn, Learn.class));
         list.add(new Item(R.string.practice, R.drawable.practice, Practice.class));
-        list.add(new Item(R.string.recall, R.drawable.recall, Recall.class));
+        list.add(new Item(R.string.recall, R.drawable.recall, RecallSelector.class));
         list.add(new Item(R.string.apply, R.drawable.implement, Implement.class));
         list.add(new Item(R.string.my_space, R.drawable.my_space, MySpace.class));
         list.add(new Item(R.string.preferences, R.drawable.preferences, Preferences.class));

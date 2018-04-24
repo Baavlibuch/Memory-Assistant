@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".main.Recall">
+    tools:context=".main.RecallSimple">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -130,6 +130,14 @@
                         android:hint="@string/enter_ans" />
 
                 </ScrollView>
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/response_listView"
+                    android:visibility="gone"
+                    />
 
                 <LinearLayout
                     android:id="@+id/card_suit"

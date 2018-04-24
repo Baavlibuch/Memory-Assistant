@@ -30,7 +30,7 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
-import com.memory_athlete.memoryassistant.main.Recall;
+import com.memory_athlete.memoryassistant.main.RecallSimple;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -426,7 +426,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //When recall button is pressed
     protected void recall() {
-        Intent intent = new Intent(getActivity().getApplicationContext(), Recall.class);
+        Intent intent = new Intent(getActivity().getApplicationContext(), RecallSimple.class);
         intent.putExtra("file exists", save());
         intent.putExtra("discipline", "" + getActivity().getTitle());
         Timber.v("recalling" + getActivity().getTitle());

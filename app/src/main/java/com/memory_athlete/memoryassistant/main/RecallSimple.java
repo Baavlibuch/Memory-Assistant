@@ -1,33 +1,24 @@
 package com.memory_athlete.memoryassistant.main;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,33 +28,31 @@ import timber.log.Timber;
 
 import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
-import static com.memory_athlete.memoryassistant.R.id.chose_file;
-import static com.memory_athlete.memoryassistant.data.Helper.makeCardString;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
-public class Recall extends AppCompatActivity {
+public class RecallSimple extends AppCompatActivity {
 
-    private ArrayList<String> answers = new ArrayList<>();
-    private ArrayList<String> responses = new ArrayList<>();
-    private int selectedSuit = 0;
-    private int[] cardImageIds;
+    protected ArrayList<String> answers = new ArrayList<>();
+    protected ArrayList<String> responses = new ArrayList<>();
+    protected int selectedSuit = 0;
+    protected int[] cardImageIds;
 
     //int mResponsePosition = 0;
     //static byte submitDoubt = 0;
-    private int responseFormat = 0;
-    private byte compareFormat = 0;
-    private int mSuitBackground;
+    protected int responseFormat = 0;
+    protected byte compareFormat = 0;
+    protected int mSuitBackground;
 
-    int correct = 0, wrong = 0, missed = 0, extra = 0, spelling;
-    private StringBuilder mTextAnswer = null, mTextResponse = null;
-    private String whitespace;
+    protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling;
+    protected StringBuilder mTextAnswer = null, mTextResponse = null;
+    protected String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
 
-    private String mDiscipline = null;
-    private String mFileName;
-    private GridView gridView;
+    protected String mDiscipline = null;
+    protected String mFileName;
+    protected GridView gridView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +61,7 @@ public class Recall extends AppCompatActivity {
         mFileName = intent.getStringExtra("name");
         mDiscipline = intent.getStringExtra("discipline");
 
-        theme();
+        Helper.theme(this, this);
         setTitle(getString(R.string.recall));
 
         findViewById(R.id.result).setVisibility(View.GONE);
@@ -87,111 +76,6 @@ public class Recall extends AppCompatActivity {
         else super.onBackPressed();
     }
 
-    protected void theme() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                mSuitBackground = R.color.color_suit_background_dark;
-                setContentView(R.layout.activity_recall);
-                gridView = findViewById(R.id.cards_responses);
-                gridView.setAlpha((float) 0.8);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                mSuitBackground = R.color.color_suit_background_night;
-                setContentView(R.layout.activity_recall);
-                gridView = findViewById(R.id.cards_responses);
-                gridView.setAlpha((float) 0.7);
-                break;
-            default:
-                setTheme(R.style.light);
-                mSuitBackground = R.color.color_suit_background_light;
-                setContentView(R.layout.activity_recall);
-                gridView = findViewById(R.id.cards_responses);
-        }
-        Timber.v("theme() complete");
-    }
-
-
-    void updateGridView() {
-        CardAdapter adapter = new CardAdapter(this, responses);
-        gridView.setAdapter(adapter);
-    }
-
-    void cardSelected(int card) {
-        card = (card == 0 ? 12 : card - 1);
-        responses.add(String.valueOf(card + selectedSuit));
-        updateGridView();
-        //mAdapter.notifyDataSetChanged();
-        Timber.v("cardSelected complete");
-    }
-
-    void cardResponseLayout() {
-        gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
-                this).getString(getString(R.string.recall_grid_columns), "6")));
-        cardImageIds = Helper.makeCards();
-        Timber.v("cardResponseLayout() started");
-        gridView.setVisibility(View.VISIBLE);
-        compareFormat = 2;
-        responseFormat = 2;
-
-        LinearLayout suitLayout = findViewById(R.id.card_suit);
-        if (suitLayout.getChildCount() != 0) return;
-        for (int i = 0; i < 4; i++) {
-            final ImageView imageView = new ImageView(this);
-            imageView.setImageResource(Helper.makeSuits()[i]);
-            imageView.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-            imageView.setAdjustViewBounds(true);
-            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            float scale = getResources().getDisplayMetrics().density;
-            int dpAsPixels = (int) (8 * scale + 0.5f);
-            imageView.setPadding(2 * dpAsPixels, dpAsPixels, 2 * dpAsPixels, dpAsPixels);
-            imageView.setId(i);
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    for (int j = 0; j < 4; j++) {
-                        findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
-                    }
-                    view.setBackgroundColor(getResources().getColor(mSuitBackground));
-                    selectedSuit = (int) view.getId() * 13;
-                    Timber.v("selectedSuit = " + selectedSuit);
-                }
-            });
-            suitLayout.addView(imageView);
-        }
-        suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
-
-        LinearLayout numberLayout = findViewById(R.id.card_numbers);
-        for (int i = 0; i <= 13; i++) {
-            TextView textView = new TextView(this);
-            textView.setId(i);
-            if (i == 0) textView.setText("A");
-            else if (i < 10) textView.setText(String.valueOf(i + 1));
-            else if (i == 10) textView.setText("J");
-            else if (i == 11) textView.setText("Q");
-            else if (i == 12) textView.setText("K");
-            textView.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-            float scale = getResources().getDisplayMetrics().density;
-            int dpAsPixels = (int) (8 * scale + 0.5f);
-            textView.setPadding(dpAsPixels, 0, dpAsPixels, 0);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36);
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    cardSelected(view.getId());
-                    Timber.v("Selected Card = " + view.getId());
-                }
-            });
-            numberLayout.addView(textView);
-        }
-
-        Timber.v("Card layout set");
-    }
 
     void simpleResponseLayout() {
         final EditText editText = findViewById(R.id.response_input);
@@ -206,7 +90,7 @@ public class Recall extends AppCompatActivity {
         });*/
 
 
-        switch (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString()) {
+        switch (mDiscipline) {
             case "Numbers":
                 responseFormat = 0;
                 compareFormat = 0;
@@ -232,22 +116,23 @@ public class Recall extends AppCompatActivity {
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_NONE);
                 break;
-            case "Dates":
-                responseFormat = 4;
-                compareFormat = 2;
         }
     }
 
-    void setResponseLayout() {
-        Timber.v(((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString());
-        if (((Spinner) findViewById(R.id.discipline_spinner)).getSelectedItem().toString().equals(getString(R.string.cards))) {
-            findViewById(R.id.result).setVisibility(View.GONE);
-            findViewById(R.id.response_input).setVisibility(View.GONE);
-            findViewById(R.id.card_suit).setVisibility(View.VISIBLE);
-            findViewById(R.id.card_numbers).setVisibility(View.VISIBLE);
-            gridView.setVisibility(View.VISIBLE);
+    void complexResponseLayout() {
+        compareFormat = 3;
+        responseFormat = 4;
+    }
 
-            cardResponseLayout();
+    protected void setResponseLayout() {
+        if (mDiscipline.equals(getString(R.string.dates))) {
+            findViewById(R.id.response_input).setVisibility(View.GONE);
+            findViewById(R.id.card_suit).setVisibility(View.GONE);
+            findViewById(R.id.card_numbers).setVisibility(View.GONE);
+            gridView.setVisibility(View.GONE);
+            findViewById(R.id.response_listView).setVisibility(View.VISIBLE);
+
+            complexResponseLayout();
         } else {
             findViewById(R.id.response_input).setVisibility(View.VISIBLE);
             findViewById(R.id.card_suit).setVisibility(View.GONE);
@@ -256,6 +141,7 @@ public class Recall extends AppCompatActivity {
 
             simpleResponseLayout();
         }
+
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
@@ -265,38 +151,40 @@ public class Recall extends AppCompatActivity {
         Timber.v("responseLayout set");
     }
 
-    void getAnswers() {
+    protected void getAnswers() {
         Timber.v("getAnswersEntered");
-        try {
-            String string;
+        if (mDiscipline.equals(getString(R.string.dates))) {
+            try {
+                String string, delimiter = "\n|\n\n";
+                if (!mDiscipline.equalsIgnoreCase(getString(R.string.dates))) delimiter += "|\t";
 
-            Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath() + File.separator
-                    + getString(R.string.practice) + File.separator + mDiscipline + File.separator
-                    + mFileName)).useDelimiter("\t|\n|\n\n");
+                Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath()
+                        + File.separator + getString(R.string.practice) + File.separator + mDiscipline + File.separator
+                        + mFileName)).useDelimiter(delimiter);
 
-            while (scanner.hasNext()) {
-                string = scanner.next();
-                if (mDiscipline.equals(getString(R.string.numbers)) || mDiscipline.equals(getString(R.string.cards)))
-                    answers.add(String.valueOf(parseInt(string.trim())));
-                    //else if (mDiscipline == getString(e))
-                else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
-                        || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
-                        || mDiscipline.equalsIgnoreCase(getString(R.string.digits))) {
-                    for (char c : string.toCharArray())
-                        if (c != ' ') answers.add("" + c);
-                } else answers.add(string);
+                while (scanner.hasNext()) {
+                    string = scanner.next();
+                    if (mDiscipline.equals(getString(R.string.numbers)) || mDiscipline.equals(getString(R.string.cards)))
+                        answers.add(String.valueOf(parseInt(string.trim())));
+                        //else if (mDiscipline == getString(e))
+                    else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
+                            || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
+                            || mDiscipline.equalsIgnoreCase(getString(R.string.digits))) {
+                        for (char c : string.toCharArray())
+                            if (c != ' ') answers.add("" + c);
+                    } else answers.add(string);
+                }
+                Timber.v(String.valueOf(answers.size()));
+                scanner.close();
+            } catch (Exception e) {
+                //Toast.makeText(this, "Couldn't read the saved answers", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
             }
-            Timber.v(String.valueOf(answers.size()));
-            scanner.close();
-        } catch (Exception e) {
-            //Toast.makeText(this, "Couldn't read the saved answers", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
         }
-
         Timber.v("getAnswers() complete");
     }
 
-    String giveUp() {
+    protected String giveUp() {
         Timber.v("Give Up! pressed");
         Scanner scanner = null;
         String whitespace;
@@ -316,14 +204,7 @@ public class Recall extends AppCompatActivity {
                     + mFileName)).useDelimiter("\t|\t   \t|\n|\n\n");
             Timber.v("scanner created");
 
-            if (mDiscipline.equals(getString(R.string.cards))) {
-                String[] cards = makeCardString();
-                while (scanner.hasNext())
-                    sb.append(cards[Integer.parseInt(scanner.next())]).append(whitespace);
-            } else while (scanner.hasNext()) sb.append(scanner.next()).append(whitespace);
-
-            Timber.v("giveUp() complete, returns " + sb.toString());
-            return sb.toString();
+            return formatAnswers(scanner, sb);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -334,6 +215,12 @@ public class Recall extends AppCompatActivity {
 
         Timber.v("giveUp() complete, returns null");
         return null;
+    }
+
+    protected String formatAnswers(Scanner scanner, StringBuilder sb) {
+        while (scanner.hasNext()) sb.append(scanner.next()).append(whitespace);
+        Timber.v("giveUp() complete, returns " + sb.toString());
+        return sb.toString();
     }
 
     void getResponse() {
@@ -384,16 +271,14 @@ public class Recall extends AppCompatActivity {
         findViewById(R.id.button_bar).setVisibility(View.GONE);
         findViewById(R.id.button_bar).setVisibility(View.GONE);
         //findViewById(R.id.check).setVisibility(View.GONE);
-        findViewById(R.id.discipline_spinner).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
-        findViewById(chose_file).setVisibility(View.GONE);
         findViewById(R.id.reset).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_text_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_layout).setVisibility(View.VISIBLE);
     }
 
 
-    void compare(boolean words) {
+    protected void compare(boolean words) {
         Timber.v("Comparing answers and responses in backgroundString");
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
@@ -545,20 +430,8 @@ public class Recall extends AppCompatActivity {
 
     }
 
-    void compareCards() {
-        String[] cardStrings = makeCardString();
-        for (int i = 0; i < responses.size(); i++) {
-            responses.set(i, cardStrings[Integer.parseInt(responses.get(i))]);
-        }
-        for (int i = 0; i < answers.size(); i++) {
-            answers.set(i, cardStrings[Integer.parseInt(answers.get(i))]);
-        }
-        compare(false);
-        Timber.v("compareCards() complete");
-    }
 
-
-    private void reset() {
+    protected void reset() {
         answers.clear();
         responses.clear();
         mTextAnswer = new StringBuilder("");
@@ -569,15 +442,13 @@ public class Recall extends AppCompatActivity {
 
         setResponseLayout();
 
-        if (compareFormat == 2) updateGridView();
-        else findViewById(R.id.reset).setVisibility(View.GONE);
+        findViewById(R.id.reset).setVisibility(View.GONE);
 
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.GONE);
         findViewById(R.id.button_bar).setVisibility(View.GONE);
-        findViewById(R.id.discipline_spinner).setVisibility(View.VISIBLE);
 
         //findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
 
@@ -614,6 +485,23 @@ public class Recall extends AppCompatActivity {
     public void startTimer(View view) {
     } //TODO: USe this!
 
+    private void setDateAdapter() {
+    }
+
+    private class ComplexAsyncTask extends AsyncTask<Object, Object, Void> {
+
+        @Override
+        protected Void doInBackground(Object[] objects) {
+            getAnswers();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            setDateAdapter();
+        }
+    }
 
     private class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Void> {
 
@@ -633,7 +521,6 @@ public class Recall extends AppCompatActivity {
             getAnswers();
             if (compareFormat == 0) compare(false);
             else if (compareFormat == 1) compare(true);
-            else compareCards();
             return null;
         }
 
@@ -704,54 +591,10 @@ public class Recall extends AppCompatActivity {
             TextView textAnswers = findViewById(R.id.answers_text);
             textAnswers.setText(s);
             textAnswers.setVisibility(View.VISIBLE);
-
-        }
-    }
-
-    private class CardAdapter extends ArrayAdapter<String> {
-
-        CardAdapter(Activity context, ArrayList<String> cards) {
-            super(context, 0, cards);
-        }
-
-        @NonNull
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            ImageView imageView = (ImageView) convertView;
-            if (convertView == null) {
-                imageView = new ImageView(getApplicationContext());
-                imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT));
-                imageView.setVisibility(View.VISIBLE);
-                //imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                imageView.setAdjustViewBounds(true);
-
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        responses.remove(position);
-                        updateGridView();
-                    }
-                });
-                //imageView.setPadding(8, 8, 8, 8);
-            }
-
-            Picasso.with(getApplicationContext())
-                    .load(cardImageIds[parseInt(responses.get(position))])
-                    .placeholder(R.drawable.sa)
-                    .fit()
-                    //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ
-                    .into(imageView);
-
-            Timber.v("getView() complete");
-
-            //((ImageView) listItemView.findViewById(R.id.card_image)).setImageResource(
-            //      cardImageIds[parseInt(responses.get(position))]);
-            return imageView;//listItemView;
         }
     }
 }
 
 //orange:FFA500
 // textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
-// TODO: uses custom theme(), don't remove this comment
+// TODO: shift to fragments

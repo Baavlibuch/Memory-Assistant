@@ -45,7 +45,7 @@
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".main.Recall"
+            android:name=".main.RecallSimple"
             android:parentActivityName=".main.MainActivity"
             android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
@@ -101,7 +101,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".main.RecallSelector"></activity>
+        <activity android:name=".main.RecallSelector" />
+        <activity android:name=".recall.RecallComplex" />
+        <activity android:name=".recall.RecallCards"></activity>
     </application>
 
 </manifest>
