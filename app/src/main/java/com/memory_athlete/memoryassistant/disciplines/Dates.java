@@ -144,33 +144,34 @@ public class Dates extends WordDisciplineFragment {
                     case 6:
                     case 7:
                     case 9:
-                    case 11:
+                    case 11:                    //month of 31 days
                         stringBuilder.append(rand.nextInt(32) + 1);
                         break;
                     case 3:
                     case 5:
                     case 8:
-                    case 10:
+                    case 10:                    //month of 30 days
                         stringBuilder.append(rand.nextInt(31) + 1);
                         break;
-                    case 1:
+                    case 1:                     //February
                         int max = 29;
                         if (year % 4 == 0) max++;
                         stringBuilder.append(rand.nextInt(max) + 1);
                 }
                 stringBuilder.append(" - ");
             }
-            stringBuilder.append(events.get(n)).append("\n");
+            stringBuilder.append(events.get(n)).append("\t       ");
             if ((++i) % 20 == 0) {
                 arrayList.add(stringBuilder.toString());
                 stringBuilder = new StringBuilder();
             }
             indexList.remove(n);
-            if (a.get(RUNNING) == FALSE) break;
+            if (a.get(RUNNING) == FALSE || indexList.size() == 0) break;
         }
         arrayList.add(stringBuilder.toString());
         return arrayList;
     }
 
     //TODO create dictionary
+    //TODO save
 }

@@ -43,6 +43,7 @@
     <string name="correct_answers">Correct Answers</string>
     <string name="delete">Delete</string>
     <string name="missed">Missed</string>
+    <string name="enter_date">Enter date</string>
 
     <!--Practice-->
     <string name="enter">Enter the number of</string>

@@ -146,7 +146,7 @@ public class RecallCards extends RecallSimple {
     }
 
     @Override
-    protected String formatAnswers(Scanner scanner, StringBuilder sb) {
+    protected String formatAnswers(Scanner scanner, StringBuilder sb, String whitespace) {
         String[] cards = makeCardString();
 
         while (scanner.hasNext())

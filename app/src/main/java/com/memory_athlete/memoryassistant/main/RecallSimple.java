@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +53,9 @@ public class RecallSimple extends AppCompatActivity {
 
     protected String mDiscipline = null;
     protected String mFileName;
+
     protected GridView gridView;
+    protected ListView complexListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,7 @@ public class RecallSimple extends AppCompatActivity {
 
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.reset).setVisibility(View.GONE);
+        setResponseLayout();
         Timber.v("activity created");
     }
 
@@ -119,28 +123,13 @@ public class RecallSimple extends AppCompatActivity {
         }
     }
 
-    void complexResponseLayout() {
-        compareFormat = 3;
-        responseFormat = 4;
-    }
-
     protected void setResponseLayout() {
-        if (mDiscipline.equals(getString(R.string.dates))) {
-            findViewById(R.id.response_input).setVisibility(View.GONE);
-            findViewById(R.id.card_suit).setVisibility(View.GONE);
-            findViewById(R.id.card_numbers).setVisibility(View.GONE);
-            gridView.setVisibility(View.GONE);
-            findViewById(R.id.response_listView).setVisibility(View.VISIBLE);
+        simpleResponseLayout();
 
-            complexResponseLayout();
-        } else {
-            findViewById(R.id.response_input).setVisibility(View.VISIBLE);
-            findViewById(R.id.card_suit).setVisibility(View.GONE);
-            findViewById(R.id.card_numbers).setVisibility(View.GONE);
-            gridView.setVisibility(View.GONE);
-
-            simpleResponseLayout();
-        }
+        findViewById(R.id.response_input).setVisibility(View.VISIBLE);
+        findViewById(R.id.card_suit).setVisibility(View.GONE);
+        findViewById(R.id.card_numbers).setVisibility(View.GONE);
+        gridView.setVisibility(View.GONE);
 
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
@@ -153,34 +142,33 @@ public class RecallSimple extends AppCompatActivity {
 
     protected void getAnswers() {
         Timber.v("getAnswersEntered");
-        if (mDiscipline.equals(getString(R.string.dates))) {
-            try {
-                String string, delimiter = "\n|\n\n";
-                if (!mDiscipline.equalsIgnoreCase(getString(R.string.dates))) delimiter += "|\t";
 
-                Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath()
-                        + File.separator + getString(R.string.practice) + File.separator + mDiscipline + File.separator
-                        + mFileName)).useDelimiter(delimiter);
+        try {
+            String string;
 
-                while (scanner.hasNext()) {
-                    string = scanner.next();
-                    if (mDiscipline.equals(getString(R.string.numbers)) || mDiscipline.equals(getString(R.string.cards)))
-                        answers.add(String.valueOf(parseInt(string.trim())));
-                        //else if (mDiscipline == getString(e))
-                    else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
-                            || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
-                            || mDiscipline.equalsIgnoreCase(getString(R.string.digits))) {
-                        for (char c : string.toCharArray())
-                            if (c != ' ') answers.add("" + c);
-                    } else answers.add(string);
-                }
-                Timber.v(String.valueOf(answers.size()));
-                scanner.close();
-            } catch (Exception e) {
-                //Toast.makeText(this, "Couldn't read the saved answers", Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
+            Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath()
+                    + File.separator + getString(R.string.practice) + File.separator + mDiscipline + File.separator
+                    + mFileName)).useDelimiter("\t|\n|\n\n");
+
+            while (scanner.hasNext()) {
+                string = scanner.next();
+                if (mDiscipline.equals(getString(R.string.numbers)) || mDiscipline.equals(getString(R.string.cards)))
+                    answers.add(String.valueOf(parseInt(string.trim())));
+                    //else if (mDiscipline == getString(e))
+                else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
+                        || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
+                        || mDiscipline.equalsIgnoreCase(getString(R.string.digits))) {
+                    for (char c : string.toCharArray())
+                        if (c != ' ') answers.add("" + c);
+                } else answers.add(string);
             }
+            Timber.v(String.valueOf(answers.size()));
+            scanner.close();
+        } catch (Exception e) {
+            //Toast.makeText(this, "Couldn't read the saved answers", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
+
         Timber.v("getAnswers() complete");
     }
 
@@ -204,8 +192,7 @@ public class RecallSimple extends AppCompatActivity {
                     + mFileName)).useDelimiter("\t|\t   \t|\n|\n\n");
             Timber.v("scanner created");
 
-            return formatAnswers(scanner, sb);
-
+            return formatAnswers(scanner, sb, whitespace);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -217,13 +204,13 @@ public class RecallSimple extends AppCompatActivity {
         return null;
     }
 
-    protected String formatAnswers(Scanner scanner, StringBuilder sb) {
+    protected String formatAnswers(Scanner scanner, StringBuilder sb, String whitespace) {
         while (scanner.hasNext()) sb.append(scanner.next()).append(whitespace);
         Timber.v("giveUp() complete, returns " + sb.toString());
         return sb.toString();
     }
 
-    void getResponse() {
+    protected void getResponse() {
         if (responseFormat == 2) {
             return;
             //The responses were stored when they were entered
@@ -275,6 +262,7 @@ public class RecallSimple extends AppCompatActivity {
         findViewById(R.id.reset).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_text_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_layout).setVisibility(View.VISIBLE);
+        complexListView.setVisibility(View.GONE);
     }
 
 
@@ -290,17 +278,16 @@ public class RecallSimple extends AppCompatActivity {
             if (isCorrect(i, j)) continue;
             if (missed > 8 && missed > correct) break;
             if (isLeft(i, j)) continue;
-            if (words) {
-                if (isSpelling(i, j)) {
-                    spelling++;
-                    mTextAnswer.append("<font color=#EEEE00>").append(answers.get(j))
-                            .append("</font>").append(" ").append(whitespace);
-                    mTextResponse.append("<font color=#EEEE00>").append(responses.get(i))
-                            .append("</font>").append(" ").append(whitespace);
-                    correct++;
-                    continue;
-                }
+            if (words && isSpelling(i, j)) {
+                spelling++;
+                mTextAnswer.append("<font color=#EEEE00>").append(answers.get(j))
+                        .append("</font>").append(" ").append(whitespace);
+                mTextResponse.append("<font color=#EEEE00>").append(responses.get(i))
+                        .append("</font>").append(" ").append(whitespace);
+                correct++;
+                continue;
             }
+
             if (isMiss(i, j)) {
                 if (isExtra(i, j)) {
                     j--;
@@ -326,7 +313,7 @@ public class RecallSimple extends AppCompatActivity {
         Timber.v("compare() complete ");
     }
 
-    boolean isLeft(int i, int j) {
+    protected boolean isLeft(int i, int j) {
         if (responses.get(i).equals(" ")) {
             missed++;
             mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
@@ -336,7 +323,7 @@ public class RecallSimple extends AppCompatActivity {
         } else return false;
     }
 
-    boolean isCorrect(int i, int j) {
+    protected boolean isCorrect(int i, int j) {
         if (responses.get(i).equalsIgnoreCase(answers.get(j))) {
             correct++;
             mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
@@ -345,7 +332,7 @@ public class RecallSimple extends AppCompatActivity {
         } else return false;
     }
 
-    boolean isMiss(int i, int j) {
+    protected boolean isMiss(int i, int j) {
         int match = 0, k, checkRange = 10 + missed;
 
         if (i < 3) k = 1;
@@ -365,7 +352,7 @@ public class RecallSimple extends AppCompatActivity {
         return ((float) match / k) <= 0.5;
     }
 
-    boolean isExtra(int i, int j) {
+    protected boolean isExtra(int i, int j) {
         int match = 0, k, checkRange = 10, l = 0;
 
         for (; l < 5; l++) {
@@ -395,7 +382,7 @@ public class RecallSimple extends AppCompatActivity {
         return false;
     }
 
-    void isWrong(int i, int j) {
+    protected void isWrong(int i, int j) {
         wrong++;
         mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
                 .append(" ").append(whitespace);
@@ -403,7 +390,7 @@ public class RecallSimple extends AppCompatActivity {
                 .append("</font>").append(" ").append(whitespace);
     }
 
-    boolean isSpelling(int i, int j) {
+    protected boolean isSpelling(int i, int j) {
         if ((float) abs((responses.get(i).length() - answers.get(j).length())
                 / answers.get(j).length()) > 0.3) return false;
         int count = 0;
@@ -484,24 +471,6 @@ public class RecallSimple extends AppCompatActivity {
 
     public void startTimer(View view) {
     } //TODO: USe this!
-
-    private void setDateAdapter() {
-    }
-
-    private class ComplexAsyncTask extends AsyncTask<Object, Object, Void> {
-
-        @Override
-        protected Void doInBackground(Object[] objects) {
-            getAnswers();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void v) {
-            super.onPostExecute(v);
-            setDateAdapter();
-        }
-    }
 
     private class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Void> {
 
