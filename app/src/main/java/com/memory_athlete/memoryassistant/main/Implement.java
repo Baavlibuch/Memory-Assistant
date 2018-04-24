@@ -79,7 +79,7 @@ public class Implement extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Item item = arrayList.get(position);
                     boolean webView, hasList;
-                    if (item.mFileName.equals("Vocabulary.txt")) {
+                    if (item.mFileName.contains("Language") || item.mFileName.equals("Dates.txt")) {
                         webView = false;
                         hasList = true;
                     } else {
