@@ -117,12 +117,19 @@ public class Cards extends DisciplineFragment {
         //Random rand = new Random();
         int n;
         ArrayList<Integer> indexList = new ArrayList<>();
-        for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
+        boolean shuffleDecks = PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .getBoolean(getString(R.string.shuffle_decks), false);
+        if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
             for (int j = 0; j < 52; j++) {
                 indexList.add(j);
             }
-        }
+
+
         for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
+            if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++) {
+                indexList.add(j);
+            }
+
             n = (new Random()).nextInt(indexList.size());
             cards.add(indexList.get(n));
             indexList.remove(n);

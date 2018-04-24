@@ -60,6 +60,15 @@
         android:key="@string/practice_grid_columns"
         android:title="@string/practice_grid_columns" />
 
+
+    <SwitchPreference
+        android:key="@string/shuffle_decks"
+        android:title="@string/shuffle_decks"
+        android:defaultValue="false"
+        android:summaryOn="@string/all_decks"
+        android:summaryOff="@string/one_deck_at_a_time"
+        />
+
     <ListPreference
         android:defaultValue="6"
         android:entries="@array/two_to_eight"

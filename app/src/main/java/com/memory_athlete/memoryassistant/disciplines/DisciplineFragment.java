@@ -30,7 +30,7 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
-import com.memory_athlete.memoryassistant.main.RecallSimple;
+import com.memory_athlete.memoryassistant.recall.RecallSimple;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".main.RecallSimple">
+    tools:context=".recall.RecallSimple">
 
     <LinearLayout
         android:layout_width="match_parent"

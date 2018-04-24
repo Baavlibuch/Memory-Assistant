@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
-import com.memory_athlete.memoryassistant.main.RecallSimple;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

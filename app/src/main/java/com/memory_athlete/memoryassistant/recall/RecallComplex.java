@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.main.RecallSimple;
 
 import java.io.File;
 import java.util.ArrayList;

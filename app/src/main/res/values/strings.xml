@@ -117,6 +117,9 @@
     <string name="no_preceding_zeros">Don\'t add zeros before a small number</string>
     <string name="show_preceding_zeros">Add zeros before a small number</string>
     <string name="capital_letters">Use capital letters in letters discipline</string>
+    <string name="shuffle_decks">Shuffle Decks</string>
+    <string name="all_decks">Shuffle all decks together</string>
+    <string name="one_deck_at_a_time">Shuffle one deck at a time</string>
 
     <!--Learn-->
     <string name="method_of_loci">Method Of Loci</string>

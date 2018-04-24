@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant.main;
+package com.memory_athlete.memoryassistant.recall;
 
 import android.content.Context;
 import android.content.Intent;

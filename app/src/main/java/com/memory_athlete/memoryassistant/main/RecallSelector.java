@@ -22,6 +22,7 @@ import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.recall.RecallCards;
 import com.memory_athlete.memoryassistant.recall.RecallComplex;
+import com.memory_athlete.memoryassistant.recall.RecallSimple;
 
 import java.io.File;
 import java.util.ArrayList;
