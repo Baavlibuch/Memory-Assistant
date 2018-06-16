@@ -87,11 +87,13 @@
             <GridView
                 android:id="@+id/cards_responses"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:horizontalSpacing="10dp"
                 android:numColumns="6"
                 android:verticalSpacing="10dp"
-                android:visibility="gone" />
+                android:visibility="gone"
+                tools:ignore="NestedWeights" />
 
             <RelativeLayout
                 android:id="@+id/progress_bar_recall"
@@ -99,7 +101,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:ignore="NestedWeights">
 
                 <ProgressBar
                     android:layout_width="wrap_content"
@@ -132,12 +135,11 @@
                 </ScrollView>
 
                 <ListView
+                    android:id="@+id/response_list_view"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:id="@+id/response_list_view"
-                    android:visibility="gone"
-                    />
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/card_suit"
@@ -346,6 +348,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="startSW"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="@string/start_stopwatch" />
 
                 <Button
@@ -353,6 +356,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="check"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="@string/check" />
 
                 <Button
@@ -360,6 +364,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="giveUp"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="@string/just_answers" />
 
                 <Button
@@ -367,6 +372,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
                     android:onClick="reset"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="@string/reset" />
 
             </LinearLayout>

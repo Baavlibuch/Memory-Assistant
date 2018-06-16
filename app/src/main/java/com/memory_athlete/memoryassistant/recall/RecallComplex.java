@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
@@ -24,28 +23,33 @@ public class RecallComplex extends RecallSimple {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         (new LoadAnswersAsyncTask()).execute();
-        responseFormat = 4;
-        complexListView = findViewById(R.id.response_list_view);
+        responseFormat = DATE_RESPONSE_FORMAT;
     }
 
     @Override
-    protected void setResponseLayout() {
-        if (mDiscipline.equals(getString(R.string.dates))) {
-            findViewById(R.id.response_input).setVisibility(View.GONE);
-            findViewById(R.id.card_suit).setVisibility(View.GONE);
-            findViewById(R.id.card_numbers).setVisibility(View.GONE);
-            gridView.setVisibility(View.GONE);
-            findViewById(R.id.response_list_view).setVisibility(View.VISIBLE);
+    protected void setResponseLayout(boolean onCreate) {
+        Timber.v("setResponseLayout() entered");
+        if (onCreate) {
+            findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
+            findViewById(R.id.response_layout).setVisibility(View.GONE);
+            return;
         }
 
+        gridView.setVisibility(View.GONE);
+        findViewById(R.id.card_suit).setVisibility(View.GONE);
+        findViewById(R.id.card_numbers).setVisibility(View.GONE);
+
+        findViewById(R.id.response_input).setVisibility(View.GONE);
+        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
-        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
         findViewById(R.id.reset).setVisibility(View.GONE);
 
-        ((ListView) findViewById(R.id.response_list_view)).setAdapter(
-                new ResponseAdapter(this, answers));
+        complexListView = findViewById(R.id.response_list_view);
+        complexListView.setVisibility(View.VISIBLE);
+        complexListView.setAdapter(new ResponseAdapter(this, answers));
+        Timber.v("setResponseLayout() complete");
     }
 
     protected void getAnswers() {
@@ -53,9 +57,7 @@ public class RecallComplex extends RecallSimple {
         try {
             String string;
 
-            Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath()
-                    + File.separator + getString(R.string.practice) + File.separator + mDiscipline + File.separator
-                    + mFileName)).useDelimiter("\n|\n\n");
+            Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\n|\n\n");
 
             while (scanner.hasNext()) {
                 string = scanner.next();
@@ -79,6 +81,7 @@ public class RecallComplex extends RecallSimple {
             s = s.replace("\t", "\n");
             sb.append(s).append(whitespace);
         }
+        Timber.v("formatAnswers() complete");
         return sb.toString();
     }
 
@@ -86,7 +89,7 @@ public class RecallComplex extends RecallSimple {
     protected void getResponse() {
         for (int i = 0; i < complexListView.getCount(); i++)
             responses.add(((TextView) complexListView.getChildAt(i)).getText().toString());
-
+        Timber.v("getResponse() complete");
     }
 
     @Override
@@ -103,6 +106,7 @@ public class RecallComplex extends RecallSimple {
             if (isLeft(i, j)) continue;
             isWrong(i, j);
         }
+        Timber.v("compare() complete");
     }
 
     protected boolean isLeft(int i, int j) {
@@ -132,7 +136,7 @@ public class RecallComplex extends RecallSimple {
         @Override
         protected void onPostExecute(Void v) {
             super.onPostExecute(v);
-            setResponseLayout();
+            setResponseLayout(false);
         }
     }
 

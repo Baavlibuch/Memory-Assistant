@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 public class MySpace extends AppCompatActivity {
-    int listViewId = 0, MIN_DYNAMIC_VIEW_ID = 1;
+    int listViewId, MIN_DYNAMIC_VIEW_ID = 1;
     File dir = null;
 
     @Override
@@ -38,7 +38,7 @@ public class MySpace extends AppCompatActivity {
         setContentView(R.layout.activity_my_space);
         setTitle(getString(R.string.my_space));
         Timber.v("Title Set");
-        listViewId++;
+        listViewId = MIN_DYNAMIC_VIEW_ID;
 
         if (!Helper.mayAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.my_space_relative_layout),

@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.main.RecallSelector;
 import com.memory_athlete.memoryassistant.recall.RecallSimple;
 
 import java.io.File;
@@ -53,6 +54,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true;
     public ArrayList<Integer> a = new ArrayList<>();             //Instructs the backgroundString thread
     public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
+    protected Class mRecallClass;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
@@ -160,6 +162,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         Timber.v("Activity Created");
         rootView.setOnClickListener(this);
+         mRecallClass = RecallSimple.class;
         return rootView;
     }
 
@@ -352,21 +355,14 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     /* Checks if external storage is available for read and write */
     public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
-        }
-        return false;
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
     /* Checks if external storage is available to at least read */
     public boolean isExternalStorageReadable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state) ||
-                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            return true;
-        }
-        return false;
+        String externalStorageState = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(externalStorageState) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(externalStorageState);
     }
 
     public boolean reset() {
@@ -426,9 +422,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //When recall button is pressed
     protected void recall() {
-        Intent intent = new Intent(getActivity().getApplicationContext(), RecallSimple.class);
-        intent.putExtra("file exists", save());
-        intent.putExtra("discipline", "" + getActivity().getTitle());
+        boolean fileExists = save();
+        Timber.v("fileExists = " + fileExists);
+        Intent intent;
+        if (fileExists) intent = new Intent(getActivity().getApplicationContext(), mRecallClass);
+        else intent = new Intent(getActivity().getApplicationContext(), RecallSelector.class);
+        intent.putExtra("file exists", fileExists);
+        intent.putExtra(getString(R.string.discipline), "" + getActivity().getTitle());
         Timber.v("recalling" + getActivity().getTitle());
         startActivity(intent);
     }
@@ -539,10 +539,14 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
         numbersVisibility(View.VISIBLE);
         Timber.v("Setting text");
-        RandomAdapter adapter = new RandomAdapter(getActivity(), list);
-        ((ListView) rootView.findViewById(R.id.practice_list_view)).setAdapter(adapter);
+        ((ListView) rootView.findViewById(R.id.practice_list_view))
+                .setAdapter(startRandomAdapter(list));
         //((TextView) rootView.findViewById(R.id.random_values)).setText(s);
         //numbersVisibility(View.VISIBLE);
+    }
+
+    protected RandomAdapter startRandomAdapter(ArrayList list){
+        return new RandomAdapter(getActivity(), list);
     }
 
     //Thread to generate the random list as string
@@ -591,9 +595,15 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
 
     protected class RandomAdapter extends ArrayAdapter {
+        private int textSize = 24;
 
         RandomAdapter(Activity context, ArrayList cards) {
             super(context, 0, cards);
+        }
+
+        RandomAdapter(Activity context, ArrayList cards, int textSize) {
+            super(context, 0, cards);
+            this.textSize = textSize;
         }
 
         @NonNull
@@ -602,9 +612,9 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             TextView textView = (TextView) convertView;
             if (convertView == null) {
                 textView = new TextView(getContext());
-                textView.setLayoutParams(new ListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT));
-                textView.setTextSize(24);
+                textView.setLayoutParams(new ListView.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                textView.setTextSize(textSize);
                 textView.setVisibility(View.VISIBLE);
             }
 

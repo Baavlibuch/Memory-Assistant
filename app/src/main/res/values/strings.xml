@@ -82,6 +82,8 @@
     <string name="standard">Standard</string>
     <string name="custom">Custom</string>
     <string name="chose_level">Chose level</string>
+    <string name="start_year">Select start year</string>
+    <string name="end_year">Select end year</string>
 
     <!--MySpace-->
     <string name="majors">Major Systems</string>
@@ -93,6 +95,7 @@
 
     <string name="fname">Name</string>
     <string name="here">Enter here</string>
+    <string name="dont_save">Exit without saving</string>
 
     <!--Preferences-->
     <string name="remind">Remind Me Periodically</string>
@@ -120,6 +123,11 @@
     <string name="shuffle_decks">Shuffle Decks</string>
     <string name="all_decks">Shuffle all decks together</string>
     <string name="one_deck_at_a_time">Shuffle one deck at a time</string>
+    <string name="double_back_on">Press back twice to exit from the main screen</string>
+    <string name="clear_practice">Clear all practice cache</string>
+    <string name="double_back_to_exit">Prevent accidental app exits</string>
+    <string name="double_back_off">Press back just once to exit from the main screen</string>
+    <string name="bottom_tabs">Tabs on bottom</string>
 
     <!--Learn-->
     <string name="method_of_loci">Method Of Loci</string>
@@ -135,19 +143,12 @@
     <!--other-->
     <string name="tab">\t</string>
     <string name="drop_down">Expand</string>
-    <string name="clear_practice">Clear all practice cache</string>
     <string name="visit_my_space">Visit My Space</string>
     <string name="try_again">Try again</string>
     <string name="report_to_dev">There was an error, please report this to the developer</string>
     <string name="confused">Confused? Start from the top</string>
-    <string name="double_back_to_exit">Prevent accidental app exits</string>
-    <string name="double_back_on">Press back twice to exit from the main screen</string>
-    <string name="double_back_off">Press back just once to exit from the main screen</string>
-    <string name="bottom_tabs">Tabs on bottom</string>
-    <string name="dont_save">Exit without saving</string>
     <string name="extra">Extra</string>
-    <string name="start_year">Select start year</string>
-    <string name="end_year">Select end year</string>
+    <string name="discipline">discipline</string>
 
 
 </resources>

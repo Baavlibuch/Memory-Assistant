@@ -1,7 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,6 +23,7 @@ import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.recall.RecallCards;
 import com.memory_athlete.memoryassistant.recall.RecallComplex;
 import com.memory_athlete.memoryassistant.recall.RecallSimple;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,9 +31,12 @@ import java.util.ArrayList;
 import timber.log.Timber;
 
 public class RecallSelector extends AppCompatActivity {
-    int listViewId = 0, MIN_DYNAMIC_VIEW_ID = 0;
+    int listViewId, MIN_DYNAMIC_VIEW_ID = 1;
     File dir = null;
     String mDiscipline;
+    Class targetClass;
+    String intentDisciple;
+    boolean intentFileExists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,9 @@ public class RecallSelector extends AppCompatActivity {
         setContentView(R.layout.activity_my_space);
         Helper.theme(this, this);
         setTitle(R.string.chose_discipline);
+
+        listViewId = MIN_DYNAMIC_VIEW_ID;
+        findViewById(R.id.add).setVisibility(View.GONE);
 
         if (!Helper.mayAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.my_space_relative_layout),
@@ -56,11 +63,15 @@ public class RecallSelector extends AppCompatActivity {
                     })
                     .show();
         }
+
+        Intent intent = getIntent();
+        intentDisciple = intent.getStringExtra(getString(R.string.discipline));
+        intentFileExists = intent.getBooleanExtra("file exists", false);
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         Timber.v("listViewId = " + listViewId);
         if (findViewById(R.id.my_space_relative_layout).findViewById(listViewId) != null)
             ((RelativeLayout) findViewById(R.id.my_space_relative_layout)).removeViewAt(listViewId);
@@ -69,23 +80,20 @@ public class RecallSelector extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (listViewId != 0) {
-            Timber.v("listViewId = " + listViewId);
-            RelativeLayout relativeLayout = findViewById(R.id.my_space_relative_layout);
-
-            if (relativeLayout.findViewById(listViewId) != null)
-                relativeLayout.removeViewAt(listViewId);
-
-            if (relativeLayout.findViewById(--listViewId) != null) {
-                relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
-                if (listViewId == MIN_DYNAMIC_VIEW_ID)
-                    findViewById(R.id.add).setVisibility(View.GONE);
-
-                setTitle(getString(R.string.chose_discipline));
-                return;
-            }
+        Timber.v("listViewId = " + listViewId);
+        if (listViewId == MIN_DYNAMIC_VIEW_ID) {
+            super.onBackPressed();
+            return;
         }
-        super.onBackPressed();
+        RelativeLayout relativeLayout = findViewById(R.id.my_space_relative_layout);
+
+        if (relativeLayout.findViewById(listViewId) != null)
+            relativeLayout.removeViewAt(listViewId);
+
+        if (relativeLayout.findViewById(--listViewId) == null) return;
+
+        relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
+        setTitle(getString(R.string.chose_discipline));
     }
 
     public void setAdapter() {
@@ -119,29 +127,45 @@ public class RecallSelector extends AppCompatActivity {
         final RelativeLayout layout = findViewById(R.id.my_space_relative_layout);
         layout.addView(listView);
         listView.setAdapter(adapter);
-        final ArrayList<Item> finalArrayList = arrayList;
 
+        final ArrayList<Item> finalArrayList = arrayList;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 onMyItemClick(finalArrayList, position, layout);
             }
         });
+
+        if (listViewId == MIN_DYNAMIC_VIEW_ID && intentDisciple != null && !intentDisciple.equals("")) {
+            ArrayList<String> list = new ArrayList<>();
+            for (Item item : setList()) list.add(item.getName());
+            int index = list.indexOf(intentDisciple);
+            listView.performItemClick(
+                    listView.getAdapter().getView(index, null, null),
+                    index, listView.getAdapter().getItemId(index));
+        } else if (intentFileExists) {
+            listView.performItemClick(
+                    listView.getAdapter().getView(0, null, null),
+                    0, listView.getAdapter().getItemId(0));
+            intentFileExists = false;
+        }
     }
 
     private void onMyItemClick(ArrayList<Item> finalArrayList, int position, RelativeLayout layout) {
         Item item = finalArrayList.get(position);
         Timber.v("item.mPath = " + item.mFileName);
         if (listViewId == MIN_DYNAMIC_VIEW_ID) {
+            targetClass = item.mClass;
             mDiscipline = item.mFileName;
-            dir = new File(Helper.APP_FOLDER + File.separator
+
+            dir = new File(getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline);
+            Timber.v("directory path = " + dir.getAbsolutePath());
 
             File[] files = dir.listFiles();
-            if (files == null) throw new RuntimeException("the discipline contains null " +
-                    "instead of the practice folder");
-            if (files.length == 0) {
-                practice(Helper.APP_FOLDER + File.separator
-                        + getString(R.string.practice) + File.separator + mDiscipline);
+            if (files == null || files.length == 0) {
+                String s = (mDiscipline.equals(getString(R.string.digits))) ? getString(R.string.numbers) : mDiscipline;
+                practice(getFilesDir().getAbsolutePath() + File.separator
+                        + getString(R.string.practice) + File.separator + s);
                 return;
             }
 
@@ -154,11 +178,11 @@ public class RecallSelector extends AppCompatActivity {
             Timber.v("going to id 1, listViewId = " + listViewId);
         } else {
             Timber.v("listViewId = " + listViewId);
-            String filePath = Helper.APP_FOLDER + File.separator
-                    + getString(R.string.practice) + File.separator + getTitle();
-            Intent intent = new Intent(getApplicationContext(), RecallSimple.class);
+            String filePath = getFilesDir().getAbsolutePath() + File.separator
+                    + getString(R.string.practice) + File.separator + mDiscipline + File.separator + item.mFileName;
+            Intent intent = new Intent(getApplicationContext(), targetClass);
             intent.putExtra("name", item.mName);
-            intent.putExtra("file", item.mFileName);
+            intent.putExtra("file", filePath);
             intent.putExtra("discipline", mDiscipline);
 
             File file = new File(filePath);
@@ -171,7 +195,7 @@ public class RecallSelector extends AppCompatActivity {
     }
 
     void practice(final String discipline) {
-        Snackbar.make(findViewById(0), "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
+        Snackbar.make(findViewById(listViewId), "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
                 .setAction(R.string.practice, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -204,33 +228,26 @@ public class RecallSelector extends AppCompatActivity {
                         }
 
                         Timber.v("classId = " + classId);
-                        try {
-                            //Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
-                            Intent i = new Intent(getApplicationContext(), DisciplineActivity.class);
-                            i.putExtra("class", classId);
-                            i.putExtra("name", s);
-                            startActivity(i);
-                        }/* catch (ClassNotFoundException e) {
-                            e.printStackTrace();
-                            Toast.makeText(Recall.this, R.string.report_to_dev, Toast.LENGTH_SHORT).show();
-                        }*/ catch (ActivityNotFoundException e) {
-                            e.printStackTrace();
-                        }//TODO : trow the exception
+                        //Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
+                        Intent i = new Intent(getApplicationContext(), DisciplineActivity.class);
+                        i.putExtra("class", classId);
+                        i.putExtra("name", s);
+                        startActivity(i);
                     }
                 }).show();
     }
 
     private ArrayList<Item> setList() {
         ArrayList<Item> list = new ArrayList<>();
-        list.add(new Item(getString(R.string.digits), RecallSimple.class));
-        list.add(new Item(getString(R.string.binary), RecallSimple.class));
-        list.add(new Item(getString(R.string.cards), RecallCards.class));
-        list.add(new Item(getString(R.string.letters), RecallSimple.class));
-        list.add(new Item(getString(R.string.names), RecallSimple.class));
-        list.add(new Item(getString(R.string.numbers), RecallSimple.class));
-        list.add(new Item(getString(R.string.places_capital), RecallSimple.class));
-        list.add(new Item(getString(R.string.words), RecallSimple.class));
-        list.add(new Item(getString(R.string.dates), RecallComplex.class));
+        list.add(new Item(getString(R.string.digits), RecallSimple.class, R.drawable.numbers));
+        list.add(new Item(getString(R.string.binary), RecallSimple.class, R.drawable.binary));
+        list.add(new Item(getString(R.string.cards), RecallCards.class, R.drawable.cards));
+        list.add(new Item(getString(R.string.letters), RecallSimple.class, R.drawable.letters));
+        list.add(new Item(getString(R.string.names), RecallSimple.class, R.drawable.names));
+        list.add(new Item(getString(R.string.numbers), RecallSimple.class, R.drawable.numbers));
+        list.add(new Item(getString(R.string.places_capital), RecallSimple.class, R.drawable.places));
+        list.add(new Item(getString(R.string.words), RecallSimple.class, R.drawable.words));
+        list.add(new Item(getString(R.string.dates), RecallComplex.class, R.drawable.dates));
         return list;
     }
 
@@ -242,14 +259,24 @@ public class RecallSelector extends AppCompatActivity {
 
         @Override
         public View getView(int position, View listItemView, ViewGroup parent) {
+            //Chose discipline
             if (listViewId == MIN_DYNAMIC_VIEW_ID) {
                 if (listItemView == null)
                     listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category,
                             null, true);
                 ((TextView) listItemView.findViewById(R.id.text)).setText(getItem(position).mName);
+
+                ImageView img = listItemView.findViewById(R.id.image);
+                Picasso.with(getApplicationContext())
+                        .load(getItem(position).mImageId)
+                        .placeholder(R.mipmap.launcher_ic)
+                        .fit()
+                        .centerCrop()
+                        .into(img);
                 return listItemView;
             }
 
+            //Chose file
             if (listItemView == null) listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.item_main, null, true);
 
@@ -262,6 +289,7 @@ public class RecallSelector extends AppCompatActivity {
     private class Item {
         String mFileName, mName;
         Class mClass;
+        int mImageId;
 
         Item(String fileName) {
             mFileName = fileName;
@@ -269,13 +297,19 @@ public class RecallSelector extends AppCompatActivity {
             Timber.v("Item set!");
         }
 
-        Item(String fileName, Class myClass) {
+        Item(String fileName, Class myClass, int imageId) {
             mFileName = fileName;
             mName = fileName.endsWith(".txt") ? fileName.substring(0, fileName.length() - 4) : fileName;
             mClass = myClass;
+            mImageId = imageId;
             Timber.v("Item set!");
+        }
+
+        public String getName() {
+            return mFileName;
         }
     }
 }
 
-//TODO: open the recall activity and test everything
+// TODO: recall from practice,
+// TODO: dates

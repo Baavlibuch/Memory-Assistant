@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.recall.RecallCards;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -73,7 +74,7 @@ public class Cards extends DisciplineFragment {
                 getContext()).getString(getString(R.string.practice_grid_columns), "4")));
 
         hasGroup = false;
-
+        mRecallClass = RecallCards.class;
         return rootView;
     }
 

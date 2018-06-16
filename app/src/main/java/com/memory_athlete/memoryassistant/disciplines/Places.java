@@ -43,7 +43,7 @@ public class Places extends WordDisciplineFragment {
         for (int i = 0; i < a.get(NO_OF_VALUES); ) {
             n = rand.nextInt(mPlace.size());
             stringBuilder.append(mPlace.get(n)).append(" \n");
-            if ((++i) % 20 == 0){
+            if ((++i) % 20 == 0) {
                 arrayList.add(stringBuilder.toString());
                 stringBuilder = new StringBuilder();
             }
@@ -56,156 +56,26 @@ public class Places extends WordDisciplineFragment {
     //Read files and make a list of places
     @Override
     protected void createDictionary() {
-        BufferedReader dict = null;
-
-        try {
-            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.cities)));
-            String city;
-            while ((city = dict.readLine()) != null) {
-                mPlace.add(city);
+        int[] files = {R.raw.cities, R.raw.countries, R.raw.waterfalls, R.raw.mountains,
+                R.raw.lakes, R.raw.islands, R.raw.heritage, R.raw.rivers};
+        for (int fileID : files) {
+            BufferedReader dict = null;
+            try {
+                dict = new BufferedReader(new InputStreamReader(
+                        getResources().openRawResource(fileID)));
+                String place;
+                while ((place = dict.readLine()) != null) {
+                    mPlace.add(place);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dict.close();
-        } catch (IOException e) {
-            Timber.e("File not closed");
-        }
-
-        dict = null;
-
-        try {
-            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.countries)));
-            String country;
-            while ((country = dict.readLine()) != null) {
-                mPlace.add(country);
+            try {
+                dict.close();
+            } catch (IOException e) {
+                Timber.e("File not closed");
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dict.close();
-        } catch (IOException e) {
-            Timber.e("File not closed");
-        }
-
-        dict = null;
-
-        try {
-            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.waterfalls)));
-            String falls;
-            while ((falls = dict.readLine()) != null) {
-                mPlace.add(falls);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dict.close();
-        } catch (IOException e) {
-            Timber.e("File not closed");
-        }
-
-        dict = null;
-
-        try {
-            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.mountains)));
-            String mountain;
-            while ((mountain = dict.readLine()) != null) {
-                mPlace.add(mountain);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dict.close();
-        } catch (IOException e) {
-            Timber.e("File not closed");
-        }
-
-        dict = null;
-
-        try {
-            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.lakes)));
-            String lake;
-            while ((lake = dict.readLine()) != null) {
-                mPlace.add(lake);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dict.close();
-        } catch (IOException e) {
-            Timber.e("File not closed");
-        }
-
-        dict = null;
-
-        try {
-            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.islands)));
-            String island;
-            while ((island = dict.readLine()) != null) {
-                mPlace.add(island);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dict.close();
-        } catch (IOException e) {
-            Timber.e("File not closed");
-        }
-
-        dict = null;
-
-        try {
-            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.heritage)));
-            String heritage;
-            while ((heritage = dict.readLine()) != null) {
-                mPlace.add(heritage);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dict.close();
-        } catch (IOException e) {
-            Timber.e("File not closed");
-        }
-
-        dict = null;
-
-        try {
-            dict = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.rivers)));
-            String rivers;
-            while ((rivers = dict.readLine()) != null) {
-                mPlace.add(rivers);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dict.close();
-        } catch (IOException e) {
-            Timber.e("File not closed");
         }
     }
 }

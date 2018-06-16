@@ -20,8 +20,7 @@ public abstract class WordDisciplineFragment extends DisciplineFragment {
     }
 
     //Read files and make a list of names
-    protected void createDictionary() {
-    }
+    abstract protected void createDictionary();
 
     @Override
     protected void numbersVisibility(int visibility) {

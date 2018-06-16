@@ -15,14 +15,19 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.recall.RecallComplex;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import timber.log.Timber;
 
 public class Dates extends WordDisciplineFragment {
-    private ArrayList events = new ArrayList();
+    private ArrayList<String> events = new ArrayList<>();
     private int startYear, endYear;
 
     @Override
@@ -34,11 +39,13 @@ public class Dates extends WordDisciplineFragment {
         dateCheckBox.setChecked(true);
         dateCheckBox.setVisibility(View.VISIBLE);
         setDateSpinners();
+        mRecallClass = RecallComplex.class;
+
         return rootView;
     }
 
     void setDateSpinners() {
-        ArrayList<String> arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(), arrayList1 = new ArrayList<>();
         Spinner dateSpinner = rootView.findViewById(R.id.start_date);
         dateSpinner.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -69,8 +76,8 @@ public class Dates extends WordDisciplineFragment {
         dateSpinner.setAdapter(dataAdapter);
         dateSpinner.setVisibility(View.VISIBLE);
 
-        dateSpinner = rootView.findViewById(R.id.end_date);
-        dateSpinner.setOnTouchListener(new View.OnTouchListener() {
+        Spinner dateSpinner1 = rootView.findViewById(R.id.end_date);
+        dateSpinner1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 try {
@@ -83,23 +90,23 @@ public class Dates extends WordDisciplineFragment {
             }
         });
 
-        arrayList.clear();
-        arrayList.add(getString(R.string.end_year));
-        arrayList.add("2099");
-        for (int i = 2499; i <= 9999; i += 500) arrayList.add(String.format("%04d", i));
+        arrayList1.clear();
+        arrayList1.add(getString(R.string.end_year));
+        arrayList1.add("2099");
+        for (int i = 2499; i <= 9999; i += 500) arrayList1.add(String.format("%04d", i));
         dataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item,
-                arrayList);
+                arrayList1);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Can't recall why this is here but it is important
-        dateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        dateSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-        dateSpinner.setAdapter(dataAdapter);
-        dateSpinner.setVisibility(View.VISIBLE);
+        dateSpinner1.setAdapter(dataAdapter);
+        dateSpinner1.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -125,18 +132,18 @@ public class Dates extends WordDisciplineFragment {
         int n, year;
 
         ArrayList<Integer> indexList = new ArrayList<>();
-        for (int i = 0; i < a.get(NO_OF_VALUES); i++) indexList.add(i);
+        for (int i = 0; i < events.size(); i++) indexList.add(i);
 
         String[] month = new String[]{"January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"};
 
         for (int i = 0; i < a.get(NO_OF_VALUES); ) {
             year = rand.nextInt(endYear - startYear) + startYear;
-            stringBuilder.append(String.format("%04d", year)).append(" ");
+            stringBuilder.append(String.format("%04d", year));
             n = (short) rand.nextInt(indexList.size());
             if (!((CheckBox) rootView.findViewById(R.id.negative_or_date)).isChecked()) {
                 n = rand.nextInt(12);
-                stringBuilder.append(month[n]).append(" ");
+                stringBuilder.append(" ").append(month[n]).append(" ");
                 switch (n) {
                     case 0:
                     case 2:
@@ -158,9 +165,9 @@ public class Dates extends WordDisciplineFragment {
                         if (year % 4 == 0) max++;
                         stringBuilder.append(rand.nextInt(max) + 1);
                 }
-                stringBuilder.append(" - ");
             }
-            stringBuilder.append(events.get(n)).append("\t       ");
+            stringBuilder.append(" - ");
+            stringBuilder.append(events.get(indexList.get(n))).append("\n\n");
             if ((++i) % 20 == 0) {
                 arrayList.add(stringBuilder.toString());
                 stringBuilder = new StringBuilder();
@@ -172,6 +179,37 @@ public class Dates extends WordDisciplineFragment {
         return arrayList;
     }
 
-    //TODO create dictionary
-    //TODO save
+    @Override
+    protected void createDictionary() {
+
+        int[] files = {R.raw.twentieth_century, R.raw.twenty_first_century};
+
+        for (int fileID : files) {
+            BufferedReader dict = null;
+            try {
+                dict = new BufferedReader(new InputStreamReader(
+                        getResources().openRawResource(fileID)));
+                String line;
+                while ((line = dict.readLine()) != null) {
+                    Scanner scanner = new Scanner(line).useDelimiter(",\"'|'\"|', '");
+                    scanner.next();
+
+                    while (scanner.hasNext()) events.add(scanner.next());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                dict.close();
+            } catch (IOException e) {
+                Timber.e("File not closed");
+            }
+        }
+    }
+
+    @Override
+    protected RandomAdapter startRandomAdapter(ArrayList list) {
+        return new RandomAdapter(getActivity(), list, 18);
+    }
 }

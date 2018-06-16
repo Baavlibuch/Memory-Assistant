@@ -29,8 +29,8 @@ public class RecallCards extends RecallSimple {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         theme();
+        super.onCreate(savedInstanceState);
     }
 
     private void theme() {
@@ -67,38 +67,40 @@ public class RecallCards extends RecallSimple {
     }
 
     @Override
-    protected void setResponseLayout() {
+    protected void setResponseLayout(boolean onCreate) {
         gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
                 this).getString(getString(R.string.recall_grid_columns), "6")));
         cardImageIds = Helper.makeCards();
         Timber.v("cardResponseLayout() started");
-        gridView.setVisibility(View.VISIBLE);
-        compareFormat = 2;
-        responseFormat = 2;
+        compareFormat = CARD_COMPARE_FORMAT;
+        responseFormat = CARD_RESPONSE_FORMAT;
 
         LinearLayout suitLayout = findViewById(R.id.card_suit);
         if (suitLayout.getChildCount() != 0) return;
         for (int i = 0; i < 4; i++) {
+            float scale = getResources().getDisplayMetrics().density;
+            int dpAsPixels = (int) (8 * scale + 0.5f);
+
             final ImageView imageView = new ImageView(this);
             imageView.setImageResource(Helper.makeSuits()[i]);
             imageView.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            float scale = getResources().getDisplayMetrics().density;
-            int dpAsPixels = (int) (8 * scale + 0.5f);
             imageView.setPadding(2 * dpAsPixels, dpAsPixels, 2 * dpAsPixels, dpAsPixels);
             imageView.setId(i);
+
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    for (int j = 0; j < 4; j++) {
+                    for (int j = 0; j < 4; j++)
                         findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
-                    }
+
                     view.setBackgroundColor(getResources().getColor(mSuitBackground));
-                    selectedSuit = (int) view.getId() * 13;
+                    selectedSuit = (int) view.getId() * 13;     //cast to get rid of useless warning
                     Timber.v("selectedSuit = " + selectedSuit);
                 }
             });
+
             suitLayout.addView(imageView);
         }
         suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
@@ -129,17 +131,17 @@ public class RecallCards extends RecallSimple {
             numberLayout.addView(textView);
         }
 
+        findViewById(R.id.reset).setVisibility(View.GONE);
         findViewById(R.id.result).setVisibility(View.GONE);
+        findViewById(R.id.recall_layout).setVisibility(View.GONE);
+        findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
         findViewById(R.id.response_input).setVisibility(View.GONE);
+
+        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
         findViewById(R.id.card_suit).setVisibility(View.VISIBLE);
         findViewById(R.id.card_numbers).setVisibility(View.VISIBLE);
         gridView.setVisibility(View.VISIBLE);
-
-        findViewById(R.id.recall_layout).setVisibility(View.GONE);
-        findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
-        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
-        findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
 
         Timber.v("Card layout set");
     }
@@ -156,14 +158,17 @@ public class RecallCards extends RecallSimple {
     }
 
     @Override
+    protected void getResponse() {
+        //The responses were stored when they were entered so there is no need of doing anything
+    }
+
+    @Override
     protected void compare(boolean words) {
         String[] cardStrings = makeCardString();
-        for (int i = 0; i < responses.size(); i++) {
+        for (int i = 0; i < responses.size(); i++)
             responses.set(i, cardStrings[Integer.parseInt(responses.get(i))]);
-        }
-        for (int i = 0; i < answers.size(); i++) {
+        for (int i = 0; i < answers.size(); i++)
             answers.set(i, cardStrings[Integer.parseInt(answers.get(i))]);
-        }
         super.compare(false);
         Timber.v("compareCards() complete");
     }
@@ -172,7 +177,7 @@ public class RecallCards extends RecallSimple {
     protected void reset() {
         super.reset();
         updateGridView();
-        findViewById(R.id.reset).setVisibility(View.VISIBLE);
+        gridView.setVisibility(View.VISIBLE);
     }
 
     private class CardAdapter extends ArrayAdapter<String> {

@@ -42,8 +42,11 @@ public class RecallSimple extends AppCompatActivity {
 
     //int mResponsePosition = 0;
     //static byte submitDoubt = 0;
-    protected int responseFormat = 0;
-    protected byte compareFormat = 0;
+    protected final int SIMPLE_COMPARE_FORMAT = 0, WORD_COMPARE_FORMAT = 1, CARD_COMPARE_FORMAT = 2;
+    protected final int SIMPLE_RESPONSE_FORMAT = 0, WORD_RESPONSE_FORMAT = 1,
+            CARD_RESPONSE_FORMAT = 2, CHARACTER_RESPONSE_FORMAT = 3, DATE_RESPONSE_FORMAT = 4;
+    protected int responseFormat = SIMPLE_RESPONSE_FORMAT;
+    protected byte compareFormat = SIMPLE_COMPARE_FORMAT;
     protected int mSuitBackground;
 
     protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling;
@@ -52,7 +55,7 @@ public class RecallSimple extends AppCompatActivity {
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
 
     protected String mDiscipline = null;
-    protected String mFileName;
+    protected String mFilePath;
 
     protected GridView gridView;
     protected ListView complexListView;
@@ -60,26 +63,35 @@ public class RecallSimple extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recall);
         Intent intent = getIntent();
-        mFileName = intent.getStringExtra("name");
-        mDiscipline = intent.getStringExtra("discipline");
+        mFilePath = intent.getStringExtra("file");
+        mDiscipline = intent.getStringExtra(getString(R.string.discipline));
 
         Helper.theme(this, this);
-        setTitle(getString(R.string.recall));
+        setTitle(mDiscipline);
+
+        gridView = findViewById(R.id.cards_responses);
+        complexListView = findViewById(R.id.response_list_view);
 
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.reset).setVisibility(View.GONE);
-        setResponseLayout();
+
+        if (intent.getBooleanExtra("file exists", false)) {
+            File dir = new File(getFilesDir().getAbsolutePath() + File.separator
+                    + getString(R.string.practice) + File.separator + mDiscipline);
+            ArrayList<String> fileList = new ArrayList<>();
+            File[] files = dir.listFiles();
+            if (files == null) {
+                finish();
+                return;
+            }
+            mFilePath = files[0].getAbsolutePath();
+        }
+
+        setResponseLayout(true);
         Timber.v("activity created");
     }
-
-    @Override
-    public void onBackPressed() {
-        if (findViewById(R.id.reset).getVisibility() == View.VISIBLE
-                || findViewById(R.id.button_bar).getVisibility() == View.VISIBLE) reset();
-        else super.onBackPressed();
-    }
-
 
     void simpleResponseLayout() {
         final EditText editText = findViewById(R.id.response_input);
@@ -96,34 +108,34 @@ public class RecallSimple extends AppCompatActivity {
 
         switch (mDiscipline) {
             case "Numbers":
-                responseFormat = 0;
-                compareFormat = 0;
+                responseFormat = SIMPLE_RESPONSE_FORMAT;
+                compareFormat = SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Binary Digits":
             case "Digits":
-                responseFormat = 3;
-                compareFormat = 0;
+                responseFormat = CHARACTER_RESPONSE_FORMAT;
+                compareFormat = SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Letters":
-                responseFormat = 3;
-                compareFormat = 0;
+                responseFormat = CHARACTER_RESPONSE_FORMAT;
+                compareFormat = SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
                 break;
             case "Words":
             case "Names":
             case "Places":
-                responseFormat = 1;
-                compareFormat = 1;
+                responseFormat = WORD_RESPONSE_FORMAT;
+                compareFormat = WORD_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_NONE);
                 break;
         }
     }
 
-    protected void setResponseLayout() {
+    protected void setResponseLayout(boolean onCreate) {
         simpleResponseLayout();
 
         findViewById(R.id.response_input).setVisibility(View.VISIBLE);
@@ -146,9 +158,7 @@ public class RecallSimple extends AppCompatActivity {
         try {
             String string;
 
-            Scanner scanner = new Scanner(new File(getFilesDir().getAbsolutePath()
-                    + File.separator + getString(R.string.practice) + File.separator + mDiscipline + File.separator
-                    + mFileName)).useDelimiter("\t|\n|\n\n");
+            Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\t|\n|\n\n");
 
             while (scanner.hasNext()) {
                 string = scanner.next();
@@ -177,8 +187,8 @@ public class RecallSimple extends AppCompatActivity {
         Scanner scanner = null;
         String whitespace;
         switch (responseFormat) {
-            case 0:
-            case 3:
+            case SIMPLE_RESPONSE_FORMAT:
+            case CHARACTER_RESPONSE_FORMAT:
                 whitespace = " " + getString(R.string.tab);
                 break;
             default:
@@ -187,9 +197,7 @@ public class RecallSimple extends AppCompatActivity {
 
         try {
             StringBuilder sb = new StringBuilder("");
-            scanner = new Scanner(new File(getFilesDir().getAbsolutePath() + File.separator
-                    + getString(R.string.practice) + File.separator + mDiscipline + File.separator
-                    + mFileName)).useDelimiter("\t|\t   \t|\n|\n\n");
+            scanner = new Scanner(new File(mFilePath)).useDelimiter("\t|\t   \t|\n|\n\n");
             Timber.v("scanner created");
 
             return formatAnswers(scanner, sb, whitespace);
@@ -211,14 +219,10 @@ public class RecallSimple extends AppCompatActivity {
     }
 
     protected void getResponse() {
-        if (responseFormat == 2) {
-            return;
-            //The responses were stored when they were entered
-        }
         EditText editText = findViewById(R.id.response_input);
         String values = editText.getText().toString(), value = "";
 
-        if (responseFormat == 3) {
+        if (responseFormat == CHARACTER_RESPONSE_FORMAT) {
             for (int i = 0; i < values.length(); i++) {
                 if (values.charAt(i) == ' ' || values.charAt(i) == '\n'
                         || values.charAt(i) == R.string.tab) continue;
@@ -227,7 +231,7 @@ public class RecallSimple extends AppCompatActivity {
             }
         } else {
             //while (responses.size() <= mResponsePosition) responses.add(" ");
-            char delimiter = (responseFormat == 0 ? ' ' : '\n');
+            char delimiter = (responseFormat == SIMPLE_RESPONSE_FORMAT ? ' ' : '\n');
             for (int i = 0; i < values.length(); i++) {
                 if (!(values.charAt(i) == delimiter)) {
                     value += values.charAt(i);
@@ -270,7 +274,7 @@ public class RecallSimple extends AppCompatActivity {
         Timber.v("Comparing answers and responses in backgroundString");
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
-        whitespace = compareFormat > 0 ? "<br/>" : " " + getString(R.string.tab);
+        whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab): "<br/>";
         Timber.v("whitespace = " + whitespace + ".");
         int i = 0, j = 0;
         for (; i < responses.size() && j < answers.size(); i++, j++) {
@@ -427,15 +431,14 @@ public class RecallSimple extends AppCompatActivity {
         wrong = 0;
         missed = 0;
 
-        setResponseLayout();
-
-        findViewById(R.id.reset).setVisibility(View.GONE);
+        setResponseLayout(true);
 
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
-        findViewById(R.id.response_layout).setVisibility(View.GONE);
-        findViewById(R.id.button_bar).setVisibility(View.GONE);
+        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
+        findViewById(R.id.reset).setVisibility(View.GONE);
 
         //findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
 
@@ -472,7 +475,7 @@ public class RecallSimple extends AppCompatActivity {
     public void startTimer(View view) {
     } //TODO: USe this!
 
-    private class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Void> {
+    protected class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -488,8 +491,9 @@ public class RecallSimple extends AppCompatActivity {
         @Override
         protected final Void doInBackground(ArrayList<Integer>... a) {
             getAnswers();
-            if (compareFormat == 0) compare(false);
-            else if (compareFormat == 1) compare(true);
+            if (compareFormat == SIMPLE_COMPARE_FORMAT || compareFormat == CARD_COMPARE_FORMAT)
+                compare(false);
+            else if (compareFormat == WORD_COMPARE_FORMAT) compare(true);
             return null;
         }
 
@@ -567,3 +571,5 @@ public class RecallSimple extends AppCompatActivity {
 //orange:FFA500
 // textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
 // TODO: shift to fragments
+// TODO remove reset
+// TODO fix button bar
