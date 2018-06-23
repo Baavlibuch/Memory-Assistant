@@ -167,10 +167,8 @@
                     android:id="@+id/random_values"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:justificationMode="inter_word"
                     android:textSize="24sp"
-                    tools:targetApi="o" />
-                <!--TODO: check if justification works-->
+                    />
 
             </ScrollView>
 
