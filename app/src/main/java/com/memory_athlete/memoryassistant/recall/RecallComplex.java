@@ -170,12 +170,12 @@ public class RecallComplex extends RecallSimple {
         @Override
         protected void onPostExecute(Boolean error) {
             super.onPostExecute(error);
-            if (!error) {
-                setResponseLayout(false);
+            if (error) {
+            Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
+                finish();
                 return;
             }
-            Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
-            finish();
+            setResponseLayout(false);
         }
     }
 

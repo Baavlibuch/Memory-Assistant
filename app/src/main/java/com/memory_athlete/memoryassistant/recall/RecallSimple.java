@@ -80,13 +80,14 @@ public class RecallSimple extends AppCompatActivity {
         if (intent.getBooleanExtra("file exists", false)) {
             File dir = new File(getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline);
-            ArrayList<String> fileList = new ArrayList<>();
+            //ArrayList<String> fileList = new ArrayList<>();
             File[] files = dir.listFiles();
             if (files == null) {
                 finish();
                 return;
             }
-            mFilePath = files[0].getAbsolutePath();
+            mFilePath = files[files.length-1].getAbsolutePath();
+            Timber.v("filePath = " + mFilePath);
         }
 
         setResponseLayout(true);
@@ -484,6 +485,7 @@ public class RecallSimple extends AppCompatActivity {
             gridView.setVisibility(View.GONE);
             getResponse();
             findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
+            hideResponseLayout();
             //Log.v(LOG_TAG, "answers.size() = " + String.valueOf(answers.size()));
             Timber.v("responses.size() = " + String.valueOf(responses.size()));
         }
@@ -511,8 +513,6 @@ public class RecallSimple extends AppCompatActivity {
                 finish();
                 return;
             }
-
-            hideResponseLayout();
 
             ((TextView) findViewById(R.id.responses_text)).setText(Html.fromHtml(mTextResponse.toString()),
                     TextView.BufferType.SPANNABLE);
