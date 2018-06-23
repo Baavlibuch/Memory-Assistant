@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.recall;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,11 +17,13 @@ import com.memory_athlete.memoryassistant.R;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import timber.log.Timber;
 
 public class RecallComplex extends RecallSimple {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +67,7 @@ public class RecallComplex extends RecallSimple {
             string = scanner.next();
             answers.add(string);
         }
-        //Collections.shuffle(answers);
+        Collections.shuffle(answers);
         Timber.v(String.valueOf(answers.size()));
         scanner.close();
 
@@ -83,9 +87,10 @@ public class RecallComplex extends RecallSimple {
 
     @Override
     protected void getResponse() {
-        for (int i = 0; i < complexListView.getCount(); i++)
-            responses.add(((TextView) complexListView.getChildAt(i)).getText().toString());
-        Timber.v("getResponse() complete");
+        try {
+            EditText editText = (EditText) this.getCurrentFocus();
+            responses.set(Integer.parseInt(editText.getTag().toString()), editText.getText().toString());
+        }catch (ClassCastException ignore){}        // ListView is returned instead of EditText, the data has been saved already
     }
 
     @Override
@@ -100,19 +105,43 @@ public class RecallComplex extends RecallSimple {
             if (isCorrect(i, j)) continue;
             if (missed > 8 && missed > correct) break;
             if (isLeft(i, j)) continue;
+            // TODO : add spell check
             isWrong(i, j);
         }
         Timber.v("compare() complete");
     }
 
+    @Override
     protected boolean isLeft(int i, int j) {
+        String event = answers.get(j).split(" - ")[0];
         if (responses.get(i).equals("")) {
             missed++;
-            mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
-            mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
-                    .append(" ").append(whitespace);
+            mTextAnswer.append(event).append(" ").append(whitespace);
+            mTextResponse.append("<font color=#FF9500>").append(event).append("</font>").append(" ")
+                    .append(whitespace);
             return true;
         } else return false;
+    }
+
+    @Override
+    protected boolean isCorrect(int i, int j) {
+        String event = answers.get(j).split(" - ")[0];
+        if (responses.get(i).equalsIgnoreCase(answers.get(j))) {
+            correct++;
+            mTextAnswer.append(event).append(" ").append(whitespace);
+            mTextResponse.append(responses.get(i)).append(" ").append(whitespace);
+            return true;
+        } else return false;
+    }
+
+    @Override
+    protected void isWrong(int i, int j) {
+        String event = answers.get(j).split(" - ")[0];
+        wrong++;
+        mTextAnswer.append("<font color=#FF0000>").append(event).append("</font>")
+                .append(" ").append(whitespace);
+        mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
+                .append("</font>").append(" ").append(whitespace);
     }
 
 
@@ -147,23 +176,40 @@ public class RecallComplex extends RecallSimple {
     }
 
     class ResponseAdapter extends ArrayAdapter<String> {
+
         ResponseAdapter(Activity context, ArrayList<String> words) {
             super(context, 0, words);
+            for (int i = 0; i < answers.size(); i++) responses.add("" + i);
         }
 
+        @SuppressLint("ResourceType")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View listItemView = convertView;
-            if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_date,
-                        parent, false);
-            }
+            if (convertView == null) convertView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.item_date, parent, false);
 
-            TextView textView = listItemView.findViewById(R.id.event);
-            Timber.v(getItem(position));
+            TextView textView = convertView.findViewById(R.id.event);
             textView.setText(getItem(position).split(" - ")[1].trim());
 
-            return listItemView;
+            final EditText editText= convertView.findViewById(R.id.date);
+
+            String tag = (String) editText.getTag();
+            if(tag!=null && tag!="")
+                responses.set(Integer.parseInt(tag), editText.getText().toString());
+            editText.setText(responses.get(position));
+            editText.setTag(Integer.toString(position));
+
+            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus){
+                        if(editText==null)return;
+                        int position = Integer.parseInt(editText.getTag().toString());
+                        responses.set(position, editText.getText().toString());
+                    }
+                }
+            });
+
+            return convertView;
         }
     }
 }
