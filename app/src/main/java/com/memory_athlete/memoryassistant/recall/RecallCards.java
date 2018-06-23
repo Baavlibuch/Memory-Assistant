@@ -26,11 +26,14 @@ import static com.memory_athlete.memoryassistant.data.Helper.makeCardString;
 import static java.lang.Integer.parseInt;
 
 public class RecallCards extends RecallSimple {
+    CardAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         theme();
         super.onCreate(savedInstanceState);
+        mAdapter = new CardAdapter(this, responses);
+        gridView.setAdapter(mAdapter);
     }
 
     private void theme() {
@@ -53,16 +56,11 @@ public class RecallCards extends RecallSimple {
         }
     }
 
-    void updateGridView() {
-        CardAdapter adapter = new CardAdapter(this, responses);
-        gridView.setAdapter(adapter);
-    }
-
     void cardSelected(int card) {
         card = (card == 0 ? 12 : card - 1);
         responses.add(String.valueOf(card + selectedSuit));
-        updateGridView();
-        //mAdapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();
+        gridView.smoothScrollToPosition(responses.size()-1);
         Timber.v("cardSelected complete");
     }
 
@@ -176,7 +174,7 @@ public class RecallCards extends RecallSimple {
     @Override
     protected void reset() {
         super.reset();
-        updateGridView();
+        mAdapter.notifyDataSetChanged();
         gridView.setVisibility(View.VISIBLE);
     }
 
@@ -202,7 +200,7 @@ public class RecallCards extends RecallSimple {
                     @Override
                     public void onClick(View view) {
                         responses.remove(position);
-                        updateGridView();
+                        mAdapter.notifyDataSetChanged();
                     }
                 });
                 //imageView.setPadding(8, 8, 8, 8);
