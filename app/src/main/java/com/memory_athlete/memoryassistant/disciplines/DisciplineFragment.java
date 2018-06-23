@@ -172,7 +172,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         //Get the current level
         int level = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("level", 1);
         ArrayList<String> levelList = new ArrayList<>();
-        levelList.add(getString(R.string.chose_level));
+        levelList.add(getString(R.string.choose_level));
         for (; level > 0; level--) levelList.add(String.valueOf(level));
         ArrayAdapter<String> levelAdapter = new ArrayAdapter<>(
                 getActivity(), android.R.layout.simple_spinner_item, levelList);
@@ -496,7 +496,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         //set NO_OF_Values based on level, level 1 is 8, every level doubles the values
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked() && hasStandard) {
             String s = ((Spinner) rootView.findViewById(R.id.level)).getSelectedItem().toString();
-            noOfValues = (s.equals(getString(R.string.chose_level))) ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
+            noOfValues = (s.equals(getString(R.string.choose_level))) ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
             a.set(NO_OF_VALUES, noOfValues);
             return;
         }

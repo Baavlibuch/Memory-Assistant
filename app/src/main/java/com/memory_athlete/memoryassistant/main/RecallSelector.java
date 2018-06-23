@@ -43,7 +43,7 @@ public class RecallSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_space);
         Helper.theme(this, this);
-        setTitle(R.string.chose_discipline);
+        setTitle(R.string.choose_discipline);
 
         listViewId = MIN_DYNAMIC_VIEW_ID;
         findViewById(R.id.add).setVisibility(View.GONE);
@@ -93,7 +93,7 @@ public class RecallSelector extends AppCompatActivity {
         if (relativeLayout.findViewById(--listViewId) == null) return;
 
         relativeLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
-        setTitle(getString(R.string.chose_discipline));
+        setTitle(getString(R.string.choose_discipline));
     }
 
     public void setAdapter() {
@@ -173,7 +173,7 @@ public class RecallSelector extends AppCompatActivity {
             listViewId++;
             setTitle(item.mName);
             findViewById(R.id.add).setVisibility(View.VISIBLE);
-            setTitle(R.string.chose_file);
+            setTitle(R.string.choose_file);
             setAdapter();
             Timber.v("going to id 1, listViewId = " + listViewId);
         } else {

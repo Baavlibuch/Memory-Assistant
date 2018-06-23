@@ -15,7 +15,7 @@
     <string name="title_activity_preferences">Preferences</string> <!--Weird error without this-->
 
     <!--Practice-->
-    <string name="chose_discipline">Chose Discipline</string>
+    <string name="choose_discipline">Choose Discipline</string>
     <string name="numbers">Numbers</string>
     <string name="names">Names</string>
     <string name="cards">Cards</string>
@@ -27,7 +27,7 @@
     <string name="letters">Letters</string>
     <string name="random">Random</string>
     <string name="digits">Digits</string>
-    <string name="chose_file">Chose File</string>
+    <string name="choose_file">Choose File</string>
 
     <!--Recall-->
     <string name="enter_ans">Enter responses</string>
@@ -81,7 +81,7 @@
     <string name="start_stopwatch">Start Stopwatch</string>
     <string name="standard">Standard</string>
     <string name="custom">Custom</string>
-    <string name="chose_level">Chose level</string>
+    <string name="choose_level">Choose level</string>
     <string name="start_year">Select start year</string>
     <string name="end_year">Select end year</string>
 
