@@ -22,6 +22,7 @@ import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -152,7 +153,7 @@ public class RecallSimple extends AppCompatActivity {
         Timber.v("responseLayout set");
     }
 
-    protected void getAnswers() {
+    protected void getAnswers() throws FileNotFoundException {
         Timber.v("getAnswersEntered");
 
         try {
@@ -475,7 +476,7 @@ public class RecallSimple extends AppCompatActivity {
     public void startTimer(View view) {
     } //TODO: USe this!
 
-    protected class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Void> {
+    protected class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Boolean> {
 
         @Override
         protected void onPreExecute() {
@@ -489,17 +490,28 @@ public class RecallSimple extends AppCompatActivity {
 
         @SafeVarargs
         @Override
-        protected final Void doInBackground(ArrayList<Integer>... a) {
-            getAnswers();
-            if (compareFormat == SIMPLE_COMPARE_FORMAT || compareFormat == CARD_COMPARE_FORMAT)
-                compare(false);
-            else if (compareFormat == WORD_COMPARE_FORMAT) compare(true);
-            return null;
+        protected final Boolean doInBackground(ArrayList<Integer>... a) {
+            try {
+                getAnswers();
+                if (compareFormat == SIMPLE_COMPARE_FORMAT || compareFormat == CARD_COMPARE_FORMAT)
+                    compare(false);
+                else if (compareFormat == WORD_COMPARE_FORMAT) compare(true);
+                return false;
+            } catch (FileNotFoundException e){
+                e.printStackTrace();
+                return true;
+            }
         }
 
         @Override
-        protected void onPostExecute(Void v) {
-            super.onPostExecute(v);
+        protected void onPostExecute(Boolean error) {
+            super.onPostExecute(error);
+            if(error){
+                Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
+                finish();
+                return;
+            }
+
             hideResponseLayout();
 
             ((TextView) findViewById(R.id.responses_text)).setText(Html.fromHtml(mTextResponse.toString()),

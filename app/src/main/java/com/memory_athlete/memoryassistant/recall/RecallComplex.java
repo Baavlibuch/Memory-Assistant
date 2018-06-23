@@ -8,12 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 import timber.log.Timber;
@@ -52,24 +53,20 @@ public class RecallComplex extends RecallSimple {
         Timber.v("setResponseLayout() complete");
     }
 
-    protected void getAnswers() {
+    protected void getAnswers() throws FileNotFoundException {
         Timber.v("getAnswersEntered");
-        try {
-            String string;
+        String string;
 
-            Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\n|\n\n");
+        Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\n|\n\n");
 
-            while (scanner.hasNext()) {
-                string = scanner.next();
-                answers.add(string);
-            }
-            Collections.shuffle(answers);
-            Timber.v(String.valueOf(answers.size()));
-            scanner.close();
-        } catch (Exception e) {
-            //Toast.makeText(this, "Couldn't read the saved answers", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
+        while (scanner.hasNext()) {
+            string = scanner.next();
+            Timber.v(string);
+            answers.add(string);
         }
+        //Collections.shuffle(answers);
+        Timber.v(String.valueOf(answers.size()));
+        scanner.close();
 
         Timber.v("getAnswers() complete");
     }
@@ -120,7 +117,7 @@ public class RecallComplex extends RecallSimple {
     }
 
 
-    class LoadAnswersAsyncTask extends AsyncTask<Void, Void, Void> {
+    class LoadAnswersAsyncTask extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -128,21 +125,32 @@ public class RecallComplex extends RecallSimple {
         }
 
         @Override
-        protected Void doInBackground(Void... voids) {
-            getAnswers();
-            return null;
+        protected Boolean doInBackground(Void... voids) {
+            try {
+                getAnswers();
+                return false;
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                return true;
+            }
         }
 
         @Override
-        protected void onPostExecute(Void v) {
-            super.onPostExecute(v);
-            setResponseLayout(false);
+        protected void onPostExecute(Boolean error) {
+            super.onPostExecute(error);
+            if (!error) {
+                setResponseLayout(false);
+                return;
+            }
+            Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
     class ResponseAdapter extends ArrayAdapter<String> {
         ResponseAdapter(Activity context, ArrayList<String> words) {
             super(context, 0, words);
+            Timber.d("words.size() = " + words.size());
         }
 
         @Override
@@ -152,9 +160,17 @@ public class RecallComplex extends RecallSimple {
                 listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_date,
                         parent, false);
             }
-
+            Timber.v("listViewItem inflated/not null");
             TextView textView = listItemView.findViewById(R.id.event);
-            textView.setText(getItem(position).split("\t")[1].trim());
+            Timber.v(getItem(position));
+            String[] strings = getItem(position).split(" - ");
+            Timber.v("strings.length = " + strings.length);
+            for (String s : strings) Timber.v(s);
+            if (strings.length > 1) textView.setText(strings[1].trim());
+            else {
+                Timber.e("strings.length = " + strings.length);
+                Timber.e(String.valueOf(strings));
+            }
 
             return listItemView;
         }
