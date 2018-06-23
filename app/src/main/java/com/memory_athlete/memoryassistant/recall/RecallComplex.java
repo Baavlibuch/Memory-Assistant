@@ -57,11 +57,10 @@ public class RecallComplex extends RecallSimple {
         Timber.v("getAnswersEntered");
         String string;
 
-        Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\n|\n\n");
+        Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\n\n|\n");
 
         while (scanner.hasNext()) {
             string = scanner.next();
-            Timber.v(string);
             answers.add(string);
         }
         //Collections.shuffle(answers);
@@ -150,7 +149,6 @@ public class RecallComplex extends RecallSimple {
     class ResponseAdapter extends ArrayAdapter<String> {
         ResponseAdapter(Activity context, ArrayList<String> words) {
             super(context, 0, words);
-            Timber.d("words.size() = " + words.size());
         }
 
         @Override
@@ -160,17 +158,10 @@ public class RecallComplex extends RecallSimple {
                 listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_date,
                         parent, false);
             }
-            Timber.v("listViewItem inflated/not null");
+
             TextView textView = listItemView.findViewById(R.id.event);
             Timber.v(getItem(position));
-            String[] strings = getItem(position).split(" - ");
-            Timber.v("strings.length = " + strings.length);
-            for (String s : strings) Timber.v(s);
-            if (strings.length > 1) textView.setText(strings[1].trim());
-            else {
-                Timber.e("strings.length = " + strings.length);
-                Timber.e(String.valueOf(strings));
-            }
+            textView.setText(getItem(position).split(" - ")[1].trim());
 
             return listItemView;
         }
