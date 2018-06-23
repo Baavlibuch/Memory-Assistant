@@ -4,11 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,7 +93,8 @@ public class RecallComplex extends RecallSimple {
         try {
             EditText editText = (EditText) this.getCurrentFocus();
             responses.set(Integer.parseInt(editText.getTag().toString()), editText.getText().toString());
-        }catch (ClassCastException ignore){}        // ListView is returned instead of EditText, the data has been saved already
+        } catch (ClassCastException ignore) {
+        }        // ListView is returned instead of EditText, the data has been saved already
     }
 
     @Override
@@ -179,7 +183,7 @@ public class RecallComplex extends RecallSimple {
 
         ResponseAdapter(Activity context, ArrayList<String> words) {
             super(context, 0, words);
-            for (int i = 0; i < answers.size(); i++) responses.add("" + i);
+            for (int i = 0; i < answers.size(); i++) responses.add("");
         }
 
         @SuppressLint("ResourceType")
@@ -191,17 +195,25 @@ public class RecallComplex extends RecallSimple {
             TextView textView = convertView.findViewById(R.id.event);
             textView.setText(getItem(position).split(" - ")[1].trim());
 
-            final EditText editText= convertView.findViewById(R.id.date);
+            final EditText editText = convertView.findViewById(R.id.date);
             editText.setText(responses.get(position));
             editText.setTag(Integer.toString(position));
 
+            editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if (actionId == EditorInfo.IME_ACTION_NEXT)
+                        ((ListView) (editText.getParent()).getParent()).smoothScrollToPosition(
+                                2+Integer.parseInt(editText.getTag().toString()));
+                    return false;
+                }
+            });
+
             editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus){
-                        if(editText==null)return;
-                        int position = Integer.parseInt(editText.getTag().toString());
-                        responses.set(position, editText.getText().toString());
-                    }
+                    if (hasFocus) return;
+                    int position = Integer.parseInt(editText.getTag().toString());
+                    responses.set(position, editText.getText().toString());
                 }
             });
 

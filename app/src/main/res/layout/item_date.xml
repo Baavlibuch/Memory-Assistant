@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/date"
         android:inputType="date"
+        android:imeOptions="actionNext"
         android:hint="@string/enter_date"/>
 
 </LinearLayout>

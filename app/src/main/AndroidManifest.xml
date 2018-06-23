@@ -45,10 +45,10 @@
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".recall.RecallSimple"
-            android:parentActivityName=".main.MainActivity"
-            android:screenOrientation="portrait"
+            android:name=".lessons.Lessons"
+            android:parentActivityName=".main.Learn"
             tools:targetApi="jelly_bean" />
+
         <activity
             android:name=".main.Practice"
             android:parentActivityName=".main.MainActivity"
@@ -57,10 +57,27 @@
             android:name=".main.DisciplineActivity"
             android:parentActivityName=".main.Practice"
             tools:targetApi="jelly_bean" />
+
         <activity
-            android:name=".main.Preferences"
+            android:name=".main.RecallSelector"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".recall.RecallSimple"
+            android:parentActivityName=".main.RecallSelector"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".recall.RecallComplex"
+            android:parentActivityName=".main.RecallSelector"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".recall.RecallCards"
+            android:parentActivityName=".main.RecallSelector"
+            android:screenOrientation="portrait"
+            tools:targetApi="jelly_bean" />
+
         <activity
             android:name=".main.Implement"
             android:launchMode="singleTop"
@@ -70,6 +87,12 @@
             android:name=".lessons.ImplementLesson"
             android:parentActivityName=".main.Implement"
             tools:targetApi="jelly_bean" />
+
+        <activity
+            android:name=".main.Preferences"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
+
         <activity
             android:name=".mySpace.MySpace"
             android:parentActivityName=".main.MainActivity"
@@ -77,10 +100,6 @@
         <activity
             android:name=".mySpace.WriteFile"
             android:parentActivityName=".mySpace.MySpace"
-            tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".lessons.Lessons"
-            android:parentActivityName=".main.Learn"
             tools:targetApi="jelly_bean" />
 
         <!-- Services -->
@@ -100,10 +119,6 @@
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
-
-        <activity android:name=".main.RecallSelector" />
-        <activity android:name=".recall.RecallComplex" />
-        <activity android:name=".recall.RecallCards"></activity>
     </application>
 
 </manifest>

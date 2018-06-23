@@ -126,6 +126,7 @@
                     android:layout_weight="1"
                     android:visibility="gone"
                     android:id="@+id/text_response_scroll_view">
+                    <!--This ScrollView is used to make the edit text scroll smoothly-->
 
                     <EditText
                         android:id="@+id/response_input"
