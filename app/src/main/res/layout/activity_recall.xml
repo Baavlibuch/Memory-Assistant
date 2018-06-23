@@ -124,7 +124,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    android:id="@+id/text_response_scroll_view">
 
                     <EditText
                         android:id="@+id/response_input"

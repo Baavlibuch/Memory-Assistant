@@ -30,7 +30,6 @@ import timber.log.Timber;
 
 import static android.text.InputType.TYPE_CLASS_NUMBER;
 import static android.text.InputType.TYPE_CLASS_TEXT;
-import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
@@ -146,9 +145,10 @@ public class RecallSimple extends AppCompatActivity {
 
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
+        findViewById(R.id.reset).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
+        findViewById(R.id.text_response_scroll_view).setVisibility(View.VISIBLE);
 
         Timber.v("responseLayout set");
     }
@@ -164,7 +164,7 @@ public class RecallSimple extends AppCompatActivity {
             while (scanner.hasNext()) {
                 string = scanner.next();
                 if (mDiscipline.equals(getString(R.string.numbers)) || mDiscipline.equals(getString(R.string.cards)))
-                    answers.add(String.valueOf(parseInt(string.trim())));
+                    answers.add(string.trim());
                     //else if (mDiscipline == getString(e))
                 else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
                         || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
