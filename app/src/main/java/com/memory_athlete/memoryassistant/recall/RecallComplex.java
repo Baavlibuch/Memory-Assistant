@@ -192,10 +192,6 @@ public class RecallComplex extends RecallSimple {
             textView.setText(getItem(position).split(" - ")[1].trim());
 
             final EditText editText= convertView.findViewById(R.id.date);
-
-            String tag = (String) editText.getTag();
-            if(tag!=null && tag!="")
-                responses.set(Integer.parseInt(tag), editText.getText().toString());
             editText.setText(responses.get(position));
             editText.setTag(Integer.toString(position));
 
