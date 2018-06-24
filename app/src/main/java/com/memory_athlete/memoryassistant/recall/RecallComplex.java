@@ -62,7 +62,8 @@ public class RecallComplex extends RecallSimple {
         findViewById(R.id.complex_recall_list_view).setVisibility(View.GONE);
         complexListView = findViewById(R.id.response_list_view);
         complexListView.setVisibility(View.VISIBLE);
-        complexListView.setAdapter(new ResponseAdapter(this, answers));
+        if (complexListView.getAdapter() == null)
+            complexListView.setAdapter(new ResponseAdapter(this, answers));
         Timber.v("answers.size() = " + answers.size());
         Timber.v("setResponseLayout() complete");
     }
@@ -81,6 +82,7 @@ public class RecallComplex extends RecallSimple {
         while (scanner.hasNext()) {
             string = scanner.next();
             answers.add(string);
+            responses.add("");
         }
         Collections.shuffle(answers);
         Timber.v("answers.size() = " + String.valueOf(answers.size()));
@@ -132,7 +134,7 @@ public class RecallComplex extends RecallSimple {
         if (responses.get(i).equals("") || responses.get(i).equals(" ")) {
             missed++;
             recallList.add(new RecallObject(answers.get(i).split(" - ")[1],
-                    responses.get(i),"<font color=#FF9500>" +  event + "</font>"));
+                    responses.get(i), "<font color=#FF9500>" + event + "</font>"));
             return true;
         }
         return false;
@@ -221,7 +223,6 @@ public class RecallComplex extends RecallSimple {
 
         ResponseAdapter(Activity context, ArrayList<String> words) {
             super(context, 0, words);
-            for (int i = 0; i < answers.size(); i++) responses.add("");
         }
 
         @SuppressLint("ResourceType")
@@ -259,7 +260,7 @@ public class RecallComplex extends RecallSimple {
         }
     }
 
-    class RecallAdapter extends ArrayAdapter<RecallObject>{
+    class RecallAdapter extends ArrayAdapter<RecallObject> {
         RecallAdapter(Activity context, ArrayList<RecallObject> list) {
             super(context, 0, list);
         }
@@ -282,10 +283,10 @@ public class RecallComplex extends RecallSimple {
         }
     }
 
-    private class RecallObject{
+    private class RecallObject {
         private String key, response, answer;
 
-        RecallObject(String key, String response, String answer){
+        RecallObject(String key, String response, String answer) {
             this.key = key;
             this.response = response;
             this.answer = answer;

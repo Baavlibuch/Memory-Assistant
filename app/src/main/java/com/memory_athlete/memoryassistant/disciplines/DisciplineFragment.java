@@ -138,8 +138,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             else if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
             getActivity().setTitle(s);
         } catch (Exception e) {
-            getActivity().setTitle(bundle.getString("name"));
-            if (bundle.getString("name").equals(getString(R.string.cards)))
+            String s= bundle.getString("name");
+            String[] strings = s.split("/");
+            s=strings[strings.length - 1];
+            getActivity().setTitle(s);
+            if (s.equals(getString(R.string.cards)))
                 hasStandard = false;
         }
 
