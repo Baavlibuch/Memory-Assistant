@@ -477,6 +477,14 @@ public class RecallSimple extends AppCompatActivity {
     public void startTimer(View view) {
     } //TODO: USe this!
 
+    protected void postExecuteCompare(){
+        ((TextView) findViewById(R.id.responses_text)).setText(Html.fromHtml(mTextResponse.toString()),
+                TextView.BufferType.SPANNABLE);
+        findViewById(R.id.answers_text).setVisibility(View.VISIBLE);
+        ((TextView) findViewById(R.id.answers_text)).setText(Html.fromHtml(mTextAnswer.toString()),
+                TextView.BufferType.SPANNABLE);
+    }
+
     protected class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Boolean> {
 
         @Override
@@ -514,12 +522,6 @@ public class RecallSimple extends AppCompatActivity {
                 return;
             }
 
-            ((TextView) findViewById(R.id.responses_text)).setText(Html.fromHtml(mTextResponse.toString()),
-                    TextView.BufferType.SPANNABLE);
-            findViewById(R.id.answers_text).setVisibility(View.VISIBLE);
-            ((TextView) findViewById(R.id.answers_text)).setText(Html.fromHtml(mTextAnswer.toString()),
-                    TextView.BufferType.SPANNABLE);
-
             Timber.v("mTextResponse length = " + String.valueOf(mTextAnswer.toString().length()));
             Timber.v("mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
             Timber.v("answer 0 = " + answers.get(0));
@@ -545,8 +547,7 @@ public class RecallSimple extends AppCompatActivity {
 
             if (missed > 8 && missed > correct) Toast.makeText(getApplicationContext(),
                     "Very less accuracy", Toast.LENGTH_SHORT).show();
-            //((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
-            //      .toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+            postExecuteCompare();
         }
     }
 

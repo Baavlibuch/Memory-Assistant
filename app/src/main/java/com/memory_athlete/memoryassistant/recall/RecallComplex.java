@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.Html;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,7 @@ import java.util.Scanner;
 import timber.log.Timber;
 
 public class RecallComplex extends RecallSimple {
+    ArrayList<String> keys;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,7 @@ public class RecallComplex extends RecallSimple {
 
     @Override
     protected void getAnswers() throws FileNotFoundException {
-        if(answers.size()>0) {
+        if (answers.size() > 0) {
             Timber.i("getAnswers() is returning early because the answers have already been read");
             return;
         }
@@ -99,8 +102,11 @@ public class RecallComplex extends RecallSimple {
         try {
             EditText editText = (EditText) this.getCurrentFocus();
             responses.set(Integer.parseInt(editText.getTag().toString()), editText.getText().toString());
-        } catch (ClassCastException ignore) {
-        }        // ListView is returned instead of EditText, the data has been saved already
+        } catch (Exception ignore) {
+            // ListView is returned instead of EditText, the data has been saved already
+            // OR
+            // None of the views has the focus so null is returned. Empty list will be compared
+        }
     }
 
     @Override
@@ -108,9 +114,11 @@ public class RecallComplex extends RecallSimple {
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
         whitespace = getString(R.string.tab);
+        keys = new ArrayList<>();
 
         for (int i = 0; i < answers.size(); i++) {
             Timber.v("Entered loop " + i);
+            keys.add(answers.get(i).split(" - ")[1]);
             if (isCorrect(i)) continue;
             if (missed > 8 && missed > correct) break;
             if (isLeft(i)) continue;
@@ -124,9 +132,8 @@ public class RecallComplex extends RecallSimple {
         String event = answers.get(i).split(" - ")[0];
         if (responses.get(i).equals("") || responses.get(i).equals(" ")) {
             missed++;
-            mTextAnswer.append(event).append(" ").append(whitespace);
-            mTextResponse.append("<font color=#FF9500>").append(event).append("</font>").append(" ")
-                    .append(whitespace);
+            answers.set(i, event);
+            responses.set(i, "<font color=#FF9500>" + responses.get(i) + "</font>");
             return true;
         }
         return false;
@@ -136,8 +143,8 @@ public class RecallComplex extends RecallSimple {
         String event = answers.get(i).split(" - ")[0];
         if (responses.get(i).equalsIgnoreCase(event)) {
             correct++;
-            mTextAnswer.append(event).append(" ").append(whitespace);
-            mTextResponse.append(responses.get(i)).append(" ").append(whitespace);
+            answers.set(i, event);
+            responses.set(i, responses.get(i));
             return true;
         }
         return false;
@@ -146,10 +153,22 @@ public class RecallComplex extends RecallSimple {
     protected void isWrong(int i) {
         String event = answers.get(i).split(" - ")[0];
         wrong++;
-        mTextAnswer.append("<font color=#FF0000>").append(event).append("</font>")
-                .append(" ").append(whitespace);
-        mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
-                .append("</font>").append(" ").append(whitespace);
+        answers.set(i, "<font color=#FF0000>" + event + "</font>");
+        responses.set(i, "<font color=#FF0000>" + responses.get(i) + "</font>");
+    }
+
+    @Override
+    protected void postExecuteCompare() {
+        ArrayList<RecallObject> recallList = new ArrayList<>();
+        for (int i=0; i<answers.size(); i++)
+            recallList.add(new RecallObject(keys.get(i), responses.get(i), answers.get(i)));
+
+        ListView recallListView = findViewById(R.id.complex_recall_list_view);
+        RecallAdapter recallAdapter = new RecallAdapter(this, recallList);
+        recallListView.setAdapter(recallAdapter);
+
+        recallListView.setVisibility(View.VISIBLE);
+        findViewById(R.id.answers_text_layout).setVisibility(View.GONE);
     }
 
     @Override
@@ -241,6 +260,39 @@ public class RecallComplex extends RecallSimple {
             });
 
             return convertView;
+        }
+    }
+
+    class RecallAdapter extends ArrayAdapter<RecallObject>{
+        RecallAdapter(Activity context, ArrayList<RecallObject> list) {
+            super(context, 0, list);
+        }
+
+        @Override
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+            if (convertView == null) convertView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.item_date, parent, false);
+
+            TextView eventTextView = convertView.findViewById(R.id.event);
+            eventTextView.setVisibility(View.VISIBLE);
+
+            eventTextView.setText(getItem(position).key);
+            ((TextView) convertView.findViewById(R.id.response_text)).setText(Html.fromHtml(
+                    getItem(position).response), TextView.BufferType.SPANNABLE);
+            ((TextView) convertView.findViewById(R.id.answer_text)).setText(Html.fromHtml(
+                    getItem(position).answer), TextView.BufferType.SPANNABLE);
+
+            return convertView;
+        }
+    }
+
+    private class RecallObject{
+        String key, response, answer;
+
+        RecallObject(String key, String response, String answer){
+            this.key = key;
+            this.response = response;
+            this.answer = answer;
         }
     }
 }

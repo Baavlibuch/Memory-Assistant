@@ -84,6 +84,12 @@
 
             </ScrollView>
 
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/complex_recall_list_view"
+                android:visibility="gone"/>
+
             <GridView
                 android:id="@+id/cards_responses"
                 android:layout_width="match_parent"
