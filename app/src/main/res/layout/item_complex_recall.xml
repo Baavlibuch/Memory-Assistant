@@ -25,12 +25,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:id="@+id/response_text"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceSmall"
             android:id="@+id/answer_text"/>
 
     </LinearLayout>

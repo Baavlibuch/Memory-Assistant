@@ -88,6 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/complex_recall_list_view"
+                android:dividerHeight="0dp"
+                android:divider="@null"
                 android:visibility="gone"/>
 
             <GridView
@@ -114,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="visible" />
-                <!--Don't use "layout-gravity=canter", it is buggy-->
+                <!--Don't use "layout-gravity=center", it is buggy-->
 
             </RelativeLayout>
 

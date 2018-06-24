@@ -29,13 +29,14 @@ import java.util.Scanner;
 import timber.log.Timber;
 
 public class RecallComplex extends RecallSimple {
-    ArrayList<String> keys;
+    ArrayList<RecallObject> recallList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         (new LoadAnswersAsyncTask()).execute();
         responseFormat = DATE_RESPONSE_FORMAT;
+        recallList = new ArrayList<>();
     }
 
     @Override
@@ -58,9 +59,11 @@ public class RecallComplex extends RecallSimple {
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
 
+        findViewById(R.id.complex_recall_list_view).setVisibility(View.GONE);
         complexListView = findViewById(R.id.response_list_view);
         complexListView.setVisibility(View.VISIBLE);
         complexListView.setAdapter(new ResponseAdapter(this, answers));
+        Timber.v("answers.size() = " + answers.size());
         Timber.v("setResponseLayout() complete");
     }
 
@@ -111,14 +114,10 @@ public class RecallComplex extends RecallSimple {
 
     @Override
     protected void compare(boolean words) {
-        mTextResponse = new StringBuilder("");
-        mTextAnswer = new StringBuilder("");
         whitespace = getString(R.string.tab);
-        keys = new ArrayList<>();
 
         for (int i = 0; i < answers.size(); i++) {
             Timber.v("Entered loop " + i);
-            keys.add(answers.get(i).split(" - ")[1]);
             if (isCorrect(i)) continue;
             if (missed > 8 && missed > correct) break;
             if (isLeft(i)) continue;
@@ -132,8 +131,8 @@ public class RecallComplex extends RecallSimple {
         String event = answers.get(i).split(" - ")[0];
         if (responses.get(i).equals("") || responses.get(i).equals(" ")) {
             missed++;
-            answers.set(i, event);
-            responses.set(i, "<font color=#FF9500>" + responses.get(i) + "</font>");
+            recallList.add(new RecallObject(answers.get(i).split(" - ")[1],
+                    responses.get(i),"<font color=#FF9500>" +  event + "</font>"));
             return true;
         }
         return false;
@@ -143,8 +142,8 @@ public class RecallComplex extends RecallSimple {
         String event = answers.get(i).split(" - ")[0];
         if (responses.get(i).equalsIgnoreCase(event)) {
             correct++;
-            answers.set(i, event);
-            responses.set(i, responses.get(i));
+            recallList.add(new RecallObject(answers.get(i).split(" - ")[1], responses.get(i),
+                    event));
             return true;
         }
         return false;
@@ -153,22 +152,19 @@ public class RecallComplex extends RecallSimple {
     protected void isWrong(int i) {
         String event = answers.get(i).split(" - ")[0];
         wrong++;
-        answers.set(i, "<font color=#FF0000>" + event + "</font>");
-        responses.set(i, "<font color=#FF0000>" + responses.get(i) + "</font>");
+        recallList.add(new RecallObject(answers.get(i).split(" - ")[1],
+                "<font color=#FF0000>" + responses.get(i) + "</font>",
+                "<font color=#FF0000>" + event + "</font>"));
     }
 
     @Override
     protected void postExecuteCompare() {
-        ArrayList<RecallObject> recallList = new ArrayList<>();
-        for (int i=0; i<answers.size(); i++)
-            recallList.add(new RecallObject(keys.get(i), responses.get(i), answers.get(i)));
-
         ListView recallListView = findViewById(R.id.complex_recall_list_view);
         RecallAdapter recallAdapter = new RecallAdapter(this, recallList);
         recallListView.setAdapter(recallAdapter);
 
         recallListView.setVisibility(View.VISIBLE);
-        findViewById(R.id.answers_text_layout).setVisibility(View.GONE);
+        findViewById(R.id.recall_layout).setVisibility(View.GONE);
     }
 
     @Override
@@ -178,6 +174,7 @@ public class RecallComplex extends RecallSimple {
         correct = 0;
         wrong = 0;
         missed = 0;
+        recallList.clear();
 
         setResponseLayout(false);
 
@@ -185,7 +182,6 @@ public class RecallComplex extends RecallSimple {
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.reset).setVisibility(View.GONE);
-        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
 
         Timber.v("Recall Reset Complete");
@@ -271,28 +267,40 @@ public class RecallComplex extends RecallSimple {
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item_date, parent, false);
+                    .inflate(R.layout.item_complex_recall, parent, false);
 
             TextView eventTextView = convertView.findViewById(R.id.event);
             eventTextView.setVisibility(View.VISIBLE);
 
-            eventTextView.setText(getItem(position).key);
+            eventTextView.setText(getItem(position).getKey());
             ((TextView) convertView.findViewById(R.id.response_text)).setText(Html.fromHtml(
-                    getItem(position).response), TextView.BufferType.SPANNABLE);
+                    getItem(position).getResponse()), TextView.BufferType.SPANNABLE);
             ((TextView) convertView.findViewById(R.id.answer_text)).setText(Html.fromHtml(
-                    getItem(position).answer), TextView.BufferType.SPANNABLE);
+                    getItem(position).getAnswer()), TextView.BufferType.SPANNABLE);
 
             return convertView;
         }
     }
 
     private class RecallObject{
-        String key, response, answer;
+        private String key, response, answer;
 
         RecallObject(String key, String response, String answer){
             this.key = key;
             this.response = response;
             this.answer = answer;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public String getAnswer() {
+            return answer;
+        }
+
+        public String getResponse() {
+            return response;
         }
     }
 }
