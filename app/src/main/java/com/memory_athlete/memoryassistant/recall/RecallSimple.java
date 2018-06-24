@@ -433,14 +433,14 @@ public class RecallSimple extends AppCompatActivity {
         wrong = 0;
         missed = 0;
 
-        setResponseLayout(true);
+        setResponseLayout(false);
 
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
+        findViewById(R.id.reset).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
 
         //findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
 

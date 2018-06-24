@@ -172,7 +172,6 @@ public class RecallSelector extends AppCompatActivity {
             layout.findViewById(listViewId).setVisibility(View.GONE);
             listViewId++;
             setTitle(item.mName);
-            findViewById(R.id.add).setVisibility(View.VISIBLE);
             setTitle(R.string.choose_file);
             setAdapter();
             Timber.v("going to id 1, listViewId = " + listViewId);

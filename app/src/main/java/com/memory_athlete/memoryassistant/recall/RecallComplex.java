@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,11 +49,11 @@ public class RecallComplex extends RecallSimple {
         findViewById(R.id.card_numbers).setVisibility(View.GONE);
 
         findViewById(R.id.response_input).setVisibility(View.GONE);
-        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
-        findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
         findViewById(R.id.reset).setVisibility(View.GONE);
+        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
 
         complexListView = findViewById(R.id.response_list_view);
         complexListView.setVisibility(View.VISIBLE);
@@ -60,6 +61,7 @@ public class RecallComplex extends RecallSimple {
         Timber.v("setResponseLayout() complete");
     }
 
+    @Override
     protected void getAnswers() throws FileNotFoundException {
         Timber.v("getAnswersEntered");
         String string;
@@ -148,6 +150,25 @@ public class RecallComplex extends RecallSimple {
                 .append("</font>").append(" ").append(whitespace);
     }
 
+    @Override
+    protected void reset() {
+        mTextAnswer = new StringBuilder("");
+        mTextResponse = new StringBuilder("");
+        correct = 0;
+        wrong = 0;
+        missed = 0;
+
+        setResponseLayout(false);
+
+        ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
+        findViewById(R.id.result).setVisibility(View.GONE);
+        findViewById(R.id.recall_layout).setVisibility(View.GONE);
+        findViewById(R.id.reset).setVisibility(View.GONE);
+        findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
+        findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
+
+        Timber.v("Recall Reset Complete");
+    }
 
     class LoadAnswersAsyncTask extends AsyncTask<Void, Void, Boolean> {
         @Override
@@ -171,7 +192,7 @@ public class RecallComplex extends RecallSimple {
         protected void onPostExecute(Boolean error) {
             super.onPostExecute(error);
             if (error) {
-            Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
                 finish();
                 return;
             }
@@ -204,7 +225,7 @@ public class RecallComplex extends RecallSimple {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if (actionId == EditorInfo.IME_ACTION_NEXT)
                         ((ListView) (editText.getParent()).getParent()).smoothScrollToPosition(
-                                2+Integer.parseInt(editText.getTag().toString()));
+                                2 + Integer.parseInt(editText.getTag().toString()));
                     return false;
                 }
             });
