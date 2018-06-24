@@ -63,6 +63,10 @@ public class RecallComplex extends RecallSimple {
 
     @Override
     protected void getAnswers() throws FileNotFoundException {
+        if(answers.size()>0) {
+            Timber.i("getAnswers() is returning early because the answers have already been read");
+            return;
+        }
         Timber.v("getAnswersEntered");
         String string;
 
@@ -73,7 +77,7 @@ public class RecallComplex extends RecallSimple {
             answers.add(string);
         }
         Collections.shuffle(answers);
-        Timber.v(String.valueOf(answers.size()));
+        Timber.v("answers.size() = " + String.valueOf(answers.size()));
         scanner.close();
 
         Timber.v("getAnswers() complete");
@@ -105,44 +109,42 @@ public class RecallComplex extends RecallSimple {
         mTextAnswer = new StringBuilder("");
         whitespace = getString(R.string.tab);
 
-        int i = 0, j = 0;
-        for (; i < responses.size() && j < answers.size(); i++, j++) {
-            Timber.v("Entered loop " + (i + j) + " - response " + responses.get(i) + ", answer " + answers.get(j));
-            if (isCorrect(i, j)) continue;
+        for (int i = 0; i < answers.size(); i++) {
+            Timber.v("Entered loop " + i);
+            if (isCorrect(i)) continue;
             if (missed > 8 && missed > correct) break;
-            if (isLeft(i, j)) continue;
+            if (isLeft(i)) continue;
             // TODO : add spell check
-            isWrong(i, j);
+            isWrong(i);
         }
         Timber.v("compare() complete");
     }
 
-    @Override
-    protected boolean isLeft(int i, int j) {
-        String event = answers.get(j).split(" - ")[0];
-        if (responses.get(i).equals("")) {
+    protected boolean isLeft(int i) {
+        String event = answers.get(i).split(" - ")[0];
+        if (responses.get(i).equals("") || responses.get(i).equals(" ")) {
             missed++;
             mTextAnswer.append(event).append(" ").append(whitespace);
             mTextResponse.append("<font color=#FF9500>").append(event).append("</font>").append(" ")
                     .append(whitespace);
             return true;
-        } else return false;
+        }
+        return false;
     }
 
-    @Override
-    protected boolean isCorrect(int i, int j) {
-        String event = answers.get(j).split(" - ")[0];
-        if (responses.get(i).equalsIgnoreCase(answers.get(j))) {
+    protected boolean isCorrect(int i) {
+        String event = answers.get(i).split(" - ")[0];
+        if (responses.get(i).equalsIgnoreCase(event)) {
             correct++;
             mTextAnswer.append(event).append(" ").append(whitespace);
             mTextResponse.append(responses.get(i)).append(" ").append(whitespace);
             return true;
-        } else return false;
+        }
+        return false;
     }
 
-    @Override
-    protected void isWrong(int i, int j) {
-        String event = answers.get(j).split(" - ")[0];
+    protected void isWrong(int i) {
+        String event = answers.get(i).split(" - ")[0];
         wrong++;
         mTextAnswer.append("<font color=#FF0000>").append(event).append("</font>")
                 .append(" ").append(whitespace);
