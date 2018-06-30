@@ -52,30 +52,36 @@
         <activity
             android:name=".main.Practice"
             android:parentActivityName=".main.MainActivity"
+            android:launchMode="singleTask"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.DisciplineActivity"
             android:parentActivityName=".main.Practice"
+            android:launchMode="singleTask"
             tools:targetApi="jelly_bean" />
 
         <activity
             android:name=".main.RecallSelector"
             android:parentActivityName=".main.MainActivity"
+            android:launchMode="singleTask"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".recall.RecallSimple"
             android:parentActivityName=".main.RecallSelector"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".recall.RecallComplex"
             android:parentActivityName=".main.RecallSelector"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".recall.RecallCards"
             android:parentActivityName=".main.RecallSelector"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
             tools:targetApi="jelly_bean" />
 
         <activity
