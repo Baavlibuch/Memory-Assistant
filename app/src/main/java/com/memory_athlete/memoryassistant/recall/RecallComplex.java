@@ -117,6 +117,8 @@ public class RecallComplex extends RecallSimple {
     @Override
     protected void compare(boolean words) {
         whitespace = getString(R.string.tab);
+        mTextAnswer = new StringBuilder("");        // Used in super
+        mTextResponse = new StringBuilder("");      // Used in super
 
         for (int i = 0; i < answers.size(); i++) {
             Timber.v("Entered loop " + i);
