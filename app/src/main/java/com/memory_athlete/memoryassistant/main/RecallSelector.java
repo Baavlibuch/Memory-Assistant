@@ -41,8 +41,8 @@ public class RecallSelector extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_space);
         Helper.theme(this, this);
+        setContentView(R.layout.activity_my_space);
         setTitle(R.string.choose_discipline);
 
         listViewId = MIN_DYNAMIC_VIEW_ID;

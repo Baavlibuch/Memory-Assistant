@@ -63,12 +63,12 @@ public class RecallSimple extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Helper.theme(this, this);
         setContentView(R.layout.activity_recall);
         Intent intent = getIntent();
         mFilePath = intent.getStringExtra("file");
         mDiscipline = intent.getStringExtra(getString(R.string.discipline));
 
-        Helper.theme(this, this);
         setTitle(mDiscipline);
 
         gridView = findViewById(R.id.cards_responses);

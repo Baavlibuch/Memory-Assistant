@@ -30,7 +30,6 @@ public class RecallCards extends RecallSimple {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        theme();
         super.onCreate(savedInstanceState);
         mAdapter = new CardAdapter(this, responses);
         gridView.setAdapter(mAdapter);
@@ -42,17 +41,17 @@ public class RecallCards extends RecallSimple {
         switch (theme) {
             case "Dark":
                 mSuitBackground = R.color.color_suit_background_dark;
-                gridView = findViewById(R.id.cards_responses);
+                //gridView = findViewById(R.id.cards_responses);
                 gridView.setAlpha((float) 0.8);
                 break;
             case "Night":
                 mSuitBackground = R.color.color_suit_background_night;
-                gridView = findViewById(R.id.cards_responses);
+                //gridView = findViewById(R.id.cards_responses);
                 gridView.setAlpha((float) 0.7);
                 break;
             default:
                 mSuitBackground = R.color.color_suit_background_light;
-                gridView = findViewById(R.id.cards_responses);
+                //gridView = findViewById(R.id.cards_responses);
         }
     }
 
@@ -66,6 +65,7 @@ public class RecallCards extends RecallSimple {
 
     @Override
     protected void setResponseLayout(boolean onCreate) {
+        if(onCreate) theme();
         gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
                 this).getString(getString(R.string.recall_grid_columns), "6")));
         cardImageIds = Helper.makeCards();
