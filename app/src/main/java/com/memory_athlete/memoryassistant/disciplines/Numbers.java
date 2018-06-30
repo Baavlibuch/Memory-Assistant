@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.main.RecallSelector;
 import com.memory_athlete.memoryassistant.recall.RecallSimple;
 
 import java.io.File;
@@ -212,8 +213,13 @@ public class Numbers extends DisciplineFragment {
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked()
                 || ((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2) {
             //Recall Digits
-            Intent intent = new Intent(getActivity(), RecallSimple.class);
-            intent.putExtra("file exists", save());
+            boolean fileExists = save();
+            Timber.v("fileExists = " + fileExists);
+            Intent intent;
+            if(fileExists) intent = new Intent(getActivity(), RecallSimple.class);
+            else intent = new Intent(getActivity().getApplicationContext(), RecallSelector.class);
+
+            intent.putExtra("file exists", fileExists);
             intent.putExtra("discipline", "Digits");
             Timber.v("recalling " + "Digits");
             startActivity(intent);
