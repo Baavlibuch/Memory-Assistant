@@ -14,6 +14,7 @@ Memory sports android app
 * Add spoken decimal numbers, spoken binary numbers, and spoken alphabets
 * Add names and faces, and abstract images
 * Work on the UI
+* Add in app billing
 I'll provide the required data
 **I'll throw a party on the completion of each task!**
 
