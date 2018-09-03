@@ -15,8 +15,10 @@ Memory sports android app
 * Add names and faces, and abstract images
 * Work on the UI
 * Add in app billing
+
 I'll provide the required data
-**I'll throw a party on the completion of each task!**
+
+**I'll give you a treat on the completion of each task!**
 
 ### How do I get set up? ###
 
