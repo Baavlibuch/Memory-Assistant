@@ -36,6 +36,4 @@ I'll provide the required data
 * Other guidelines
 ### Who do I talk to? ###
 
-* Repo owner or admin-
-**Manik** (maniksejwal@gmail.com)
-* Other community or team contact
+* Feel free to join the Slack workspace – https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDIxMzM2MjY5OTkxLWEyNjhlNGUwM2Q4NjMyNGEyMjk0MTdkMDliYmQzMDA2MTFiMTg3MTFmNjQwMzk1MGMxZGQyMzhlM2UzY2RkMTQ
