@@ -55,7 +55,7 @@ public class Cards extends DisciplineFragment {
                 previous();
             }
         });
-        String theme = PreferenceManager.getDefaultSharedPreferences(getActivity())
+        String theme = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getString(getString(R.string.theme), getString(R.string.light));
         switch (theme) {
             case "Dark":
@@ -97,7 +97,7 @@ public class Cards extends DisciplineFragment {
             mPosition--;
             setCard();
         } else {
-            Toast.makeText(getActivity(), "This is the first card!", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "This is the first card!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -107,7 +107,7 @@ public class Cards extends DisciplineFragment {
             mPosition++;
             setCard();
         } else {
-            Toast.makeText(getActivity(), "This is the last card!", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "This is the last card!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -118,7 +118,7 @@ public class Cards extends DisciplineFragment {
         //Random rand = new Random();
         int n;
         ArrayList<Integer> indexList = new ArrayList<>();
-        boolean shuffleDecks = PreferenceManager.getDefaultSharedPreferences(getActivity())
+        boolean shuffleDecks = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getBoolean(getString(R.string.shuffle_decks), false);
         if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
             for (int j = 0; j < 52; j++) {
@@ -159,13 +159,13 @@ public class Cards extends DisciplineFragment {
         StringBuilder stringBuilder = new StringBuilder("");
 
         //Practice Directory
-        String path = getActivity().getFilesDir().getAbsolutePath() + File.separator
+        String path = activity.getFilesDir().getAbsolutePath() + File.separator
                 + getString(R.string.practice);
 
 
         if (Helper.makeDirectory(path)) {
             //Discipline Directory
-            path += File.separator + getActivity().getTitle();
+            path += File.separator + activity.getTitle();
             if (Helper.makeDirectory(path)) {
                 //File Path
                 path += File.separator
@@ -181,11 +181,11 @@ public class Cards extends DisciplineFragment {
                     outputStream.write(stringBuilder.toString().getBytes());
 
                     outputStream.close();
-                    Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show();
                     return true;
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -195,7 +195,7 @@ public class Cards extends DisciplineFragment {
     @Override
     public boolean reset() {
         mPosition = 0;
-        gridView.setAdapter(new CardAdapter(getActivity(), new ArrayList<Integer>()));
+        gridView.setAdapter(new CardAdapter(activity, new ArrayList<Integer>()));
         randomList.clear();
         numbersVisibility(View.GONE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
@@ -282,14 +282,14 @@ public class Cards extends DisciplineFragment {
             else {
                 numbersVisibility(View.VISIBLE);
                 Timber.v("Setting the card adapter");
-                CardAdapter adapter = new CardAdapter(getActivity(), randomList);
+                CardAdapter adapter = new CardAdapter(activity, randomList);
                 gridView.setAdapter(adapter);
                 Timber.v("card adapter set");
             }
             //((TextView) findViewById(R.id.numbers)).setText(s);
             numbersVisibility(View.VISIBLE);
             (rootView.findViewById(R.id.no_of_values)).setVisibility(View.GONE);
-            if (mSingleCard) Toast.makeText(getActivity(), "Tap the card for the next card",
+            if (mSingleCard) Toast.makeText(activity, "Tap the card for the next card",
                     Toast.LENGTH_SHORT).show();
         }
     }

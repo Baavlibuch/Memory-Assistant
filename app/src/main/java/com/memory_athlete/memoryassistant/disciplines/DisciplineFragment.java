@@ -49,6 +49,7 @@ import static java.lang.Math.pow;
 
 public abstract class DisciplineFragment extends Fragment implements View.OnClickListener {
     View rootView;                                               //This view contains the fragment
+    Activity activity;
     protected CountDownTimer cdt;
     protected long mTime = 0;
     protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true;
@@ -132,25 +133,31 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         Bundle bundle = getArguments();
         Timber.i("0 means error in getting title resource string ID through bundle");
+        activity = getActivity();
+        if(activity == null) {
+            Helper.fixBug(getActivity());
+            throw new RuntimeException("Activity is null for Discipline Fragment");
+        }
+
         try {
             String s = getString(bundle.getInt("nameID", 0));
             if (s.equals(getString(R.string.cards))) hasStandard = false;
             else if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
             getActivity().setTitle(s);
         } catch (Exception e) {
-            String s= bundle.getString("name");
-            String[] strings = s.split("/");
-            s=strings[strings.length - 1];
-            getActivity().setTitle(s);
-            if (s.equals(getString(R.string.cards)))
-                hasStandard = false;
+            String s = bundle.getString("name");
+            String[] strings = new String[0];
+            if (s != null) strings = s.split("/");
+            s = strings[strings.length - 1];
+            activity.setTitle(s);
+            if (s.equals(getString(R.string.cards))) hasStandard = false;
         }
 
         Timber.i("dictionary loads before the contentView is set");
         setButtons();
-        if (bundle.getBoolean("hasSpinner", false)) {
+
+        if (bundle.getBoolean("hasSpinner", false))
             makeSpinner(bundle.getInt("spinnerContent", 0));
-        }
         levelSpinner();
         if (!hasStandard) {
             rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
@@ -162,10 +169,10 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         a.add(0);
         a.add(0);
         a.add(0);
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         Timber.v("Activity Created");
         rootView.setOnClickListener(this);
-         mRecallClass = RecallSimple.class;
+        mRecallClass = RecallSimple.class;
         return rootView;
     }
 
@@ -173,12 +180,12 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     protected void levelSpinner() {
         Timber.v("Entered levelSpinner()");
         //Get the current level
-        int level = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("level", 1);
+        int level = PreferenceManager.getDefaultSharedPreferences(activity).getInt("level", 1);
         ArrayList<String> levelList = new ArrayList<>();
         levelList.add(getString(R.string.choose_level));
         for (; level > 0; level--) levelList.add(String.valueOf(level));
         ArrayAdapter<String> levelAdapter = new ArrayAdapter<>(
-                getActivity(), android.R.layout.simple_spinner_item, levelList);
+                activity, android.R.layout.simple_spinner_item, levelList);
         levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spinner spinner = rootView.findViewById(R.id.level);
         spinner.setAdapter(levelAdapter);
@@ -196,8 +203,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 try {
                     Timber.d("Check if this one works properly");
                     // TODO Check if this one works properly
-                    ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).
-                            hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                    ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
+                            hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
                 } catch (NullPointerException e) {
                     Timber.e("Couldn't hide keypad ", e);
                 }
@@ -215,7 +222,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         for (int i = 2; i < 11; i++) categories.add(i, Integer.toString(i));
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
-                getActivity(), android.R.layout.simple_spinner_item, categories);
+                activity, android.R.layout.simple_spinner_item, categories);
         //Can't recall why this is here but it is important
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -263,8 +270,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         Timber.v("Start entered");
         try {
             //Hide the keypad
-            ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).
-                    hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+            ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
+                    hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         } catch (Exception e) {
             Timber.e("Couldn't hide keypad ", e);
         }
@@ -330,11 +337,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         if (string.equals("")) return false;
 
         //Directory of practice
-        String path = getActivity().getFilesDir().getAbsolutePath() + File.separator
+        String path = activity.getFilesDir().getAbsolutePath() + File.separator
                 + getString(R.string.practice);
         if (Helper.makeDirectory(path)) {
             //Directory of the discipline
-            path = path + File.separator + getActivity().getTitle().toString();
+            path = path + File.separator + activity.getTitle().toString();
             if (Helper.makeDirectory(path)) {
                 path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm"))
                         .format(new Date())) + ".txt";
@@ -345,11 +352,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                     outputStream.write(string.getBytes());
 
                     outputStream.close();
-                    Toast.makeText(getActivity().getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity.getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
                     return true;
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getActivity().getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -428,11 +435,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         boolean fileExists = save();
         Timber.v("fileExists = " + fileExists);
         Intent intent;
-        if (fileExists) intent = new Intent(getActivity().getApplicationContext(), mRecallClass);
-        else intent = new Intent(getActivity().getApplicationContext(), RecallSelector.class);
+        if (fileExists) intent = new Intent(activity.getApplicationContext(), mRecallClass);
+        else intent = new Intent(activity.getApplicationContext(), RecallSelector.class);
         intent.putExtra("file exists", fileExists);
-        intent.putExtra(getString(R.string.discipline), "" + getActivity().getTitle());
-        Timber.v("recalling" + getActivity().getTitle());
+        intent.putExtra(getString(R.string.discipline), "" + activity.getTitle());
+        Timber.v("recalling" + activity.getTitle());
         startActivity(intent);
     }
 
@@ -548,8 +555,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         //numbersVisibility(View.VISIBLE);
     }
 
-    protected RandomAdapter startRandomAdapter(ArrayList list){
-        return new RandomAdapter(getActivity(), list);
+    protected RandomAdapter startRandomAdapter(ArrayList list) {
+        return new RandomAdapter(activity, list);
     }
 
     //Thread to generate the random list as string

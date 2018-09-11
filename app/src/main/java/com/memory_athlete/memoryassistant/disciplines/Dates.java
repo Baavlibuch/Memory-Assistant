@@ -51,8 +51,8 @@ public class Dates extends WordDisciplineFragment {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 try {
-                    ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).
-                            hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                    ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
+                            hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
                 } catch (NullPointerException e) {
                     Timber.e("Couldn't hide keypad ", e);
                 }
@@ -63,7 +63,7 @@ public class Dates extends WordDisciplineFragment {
         arrayList.add(getString(R.string.start_year));
         for (int i = 0; i < 2000; i += 500) arrayList.add(String.format("%04d", i));
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
-                getActivity(), android.R.layout.simple_spinner_item, arrayList);
+                activity, android.R.layout.simple_spinner_item, arrayList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Can't recall why this is here but it is important
         dateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -81,8 +81,8 @@ public class Dates extends WordDisciplineFragment {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 try {
-                    ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).
-                            hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                    ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
+                            hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
                 } catch (NullPointerException e) {
                     Timber.e("Couldn't hide keypad ", e);
                 }
@@ -94,7 +94,7 @@ public class Dates extends WordDisciplineFragment {
         arrayList1.add(getString(R.string.end_year));
         arrayList1.add("2099");
         for (int i = 2499; i <= 9999; i += 500) arrayList1.add(String.format("%04d", i));
-        dataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item,
+        dataAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item,
                 arrayList1);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Can't recall why this is here but it is important
@@ -213,6 +213,6 @@ public class Dates extends WordDisciplineFragment {
 
     @Override
     protected RandomAdapter startRandomAdapter(ArrayList list) {
-        return new RandomAdapter(getActivity(), list, 18);
+        return new RandomAdapter(activity, list, 18);
     }
 }
