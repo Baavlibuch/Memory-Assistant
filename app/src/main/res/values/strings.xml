@@ -46,6 +46,7 @@
     <string name="enter_date">Enter date</string>
 
     <!--Practice-->
+    <string name="speech">Speech</string>
     <string name="enter">Enter the number of</string>
     <string name="st">values</string>
     <string name="decks">decks</string>
@@ -149,6 +150,5 @@
     <string name="confused">Confused? Start from the top</string>
     <string name="extra">Extra</string>
     <string name="discipline">discipline</string>
-
 
 </resources>

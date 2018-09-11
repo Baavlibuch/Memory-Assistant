@@ -41,7 +41,7 @@ public class Cards extends DisciplineFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         gridView = rootView.findViewById(R.id.cards_practice_grid);
-        cardImageView = rootView.findViewById(R.id.cards);
+        cardImageView = rootView.findViewById(R.id.cards_and_speech);
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.decks));
         cardImageView.setOnClickListener(new View.OnClickListener() {
             @Override

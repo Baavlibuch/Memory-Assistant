@@ -66,7 +66,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:inputType="number"
-                    android:maxLength="6" />
+                    android:maxLength="6"
+                    tools:ignore="LabelFor" />
+                <!--the hint is decided programmatically-->
 
                 <Spinner
                     android:id="@+id/group"
@@ -92,18 +94,18 @@
                     android:visibility="gone" />
 
                 <Spinner
+                    android:id="@+id/start_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/start_date"
-                    android:visibility="gone"
-                    android:layout_margin="8dp"/>
+                    android:layout_margin="8dp"
+                    android:visibility="gone" />
 
                 <Spinner
+                    android:id="@+id/end_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/end_date"
-                    android:visibility="gone"
-                    android:layout_margin="8dp"/>
+                    android:layout_margin="8dp"
+                    android:visibility="gone" />
 
                 <RadioGroup
                     android:id="@+id/time"
@@ -157,6 +159,13 @@
 
                 </LinearLayout>
 
+                <CheckBox
+                    android:id="@+id/speech_check_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="@string/speech" />
+
             </LinearLayout>
 
             <ScrollView
@@ -167,8 +176,7 @@
                     android:id="@+id/random_values"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    />
+                    android:textSize="24sp" />
 
             </ScrollView>
 
@@ -177,13 +185,13 @@
     </android.support.v4.widget.NestedScrollView>
 
     <ImageView
-        android:id="@+id/cards"
+        android:id="@+id/cards_and_speech"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:visibility="gone" />
-    <!--Used only in cards so there wont be any error;
-         everywhere else, keep visibility gone-->
+    <!--Used only in cards and during speech so there wont be any error;
+         everywhere else, keep visibility gone unless needed-->
 
     <GridView
         android:id="@+id/cards_practice_grid"
@@ -241,46 +249,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            style="?android:attr/buttonBarStyle"
             android:padding="8dp">
 
             <Button
                 android:id="@+id/prev"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/prev" />
 
             <Button
                 android:id="@+id/start"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/start" />
 
             <Button
                 android:id="@+id/stop"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stop" />
 
             <Button
                 android:id="@+id/resume"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/resume" />
 
             <Button
                 android:id="@+id/reset"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/reset" />
 
             <Button
                 android:id="@+id/save"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/save" />
 
             <Button
                 android:id="@+id/recall"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/recall" />
