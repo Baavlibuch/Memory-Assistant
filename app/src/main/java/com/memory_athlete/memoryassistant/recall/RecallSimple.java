@@ -86,7 +86,7 @@ public class RecallSimple extends AppCompatActivity {
                 finish();
                 return;
             }
-            mFilePath = files[files.length-1].getAbsolutePath();
+            mFilePath = files[files.length - 1].getAbsolutePath();
             Timber.v("filePath = " + mFilePath);
         }
 
@@ -274,14 +274,14 @@ public class RecallSimple extends AppCompatActivity {
 
     protected void compare(boolean words) {
         Timber.v("Comparing answers and responses in backgroundString");
-        if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
-                .getInt(getString(R.string.letter_case), 1)==2) {
+        if (mDiscipline.equals(getString(R.string.letters)) && PreferenceManager.getDefaultSharedPreferences(
+                getApplicationContext()).getInt(getString(R.string.letter_case), 1) == 2) {
             compareMixed();
             return;
         }
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
-        whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab): "<br/>";
+        whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab) : "<br/>";
         Timber.v("whitespace = " + whitespace + ".");
         int i = 0, j = 0;
         for (; i < responses.size() && j < answers.size(); i++, j++) {
@@ -433,7 +433,7 @@ public class RecallSimple extends AppCompatActivity {
         Timber.v("Comparing answers and responses in compareMixed");
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
-        whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab): "<br/>";
+        whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab) : "<br/>";
         Timber.v("whitespace = " + whitespace + ".");
         int i = 0, j = 0;
         for (; i < responses.size() && j < answers.size(); i++, j++) {
@@ -598,7 +598,7 @@ public class RecallSimple extends AppCompatActivity {
     public void startTimer(View view) {
     } //TODO: USe this!
 
-    protected void postExecuteCompare(){
+    protected void postExecuteCompare() {
         ((TextView) findViewById(R.id.responses_text)).setText(Html.fromHtml(mTextResponse.toString()),
                 TextView.BufferType.SPANNABLE);
         findViewById(R.id.answers_text).setVisibility(View.VISIBLE);
@@ -628,7 +628,7 @@ public class RecallSimple extends AppCompatActivity {
                     compare(false);
                 else if (compareFormat == WORD_COMPARE_FORMAT) compare(true);
                 return false;
-            } catch (FileNotFoundException e){
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 return true;
             }
@@ -637,7 +637,7 @@ public class RecallSimple extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean error) {
             super.onPostExecute(error);
-            if(error){
+            if (error) {
                 Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
                 finish();
                 return;
