@@ -274,6 +274,11 @@ public class RecallSimple extends AppCompatActivity {
 
     protected void compare(boolean words) {
         Timber.v("Comparing answers and responses in backgroundString");
+        if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                .getInt(getString(R.string.letter_case), 1)==2) {
+            compareMixed();
+            return;
+        }
         mTextResponse = new StringBuilder("");
         mTextAnswer = new StringBuilder("");
         whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab): "<br/>";
@@ -421,6 +426,122 @@ public class RecallSimple extends AppCompatActivity {
         Timber.v("Count = " + count);
         return ((float) count / answers.get(j).length()) > 0.6;
 
+    }
+
+
+    protected void compareMixed() {
+        Timber.v("Comparing answers and responses in compareMixed");
+        mTextResponse = new StringBuilder("");
+        mTextAnswer = new StringBuilder("");
+        whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab): "<br/>";
+        Timber.v("whitespace = " + whitespace + ".");
+        int i = 0, j = 0;
+        for (; i < responses.size() && j < answers.size(); i++, j++) {
+            Timber.v("Entered loop " + (i + j) + " - response " + responses.get(i) + ", answer " + answers.get(j));
+            if (isCorrectMixed(i, j)) continue;
+            if (missed > 8 && missed > correct) break;
+            if (isLeftMixed(i, j)) continue;
+
+            if (isMissMixed(i, j)) {
+                if (isExtraMixed(i, j)) {
+                    j--;
+                    continue;
+                }
+                Timber.v("missed");
+                missed++;
+                mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
+                mTextResponse.append("<font color=#FF9500>").append(answers.get(j))
+                        .append("</font>").append(" ").append(whitespace);
+                i--;
+                continue;
+            }
+            isWrongMixed(i, j);
+        }
+        for (; i < responses.size(); i++)
+            mTextResponse.append("<font color=#FF0000>")
+                    .append(responses.get(i)).append("</font>").append(" ").append(whitespace);
+        for (int k = 0; k < 20 && j < answers.size(); j++, k++) {
+            mTextAnswer.append("<font color=#FF9500>")
+                    .append(answers.get(j)).append("</font>").append(" ").append(whitespace);
+        }
+        Timber.v("compare() complete ");
+    }
+
+    protected boolean isLeftMixed(int i, int j) {
+        if (responses.get(i).equals(" ")) {
+            missed++;
+            mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
+            mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
+                    .append(" ").append(whitespace);
+            return true;
+        } else return false;
+    }
+
+    protected boolean isCorrectMixed(int i, int j) {
+        if (responses.get(i).equals(answers.get(j))) {
+            correct++;
+            mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
+            mTextResponse.append(responses.get(i)).append(" ").append(whitespace);
+            return true;
+        } else return false;
+    }
+
+    protected boolean isMissMixed(int i, int j) {
+        int match = 0, k, checkRange = 10 + missed;
+
+        if (i < 3) k = 1;
+        else if (responses.size() - i < 5) k = -1;
+        else if (i < 10) k = -(i / 3);
+        else k = -4;
+
+        for (; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
+            Timber.v("j = " + j + " k = " + k);
+            if (j + k < 0) continue;
+            if (responses.get(i + k).equals(" ")) continue;
+            if (responses.get(i + k).equals(answers.get(j + k))) {
+                match++;
+            }
+        }
+        Timber.v(match + "");
+        return ((float) match / k) <= 0.5;
+    }
+
+    protected boolean isExtraMixed(int i, int j) {
+        int match = 0, k, checkRange = 10, l = 0;
+
+        for (; l < 5; l++) {
+            //if (i < 3) k = 1;
+            //else if (responses.size() - i < 4 || answers.size() - j < 4) k = -1;
+            //else if (i < 10) k = -(i / 3);
+            //else k = -4;
+
+            for (k = 0; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
+                if (i == -k || j == -k) continue;
+                if (!responses.get(i + k).equals(" ")) {
+                    if (responses.get(i + k).equals(answers.get(j + k - 1))) {
+                        match++;
+                    }
+                }
+            }
+            Timber.v(match + "");
+            if (((float) match / k) > 0.3) {            //Extra
+                mTextResponse.append("<font color=#1D6C21>").append(responses.get(i))
+                        .append("</font>").append(" ").append(whitespace);
+                mTextAnswer.append("<font color=#1D6C21>").append(responses.get(i))
+                        .append("</font>").append(" ").append(whitespace);
+                extra++;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected void isWrongMixed(int i, int j) {
+        wrong++;
+        mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
+                .append(" ").append(whitespace);
+        mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
+                .append("</font>").append(" ").append(whitespace);
     }
 
 

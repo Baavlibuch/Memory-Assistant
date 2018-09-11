@@ -32,10 +32,12 @@
         android:summaryOn="@string/tabs_bottom"
         android:title="@string/bottom_tabs" />
 
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/capital_letters"
-        android:title="@string/capital_letters" />
+    <ListPreference
+        android:defaultValue="1"
+        android:entries="@array/letter_case"
+        android:entryValues="@array/letter_case"
+        android:key="@string/letter_case"
+        android:title="@string/letter_case" />
 
     <SwitchPreference
         android:defaultValue="true"

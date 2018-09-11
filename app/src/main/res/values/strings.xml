@@ -119,7 +119,7 @@
     <string name="preceding_zeros">Preceding zeros</string>
     <string name="no_preceding_zeros">Don\'t add zeros before a small number</string>
     <string name="show_preceding_zeros">Add zeros before a small number</string>
-    <string name="capital_letters">Use capital letters in letters discipline</string>
+    <string name="letter_case">Letter case</string>
     <string name="shuffle_decks">Shuffle Decks</string>
     <string name="all_decks">Shuffle all decks together</string>
     <string name="one_deck_at_a_time">Shuffle one deck at a time</string>
