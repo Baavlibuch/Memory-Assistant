@@ -150,5 +150,6 @@
     <string name="confused">Confused? Start from the top</string>
     <string name="extra">Extra</string>
     <string name="discipline">discipline</string>
+    <string name="speech_rate">Speech rate</string>
 
 </resources>

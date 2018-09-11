@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -38,6 +40,7 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -56,6 +59,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     public ArrayList<Integer> a = new ArrayList<>();             //Instructs the backgroundString thread
     public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
     protected Class mRecallClass;
+    protected ImageView cardAndSpeechImageView;
+    protected TextToSpeech textToSpeech;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
@@ -134,7 +139,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         Bundle bundle = getArguments();
         Timber.i("0 means error in getting title resource string ID through bundle");
         activity = getActivity();
-        if(activity == null) {
+        if (activity == null) {
             Helper.fixBug(getActivity());
             throw new RuntimeException("Activity is null for Discipline Fragment");
         }
@@ -527,6 +532,38 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return null;
     }
 
+    protected void tts(String s){
+        cardAndSpeechImageView.setVisibility(View.VISIBLE);
+        String theme = PreferenceManager.getDefaultSharedPreferences(activity).getString(
+                activity.getString(R.string.theme), "AppTheme");
+        cardAndSpeechImageView.setImageResource(theme.equals("Dark") || theme.equals("Night")
+                ? R.drawable.audio_light : R.drawable.audio_dark);
+        rootView.findViewById(R.id.cards_and_speech).setVisibility(View.VISIBLE);
+
+        textToSpeech = new TextToSpeech(activity, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) textToSpeech.setLanguage(Locale.getDefault());
+            }
+
+        });
+        textToSpeech.setSpeechRate(PreferenceManager.getDefaultSharedPreferences(activity)
+                .getFloat(activity.getString(R.string.speech_rate), 1));
+        textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+        textToSpeech.setOnUtteranceCompletedListener(new TextToSpeech.OnUtteranceCompletedListener() {
+            @Override
+            public void onUtteranceCompleted(String s) {
+                cardAndSpeechImageView.setImageResource(R.drawable.green_tick);
+            }
+        });
+    }
+
+    void tts(ArrayList list){
+        StringBuilder s = new StringBuilder();
+        for (Object i : list) s.append(i.toString());
+        tts(s.toString());
+    }
+
     //Runs when the random generating thread is complete
     protected void postExecuteString(String s) {
         (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
@@ -536,8 +573,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             return;
         }
         Timber.v("Setting text");
-        ((TextView) rootView.findViewById(R.id.random_values)).setText(s);
-        numbersVisibility(View.VISIBLE);
+        if (rootView.findViewById(R.id.speech_check_box).isActivated()) tts(s);
+        else {
+            ((TextView) rootView.findViewById(R.id.random_values)).setText(s);
+            numbersVisibility(View.VISIBLE);
+        }
     }
 
     protected void postExecuteArrayList(ArrayList list) {
@@ -549,10 +589,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
         numbersVisibility(View.VISIBLE);
         Timber.v("Setting text");
-        ((ListView) rootView.findViewById(R.id.practice_list_view))
-                .setAdapter(startRandomAdapter(list));
-        //((TextView) rootView.findViewById(R.id.random_values)).setText(s);
-        //numbersVisibility(View.VISIBLE);
+        if (rootView.findViewById(R.id.speech_check_box).isActivated()) tts(list);
+        else {
+            ((ListView) rootView.findViewById(R.id.practice_list_view))
+                    .setAdapter(startRandomAdapter(list));
+        }
     }
 
     protected RandomAdapter startRandomAdapter(ArrayList list) {

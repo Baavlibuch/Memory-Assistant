@@ -29,21 +29,22 @@ import java.util.Scanner;
 
 import timber.log.Timber;
 
+import static android.view.View.GONE;
+
 public class Cards extends DisciplineFragment {
     int mPosition = 0;
     int[] cards = Helper.makeCards();
     ArrayList<Integer> randomList = new ArrayList<>();
     private boolean mSingleCard = false;
     GridView gridView;
-    ImageView cardImageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         gridView = rootView.findViewById(R.id.cards_practice_grid);
-        cardImageView = rootView.findViewById(R.id.cards_and_speech);
+        cardAndSpeechImageView = rootView.findViewById(R.id.cards_and_speech);
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.decks));
-        cardImageView.setOnClickListener(new View.OnClickListener() {
+        cardAndSpeechImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 next();
@@ -59,11 +60,11 @@ public class Cards extends DisciplineFragment {
                 .getString(getString(R.string.theme), getString(R.string.light));
         switch (theme) {
             case "Dark":
-                cardImageView.setAlpha((float) 0.8);
+                cardAndSpeechImageView.setAlpha((float) 0.8);
                 gridView.setAlpha((float) 0.8);
                 break;
             case "Night":
-                cardImageView.setAlpha((float) 0.7);
+                cardAndSpeechImageView.setAlpha((float) 0.7);
                 gridView.setAlpha((float) 0.8);
         }
 
@@ -75,20 +76,21 @@ public class Cards extends DisciplineFragment {
 
         hasGroup = false;
         mRecallClass = RecallCards.class;
+        rootView.findViewById(R.id.speech_check_box).setVisibility(View.GONE);
         return rootView;
     }
 
     @Override
     protected void numbersVisibility(int visibility) {
         if (mSingleCard) {
-            cardImageView.setVisibility(visibility);
+            cardAndSpeechImageView.setVisibility(visibility);
             (rootView.findViewById(R.id.prev)).setVisibility(visibility);
         } else gridView.setVisibility(visibility);
     }
 
 
     void setCard() {
-        cardImageView.setImageResource(cards[randomList.get(mPosition)]);
+        cardAndSpeechImageView.setImageResource(cards[randomList.get(mPosition)]);
     }
 
     //Button to show previous
@@ -197,9 +199,9 @@ public class Cards extends DisciplineFragment {
         mPosition = 0;
         gridView.setAdapter(new CardAdapter(activity, new ArrayList<Integer>()));
         randomList.clear();
-        numbersVisibility(View.GONE);
+        numbersVisibility(GONE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
-        cardImageView.setImageDrawable(null);
+        cardAndSpeechImageView.setImageDrawable(null);
         return super.reset();
         //findViewById(R.id.cards).setVisibility(View.GONE);
         //findViewById(R.id.progress_bar_discipline).setVisibility(View.GONE);
@@ -208,7 +210,7 @@ public class Cards extends DisciplineFragment {
     @Override
     protected void startCommon() {
         super.startCommon();
-        rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
+        rootView.findViewById(R.id.nested_scroll_view).setVisibility(GONE);
     }
 
     private class CardAdapter extends ArrayAdapter<Integer> {
@@ -269,7 +271,7 @@ public class Cards extends DisciplineFragment {
         protected void onPostExecute(ArrayList<Integer> list) {
             super.onPostExecute(list);
             (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
-            (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
+            (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(GONE);
 
             if (a.get(RUNNING) == FALSE) {
                 reset();
@@ -288,7 +290,7 @@ public class Cards extends DisciplineFragment {
             }
             //((TextView) findViewById(R.id.numbers)).setText(s);
             numbersVisibility(View.VISIBLE);
-            (rootView.findViewById(R.id.no_of_values)).setVisibility(View.GONE);
+            (rootView.findViewById(R.id.no_of_values)).setVisibility(GONE);
             if (mSingleCard) Toast.makeText(activity, "Tap the card for the next card",
                     Toast.LENGTH_SHORT).show();
         }

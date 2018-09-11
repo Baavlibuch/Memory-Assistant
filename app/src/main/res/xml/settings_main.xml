@@ -72,6 +72,14 @@
         />
 
     <ListPreference
+        android:defaultValue="0.5"
+        android:dependency="@string/speech_rate"
+        android:entries="@array/speech_rate"
+        android:entryValues="@array/speech_rate"
+        android:key="@string/speech_rate"
+        android:title="@string/speech_rate" />
+
+    <ListPreference
         android:defaultValue="6"
         android:entries="@array/two_to_eight"
         android:entryValues="@array/two_to_eight"

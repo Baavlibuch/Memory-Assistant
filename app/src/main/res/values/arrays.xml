@@ -13,6 +13,13 @@
         <item>Mixed</item>
     </string-array>
 
+    <fraction-array name="speech_rate">
+        <item>1</item>
+        <item>0.75</item>
+        <item>0.5</item>
+        <item>0.25</item>
+    </fraction-array>
+
     <string-array name="zero_to_nine">
         <item>0</item>
         <item>1</item>
@@ -43,5 +50,7 @@
         <item>7</item>
         <item>8</item>
     </string-array>
+
+
 
 </resources>

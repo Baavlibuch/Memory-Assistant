@@ -40,7 +40,7 @@ public class Dates extends WordDisciplineFragment {
         dateCheckBox.setVisibility(View.VISIBLE);
         setDateSpinners();
         mRecallClass = RecallComplex.class;
-
+        rootView.findViewById(R.id.speech_check_box).setVisibility(View.GONE);
         return rootView;
     }
 
