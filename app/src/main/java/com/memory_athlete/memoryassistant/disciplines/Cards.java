@@ -75,6 +75,7 @@ public class Cards extends DisciplineFragment {
                 getContext()).getString(getString(R.string.practice_grid_columns), "4")));
 
         hasGroup = false;
+        hasSpeech = false;
         mRecallClass = RecallCards.class;
         rootView.findViewById(R.id.speech_check_box).setVisibility(View.GONE);
         return rootView;

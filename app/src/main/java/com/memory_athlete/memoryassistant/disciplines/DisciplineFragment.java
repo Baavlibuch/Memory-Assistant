@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,7 +56,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     Activity activity;
     protected CountDownTimer cdt;
     protected long mTime = 0;
-    protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true;
+    protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true, hasSpeech = true;
     public ArrayList<Integer> a = new ArrayList<>();             //Instructs the backgroundString thread
     public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
     protected Class mRecallClass;
@@ -133,7 +134,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onPause() {
+        super.onPause();
+        ttsStop();
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_disciplines, container, false);
 
         Bundle bundle = getArguments();
@@ -159,7 +166,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
 
         Timber.i("dictionary loads before the contentView is set");
-        setButtons();
+        setViews();
 
         if (bundle.getBoolean("hasSpinner", false))
             makeSpinner(bundle.getInt("spinnerContent", 0));
@@ -207,11 +214,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 try {
                     Timber.d("Check if this one works properly");
+                    InputMethodManager im = (InputMethodManager) activity.getSystemService(
+                            Context.INPUT_METHOD_SERVICE);
                     // TODO Check if this one works properly
-                    ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
-                            hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+                    if (im != null) im.hideSoftInputFromWindow(
+                            activity.getCurrentFocus().getWindowToken(), 0);
                 } catch (NullPointerException e) {
-                    Timber.e("Couldn't hide keypad ", e);
+                    Timber.e("Couldn't hide keypad because of null pointer", e);
                 }
                 return false;
             }
@@ -251,19 +260,20 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         a.set(RUNNING, TRUE);
         generateRandom();
         rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
-        rootView.findViewById(R.id.level).setVisibility(View.GONE);
         rootView.findViewById(R.id.time).setVisibility(View.GONE);
+        rootView.findViewById(R.id.level).setVisibility(View.GONE);
         rootView.findViewById(R.id.start).setVisibility(View.GONE);
-        rootView.findViewById(R.id.no_of_values).setVisibility(View.GONE);
         rootView.findViewById(R.id.group).setVisibility(View.GONE);
+        rootView.findViewById(R.id.no_of_values).setVisibility(View.GONE);
+        rootView.findViewById(R.id.speech_check_box).setVisibility(View.GONE);
+
         rootView.findViewById(R.id.recall).setVisibility(View.VISIBLE);
         numbersVisibility(View.VISIBLE);
 
-        if (((RadioButton) rootView.findViewById(R.id.sw)).isChecked() || ((RadioButton) rootView.findViewById(R.id.timer)).isChecked()) {
+        if (((RadioButton) rootView.findViewById(R.id.sw)).isChecked()
+                || ((RadioButton) rootView.findViewById(R.id.timer)).isChecked())
             (rootView.findViewById(R.id.stop)).setVisibility(View.VISIBLE);
-        } else {
-            (rootView.findViewById(R.id.reset)).setVisibility(View.VISIBLE);
-        }
+        else (rootView.findViewById(R.id.reset)).setVisibility(View.VISIBLE);
     }
 
     //Make the list of randoms visible, just to be lazy
@@ -275,10 +285,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         Timber.v("Start entered");
         try {
             //Hide the keypad
-            ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
-                    hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-        } catch (Exception e) {
-            Timber.e("Couldn't hide keypad ", e);
+            InputMethodManager im = (InputMethodManager) activity.getSystemService(
+                    Context.INPUT_METHOD_SERVICE);
+            if (im != null)
+                im.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        } catch (NullPointerException e) {
+            Timber.e("Couldn't hide keypad at line " +
+                    Thread.currentThread().getStackTrace()[2].getLineNumber(), e);
         }
         ((TextView) rootView.findViewById(R.id.clock_text)).setText("");
 
@@ -390,15 +403,18 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             (rootView.findViewById(R.id.chronometer)).setVisibility(View.GONE);
         }
         a.set(RUNNING, FALSE);
-        (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
-        (rootView.findViewById(R.id.stop)).setVisibility(View.GONE);
-        (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
-        (rootView.findViewById(R.id.save)).setVisibility(View.GONE);
         numbersVisibility(View.GONE);
+        cardAndSpeechImageView.setVisibility(View.GONE);
+        (rootView.findViewById(R.id.stop)).setVisibility(View.GONE);
+        (rootView.findViewById(R.id.save)).setVisibility(View.GONE);
+        (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
+        (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
 
+        (rootView.findViewById(R.id.time)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.start)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.no_of_values)).setVisibility(View.VISIBLE);
-        (rootView.findViewById(R.id.time)).setVisibility(View.VISIBLE);
+        rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
+        if (hasSpeech) (rootView.findViewById(R.id.speech_check_box)).setVisibility(View.VISIBLE);
         if (hasGroup) (rootView.findViewById(R.id.group)).setVisibility(View.VISIBLE);
         if (hasStandard) {
             rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.VISIBLE);
@@ -407,32 +423,34 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
         ((RadioGroup) rootView.findViewById(R.id.time)).clearCheck();
         ((TextView) rootView.findViewById(R.id.random_values)).setText("");
-        rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
         isTimerRunning = false;
+        ttsStop();
         return false;
     }
 
-    protected void setButtons() {
-        rootView.findViewById(R.id.standard_radio).setOnClickListener(this);
-        rootView.findViewById(R.id.custom_radio).setOnClickListener(this);
+    protected void setViews() {
+        cardAndSpeechImageView = rootView.findViewById(R.id.cards_and_speech);
+
         rootView.findViewById(R.id.sw).setOnClickListener(this);
-        rootView.findViewById(R.id.timer).setOnClickListener(this);
         rootView.findViewById(R.id.none).setOnClickListener(this);
         rootView.findViewById(R.id.stop).setOnClickListener(this);
-        rootView.findViewById(R.id.resume).setOnClickListener(this);
+        rootView.findViewById(R.id.save).setOnClickListener(this);
+        rootView.findViewById(R.id.timer).setOnClickListener(this);
         rootView.findViewById(R.id.start).setOnClickListener(this);
         rootView.findViewById(R.id.reset).setOnClickListener(this);
-        rootView.findViewById(R.id.save).setOnClickListener(this);
+        rootView.findViewById(R.id.resume).setOnClickListener(this);
         rootView.findViewById(R.id.recall).setOnClickListener(this);
+        rootView.findViewById(R.id.custom_radio).setOnClickListener(this);
+        rootView.findViewById(R.id.standard_radio).setOnClickListener(this);
 
         rootView.findViewById(R.id.save).setVisibility(View.GONE);
+        rootView.findViewById(R.id.stop).setVisibility(View.GONE);
+        rootView.findViewById(R.id.prev).setVisibility(View.GONE);
         rootView.findViewById(R.id.reset).setVisibility(View.GONE);
         rootView.findViewById(R.id.resume).setVisibility(View.GONE);
-        rootView.findViewById(R.id.stop).setVisibility(View.GONE);
-        rootView.findViewById(R.id.chronometer).setVisibility(View.GONE);
         rootView.findViewById(R.id.clock_text).setVisibility(View.GONE);
-        rootView.findViewById(R.id.prev).setVisibility(View.GONE);
-        Timber.v("setButtons complete");
+        rootView.findViewById(R.id.chronometer).setVisibility(View.GONE);
+        Timber.v("setViews complete");
     }
 
     //When recall button is pressed
@@ -532,7 +550,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return null;
     }
 
-    protected void tts(String s) {
+    protected void tts(final String s) {
+        Timber.v("tts() entered");
         cardAndSpeechImageView.setVisibility(View.VISIBLE);
         String theme = PreferenceManager.getDefaultSharedPreferences(activity).getString(
                 activity.getString(R.string.theme), "AppTheme");
@@ -543,26 +562,40 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         textToSpeech = new TextToSpeech(activity, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if (status != TextToSpeech.ERROR) textToSpeech.setLanguage(Locale.getDefault());
+                Timber.v("tts status = " + status);
+                if (status != TextToSpeech.ERROR) {
+                    textToSpeech.setLanguage(Locale.getDefault());
+                    textToSpeech.setSpeechRate(Float.parseFloat(
+                            PreferenceManager.getDefaultSharedPreferences(activity)
+                                    .getString(activity.getString(R.string.speech_rate), "0.5")));
+                    Timber.v("TTS.speak will be called");
+                    textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+                    Timber.v("TTS.speak has been called");
+                    textToSpeech.setOnUtteranceCompletedListener(new TextToSpeech.OnUtteranceCompletedListener() {
+                        @Override
+                        public void onUtteranceCompleted(String s) {
+                            cardAndSpeechImageView.setImageResource(R.drawable.green_tick);
+                        }
+                    });
+                    numbersVisibility(View.GONE);
+                    rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
+                } else reset();
             }
 
         });
-        textToSpeech.setSpeechRate(Float.parseFloat(
-                PreferenceManager.getDefaultSharedPreferences(activity)
-                        .getString(activity.getString(R.string.speech_rate), "0.5")));
-        textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
-        textToSpeech.setOnUtteranceCompletedListener(new TextToSpeech.OnUtteranceCompletedListener() {
-            @Override
-            public void onUtteranceCompleted(String s) {
-                cardAndSpeechImageView.setImageResource(R.drawable.green_tick);
-            }
-        });
+
     }
 
-    void tts(ArrayList list) {
+    protected void tts(ArrayList list) {
         StringBuilder s = new StringBuilder();
         for (Object i : list) s.append(i.toString());
         tts(s.toString());
+    }
+
+    protected void ttsStop() {
+        if (textToSpeech == null) return;
+        textToSpeech.stop();
+        textToSpeech.shutdown();
     }
 
     //Runs when the random generating thread is complete
@@ -574,7 +607,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             return;
         }
         Timber.v("Setting text");
-        if (rootView.findViewById(R.id.speech_check_box).isActivated()) tts(s);
+        if (((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked()) tts(s);
         else {
             ((TextView) rootView.findViewById(R.id.random_values)).setText(s);
             numbersVisibility(View.VISIBLE);
@@ -590,7 +623,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
         numbersVisibility(View.VISIBLE);
         Timber.v("Setting text");
-        if (rootView.findViewById(R.id.speech_check_box).isActivated()) tts(list);
+        if (((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked()) tts(list);
         else {
             ((ListView) rootView.findViewById(R.id.practice_list_view))
                     .setAdapter(startRandomAdapter(list));

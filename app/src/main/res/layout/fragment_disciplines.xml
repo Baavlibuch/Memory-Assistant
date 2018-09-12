@@ -189,6 +189,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_gravity="center"
         android:visibility="gone" />
     <!--Used only in cards and during speech so there wont be any error;
          everywhere else, keep visibility gone unless needed-->
