@@ -64,17 +64,15 @@
 
 
     <SwitchPreference
-        android:key="@string/shuffle_decks"
-        android:title="@string/shuffle_decks"
         android:defaultValue="false"
-        android:summaryOn="@string/all_decks"
+        android:key="@string/shuffle_decks"
         android:summaryOff="@string/one_deck_at_a_time"
-        />
+        android:summaryOn="@string/all_decks"
+        android:title="@string/shuffle_decks" />
 
     <ListPreference
         android:defaultValue="0.5"
-        android:dependency="@string/speech_rate"
-        android:entries="@array/speech_rate"
+        android:entries="@array/speech_rate_tags"
         android:entryValues="@array/speech_rate"
         android:key="@string/speech_rate"
         android:title="@string/speech_rate" />

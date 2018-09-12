@@ -249,8 +249,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            style="?android:attr/buttonBarStyle"
-            android:padding="8dp">
+            style="?android:attr/buttonBarStyle">
 
             <Button
                 android:id="@+id/prev"

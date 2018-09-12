@@ -532,7 +532,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return null;
     }
 
-    protected void tts(String s){
+    protected void tts(String s) {
         cardAndSpeechImageView.setVisibility(View.VISIBLE);
         String theme = PreferenceManager.getDefaultSharedPreferences(activity).getString(
                 activity.getString(R.string.theme), "AppTheme");
@@ -547,8 +547,9 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             }
 
         });
-        textToSpeech.setSpeechRate(PreferenceManager.getDefaultSharedPreferences(activity)
-                .getFloat(activity.getString(R.string.speech_rate), 1));
+        textToSpeech.setSpeechRate(Float.parseFloat(
+                PreferenceManager.getDefaultSharedPreferences(activity)
+                        .getString(activity.getString(R.string.speech_rate), "0.5")));
         textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
         textToSpeech.setOnUtteranceCompletedListener(new TextToSpeech.OnUtteranceCompletedListener() {
             @Override
@@ -558,7 +559,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         });
     }
 
-    void tts(ArrayList list){
+    void tts(ArrayList list) {
         StringBuilder s = new StringBuilder();
         for (Object i : list) s.append(i.toString());
         tts(s.toString());

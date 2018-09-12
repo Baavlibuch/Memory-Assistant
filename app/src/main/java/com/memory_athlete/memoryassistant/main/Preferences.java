@@ -11,6 +11,8 @@ import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.data.Helper;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
+import timber.log.Timber;
+
 public class Preferences extends AppCompatActivity {
     String mTheme;
 
@@ -28,6 +30,7 @@ public class Preferences extends AppCompatActivity {
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
+            Timber.v("onCreate() started");
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
@@ -35,6 +38,7 @@ public class Preferences extends AppCompatActivity {
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
+            Timber.v("onCreate() complete");
         }
 
         private void bindPreferenceSummaryToValue(Preference preference) {
@@ -52,11 +56,8 @@ public class Preferences extends AppCompatActivity {
                 int hour = Integer.parseInt(stringValue.substring(0, stringValue.indexOf(":")));
                 String meridian = (hour < 12) ? " am" : " pm";
                 String minutes = (min < 10) ? 0 + String.valueOf(min) : String.valueOf(min);
-                if (hour > 12) {
-                    hour -= 12;
-                } else if (hour == 0) {
-                    hour = 12;
-                }
+                if (hour > 12) hour -= 12;
+                else if (hour == 0) hour = 12;
 
                 stringValue = hour + " : " + minutes + meridian;
                 preference.setSummary(stringValue);

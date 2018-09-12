@@ -13,12 +13,21 @@
         <item>Mixed</item>
     </string-array>
 
-    <fraction-array name="speech_rate">
+    <string-array name="speech_rate">
         <item>1</item>
         <item>0.75</item>
         <item>0.5</item>
         <item>0.25</item>
-    </fraction-array>
+        <item>0.225</item>
+    </string-array>
+
+    <string-array name="speech_rate_tags">
+        <item>Very fast</item>
+        <item>Fast</item>
+        <item>Normal</item>
+        <item>Slow</item>
+        <item>Very slow</item>
+    </string-array>
 
     <string-array name="zero_to_nine">
         <item>0</item>
@@ -50,7 +59,5 @@
         <item>7</item>
         <item>8</item>
     </string-array>
-
-
 
 </resources>
