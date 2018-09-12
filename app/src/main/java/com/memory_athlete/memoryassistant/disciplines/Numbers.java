@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 import timber.log.Timber;
@@ -32,7 +34,8 @@ import timber.log.Timber;
 public class Numbers extends DisciplineFragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.st));
         rootView.findViewById(R.id.negative_or_date).setVisibility(View.VISIBLE);
@@ -139,7 +142,7 @@ public class Numbers extends DisciplineFragment {
 
     private boolean checkPrecedingZeros() {
         SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        return s.getBoolean(getActivity().getString(R.string.preceding_zeros), false);
+        return s.getBoolean(activity.getString(R.string.preceding_zeros), false);
     }
 
     //pad 0s
@@ -178,17 +181,17 @@ public class Numbers extends DisciplineFragment {
             String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
             if (string.equals("")) return false;
             //Practice Directory
-            String path = getActivity().getFilesDir().getAbsolutePath() + File.separator
+            String path = activity.getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice);
 
             if (Helper.makeDirectory(path)) {
-                //Dicipline Directory
+                //Discipline Directory
                 path += File.separator + "Digits";
                 if (Helper.makeDirectory(path)) {
                     //FilePath
                     path += File.separator
-                            + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))
-                            + ".txt";
+                            + ((new SimpleDateFormat("yy-MM-dd_HH:mm", Locale.getDefault()))
+                            .format(new Date())) + ".txt";
                     try {
                         FileOutputStream outputStream = new FileOutputStream(new File(path));
                         outputStream.write(string.getBytes());
@@ -217,7 +220,7 @@ public class Numbers extends DisciplineFragment {
             Timber.v("fileExists = " + fileExists);
             Intent intent;
             if(fileExists) intent = new Intent(getActivity(), RecallSimple.class);
-            else intent = new Intent(getActivity().getApplicationContext(), RecallSelector.class);
+            else intent = new Intent(activity.getApplicationContext(), RecallSelector.class);
 
             intent.putExtra("file exists", fileExists);
             intent.putExtra("discipline", "Digits");
