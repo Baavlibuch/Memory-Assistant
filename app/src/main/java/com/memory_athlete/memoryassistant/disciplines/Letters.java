@@ -27,15 +27,16 @@ public class Letters extends DisciplineFragment {
     protected String backgroundString() {
         StringBuilder stringBuilder = new StringBuilder("");
         Random rand = new Random(), letterCaseRand = new Random();
-        int letterCase = PreferenceManager.getDefaultSharedPreferences(getActivity())
-                .getInt(getString(R.string.letter_case), 1);
-        int letterA = letterCase == 1 ? 65 : 97;
+        int letterCase = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(activity)
+                .getString(getString(R.string.letter_case), "0"));
+        int letterA = letterCase == 0 ? 97 : 65;
+        int mixed = letterCase == 2 ? 1 : 0;
 
         StringBuilder s = new StringBuilder();
         for (int i = 0; i < a.get(NO_OF_VALUES)/a.get(GROUP_SIZE); i++) {
             for (int j = 0; j < a.get(GROUP_SIZE); j++) {
                 char c = (char) (rand.nextInt(26) + letterA +
-                        (letterCaseRand.nextInt(2) * 32));
+                        (letterCaseRand.nextInt(2) * 32 * mixed));
                 Timber.v("value of c = " + c);
                 if (c != 'm' && c != 'w' && c != 'M' && c!= 'W') s.append(" ");
                 if (c == 'i' || c == 'j' || c == 'l' || c == 't' || c=='f' || c=='I') s.append(" ");

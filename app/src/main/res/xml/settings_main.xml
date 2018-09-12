@@ -33,9 +33,9 @@
         android:title="@string/bottom_tabs" />
 
     <ListPreference
-        android:defaultValue="1"
+        android:defaultValue="0"
         android:entries="@array/letter_case"
-        android:entryValues="@array/letter_case"
+        android:entryValues="@array/letter_case_values"
         android:key="@string/letter_case"
         android:title="@string/letter_case" />
 
@@ -72,8 +72,8 @@
 
     <ListPreference
         android:defaultValue="0.5"
-        android:entries="@array/speech_rate_tags"
-        android:entryValues="@array/speech_rate"
+        android:entries="@array/speech_rate"
+        android:entryValues="@array/speech_rate_values"
         android:key="@string/speech_rate"
         android:title="@string/speech_rate" />
 
