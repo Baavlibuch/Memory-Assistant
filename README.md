@@ -10,8 +10,6 @@ Memory sports android app
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### Bounties ###
-* Add mixing of capital letters and small letters
-* Add spoken decimal numbers, spoken binary numbers, and spoken alphabets
 * Add names and faces, and abstract images
 * Work on the UI
 * Add in app billing
