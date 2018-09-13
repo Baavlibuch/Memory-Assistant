@@ -32,7 +32,9 @@ import timber.log.Timber;
 
 public class LessonFragment extends Fragment {
     private Activity activity;
-    public LessonFragment() {}
+
+    public LessonFragment() {
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -106,7 +108,7 @@ public class LessonFragment extends Fragment {
         webView.setVisibility(View.VISIBLE);
     }
 
-    private String themeForWebView(){
+    private String themeForWebView() {
         String theme = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
@@ -120,7 +122,8 @@ public class LessonFragment extends Fragment {
                         "body {backgroundString-color: #000000;}\n" +
                         "p    {color: #c1c1c1;}\n" +
                         "</style>\n";
-            default: return "";
+            default:
+                return "";
         }
     }
 
@@ -151,7 +154,7 @@ public class LessonFragment extends Fragment {
             return sb;
         }
     }
-    
+
     private ArrayList<Item> readResourceList(int path) {
         Timber.v("readResource(int, Intent) entered");
         if (path == 0) return null;
@@ -260,7 +263,7 @@ public class LessonFragment extends Fragment {
         }
 
         @SuppressLint("InflateParams")  // null is passed as rootView in inflate().
-                                        // Will not cause error as a custom view is used later
+        // Will not cause error as a custom view is used later
         @NonNull
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
@@ -296,11 +299,13 @@ public class LessonFragment extends Fragment {
             View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
             if (item.mHeader == null || item.mHeader.equals("")) {
                 headerLayout.setVisibility(View.GONE);
-                textView1.setText(Html.fromHtml(item.mText));
+                textView1.setText(Html.fromHtml("<font color=#111111>" + item.mText
+                        + "</font>"));
                 textView1.setVisibility(View.VISIBLE);
                 Timber.v("body = " + item.mText);
             } else {
-                textView.setText(Html.fromHtml(item.mHeader));
+                textView.setText(Html.fromHtml("<font color=#000000>" + item.mHeader
+                        + "</font>"));
                 headerLayout.setVisibility(View.VISIBLE);
                 headerLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -310,7 +315,8 @@ public class LessonFragment extends Fragment {
                             textView1.post(new Runnable() {
                                 public void run() {
                                     Timber.v("mText = " + item.mText);
-                                    textView1.setText(Html.fromHtml(item.mText));
+                                    textView1.setText(Html.fromHtml("<font color=#111111>"
+                                            + item.mText + "</font>"));
                                     progressBar.setVisibility(View.GONE);
                                     textView1.setVisibility(View.VISIBLE);
                                 }

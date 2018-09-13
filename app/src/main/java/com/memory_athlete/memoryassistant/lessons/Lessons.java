@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.lessons;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -132,6 +133,7 @@ public class Lessons extends AppCompatActivity {
         setContentView(R.layout.activity_lesson);
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     void setWebView(StringBuilder sb) {
         WebView webView = findViewById(R.id.web_view);
         WebSettings webSettings = webView.getSettings();
@@ -293,6 +295,7 @@ public class Lessons extends AppCompatActivity {
             if (BuildConfig.DEBUG) Log.v(LOG_TAG, "LessonAdapter() entered");
         }
 
+        @SuppressLint("InflateParams")
         @NonNull
         @Override
         public View getView(final int position, View listItemView, @NonNull final ViewGroup parent) {
@@ -318,15 +321,18 @@ public class Lessons extends AppCompatActivity {
                     }
                 });
             }
+            assert item != null;
             Timber.v("mHeader = " + item.mHeader);
 
             if (item.mHeader == null || item.mHeader.equals("")) {
                 headerLayout.setVisibility(View.GONE);
-                textView1.setText(Html.fromHtml(item.mText));
+                textView1.setText(Html.fromHtml("<font color=#111111>"
+                        + item.mText + "</font>"));
                 textView1.setVisibility(View.VISIBLE);
                 Timber.v("body = " + item.mText);
             } else {
-                textView.setText(Html.fromHtml(item.mHeader));
+                textView.setText(Html.fromHtml("<font color=#000000>"
+                        + item.mHeader + "</font>"));
                 headerLayout.setVisibility(View.VISIBLE);
                 headerLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -336,7 +342,8 @@ public class Lessons extends AppCompatActivity {
                             textView1.post(new Runnable() {
                                 public void run() {
                                     Timber.v("mText = " + item.mText);
-                                    textView1.setText(Html.fromHtml(item.mText));
+                                    textView1.setText(Html.fromHtml("<font color=#111111>"
+                                            + item.mText + "</font>"));
                                     progressBar.setVisibility(View.GONE);
                                     textView1.setVisibility(View.VISIBLE);
                                     ((ListView) parent).smoothScrollToPosition(position);
