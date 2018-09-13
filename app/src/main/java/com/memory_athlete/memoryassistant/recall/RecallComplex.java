@@ -227,16 +227,17 @@ public class RecallComplex extends RecallSimple {
             super(context, 0, words);
         }
 
+        @NonNull
         @SuppressLint("ResourceType")
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.item_date, parent, false);
 
             TextView textView = convertView.findViewById(R.id.event);
             textView.setText(getItem(position).split(" - ")[1].trim());
 
-            final EditText editText = convertView.findViewById(R.id.date);
+            final EditText editText = convertView.findViewById(R.id.date_response);
             editText.setText(responses.get(position));
             editText.setTag(Integer.toString(position));
 

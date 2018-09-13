@@ -136,9 +136,6 @@ public class Dates extends WordDisciplineFragment {
         ArrayList<Integer> indexList = new ArrayList<>();
         for (int i = 0; i < events.size(); i++) indexList.add(i);
 
-        String[] month = new String[]{"January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"};
-
         for (int i = 0; i < a.get(NO_OF_VALUES); ) {
             year = rand.nextInt(endYear - startYear) + startYear;
             stringBuilder.append(String.format("%04d", year));
@@ -146,7 +143,10 @@ public class Dates extends WordDisciplineFragment {
             // Date
             if (!((CheckBox) rootView.findViewById(R.id.negative_or_date)).isChecked()) {
                 n = rand.nextInt(12);
-                stringBuilder.append(" ").append(month[n]).append(" ");
+                stringBuilder.append("/");
+                if(n<10) stringBuilder.append(0);
+                stringBuilder.append(n).append("/");
+
                 switch (n) {
                     case 0:
                     case 2:
