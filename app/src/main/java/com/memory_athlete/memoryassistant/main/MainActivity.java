@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -162,8 +163,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /* Checks if external storage is available for read and write */
-
+    // Checks if external storage is available for read and write
     public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         return Environment.MEDIA_MOUNTED.equals(state);
@@ -184,7 +184,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         if (requestCode == REQUEST_STORAGE_ACCESS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
@@ -213,7 +214,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = list.get(position);
                 Intent intent = new Intent(MainActivity.this, item.mClass);
-                if (item.mItem == R.string.apply) intent.putExtra(getString(R.string.apply), getString(R.string.apply));
+                if (item.mItem == R.string.apply)
+                    intent.putExtra(getString(R.string.apply), getString(R.string.apply));
                 intent.putExtra(Helper.TYPE, item.mItem);
                 startActivity(intent);
             }

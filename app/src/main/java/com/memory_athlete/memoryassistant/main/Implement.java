@@ -35,7 +35,10 @@ public class Implement extends AppCompatActivity {
         setContentView(R.layout.activity_implement_list);
         setTitle(getString(R.string.apply));
         Timber.v("Title Set");
-        pathList.add(intent.getStringExtra(Helper.TYPE));
+        Timber.v(Helper.TYPE + " " + intent.getStringExtra(Helper.TYPE));
+        int s = intent.getIntExtra(Helper.TYPE, 0);
+        if (s == 0) throw new RuntimeException("Error in getting 'Implement' from the intent");
+        pathList.add(getString(s));
 
         setAdapter();
     }

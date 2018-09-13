@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.android.support:design:28.0.0-rc02'
     implementation 'com.android.support:support-vector-drawable:28.0.0-rc02'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    //only to suppress warning, unused at the moment
     implementation 'com.android.support:cardview-v7:28.0.0-rc02'
 
     implementation 'com.firebase:firebase-jobdispatcher:0.5.0'
