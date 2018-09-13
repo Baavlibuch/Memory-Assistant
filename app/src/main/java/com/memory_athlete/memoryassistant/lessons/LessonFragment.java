@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.lessons;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -30,23 +31,26 @@ import timber.log.Timber;
  */
 
 public class LessonFragment extends Fragment {
-
+    private Activity activity;
     public LessonFragment() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_lesson, container, false);
         Bundle bundle = getArguments();
+        activity = getActivity();
 
         StringBuilder sb = new StringBuilder("");
+        assert bundle != null;
         int fileInt = bundle.getInt("file", 0);
         if (fileInt != 0 && bundle.getBoolean("resource", true)) {
             if (bundle.getBoolean("list", false)) {
                 ListView listView = rootView.findViewById(R.id.lesson_list);
-                ArrayList<Item> list = readResourceList(fileInt, rootView);
+                ArrayList<Item> list = readResourceList(fileInt);
+                assert list != null;
                 Timber.v("list length = " + list.size());
-                LessonAdapter lessonAdapter = new LessonAdapter(getActivity(), list);
+                LessonAdapter lessonAdapter = new LessonAdapter(activity, list);
                 Timber.v("adapter set");
                 listView.setAdapter(lessonAdapter);
                 listView.setVisibility(View.VISIBLE);
@@ -58,7 +62,7 @@ public class LessonFragment extends Fragment {
                 ListView listView = rootView.findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readAssetList(bundle);
                 //Timber.v("list length = " + list.size());
-                LessonAdapter lessonAdapter = new LessonAdapter(getActivity(), list);
+                LessonAdapter lessonAdapter = new LessonAdapter(activity, list);
                 Timber.v("adapter set");
                 listView.setAdapter(lessonAdapter);
                 listView.setVisibility(View.VISIBLE);
@@ -69,7 +73,7 @@ public class LessonFragment extends Fragment {
         }
         if (sb == null) {
             Timber.e("String Builder sb is empty");
-            getActivity().finish();
+            activity.finish();
             return rootView;
         }
 
@@ -83,7 +87,8 @@ public class LessonFragment extends Fragment {
         return rootView;
     }
 
-    void setWebView(StringBuilder sb, View rootView) {
+    @SuppressLint("SetJavaScriptEnabled")
+    private void setWebView(StringBuilder sb, View rootView) {
         WebView webView = rootView.findViewById(R.id.web_view);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -101,8 +106,8 @@ public class LessonFragment extends Fragment {
         webView.setVisibility(View.VISIBLE);
     }
 
-    String themeForWebView(){
-        String theme = PreferenceManager.getDefaultSharedPreferences(getActivity())
+    private String themeForWebView(){
+        String theme = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
@@ -119,7 +124,7 @@ public class LessonFragment extends Fragment {
         }
     }
 
-    StringBuilder readResource(int path) {
+    private StringBuilder readResource(int path) {
         if (path == 0) return null;
         BufferedReader reader = null;
         String line;
@@ -141,13 +146,13 @@ public class LessonFragment extends Fragment {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
-            getActivity().finish();
+            Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
+            activity.finish();
             return sb;
         }
     }
-
-    ArrayList<Item> readResourceList(int path, View rootView) {
+    
+    private ArrayList<Item> readResourceList(int path) {
         Timber.v("readResource(int, Intent) entered");
         if (path == 0) return null;
         BufferedReader reader = null;
@@ -176,13 +181,13 @@ public class LessonFragment extends Fragment {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
-            getActivity().finish();
+            Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
+            activity.finish();
             return null;
         }
     }
 
-    ArrayList<Item> readAssetList(Bundle bundle) {
+    private ArrayList<Item> readAssetList(Bundle bundle) {
         Timber.v("readAssetList() entered");
         String header = "", line = bundle.getString("fileString"); //For assets and filesDir
         if (line == null || line.equals("")) return null;
@@ -190,7 +195,7 @@ public class LessonFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
         ArrayList<Item> letterList = new ArrayList<>();
         try {
-            reader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open(line)));
+            reader = new BufferedReader(new InputStreamReader(activity.getAssets().open(line)));
             while ((line = reader.readLine()) != null) {
                 if (line.length() > 6 && line.charAt(0) == '<' && line.charAt(1) == 'h') {
                     letterList.add(new Item(header, sb.toString()));
@@ -207,8 +212,8 @@ public class LessonFragment extends Fragment {
             return letterList;
 
         } catch (IOException e) {
-            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
-            getActivity().finish();
+            Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
+            activity.finish();
         }
         try {
             if (reader != null)
@@ -219,15 +224,15 @@ public class LessonFragment extends Fragment {
         return null;
     }
 
-    StringBuilder readAsset(StringBuilder sb, Bundle intent) {
+    private StringBuilder readAsset(StringBuilder sb, Bundle intent) {
         String line = intent.getString("fileString"); //For assets and filesDir
         BufferedReader bufferedReader = null;
         try {
-            bufferedReader = new BufferedReader(new InputStreamReader(getActivity().getAssets().open(line)));
+            bufferedReader = new BufferedReader(new InputStreamReader(activity.getAssets().open(line)));
             while ((line = bufferedReader.readLine()) != null) sb.append(line);
         } catch (IOException e) {
-            Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
-            getActivity().finish();
+            Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
+            activity.finish();
         }
         try {
             if (bufferedReader != null)
@@ -254,6 +259,8 @@ public class LessonFragment extends Fragment {
             Timber.v("LessonAdapter() entered");
         }
 
+        @SuppressLint("InflateParams")  // null is passed as rootView in inflate().
+                                        // Will not cause error as a custom view is used later
         @NonNull
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
@@ -279,9 +286,10 @@ public class LessonFragment extends Fragment {
                         return false;
                     }
                 });
-                //Timber.v("listitem " + position + "-1 visibility=" + getItem(position-1).)
+                //Timber.v("listItem " + position + "-1 visibility=" + getItem(position-1).)
             }
 
+            assert item != null;
             Timber.v("mHeader = " + item.mHeader);
 
             TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
