@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +21,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 
@@ -38,7 +36,6 @@ import timber.log.Timber;
  */
 
 public class Lessons extends AppCompatActivity {
-    private static final String LOG_TAG = "\tLessons";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,13 +137,13 @@ public class Lessons extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         StringBuilder sb1 = readResource(R.raw.jqmath_beg);
         if (sb1 == null) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "jqmath read error");
+            Timber.e("jqmath read error");
             finish();
             return;
         }
         StringBuilder sb2 = readResource(R.raw.jqmath_end);
         if (sb2 == null) {
-            if (BuildConfig.DEBUG) Log.e(LOG_TAG, "jqmath read error");
+            Timber.e("jqmath read error");
             finish();
             return;
         }
@@ -292,7 +289,7 @@ public class Lessons extends AppCompatActivity {
 
         LessonAdapter(Activity context, ArrayList<Item> list) {
             super(context, 0, list);
-            if (BuildConfig.DEBUG) Log.v(LOG_TAG, "LessonAdapter() entered");
+            Timber.v("LessonAdapter() entered");
         }
 
         @SuppressLint("InflateParams")

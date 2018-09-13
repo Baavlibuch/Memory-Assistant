@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,11 @@ import timber.log.Timber;
 public class Letters extends DisciplineFragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.st));
+        ((EditText) rootView.findViewById(R.id.no_of_values))
+                .setHint(getString(R.string.enter) + " " + getString(R.string.st));
+        speechSpeedMultiplier = 1/2;
         Timber.v("Activity Created");
         return rootView;
     }

@@ -62,6 +62,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     protected Class mRecallClass;
     protected ImageView cardAndSpeechImageView;
     protected TextToSpeech textToSpeech;
+    protected float speechSpeedMultiplier = 1;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
@@ -535,8 +536,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
         //set NO_OF_Values based on input
         if (((EditText) rootView.findViewById(R.id.no_of_values)).getText().toString().length() > 0)
-            noOfValues = Integer.parseInt((((EditText) rootView.findViewById(R.id.no_of_values)).getText().toString()));
-        else if (!hasStandard) noOfValues = 1;
+            noOfValues = Integer.parseInt((((EditText) rootView.findViewById(R.id.no_of_values))
+                    .getText().toString()));
+        else if (!hasStandard) noOfValues = 1;              // cards don't have a standard option
+        else if (((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked())
+            noOfValues = 15;
         else noOfValues = 100;
         a.set(NO_OF_VALUES, noOfValues);
     }
@@ -567,7 +571,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                     textToSpeech.setLanguage(Locale.getDefault());
                     textToSpeech.setSpeechRate(Float.parseFloat(
                             PreferenceManager.getDefaultSharedPreferences(activity)
-                                    .getString(activity.getString(R.string.speech_rate), "0.5")));
+                                    .getString(activity.getString(R.string.speech_rate), "0.5")) * speechSpeedMultiplier);
                     Timber.v("TTS.speak will be called");
                     textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                     Timber.v("TTS.speak has been called");

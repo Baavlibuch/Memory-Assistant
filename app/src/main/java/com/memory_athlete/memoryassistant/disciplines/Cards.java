@@ -39,7 +39,7 @@ public class Cards extends DisciplineFragment {
     GridView gridView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         gridView = rootView.findViewById(R.id.cards_practice_grid);
         cardAndSpeechImageView = rootView.findViewById(R.id.cards_and_speech);
