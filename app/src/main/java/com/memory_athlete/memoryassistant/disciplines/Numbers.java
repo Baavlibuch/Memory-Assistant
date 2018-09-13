@@ -178,8 +178,11 @@ public class Numbers extends DisciplineFragment {
                 || ((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2) {
             //Case with single digits
 
-            String string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
-            if (string.equals("")) return false;
+            if (!((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked())
+                stringToSave = ((TextView) rootView.findViewById(R.id.random_values))
+                        .getText().toString();
+
+            if (stringToSave.equals("")) return false;
             //Practice Directory
             String path = activity.getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice);
@@ -194,7 +197,7 @@ public class Numbers extends DisciplineFragment {
                             .format(new Date())) + ".txt";
                     try {
                         FileOutputStream outputStream = new FileOutputStream(new File(path));
-                        outputStream.write(string.getBytes());
+                        outputStream.write(stringToSave.getBytes());
 
                         outputStream.close();
                         Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
@@ -219,7 +222,7 @@ public class Numbers extends DisciplineFragment {
             boolean fileExists = save();
             Timber.v("fileExists = " + fileExists);
             Intent intent;
-            if(fileExists) intent = new Intent(getActivity(), RecallSimple.class);
+            if (fileExists) intent = new Intent(getActivity(), RecallSimple.class);
             else intent = new Intent(activity.getApplicationContext(), RecallSelector.class);
 
             intent.putExtra("file exists", fileExists);

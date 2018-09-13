@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
@@ -52,17 +51,21 @@ import static java.lang.Math.pow;
  */
 
 public abstract class DisciplineFragment extends Fragment implements View.OnClickListener {
-    View rootView;                                               //This view contains the fragment
-    Activity activity;
-    protected CountDownTimer cdt;
     protected long mTime = 0;
-    protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true, hasSpeech = true;
-    public ArrayList<Integer> a = new ArrayList<>();             //Instructs the backgroundString thread
-    public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
-    protected Class mRecallClass;
-    protected ImageView cardAndSpeechImageView;
-    protected TextToSpeech textToSpeech;
     protected float speechSpeedMultiplier = 1;
+    protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true, hasSpeech = true;
+    public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
+
+    protected String stringToSave;
+    public ArrayList<Integer> a = new ArrayList<>();             //Instructs the backgroundString thread
+
+    protected Activity activity;
+    protected View rootView;                                               //This view contains the fragment
+    protected ImageView cardAndSpeechImageView;
+
+    protected Class mRecallClass;
+    protected CountDownTimer cdt;
+    protected TextToSpeech textToSpeech;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
@@ -284,16 +287,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     protected void Start() {
         Timber.v("Start entered");
-        try {
-            //Hide the keypad
-            InputMethodManager im = (InputMethodManager) activity.getSystemService(
-                    Context.INPUT_METHOD_SERVICE);
-            if (im != null)
-                im.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-        } catch (NullPointerException e) {
-            Timber.e("Couldn't hide keypad at line " +
-                    Thread.currentThread().getStackTrace()[2].getLineNumber(), e);
-        }
+
+        //Hide the keypad
+        InputMethodManager im = (InputMethodManager) activity.getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        if (im != null && activity.getCurrentFocus() != null)
+            im.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+
         ((TextView) rootView.findViewById(R.id.clock_text)).setText("");
 
         //Start with levels
@@ -342,7 +342,6 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //Saves the list
     protected boolean save() {
-        String string;
         //practice_list_view is visible if arrays are used, gone if a single string is used
         if (rootView.findViewById(R.id.practice_list_view).getVisibility() == View.VISIBLE) {
             ListView l = rootView.findViewById(R.id.practice_list_view);
@@ -350,10 +349,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             int count = l.getAdapter().getCount();
             Timber.v("view count = " + count);
             for (int i = 0; i < count; i++) s.append(l.getAdapter().getItem(i));
-            string = s.toString();
-        } else string = ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
-
-        if (string.equals("")) return false;
+            stringToSave = s.toString();
+        } else if (!((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked())
+            stringToSave = ((TextView) rootView.findViewById(R.id.random_values))
+                    .getText().toString();
+        Timber.v("stringToSave = " + stringToSave);
+        
+        if (stringToSave.equals("")) return false;
 
         //Directory of practice
         String path = activity.getFilesDir().getAbsolutePath() + File.separator
@@ -368,7 +370,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 //Write the file
                 try {
                     FileOutputStream outputStream = new FileOutputStream(new File(path));
-                    outputStream.write(string.getBytes());
+                    outputStream.write(stringToSave.getBytes());
 
                     outputStream.close();
                     Toast.makeText(activity.getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
@@ -382,6 +384,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return false;
     }
 
+/*
     // Checks if external storage is available for read and write
     public boolean isExternalStorageWritable() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
@@ -393,6 +396,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return Environment.MEDIA_MOUNTED.equals(externalStorageState) ||
                 Environment.MEDIA_MOUNTED_READ_ONLY.equals(externalStorageState);
     }
+*/
 
     public boolean reset() {
         if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE) return true;
@@ -556,6 +560,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     protected void tts(final String s) {
         Timber.v("tts() entered");
+        stringToSave = s;
         cardAndSpeechImageView.setVisibility(View.VISIBLE);
         String theme = PreferenceManager.getDefaultSharedPreferences(activity).getString(
                 activity.getString(R.string.theme), "AppTheme");

@@ -21,7 +21,7 @@ public class Letters extends DisciplineFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         ((EditText) rootView.findViewById(R.id.no_of_values))
                 .setHint(getString(R.string.enter) + " " + getString(R.string.st));
-        speechSpeedMultiplier = 1/2;
+        speechSpeedMultiplier = (float) 0.5;
         Timber.v("Activity Created");
         return rootView;
     }
