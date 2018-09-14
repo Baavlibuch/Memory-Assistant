@@ -17,11 +17,11 @@ import timber.log.Timber;
 public class Letters extends DisciplineFragment {
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         ((EditText) rootView.findViewById(R.id.no_of_values))
                 .setHint(getString(R.string.enter) + " " + getString(R.string.st));
-        speechSpeedMultiplier = (float) 0.5;
         Timber.v("Activity Created");
         return rootView;
     }

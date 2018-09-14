@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -34,11 +33,11 @@ public class Dates extends WordDisciplineFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.events));
-        CheckBox dateCheckBox = rootView.findViewById(R.id.negative_or_date);
-        dateCheckBox.setText(R.string.show_only_the_year);
-        dateCheckBox.setChecked(true);
-        dateCheckBox.setVisibility(View.VISIBLE);
+        ((EditText) rootView.findViewById(R.id.no_of_values))
+                .setHint(getString(R.string.enter) + " " + getString(R.string.events));
+        negativeOrDateCheckBox.setText(R.string.show_only_the_year);
+        negativeOrDateCheckBox.setChecked(true);
+        negativeOrDateCheckBox.setVisibility(View.VISIBLE);
         setDateSpinners();
         mRecallClass = RecallComplex.class;
         hasSpeech = false;
@@ -141,7 +140,7 @@ public class Dates extends WordDisciplineFragment {
             stringBuilder.append(String.format("%04d", year));
             n = (short) rand.nextInt(indexList.size());
             // Date
-            if (!((CheckBox) rootView.findViewById(R.id.negative_or_date)).isChecked()) {
+            if (!negativeOrDateCheckBox.isChecked()) {
                 n = rand.nextInt(12);
                 stringBuilder.append("/");
                 if(n<10) stringBuilder.append(0);

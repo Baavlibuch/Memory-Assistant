@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Chronometer;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -52,16 +53,17 @@ import static java.lang.Math.pow;
 
 public abstract class DisciplineFragment extends Fragment implements View.OnClickListener {
     protected long mTime = 0;
-    protected float speechSpeedMultiplier = 1;
     protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true, hasSpeech = true;
     public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
 
     protected String stringToSave;
-    public ArrayList<Integer> a = new ArrayList<>();             //Instructs the backgroundString thread
+    public ArrayList<Integer> a = new ArrayList<>();        //Instructs the backgroundString thread
 
     protected Activity activity;
-    protected View rootView;                                               //This view contains the fragment
+    protected View rootView;
     protected ImageView cardAndSpeechImageView;
+    protected CheckBox speechCheckBox, negativeOrDateCheckBox;
+    protected Spinner groupSpinner;
 
     protected Class mRecallClass;
     protected CountDownTimer cdt;
@@ -81,8 +83,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 break;
             case R.id.custom_radio:
                 rootView.findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.level).setVisibility(View.GONE);
                 rootView.findViewById(R.id.standard_radio).setSelected(false);
+                rootView.findViewById(R.id.level).setVisibility(View.GONE);
                 break;
             case R.id.sw:
                 rootView.findViewById(R.id.clock_edit).setVisibility(View.GONE);
@@ -98,27 +100,25 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 break;
             case R.id.stop:
                 a.set(RUNNING, FALSE);
-                if (isTimerRunning) {
-                    cdt.cancel();
-                } else {
+                if (isTimerRunning) cdt.cancel();
+                else {
                     mTime = ((Chronometer) rootView.findViewById(R.id.chronometer)).getBase();
                     ((Chronometer) rootView.findViewById(R.id.chronometer)).stop();
                 }
-                (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
                 (rootView.findViewById(R.id.resume)).setVisibility(View.VISIBLE);
                 (rootView.findViewById(R.id.reset)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
                 (rootView.findViewById(R.id.stop)).setVisibility(View.GONE);
                 (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
                 break;
             case R.id.resume:
-                if (isTimerRunning) {
-                    timer();
-                } else {
+                if (isTimerRunning) timer();
+                else {
                     ((Chronometer) rootView.findViewById(R.id.chronometer)).setBase(mTime);
                     ((Chronometer) rootView.findViewById(R.id.chronometer)).start();
                 }
-                (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
                 (rootView.findViewById(R.id.stop)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.resume)).setVisibility(View.GONE);
                 (rootView.findViewById(R.id.reset)).setVisibility(View.GONE);
                 //a.set(RUNNING, FALSE);
                 break;
@@ -144,7 +144,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_disciplines, container, false);
 
         Bundle bundle = getArguments();
@@ -211,9 +212,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     //Builds the spinner to select the size of groupings
     protected void makeSpinner(int spinnerContent) {
         Timber.v("makeSpinner() entered");
-        Spinner spinner = rootView.findViewById(R.id.group);
-        spinner.setVisibility(View.VISIBLE);
-        spinner.setOnTouchListener(new View.OnTouchListener() {
+        groupSpinner.setVisibility(View.VISIBLE);
+        groupSpinner.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 try {
@@ -242,7 +242,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
                 activity, android.R.layout.simple_spinner_item, categories);
         //Can't recall why this is here but it is important
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        groupSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             }
 
@@ -251,7 +251,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         });
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
+        groupSpinner.setAdapter(dataAdapter);
         Timber.i("makeSpinner() complete");
     }
 
@@ -263,13 +263,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     protected void startCommon() {
         a.set(RUNNING, TRUE);
         generateRandom();
-        rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
+        groupSpinner.setVisibility(View.GONE);
+        speechCheckBox.setVisibility(View.GONE);
         rootView.findViewById(R.id.time).setVisibility(View.GONE);
         rootView.findViewById(R.id.level).setVisibility(View.GONE);
         rootView.findViewById(R.id.start).setVisibility(View.GONE);
-        rootView.findViewById(R.id.group).setVisibility(View.GONE);
         rootView.findViewById(R.id.no_of_values).setVisibility(View.GONE);
-        rootView.findViewById(R.id.speech_check_box).setVisibility(View.GONE);
+        rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
 
         rootView.findViewById(R.id.recall).setVisibility(View.VISIBLE);
         numbersVisibility(View.VISIBLE);
@@ -350,11 +350,10 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             Timber.v("view count = " + count);
             for (int i = 0; i < count; i++) s.append(l.getAdapter().getItem(i));
             stringToSave = s.toString();
-        } else if (!((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked())
-            stringToSave = ((TextView) rootView.findViewById(R.id.random_values))
-                    .getText().toString();
+        } else if (!speechCheckBox.isChecked()) stringToSave =
+                ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
         Timber.v("stringToSave = " + stringToSave);
-        
+
         if (stringToSave.equals("")) return false;
 
         //Directory of practice
@@ -419,8 +418,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         (rootView.findViewById(R.id.start)).setVisibility(View.VISIBLE);
         (rootView.findViewById(R.id.no_of_values)).setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
-        if (hasSpeech) (rootView.findViewById(R.id.speech_check_box)).setVisibility(View.VISIBLE);
-        if (hasGroup) (rootView.findViewById(R.id.group)).setVisibility(View.VISIBLE);
+        if (hasSpeech) (speechCheckBox).setVisibility(View.VISIBLE);
+        if (hasGroup) groupSpinner.setVisibility(View.VISIBLE);
         if (hasStandard) {
             rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.VISIBLE);
             if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked())
@@ -434,6 +433,9 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     protected void setViews() {
+        groupSpinner = rootView.findViewById(R.id.group);
+        speechCheckBox = rootView.findViewById(R.id.speech_check_box);
+        negativeOrDateCheckBox = rootView.findViewById(R.id.negative_or_date);
         cardAndSpeechImageView = rootView.findViewById(R.id.cards_and_speech);
 
         rootView.findViewById(R.id.sw).setOnClickListener(this);
@@ -447,6 +449,15 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         rootView.findViewById(R.id.recall).setOnClickListener(this);
         rootView.findViewById(R.id.custom_radio).setOnClickListener(this);
         rootView.findViewById(R.id.standard_radio).setOnClickListener(this);
+
+        speechCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                groupSpinner.setEnabled(!b);
+                negativeOrDateCheckBox.setEnabled(!b);
+                rootView.findViewById(R.id.timer).setEnabled(!b);
+            }
+        });
 
         rootView.findViewById(R.id.save).setVisibility(View.GONE);
         rootView.findViewById(R.id.stop).setVisibility(View.GONE);
@@ -521,11 +532,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.VISIBLE);//Loading icon
         int noOfValues, size;
         try {
-            if ((((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2)) {
-                size = 1;   //default
-            } else {
-                size = Integer.parseInt(((Spinner) rootView.findViewById(R.id.group)).getSelectedItem().toString());
-            }
+            if ((groupSpinner.getSelectedItemPosition() < 2)) size = 1;   //default
+            else size = Integer.parseInt(groupSpinner.getSelectedItem().toString());
             a.set(GROUP_SIZE, size);
         } catch (Exception e) {
             e.printStackTrace();
@@ -534,7 +542,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         //set NO_OF_Values based on level, level 1 is 8, every level doubles the values
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked() && hasStandard) {
             String s = ((Spinner) rootView.findViewById(R.id.level)).getSelectedItem().toString();
-            noOfValues = (s.equals(getString(R.string.choose_level))) ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
+            noOfValues = (s.equals(getString(R.string.choose_level)))
+                    ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
             a.set(NO_OF_VALUES, noOfValues);
             return;
         }
@@ -543,8 +552,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             noOfValues = Integer.parseInt((((EditText) rootView.findViewById(R.id.no_of_values))
                     .getText().toString()));
         else if (!hasStandard) noOfValues = 1;              // cards don't have a standard option
-        else if (((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked())
-            noOfValues = 15;
+        else if (speechCheckBox.isChecked()) noOfValues = 15;
         else noOfValues = 100;
         a.set(NO_OF_VALUES, noOfValues);
     }
@@ -574,9 +582,9 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 Timber.v("tts status = " + status);
                 if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.getDefault());
-                    textToSpeech.setSpeechRate(Float.parseFloat(
-                            PreferenceManager.getDefaultSharedPreferences(activity)
-                                    .getString(activity.getString(R.string.speech_rate), "0.5")) * speechSpeedMultiplier);
+                    textToSpeech.setSpeechRate(Float.parseFloat(PreferenceManager
+                            .getDefaultSharedPreferences(activity).getString(
+                                    activity.getString(R.string.speech_rate), "0.25")));
                     Timber.v("TTS.speak will be called");
                     textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                     Timber.v("TTS.speak has been called");
@@ -616,7 +624,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             return;
         }
         Timber.v("Setting text");
-        if (((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked()) tts(s);
+        if (speechCheckBox.isChecked()) tts(s);
         else {
             ((TextView) rootView.findViewById(R.id.random_values)).setText(s);
             numbersVisibility(View.VISIBLE);
@@ -632,7 +640,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
         numbersVisibility(View.VISIBLE);
         Timber.v("Setting text");
-        if (((CheckBox) rootView.findViewById(R.id.speech_check_box)).isChecked()) tts(list);
+        if (speechCheckBox.isChecked()) tts(list);
         else {
             ((ListView) rootView.findViewById(R.id.practice_list_view))
                     .setAdapter(startRandomAdapter(list));

@@ -20,11 +20,11 @@
     </string-array>
 
     <string-array name="speech_rate_values">
-        <item>1</item>
         <item>0.75</item>
         <item>0.5</item>
         <item>0.25</item>
-        <item>0.225</item>
+        <item>0.125</item>
+        <item>0.0626</item>
     </string-array>
 
     <string-array name="speech_rate">

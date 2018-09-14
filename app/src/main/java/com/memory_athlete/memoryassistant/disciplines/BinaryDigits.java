@@ -21,7 +21,6 @@ public class BinaryDigits extends DisciplineFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         ((EditText) rootView.findViewById(R.id.no_of_values))
                 .setHint(getString(R.string.enter) + " " + getString(R.string.st));
-        speechSpeedMultiplier = (float) 0.5;
         return rootView;
     }
 
