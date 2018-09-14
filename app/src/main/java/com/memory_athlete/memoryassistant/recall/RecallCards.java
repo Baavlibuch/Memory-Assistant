@@ -59,13 +59,13 @@ public class RecallCards extends RecallSimple {
         card = (card == 0 ? 12 : card - 1);
         responses.add(String.valueOf(card + selectedSuit));
         mAdapter.notifyDataSetChanged();
-        gridView.smoothScrollToPosition(responses.size()-1);
+        gridView.smoothScrollToPosition(responses.size() - 1);
         Timber.v("cardSelected complete");
     }
 
     @Override
     protected void setResponseLayout(boolean onCreate) {
-        if(onCreate) theme();
+        if (onCreate) theme();
         gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
                 this).getString(getString(R.string.recall_grid_columns), "6")));
         cardImageIds = Helper.makeCards();
@@ -81,7 +81,9 @@ public class RecallCards extends RecallSimple {
 
             final ImageView imageView = new ImageView(this);
             imageView.setImageResource(Helper.makeSuits()[i]);
-            imageView.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+            imageView.setContentDescription(Helper.suitDescriptions()[i]);
+            imageView.setLayoutParams(new LinearLayout.LayoutParams(0,
+                    LinearLayout.LayoutParams.WRAP_CONTENT, 1));
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setPadding(2 * dpAsPixels, dpAsPixels, 2 * dpAsPixels, dpAsPixels);
@@ -94,7 +96,7 @@ public class RecallCards extends RecallSimple {
                         findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
 
                     view.setBackgroundColor(getResources().getColor(mSuitBackground));
-                    selectedSuit = (int) view.getId() * 13;     //cast to get rid of useless warning
+                    selectedSuit = (int) view.getId() * 13;   // cast to get rid of useless warning
                     Timber.v("selectedSuit = " + selectedSuit);
                 }
             });

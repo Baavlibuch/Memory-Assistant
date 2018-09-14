@@ -30,69 +30,68 @@ public class Helper {
     public static final String TYPE = "type";
 
     public static int[] makeCards() {
-        int[] cards = new int[52];
-        cards[0] = R.drawable.s2;
-        cards[1] = R.drawable.s3;
-        cards[2] = R.drawable.s4;
-        cards[3] = R.drawable.s5;
-        cards[4] = R.drawable.s6;
-        cards[5] = R.drawable.s7;
-        cards[6] = R.drawable.s8;
-        cards[7] = R.drawable.s9;
-        cards[8] = R.drawable.s10;
-        cards[9] = R.drawable.sj;
-        cards[10] = R.drawable.sq;
-        cards[11] = R.drawable.sk;
-        cards[12] = R.drawable.sa;
-        cards[15] = R.drawable.h2;
-        cards[13] = R.drawable.h3;
-        cards[14] = R.drawable.h4;
-        cards[16] = R.drawable.h5;
-        cards[17] = R.drawable.h6;
-        cards[18] = R.drawable.h7;
-        cards[19] = R.drawable.h8;
-        cards[20] = R.drawable.h9;
-        cards[21] = R.drawable.h10;
-        cards[22] = R.drawable.hj;
-        cards[23] = R.drawable.hq;
-        cards[24] = R.drawable.hk;
-        cards[25] = R.drawable.ha;
-        cards[26] = R.drawable.d2;
-        cards[27] = R.drawable.d3;
-        cards[28] = R.drawable.d4;
-        cards[29] = R.drawable.d5;
-        cards[30] = R.drawable.d6;
-        cards[31] = R.drawable.d7;
-        cards[32] = R.drawable.d8;
-        cards[33] = R.drawable.d9;
-        cards[34] = R.drawable.d10;
-        cards[35] = R.drawable.dj;
-        cards[36] = R.drawable.dq;
-        cards[37] = R.drawable.dk;
-        cards[38] = R.drawable.da;
-        cards[39] = R.drawable.c2;
-        cards[40] = R.drawable.c3;
-        cards[41] = R.drawable.c4;
-        cards[42] = R.drawable.c5;
-        cards[43] = R.drawable.c6;
-        cards[44] = R.drawable.c7;
-        cards[45] = R.drawable.c8;
-        cards[46] = R.drawable.c9;
-        cards[47] = R.drawable.c10;
-        cards[48] = R.drawable.cj;
-        cards[49] = R.drawable.cq;
-        cards[50] = R.drawable.ck;
-        cards[51] = R.drawable.ca;
-        return cards;
+        return new int[]{
+                R.drawable.s2,
+                R.drawable.s3,
+                R.drawable.s4,
+                R.drawable.s5,
+                R.drawable.s6,
+                R.drawable.s7,
+                R.drawable.s8,
+                R.drawable.s9,
+                R.drawable.s10,
+                R.drawable.sj,
+                R.drawable.sq,
+                R.drawable.sk,
+                R.drawable.sa,
+                R.drawable.h2,
+                R.drawable.h3,
+                R.drawable.h4,
+                R.drawable.h5,
+                R.drawable.h6,
+                R.drawable.h7,
+                R.drawable.h8,
+                R.drawable.h9,
+                R.drawable.h10,
+                R.drawable.hj,
+                R.drawable.hq,
+                R.drawable.hk,
+                R.drawable.ha,
+                R.drawable.d2,
+                R.drawable.d3,
+                R.drawable.d4,
+                R.drawable.d5,
+                R.drawable.d6,
+                R.drawable.d7,
+                R.drawable.d8,
+                R.drawable.d9,
+                R.drawable.d10,
+                R.drawable.dj,
+                R.drawable.dq,
+                R.drawable.dk,
+                R.drawable.da,
+                R.drawable.c2,
+                R.drawable.c3,
+                R.drawable.c4,
+                R.drawable.c5,
+                R.drawable.c6,
+                R.drawable.c7,
+                R.drawable.c8,
+                R.drawable.c9,
+                R.drawable.c10,
+                R.drawable.cj,
+                R.drawable.cq,
+                R.drawable.ck,
+                R.drawable.ca
+        };
     }
 
     public static int[] makeSuits() {
-        int[] suits = new int[4];
-        suits[0] = R.drawable.s;
-        suits[1] = R.drawable.h;
-        suits[2] = R.drawable.d;
-        suits[3] = R.drawable.c;
-        return suits;
+        return new int[]{R.drawable.s, R.drawable.h, R.drawable.d, R.drawable.c};
+    }
+
+    public static String[] suitDescriptions() {
+        return new String[]{"Spades", "Hearts", "Diamonds", "Clubs"};
     }
 
     /*public static int[] makePracticeFrags() {
@@ -108,65 +107,66 @@ public class Helper {
     }*/
 
     public static String[] makeCardString() {
-        String[] cards = new String[52];
-        cards[0] = "2 of Spades";
-        cards[1] = "3 of Spades";
-        cards[2] = "4 of Spades";
-        cards[3] = "5 of Spades";
-        cards[4] = "6 of Spades";
-        cards[5] = "7 of Spades";
-        cards[6] = "8 of Spades";
-        cards[7] = "9 of Spades";
-        cards[8] = "10 of Spades";
-        cards[9] = "Jack of Spades";
-        cards[10] = "Queen of Spades";
-        cards[11] = "King of Spades";
-        cards[12] = "Ace of Spades";
-        cards[15] = "2 of Hearts";
-        cards[13] = "3 of Hearts";
-        cards[14] = "4 of Hearts";
-        cards[16] = "5 of Hearts";
-        cards[17] = "6 of Hearts";
-        cards[18] = "7 of Hearts";
-        cards[19] = "8 of Hearts";
-        cards[20] = "9 of Hearts";
-        cards[21] = "10 of Hearts";
-        cards[22] = "Jack of Hearts";
-        cards[23] = "Queen of Hearts";
-        cards[24] = "King of Hearts";
-        cards[25] = "Ace of Hearts";
-        cards[26] = "2 of Diamonds";
-        cards[27] = "3 of Diamonds";
-        cards[28] = "4 of Diamonds";
-        cards[29] = "5 of Diamonds";
-        cards[30] = "6 of Diamonds";
-        cards[31] = "7 of Diamonds";
-        cards[32] = "8 of Diamonds";
-        cards[33] = "9 of Diamonds";
-        cards[34] = "10 of Diamonds";
-        cards[35] = "Jack of Diamonds";
-        cards[36] = "Queen of Diamonds";
-        cards[37] = "King of Diamonds";
-        cards[38] = "Ace of Diamonds";
-        cards[39] = "2 of Clubs";
-        cards[40] = "3 of Clubs";
-        cards[41] = "4 of Clubs";
-        cards[42] = "5 of Clubs";
-        cards[43] = "6 of Clubs";
-        cards[44] = "7 of Clubs";
-        cards[45] = "8 of Clubs";
-        cards[46] = "9 of Clubs";
-        cards[47] = "10 of Clubs";
-        cards[48] = "Jack of Clubs";
-        cards[49] = "Queen of Clubs";
-        cards[50] = "King of Clubs";
-        cards[51] = "Ace of Clubs";
-        return cards;
+        return new String[]{
+                "2 of Spades",
+                "3 of Spades",
+                "4 of Spades",
+                "5 of Spades",
+                "6 of Spades",
+                "7 of Spades",
+                "8 of Spades",
+                "9 of Spades",
+                "10 of Spades",
+                "Jack of Spades",
+                "Queen of Spades",
+                "King of Spades",
+                "Ace of Spades",
+                "2 of Hearts",
+                "3 of Hearts",
+                "4 of Hearts",
+                "5 of Hearts",
+                "6 of Hearts",
+                "7 of Hearts",
+                "8 of Hearts",
+                "9 of Hearts",
+                "10 of Hearts",
+                "Jack of Hearts",
+                "Queen of Hearts",
+                "King of Hearts",
+                "Ace of Hearts",
+                "2 of Diamonds",
+                "3 of Diamonds",
+                "4 of Diamonds",
+                "5 of Diamonds",
+                "6 of Diamonds",
+                "7 of Diamonds",
+                "8 of Diamonds",
+                "9 of Diamonds",
+                "10 of Diamonds",
+                "Jack of Diamonds",
+                "Queen of Diamonds",
+                "King of Diamonds",
+                "Ace of Diamonds",
+                "2 of Clubs",
+                "3 of Clubs",
+                "4 of Clubs",
+                "5 of Clubs",
+                "6 of Clubs",
+                "7 of Clubs",
+                "8 of Clubs",
+                "9 of Clubs",
+                "10 of Clubs",
+                "Jack of Clubs",
+                "Queen of Clubs",
+                "King of Clubs",
+                "Ace of Clubs"
+        };
     }
 
 
     public static void fixBug(Context context) {
-        Toast.makeText(context, "Sorry there was an error. It will be fixed shortly", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Sorry there was an error. It will be fixed shortly",
+                Toast.LENGTH_SHORT).show();
     }
 
     public static void theme(Context context, Activity activity) {
@@ -189,8 +189,7 @@ public class Helper {
     public static boolean makeDirectory(String path) {
         File pDir = new File(path);
         boolean isDirectoryCreated = pDir.exists();
-        if (!isDirectoryCreated)
-            isDirectoryCreated = pDir.mkdir();
+        if (!isDirectoryCreated) isDirectoryCreated = pDir.mkdir();
         if (isDirectoryCreated) return true;                //Write the file
         else throw new RuntimeException("Couldn't create the directory");
     }
@@ -207,8 +206,8 @@ public class Helper {
         if (checkSelfPermission(context, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return true;
         //if (shouldShowRequestPermissionRationale((Activity) context, READ_EXTERNAL_STORAGE)) {
-            requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
-                    WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
+        requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
+                WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
         //} else {
         //    requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
         //            WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
