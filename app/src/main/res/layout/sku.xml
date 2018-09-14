@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="88dp"
-    android:background="?selectableItemBackground"
-    android:minHeight="?listPreferredItemHeightLarge"
-    android:paddingEnd="?listPreferredItemPaddingRight"
-    android:paddingLeft="?listPreferredItemPaddingLeft"
-    android:paddingRight="?listPreferredItemPaddingRight"
-    android:paddingStart="?listPreferredItemPaddingLeft">
-    <ImageView
-        android:id="@+id/sku_icon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_alignParentLeft="true"
-        android:contentDescription="@string/icon"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="?listPreferredItemPaddingLeft"
-        android:layout_marginRight="?listPreferredItemPaddingLeft" />
-    <TextView
-        android:id="@+id/sku_title"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="4dp"
-        android:layout_toEndOf="@+id/sku_icon"
-        android:layout_toRightOf="@+id/sku_icon"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textAppearance="?textAppearanceListItem" />
-    <TextView
-        android:id="@+id/sku_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sku_title"
-        android:layout_toEndOf="@+id/sku_icon"
-        android:layout_toRightOf="@+id/sku_icon"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textAppearance="?textAppearanceListItem"
-        android:textColor="@android:color/tertiary_text_light"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/sku_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="4dp"
-        android:layout_toEndOf="@+id/sku_icon"
-        android:layout_toRightOf="@+id/sku_icon"
-        android:gravity="end"
-        android:textAppearance="?textAppearanceListItem"
-        android:textColor="?attr/colorAccent"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:layout_margin="4dp"
+        app:cardCornerRadius="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/sku_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+                <TextView
+                    android:id="@+id/sku_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/sku_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="end"
+                android:layout_margin="4dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

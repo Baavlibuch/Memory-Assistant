@@ -107,7 +107,7 @@
             tools:targetApi="jelly_bean" />
 
         <activity
-            android:name=".inAppBilling.SkusActivity"
+            android:name=".inAppBilling.DonateActivity"
             android:label="@string/use_case_title_skus"
             android:parentActivityName="main.GetPro"
             tools:ignore="UnusedAttribute">
@@ -115,17 +115,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="main.GetPro" />
         </activity>
-        <activity android:name=".inAppBilling.DonateActivity" />
-        <activity
-            android:name=".inAppBilling.StaticActivity"
-            android:label="@string/use_case_title_static"
-            android:parentActivityName="main.GetPro"
-            tools:ignore="UnusedAttribute">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="main.GetPro" />
-        </activity>
-
 
 
         <!-- Services -->
