@@ -1,6 +1,8 @@
 package com.memory_athlete.memoryassistant.main;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
@@ -38,37 +40,25 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     Intent intent;                                      //Contains data sent to this activity
     ViewPager viewPager;
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("entered onCreate()");
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         intent = getIntent();
         theme(intent);
         int fragIndex = intent.getIntExtra("class", 0);
         Timber.v("fragIndex = " + fragIndex + "tabTitles.size() = " + tabTitles.size());
         tabTitles.add(getString(R.string.practice));
-        int noOfMySpaceScreens = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
-                this).getString(getString(R.string.no_my_space_frags), "1"));
-        for (int i = 0; i < noOfMySpaceScreens; i++) {
-            if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
-            else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
-        }
-        if (tabTitles.size() == 1 || !Helper.mayAccessStorage(this))
-            findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
-        Timber.v("tabTitles.size() = " + tabTitles.size());
-        viewPager = findViewById(R.id.viewpager);
-        viewPager.setOffscreenPageLimit(9);
-        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
-        Timber.v("adapter set");
 
-        TabLayout tabLayout = findViewById(R.id.sliding_tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        new LoadFragmentsAsyncTask().execute();
     }
 
     //Function to set the theme
     protected void theme(Intent intent) {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
+        String theme = sharedPreferences.getString(getString(R.string.theme), "AppTheme");
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -85,7 +75,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         else setTitle(intent.getStringExtra("headerString"));
 
         Timber.v("theme = " + theme);
-        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.bottom_tabs), false))
+        if (sharedPreferences.getBoolean(getString(R.string.bottom_tabs), false))
             setContentView(R.layout.activity_view_pager_bottom_tab);
         else setContentView(R.layout.activity_view_pager);
     }
@@ -137,7 +127,8 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                             fragment = new Dates();
                             break;
                         default:
-                            throw new RuntimeException("wrong practice");
+                            throw new RuntimeException("wrong practice, received "
+                                    + intent.getIntExtra("class", 0));
                     }
                     fragment.setArguments(bundle);
                     return fragment;
@@ -208,8 +199,8 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         }
 
         //Check if sudden exit is enabled
-        if (PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean(getString(R.string.double_back_to_exit), false) && !backPressed) {
+        if (sharedPreferences.getBoolean(getString(R.string.double_back_to_exit), false)
+                && !backPressed) {
             backPressed = true;
             Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
             return;
@@ -228,6 +219,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             String tag = "android:switcher:" + R.id.viewpager + ":" + 0;
             DisciplineFragment frag = (DisciplineFragment) getSupportFragmentManager().
                     findFragmentByTag(tag);
+            assert frag != null;
             if (frag.a.get(frag.RUNNING) == frag.TRUE) frag.a.set(frag.RUNNING, frag.FALSE);
             //Stopped the generation of the random list
 
@@ -244,5 +236,35 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected class LoadFragmentsAsyncTask extends AsyncTask<Void, SimpleFragmentPagerAdapter,
+            SimpleFragmentPagerAdapter> {
+
+        @Override
+        protected SimpleFragmentPagerAdapter doInBackground(Void... v) {
+            int noOfMySpaceScreens = Integer.parseInt(sharedPreferences
+                    .getString(getString(R.string.no_my_space_frags), "1"));
+            for (int i = 0; i < noOfMySpaceScreens; i++) {
+                if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
+                else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
+            }
+            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(getApplicationContext()))
+                findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
+            Timber.v("tabTitles.size() = " + tabTitles.size());
+            viewPager = findViewById(R.id.viewpager);
+            viewPager.setOffscreenPageLimit(9);
+            return new SimpleFragmentPagerAdapter(getSupportFragmentManager());
+        }
+
+        @Override
+        protected void onPostExecute(SimpleFragmentPagerAdapter adapter) {
+            super.onPostExecute(adapter);
+            viewPager.setAdapter(adapter);
+            Timber.v("adapter set");
+
+            TabLayout tabLayout = findViewById(R.id.sliding_tabs);
+            tabLayout.setupWithViewPager(viewPager);
+        }
     }
 }

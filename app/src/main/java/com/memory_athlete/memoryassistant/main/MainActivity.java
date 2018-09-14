@@ -33,7 +33,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import timber.log.Timber;
 
@@ -45,11 +46,12 @@ import static android.widget.Toast.makeText;
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
     private final int REQUEST_STORAGE_ACCESS = 444;
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onBackPressed() {
-        if (PreferenceManager.getDefaultSharedPreferences(this)
-                .getBoolean(getString(R.string.double_back_to_exit), false) && !backPressed) {
+        if (sharedPreferences.getBoolean(getString(R.string.double_back_to_exit), false)
+                && !backPressed) {
             backPressed = true;
             makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
         } else super.onBackPressed();
@@ -62,42 +64,35 @@ public class MainActivity extends AppCompatActivity {
         Helper.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name));
-
-        firstStart();                           //TODO
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         setAdapter();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
 
         //Handler handler = new Handler();
-        Runnable r = new Runnable() {
+        new Runnable() {
             @Override
             public void run() {
-                SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(
-                        getApplicationContext()).edit();
+                firstStart();                           //TODO
+                SharedPreferences.Editor e = sharedPreferences.edit();
                 e.putLong("last_opened", System.currentTimeMillis());
                 Timber.v("Last opened on" + System.currentTimeMillis());
                 e.apply();
                 ReminderUtils.scheduleReminder(getApplicationContext());
             }
-        };
-        r.run();
+        }.run();
     }
+
 
     void firstStart() {
         if (mayAccessStorage()) Helper.makeDirectory(Helper.APP_FOLDER);
         else return;
-        //if (isExternalStorageWritable())
-        //new Runnable() {
-        //  @Override
-        //public void run() {
 
-        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if (s.getLong("last_opened", 0) == 0) {
-            makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG)
-                    .show();
+        if (sharedPreferences.getLong("last_opened", 0) == 0) {
+            makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
             Timber.e("firstStart");
         } else {
             String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.my_space) + File.separator;
@@ -133,7 +128,8 @@ public class MainActivity extends AppCompatActivity {
                     Helper.makeDirectory(mySpaceDir + folder);
                     try {
                         for (File f : files) {
-                            File to = new File(mySpaceDir + folder + File.separator + f.getName());
+                            File to = new File(mySpaceDir + folder + File.separator
+                                    + f.getName());
                             copyFile(f, to);
                             f.delete();
                         }
@@ -146,10 +142,6 @@ public class MainActivity extends AppCompatActivity {
             }
             (new File(filesDir)).delete();
         }
-
-//    }
-//};
-
     }
 
     public static void copyFile(File src, File dst) throws IOException {
@@ -159,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             inChannel.transferTo(0, inChannel.size(), outChannel);
         } finally {
             if (inChannel != null) inChannel.close();
-            if (outChannel != null) outChannel.close();
+            outChannel.close();
         }
     }
 
@@ -170,16 +162,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean mayAccessStorage() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
+
         if (checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return true;
-        if (shouldShowRequestPermissionRationale(READ_EXTERNAL_STORAGE)) {
-            requestPermissions(new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
-        } else {
-            requestPermissions(new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
-        }
+        if (shouldShowRequestPermissionRationale(READ_EXTERNAL_STORAGE)) requestPermissions(new
+                String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
+        else requestPermissions(new
+                String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
         return false;
     }
 
@@ -204,8 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void setAdapter() {
-        final ArrayList<Item> list = new ArrayList<>();
-        setList(list);
+        final List<Item> list = setList();
 
         MainAdapter adapter = new MainAdapter(this, list);
         ListView listView = findViewById(R.id.main_list);
@@ -223,17 +212,18 @@ public class MainActivity extends AppCompatActivity {
         Timber.v("Adapter set!");
     }
 
-    private void setList(ArrayList<Item> list) {
+    private List<Item> setList() {
+        return Arrays.asList(
+                new Item(R.string.learn, R.drawable.learn, Learn.class),
+                new Item(R.string.practice, R.drawable.practice, Practice.class),
+                new Item(R.string.recall, R.drawable.recall, RecallSelector.class),
+                new Item(R.string.apply, R.drawable.implement, Implement.class),
+                new Item(R.string.my_space, R.drawable.my_space, MySpace.class),
+                new Item(R.string.preferences, R.drawable.preferences, Preferences.class));
         //list.add(new Item(R.string.login, Login.class));
-        list.add(new Item(R.string.learn, R.drawable.learn, Learn.class));
-        list.add(new Item(R.string.practice, R.drawable.practice, Practice.class));
-        list.add(new Item(R.string.recall, R.drawable.recall, RecallSelector.class));
-        list.add(new Item(R.string.apply, R.drawable.implement, Implement.class));
-        list.add(new Item(R.string.my_space, R.drawable.my_space, MySpace.class));
-        list.add(new Item(R.string.preferences, R.drawable.preferences, Preferences.class));
         //list.add(new Item(R.string.reminders, ))
         //list.add(new Item(R.string.get_pro, GetPro.class));
-        Timber.v("List set!");
+        //Timber.v("List set!");
     }
 
     private class Item {
@@ -249,12 +239,13 @@ public class MainActivity extends AppCompatActivity {
 
     private class MainAdapter extends ArrayAdapter<Item> {
 
-        MainAdapter(Activity context, ArrayList<Item> words) {
+        MainAdapter(Activity context, List<Item> words) {
             super(context, 0, words);
         }
 
+        @NonNull
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             View listItemView = convertView;
             if (listItemView == null) {
                 listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category //item_main

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import timber.log.Timber;
 
@@ -40,6 +42,7 @@ public class MySpaceFragment extends Fragment {
     String title = "", fileName, oldTabTitle, oldName = null;
     Boolean name;
     View rootView;
+    Activity activity;
 
     public interface TabTitleUpdater {
         void tabTitleUpdate(String title);
@@ -67,32 +70,42 @@ public class MySpaceFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         Timber.v("onCreateView() started");
         //if(savedInstanceState != null){}
         rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
         rootView.findViewById(R.id.add).setVisibility(GONE);//.removeViewAt(0);
         //if (fragListViewId > 0)
         //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
-
-        fragListViewId = MIN_DYNAMIC_VIEW_ID;                          //There are three other views with ids 0,1,2
-        setAdapter(rootView);
-        setButtons(rootView);
+        activity = getActivity();
+        fragListViewId = MIN_DYNAMIC_VIEW_ID;    //There are three other views with ids 0,1,2
+        new Runnable() {
+            @Override
+            public void run() {
+                setAdapter(rootView);
+            }
+        }.run();
+        new Runnable() {
+            @Override
+            public void run() {
+                setButtons(rootView);
+            }
+        }.run();
         return rootView;
     }
 
     ArrayList<Item> setList() {
-        ArrayList<Item> list = new ArrayList<>();
-        list.add(new Item(getActivity().getString(R.string.majors), WriteFile.class));
-        list.add(new Item(getActivity().getString(R.string.ben), WriteFile.class));
-        list.add(new Item(getActivity().getString(R.string.wardrobes), WriteFile.class));
-        list.add(new Item(getActivity().getString(R.string.lists), WriteFile.class));
-        list.add(new Item(getActivity().getString(R.string.words), WriteFile.class));
+        return new ArrayList<>(Arrays.asList(
+                new Item(activity.getString(R.string.majors), WriteFile.class),
+                new Item(activity.getString(R.string.ben), WriteFile.class),
+                new Item(activity.getString(R.string.wardrobes), WriteFile.class),
+                new Item(activity.getString(R.string.lists), WriteFile.class),
+                new Item(activity.getString(R.string.words), WriteFile.class)));
         //TODO:
         //list.add(new Item(getString(R.string.equations), WriteEquations.class));
         //list.add(new Item(getString(R.string.algos), WriteAlgo.class));
         //list.add(new Item(getString(R.string.derivations), WriteEquations.class));
-        return list;
     }
 
     public void setAdapter(final View rootView) {
