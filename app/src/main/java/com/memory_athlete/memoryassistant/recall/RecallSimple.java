@@ -274,8 +274,9 @@ public class RecallSimple extends AppCompatActivity {
 
     protected void compare(boolean words) {
         Timber.v("Comparing answers and responses in backgroundString");
-        if (mDiscipline.equals(getString(R.string.letters)) && PreferenceManager.getDefaultSharedPreferences(
-                getApplicationContext()).getInt(getString(R.string.letter_case), 1) == 2) {
+        if (mDiscipline.equals(getString(R.string.letters)) && Integer.parseInt(PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext())
+                .getString(getString(R.string.letter_case), "1")) == 2) {
             compareMixed();
             return;
         }
