@@ -151,5 +151,6 @@
     <string name="extra">Extra</string>
     <string name="discipline">discipline</string>
     <string name="speech_rate">Speech rate</string>
+    <string name="word_new">New</string>
 
 </resources>

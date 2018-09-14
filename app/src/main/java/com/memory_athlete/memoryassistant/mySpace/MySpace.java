@@ -1,10 +1,12 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import timber.log.Timber;
 
@@ -43,17 +46,17 @@ public class MySpace extends AppCompatActivity {
         if (!Helper.mayAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.my_space_relative_layout),
                     "Storage permissions are required", Snackbar.LENGTH_SHORT)
-            .setAction("Grant", new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                    Uri uri = Uri.fromParts("package", getPackageName(), null);
-                    intent.setData(uri);
-                    startActivity(intent);
-                }
-            })
-            .show();
+                    .setAction("Grant", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent();
+                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", getPackageName(), null);
+                            intent.setData(uri);
+                            startActivity(intent);
+                        }
+                    })
+                    .show();
         }
         //findViewById(R.id.)
         //setAdapter();
@@ -166,17 +169,16 @@ public class MySpace extends AppCompatActivity {
     }
 
     private ArrayList<Item> setList() {
-        ArrayList<Item> list = new ArrayList<>();
-        list.add(new Item(getString(R.string.majors), R.drawable.major_system, WriteFile.class));
-        list.add(new Item(getString(R.string.ben), R.drawable.ben_system, WriteFile.class));
-        list.add(new Item(getString(R.string.wardrobes), R.drawable.wardrobe_method, WriteFile.class));
-        list.add(new Item(getString(R.string.lists), R.drawable.lists, WriteFile.class));
-        list.add(new Item(getString(R.string.words), R.drawable.words1, WriteFile.class));
+        return new ArrayList<>(Arrays.asList(
+                new Item(getString(R.string.majors), R.drawable.major_system, WriteFile.class),
+                new Item(getString(R.string.ben), R.drawable.ben_system, WriteFile.class),
+                new Item(getString(R.string.wardrobes), R.drawable.wardrobe_method, WriteFile.class),
+                new Item(getString(R.string.lists), R.drawable.lists, WriteFile.class),
+                new Item(getString(R.string.words), R.drawable.words1, WriteFile.class)));
         //TODO:
         //list.add(new Item(getString(R.string.equations), WriteEquations.class));
         //list.add(new Item(getString(R.string.algos), WriteAlgo.class));
         //list.add(new Item(getString(R.string.derivations), WriteEquations.class));
-        return list;
     }
 
     private class Item {
@@ -206,12 +208,13 @@ public class MySpace extends AppCompatActivity {
             super(context, 0, list);
         }
 
+        @SuppressLint("InflateParams")
+        @NonNull
         @Override
-        public View getView(int position, View listItemView, ViewGroup parent) {
+        public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
             if (listViewId == MIN_DYNAMIC_VIEW_ID) {
-                if (listItemView == null) {
-                    listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
-                }
+                if (listItemView == null) listItemView = LayoutInflater.from(getContext())
+                        .inflate(R.layout.category, null, true);
 
                 TextView textView = listItemView.findViewById(R.id.text);
                 textView.setText(getItem(position).mName);
