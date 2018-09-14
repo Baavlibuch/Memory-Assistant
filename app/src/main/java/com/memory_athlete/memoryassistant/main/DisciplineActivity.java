@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
 import com.memory_athlete.memoryassistant.disciplines.Dates;

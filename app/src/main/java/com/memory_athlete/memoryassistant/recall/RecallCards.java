@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.Helper;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import java.util.Scanner;
 
 import timber.log.Timber;
 
-import static com.memory_athlete.memoryassistant.data.Helper.makeCardString;
+import static com.memory_athlete.memoryassistant.Helper.makeCardString;
 import static java.lang.Integer.parseInt;
 
 public class RecallCards extends RecallSimple {

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="contribute_headers">
+        <item>Support</item>
+        <item>Contribute</item>
+        <item>Fund</item>
+        <item>Commit</item>
+    </string-array>
+
+    <string-array name="contribute_bodies">
+        <item>Give an honest review</item>
+        <item>Join the alpha testers</item>
+        <item>Donate to development</item>
+        <item>Build the application</item>
+    </string-array>
+
     <string-array name="themes">
         <item>Light (Default)</item>
         <item>Dark</item>

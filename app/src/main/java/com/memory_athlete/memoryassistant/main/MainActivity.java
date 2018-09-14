@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -22,8 +23,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.BuildConfig;
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.SkusActivity;
+import com.memory_athlete.memoryassistant.StaticActivity;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
@@ -219,10 +222,10 @@ public class MainActivity extends AppCompatActivity {
                 new Item(R.string.recall, R.drawable.recall, RecallSelector.class),
                 new Item(R.string.apply, R.drawable.implement, Implement.class),
                 new Item(R.string.my_space, R.drawable.my_space, MySpace.class),
-                new Item(R.string.preferences, R.drawable.preferences, Preferences.class));
+                new Item(R.string.preferences, R.drawable.preferences, Preferences.class),
+                new Item(R.string.get_pro, R.drawable.preferences, GetPro.class));
         //list.add(new Item(R.string.login, Login.class));
         //list.add(new Item(R.string.reminders, ))
-        //list.add(new Item(R.string.get_pro, GetPro.class));
         //Timber.v("List set!");
     }
 
@@ -246,15 +249,12 @@ public class MainActivity extends AppCompatActivity {
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-            View listItemView = convertView;
-            if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category //item_main
-                        , parent, false);
-            }
+            if (convertView == null) convertView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.category, parent, false);
 
-            TextView textView = listItemView.findViewById(R.id.text);
+            TextView textView = convertView.findViewById(R.id.text);
             textView.setText(getString(getItem(position).mItem));
-            ImageView img = listItemView.findViewById(R.id.image);
+            ImageView img = convertView.findViewById(R.id.image);
             Picasso
                     .with(getApplicationContext())
                     .load(getItem(position).mImageId)
@@ -264,8 +264,24 @@ public class MainActivity extends AppCompatActivity {
                     //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ
                     .into(img);
 
-            return listItemView;
+            return convertView;
         }
 
+    }
+}
+
+private enum UseCase {
+    SKUS(SkusActivity.class, R.string.use_case_title_skus, R.string.use_case_desc_skus);
+
+    final Class<? extends Activity> activity;
+    @StringRes
+    final int title;
+    @StringRes
+    final int description;
+
+    UseCase(Class<? extends Activity> activity, @StringRes int title, @StringRes int description) {
+        this.activity = activity;
+        this.title = title;
+        this.description = description;
     }
 }

@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant.data;
+package com.memory_athlete.memoryassistant;
 
 import android.app.Activity;
 import android.content.Context;

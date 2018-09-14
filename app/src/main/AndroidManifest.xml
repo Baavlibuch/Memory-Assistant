@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:allowBackup="true"
@@ -33,8 +33,6 @@
 
         <!-- Main Activity options -->
 
-
-        <!-- <activity android:name="com.memory_athlete.memoryassistant.main.GetPro" /> -->
         <!--
             <activity
             android:name="com.memory_athlete.memoryassistant.main.Login"
@@ -103,6 +101,19 @@
             android:name=".mySpace.WriteFile"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
+        <activity android:name=".main.GetPro"
+            android:parentActivityName=".mySpace.MySpace"
+            tools:targetApi="jelly_bean" />
+
+        <activity
+            android:name=".SkusActivity"
+            android:label="@string/use_case_title_skus"
+            android:parentActivityName=".MainActivity"
+            tools:ignore="UnusedAttribute">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="main.MainActivity" />
+        </activity>
 
         <!-- Services -->
 

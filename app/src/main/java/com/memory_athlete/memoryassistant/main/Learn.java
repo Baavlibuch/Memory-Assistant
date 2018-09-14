@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
 import com.squareup.picasso.Picasso;
 

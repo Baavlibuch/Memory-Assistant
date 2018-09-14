@@ -141,6 +141,10 @@
     <string name="wardrobe_method">Wardrobe Method</string>
     <string name="vocab">Vocabulary</string>
 
+    <!--Play Billing-->
+    <string name="use_case_title_skus">Use case #3. List of SKUs</string>
+    <string name="use_case_desc_skus">Show a list of SKUs available for purchase. Click an item to purchase or consume it</string>
+
     <!--other-->
     <string name="tab">\t</string>
     <string name="drop_down">Expand</string>

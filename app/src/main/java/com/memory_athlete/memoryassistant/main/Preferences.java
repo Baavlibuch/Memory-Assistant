@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
 import timber.log.Timber;

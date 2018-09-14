@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.data.Helper;
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.recall.RecallCards;
 import com.squareup.picasso.Picasso;
 
