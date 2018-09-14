@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.mySpace;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -20,8 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -110,6 +111,8 @@ public class MySpace extends AppCompatActivity {
         Timber.v("list set");
         MySpaceAdapter adapter = new MySpaceAdapter(this, arrayList);
         final ListView listView = new ListView(this);
+        listView.setDivider(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        listView.setDividerHeight(0);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         if (listViewId == MIN_DYNAMIC_VIEW_ID) {
@@ -229,9 +232,8 @@ public class MySpace extends AppCompatActivity {
 
                 return listItemView;
             }
-            if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_main, null, true);
-            }
+            if (listItemView == null) listItemView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.item_main, null, true);
 
             TextView textView = listItemView.findViewById(R.id.main_textView);
             textView.setText(getItem(position).mName);

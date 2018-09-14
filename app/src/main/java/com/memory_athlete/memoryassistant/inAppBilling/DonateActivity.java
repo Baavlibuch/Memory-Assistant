@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
 import org.solovyev.android.checkout.ActivityCheckout;
@@ -38,6 +39,7 @@ public class DonateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Helper.theme(this, DonateActivity.this);
         setContentView(R.layout.activity_skus);
         ButterKnife.bind(this);
         setTitle("Donate");

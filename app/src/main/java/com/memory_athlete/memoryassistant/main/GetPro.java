@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.inAppBilling.DonateActivity;
 
@@ -29,7 +30,9 @@ public class GetPro extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Helper.theme(this, GetPro.this);
         setContentView(R.layout.activity_get_pro);
+        setTitle(R.string.get_pro);
         setAdapter();
     }
 
@@ -50,9 +53,9 @@ public class GetPro extends AppCompatActivity {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(
                                 "https://play.google.com/store/apps/details?id=" + getPackageName())));
                     }
-                } else if (item.type == TYPE_ACTIVITY)
-                    startActivity(new Intent(getApplicationContext(), DonateActivity.class));
-                else if (item.type == TYPE_GITHUB)startActivity(new Intent(Intent.ACTION_VIEW,
+                } else if (item.type == TYPE_ACTIVITY) startActivity(
+                        new Intent(getApplicationContext(), DonateActivity.class));
+                else if (item.type == TYPE_GITHUB) startActivity(new Intent(Intent.ACTION_VIEW,
                         Uri.parse("https://github.com/maniksejwal/Memory-Assistant")));
             }
         });

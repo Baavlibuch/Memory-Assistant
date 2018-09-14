@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -14,8 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 
 import java.io.IOException;
@@ -72,6 +73,9 @@ public class Implement extends AppCompatActivity {
             Timber.v("arrayList set");
             ApplyAdapter adapter = new ApplyAdapter(this, arrayList);
             ListView listView = new ListView(this);
+            listView.setDivider(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+            listView.setDividerHeight(0);
+
             listView.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1));
             listView.setId(listViewId);

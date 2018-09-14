@@ -24,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:divider="@color/color_transparent"
+        android:dividerHeight="0dp"
         android:id="@+id/disciplines" />
 
 </LinearLayout>

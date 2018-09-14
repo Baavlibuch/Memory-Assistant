@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -18,8 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.recall.RecallCards;
 import com.memory_athlete.memoryassistant.recall.RecallComplex;
 import com.memory_athlete.memoryassistant.recall.RecallSimple;
@@ -27,6 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import timber.log.Timber;
 
@@ -113,6 +115,8 @@ public class RecallSelector extends AppCompatActivity {
         Timber.v("list set");
         MySpaceAdapter adapter = new MySpaceAdapter(this, arrayList);
         final ListView listView = new ListView(this);
+        listView.setDivider(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        listView.setDividerHeight(0);
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
@@ -237,17 +241,16 @@ public class RecallSelector extends AppCompatActivity {
     }
 
     private ArrayList<Item> setList() {
-        ArrayList<Item> list = new ArrayList<>();
-        list.add(new Item(getString(R.string.digits), RecallSimple.class, R.drawable.numbers));
-        list.add(new Item(getString(R.string.binary), RecallSimple.class, R.drawable.binary));
-        list.add(new Item(getString(R.string.cards), RecallCards.class, R.drawable.cards));
-        list.add(new Item(getString(R.string.letters), RecallSimple.class, R.drawable.letters));
-        list.add(new Item(getString(R.string.names), RecallSimple.class, R.drawable.names));
-        list.add(new Item(getString(R.string.numbers), RecallSimple.class, R.drawable.numbers));
-        list.add(new Item(getString(R.string.places_capital), RecallSimple.class, R.drawable.places));
-        list.add(new Item(getString(R.string.words), RecallSimple.class, R.drawable.words));
-        list.add(new Item(getString(R.string.dates), RecallComplex.class, R.drawable.dates));
-        return list;
+        return new ArrayList<>(Arrays.asList(
+                new Item(getString(R.string.digits), RecallSimple.class, R.drawable.numbers),
+                new Item(getString(R.string.binary), RecallSimple.class, R.drawable.binary),
+                new Item(getString(R.string.cards), RecallCards.class, R.drawable.cards),
+                new Item(getString(R.string.letters), RecallSimple.class, R.drawable.letters),
+                new Item(getString(R.string.names), RecallSimple.class, R.drawable.names),
+                new Item(getString(R.string.numbers), RecallSimple.class, R.drawable.numbers),
+                new Item(getString(R.string.places_capital), RecallSimple.class, R.drawable.places),
+                new Item(getString(R.string.words), RecallSimple.class, R.drawable.words),
+                new Item(getString(R.string.dates), RecallComplex.class, R.drawable.dates)));
     }
 
     private class MySpaceAdapter extends ArrayAdapter<Item> {
