@@ -14,8 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.memory_athlete.memoryassistant.DonateActivity;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.inAppBilling.DonateActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +37,7 @@ public class GetPro extends AppCompatActivity {
         final List<Item> list = setList();
 
         MainAdapter adapter = new MainAdapter(this, list);
-        ListView listView = findViewById(R.id.main_list);
+        ListView listView = findViewById(R.id.contribute_list_view);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {

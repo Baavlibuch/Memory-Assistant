@@ -1,9 +1,9 @@
-package com.memory_athlete.memoryassistant;
-
-import org.solovyev.android.checkout.Billing;
+package com.memory_athlete.memoryassistant.inAppBilling;
 
 import android.app.Activity;
 import android.app.Application;
+
+import org.solovyev.android.checkout.Billing;
 
 import javax.annotation.Nonnull;
 

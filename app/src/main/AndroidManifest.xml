@@ -12,6 +12,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".inAppBilling.CheckoutApplication"
         android:fullBackupContent="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/launcher_ic"
@@ -106,14 +107,26 @@
             tools:targetApi="jelly_bean" />
 
         <activity
-            android:name=".SkusActivity"
+            android:name=".inAppBilling.SkusActivity"
             android:label="@string/use_case_title_skus"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="main.GetPro"
             tools:ignore="UnusedAttribute">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="main.MainActivity" />
+                android:value="main.GetPro" />
         </activity>
+        <activity android:name=".inAppBilling.DonateActivity" />
+        <activity
+            android:name=".inAppBilling.StaticActivity"
+            android:label="@string/use_case_title_static"
+            android:parentActivityName="main.GetPro"
+            tools:ignore="UnusedAttribute">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="main.GetPro" />
+        </activity>
+
+
 
         <!-- Services -->
 

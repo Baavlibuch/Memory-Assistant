@@ -1,8 +1,11 @@
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contribute_list_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.memory_athlete.memoryassistant.main.GetPro"
-    android:id="@+id/contribute_list_view">
+    android:layout_margin="8dp"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="8dp"
+    tools:context="com.memory_athlete.memoryassistant.main.GetPro">
 
 </ListView>

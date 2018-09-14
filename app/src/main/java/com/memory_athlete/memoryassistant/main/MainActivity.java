@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -25,8 +24,6 @@ import android.widget.Toast;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.SkusActivity;
-import com.memory_athlete.memoryassistant.StaticActivity;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
@@ -270,18 +267,3 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-private enum UseCase {
-    SKUS(SkusActivity.class, R.string.use_case_title_skus, R.string.use_case_desc_skus);
-
-    final Class<? extends Activity> activity;
-    @StringRes
-    final int title;
-    @StringRes
-    final int description;
-
-    UseCase(Class<? extends Activity> activity, @StringRes int title, @StringRes int description) {
-        this.activity = activity;
-        this.title = title;
-        this.description = description;
-    }
-}
