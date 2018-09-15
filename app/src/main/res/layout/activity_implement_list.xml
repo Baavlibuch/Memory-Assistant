@@ -5,4 +5,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/apply_layout"/>
+    android:id="@+id/apply_layout"
+    android:layout_margin="8dp"/>

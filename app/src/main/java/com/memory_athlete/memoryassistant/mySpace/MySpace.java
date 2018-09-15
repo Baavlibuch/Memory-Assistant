@@ -117,7 +117,7 @@ public class MySpace extends AppCompatActivity {
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         if (listViewId == MIN_DYNAMIC_VIEW_ID) {
             float scale = getResources().getDisplayMetrics().density;
-            int dpAsPixels = (int) (16 * scale + 0.5f);
+            int dpAsPixels = (int) (8 * scale + 0.5f);
             layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
         }
         listView.setLayoutParams(layoutParams);

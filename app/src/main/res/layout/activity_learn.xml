@@ -4,13 +4,12 @@
     android:layout_height="match_parent"
     tools:context="com.memory_athlete.memoryassistant.main.Learn">
 
-
     <ListView
+        android:id="@+id/learn_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/learn_list"
-        android:dividerHeight="0px"
-        android:layout_margin="16dp"
-        />
+        android:layout_margin="8dp"
+        android:divider="@color/color_transparent"
+        android:dividerHeight="0px" />
 
 </LinearLayout>
