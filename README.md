@@ -12,11 +12,8 @@ Memory sports android app
 ### Bounties ###
 * Add names and faces, and abstract images
 * Work on the UI
-* Add in app billing
 
 I'll provide the required data
-
-**I'll give you a treat on the completion of each task!**
 
 ### How do I get set up? ###
 
@@ -35,3 +32,4 @@ I'll provide the required data
 ### Who do I talk to? ###
 
 * Feel free to join the Slack workspace – https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDIxMzM2MjY5OTkxLWEyNjhlNGUwM2Q4NjMyNGEyMjk0MTdkMDliYmQzMDA2MTFiMTg3MTFmNjQwMzk1MGMxZGQyMzhlM2UzY2RkMTQ
+* memoryassistantapp@gmail.com
