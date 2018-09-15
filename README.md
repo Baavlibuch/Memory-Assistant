@@ -32,3 +32,4 @@ I'll provide the required data
 ### Who do I talk to? ###
 
 * Feel free to join the Slack workspace – https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDIxMzM2MjY5OTkxLWEyNjhlNGUwM2Q4NjMyNGEyMjk0MTdkMDliYmQzMDA2MTFiMTg3MTFmNjQwMzk1MGMxZGQyMzhlM2UzY2RkMTQ
+* memoryassistantapp@gmail.com
