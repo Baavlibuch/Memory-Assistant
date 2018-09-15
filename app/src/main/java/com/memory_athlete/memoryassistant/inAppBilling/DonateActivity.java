@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -29,6 +30,9 @@ import javax.annotation.Nonnull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
+
+import static org.solovyev.android.checkout.ResponseCodes.ITEM_ALREADY_OWNED;
 
 public class DonateActivity extends AppCompatActivity {
     @BindView(R.id.recycler)
@@ -40,7 +44,7 @@ public class DonateActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Helper.theme(this, DonateActivity.this);
-        setContentView(R.layout.activity_skus);
+        setContentView(R.layout.activity_donate);
         ButterKnife.bind(this);
         setTitle("Donate");
         final Adapter adapter = new Adapter();
@@ -95,6 +99,10 @@ public class DonateActivity extends AppCompatActivity {
 
             @Override
             public void onError(int response, @Nonnull Exception e) {
+                if(response == ITEM_ALREADY_OWNED) Toast.makeText(getApplicationContext(),
+                        R.string.already_purchased,
+                        Toast.LENGTH_SHORT).show();
+                Timber.v("ITEM_ALREADY_OWNED = " + ITEM_ALREADY_OWNED);
                 reloadInventory();
             }
         };
@@ -219,11 +227,9 @@ public class DonateActivity extends AppCompatActivity {
 
         public void onClick(Sku sku) {
             final Purchase purchase = mProduct.getPurchaseInState(sku, Purchase.State.PURCHASED);
-            if (purchase != null) {
-                consume(purchase);
-            } else {
-                purchase(sku);
-            }
+            Timber.v("purchase =" + purchase);
+            if (purchase != null) consume(purchase);
+            else purchase(sku);
         }
 
     }

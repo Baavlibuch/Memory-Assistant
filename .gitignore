@@ -1,4 +1,5 @@
 app/build
+app/src/main/java/com/memory_athlete/memoryassistant/inAppBilling/Encryption.java
 app/google-services.json
 .signing/
 keystore.properties

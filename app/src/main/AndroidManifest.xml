@@ -11,8 +11,8 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
-        android:allowBackup="true"
         android:name=".inAppBilling.CheckoutApplication"
+        android:allowBackup="true"
         android:fullBackupContent="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/launcher_ic"
@@ -31,8 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Main Activity options -->
 
         <!--
             <activity
@@ -102,20 +100,18 @@
             android:name=".mySpace.WriteFile"
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".main.GetPro"
-            android:parentActivityName=".mySpace.MySpace"
+        <activity
+            android:name=".main.GetPro"
+            android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-
         <activity
             android:name=".inAppBilling.DonateActivity"
-            android:label="@string/use_case_title_skus"
             android:parentActivityName="main.GetPro"
             tools:ignore="UnusedAttribute">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="main.GetPro" />
         </activity>
-
 
         <!-- Services -->
 
