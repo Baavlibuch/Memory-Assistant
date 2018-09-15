@@ -102,7 +102,6 @@ public class DonateActivity extends AppCompatActivity {
                 if(response == ITEM_ALREADY_OWNED) Toast.makeText(getApplicationContext(),
                         R.string.already_purchased,
                         Toast.LENGTH_SHORT).show();
-                Timber.v("ITEM_ALREADY_OWNED = " + ITEM_ALREADY_OWNED);
                 reloadInventory();
             }
         };

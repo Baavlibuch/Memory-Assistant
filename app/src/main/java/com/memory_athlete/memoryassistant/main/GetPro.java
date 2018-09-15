@@ -58,8 +58,7 @@ public class GetPro extends AppCompatActivity {
                         }
                         break;
                     case TYPE_ACTIVITY:
-                        startActivity(
-                                new Intent(getApplicationContext(), DonateActivity.class));
+                        startActivity(new Intent(getApplicationContext(), DonateActivity.class));
                         break;
                     case TYPE_GITHUB:
                         startActivity(new Intent(Intent.ACTION_VIEW,
@@ -69,7 +68,7 @@ public class GetPro extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Your eMail address will be added to the list of alpha testers manually",
                                 Toast.LENGTH_SHORT).show();
-                        String mailto = "mailto:memoryassistantapp@gmail.org" +
+                        String mailto = "mailto:memoryassistantapp@gmail.com" +
                                 "?cc=" + "" +
                                 "&subject=" + Uri.encode("Alpha tester") +
                                 "&body=" + Uri.encode("I'd like to join the alpha testers");
