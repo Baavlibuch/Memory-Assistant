@@ -12,11 +12,8 @@ Memory sports android app
 ### Bounties ###
 * Add names and faces, and abstract images
 * Work on the UI
-* Add in app billing
 
 I'll provide the required data
-
-**I'll give you a treat on the completion of each task!**
 
 ### How do I get set up? ###
 
