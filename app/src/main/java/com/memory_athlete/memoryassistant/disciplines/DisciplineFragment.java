@@ -364,8 +364,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             //Directory of the discipline
             path = path + File.separator + activity.getTitle().toString();
             if (Helper.makeDirectory(path)) {
-                path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm"))
-                        .format(new Date())) + ".txt";
+                path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",
+                        Locale.getDefault())).format(new Date())) + ".txt";
 
                 //Write the file
                 try {
@@ -496,8 +496,9 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 boolean isRunning = true;
 
                 public void onTick(long millisUntilFinished) {
-                    ((TextView) rootView.findViewById(R.id.clock_text)).setText("" + millisUntilFinished / 60000 +
-                            " min  " + (millisUntilFinished / 1000) % 60 + " sec");
+                    String s = millisUntilFinished / 60000 + " min  " +
+                            (millisUntilFinished / 1000) % 60 + " sec";
+                    ((TextView) rootView.findViewById(R.id.clock_text)).setText(s);
                     mTime = millisUntilFinished;
                 }
 
@@ -513,9 +514,9 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         } else {
             cdt = new CountDownTimer(mTime, 1000) {
                 public void onTick(long millisUntilFinished) {
-                    ((TextView) rootView.findViewById(R.id.clock_text)).setText("" + millisUntilFinished / 60000 +
-                            " min  " + (millisUntilFinished
-                            / 1000) % 60 + " sec");
+                    String s = millisUntilFinished / 60000 + " min  " +
+                            (millisUntilFinished / 1000) % 60 + " sec";
+                    ((TextView) rootView.findViewById(R.id.clock_text)).setText(s);
                     mTime = millisUntilFinished;
                 }
 
@@ -702,6 +703,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             super(context, 0, cards);
         }
 
+        @SuppressWarnings("unchecked")
         RandomAdapter(Activity context, ArrayList cards, int textSize) {
             super(context, 0, cards);
             this.textSize = textSize;

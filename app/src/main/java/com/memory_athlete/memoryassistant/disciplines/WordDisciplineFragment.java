@@ -30,7 +30,7 @@ public abstract class WordDisciplineFragment extends DisciplineFragment {
 
     @Override
     protected void generateRandom() {
-        (new GenerateRandomArrayListAsyncTask()).execute(a);
+        new GenerateRandomArrayListAsyncTask().execute(a);
     }
 
     private class DictionaryAsyncTask extends AsyncTask<Void, Void, String> {

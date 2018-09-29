@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -51,18 +52,19 @@ public class Dates extends WordDisciplineFragment {
         dateSpinner.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                try {
-                    ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
-                            hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-                } catch (NullPointerException e) {
-                    Timber.e("Couldn't hide keypad ", e);
-                }
+                view.performClick();
+                InputMethodManager im = (InputMethodManager) activity.getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                if (activity.getCurrentFocus() != null) im.hideSoftInputFromWindow(
+                        activity.getCurrentFocus().getWindowToken(), 0);
                 return false;
             }
         });
 
         arrayList.add(getString(R.string.start_year));
-        for (int i = 0; i < 2000; i += 500) arrayList.add(String.format("%04d", i));
+        for (int i = 0; i < 2000; i += 500)
+            arrayList.add(
+                    String.format(Locale.getDefault(), "%04d", i));
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(
                 activity, android.R.layout.simple_spinner_item, arrayList);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -81,12 +83,11 @@ public class Dates extends WordDisciplineFragment {
         dateSpinner1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                try {
-                    ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
-                            hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-                } catch (NullPointerException e) {
-                    Timber.e("Couldn't hide keypad ", e);
-                }
+                view.performClick();
+                InputMethodManager im = (InputMethodManager) activity.getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                if (activity.getCurrentFocus() != null) im.hideSoftInputFromWindow(
+                        activity.getCurrentFocus().getWindowToken(), 0);
                 return false;
             }
         });
@@ -94,7 +95,8 @@ public class Dates extends WordDisciplineFragment {
         arrayList1.clear();
         arrayList1.add(getString(R.string.end_year));
         arrayList1.add("2099");
-        for (int i = 2499; i <= 9999; i += 500) arrayList1.add(String.format("%04d", i));
+        for (int i = 2499; i <= 9999; i += 500)
+            arrayList1.add(String.format(Locale.getDefault(), "%04d", i));
         dataAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item,
                 arrayList1);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -137,13 +139,13 @@ public class Dates extends WordDisciplineFragment {
 
         for (int i = 0; i < a.get(NO_OF_VALUES); ) {
             year = rand.nextInt(endYear - startYear) + startYear;
-            stringBuilder.append(String.format("%04d", year));
+            stringBuilder.append(String.format(Locale.getDefault(), "%04d", year));
             n = (short) rand.nextInt(indexList.size());
             // Date
             if (!negativeOrDateCheckBox.isChecked()) {
                 n = rand.nextInt(12);
                 stringBuilder.append("/");
-                if(n<10) stringBuilder.append(0);
+                if (n < 10) stringBuilder.append(0);
                 stringBuilder.append(n).append("/");
 
                 switch (n) {
@@ -185,7 +187,6 @@ public class Dates extends WordDisciplineFragment {
 
     @Override
     protected void createDictionary() {
-
         int[] files = {R.raw.twentieth_century, R.raw.twenty_first_century};
 
         for (int fileID : files) {
