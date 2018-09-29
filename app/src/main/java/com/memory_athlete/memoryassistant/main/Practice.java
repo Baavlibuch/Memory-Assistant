@@ -1,8 +1,10 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,9 @@ import com.memory_athlete.memoryassistant.Helper;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
+import hugo.weaving.DebugLog;
 
 public class Practice extends AppCompatActivity {
 
@@ -33,6 +38,7 @@ public class Practice extends AppCompatActivity {
         ListView disciplineList = findViewById(R.id.disciplines);
         disciplineList.setAdapter(discipline);
         disciplineList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @DebugLog
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Category cat = disc.get(position);
                 Intent intent = new Intent(Practice.this, DisciplineActivity.class);
@@ -91,16 +97,17 @@ public class Practice extends AppCompatActivity {
             super(context, 0, cats);
         }
 
+        @SuppressLint("InflateParams")
+        @NonNull
         @Override
-        public View getView(int position, View listView, ViewGroup parent) {
-            Category cat = getItem(position);
-            if (listView == null) {
-                listView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
-            }
+        public View getView(int position, View listView, @NonNull ViewGroup parent) {
+            if (listView == null) listView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.category, null, true);
 
+            Category cat = getItem(position);
             TextView txt = listView.findViewById(R.id.text);
             ImageView img = listView.findViewById(R.id.image);
-            txt.setText(cat.mNameId);
+            txt.setText(Objects.requireNonNull(cat).mNameId);
             Picasso
                     .with(getApplicationContext())
                     .load(cat.mImageId)

@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.disciplines;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -42,6 +43,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -68,6 +70,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     protected Class mRecallClass;
     protected CountDownTimer cdt;
     protected TextToSpeech textToSpeech;
+
+    protected SharedPreferences sharedPreferences;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
@@ -146,21 +150,23 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_disciplines, container, false);
-
         Bundle bundle = getArguments();
-        Timber.i("0 means error in getting title resource string ID through bundle");
+
+        rootView = inflater.inflate(R.layout.fragment_disciplines, container, false);
         activity = getActivity();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+        Timber.i("0 means error in getting title resource string ID through bundle");
         if (activity == null) {
             Helper.fixBug(getActivity());
             throw new RuntimeException("Activity is null for Discipline Fragment");
         }
 
         try {
+            assert bundle != null;
             String s = getString(bundle.getInt("nameID", 0));
             if (s.equals(getString(R.string.cards))) hasStandard = false;
             else if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
-            getActivity().setTitle(s);
+            activity.setTitle(s);
         } catch (Exception e) {
             String s = bundle.getString("name");
             String[] strings = new String[0];
@@ -197,7 +203,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     protected void levelSpinner() {
         Timber.v("Entered levelSpinner()");
         //Get the current level
-        int level = PreferenceManager.getDefaultSharedPreferences(activity).getInt("level", 1);
+        int level = sharedPreferences.getInt("level", 1);
         ArrayList<String> levelList = new ArrayList<>();
         levelList.add(getString(R.string.choose_level));
         for (; level > 0; level--) levelList.add(String.valueOf(level));
@@ -216,16 +222,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         groupSpinner.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                try {
-                    Timber.d("Check if this one works properly");
+                    view.performClick();        // This is done to suppress warning. Insignificant
                     InputMethodManager im = (InputMethodManager) activity.getSystemService(
                             Context.INPUT_METHOD_SERVICE);
-                    // TODO Check if this one works properly
-                    if (im != null) im.hideSoftInputFromWindow(
-                            activity.getCurrentFocus().getWindowToken(), 0);
-                } catch (NullPointerException e) {
-                    Timber.e("Couldn't hide keypad because of null pointer", e);
-                }
+                    if (im != null && activity.getCurrentFocus() != null)
+                        im.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
                 return false;
             }
         });
@@ -570,8 +571,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         Timber.v("tts() entered");
         stringToSave = s;
         cardAndSpeechImageView.setVisibility(View.VISIBLE);
-        String theme = PreferenceManager.getDefaultSharedPreferences(activity).getString(
-                activity.getString(R.string.theme), "AppTheme");
+        String theme = Objects.requireNonNull(sharedPreferences.getString(activity.getString(R.string.theme), "AppTheme"));
         cardAndSpeechImageView.setImageResource(theme.equals("Dark") || theme.equals("Night")
                 ? R.drawable.audio_light : R.drawable.audio_dark);
         rootView.findViewById(R.id.cards_and_speech).setVisibility(View.VISIBLE);
@@ -582,9 +582,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 Timber.v("tts status = " + status);
                 if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.getDefault());
-                    textToSpeech.setSpeechRate(Float.parseFloat(PreferenceManager
-                            .getDefaultSharedPreferences(activity).getString(
-                                    activity.getString(R.string.speech_rate), "0.25")));
+                    textToSpeech.setSpeechRate(Float.parseFloat(Objects.requireNonNull(sharedPreferences.getString(
+                            activity.getString(R.string.speech_rate), "0.25"))));
                     Timber.v("TTS.speak will be called");
                     textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                     Timber.v("TTS.speak has been called");
@@ -710,7 +709,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         @NonNull
         @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
             TextView textView = (TextView) convertView;
             if (convertView == null) {
                 textView = new TextView(getContext());

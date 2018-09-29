@@ -30,8 +30,11 @@ import com.memory_athlete.memoryassistant.disciplines.Words;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import timber.log.Timber;
+
+import static java.util.Objects.requireNonNull;
 
 public class DisciplineActivity extends AppCompatActivity implements MySpaceFragment.TabTitleUpdater {
     boolean backPressed = false;
@@ -53,12 +56,17 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         Timber.v("fragIndex = " + fragIndex + "tabTitles.size() = " + tabTitles.size());
         tabTitles.add(getString(R.string.practice));
 
-        new LoadFragmentsAsyncTask().execute();
+        try{
+            new LoadFragmentsAsyncTask().execute();
+        } catch (IllegalStateException e){
+            throw new RuntimeException("IllegalStateException from ViewPager.populate() " +
+                    "caused in DisciplineActivity.onCreate() by new LoadFragmentsAsyncTask().execute()");
+        }
     }
 
-    //Function to set the theme
+    // Function to set the theme
     protected void theme(Intent intent) {
-        String theme = sharedPreferences.getString(getString(R.string.theme), "AppTheme");
+        String theme = requireNonNull(sharedPreferences.getString(getString(R.string.theme), "AppTheme"));
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -83,10 +91,9 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     @Override
     public void tabTitleUpdate(String title) {
         if (title.equals(getString(R.string.my_space))) title += " " + viewPager.getCurrentItem();
-        Timber.v("updating tabTitles");
         tabTitles.set(viewPager.getCurrentItem(), title);
         TabLayout slidingTabs = findViewById(R.id.sliding_tabs);
-        slidingTabs.getTabAt(viewPager.getCurrentItem()).setText(title);
+        requireNonNull(slidingTabs.getTabAt(viewPager.getCurrentItem())).setText(title);
     }
 
     private class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
@@ -97,43 +104,47 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    Bundle bundle = intent.getExtras();
-                    Fragment fragment;
-                    switch (intent.getIntExtra("class", 0)) {
-                        case 1:
-                            fragment = new Numbers();
-                            break;
-                        case 2:
-                            fragment = new Words();
-                            break;
-                        case 3:
-                            fragment = new Names();
-                            break;
-                        case 4:
-                            fragment = new Places();
-                            break;
-                        case 5:
-                            fragment = new Cards();
-                            break;
-                        case 6:
-                            fragment = new BinaryDigits();
-                            break;
-                        case 7:
-                            fragment = new Letters();
-                            break;
-                        case 8:
-                            fragment = new Dates();
-                            break;
-                        default:
-                            throw new RuntimeException("wrong practice, received "
-                                    + intent.getIntExtra("class", 0));
-                    }
-                    fragment.setArguments(bundle);
-                    return fragment;
-                default:
-                    return new MySpaceFragment();
+            try {
+                switch (position) {
+                    case 0:
+                        Bundle bundle = intent.getExtras();
+                        Fragment fragment;
+                        switch (intent.getIntExtra("class", 0)) {
+                            case 1:
+                                fragment = new Numbers();
+                                break;
+                            case 2:
+                                fragment = new Words();
+                                break;
+                            case 3:
+                                fragment = new Names();
+                                break;
+                            case 4:
+                                fragment = new Places();
+                                break;
+                            case 5:
+                                fragment = new Cards();
+                                break;
+                            case 6:
+                                fragment = new BinaryDigits();
+                                break;
+                            case 7:
+                                fragment = new Letters();
+                                break;
+                            case 8:
+                                fragment = new Dates();
+                                break;
+                            default:
+                                throw new RuntimeException("wrong practice, received "
+                                        + intent.getIntExtra("class", 0));
+                        }
+                        fragment.setArguments(bundle);
+                        return fragment;
+                    default:
+                        return new MySpaceFragment();
+                }
+            } catch (IllegalStateException e){
+                throw new RuntimeException("IllegalStateException from ViewPager.populate() caused in DisciplineActivity.getItem()");
             }
         }
 
@@ -168,14 +179,15 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         //go back in current fragment
         if (cur != 0) {
-            MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
-            if (fragment.fragListViewId == 0 || fragment.fragListViewId == fragment.MIN_DYNAMIC_VIEW_ID)
+            MySpaceFragment mySpaceFragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
+            if (Objects.requireNonNull(mySpaceFragment).fragListViewId == 0 ||
+                    mySpaceFragment.fragListViewId == mySpaceFragment.MIN_DYNAMIC_VIEW_ID)
                 viewPager.setCurrentItem(0, true);
-            else fragment.back();
+            else mySpaceFragment.back();
             return;
         } else {
-            DisciplineFragment fragment = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
-            if (!fragment.reset()) return;
+            DisciplineFragment disciplineFragment = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
+            if (!Objects.requireNonNull(disciplineFragment).reset()) return;
         }
 
         //Check if everything is saved
@@ -191,10 +203,10 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         //Stop the loading
         tag = "android:switcher:" + R.id.viewpager + ":" + 0;
-        DisciplineFragment frag = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
-        if (frag.a.get(frag.RUNNING) == frag.TRUE) {
+        DisciplineFragment disciplineFragment = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
+        if (Objects.requireNonNull(disciplineFragment).a.get(disciplineFragment.RUNNING) == disciplineFragment.TRUE) {
             //Stop the generation of the random list if it were being generated
-            frag.a.set(frag.RUNNING, frag.FALSE);
+            disciplineFragment.a.set(disciplineFragment.RUNNING, disciplineFragment.FALSE);
             return;
         }
 
@@ -217,11 +229,13 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + 0;
-            DisciplineFragment frag = (DisciplineFragment) getSupportFragmentManager().
+            DisciplineFragment disciplineFragment = (DisciplineFragment) getSupportFragmentManager().
                     findFragmentByTag(tag);
-            assert frag != null;
-            if (frag.a.get(frag.RUNNING) == frag.TRUE) frag.a.set(frag.RUNNING, frag.FALSE);
-            //Stopped the generation of the random list
+
+            if (Objects.requireNonNull(disciplineFragment).a.get(disciplineFragment.RUNNING) ==
+                    disciplineFragment.TRUE)
+                disciplineFragment.a.set(disciplineFragment.RUNNING, disciplineFragment.FALSE);
+            // Stopped the generation of the random list
 
             for (int i = 1; i < tabTitles.size(); i++) {
                 tag = "android:switcher:" + R.id.viewpager + ":" + i;
@@ -243,8 +257,8 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         @Override
         protected SimpleFragmentPagerAdapter doInBackground(Void... v) {
-            int noOfMySpaceScreens = Integer.parseInt(sharedPreferences
-                    .getString(getString(R.string.no_my_space_frags), "1"));
+            int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
+                    .getString(getString(R.string.no_my_space_frags), "1")));
             for (int i = 0; i < noOfMySpaceScreens; i++) {
                 if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
                 else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));

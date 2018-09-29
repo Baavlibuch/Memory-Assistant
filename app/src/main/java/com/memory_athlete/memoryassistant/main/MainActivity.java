@@ -36,6 +36,7 @@ import java.nio.channels.FileChannel;
 import java.util.Arrays;
 import java.util.List;
 
+import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    @DebugLog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         setAdapter();
     }
 
+    @DebugLog
     @Override
     protected void onResume() {
         super.onResume();
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         //Handler handler = new Handler();
         new Runnable() {
             @Override
+            @DebugLog
             public void run() {
                 firstStart();                           //TODO
                 SharedPreferences.Editor e = sharedPreferences.edit();
@@ -86,14 +90,15 @@ public class MainActivity extends AppCompatActivity {
         }.run();
     }
 
-
+    @DebugLog
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     void firstStart() {
         if (mayAccessStorage()) Helper.makeDirectory(Helper.APP_FOLDER);
         else return;
 
         if (sharedPreferences.getLong("last_opened", 0) == 0) {
             makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
-            Timber.e("firstStart");
+            Timber.v("firstStart");
         } else {
             String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.my_space) + File.separator;
             String mySpaceDir = Helper.APP_FOLDER + File.separator + getString(R.string.my_space) + File.separator;
@@ -120,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         continue;
                 }
-                Timber.v("Folder " + folder);
+                //Timber.v("Folder " + folder);
                 File from = new File(filesDir + folder);
 
                 if (from.exists()) {
@@ -145,16 +150,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void copyFile(File src, File dst) throws IOException {
-        FileChannel inChannel = new FileInputStream(src).getChannel();
-        FileChannel outChannel = new FileOutputStream(dst).getChannel();
-        try {
+        try (FileChannel inChannel = new FileInputStream(src).getChannel(); FileChannel outChannel = new FileOutputStream(dst).getChannel()) {
             inChannel.transferTo(0, inChannel.size(), outChannel);
-        } finally {
-            if (inChannel != null) inChannel.close();
-            outChannel.close();
         }
     }
 
+    // For future use
     // Checks if external storage is available for read and write
     public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
@@ -192,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @DebugLog
     public void setAdapter() {
         final List<Item> list = setList();
 

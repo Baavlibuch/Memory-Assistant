@@ -18,6 +18,7 @@ import com.memory_athlete.memoryassistant.services.ReminderJobService;
 
 import java.util.Calendar;
 
+import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
 /**
@@ -36,6 +37,7 @@ public class ReminderUtils {
     //private static final int SYNC_FLEXTIME_SECONDS = 5 * 60;
     private static final String REMINDER_JOB_TAG = "practice_time_";
 
+    @DebugLog
     synchronized public static void scheduleReminder(@NonNull final Context context) {
         int diff = next(context) * 60, diff1;
         if (diff < 0) diff += DAY;
@@ -79,6 +81,7 @@ public class ReminderUtils {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         String time = preferences.getString(context.getString(R.string.periodic), "22:30");
         Timber.v("reminder time - " + time);
+        assert time != null;
         int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
         Timber.v(hour + " " + minutes);
