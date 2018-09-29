@@ -14,8 +14,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.recall.RecallCards;
 import com.squareup.picasso.Picasso;
 
@@ -24,12 +24,14 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
 import timber.log.Timber;
 
 import static android.view.View.GONE;
+import static java.util.Objects.requireNonNull;
 
 public class Cards extends DisciplineFragment {
     int mPosition = 0;
@@ -56,9 +58,10 @@ public class Cards extends DisciplineFragment {
                 previous();
             }
         });
+
         String theme = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getString(getString(R.string.theme), getString(R.string.light));
-        switch (theme) {
+        switch (requireNonNull(theme)) {
             case "Dark":
                 cardAndSpeechImageView.setAlpha((float) 0.8);
                 gridView.setAlpha((float) 0.8);
@@ -68,11 +71,9 @@ public class Cards extends DisciplineFragment {
                 gridView.setAlpha((float) 0.8);
         }
 
-        mSingleCard = PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean(
-                getString(R.string.single_card), false);
-
-        gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
-                getContext()).getString(getString(R.string.practice_grid_columns), "4")));
+        mSingleCard = sharedPreferences.getBoolean(getString(R.string.single_card), false);
+        gridView.setNumColumns(Integer.parseInt(requireNonNull(sharedPreferences.getString(
+                getString(R.string.practice_grid_columns), "4"))));
 
         hasGroup = false;
         hasSpeech = false;
@@ -99,9 +100,7 @@ public class Cards extends DisciplineFragment {
         if (mPosition > 0) {
             mPosition--;
             setCard();
-        } else {
-            Toast.makeText(activity, "This is the first card!", Toast.LENGTH_LONG).show();
-        }
+        } else Toast.makeText(activity, "This is the first card!", Toast.LENGTH_LONG).show();
     }
 
     //Show the next card
@@ -109,24 +108,21 @@ public class Cards extends DisciplineFragment {
         if (mPosition < a.get(NO_OF_VALUES) * 52 - 1) {
             mPosition++;
             setCard();
-        } else {
-            Toast.makeText(activity, "This is the last card!", Toast.LENGTH_LONG).show();
-        }
+        } else Toast.makeText(activity, "This is the last card!", Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected String backgroundString() {
-        Timber.v("do in backgroundString entered to create string");
         ArrayList<Integer> cards = new ArrayList<>();
-        //Random rand = new Random();
         int n;
+        //Random rand = new Random();
+
         ArrayList<Integer> indexList = new ArrayList<>();
         boolean shuffleDecks = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getBoolean(getString(R.string.shuffle_decks), false);
         if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
-            for (int j = 0; j < 52; j++) {
+            for (int j = 0; j < 52; j++)
                 indexList.add(j);
-            }
 
 
         for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
@@ -159,21 +155,19 @@ public class Cards extends DisciplineFragment {
     @Override
     protected boolean save() {
         if (randomList.isEmpty()) return false;
-        StringBuilder stringBuilder = new StringBuilder("");
+        StringBuilder stringBuilder = new StringBuilder();
 
         //Practice Directory
         String path = activity.getFilesDir().getAbsolutePath() + File.separator
                 + getString(R.string.practice);
-
 
         if (Helper.makeDirectory(path)) {
             //Discipline Directory
             path += File.separator + activity.getTitle();
             if (Helper.makeDirectory(path)) {
                 //File Path
-                path += File.separator
-                        + ((new SimpleDateFormat("yy-MM-dd_HH:mm")).format(new Date()))
-                        + ".txt";
+                path += File.separator + ((new SimpleDateFormat(
+                        "yy-MM-dd_HH:mm", Locale.getDefault())).format(new Date())) + ".txt";
                 try {
                     FileOutputStream outputStream = new FileOutputStream(new File(path));
 
@@ -182,7 +176,6 @@ public class Cards extends DisciplineFragment {
                     //\n is also a delimiter used in recall
 
                     outputStream.write(stringBuilder.toString().getBytes());
-
                     outputStream.close();
                     Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show();
                     return true;
@@ -222,16 +215,15 @@ public class Cards extends DisciplineFragment {
 
         @NonNull
         @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
             ImageView imageView = (ImageView) convertView;
             if (convertView == null) {
                 imageView = new ImageView(getContext());
                 imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT));
                 imageView.setVisibility(View.VISIBLE);
-                //imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setAdjustViewBounds(true);
-
+                //imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 //imageView.setPadding(8, 8, 8, 8);
             }
 
