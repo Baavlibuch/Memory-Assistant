@@ -41,6 +41,15 @@
         <item>0.0626</item>
     </string-array>
 
+    <!--
+    letters     13s
+    binary      30s
+    numbers     37s
+    words       45s
+    places      65s
+    names       66s
+    -->
+
     <string-array name="speech_rate">
         <item>Very fast</item>
         <item>Fast</item>

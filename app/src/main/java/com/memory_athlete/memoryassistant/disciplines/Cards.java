@@ -249,44 +249,54 @@ public class Cards extends DisciplineFragment {
 
         @Override
         protected ArrayList<Integer> doInBackground(String... strings) {
-            Scanner scanner = new Scanner(strings[0]).useDelimiter(getString(R.string.tab));
-            ArrayList<Integer> list = new ArrayList<>();
+            try {
+                Scanner scanner = new Scanner(strings[0]).useDelimiter(getString(R.string.tab));
+                ArrayList<Integer> list = new ArrayList<>();
 
-            while (scanner.hasNext()) {
-                list.add(Integer.parseInt(scanner.next()));
-                if (a.get(RUNNING) == FALSE) return list;
+                while (scanner.hasNext()) {
+                    list.add(Integer.parseInt(scanner.next()));
+                    if (a.get(RUNNING) == FALSE) return list;
+                }
+                return list;
+            } catch (IllegalStateException e) {
+                throw new RuntimeException("IllegalStateException from ViewPager.populate() " +
+                        "caused in Cards.RandomArrayScanner.doInBackground()");
             }
-
-            return list;
         }
 
         @Override
         protected void onPostExecute(ArrayList<Integer> list) {
-            super.onPostExecute(list);
-            (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
-            (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(GONE);
+            try {
+                super.onPostExecute(list);
+                (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
+                (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(GONE);
 
-            if (a.get(RUNNING) == FALSE) {
-                reset();
-                return;
-            }
+                if (a.get(RUNNING) == FALSE) {
+                    reset();
+                    return;
+                }
 
-            randomList = list;
+                randomList = list;
 
-            if (mSingleCard) setCard();
-            else {
+                if (mSingleCard) setCard();
+                else {
+                    numbersVisibility(View.VISIBLE);
+                    Timber.v("Setting the card adapter");
+                    CardAdapter adapter = new CardAdapter(activity, randomList);
+                    gridView.setAdapter(adapter);
+                    Timber.v("card adapter set");
+                }
+                //((TextView) findViewById(R.id.numbers)).setText(s);
                 numbersVisibility(View.VISIBLE);
-                Timber.v("Setting the card adapter");
-                CardAdapter adapter = new CardAdapter(activity, randomList);
-                gridView.setAdapter(adapter);
-                Timber.v("card adapter set");
+                (rootView.findViewById(R.id.no_of_values)).setVisibility(GONE);
+                if (mSingleCard) Toast.makeText(activity, "Tap the card for the next card",
+                        Toast.LENGTH_SHORT).show();
+            } catch (IllegalStateException e) {
+                throw new RuntimeException("IllegalStateException from ViewPager.populate() " +
+                        "caused in Cards.RandomArrayScanner.onPostExecute()");
             }
-            //((TextView) findViewById(R.id.numbers)).setText(s);
-            numbersVisibility(View.VISIBLE);
-            (rootView.findViewById(R.id.no_of_values)).setVisibility(GONE);
-            if (mSingleCard) Toast.makeText(activity, "Tap the card for the next card",
-                    Toast.LENGTH_SHORT).show();
         }
     }
+
 }
 //TODO: uses custom theme(), don't remove this comment
