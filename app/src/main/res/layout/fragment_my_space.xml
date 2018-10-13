@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_space_relative_layout"
     android:layout_width="match_parent"
@@ -41,10 +40,10 @@
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
+        android:contentDescription="@string/word_new"
         android:src="@drawable/ic_action_add"
         android:visibility="gone" />
 
@@ -53,10 +52,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
         android:hint="@string/fname"
-        android:visibility="gone" />
+        android:inputType="text"
+        android:visibility="gone"
+        tools:ignore="Autofill" />
 
     <ScrollView
         android:id="@+id/my_space_scroll_view"
@@ -68,12 +69,13 @@
             android:id="@+id/my_space_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/f_name"
-            android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:hint="@string/here"
+            android:inputType="text"
             android:visibility="gone"
+            tools:ignore="Autofill"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
 

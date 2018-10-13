@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.inAppBilling;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -183,7 +184,7 @@ public class DonateActivity extends AppCompatActivity {
     private static class InventoryCallback implements Inventory.Callback {
         private final Adapter mAdapter;
 
-        public InventoryCallback(Adapter adapter) {
+        InventoryCallback(Adapter adapter) {
             mAdapter = adapter;
         }
 
@@ -202,14 +203,15 @@ public class DonateActivity extends AppCompatActivity {
         private final LayoutInflater mInflater = LayoutInflater.from(DonateActivity.this);
         private Inventory.Product mProduct = Inventory.Products.empty().get(ProductTypes.IN_APP);
 
+        @NonNull
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             final View view = mInflater.inflate(R.layout.sku, parent, false);
             return new ViewHolder(view, this);
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             final Sku sku = mProduct.getSkus().get(position);
             holder.onBind(sku, mProduct.isPurchased(sku));
         }
@@ -219,7 +221,7 @@ public class DonateActivity extends AppCompatActivity {
             return mProduct.getSkus().size();
         }
 
-        public void update(Inventory.Product product) {
+        void update(Inventory.Product product) {
             mProduct = product;
             notifyDataSetChanged();
         }

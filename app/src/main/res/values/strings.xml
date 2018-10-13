@@ -143,6 +143,7 @@
 
     <!--Play Billing-->
     <string name="already_purchased">You have already made that transaction\nTry something else :p</string>
+    <string name="donate_amounts">List of donatable amounts</string>
 
     <!--other-->
     <string name="tab">\t</string>
