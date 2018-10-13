@@ -187,7 +187,10 @@ public class Dates extends WordDisciplineFragment {
 
     @Override
     protected void createDictionary() {
-        int[] files = {R.raw.twentieth_century, R.raw.twenty_first_century};
+        int[] files = {R.raw.century_twentieth,
+                 R.raw.century_twenty_first,
+                R.raw.century_eighteenth,
+                R.raw.century_seventeenth};
 
         for (int fileID : files) {
             BufferedReader dict = null;

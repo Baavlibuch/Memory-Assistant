@@ -2,7 +2,7 @@ app/build
 app/src/main/java/com/memory_athlete/memoryassistant/inAppBilling/Encryption.java
 app/google-services.json
 .signing/
-keystore.properties
+.keystore.properties
 gradle.properties
 resources/
 
@@ -29,6 +29,7 @@ Thumbs.db
 # OS files
 .DS_Store
 .DS_Store?
+.directory
 ._*
 .Spotlight-V100
 .Trashes

@@ -384,19 +384,17 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return false;
     }
 
-/*
-    // Checks if external storage is available for read and write
-    public boolean isExternalStorageWritable() {
-        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
-    }
-
-    // Checks if external storage is available to at least read
-    public boolean isExternalStorageReadable() {
-        String externalStorageState = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(externalStorageState) ||
-                Environment.MEDIA_MOUNTED_READ_ONLY.equals(externalStorageState);
-    }
-*/
+    //// Checks if external storage is available for read and write
+    //public boolean isExternalStorageWritable() {
+    //    return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
+    //}
+    //
+    //// Checks if external storage is available to at least read
+    //public boolean isExternalStorageReadable() {
+    //    String externalStorageState = Environment.getExternalStorageState();
+    //    return Environment.MEDIA_MOUNTED.equals(externalStorageState) ||
+    //            Environment.MEDIA_MOUNTED_READ_ONLY.equals(externalStorageState);
+    //}
 
     public boolean reset() {
         if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE) return true;
