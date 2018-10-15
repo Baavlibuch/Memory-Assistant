@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -263,7 +264,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                 if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
                 else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
             }
-            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(getApplicationContext()))
+            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(DisciplineActivity.this))
                 findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
             Timber.v("tabTitles.size() = " + tabTitles.size());
             viewPager = findViewById(R.id.viewpager);
