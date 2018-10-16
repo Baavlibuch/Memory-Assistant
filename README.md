@@ -31,5 +31,5 @@ I'll provide the required data
 * Other guidelines
 ### Who do I talk to? ###
 
-* Feel free to join the Slack workspace – https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDIxMzM2MjY5OTkxLWEyNjhlNGUwM2Q4NjMyNGEyMjk0MTdkMDliYmQzMDA2MTFiMTg3MTFmNjQwMzk1MGMxZGQyMzhlM2UzY2RkMTQ
+* Feel free to join the Slack workspace – https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U
 * memoryassistantapp@gmail.com
