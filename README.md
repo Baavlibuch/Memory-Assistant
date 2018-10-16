@@ -9,12 +9,6 @@ Memory sports android app
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### Bounties ###
-* Add names and faces, and abstract images
-* Work on the UI
-
-I'll provide the required data
-
 ### How do I get set up? ###
 
 * Summary of set up – Use android studio. Import new project from git or open the project as an existing android studio project.
