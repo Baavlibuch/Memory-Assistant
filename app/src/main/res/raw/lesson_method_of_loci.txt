@@ -4,21 +4,21 @@
 
 <h4>Background</h4>
 
-<p>This technique is as old as ancient democracy, used by Greek and Roman senators to hold their intoxicating speeches in front of the senate. It was proscribed to use any kind of notes, so they were using this brilliant technique to jack up their memory.</p>
+<p>This technique is as old as ancient democracy. It was used by Greek and Roman Senators to commit to memory their lengthy speeches when presenting in front of the senate. It was forbidden to use any kind of notes, so they were using this brilliant technique to enhance their memory.</p>
 
-<p>To remember a speech, they broke it into peaces and created symbols for every single part. Then they put those symbols into the different loci. To recall them they visualized the path and went from one station to another, where they remembered the symbols and translated them back into the speech.</p?
+<p>To remember a speech, they broke it into pieces and created symbols for every single part. Then they put those symbols into the different loci. To recall them they visualized the path and went from one station to another, where they remembered the symbols and translated them back into the speech.</p>
 
-<p>Why is the method of loci so powerful? On one hand it is using your natural memory for locations. Even if you have the feeling to easily loose orientation, you still are able to remember your own room in its detail. On the other hand it provides a logical order. You just have to walk through your room clockwise or counterclockwise and all the objects will be in a specific order.</p>
+<p>Why is the method of loci so powerful? On one hand it is using your natural memory for locations. Even if you don't have a good sense of direction, you still are able to remember your own room in all its detail. On the other hand it provides a logical order. You just have to walk through your room clockwise or counterclockwise and all the objects will be in a specific order.</p>
 
 <p>I will call each route we create with this method an “elephant path” (or just “path”). It is a track created by animal footfalls and represents the most easily navigated way between an origin and a destination. Each time it is used, it becomes stronger and grows wider. A memory athlete is using his paths over and over again, too. And since the elephant is also a symbol for a strong memory, it seems like a perfect name for the easiest way to a better memory.</p>
 
 <h4>Step 1 – Pick your Location</h4>
 
-<p>To use this technique and become a memory athlete, you have to choose your first location. It can be anywhere you like but you should pick the one you know best for your first elephant path. That could be your room, your flat, your house or your workspace. If you like, you can also create an imaginary path. But it is harder to memorize in the beginning, so I advise you to choose a real location first. A memory athlete creates several paths for championships. But for starters one should be fine.</p>
+<p>To use this technique and become a memory athlete, you have to choose your first location. It can be anywhere you like but you should pick the one you know best for your first elephant path. This can be your room, your flat, your house or your workplace. If you like, you can also create an imaginary path. But it is harder to memorize in the beginning, so I advise you to choose a real location at first. A memory athlete creates several paths for championships. But for starters one path should be fine.</p>
 
 <h4>Step 2 – Define the Way-Points</h4>
 
-<p>When you picked your first location, you have to define all the objects you want to use as way-points in your elephant path. They will be the stations you have to pass, each time you are memorizing any kind of information with it. The number of way-points will determine the length of your route – and therewith the amount of information you can store on it. You can have ten stations or a thousand. One single room can easily include twenty way-points. I suggest that your first elephant path should have about fifty stations. If you stick to some rules, your path will become more efficiently. But those rules are just a guideline – you can break them whenever you like. Since every person got a different mind and different affinities, you probably have to bend the rules to make them match your personality. By the way: This regards every single aspect in memory techniques!</p>
+<p>When you picked your first location, you have to define all the objects you want to use as way-points in your elephant path. They will be the stations you have to pass, each time you are memorizing any kind of information. The number of way-points will determine the length of your route – and as a result the amount of information you can store in it. You can have ten stations or a thousand. One single room can easily include twenty way-points. I suggest that your first elephant path should have about fifty stations. If you stick to some rules, your path will become more efficient. But those rules are just a guideline – you can break them whenever you like. Since every person has a different mind and different affinities, you probably have to bend the rules to make them match your personality. By the way: This regards every single aspect in memory techniques!</p>
 <ul> 
 <li>Do imagine your way-points in every detail</li>
 <li>Pick the way-points you first think of – they are in most cases the best</li>
@@ -27,13 +27,13 @@
 <li>Don’t make your way-points too small (i.e. a pencil)</li>
 <li>Don’t make your way-points too big (i.e. a house)</li>
 <li>Don’t make them to close together</li>
-<li>Don’t make them to far away from each other</li>
+<li>Don’t make them too far away from each other</li>
 <li>Don’t use similar way-points in the same path</li>
 
 <h4>Step 3 – Memorize your Path</h4>
 
-<p>Since you already know the location and you’ve finished defining the way-points, it will be very easy to memorize your new elephant path. Just try to recall it in your imagination. If you miss a few points, try to imagine yourself walking through your path and count each and every single way-point on it. Do that repeatedly and you will strengthen your path each time. After a while you can increase your speed dramatically: With a well trained path you wont need longer than a split second for each way-point. This process is quick and natural.</p>
+<p>Since you already know the location and you’ve finished defining the way-points, it will be very easy to memorize your new elephant path. Just try to recall it in your imagination. If you miss a few points, try to imagine yourself walking through your path and count each and every single way-point on it. Do that repeatedly and you will strengthen your path each time. After a while, you can increase your speed dramatically and with a well trained path you won't need longer than a split second for each way-point. This process is quick and natural.</p>
 
 <h4>Step 4 – Use it!</h4>
 
-<p>With your new elephant path you are able to associate information like words with every way-point. It will help you to remember the correct order and can easily be used over and over again for different purposes. This is because you are naturally forgetting your associations after a while, if you do not recapitulate them again. This happens in a short period of time and depends on your memory. Some brilliant memory athletes will remember their images for up to two weeks without repeating them. Personally I have the mindset to never recall my associations a second time after training or a championship. I don’t need the information any more so I can let my brain forget it. That sounds counterproductive but it helps a lot to use my paths again as soon as possibly (in my case about a day).</p>
+<p>With your new elephant path you are able to associate information like words with every way-point. It will help you to remember the correct order and can easily be used over and over again for different purposes. This is because you are naturally forgetting your associations after a while, and as long as you don't think of them again. This happens in a short period of time and depends on your memory. Some brilliant memory athletes will remember their images for up to two weeks without repeating them. Personally I have the mindset to never recall my associations a second time after training or a championship. I don’t need the information any more so I can let my brain forget it. That sounds counterproductive but it helps a lot to use my paths again as soon as possible (in my case about a day).</p>
