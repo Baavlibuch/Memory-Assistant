@@ -1,6 +1,7 @@
 package com.memory_athlete.memoryassistant.lessons;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
@@ -18,6 +19,7 @@ import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -25,6 +27,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
     private ArrayList<String> tabTitles = new ArrayList<>();
     Intent intent;
     ViewPager viewPager;
+    SharedPreferences sharedPreferences;
 
     @Override
     public void tabTitleUpdate(String title) {
@@ -32,19 +35,20 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
         Timber.v("updating tabTitles");
         tabTitles.set(viewPager.getCurrentItem(), title);
         TabLayout slidingTabs = findViewById(R.id.sliding_tabs);
-        slidingTabs.getTabAt(viewPager.getCurrentItem()).setText(title);
+        Objects.requireNonNull(slidingTabs.getTabAt(viewPager.getCurrentItem())).setText(title);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Timber.v("entered onCreate()");
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         intent = getIntent();
         theme(intent);
 
         tabTitles.add(getString(R.string.apply));
-        int noOfMySpaceScreens = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
-                this).getString(getString(R.string.no_my_space_frags), "1"));
+        int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
+                .getString(getString(R.string.no_my_space_frags), "1")));
         for (int i = 0; i < noOfMySpaceScreens; i++) {
             if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
             else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
@@ -62,7 +66,8 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
     }
 
     protected void theme(Intent intent) {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
+        String theme = sharedPreferences.getString(getString(R.string.theme), "AppTheme");
+        assert theme != null;
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -80,7 +85,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
         else setTitle(intent.getStringExtra("headerString"));
 
         Timber.v("theme = " + theme);
-        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(getString(R.string.bottom_tabs), false))
+        if (sharedPreferences.getBoolean(getString(R.string.bottom_tabs), false))
             setContentView(R.layout.activity_view_pager_bottom_tab);
         else setContentView(R.layout.activity_view_pager);
     }

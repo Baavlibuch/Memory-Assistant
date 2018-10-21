@@ -15,7 +15,7 @@
 <p><b>Dieser</b><br/>This</p>
 <p><b>Anderes</b><br/>Other</p>
 <h4>2</h4>
-<!--People>
+<!--People-->
 <p><b>Männer</b><br/>Men</p>
 <p><b>Herren</b><br/>Gentlemen</p>
 <p><b>Frauen</b><br/>Women</p>

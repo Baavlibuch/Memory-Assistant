@@ -26,10 +26,6 @@ import java.util.ArrayList;
 
 import timber.log.Timber;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-
 public class LessonFragment extends Fragment {
     private Activity activity;
 
@@ -43,11 +39,12 @@ public class LessonFragment extends Fragment {
         Bundle bundle = getArguments();
         activity = getActivity();
 
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder("");   // Initialised to empty string to distinguish
+                                                    // from null which is returned after reading
         assert bundle != null;
         int fileInt = bundle.getInt("file", 0);
-        if (fileInt != 0 && bundle.getBoolean("resource", true)) {
-            if (bundle.getBoolean("list", false)) {
+        if (fileInt != 0 && bundle.getBoolean("resource", true)) {  // Raw
+            if (bundle.getBoolean("list", false)) {                 // list
                 ListView listView = rootView.findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readResourceList(fileInt);
                 assert list != null;
@@ -58,9 +55,9 @@ public class LessonFragment extends Fragment {
                 listView.setVisibility(View.VISIBLE);
                 Timber.v("listView set");
                 return rootView;
-            } else sb = readResource(fileInt);//For raw files
-        } else {
-            if (bundle.getBoolean("list", false)) {
+            } else sb = readResource(fileInt);                                      // non-list
+        } else {                                                                    // Asset
+            if (bundle.getBoolean("list", false)) {                // list
                 ListView listView = rootView.findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readAssetList(bundle);
                 //Timber.v("list length = " + list.size());
@@ -71,7 +68,7 @@ public class LessonFragment extends Fragment {
                 Timber.v("listView set");
                 return rootView;
             }
-            sb = readAsset(sb, bundle);
+            sb = readAsset(sb, bundle);                                             // non-list
         }
         if (sb == null) {
             Timber.e("String Builder sb is empty");
@@ -79,7 +76,7 @@ public class LessonFragment extends Fragment {
             return rootView;
         }
 
-        if (bundle.getBoolean("webView", false)) {     //For JQMath
+        if (bundle.getBoolean("webView", false)) {                  // JQMath
             setWebView(sb, rootView);
         } else {
             Timber.v("list is false");
@@ -111,6 +108,7 @@ public class LessonFragment extends Fragment {
     private String themeForWebView() {
         String theme = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getString(getString(R.string.theme), "AppTheme");
+        assert theme != null;
         switch (theme) {
             case "Dark":
                 return "<style>\n" +
@@ -228,9 +226,10 @@ public class LessonFragment extends Fragment {
     }
 
     private StringBuilder readAsset(StringBuilder sb, Bundle intent) {
-        String line = intent.getString("fileString"); //For assets and filesDir
+        String line = intent.getString("fileString");           // For assets and filesDir
         BufferedReader bufferedReader = null;
         try {
+            assert line != null;
             bufferedReader = new BufferedReader(new InputStreamReader(activity.getAssets().open(line)));
             while ((line = bufferedReader.readLine()) != null) sb.append(line);
         } catch (IOException e) {

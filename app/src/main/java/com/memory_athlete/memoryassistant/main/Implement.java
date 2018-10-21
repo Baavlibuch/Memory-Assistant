@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,8 @@ import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -86,7 +89,8 @@ public class Implement extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Item item = arrayList.get(position);
                     boolean webView, hasList;
-                    if (item.mFileName.contains("Language") || item.mFileName.equals("Dates.txt")) {
+
+                    if (checkPathContents(pathList, "Language") || item.mFileName.equals("Dates.txt")) {
                         webView = false;
                         hasList = true;
                     } else {
@@ -117,22 +121,28 @@ public class Implement extends AppCompatActivity {
         }
     }
 
+    // suppressed because there will be more parameters in the future
+    boolean checkPathContents(ArrayList<String> strings, @SuppressWarnings("SameParameterValue") String pattern){
+        for (String s : strings) if (s.contains(pattern)) return true;
+        return false;
+    }
+
     private String[] listAssetFiles(String path) {
 
-        String[] list = new String[0];
+        String[] list;
         try {
             list = getAssets().list(path);
             Timber.v("got assets");
         } catch (IOException e) {
             Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();
-            Timber.v("couldn't get assets");
+            throw new RuntimeException("error recovering asset - " + path);
         }
         return list;
     }
 
     private class Item {
         String mItem, mFileName;
-        boolean webView = false;
+        boolean webView;
 
         Item(String item, boolean wV) {
             mFileName = item;
@@ -147,14 +157,14 @@ public class Implement extends AppCompatActivity {
             super(context, 0, list);
         }
 
+        @NonNull
         @Override
-        public View getView(int position, View listItemView, ViewGroup parent) {
-            if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_main, null, true);
-            }
+        public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
+            if (listItemView == null) listItemView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.item_main, null, true);
 
             TextView textView = listItemView.findViewById(R.id.main_textView);
-            textView.setText(getItem(position).mItem);
+            textView.setText(Objects.requireNonNull(getItem(position)).mItem);
 
             return listItemView;
         }
