@@ -165,13 +165,14 @@ public class Helper {
 
 
     public static void fixBug(Context context) {
-        Toast.makeText(context, "Sorry there was an error. It will be fixed shortly",
+        Toast.makeText(context, "There was an error. It will be fixed shortly",
                 Toast.LENGTH_SHORT).show();
     }
 
     public static void theme(Context context, Activity activity) {
         String theme = PreferenceManager.getDefaultSharedPreferences(context).getString(
                 context.getString(R.string.theme), "AppTheme");
+        assert theme != null;
         switch (theme) {
             case "Dark":
                 context.setTheme(R.style.dark);
@@ -200,9 +201,8 @@ public class Helper {
     }
 
     public static boolean mayAccessStorage(Context context) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
+
         if (checkSelfPermission(context, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return true;
         //if (shouldShowRequestPermissionRationale((Activity) context, READ_EXTERNAL_STORAGE)) {

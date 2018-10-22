@@ -1,11 +1,13 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -29,6 +31,7 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -167,7 +170,8 @@ public class RecallSelector extends AppCompatActivity {
 
             File[] files = dir.listFiles();
             if (files == null || files.length == 0) {
-                String s = (mDiscipline.equals(getString(R.string.digits))) ? getString(R.string.numbers) : mDiscipline;
+                String s = (mDiscipline.equals(getString(R.string.digits)))
+                        ? getString(R.string.numbers) : mDiscipline;
                 practice(getFilesDir().getAbsolutePath() + File.separator
                         + getString(R.string.practice) + File.separator + s);
                 return;
@@ -197,37 +201,32 @@ public class RecallSelector extends AppCompatActivity {
         }
     }
 
-    void practice(final String discipline) {
+    void practice(String disciplinePath) {
+        String[] strings = disciplinePath.split("/");
+        final String discipline = strings[strings.length-1];
         Snackbar.make(findViewById(listViewId), "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
                 .setAction(R.string.practice, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String s = discipline;
-                        if (s.equals(getString(R.string.digits)))
-                            s = getString(R.string.numbers);
+                        if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
                         s = s.replaceAll("\\s", "");
                         Timber.v("s= " + s);
 
                         int classId;
-                        if (discipline.equals(getString(R.string.numbers))) {
-                            classId = 1;
-                        } else if (discipline.equals(getString(R.string.digits))) {
-                            classId = 1;
-                        } else if (discipline.equals(getString(R.string.words))) {
-                            classId = 2;
-                        } else if (discipline.equals(getString(R.string.names))) {
-                            classId = 3;
-                        } else if (discipline.equals(getString(R.string.places_capital))) {
-                            classId = 4;
-                        } else if (discipline.equals(getString(R.string.cards))) {
-                            classId = 5;
-                        } else if (discipline.equals(getString(R.string.binary))) {
-                            classId = 6;
-                        } else if (discipline.equals(getString(R.string.letters))) {
-                            classId = 7;
-                        } else //if(discipline.equals(getString(R.string.dates)))
-                        {
-                            classId = 8;
+                        if (discipline.equals(getString(R.string.numbers))) classId = 1;
+                        else if (discipline.equals(getString(R.string.digits))) classId = 1;
+                        else if (discipline.equals(getString(R.string.words))) classId = 2;
+                        else if (discipline.equals(getString(R.string.names))) classId = 3;
+                        else if (discipline.equals(getString(R.string.places_capital))) classId = 4;
+                        else if (discipline.equals(getString(R.string.cards))) classId = 5;
+                        else if (discipline.equals(getString(R.string.binary))) classId = 6;
+                        else if (discipline.equals(getString(R.string.letters))) classId = 7;
+                        else if(discipline.equals(getString(R.string.dates))) classId = 8;
+                        else {
+                            Helper.fixBug(getApplicationContext());
+                            throw new RuntimeException("Practice from recall received unexpected case" +
+                                    "\tDiscipline = " + discipline);
                         }
 
                         Timber.v("classId = " + classId);
@@ -259,18 +258,22 @@ public class RecallSelector extends AppCompatActivity {
             super(context, 0, list);
         }
 
+
+        @NonNull
         @Override
-        public View getView(int position, View listItemView, ViewGroup parent) {
+        public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
             //Chose discipline
             if (listViewId == MIN_DYNAMIC_VIEW_ID) {
                 if (listItemView == null)
                     listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category,
-                            null, true);
-                ((TextView) listItemView.findViewById(R.id.text)).setText(getItem(position).mName);
+                            parent, false);
+
+                ((TextView) listItemView.findViewById(R.id.text)).setText(Objects.requireNonNull(
+                        getItem(position)).mName);
 
                 ImageView img = listItemView.findViewById(R.id.image);
                 Picasso.with(getApplicationContext())
-                        .load(getItem(position).mImageId)
+                        .load(Objects.requireNonNull(getItem(position)).mImageId)
                         .placeholder(R.mipmap.launcher_ic)
                         .fit()
                         .centerCrop()
@@ -280,10 +283,10 @@ public class RecallSelector extends AppCompatActivity {
 
             //Chose file
             if (listItemView == null) listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.item_main, null, true);
+                    R.layout.item_main, parent, false);
 
             TextView textView = listItemView.findViewById(R.id.main_textView);
-            textView.setText(getItem(position).mName);
+            textView.setText(Objects.requireNonNull(getItem(position)).mName);
             return listItemView;
         }
     }

@@ -35,6 +35,7 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import hugo.weaving.DebugLog;
 import timber.log.Timber;
@@ -250,11 +251,11 @@ public class MainActivity extends AppCompatActivity {
                     .inflate(R.layout.category, parent, false);
 
             TextView textView = convertView.findViewById(R.id.text);
-            textView.setText(getString(getItem(position).mItem));
+            textView.setText(getString(Objects.requireNonNull(getItem(position)).mItem));
             ImageView img = convertView.findViewById(R.id.image);
             Picasso
                     .with(getApplicationContext())
-                    .load(getItem(position).mImageId)
+                    .load(Objects.requireNonNull(getItem(position)).mImageId)
                     .placeholder(R.mipmap.launcher_ic)
                     .fit()
                     .centerCrop()
