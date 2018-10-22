@@ -18,6 +18,7 @@ import com.memory_athlete.memoryassistant.Helper;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import timber.log.Timber;
@@ -67,8 +68,8 @@ public class RecallCards extends RecallSimple {
     @Override
     protected void setResponseLayout(boolean onCreate) {
         if (onCreate) theme();
-        gridView.setNumColumns(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
-                this).getString(getString(R.string.recall_grid_columns), "6")));
+        gridView.setNumColumns(Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString(
+                getString(R.string.recall_grid_columns), "6"))));
         cardImageIds = Helper.makeCards();
         Timber.v("cardResponseLayout() started");
         compareFormat = CARD_COMPARE_FORMAT;
@@ -189,7 +190,7 @@ public class RecallCards extends RecallSimple {
 
         @NonNull
         @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
             ImageView imageView = (ImageView) convertView;
             if (convertView == null) {
                 imageView = new ImageView(getApplicationContext());

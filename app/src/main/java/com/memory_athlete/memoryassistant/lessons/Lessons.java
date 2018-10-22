@@ -28,6 +28,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -43,11 +44,12 @@ public class Lessons extends AppCompatActivity {
         Intent intent = getIntent();
         theme(intent);
 
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder("");   // Empty string used to distinguish from null
+                                                    // that might be returned after file is read
         int fileInt = intent.getIntExtra("file", 0);
-        if (fileInt != 0 && intent.getBooleanExtra("resource", true)) {
+        if (fileInt != 0 && intent.getBooleanExtra("resource", true)) { // Raw
 
-            if (intent.getBooleanExtra("list", false)) {
+            if (intent.getBooleanExtra("list", false)) {                // list
                 ListView listView = findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readResourceList(fileInt);
                 Timber.v("list length = " + list.size());
@@ -59,10 +61,10 @@ public class Lessons extends AppCompatActivity {
                 return;
             }
 
-            sb = readResource(fileInt);//For raw files
-        } else {
+            sb = readResource(fileInt);                                                 // non-list
+        } else {                                                                        // Asset
 
-            if (intent.getBooleanExtra("list", false)) {
+            if (intent.getBooleanExtra("list", false)) {             // list
                 ListView listView = findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readAssetList(intent);
                 //Timber.v("list length = " + list.size());
@@ -74,15 +76,12 @@ public class Lessons extends AppCompatActivity {
                 return;
             }
 
-            sb = readAsset(sb, intent);
-        }
-        if (sb == null) {
-            Timber.e("String Builder sb is empty");
-            finish();
-            return;
+            sb = readAsset(sb, intent);                                                 // non-list
         }
 
-        if (intent.getBooleanExtra("webView", false)) {     //For JQMath
+        Objects.requireNonNull(sb );                // null if error in reading file
+
+        if (intent.getBooleanExtra("webView", false)) {             // JQMath
             setWebView(sb);
         } else {
             Timber.v("list is false");
@@ -110,6 +109,7 @@ public class Lessons extends AppCompatActivity {
 
     protected void theme(Intent intent) {
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
+        assert theme != null;
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);

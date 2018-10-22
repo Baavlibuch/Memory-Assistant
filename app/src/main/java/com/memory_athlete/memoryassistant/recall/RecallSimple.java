@@ -24,6 +24,7 @@ import com.memory_athlete.memoryassistant.Helper;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import timber.log.Timber;
@@ -60,9 +61,12 @@ public class RecallSimple extends AppCompatActivity {
     protected GridView gridView;
     protected ListView complexListView;
 
+    protected SharedPreferences sharedPreferences;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferences = Objects.requireNonNull(PreferenceManager.getDefaultSharedPreferences(this));
         Helper.theme(this, this);
         setContentView(R.layout.activity_recall);
         Intent intent = getIntent();
@@ -186,7 +190,6 @@ public class RecallSimple extends AppCompatActivity {
 
     protected String giveUp() {
         Timber.v("Give Up! pressed");
-        Scanner scanner = null;
         String whitespace;
         switch (responseFormat) {
             case SIMPLE_RESPONSE_FORMAT:
@@ -197,17 +200,11 @@ public class RecallSimple extends AppCompatActivity {
                 whitespace = " \n";
         }
 
-        try {
-            StringBuilder sb = new StringBuilder("");
-            scanner = new Scanner(new File(mFilePath)).useDelimiter("\t|\t   \t|\n|\n\n");
-            Timber.v("scanner created");
-
+        StringBuilder sb = new StringBuilder();
+        try (Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\t|\t {3}\t|\n|\n\n")) {
             return formatAnswers(scanner, sb, whitespace);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (scanner != null)
-                scanner.close();
         }
 
         Timber.v("giveUp() complete, returns null");
@@ -227,7 +224,7 @@ public class RecallSimple extends AppCompatActivity {
         if (responseFormat == CHARACTER_RESPONSE_FORMAT) {
             for (int i = 0; i < values.length(); i++) {
                 if (values.charAt(i) == ' ' || values.charAt(i) == '\n'
-                        || values.charAt(i) == R.string.tab) continue;
+                        || values.charAt(i) == getString(R.string.tab).charAt(0)) continue;
                 responses.add(String.valueOf(values.charAt(i)));
                 Timber.v("response = " + String.valueOf(values.charAt(i)));
             }
@@ -274,14 +271,13 @@ public class RecallSimple extends AppCompatActivity {
 
     protected void compare(boolean words) {
         Timber.v("Comparing answers and responses in backgroundString");
-        if (mDiscipline.equals(getString(R.string.letters)) && Integer.parseInt(PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext())
-                .getString(getString(R.string.letter_case), "1")) == 2) {
+        if (mDiscipline.equals(getString(R.string.letters)) && Integer.parseInt(Objects.requireNonNull(
+                sharedPreferences.getString(getString(R.string.letter_case), "1"))) == 2) {
             compareMixed();
             return;
         }
-        mTextResponse = new StringBuilder("");
-        mTextAnswer = new StringBuilder("");
+        mTextResponse = new StringBuilder();
+        mTextAnswer = new StringBuilder();
         whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab) : "<br/>";
         Timber.v("whitespace = " + whitespace + ".");
         int i = 0, j = 0;
@@ -432,8 +428,8 @@ public class RecallSimple extends AppCompatActivity {
 
     protected void compareMixed() {
         Timber.v("Comparing answers and responses in compareMixed");
-        mTextResponse = new StringBuilder("");
-        mTextAnswer = new StringBuilder("");
+        mTextResponse = new StringBuilder();
+        mTextAnswer = new StringBuilder();
         whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab) : "<br/>";
         Timber.v("whitespace = " + whitespace + ".");
         int i = 0, j = 0;
@@ -549,8 +545,8 @@ public class RecallSimple extends AppCompatActivity {
     protected void reset() {
         answers.clear();
         responses.clear();
-        mTextAnswer = new StringBuilder("");
-        mTextResponse = new StringBuilder("");
+        mTextAnswer = new StringBuilder();
+        mTextResponse = new StringBuilder();
         correct = 0;
         wrong = 0;
         missed = 0;
@@ -596,8 +592,7 @@ public class RecallSimple extends AppCompatActivity {
         (new JustAnswersAsyncTask()).execute();
     }
 
-    public void startTimer(View view) {
-    } //TODO: USe this!
+    // TODO: Start a timer
 
     protected void postExecuteCompare() {
         ((TextView) findViewById(R.id.responses_text)).setText(Html.fromHtml(mTextResponse.toString()),
