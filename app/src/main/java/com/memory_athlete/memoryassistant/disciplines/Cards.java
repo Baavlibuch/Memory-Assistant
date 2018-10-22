@@ -42,9 +42,6 @@ public class Cards extends DisciplineFragment {
 
     @Override
     public void onClick(View v) {
-        Timber.v("clicked viewId " + v.getId());
-        Timber.v("R.id.cards_and_speech = " + R.id.cards_and_speech);
-        Timber.v("R.id.activity_cards = " + R.id.activity_cards);
         switch (v.getId()) {
             case R.id.cards_and_speech:
                 next();
@@ -100,7 +97,6 @@ public class Cards extends DisciplineFragment {
     }
 
     void setCard() {
-        Timber.v("setting card");
         cardAndSpeechImageView.setImageResource(cards[randomList.get(mPosition)]);
     }
 
@@ -115,7 +111,6 @@ public class Cards extends DisciplineFragment {
     //Show the next card
     public void next() {
         if (mPosition < a.get(NO_OF_VALUES) * 52 - 1) {
-            Timber.v("next card");
             mPosition++;
             setCard();
         } else Toast.makeText(activity, "This is the last card!", Toast.LENGTH_LONG).show();
@@ -123,43 +118,33 @@ public class Cards extends DisciplineFragment {
 
     @Override
     protected String backgroundString() {
-        try {
-            ArrayList<Integer> cards = new ArrayList<>();
-            int n;
-            //Random rand = new Random();
+        ArrayList<Integer> cards = new ArrayList<>();
+        int n;
+        //Random rand = new Random();
 
-            ArrayList<Integer> indexList = new ArrayList<>();
-            boolean shuffleDecks = PreferenceManager.getDefaultSharedPreferences(activity)
-                    .getBoolean(getString(R.string.shuffle_decks), false);
-            if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
-                for (int j = 0; j < 52; j++)
-                    indexList.add(j);
+        ArrayList<Integer> indexList = new ArrayList<>();
+        boolean shuffleDecks = sharedPreferences.getBoolean(getString(R.string.shuffle_decks), false);
+        if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
+            for (int j = 0; j < 52; j++)
+                indexList.add(j);
 
-            try {
-                for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
-                    if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++)
-                        indexList.add(j);
 
-                    n = (new Random()).nextInt(indexList.size());
-                    cards.add(indexList.get(n));
-                    indexList.remove(n);
-                    if (a.get(RUNNING) == FALSE) break;
-                }
-            } catch (IllegalStateException e) {
-                throw new RuntimeException("IllegalStateException from ViewPager.populate() "
-                        + "caused in Cards.backgroundString while generating random", e);
+        for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
+            if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++) {
+                indexList.add(j);
             }
 
-            StringBuilder stringBuilder = new StringBuilder();
-
-            for (Integer i : cards)
-                stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
-            return stringBuilder.toString();
-
-        } catch (IllegalStateException e) {
-            throw new RuntimeException("IllegalStateException from ViewPager.populate() "
-                    + "caused in Cards.backgroundString", e);
+            n = (new Random()).nextInt(indexList.size());
+            cards.add(indexList.get(n));
+            indexList.remove(n);
+            if (a.get(RUNNING) == FALSE) break;
         }
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Integer i : cards)
+            stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
+        return stringBuilder.toString();
     }
 
     @Override
