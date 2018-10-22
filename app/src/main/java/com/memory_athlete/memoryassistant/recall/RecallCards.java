@@ -72,8 +72,8 @@ public class RecallCards extends RecallSimple {
                 getString(R.string.recall_grid_columns), "6"))));
         cardImageIds = Helper.makeCards();
         Timber.v("cardResponseLayout() started");
-        compareFormat = CARD_COMPARE_FORMAT;
-        responseFormat = CARD_RESPONSE_FORMAT;
+        compareFormat = CompareFormat.CARD_COMPARE_FORMAT;
+        responseFormat = ResponseFormat.CARD_RESPONSE_FORMAT;
 
         LinearLayout suitLayout = findViewById(R.id.card_suit);
         if (suitLayout.getChildCount() != 0) return;

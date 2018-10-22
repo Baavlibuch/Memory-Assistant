@@ -43,14 +43,12 @@ public class RecallSimple extends AppCompatActivity {
 
     //int mResponsePosition = 0;
     //static byte submitDoubt = 0;
-    protected final int SIMPLE_COMPARE_FORMAT = 0, WORD_COMPARE_FORMAT = 1, CARD_COMPARE_FORMAT = 2;
-    protected final int SIMPLE_RESPONSE_FORMAT = 0, WORD_RESPONSE_FORMAT = 1,
-            CARD_RESPONSE_FORMAT = 2, CHARACTER_RESPONSE_FORMAT = 3, DATE_RESPONSE_FORMAT = 4;
-    protected int responseFormat = SIMPLE_RESPONSE_FORMAT;
-    protected byte compareFormat = SIMPLE_COMPARE_FORMAT;
+
+    protected ResponseFormat responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;
+    protected CompareFormat compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
     protected int mSuitBackground;
 
-    protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling;
+    protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling = 0;
     protected StringBuilder mTextAnswer = null, mTextResponse = null;
     protected String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
@@ -101,39 +99,29 @@ public class RecallSimple extends AppCompatActivity {
     void simpleResponseLayout() {
         final EditText editText = findViewById(R.id.response_input);
 
-/*        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                Log.v(LOG_TAG, "onEditorAction started");
-                getResponse();
-                return true;
-            }
-        });*/
-
-
         switch (mDiscipline) {
             case "Numbers":
-                responseFormat = SIMPLE_RESPONSE_FORMAT;
-                compareFormat = SIMPLE_COMPARE_FORMAT;
+                responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;
+                compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Binary Digits":
             case "Digits":
-                responseFormat = CHARACTER_RESPONSE_FORMAT;
-                compareFormat = SIMPLE_COMPARE_FORMAT;
+                responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;
+                compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Letters":
-                responseFormat = CHARACTER_RESPONSE_FORMAT;
-                compareFormat = SIMPLE_COMPARE_FORMAT;
+                responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;
+                compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
                 break;
             case "Words":
             case "Names":
             case "Places":
-                responseFormat = WORD_RESPONSE_FORMAT;
-                compareFormat = WORD_COMPARE_FORMAT;
+                responseFormat = ResponseFormat.WORD_RESPONSE_FORMAT;
+                compareFormat = CompareFormat.WORD_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_NONE);
                 break;
@@ -221,7 +209,7 @@ public class RecallSimple extends AppCompatActivity {
         EditText editText = findViewById(R.id.response_input);
         String values = editText.getText().toString(), value = "";
 
-        if (responseFormat == CHARACTER_RESPONSE_FORMAT) {
+        if (responseFormat == ResponseFormat.CHARACTER_RESPONSE_FORMAT) {
             for (int i = 0; i < values.length(); i++) {
                 if (values.charAt(i) == ' ' || values.charAt(i) == '\n'
                         || values.charAt(i) == getString(R.string.tab).charAt(0)) continue;
@@ -230,7 +218,7 @@ public class RecallSimple extends AppCompatActivity {
             }
         } else {
             //while (responses.size() <= mResponsePosition) responses.add(" ");
-            char delimiter = (responseFormat == SIMPLE_RESPONSE_FORMAT ? ' ' : '\n');
+            char delimiter = (responseFormat == ResponseFormat.SIMPLE_RESPONSE_FORMAT ? ' ' : '\n');
             for (int i = 0; i < values.length(); i++) {
                 if (!(values.charAt(i) == delimiter)) {
                     value += values.charAt(i);
@@ -278,7 +266,7 @@ public class RecallSimple extends AppCompatActivity {
         }
         mTextResponse = new StringBuilder();
         mTextAnswer = new StringBuilder();
-        whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab) : "<br/>";
+        whitespace = compareFormat == CompareFormat.SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab) : "<br/>";
         Timber.v("whitespace = " + whitespace + ".");
         int i = 0, j = 0;
         for (; i < responses.size() && j < answers.size(); i++, j++) {
@@ -430,7 +418,7 @@ public class RecallSimple extends AppCompatActivity {
         Timber.v("Comparing answers and responses in compareMixed");
         mTextResponse = new StringBuilder();
         mTextAnswer = new StringBuilder();
-        whitespace = compareFormat == SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab) : "<br/>";
+        whitespace = compareFormat == CompareFormat.SIMPLE_COMPARE_FORMAT ? " " + getString(R.string.tab) : "<br/>";
         Timber.v("whitespace = " + whitespace + ".");
         int i = 0, j = 0;
         for (; i < responses.size() && j < answers.size(); i++, j++) {
@@ -611,7 +599,6 @@ public class RecallSimple extends AppCompatActivity {
             getResponse();
             findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
             hideResponseLayout();
-            //Log.v(LOG_TAG, "answers.size() = " + String.valueOf(answers.size()));
             Timber.v("responses.size() = " + String.valueOf(responses.size()));
         }
 
@@ -620,9 +607,10 @@ public class RecallSimple extends AppCompatActivity {
         protected final Boolean doInBackground(ArrayList<Integer>... a) {
             try {
                 getAnswers();
-                if (compareFormat == SIMPLE_COMPARE_FORMAT || compareFormat == CARD_COMPARE_FORMAT)
+                if (compareFormat == CompareFormat.SIMPLE_COMPARE_FORMAT
+                        || compareFormat == CompareFormat.CARD_COMPARE_FORMAT)
                     compare(false);
-                else if (compareFormat == WORD_COMPARE_FORMAT) compare(true);
+                else if (compareFormat == CompareFormat.WORD_COMPARE_FORMAT) compare(true);
                 return false;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -696,10 +684,18 @@ public class RecallSimple extends AppCompatActivity {
             textAnswers.setVisibility(View.VISIBLE);
         }
     }
+
+    protected enum ResponseFormat {
+        SIMPLE_RESPONSE_FORMAT, WORD_RESPONSE_FORMAT, CARD_RESPONSE_FORMAT,
+        CHARACTER_RESPONSE_FORMAT, DATE_RESPONSE_FORMAT
+    }
+
+    protected enum CompareFormat {
+        SIMPLE_COMPARE_FORMAT, WORD_COMPARE_FORMAT, CARD_COMPARE_FORMAT
+    }
 }
 
 //orange:FFA500
 // textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
 // TODO: shift to fragments
 // TODO remove reset
-// TODO fix button bar

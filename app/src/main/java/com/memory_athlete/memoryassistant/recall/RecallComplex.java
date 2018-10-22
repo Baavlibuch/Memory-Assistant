@@ -35,7 +35,7 @@ public class RecallComplex extends RecallSimple {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         (new LoadAnswersAsyncTask()).execute();
-        responseFormat = DATE_RESPONSE_FORMAT;
+        responseFormat = ResponseFormat.DATE_RESPONSE_FORMAT;
         recallList = new ArrayList<>();
     }
 
