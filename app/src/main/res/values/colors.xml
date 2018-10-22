@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Light Theme-->
     <color name="lightColorPrimary">#673AB7</color>
     <color name="lightColorPrimaryDark">#512DA8</color>
     <color name="lightColorAccent">#26C6DA</color>
 
+    <!--Dark Theme-->
     <color name="darkColorPrimary">#512DA8</color>
     <color name="darkColorPrimaryDark">#4527A0</color>
     <color name="darkColorAccent">#00ACC1</color>
 
+    <!--Pitch Theme-->
     <color name="pitchColorPrimary">#200A81</color>
     <color name="pitchColorPrimaryDark">#0F055F</color>
     <color name="pitchColorAccent">#1976D2</color>

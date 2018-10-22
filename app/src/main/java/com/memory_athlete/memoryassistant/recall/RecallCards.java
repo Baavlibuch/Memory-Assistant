@@ -1,8 +1,9 @@
 package com.memory_athlete.memoryassistant.recall;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.TypedValue;
 import android.view.View;
@@ -28,6 +29,7 @@ import static java.lang.Integer.parseInt;
 
 public class RecallCards extends RecallSimple {
     CardAdapter mAdapter;
+    int cardSelectorTextColour = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,7 @@ public class RecallCards extends RecallSimple {
     }
 
     private void theme() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(getString(R.string.theme), "AppTheme");
+        String theme = sharedPreferences.getString(getString(R.string.theme), "AppTheme");
         assert theme != null;
         switch (theme) {
             case "Dark":
@@ -53,6 +54,7 @@ public class RecallCards extends RecallSimple {
                 break;
             default:
                 mSuitBackground = R.color.color_suit_background_light;
+                cardSelectorTextColour = Color.argb(155,0,0,0);
                 //gridView = findViewById(R.id.cards_responses);
         }
     }
@@ -92,13 +94,14 @@ public class RecallCards extends RecallSimple {
             imageView.setId(i);
 
             imageView.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("ResourceType")
                 @Override
                 public void onClick(View view) {
                     for (int j = 0; j < 4; j++)
                         findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
 
                     view.setBackgroundColor(getResources().getColor(mSuitBackground));
-                    selectedSuit = (int) view.getId() * 13;   // cast to get rid of useless warning
+                    selectedSuit = view.getId() * 13;
                     Timber.v("selectedSuit = " + selectedSuit);
                 }
             });
@@ -123,6 +126,7 @@ public class RecallCards extends RecallSimple {
             int dpAsPixels = (int) (8 * scale + 0.5f);
             textView.setPadding(dpAsPixels, 0, dpAsPixels, 0);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36);
+            if(cardSelectorTextColour!=-1) textView.setTextColor(cardSelectorTextColour);
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

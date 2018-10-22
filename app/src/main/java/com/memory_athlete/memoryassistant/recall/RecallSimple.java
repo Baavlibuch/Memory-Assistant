@@ -36,28 +36,25 @@ import static java.lang.Math.pow;
 
 public class RecallSimple extends AppCompatActivity {
 
-    protected ArrayList<String> answers = new ArrayList<>();
     protected ArrayList<String> responses = new ArrayList<>();
+    protected ArrayList<String> answers = new ArrayList<>();
     protected int selectedSuit = 0;
     protected int[] cardImageIds;
 
-    //int mResponsePosition = 0;
-    //static byte submitDoubt = 0;
-
-    protected ResponseFormat responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;
-    protected CompareFormat compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
     protected int mSuitBackground;
+    protected CompareFormat compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
+    protected ResponseFormat responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;
 
     protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling = 0;
     protected StringBuilder mTextAnswer = null, mTextResponse = null;
     protected String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
 
-    protected String mDiscipline = null;
     protected String mFilePath;
+    protected String mDiscipline = null;
 
-    protected GridView gridView;
     protected ListView complexListView;
+    protected GridView gridView;
 
     protected SharedPreferences sharedPreferences;
 
