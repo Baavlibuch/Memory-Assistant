@@ -38,6 +38,7 @@ public class RecallCards extends RecallSimple {
     private void theme() {
         String theme = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.theme), "AppTheme");
+        assert theme != null;
         switch (theme) {
             case "Dark":
                 mSuitBackground = R.color.color_suit_background_dark;

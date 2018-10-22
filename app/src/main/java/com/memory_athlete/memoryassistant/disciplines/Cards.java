@@ -41,23 +41,27 @@ public class Cards extends DisciplineFragment {
     GridView gridView;
 
     @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.cards_and_speech:
+                next();
+                break;
+            case R.id.prev:
+                previous();
+                break;
+            default:
+                super.onClick(v);
+                break;
+        }
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         gridView = rootView.findViewById(R.id.cards_practice_grid);
         cardAndSpeechImageView = rootView.findViewById(R.id.cards_and_speech);
-        ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.decks));
-        cardAndSpeechImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                next();
-            }
-        });
-        rootView.findViewById(R.id.prev).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                previous();
-            }
-        });
+        ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(
+                getString(R.string.enter) + " " + getString(R.string.decks));
 
         String theme = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getString(getString(R.string.theme), getString(R.string.light));
