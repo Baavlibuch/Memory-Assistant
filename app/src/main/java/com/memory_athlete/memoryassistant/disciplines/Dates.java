@@ -28,9 +28,9 @@ import java.util.Scanner;
 
 import timber.log.Timber;
 
-public class Dates extends WordDisciplineFragment {
-    private ArrayList<String> events = new ArrayList<>();
+public class Dates extends ComplexDisciplineFragment {
     private int startYear, endYear;
+    protected ArrayList<String> events = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -216,10 +216,5 @@ public class Dates extends WordDisciplineFragment {
                 Timber.e("File not closed");
             }
         }
-    }
-
-    @Override
-    protected RandomAdapter startRandomAdapter(ArrayList list) {
-        return new RandomAdapter(activity, list, 18);
     }
 }

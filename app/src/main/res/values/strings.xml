@@ -85,6 +85,7 @@
     <string name="choose_level">Choose level</string>
     <string name="start_year">Select start year</string>
     <string name="end_year">Select end year</string>
+    <string name="images">images</string>
 
     <!--MySpace-->
     <string name="majors">Major Systems</string>

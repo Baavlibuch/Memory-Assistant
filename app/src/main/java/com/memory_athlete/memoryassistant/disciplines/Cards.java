@@ -122,8 +122,7 @@ public class Cards extends DisciplineFragment {
         //Random rand = new Random();
 
         ArrayList<Integer> indexList = new ArrayList<>();
-        boolean shuffleDecks = PreferenceManager.getDefaultSharedPreferences(activity)
-                .getBoolean(getString(R.string.shuffle_decks), false);
+        boolean shuffleDecks = sharedPreferences.getBoolean(getString(R.string.shuffle_decks), false);
         if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
             for (int j = 0; j < 52; j++)
                 indexList.add(j);
