@@ -21,7 +21,7 @@ android {
         applicationId "com.memory_athelte.memoryassistant"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 62
+        versionCode 63
         versionName "1.5.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -41,9 +41,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.3-alpha', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.3-alpha',
+            { exclude group: 'com.android.support', module: 'support-annotations' })
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'

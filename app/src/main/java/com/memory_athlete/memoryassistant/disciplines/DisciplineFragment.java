@@ -355,6 +355,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
         Timber.v("stringToSave = " + stringToSave);
 
+        if(stringToSave == null) {
+            Helper.fixBug(activity);
+            throw new RuntimeException("stringToSave is null\n" +
+                    "rootView.findViewById(R.id.practice_list_view).getVisibility() = " +
+                    rootView.findViewById(R.id.practice_list_view).getVisibility() +
+                    "\nspeechCheckBox.isChecked() = " + speechCheckBox.isChecked());
+        }
         if (stringToSave.equals("")) return false;
 
         //Directory of practice
@@ -718,6 +725,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         private int textSize = 24;
 
         RandomAdapter(Activity context, ArrayList cards) {
+            //noinspection unchecked
             super(context, 0, cards);
         }
 

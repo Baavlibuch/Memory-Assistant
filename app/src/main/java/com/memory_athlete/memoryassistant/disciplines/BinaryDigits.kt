@@ -29,8 +29,6 @@ class BinaryDigits : DisciplineFragment() {
             for (j in 0 until a[GROUP_SIZE]) {
                 n = rand.nextInt(2)
                 stringBuilder.append(n)
-                //textString += n
-                //stringBuilder.append(" ")
             }
             stringBuilder.append(getString(tab)).append("   ") //tab is the delimiter used in recall
             if (a[RUNNING] == FALSE) break

@@ -123,7 +123,7 @@ public class RecallCards extends RecallSimple {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             float scale = getResources().getDisplayMetrics().density;
-            int dpAsPixels = (int) (8 * scale + 0.5f);
+            int dpAsPixels = (int) (10 * scale + 0.5f);
             textView.setPadding(dpAsPixels, 0, dpAsPixels, 0);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36);
             if(cardSelectorTextColour!=-1) textView.setTextColor(cardSelectorTextColour);
