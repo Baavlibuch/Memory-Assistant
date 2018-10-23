@@ -18,8 +18,9 @@ import com.memory_athlete.memoryassistant.services.ReminderJobService;
 
 import java.util.Calendar;
 
-import hugo.weaving.DebugLog;
 import timber.log.Timber;
+
+//import hugo.weaving.DebugLog;
 
 /**
  * Created by Manik on 26/08/17.
@@ -37,7 +38,7 @@ public class ReminderUtils {
     //private static final int SYNC_FLEXTIME_SECONDS = 5 * 60;
     private static final String REMINDER_JOB_TAG = "practice_time_";
 
-    @DebugLog
+    //@DebugLog
     synchronized public static void scheduleReminder(@NonNull final Context context) {
         int diff = next(context) * 60, diff1;
         if (diff < 0) diff += DAY;

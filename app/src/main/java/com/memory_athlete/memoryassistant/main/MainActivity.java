@@ -37,12 +37,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.widget.Toast.makeText;
+
+//import hugo.weaving.DebugLog;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    @DebugLog
+    //@DebugLog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
@@ -71,14 +72,14 @@ public class MainActivity extends AppCompatActivity {
         setAdapter();
     }
 
-    @DebugLog
+    //@DebugLog
     @Override
     protected void onResume() {
         super.onResume();
         //Handler handler = new Handler();
         new Runnable() {
             @Override
-            @DebugLog
+            //@DebugLog
             public void run() {
                 firstStart();                           //TODO
                 SharedPreferences.Editor e = sharedPreferences.edit();
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }.run();
     }
 
-    @DebugLog
+    //@DebugLog
     @SuppressWarnings("ResultOfMethodCallIgnored")
     void firstStart() {
         if (mayAccessStorage()) Helper.makeDirectory(Helper.APP_FOLDER);
@@ -193,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @DebugLog
+    //@DebugLog
     public void setAdapter() {
         final List<Item> list = setList();
 

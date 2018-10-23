@@ -15,14 +15,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import hugo.weaving.DebugLog;
+//import hugo.weaving.DebugLog;
 
 public class Practice extends AppCompatActivity {
 
@@ -38,7 +38,7 @@ public class Practice extends AppCompatActivity {
         ListView disciplineList = findViewById(R.id.disciplines);
         disciplineList.setAdapter(discipline);
         disciplineList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @DebugLog
+            //@DebugLog
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Category cat = disc.get(position);
                 Intent intent = new Intent(Practice.this, DisciplineActivity.class);
