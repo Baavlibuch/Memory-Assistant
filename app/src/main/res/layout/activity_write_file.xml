@@ -15,7 +15,10 @@
         android:layout_marginTop="16dp"
         android:imeOptions="actionNext"
         android:inputType="text"
-        android:hint="@string/f_name" />
+        android:textSize="20sp"
+        android:hint="@string/f_name"
+        android:importantForAutofill="no"
+        tools:targetApi="o" />
 
     <ScrollView
         android:id="@+id/my_space_scroll_view"
@@ -32,7 +35,10 @@
             android:layout_marginRight="16dp"
             android:hint="@string/here"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+            tools:layout_editor_absoluteY="8dp"
+            android:importantForAutofill="no"
+            tools:targetApi="o"
+            android:inputType="text" />
 
     </ScrollView>
 
@@ -41,7 +47,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_margin="16dp"
         android:visibility="gone"
