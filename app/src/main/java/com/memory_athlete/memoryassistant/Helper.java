@@ -190,8 +190,8 @@ public class Helper {
     public static boolean makeDirectory(String path) {
         File pDir = new File(path);
         boolean isDirectoryCreated = pDir.exists();
-        if (!isDirectoryCreated) isDirectoryCreated = pDir.mkdir();
-        if (isDirectoryCreated) return true;                //Write the file
+        if (!isDirectoryCreated) isDirectoryCreated = pDir.mkdirs();
+        if (isDirectoryCreated) return true;
         else throw new RuntimeException("Couldn't create the directory. Path = " + path);
     }
 
