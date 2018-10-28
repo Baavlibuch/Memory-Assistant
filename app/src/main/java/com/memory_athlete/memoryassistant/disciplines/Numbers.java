@@ -30,13 +30,13 @@ import java.util.Random;
 
 import timber.log.Timber;
 
-
 public class Numbers extends DisciplineFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        speechSpeedMultiplier = 1.5f;
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.st));
         negativeOrDateCheckBox.setVisibility(View.VISIBLE);
         rootView.findViewById(R.id.decimal).setVisibility(View.VISIBLE);

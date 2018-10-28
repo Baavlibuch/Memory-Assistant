@@ -24,6 +24,7 @@ public class Words extends WordDisciplineFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        speechSpeedMultiplier = 3.5f;
         ((EditText) rootView.findViewById(R.id.no_of_values)).setHint(getString(R.string.enter) + " " + getString(R.string.words_small));
         return rootView;
     }

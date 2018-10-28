@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.memory_athlete.memoryassistant.R;
 
+import java.util.Objects;
 import java.util.Random;
 
 import timber.log.Timber;
@@ -30,8 +31,8 @@ public class Letters extends DisciplineFragment {
     protected String backgroundString() {
         StringBuilder stringBuilder = new StringBuilder("");
         Random rand = new Random(), letterCaseRand = new Random();
-        int letterCase = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(activity)
-                .getString(getString(R.string.letter_case), "0"));
+        int letterCase = Integer.parseInt(Objects.requireNonNull(
+                sharedPreferences.getString(getString(R.string.letter_case), "0")));
         int letterA = letterCase == 0 ? 97 : 65;
         int mixed = letterCase == 2 ? 1 : 0;
 

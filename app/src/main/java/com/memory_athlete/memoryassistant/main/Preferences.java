@@ -11,6 +11,8 @@ import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
+import java.util.Objects;
+
 import timber.log.Timber;
 
 public class Preferences extends AppCompatActivity {
@@ -51,7 +53,10 @@ public class Preferences extends AppCompatActivity {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
-            if (preference instanceof TimePreference) {
+            if(Objects.equals(preference.getKey(), getString(R.string.speech_rate))) Toast.makeText(getActivity(),
+                    R.string.speech_rate_changed_message, Toast.LENGTH_SHORT).show();
+
+            else if (preference instanceof TimePreference) {
                 int min = Integer.parseInt(stringValue.substring(stringValue.indexOf(":") + 1));
                 int hour = Integer.parseInt(stringValue.substring(0, stringValue.indexOf(":")));
                 String meridian = (hour < 12) ? " am" : " pm";
@@ -69,8 +74,8 @@ public class Preferences extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-        if (!PreferenceManager.getDefaultSharedPreferences(this)
-                .getString(getString(R.string.theme), "AppTheme").equals(mTheme))
+        if (!Objects.equals(PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), "AppTheme"), mTheme))
             Toast.makeText(this, "Please restart the app", Toast.LENGTH_SHORT).show();
     }
 }

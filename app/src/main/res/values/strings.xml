@@ -129,6 +129,7 @@
     <string name="double_back_to_exit">Prevent accidental app exits</string>
     <string name="double_back_off">Press back just once to exit from the main screen</string>
     <string name="bottom_tabs">Tabs on bottom</string>
+    <string name="speech_rate_changed_message">Letters - 2x\nNumbers - 1x\nBinary digits - 1x\nWords - 1x\nNames - .5x\nPlaces - .5x</string>
 
     <!--Learn-->
     <string name="method_of_loci">Method Of Loci</string>

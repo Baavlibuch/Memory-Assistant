@@ -57,6 +57,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     protected long mTime = 0;
     protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true, hasSpeech = true;
     public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
+    protected float speechSpeedMultiplier = 1;
 
     protected String stringToSave;
     public ArrayList<Integer> a = new ArrayList<>();        //Instructs the backgroundString thread
@@ -581,8 +582,9 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 Timber.v("tts status = " + status);
                 if (status != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.getDefault());
-                    textToSpeech.setSpeechRate(Float.parseFloat(Objects.requireNonNull(sharedPreferences.getString(
-                            activity.getString(R.string.speech_rate), "0.25"))));
+                    textToSpeech.setSpeechRate(Float.parseFloat(Objects.requireNonNull(
+                            sharedPreferences.getString(activity.getString(R.string.speech_rate), "0.25")))
+                            *  speechSpeedMultiplier);
                     Timber.v("TTS.speak will be called");
                     textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                     Timber.v("TTS.speak has been called");
@@ -598,7 +600,6 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             }
 
         });
-
     }
 
     protected void tts(ArrayList list) {

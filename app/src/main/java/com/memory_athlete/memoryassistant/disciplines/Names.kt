@@ -24,6 +24,7 @@ class Names : WordDisciplineFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        speechSpeedMultiplier = 1.5f
         (rootView.findViewById<View>(R.id.no_of_values) as EditText).hint =
                 getString(R.string.enter) + " " + getString(R.string.nm)
         return rootView

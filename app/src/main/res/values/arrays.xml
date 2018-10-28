@@ -34,28 +34,15 @@
     </string-array>
 
     <string-array name="speech_rate_values">
-        <item>0.75</item>
         <item>0.5</item>
         <item>0.25</item>
         <item>0.125</item>
-        <item>0.0626</item>
     </string-array>
 
-    <!--
-    letters     13s
-    binary      30s
-    numbers     37s
-    words       45s
-    places      65s
-    names       66s
-    -->
-
     <string-array name="speech_rate">
-        <item>Very fast</item>
-        <item>Fast</item>
-        <item>Normal</item>
-        <item>Slow</item>
-        <item>Very slow</item>
+        <item>Fast (2/s)</item>
+        <item>Normal (1/s)</item>
+        <item>Slow (1.5s/value)</item>
     </string-array>
 
     <string-array name="zero_to_nine">
