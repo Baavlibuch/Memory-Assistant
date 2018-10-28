@@ -174,7 +174,7 @@ public class MySpaceFragment extends Fragment {
                     File file = new File(fileName);
                     boolean isDirectoryCreated = file.exists();
                     if (!isDirectoryCreated) {
-                        isDirectoryCreated = file.mkdir();
+                        isDirectoryCreated = file.mkdirs();
                     }
                     if (isDirectoryCreated) {
                         name = true;

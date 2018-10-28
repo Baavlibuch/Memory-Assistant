@@ -194,7 +194,7 @@ public class RecallSelector extends AppCompatActivity {
 
             File file = new File(filePath);
             boolean isDirectoryCreated = file.exists();
-            if (!isDirectoryCreated) isDirectoryCreated = file.mkdir();
+            if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
             if (isDirectoryCreated) startActivity(intent);
             else Toast.makeText(getApplicationContext(), "Try again",
                     Toast.LENGTH_SHORT).show();

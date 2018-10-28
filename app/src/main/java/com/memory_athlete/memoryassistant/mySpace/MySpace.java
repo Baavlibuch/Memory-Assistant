@@ -151,7 +151,7 @@ public class MySpace extends AppCompatActivity {
                     File file = new File(fileName);
                     boolean isDirectoryCreated = file.exists();
                     if (!isDirectoryCreated) {
-                        isDirectoryCreated = file.mkdir();
+                        isDirectoryCreated = file.mkdirs();
                     }
                     if (isDirectoryCreated) {
                         startActivity(intent);
