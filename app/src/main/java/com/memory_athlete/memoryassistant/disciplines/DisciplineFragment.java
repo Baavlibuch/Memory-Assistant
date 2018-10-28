@@ -343,7 +343,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //Saves the list
     protected boolean save() {
-        //practice_list_view is visible if arrays are used, gone if a single string is used
+        //practice_list_view is visible (0) if arrays are used, gone (8) if a single string is used
         if (rootView.findViewById(R.id.practice_list_view).getVisibility() == View.VISIBLE) {
             ListView l = rootView.findViewById(R.id.practice_list_view);
             StringBuilder s = new StringBuilder();
@@ -355,14 +355,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
         Timber.v("stringToSave = " + stringToSave);
 
-        if(stringToSave == null) {
-            Helper.fixBug(activity);
-            throw new RuntimeException("stringToSave is null\n" +
-                    "rootView.findViewById(R.id.practice_list_view).getVisibility() = " +
-                    rootView.findViewById(R.id.practice_list_view).getVisibility() +
-                    "\nspeechCheckBox.isChecked() = " + speechCheckBox.isChecked());
-        }
-        if (stringToSave.equals("")) return false;
+        if (stringToSave == null || stringToSave.equals("")) return false;
 
         //Directory of practice
         String path = activity.getFilesDir().getAbsolutePath() + File.separator
