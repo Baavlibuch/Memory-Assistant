@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/practice"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.memory_athlete.memoryassistant.main.Practice">
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/cd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/choose_discipline"
-        android:id="@+id/cd"
-        android:textSize="32sp"
         android:gravity="center"
         android:paddingTop="16dp"
         android:paddingBottom="8dp"
-        android:textAppearance="?android:textAppearanceLarge" />
+        android:text="@string/choose_discipline"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textSize="32sp" />
 
     <ListView
+        android:id="@+id/main_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:divider="@color/color_transparent"
-        android:dividerHeight="0dp"
-        android:id="@+id/disciplines" />
+        android:dividerHeight="0dp" />
 
 </LinearLayout>

@@ -30,12 +30,12 @@ public class Practice extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Helper.theme(this, Practice.this);
-        setContentView(R.layout.activity_practice);
+        setContentView(R.layout.activity_main);
         setTitle(getString(R.string.practice));
         final ArrayList<Category> disc = new ArrayList<>();
         setList(disc);
         DisciplineAdapter discipline = new DisciplineAdapter(this, disc);
-        ListView disciplineList = findViewById(R.id.disciplines);
+        ListView disciplineList = findViewById(R.id.main_list);
         disciplineList.setAdapter(discipline);
         disciplineList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             //@DebugLog

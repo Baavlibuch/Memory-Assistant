@@ -1,6 +1,5 @@
 package com.memory_athlete.memoryassistant.main;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -48,7 +47,7 @@ public class RecallSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Helper.theme(this, this);
         setContentView(R.layout.activity_my_space);
-        setTitle(R.string.choose_discipline);
+        setTitle(R.string.recall);
 
         listViewId = MIN_DYNAMIC_VIEW_ID;
         findViewById(R.id.add).setVisibility(View.GONE);
@@ -65,8 +64,7 @@ public class RecallSelector extends AppCompatActivity {
                             intent.setData(uri);
                             startActivity(intent);
                         }
-                    })
-                    .show();
+                    }).show();
         }
 
         Intent intent = getIntent();
