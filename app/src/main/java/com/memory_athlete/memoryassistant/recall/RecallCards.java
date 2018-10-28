@@ -45,12 +45,12 @@ public class RecallCards extends RecallSimple {
             case "Dark":
                 mSuitBackground = R.color.color_suit_background_dark;
                 //gridView = findViewById(R.id.cards_responses);
-                gridView.setAlpha((float) 0.8);
+                gridView.setAlpha(0.8f);
                 break;
             case "Night":
                 mSuitBackground = R.color.color_suit_background_night;
                 //gridView = findViewById(R.id.cards_responses);
-                gridView.setAlpha((float) 0.7);
+                gridView.setAlpha(0.7f);
                 break;
             default:
                 mSuitBackground = R.color.color_suit_background_light;

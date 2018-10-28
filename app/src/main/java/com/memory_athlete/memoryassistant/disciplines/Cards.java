@@ -67,12 +67,12 @@ public class Cards extends DisciplineFragment {
                 .getString(getString(R.string.theme), getString(R.string.light));
         switch (requireNonNull(theme)) {
             case "Dark":
-                cardAndSpeechImageView.setAlpha((float) 0.8);
-                gridView.setAlpha((float) 0.8);
+                cardAndSpeechImageView.setAlpha(0.8f);
+                gridView.setAlpha(0.8f);
                 break;
             case "Night":
-                cardAndSpeechImageView.setAlpha((float) 0.7);
-                gridView.setAlpha((float) 0.8);
+                cardAndSpeechImageView.setAlpha(0.7f);
+                gridView.setAlpha(0.8f);
         }
 
         mSingleCard = sharedPreferences.getBoolean(getString(R.string.single_card), false);
