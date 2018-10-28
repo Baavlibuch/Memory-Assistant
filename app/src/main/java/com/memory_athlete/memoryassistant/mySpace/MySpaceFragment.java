@@ -30,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -120,16 +121,10 @@ public class MySpaceFragment extends Fragment {
                 back();
             }
             File[] files = dir.listFiles();
-            if (files == null) {
-                return;
-            }
-            if (files.length == 0) {
-                return;
-            } else {
-                for (File file : files) {
-                    Timber.d("FileName: " + file.getName());
-                    arrayList.add(new Item(file.getName(), WriteFile.class));
-                }
+            if (files == null || files.length == 0) return;
+            for (File file : files) {
+                Timber.d("FileName: " + file.getName());
+                arrayList.add(new Item(file.getName(), WriteFile.class));
             }
         }
         Timber.v("list set");
@@ -139,11 +134,11 @@ public class MySpaceFragment extends Fragment {
         listView.setDividerHeight(0);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
-            float scale = getActivity().getResources().getDisplayMetrics().density;
-            int dpAsPixels = (int) (16 * scale + 0.5f);
-            layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
-        }
+
+        float scale = activity.getResources().getDisplayMetrics().density;
+        int dpAsPixels = (int) (16 * scale + 0.5f);
+        layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
+
         listView.setLayoutParams(layoutParams);
         //if (listViewId==1) listView.MarginLayoutParams
         listView.setId(fragListViewId);
@@ -199,9 +194,9 @@ public class MySpaceFragment extends Fragment {
 
     public void back() {
         Timber.v("back_button clicked, fragListViewId = " + fragListViewId);
-        if (getActivity().getCurrentFocus() != null) {
-            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+        if (activity.getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
         if (rootView.findViewById(R.id.f_name).getVisibility() == VISIBLE) {
             Timber.v("fileName = " + fileName);
@@ -316,6 +311,7 @@ public class MySpaceFragment extends Fragment {
             File from = new File(fileName + File.separator + oldName + ".txt");
             if (from.exists()) {
                 File to = new File(fileName + File.separator + fname + ".txt");
+                //noinspection ResultOfMethodCallIgnored
                 from.renameTo(to);
             }
         }
@@ -351,7 +347,7 @@ public class MySpaceFragment extends Fragment {
                         editor.putLong(fname, System.currentTimeMillis());
                         Timber.v(fname + "made at " + System.currentTimeMillis());
                         editor.apply();
-                        ReminderUtils.mySpaceReminder(getActivity(), fname);
+                        ReminderUtils.mySpaceReminder(activity, fname);
                     } catch (Exception e) {
                         e.printStackTrace();
                         Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
@@ -381,13 +377,14 @@ public class MySpaceFragment extends Fragment {
             super(context, 0, list);
         }
 
+        @NonNull
         @Override
-        public View getView(int position, View listItemView, ViewGroup parent) {
+        public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
             if (listItemView == null) listItemView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item_main, null, true);
+                    .inflate(R.layout.item_main, parent, false);
 
-            TextView textView = listItemView.findViewById(R.id.main_textView);
-            textView.setText(getItem(position).mName);
+            ((TextView) listItemView.findViewById(R.id.main_textView)).setText(
+                    Objects.requireNonNull(getItem(position)).mName);
 
             return listItemView;
         }

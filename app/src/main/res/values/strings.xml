@@ -91,12 +91,13 @@
     <string name="ben">Ben Systems</string>
     <string name="wardrobes">Wardrobes</string>
     <string name="lists">Lists</string>
-    <string name="algos">Algorithms</string>
+    <string name="algorithms">Algorithms</string>
     <string name="words">Words</string>
 
-    <string name="fname">Name</string>
+    <string name="f_name">Name</string>
     <string name="here">Enter here</string>
-    <string name="dont_save">Exit without saving</string>
+    <string name="do_not_save">Exit without saving</string>
+    <string name="my_space_file_picker">My Space file picker</string>
 
     <!--Preferences-->
     <string name="remind">Remind Me Periodically</string>

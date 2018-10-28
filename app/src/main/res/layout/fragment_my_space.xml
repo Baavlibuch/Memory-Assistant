@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.memory_athlete.memoryassistant.mySpace.MySpace">
+    tools:context="com.memory_athlete.memoryassistant.mySpace.MySpace"
+    android:contentDescription="@string/my_space_file_picker">
 
     <!--
     <ImageView
@@ -54,7 +55,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:hint="@string/fname"
+        android:hint="@string/f_name"
         android:inputType="text"
         android:visibility="gone"
         tools:ignore="Autofill" />

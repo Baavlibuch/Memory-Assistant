@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:imeOptions="actionNext"
         android:inputType="text"
-        android:hint="@string/fname" />
+        android:hint="@string/f_name" />
 
     <ScrollView
         android:id="@+id/my_space_scroll_view"

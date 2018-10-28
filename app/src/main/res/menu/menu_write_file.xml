@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/dont_save"
-        android:title="@string/dont_save"
+        android:title="@string/do_not_save"
         app:showAsAction="never"
         />
 

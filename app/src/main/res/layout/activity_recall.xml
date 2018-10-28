@@ -140,6 +140,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:hint="@string/enter_ans"
+                        android:textSize="20sp"
                         android:importantForAutofill="no"
                         tools:targetApi="o"
                         tools:ignore="TextFields" />
