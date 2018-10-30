@@ -1,6 +1,5 @@
 package com.memory_athlete.memoryassistant.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -17,8 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
 import com.memory_athlete.memoryassistant.disciplines.Dates;
@@ -257,6 +256,13 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             SimpleFragmentPagerAdapter> {
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(DisciplineActivity.this))
+                findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
+        }
+
+        @Override
         protected SimpleFragmentPagerAdapter doInBackground(Void... v) {
             int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
                     .getString(getString(R.string.no_my_space_frags), "1")));
@@ -264,8 +270,6 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                 if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
                 else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
             }
-            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(DisciplineActivity.this))
-                findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
             Timber.v("tabTitles.size() = " + tabTitles.size());
             viewPager = findViewById(R.id.viewpager);
             viewPager.setOffscreenPageLimit(9);
