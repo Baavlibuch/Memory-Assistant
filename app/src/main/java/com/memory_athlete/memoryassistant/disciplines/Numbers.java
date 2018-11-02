@@ -182,7 +182,7 @@ public class Numbers extends DisciplineFragment {
                 stringToSave = ((TextView) rootView.findViewById(R.id.random_values))
                         .getText().toString();
 
-            if (stringToSave.equals("")) return false;
+            if (stringToSave == null || stringToSave.equals("")) return false;
             //Practice Directory
             String path = activity.getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice);
