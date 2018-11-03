@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -17,11 +18,13 @@ import timber.log.Timber;
 
 public class Preferences extends AppCompatActivity {
     String mTheme;
+    static SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mTheme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mTheme = sharedPreferences.getString(getString(R.string.theme), "AppTheme");
         Helper.theme(this, Preferences.this);
         setContentView(R.layout.activity_preferences);
         setTitle(getString(R.string.preferences));
@@ -37,26 +40,34 @@ public class Preferences extends AppCompatActivity {
             addPreferencesFromResource(R.xml.settings_main);
 
             bindPreferenceSummaryToValue(findPreference(getString(R.string.periodic)));
+            bindPreferenceToast(findPreference(getString(R.string.speech_rate)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
             Timber.v("onCreate() complete");
         }
 
+        private void bindPreferenceToast(Preference preference) {
+            preference.setOnPreferenceChangeListener(this);
+            onPreferenceChange(preference,
+                    sharedPreferences.getString(preference.getKey(), "0.25"));
+        }
+
         private void bindPreferenceSummaryToValue(Preference preference) {
             preference.setOnPreferenceChangeListener(this);
             onPreferenceChange(preference,
-                    PreferenceManager.getDefaultSharedPreferences(preference.getContext()).
-                            getString(preference.getKey(), "22:30"));
+                    sharedPreferences.getString(preference.getKey(), "22:30"));
         }
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
+            Timber.v("preference changed");
             String stringValue = value.toString();
-            if(Objects.equals(preference.getKey(), getString(R.string.speech_rate))) Toast.makeText(getActivity(),
-                    R.string.speech_rate_changed_message, Toast.LENGTH_SHORT).show();
-
-            else if (preference instanceof TimePreference) {
+            if (Objects.equals(preference.getKey(), getString(R.string.speech_rate))) {
+                Toast.makeText(getActivity(),
+                        R.string.speech_rate_changed_message, Toast.LENGTH_LONG).show();
+            } else
+                if (preference instanceof TimePreference) {
                 int min = Integer.parseInt(stringValue.substring(stringValue.indexOf(":") + 1));
                 int hour = Integer.parseInt(stringValue.substring(0, stringValue.indexOf(":")));
                 String meridian = (hour < 12) ? " am" : " pm";
@@ -66,6 +77,9 @@ public class Preferences extends AppCompatActivity {
 
                 stringValue = hour + " : " + minutes + meridian;
                 preference.setSummary(stringValue);
+            } else {
+                Timber.d("Preference key = " + preference.getKey() +
+                        "\nPreference title = " + preference.getTitle());
             }
             return true;
         }
