@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -13,11 +14,14 @@
         />
 
     <EditText
+        android:id="@+id/date_response"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/date_response"
-        android:inputType="date"
+        android:hint="@string/enter_date"
+        android:textSize="20sp"
         android:imeOptions="actionNext"
-        android:hint="@string/enter_date"/>
+        android:importantForAutofill="no"
+        android:inputType="date"
+        tools:targetApi="o" />
 
 </LinearLayout>

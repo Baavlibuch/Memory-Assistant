@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Scanner;
 
 import timber.log.Timber;
@@ -106,6 +107,7 @@ public class RecallComplex extends RecallSimple {
     protected void getResponse() {
         try {
             EditText editText = (EditText) this.getCurrentFocus();
+            assert editText != null;
             responses.set(Integer.parseInt(editText.getTag().toString()), editText.getText().toString());
         } catch (Exception ignore) {
             // ListView is returned instead of EditText, the data has been saved already
@@ -234,8 +236,9 @@ public class RecallComplex extends RecallSimple {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.item_date, parent, false);
 
+            String item = Objects.requireNonNull(getItem(position));
             TextView textView = convertView.findViewById(R.id.event);
-            textView.setText(getItem(position).split(" - ")[1].trim());
+            textView.setText(item.split(" - ")[1].trim());
 
             final EditText editText = convertView.findViewById(R.id.date_response);
             editText.setText(responses.get(position));
@@ -268,19 +271,22 @@ public class RecallComplex extends RecallSimple {
             super(context, 0, list);
         }
 
+        @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.item_complex_recall, parent, false);
 
+            RecallObject item = Objects.requireNonNull(getItem(position));
+
             TextView eventTextView = convertView.findViewById(R.id.event);
             eventTextView.setVisibility(View.VISIBLE);
 
-            eventTextView.setText(getItem(position).getKey());
+            eventTextView.setText(item.getKey());
             ((TextView) convertView.findViewById(R.id.response_text)).setText(Html.fromHtml(
-                    getItem(position).getResponse()), TextView.BufferType.SPANNABLE);
+                    item.getResponse()), TextView.BufferType.SPANNABLE);
             ((TextView) convertView.findViewById(R.id.answer_text)).setText(Html.fromHtml(
-                    getItem(position).getAnswer()), TextView.BufferType.SPANNABLE);
+                    item.getAnswer()), TextView.BufferType.SPANNABLE);
 
             return convertView;
         }
