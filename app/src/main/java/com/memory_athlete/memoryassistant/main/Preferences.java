@@ -32,6 +32,7 @@ public class Preferences extends AppCompatActivity {
 
     public static class MemoryPreferenceFragment extends PreferenceFragment implements
             Preference.OnPreferenceChangeListener {
+        int changeCount = 0;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
@@ -63,11 +64,13 @@ public class Preferences extends AppCompatActivity {
         public boolean onPreferenceChange(Preference preference, Object value) {
             Timber.v("preference changed");
             String stringValue = value.toString();
+
             if (Objects.equals(preference.getKey(), getString(R.string.speech_rate))) {
-                Toast.makeText(getActivity(),
+                Timber.d("changeCount = " + changeCount);
+                if (changeCount++ == 1) Toast.makeText(getActivity(),
                         R.string.speech_rate_changed_message, Toast.LENGTH_LONG).show();
-            } else
-                if (preference instanceof TimePreference) {
+
+            } else if (preference instanceof TimePreference) {
                 int min = Integer.parseInt(stringValue.substring(stringValue.indexOf(":") + 1));
                 int hour = Integer.parseInt(stringValue.substring(0, stringValue.indexOf(":")));
                 String meridian = (hour < 12) ? " am" : " pm";
@@ -77,10 +80,10 @@ public class Preferences extends AppCompatActivity {
 
                 stringValue = hour + " : " + minutes + meridian;
                 preference.setSummary(stringValue);
-            } else {
-                Timber.d("Preference key = " + preference.getKey() +
-                        "\nPreference title = " + preference.getTitle());
-            }
+
+            } else Timber.d("Preference key = " + preference.getKey() +
+                    "\nPreference title = " + preference.getTitle());
+
             return true;
         }
     }
