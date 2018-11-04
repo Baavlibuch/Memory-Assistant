@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -106,29 +107,28 @@ public class RecallSelector extends AppCompatActivity {
         else {
             File[] files = dir.listFiles();
             if (files == null || files.length == 0) return;
-            else {
-                for (File file : files) {
-                    Timber.d("FileName: " + file.getName());
-                    arrayList.add(new Item(file.getName()));
-                }
+            for (File file : files) {
+                Timber.d("FileName: " + file.getName());
+                arrayList.add(new Item(file.getName()));
             }
         }
         Timber.v("list set");
+
         MySpaceAdapter adapter = new MySpaceAdapter(this, arrayList);
         final ListView listView = new ListView(this);
+
         listView.setDivider(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         listView.setDividerHeight(0);
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        if (listViewId == MIN_DYNAMIC_VIEW_ID) {
-            float scale = getResources().getDisplayMetrics().density;
-            int dpAsPixels = (int) (8 * scale + 0.5f);
-            layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
-        }
+        float scale = getResources().getDisplayMetrics().density;
+        int dpAsPixels = (int) (8 * scale + 0.5f);
+        layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
         listView.setLayoutParams(layoutParams);
         //if (listViewId==MIN_DYNAMIC_VIEW_ID) listView.MarginLayoutParams
         listView.setId(listViewId);
+
         final RelativeLayout layout = findViewById(R.id.my_space_relative_layout);
         layout.addView(listView);
         listView.setAdapter(adapter);
@@ -201,7 +201,7 @@ public class RecallSelector extends AppCompatActivity {
 
     void practice(String disciplinePath) {
         String[] strings = disciplinePath.split("/");
-        final String discipline = strings[strings.length-1];
+        final String discipline = strings[strings.length - 1];
         Snackbar.make(findViewById(listViewId), "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
                 .setAction(R.string.practice, new View.OnClickListener() {
                     @Override
@@ -220,7 +220,7 @@ public class RecallSelector extends AppCompatActivity {
                         else if (discipline.equals(getString(R.string.cards))) classId = 5;
                         else if (discipline.equals(getString(R.string.binary))) classId = 6;
                         else if (discipline.equals(getString(R.string.letters))) classId = 7;
-                        else if(discipline.equals(getString(R.string.dates))) classId = 8;
+                        else if (discipline.equals(getString(R.string.dates))) classId = 8;
                         else {
                             Helper.fixBug(getApplicationContext());
                             throw new RuntimeException("Practice from recall received unexpected case" +
@@ -257,6 +257,7 @@ public class RecallSelector extends AppCompatActivity {
         }
 
 
+        @SuppressLint("InflateParams")  // passing null as rootView
         @NonNull
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
@@ -264,7 +265,7 @@ public class RecallSelector extends AppCompatActivity {
             if (listViewId == MIN_DYNAMIC_VIEW_ID) {
                 if (listItemView == null)
                     listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category,
-                            parent, false);
+                            null, true);
 
                 ((TextView) listItemView.findViewById(R.id.text)).setText(Objects.requireNonNull(
                         getItem(position)).mName);
@@ -281,7 +282,7 @@ public class RecallSelector extends AppCompatActivity {
 
             //Chose file
             if (listItemView == null) listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.item_main, parent, false);
+                    R.layout.item_file, parent, false);
 
             TextView textView = listItemView.findViewById(R.id.main_textView);
             textView.setText(Objects.requireNonNull(getItem(position)).mName);

@@ -381,7 +381,7 @@ public class MySpaceFragment extends Fragment {
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
             if (listItemView == null) listItemView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item_main, parent, false);
+                    .inflate(R.layout.item_file, parent, false);
 
             ((TextView) listItemView.findViewById(R.id.main_textView)).setText(
                     Objects.requireNonNull(getItem(position)).mName);

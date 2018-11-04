@@ -22,7 +22,6 @@ import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 import timber.log.Timber;
@@ -161,7 +160,7 @@ public class Implement extends AppCompatActivity {
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
             if (listItemView == null) listItemView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item_main, null, true);
+                    .inflate(R.layout.item_file, null, true);
 
             TextView textView = listItemView.findViewById(R.id.main_textView);
             textView.setText(Objects.requireNonNull(getItem(position)).mItem);

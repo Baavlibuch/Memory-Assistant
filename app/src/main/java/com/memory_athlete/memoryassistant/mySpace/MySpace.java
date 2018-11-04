@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -96,36 +97,34 @@ public class MySpace extends AppCompatActivity {
         if (listViewId == MIN_DYNAMIC_VIEW_ID) arrayList = setList();
         else {
             File[] files = dir.listFiles();
-            if (files == null) {
-                return;
-            }
-            if (files.length == 0) {
-                return;
-            } else {
-                for (File file : files) {
-                    Timber.d("FileName: " + file.getName());
-                    arrayList.add(new Item(file.getName(), WriteFile.class));
-                }
+            if (files == null || files.length == 0) return;
+            for (File file : files) {
+                Timber.d("FileName: " + file.getName());
+                arrayList.add(new Item(file.getName(), WriteFile.class));
             }
         }
         Timber.v("list set");
+
         MySpaceAdapter adapter = new MySpaceAdapter(this, arrayList);
         final ListView listView = new ListView(this);
+
         listView.setDivider(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         listView.setDividerHeight(0);
+
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        if (listViewId == MIN_DYNAMIC_VIEW_ID) {
-            float scale = getResources().getDisplayMetrics().density;
-            int dpAsPixels = (int) (8 * scale + 0.5f);
-            layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
-        }
+        float scale = getResources().getDisplayMetrics().density;
+        int dpAsPixels = (int) (8 * scale + 0.5f);
+        layoutParams.setMargins(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
         listView.setLayoutParams(layoutParams);
+
         //if (listViewId==MIN_DYNAMIC_VIEW_ID) listView.MarginLayoutParams
         listView.setId(listViewId);
+
         final RelativeLayout layout = findViewById(R.id.my_space_relative_layout);
         layout.addView(listView);
         listView.setAdapter(adapter);
+
         final ArrayList<Item> finalArrayList = arrayList;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -140,24 +139,24 @@ public class MySpace extends AppCompatActivity {
                     findViewById(R.id.add).setVisibility(View.VISIBLE);
                     setAdapter();
                     Timber.v("going to id 1, listViewId = " + listViewId);
-                } else {
-                    Timber.v("listViewId = " + listViewId);
-                    String fileName = Helper.APP_FOLDER + File.separator
-                            + getString(R.string.my_space) + File.separator + getTitle();
-                    Intent intent = new Intent(getApplicationContext(), WriteFile.class);
-                    intent.putExtra("mHeader", item.mName);
-                    intent.putExtra("fileString", item.mItem);
-                    intent.putExtra("fileName", fileName);
-                    File file = new File(fileName);
-                    boolean isDirectoryCreated = file.exists();
-                    if (!isDirectoryCreated) {
-                        isDirectoryCreated = file.mkdirs();
-                    }
-                    if (isDirectoryCreated) {
-                        startActivity(intent);
-                    } else
-                        Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                Timber.v("listViewId = " + listViewId);
+                String fileName = Helper.APP_FOLDER + File.separator
+                        + getString(R.string.my_space) + File.separator + getTitle();
+
+                Intent intent = new Intent(getApplicationContext(), WriteFile.class);
+                intent.putExtra("mHeader", item.mName);
+                intent.putExtra("fileString", item.mItem);
+                intent.putExtra("fileName", fileName);
+
+                File file = new File(fileName);
+                boolean isDirectoryCreated = file.exists();
+                if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
+                if (isDirectoryCreated) startActivity(intent);
+                else
+                    Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -215,16 +214,17 @@ public class MySpace extends AppCompatActivity {
         @NonNull
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
+            Item item = Objects.requireNonNull(getItem(position));
             if (listViewId == MIN_DYNAMIC_VIEW_ID) {
                 if (listItemView == null) listItemView = LayoutInflater.from(getContext())
                         .inflate(R.layout.category, null, true);
 
                 TextView textView = listItemView.findViewById(R.id.text);
-                textView.setText(getItem(position).mName);
+                textView.setText(item.mName);
                 ImageView img = listItemView.findViewById(R.id.image);
                 Picasso
                         .with(getApplicationContext())
-                        .load(getItem(position).mImageId)
+                        .load(item.mImageId)
                         .placeholder(R.mipmap.launcher_ic)
                         .fit()
                         .centerCrop()
@@ -233,10 +233,10 @@ public class MySpace extends AppCompatActivity {
                 return listItemView;
             }
             if (listItemView == null) listItemView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item_main, null, true);
+                    .inflate(R.layout.item_file, null, true);
 
             TextView textView = listItemView.findViewById(R.id.main_textView);
-            textView.setText(getItem(position).mName);
+            textView.setText(item.mName);
 
             return listItemView;
         }

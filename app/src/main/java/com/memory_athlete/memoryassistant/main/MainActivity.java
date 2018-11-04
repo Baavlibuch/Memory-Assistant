@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -245,11 +246,12 @@ public class MainActivity extends AppCompatActivity {
             super(context, 0, words);
         }
 
+        @SuppressLint("InflateParams")  // passing null as rootView
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.category, parent, false);
+                    .inflate(R.layout.category, null, true);
 
             TextView textView = convertView.findViewById(R.id.text);
             textView.setText(getString(Objects.requireNonNull(getItem(position)).mItem));
