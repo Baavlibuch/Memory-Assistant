@@ -89,7 +89,7 @@ public class ReminderUtils {
         Calendar rightNow = Calendar.getInstance();
         int hr = rightNow.get(Calendar.HOUR_OF_DAY);
         int min = rightNow.get(Calendar.MINUTE);
-        return (hour * 60 + minutes) - (hr * 60 + min);
+        return (hour * 60 + minutes) - (hr * 60 + min);                 // reminder - now
     }
 
     synchronized public static void mySpaceReminder(@NonNull final Context context, String fname) {

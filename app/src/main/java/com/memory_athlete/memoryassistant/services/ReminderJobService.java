@@ -12,17 +12,15 @@ import timber.log.Timber;
  */
 
 public class ReminderJobService extends JobService {
-    private final String LOG_TAG = getClass().getSimpleName();
 
     @Override
     public boolean onStartJob(final JobParameters jobParameters) {
         Timber.v("onStartJob() started");
-        AsyncTask mBackgroundTask = new AsyncTask() {
+        AsyncTask backgroundTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
                 Timber.v("entered doInBackground()");
                 NotificationUtils.createNotification(ReminderJobService.this);
-                //ReminderTask.executeTask(context, ReminderTask.);
                 return null;
             }
 
@@ -32,7 +30,7 @@ public class ReminderJobService extends JobService {
                 jobFinished(jobParameters, false);
             }
         };
-        mBackgroundTask.execute();
+        backgroundTask.execute();
         return false;
     }
 

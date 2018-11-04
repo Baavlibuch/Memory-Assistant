@@ -1,17 +1,18 @@
 package com.memory_athlete.memoryassistant.services;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;
 
+import java.util.Objects;
 import java.util.Random;
 
 import timber.log.Timber;
@@ -35,28 +36,41 @@ abstract class NotificationUtils {
                 PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
+    private static void createChannel(Context context, String channelId){
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) return;
+        NotificationManager mNotificationManager = (NotificationManager)
+                context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        int importance = NotificationManager.IMPORTANCE_LOW;
+        NotificationChannel mChannel = new NotificationChannel(channelId, channelId, importance);
+
+        mNotificationManager.createNotificationChannel(mChannel);
+    }
+
     static void createNotification(Context context) {
         if (!PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(context.getString(R.string.remind), false)) return;
+        Timber.d("creating notification");
+        String channelId = context.getString(R.string.reminders);
+        createChannel(context, channelId);
+
         String text = text(context);
         Timber.d(text);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
+        Notification notification = new NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_notif_launcher)
                 .setContentTitle(text)
                 //.addAction(R.drawable.ic_notif_launcher, "Don't disturb me", contentIntent(context))
-                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentIntent(contentIntent(context))
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .build();
         //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
         //.setLargeIcon(largeIcon(context))
         //.setContentText(text)
         //.setStyle(new NotificationCompat.BigTextStyle().bigText(text))
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
-        }
+
         NotificationManager notificationManager = (NotificationManager)
                 (context.getSystemService(Context.NOTIFICATION_SERVICE));
-        notificationManager.notify(PERIODIC_REMINDER_PENDING_INTENT_ID, notificationBuilder.build());
+        notificationManager.notify(PERIODIC_REMINDER_PENDING_INTENT_ID, notification);
         Timber.v("createNotification() complete");
     }
 
@@ -68,7 +82,7 @@ abstract class NotificationUtils {
                 .getString(context.getString(R.string.periodic), "22:30");
         Timber.v("reminder time - " + time);
 
-        int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
+        int hour = Integer.parseInt(time.substring(0, Objects.requireNonNull(time).indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
         Timber.v(hour + " " + minutes);
         long cur = System.currentTimeMillis();
@@ -82,26 +96,26 @@ abstract class NotificationUtils {
     static void createMySpaceNotification(Context context, String fPath) {
         if (!PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(context.getString(R.string.remind), false)) return;
+        String channelId = context.getString(R.string.my_space) + " " + context.getString(R.string.reminders);
+        createChannel(context, channelId);
 
         String text = mySpaceText(context, fPath);
         Timber.d(text);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
+        Notification notification = new NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_notif_launcher)
                 //.addAction(R.drawable.ic_notif_launcher, "Don't disturb me", contentIntent(context))
                 .setContentTitle("My Space")
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
-                .setDefaults(Notification.DEFAULT_VIBRATE)
                 .setContentIntent(contentIntent(context))
-                .setAutoCancel(true);
+                //.setPriority(Notification.PRIORITY_LOW)
+                .setAutoCancel(true)
+                .build();
         //.setColor(ContextCompat.getColor(context, R.color.colorPrimary))
         //.setLargeIcon(largeIcon(context))
         //.setContentText(text)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            notificationBuilder.setPriority(Notification.PRIORITY_HIGH);
-        }
         NotificationManager notificationManager = (NotificationManager)
                 (context.getSystemService(Context.NOTIFICATION_SERVICE));
-        notificationManager.notify(new Random().nextInt(), notificationBuilder.build());
+        notificationManager.notify(new Random().nextInt(), notification);
         Timber.v("createNotification() complete");
     }
 
@@ -113,11 +127,11 @@ abstract class NotificationUtils {
                 .getString(context.getString(R.string.periodic), "22:30");
         Timber.v("reminder time - " + time);
 
-        int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
+        int hour = Integer.parseInt(time.substring(0, Objects.requireNonNull(time).indexOf(":")));
         int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
         Timber.v(hour + " " + minutes);
         long cur = System.currentTimeMillis();
-        long diff = cur - lastOpened;
+        //long diff = cur - lastOpened;
 
         fPath = fPath.substring(fPath.lastIndexOf('/') + 1, fPath.length() - 4);
         Timber.v("fName = " + fPath);
