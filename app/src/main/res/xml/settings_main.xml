@@ -80,8 +80,8 @@
 
     <ListPreference
         android:defaultValue="6"
-        android:entries="@array/two_to_eight"
-        android:entryValues="@array/two_to_eight"
+        android:entries="@array/two_to_six"
+        android:entryValues="@array/two_to_six"
         android:key="@string/recall_grid_columns"
         android:title="@string/recall_grid_columns" />
 

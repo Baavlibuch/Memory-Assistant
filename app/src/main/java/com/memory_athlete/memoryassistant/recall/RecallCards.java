@@ -8,14 +8,15 @@ import android.support.annotation.NonNull;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -36,6 +37,13 @@ public class RecallCards extends RecallSimple {
         super.onCreate(savedInstanceState);
         mAdapter = new CardAdapter(this, responses);
         gridView.setAdapter(mAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                responses.remove(position);
+                mAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void theme() {
@@ -54,7 +62,7 @@ public class RecallCards extends RecallSimple {
                 break;
             default:
                 mSuitBackground = R.color.color_suit_background_light;
-                cardSelectorTextColour = Color.argb(155,0,0,0);
+                cardSelectorTextColour = Color.argb(155, 0, 0, 0);
                 //gridView = findViewById(R.id.cards_responses);
         }
     }
@@ -126,7 +134,7 @@ public class RecallCards extends RecallSimple {
             int dpAsPixels = (int) (10 * scale + 0.5f);
             textView.setPadding(dpAsPixels, 0, dpAsPixels, 0);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36);
-            if(cardSelectorTextColour!=-1) textView.setTextColor(cardSelectorTextColour);
+            if (cardSelectorTextColour != -1) textView.setTextColor(cardSelectorTextColour);
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -177,7 +185,7 @@ public class RecallCards extends RecallSimple {
             // TODO remove this try catch block
             try {
                 answers.set(i, cardStrings[Integer.parseInt(answers.get(i))]);
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 throw new NumberFormatException("The value of the string to be parsed into int i '"
                         + answers.get(i) + "'");
             }
@@ -201,8 +209,9 @@ public class RecallCards extends RecallSimple {
 
         @NonNull
         @Override
-        public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             ImageView imageView = (ImageView) convertView;
+            Timber.v("position " + position);
             if (convertView == null) {
                 imageView = new ImageView(getApplicationContext());
                 imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -210,15 +219,6 @@ public class RecallCards extends RecallSimple {
                 imageView.setVisibility(View.VISIBLE);
                 //imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 imageView.setAdjustViewBounds(true);
-
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        responses.remove(position);
-                        mAdapter.notifyDataSetChanged();
-                    }
-                });
-                //imageView.setPadding(8, 8, 8, 8);
             }
 
             Picasso.with(getApplicationContext())
