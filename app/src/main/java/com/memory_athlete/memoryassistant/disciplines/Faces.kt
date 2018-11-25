@@ -58,6 +58,10 @@ class Faces : ComplexDisciplineFragment() {
 
         return arrayList
     }
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup, textSize: Int, item: Any?): View {
+        return super.getView(position, convertView, parent, textSize, item)
+    }
 }
 
 class RandomObject(firstName: Int, lastName: Int, face: Int)
