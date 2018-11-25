@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
-        android:imeOptions="actionNext"
-        android:inputType="text"
-        android:textSize="20sp"
+        android:layout_marginRight="16dp"
         android:hint="@string/f_name"
+        android:imeOptions="actionNext"
         android:importantForAutofill="no"
+        android:inputType="text"
+        android:textSize="22sp"
         tools:targetApi="o" />
 
     <ScrollView
@@ -30,15 +30,15 @@
             android:id="@+id/my_space_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:hint="@string/here"
+            android:importantForAutofill="no"
+            android:inputType="text"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp"
-            android:importantForAutofill="no"
-            tools:targetApi="o"
-            android:inputType="text" />
+            tools:targetApi="o" />
 
     </ScrollView>
 
