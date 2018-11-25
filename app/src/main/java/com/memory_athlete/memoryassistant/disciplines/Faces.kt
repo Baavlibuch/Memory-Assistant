@@ -11,8 +11,11 @@ import java.io.File
 import java.util.*
 
 class Faces : ComplexDisciplineFragment() {
-    internal var faces: Array<String>? = null
+    private var faces: Array<String>? = null
     internal var randomList: ArrayList<Int>? = null
+
+    private val mFirstName = ArrayList<String>()
+    private val mLastName = ArrayList<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -28,23 +31,33 @@ class Faces : ComplexDisciplineFragment() {
         val obbDir = activity.obbDir
         val f = File(obbDir.path + File.separator + "faces")
         faces = f.list()
+
+        Names.readNames(mFirstName, mLastName, resources)
     }
 
     override fun backgroundArray(): ArrayList<*>? {
-        val indexList = ArrayList<Int>(a[NO_OF_VALUES])
-        val arrayList = ArrayList<Int>(a[NO_OF_VALUES])
+        val imageIndexList = ArrayList<Int>(a[NO_OF_VALUES])
+        val arrayList = ArrayList<RandomObject>(a[NO_OF_VALUES])
         val rand = Random()
         var n: Int
+        var f: Int
+        var l: Int
 
-        for (i in 0 until a[NO_OF_VALUES]) indexList.add(i)
+        for (i in 0 until a[NO_OF_VALUES]) imageIndexList.set(i, i)
 
         for (i in 0 until a[NO_OF_VALUES]) {
-            n = rand.nextInt(indexList.size)
-            arrayList.add(indexList[n])
-            indexList.removeAt(n)
+            f = rand.nextInt(mFirstName.size)
+            l = rand.nextInt(mLastName.size)
+            n = rand.nextInt(imageIndexList.size)
+
+            arrayList.add(RandomObject(f, l, n))
+
+            imageIndexList.removeAt(n)
             if (a[RUNNING] == FALSE) break
         }
 
         return arrayList
     }
 }
+
+class RandomObject(firstName: Int, lastName: Int, face: Int)
