@@ -660,6 +660,23 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return new RandomAdapter(activity, list);
     }
 
+    protected static View getView(View convertView, int textSize, Object item, Context context){
+        TextView textView = (TextView) convertView;
+        if (convertView == null) {
+            textView = new TextView(context);
+            textView.setLayoutParams(new ListView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            textView.setTextSize(textSize);
+            textView.setVisibility(View.VISIBLE);
+        }
+
+        textView.setText((String) item);
+
+        Timber.v("getView() complete");
+
+        return textView;
+    }
+
     //Thread to generate the random list as string
     protected class GenerateRandomStringAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
         @Override
@@ -732,21 +749,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         @NonNull
         @Override
         public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
-            TextView textView = (TextView) convertView;
-            if (convertView == null) {
-                textView = new TextView(getContext());
-                textView.setLayoutParams(new ListView.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                textView.setTextSize(textSize);
-                textView.setVisibility(View.VISIBLE);
-            }
-
-            Timber.v((String) getItem(position));
-            textView.setText((String) getItem(position));
-
-            Timber.v("getView() complete");
-
-            return textView;
+            return DisciplineFragment.getView(convertView, textSize, getItem(position), getContext());
         }
     }
 }
