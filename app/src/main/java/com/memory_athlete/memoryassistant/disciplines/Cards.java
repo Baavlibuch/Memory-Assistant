@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -115,7 +116,7 @@ public class Cards extends DisciplineFragment {
         } else Toast.makeText(activity, "This is the last card!", Toast.LENGTH_LONG).show();
     }
 
-    @Override
+    @Override                                   // TODO: use backgroundArrayList()
     protected String backgroundString() {
         ArrayList<Integer> cards = new ArrayList<>();
         int n;
@@ -124,14 +125,11 @@ public class Cards extends DisciplineFragment {
         ArrayList<Integer> indexList = new ArrayList<>();
         boolean shuffleDecks = sharedPreferences.getBoolean(getString(R.string.shuffle_decks), false);
         if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
-            for (int j = 0; j < 52; j++)
-                indexList.add(j);
-
+            for (int j = 0; j < 52; j++) indexList.add(j);
 
         for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
-            if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++) {
+            if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++)
                 indexList.add(j);
-            }
 
             n = (new Random()).nextInt(indexList.size());
             cards.add(indexList.get(n));
@@ -141,8 +139,7 @@ public class Cards extends DisciplineFragment {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (Integer i : cards)
-            stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
+        for (Integer i : cards) stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
         return stringBuilder.toString();
     }
 
@@ -248,6 +245,7 @@ public class Cards extends DisciplineFragment {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class RandomArrayScanner extends AsyncTask<String, Void, ArrayList<Integer>> {
 
         @Override
