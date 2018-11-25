@@ -5,18 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-
 import com.memory_athlete.memoryassistant.R
-
+import com.memory_athlete.memoryassistant.R.raw.first
+import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.ArrayList
-import java.util.Random
-
-import timber.log.Timber
-
-import com.memory_athlete.memoryassistant.R.raw.first
+import java.util.*
 
 class Names : WordDisciplineFragment() {
     private val mFirstName = ArrayList<String>()
@@ -37,7 +32,7 @@ class Names : WordDisciplineFragment() {
         try {
             dict = BufferedReader(InputStreamReader(resources.openRawResource(first)))
             var first = dict.readLine()
-            while (first  != null) {
+            while (first != null) {
                 mFirstName.add(first.substring(0, 1) + first.substring(1).toLowerCase())//All were in caps
                 first = dict.readLine()
             }
@@ -78,25 +73,30 @@ class Names : WordDisciplineFragment() {
     }
 
     override fun backgroundArray(): ArrayList<*>? {
-        //String textString = "";
-        var stringBuilder = StringBuilder()
-        val rand = Random()
-        val arrayList = ArrayList<String>()
-        var n: Int
+        try {
+            //String textString = "";
+            var stringBuilder = StringBuilder()
+            val rand = Random()
+            val arrayList = ArrayList<String>()
+            var n: Int
 
-        var i = 0
-        while (i < a[NO_OF_VALUES]) {
-            n = rand.nextInt(mFirstName.size)
-            stringBuilder.append(mFirstName[n]).append(" ")
-            n = rand.nextInt(mLastName.size)
-            stringBuilder.append(mLastName[n]).append("\n")
-            if (++i % 20 == 0) {
-                arrayList.add(stringBuilder.toString())
-                stringBuilder = StringBuilder()
+            var i = 0
+            while (i < a[NO_OF_VALUES]) {
+                n = rand.nextInt(mFirstName.size)
+                stringBuilder.append(mFirstName[n]).append(" ")
+                n = rand.nextInt(mLastName.size)
+                stringBuilder.append(mLastName[n]).append("\n")
+                if (++i % 20 == 0) {
+                    arrayList.add(stringBuilder.toString())
+                    stringBuilder = StringBuilder()
+                }
+                if (a[RUNNING] == FALSE) break
             }
-            if (a[RUNNING] == FALSE) break
+            arrayList.add(stringBuilder.toString())
+            return arrayList
+        } catch (e: IllegalStateException) {
+            throw RuntimeException("IllegalStateException from ViewPager.populate() "
+                    + "caused in Names.backgroundArray")
         }
-        arrayList.add(stringBuilder.toString())
-        return arrayList
     }
 }

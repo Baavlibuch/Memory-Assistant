@@ -31,6 +31,7 @@ public class Words extends WordDisciplineFragment {
 
     @Override
     protected ArrayList backgroundArray() {
+        try{
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
         ArrayList<String> arrayList = new ArrayList<>();
@@ -47,6 +48,10 @@ public class Words extends WordDisciplineFragment {
         }
         arrayList.add(stringBuilder.toString());
         return arrayList;
+        } catch (IllegalStateException e) {
+            throw new RuntimeException("IllegalStateException from ViewPager.populate() "
+                    + "caused in Words.backgroundArray");
+        }
     }
 
     @Override

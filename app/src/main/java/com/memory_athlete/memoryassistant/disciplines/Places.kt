@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-
 import com.memory_athlete.memoryassistant.R
-
+import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.ArrayList
-import java.util.Random
-
-import timber.log.Timber
+import java.util.*
 
 class Places : WordDisciplineFragment() {
     private val mPlace = ArrayList<String>()
@@ -33,6 +29,7 @@ class Places : WordDisciplineFragment() {
     }
 
     override fun backgroundArray(): ArrayList<*>? {
+        try{
         var stringBuilder = StringBuilder()
         val rand = Random()
         val arrayList = ArrayList<String>()
@@ -50,6 +47,10 @@ class Places : WordDisciplineFragment() {
         }
         arrayList.add(stringBuilder.toString())
         return arrayList
+        } catch (e: IllegalStateException) {
+            throw RuntimeException("IllegalStateException from ViewPager.populate() "
+                    + "caused in Places.backgroundArray")
+        }
     }
 
     //Read files and make a list of places

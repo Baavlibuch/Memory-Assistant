@@ -47,91 +47,98 @@ public class Numbers extends DisciplineFragment {
 
     @Override
     protected String backgroundString() {
-        //Text
-        StringBuilder stringBuilder = new StringBuilder();
-        Random rand = new Random();
-        int n1 = 1, n2 = 0;         //n1* for upper limit, n2* for lower limit
-        boolean addZeros = checkPrecedingZeros(),          //To Pad zeros if the setting is enabled
-                negative = negativeOrDateCheckBox.isChecked();
+        try {
+            //Text
+            StringBuilder stringBuilder = new StringBuilder();
+            Random rand = new Random();
+            int n1 = 1, n2 = 0;         //n1* for upper limit, n2* for lower limit
+            boolean addZeros = checkPrecedingZeros(),          //To Pad zeros if the setting is enabled
+                    negative = negativeOrDateCheckBox.isChecked();
 
-        if (negative) {
-            n1 = 2;                 //Double the max value of random
-            n2 = 1;                 //Subtract from from random to get negative
-        }
-
-        //Study the else statement first, its simpler
-        if (((CheckBox) rootView.findViewById(R.id.decimal)).isChecked()) {//handling floats numbers
-            double n;
-            //-1 to ensure that the numbers fill the entire range
-            for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
-                //Group size is the size of a number
-                n = round((rand.nextDouble() * n1 * (Math.pow(10, a.get(GROUP_SIZE)))
-                        - n2 * Math.pow(10, a.get(GROUP_SIZE))), a.get(GROUP_SIZE));
-
-                //Handling extra characters to keep numbers tabulated
-                //Extra spaces are added when numbers are smaller in length
-
-                //Handling - sign
-                if (negative && n >= 0 && i > 0) stringBuilder.append(" ");
-
-                //Adding the number to the final string
-                if (addZeros) stringBuilder.append(formatDouble(n)).append(getString(R.string.tab));
-                else stringBuilder.append(n).append(getString(R.string.tab));
-                //\t is the delimiter for recall
-
-                //Minimum space between 2 numbers
-                for (int j = 0; j <= a.get(GROUP_SIZE); j++) {
-                    stringBuilder.append(" ");
-                }
-
-                //Bigger numbers should have more space between them to look nice
-                if (!addZeros) for (int j = 0;
-                                    j / 2 <= 2 * a.get(GROUP_SIZE) - Double.toString(n).length() + 1; j++)
-                    stringBuilder.append(" ");
-
-                if (n < 0) stringBuilder.append(" ");                   //handling negatives
-                else if (addZeros) stringBuilder.append("  ");
-                stringBuilder.append(" ");
-
-                if (a.get(RUNNING) == FALSE) break;
+            if (negative) {
+                n1 = 2;                 //Double the max value of random
+                n2 = 1;                 //Subtract from from random to get negative
             }
-        } else {                                        //handling int
-            for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
-                int n;
+
+            //Study the else statement first, its simpler
+            if (((CheckBox) rootView.findViewById(R.id.decimal)).isChecked()) {//handling floats numbers
+                double n;
                 //-1 to ensure that the numbers fill the entire range
-                n = n1 * rand.nextInt((int) Math.pow(10, a.get(GROUP_SIZE)))
-                        - n2 * ((int) Math.pow(10, a.get(GROUP_SIZE)) - 1);
+                for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
+                    //Group size is the size of a number
+                    n = round((rand.nextDouble() * n1 * (Math.pow(10, a.get(GROUP_SIZE)))
+                            - n2 * Math.pow(10, a.get(GROUP_SIZE))), a.get(GROUP_SIZE));
 
-                //Handling extra characters to keep numbers tabulated
-                //extra spaces are added when numbers are smaller in length
+                    //Handling extra characters to keep numbers tabulated
+                    //Extra spaces are added when numbers are smaller in length
 
-                //Handling - sign
-                if (negative && n >= 0 && i > 0) stringBuilder.append(" ");
+                    //Handling - sign
+                    if (negative && n >= 0 && i > 0) stringBuilder.append(" ");
 
-                //Adding the value to the final string
-                if (addZeros) stringBuilder.append(formatInt(n)).append(getString(R.string.tab));
-                else stringBuilder.append(n).append(getString(R.string.tab));
-                //\t is the delimiter for recall
+                    //Adding the number to the final string
+                    if (addZeros)
+                        stringBuilder.append(formatDouble(n)).append(getString(R.string.tab));
+                    else stringBuilder.append(n).append(getString(R.string.tab));
+                    //\t is the delimiter for recall
 
-                //Minimum space between 2 numbers
-                for (int j = 0; j <= a.get(GROUP_SIZE) / 2; j++) {
-                    stringBuilder.append(" ");
-                }
+                    //Minimum space between 2 numbers
+                    for (int j = 0; j <= a.get(GROUP_SIZE); j++) {
+                        stringBuilder.append(" ");
+                    }
 
-                //Bigger numbers should have more space between them to look nice
-                if (!addZeros)
-                    for (int j = 0; j / 2 <= a.get(GROUP_SIZE) - Integer.toString(n).length(); j++)
+                    //Bigger numbers should have more space between them to look nice
+                    if (!addZeros) for (int j = 0;
+                                        j / 2 <= 2 * a.get(GROUP_SIZE) - Double.toString(n).length() + 1; j++)
                         stringBuilder.append(" ");
 
+                    if (n < 0) stringBuilder.append(" ");                   //handling negatives
+                    else if (addZeros) stringBuilder.append("  ");
+                    stringBuilder.append(" ");
 
-                if (n < 0) stringBuilder.append(" ");
-                else if (addZeros) stringBuilder.append("  ");
-                stringBuilder.append(" ");
+                    if (a.get(RUNNING) == FALSE) break;
+                }
+            } else {                                        //handling int
+                for (int i = 0; i < a.get(NO_OF_VALUES); i++) {
+                    int n;
+                    //-1 to ensure that the numbers fill the entire range
+                    n = n1 * rand.nextInt((int) Math.pow(10, a.get(GROUP_SIZE)))
+                            - n2 * ((int) Math.pow(10, a.get(GROUP_SIZE)) - 1);
 
-                if (a.get(RUNNING) == FALSE) break;
+                    //Handling extra characters to keep numbers tabulated
+                    //extra spaces are added when numbers are smaller in length
+
+                    //Handling - sign
+                    if (negative && n >= 0 && i > 0) stringBuilder.append(" ");
+
+                    //Adding the value to the final string
+                    if (addZeros)
+                        stringBuilder.append(formatInt(n)).append(getString(R.string.tab));
+                    else stringBuilder.append(n).append(getString(R.string.tab));
+                    //\t is the delimiter for recall
+
+                    //Minimum space between 2 numbers
+                    for (int j = 0; j <= a.get(GROUP_SIZE) / 2; j++) {
+                        stringBuilder.append(" ");
+                    }
+
+                    //Bigger numbers should have more space between them to look nice
+                    if (!addZeros)
+                        for (int j = 0; j / 2 <= a.get(GROUP_SIZE) - Integer.toString(n).length(); j++)
+                            stringBuilder.append(" ");
+
+
+                    if (n < 0) stringBuilder.append(" ");
+                    else if (addZeros) stringBuilder.append("  ");
+                    stringBuilder.append(" ");
+
+                    if (a.get(RUNNING) == FALSE) break;
+                }
             }
+            return stringBuilder.toString();
+        } catch (IllegalStateException e){
+            throw new RuntimeException("IllegalStateException from ViewPager.populate() "
+                    + "caused in Numbers.backgroundString");
         }
-        return stringBuilder.toString();
     }
 
     public static double round(double d, int decimalPlace) {

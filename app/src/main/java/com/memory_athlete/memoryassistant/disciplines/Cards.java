@@ -117,34 +117,39 @@ public class Cards extends DisciplineFragment {
 
     @Override
     protected String backgroundString() {
-        ArrayList<Integer> cards = new ArrayList<>();
-        int n;
-        //Random rand = new Random();
+        try {
+            ArrayList<Integer> cards = new ArrayList<>();
+            int n;
+            //Random rand = new Random();
 
-        ArrayList<Integer> indexList = new ArrayList<>();
-        boolean shuffleDecks = PreferenceManager.getDefaultSharedPreferences(activity)
-                .getBoolean(getString(R.string.shuffle_decks), false);
-        if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
-            for (int j = 0; j < 52; j++)
-                indexList.add(j);
+            ArrayList<Integer> indexList = new ArrayList<>();
+            boolean shuffleDecks = PreferenceManager.getDefaultSharedPreferences(activity)
+                    .getBoolean(getString(R.string.shuffle_decks), false);
+            if (shuffleDecks) for (int i = 0; i < a.get(NO_OF_VALUES); i++)
+                for (int j = 0; j < 52; j++)
+                    indexList.add(j);
 
 
-        for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
-            if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++) {
-                indexList.add(j);
+            for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
+                if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++) {
+                    indexList.add(j);
+                }
+
+                n = (new Random()).nextInt(indexList.size());
+                cards.add(indexList.get(n));
+                indexList.remove(n);
+                if (a.get(RUNNING) == FALSE) break;
             }
 
-            n = (new Random()).nextInt(indexList.size());
-            cards.add(indexList.get(n));
-            indexList.remove(n);
-            if (a.get(RUNNING) == FALSE) break;
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (Integer i : cards)
+                stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
+            return stringBuilder.toString();
+        } catch (IllegalStateException e) {
+            throw new RuntimeException("IllegalStateException from ViewPager.populate() "
+                    + "caused in Cards.backgroundString");
         }
-
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (Integer i : cards)
-            stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
-        return stringBuilder.toString();
     }
 
     @Override

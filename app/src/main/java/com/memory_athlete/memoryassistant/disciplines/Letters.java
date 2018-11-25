@@ -1,7 +1,6 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +28,8 @@ public class Letters extends DisciplineFragment {
 
     @Override
     protected String backgroundString() {
-        StringBuilder stringBuilder = new StringBuilder("");
+        try{
+        StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random(), letterCaseRand = new Random();
         int letterCase = Integer.parseInt(Objects.requireNonNull(
                 sharedPreferences.getString(getString(R.string.letter_case), "0")));
@@ -52,5 +52,9 @@ public class Letters extends DisciplineFragment {
         }
         Timber.v(stringBuilder.toString());
         return stringBuilder.toString();
+        } catch (IllegalStateException e) {
+            throw new RuntimeException("IllegalStateException from ViewPager.populate() "
+                    + "caused in BinaryDigits.backgroundString");
+        }
     }
 }

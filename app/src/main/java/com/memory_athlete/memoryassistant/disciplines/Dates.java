@@ -131,6 +131,7 @@ public class Dates extends WordDisciplineFragment {
 
     @Override
     protected ArrayList backgroundArray() {
+        try{
         StringBuilder stringBuilder = new StringBuilder();
         Random rand = new Random();
         ArrayList<String> arrayList = new ArrayList<>();
@@ -185,6 +186,10 @@ public class Dates extends WordDisciplineFragment {
         }
         arrayList.add(stringBuilder.toString());
         return arrayList;
+        } catch (IllegalStateException e) {
+            throw new RuntimeException("IllegalStateException from ViewPager.populate() "
+                    + "caused in Dates.backgroundArray");
+        }
     }
 
     @Override
