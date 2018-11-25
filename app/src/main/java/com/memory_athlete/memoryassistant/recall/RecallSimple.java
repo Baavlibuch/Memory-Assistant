@@ -528,13 +528,14 @@ public class RecallSimple extends AppCompatActivity {
 
 
     protected void reset() {
+        wrong = 0;
+        missed = 0;
+        correct = 0;
         answers.clear();
         responses.clear();
         mTextAnswer = new StringBuilder();
         mTextResponse = new StringBuilder();
-        correct = 0;
-        wrong = 0;
-        missed = 0;
+        ((EditText) findViewById(R.id.response_input)).setText("");
 
         setResponseLayout(false);
 

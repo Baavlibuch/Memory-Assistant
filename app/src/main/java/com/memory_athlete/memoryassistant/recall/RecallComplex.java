@@ -175,20 +175,22 @@ public class RecallComplex extends RecallSimple {
 
     @Override
     protected void reset() {
-        mTextAnswer = new StringBuilder("");
-        mTextResponse = new StringBuilder("");
-        correct = 0;
         wrong = 0;
         missed = 0;
+        correct = 0;
         recallList.clear();
+        mTextAnswer = new StringBuilder();
+        mTextResponse = new StringBuilder();
+        for (int i = 0; i < responses.size(); i++) responses.set(i, "");
+        complexListView.setAdapter(null);
 
         setResponseLayout(false);
 
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
-        findViewById(R.id.result).setVisibility(View.GONE);
-        findViewById(R.id.recall_layout).setVisibility(View.GONE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
+        findViewById(R.id.recall_layout).setVisibility(View.GONE);
+        findViewById(R.id.result).setVisibility(View.GONE);
+        findViewById(R.id.reset).setVisibility(View.GONE);
 
         Timber.v("Recall Reset Complete");
     }
