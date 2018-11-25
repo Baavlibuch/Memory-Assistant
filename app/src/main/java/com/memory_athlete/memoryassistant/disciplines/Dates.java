@@ -11,8 +11,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
@@ -216,5 +218,23 @@ public class Dates extends ComplexDisciplineFragment {
                 Timber.e("File not closed");
             }
         }
+    }
+
+    @Override
+    protected View getMyView(View convertView, int textSize, Object item, Context context){
+        TextView textView = (TextView) convertView;
+        if (convertView == null) {
+            textView = new TextView(context);
+            textView.setLayoutParams(new ListView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            textView.setTextSize(textSize);
+            textView.setVisibility(View.VISIBLE);
+        }
+
+        textView.setText((String) item);
+
+        Timber.v("getView() complete");
+
+        return textView;
     }
 }

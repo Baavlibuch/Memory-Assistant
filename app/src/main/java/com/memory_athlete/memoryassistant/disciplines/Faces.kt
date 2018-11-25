@@ -1,25 +1,28 @@
 package com.memory_athlete.memoryassistant.disciplines
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.*
 import com.memory_athlete.memoryassistant.R
 import com.memory_athlete.memoryassistant.recall.RecallComplex
+import com.squareup.picasso.Picasso
 import java.io.File
 import java.util.*
 
 class Faces : ComplexDisciplineFragment() {
-    private var faces: Array<String>? = null
-    internal var randomList: ArrayList<Int>? = null
+    private lateinit var faces: Array<String>
 
     private val mFirstName = ArrayList<String>()
     private val mLastName = ArrayList<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        (rootView.findViewById<View>(R.id.no_of_values) as EditText).hint = getString(R.string.enter) + " " + getString(R.string.images)
+        (rootView.findViewById<View>(R.id.no_of_values) as EditText).hint =
+                getString(R.string.enter) + " " + getString(R.string.images)
 
         mRecallClass = RecallComplex::class.java
         hasSpeech = false
@@ -36,7 +39,7 @@ class Faces : ComplexDisciplineFragment() {
     }
 
     override fun backgroundArray(): ArrayList<*>? {
-        val imageIndexList = ArrayList<Int>(a[NO_OF_VALUES])
+        val imageIndexList = ArrayList<Int>(faces.size)
         val arrayList = ArrayList<RandomObject>(a[NO_OF_VALUES])
         val rand = Random()
         var n: Int
@@ -59,9 +62,34 @@ class Faces : ComplexDisciplineFragment() {
         return arrayList
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup, textSize: Int, item: Any?): View {
-        return super.getView(position, convertView, parent, textSize, item)
+    @SuppressLint("InflateParams")
+    override fun getMyView(convertView: View?, textSize: Int, item: Any?, context: Context?): View? {
+        var linearLayout = convertView as LinearLayout?
+        val randomItem = item as RandomObject
+        if (linearLayout == null) {
+            linearLayout = LayoutInflater.from(getContext())
+                    .inflate(R.layout.category, null, true) as LinearLayout
+            linearLayout.layoutParams = AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT)
+        }
+
+        val face = linearLayout.findViewById<View>(R.id.face) as ImageView
+        val name = linearLayout.findViewById<View>(R.id.name) as TextView
+
+        val s = mFirstName.get(randomItem.firstName) + " " + mLastName.get(randomItem.lastName)
+        name.text = s
+
+        Picasso
+                //.setLoggingEnabled(true)
+                .with(getContext())
+                .load(activity.obbDir.path + File.separator + "faces" + File.separator + faces[randomItem.face])
+                .placeholder(R.drawable.sa)
+                .fit()
+                //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ
+                .into(face)
+
+        return linearLayout
     }
 }
 
-class RandomObject(firstName: Int, lastName: Int, face: Int)
+class RandomObject(val firstName: Int, val lastName: Int, val face: Int)

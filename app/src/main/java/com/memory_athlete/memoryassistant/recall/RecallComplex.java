@@ -236,7 +236,7 @@ public class RecallComplex extends RecallSimple {
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item_date, parent, false);
+                    .inflate(R.layout.item_recall_date, parent, false);
 
             String item = Objects.requireNonNull(getItem(position));
             TextView textView = convertView.findViewById(R.id.event);
