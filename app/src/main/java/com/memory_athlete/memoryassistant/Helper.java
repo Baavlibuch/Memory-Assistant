@@ -8,9 +8,9 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.R;
-
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -190,7 +190,16 @@ public class Helper {
     public static boolean makeDirectory(String path) {
         File pDir = new File(path);
         boolean isDirectoryCreated = pDir.exists();
-        if (!isDirectoryCreated) isDirectoryCreated = pDir.mkdirs();
+        if (!isDirectoryCreated) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                try {
+                    Files.createDirectory(pDir.toPath());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                return true;
+            }else isDirectoryCreated = pDir.mkdirs();
+        }
         if (isDirectoryCreated) return true;
         else throw new RuntimeException("Couldn't create the directory. Path = " + path);
     }
