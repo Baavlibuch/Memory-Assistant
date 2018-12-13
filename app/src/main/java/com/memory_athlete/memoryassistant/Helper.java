@@ -201,7 +201,7 @@ public class Helper {
             }else isDirectoryCreated = pDir.mkdirs();
         }
         if (isDirectoryCreated) return true;
-        else throw new RuntimeException("Couldn't create the directory. Path = " + path);
+        throw new RuntimeException("Couldn't create the directory. Path = " + path);
     }
 
     public static boolean isExternalStorageWritable() {

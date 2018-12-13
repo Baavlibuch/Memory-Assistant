@@ -55,6 +55,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         int fragIndex = intent.getIntExtra("class", 0);
         Timber.v("fragIndex = " + fragIndex + "tabTitles.size() = " + tabTitles.size());
         tabTitles.add(getString(R.string.practice));
+        viewPager = findViewById(R.id.viewpager);
 
         try{
             new LoadFragmentsAsyncTask().execute();
@@ -271,7 +272,6 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                 else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
             }
             Timber.v("tabTitles.size() = " + tabTitles.size());
-            viewPager = findViewById(R.id.viewpager);
             viewPager.setOffscreenPageLimit(9);
             return new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         }
