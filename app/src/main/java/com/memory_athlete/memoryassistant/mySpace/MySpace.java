@@ -45,7 +45,7 @@ public class MySpace extends AppCompatActivity {
         Timber.v("Title Set");
         listViewId = MIN_DYNAMIC_VIEW_ID;
 
-        if (!Helper.mayAccessStorage(this)) {
+        if (Helper.mayNotAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.my_space_relative_layout),
                     "Storage permissions are required", Snackbar.LENGTH_SHORT)
                     .setAction("Grant", new View.OnClickListener() {

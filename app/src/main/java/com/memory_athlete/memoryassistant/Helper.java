@@ -204,16 +204,16 @@ public class Helper {
         throw new RuntimeException("Couldn't create the directory. Path = " + path);
     }
 
-    public static boolean isExternalStorageWritable() {
+    public static boolean externalStorageNotWritable() {
         String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
+        return !Environment.MEDIA_MOUNTED.equals(state);
     }
 
-    public static boolean mayAccessStorage(Context context) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
+    public static boolean mayNotAccessStorage(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return false;
 
         if (checkSelfPermission(context, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            return true;
+            return false;
         //if (shouldShowRequestPermissionRationale((Activity) context, READ_EXTERNAL_STORAGE)) {
         requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
                 WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
@@ -221,6 +221,6 @@ public class Helper {
         //    requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
         //            WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
         //}
-        return false;
+        return true;
     }
 }

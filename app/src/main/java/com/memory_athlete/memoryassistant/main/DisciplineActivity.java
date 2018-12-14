@@ -156,7 +156,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         @Override
         public int getCount() {
-            if (!Helper.mayAccessStorage(DisciplineActivity.this)) return 1;
+            if (Helper.mayNotAccessStorage(DisciplineActivity.this)) return 1;
             return tabTitles.size();
         }
 
@@ -259,7 +259,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(DisciplineActivity.this))
+            if (tabTitles.size() == 1 || Helper.mayNotAccessStorage(DisciplineActivity.this))
                 findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         }
 
