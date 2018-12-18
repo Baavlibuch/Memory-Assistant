@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdView;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         else return;
 
         if (sharedPreferences.getLong("last_opened", 0) == 0) {
+            Helper.showAdd((AdView) findViewById(R.id.adView), true, 1);
             makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
             Timber.v("firstStart");
         } else {

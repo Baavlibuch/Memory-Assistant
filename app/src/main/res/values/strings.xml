@@ -159,4 +159,8 @@
     <string name="speech_rate">Speech rate</string>
     <string name="word_new">New</string>
 
+    <!--TODO change value before publishing
+    ca-app-pub-4029732742326098~4722961458-->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
 </resources>
