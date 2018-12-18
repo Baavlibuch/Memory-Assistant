@@ -35,6 +35,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 public class RecallSimple extends AppCompatActivity {
+    boolean backPressed = false;
 
     protected ArrayList<String> responses = new ArrayList<>();
     protected ArrayList<String> answers = new ArrayList<>();
@@ -48,7 +49,7 @@ public class RecallSimple extends AppCompatActivity {
     protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling = 0;
     protected StringBuilder mTextAnswer = null, mTextResponse = null;
     protected String whitespace;
-    //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
+    //protected CompareAsyncTask task;                  //use to cancel the async task if it is instantiated
 
     protected String mFilePath;
     protected String mDiscipline = null;
@@ -57,6 +58,12 @@ public class RecallSimple extends AppCompatActivity {
     protected GridView gridView;
 
     protected SharedPreferences sharedPreferences;
+
+    @Override
+    public void onBackPressed() {
+        if (findViewById(R.id.result).getVisibility() == View.VISIBLE && !backPressed) backPressed = true;
+        else super.onBackPressed();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,7 +81,6 @@ public class RecallSimple extends AppCompatActivity {
         complexListView = findViewById(R.id.response_list_view);
 
         findViewById(R.id.result).setVisibility(View.GONE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
 
         if (intent.getBooleanExtra("file exists", false)) {
             File dir = new File(getFilesDir().getAbsolutePath() + File.separator
@@ -135,7 +141,6 @@ public class RecallSimple extends AppCompatActivity {
 
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
         findViewById(R.id.text_response_scroll_view).setVisibility(View.VISIBLE);
@@ -247,7 +252,6 @@ public class RecallSimple extends AppCompatActivity {
         findViewById(R.id.button_bar).setVisibility(View.GONE);
         //findViewById(R.id.check).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
-        findViewById(R.id.reset).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_text_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_layout).setVisibility(View.VISIBLE);
         complexListView.setVisibility(View.GONE);
@@ -542,7 +546,6 @@ public class RecallSimple extends AppCompatActivity {
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
 
@@ -696,4 +699,3 @@ public class RecallSimple extends AppCompatActivity {
 //orange:FFA500
 // textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
 // TODO: shift to fragments
-// TODO remove reset
