@@ -360,26 +360,22 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         //Directory of practice
         String path = activity.getFilesDir().getAbsolutePath() + File.separator
-                + getString(R.string.practice);
+                + getString(R.string.practice) + File.separator + activity.getTitle().toString();
         if (Helper.makeDirectory(path)) {
-            //Directory of the discipline
-            path = path + File.separator + activity.getTitle().toString();
-            if (Helper.makeDirectory(path)) {
-                path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",
-                        Locale.getDefault())).format(new Date())) + ".txt";
+            path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",
+                    Locale.getDefault())).format(new Date())) + ".txt";
 
-                //Write the file
-                try {
-                    FileOutputStream outputStream = new FileOutputStream(new File(path));
-                    outputStream.write(stringToSave.getBytes());
+            //Write the file
+            try {
+                FileOutputStream outputStream = new FileOutputStream(new File(path));
+                outputStream.write(stringToSave.getBytes());
 
-                    outputStream.close();
-                    Toast.makeText(activity.getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                    return true;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
-                }
+                outputStream.close();
+                Toast.makeText(activity.getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
             }
         }
         return false;
@@ -584,7 +580,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                     textToSpeech.setLanguage(Locale.getDefault());
                     textToSpeech.setSpeechRate(Float.parseFloat(Objects.requireNonNull(
                             sharedPreferences.getString(activity.getString(R.string.speech_rate), "0.25")))
-                            *  speechSpeedMultiplier);
+                            * speechSpeedMultiplier);
                     Timber.v("TTS.speak will be called");
                     textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                     Timber.v("TTS.speak has been called");

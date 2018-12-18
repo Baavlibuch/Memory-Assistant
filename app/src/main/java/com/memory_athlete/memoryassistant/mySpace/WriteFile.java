@@ -148,27 +148,23 @@ public class WriteFile extends AppCompatActivity {
             name = true;
             return false;
         }
-        if (Helper.makeDirectory(Helper.APP_FOLDER))
-            if (Helper.makeDirectory(Helper.APP_FOLDER + File.separator
-                    + getString(R.string.my_space))) {
-                if (Helper.makeDirectory(dirPath)) {
-                    try {
-                        FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                        outputStream.write(string.getBytes());
-                        outputStream.close();
+        if (Helper.makeDirectory(dirPath)) {
+            try {
+                FileOutputStream outputStream = new FileOutputStream(new File(fname));
+                outputStream.write(string.getBytes());
+                outputStream.close();
 
-                        SharedPreferences.Editor editor = PreferenceManager
-                                .getDefaultSharedPreferences(this).edit();
-                        editor.putLong(fname, System.currentTimeMillis());
-                        Timber.v(fname + "made at " + System.currentTimeMillis());
-                        editor.apply();
-                        ReminderUtils.mySpaceReminder(this, fname);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
-                    }
-                }
+                SharedPreferences.Editor editor = PreferenceManager
+                        .getDefaultSharedPreferences(this).edit();
+                editor.putLong(fname, System.currentTimeMillis());
+                Timber.v(fname + "made at " + System.currentTimeMillis());
+                editor.apply();
+                ReminderUtils.mySpaceReminder(this, fname);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
+        }
         Timber.v("fileName = " + path);
         return true;
     }
