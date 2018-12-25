@@ -98,6 +98,7 @@ public class WriteFile extends AppCompatActivity {
         save();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public boolean save() {
         String string = ((EditText) findViewById(R.id.my_space_editText)).getText().toString();
         String fname = ((EditText) findViewById(R.id.f_name)).getText().toString();

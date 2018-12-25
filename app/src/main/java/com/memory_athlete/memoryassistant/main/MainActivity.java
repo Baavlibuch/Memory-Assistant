@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -33,11 +32,6 @@ import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -116,67 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
             makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
             Timber.d("firstStart");
-        } else {
-            String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.my_space) + File.separator;
-            String mySpaceDir = Helper.APP_FOLDER + File.separator + getString(R.string.my_space) + File.separator;
-            Helper.makeDirectory(mySpaceDir);
-            String folder;
-
-            for (int i = 0; i < 6; i++) {
-                switch (i) {
-                    case 0:
-                        folder = getString(R.string.majors);
-                        break;
-                    case 1:
-                        folder = getString(R.string.ben);
-                        break;
-                    case 2:
-                        folder = getString(R.string.wardrobes);
-                        break;
-                    case 3:
-                        folder = getString(R.string.lists);
-                        break;
-                    case 4:
-                        folder = getString(R.string.words);
-                        break;
-                    default:
-                        continue;
-                }
-                //Timber.v("Folder " + folder);
-                File from = new File(filesDir + folder);
-
-                if (from.exists()) {
-                    File[] files = from.listFiles();
-                    Helper.makeDirectory(mySpaceDir + folder);
-                    try {
-                        for (File f : files) {
-                            File to = new File(mySpaceDir + folder + File.separator
-                                    + f.getName());
-                            copyFile(f, to);
-                            f.delete();
-                        }
-                    } catch (IOException e) {
-                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
-                    }
-                }
-                from.delete();
-            }
-            (new File(filesDir)).delete();
         }
-    }
-
-    public static void copyFile(File src, File dst) throws IOException {
-        try (FileChannel inChannel = new FileInputStream(src).getChannel(); FileChannel outChannel = new FileOutputStream(dst).getChannel()) {
-            inChannel.transferTo(0, inChannel.size(), outChannel);
-        }
-    }
-
-    // For future use
-    // Checks if external storage is available for read and write
-    public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
     }
 
     private boolean mayAccessStorage() {
