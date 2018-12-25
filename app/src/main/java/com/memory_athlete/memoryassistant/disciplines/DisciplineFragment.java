@@ -396,7 +396,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     public boolean reset() {
         if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE) return true;
         if (((RadioButton) rootView.findViewById(R.id.timer)).isChecked()) {
-            cdt.cancel();
+            if (cdt != null) cdt.cancel();
             (rootView.findViewById(R.id.clock_text)).setVisibility(View.GONE);
         } else {
             ((Chronometer) rootView.findViewById(R.id.chronometer)).stop();
