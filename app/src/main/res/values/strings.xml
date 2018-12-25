@@ -146,7 +146,6 @@
     <!--Revenue-->
     <string name="already_purchased">You have already made that transaction\nTry something else :p</string>
     <string name="donate_amounts">List of donatable amounts</string>
-    <string name="banner_ad_unit_id">ca-app-pub-4029732742326098~4722961458</string>
 
     <!--other-->
     <string name="tab">\t</string>

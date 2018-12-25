@@ -43,8 +43,6 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.widget.Toast.makeText;
 
-//import hugo.weaving.DebugLog;
-
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
@@ -77,16 +75,13 @@ public class MainActivity extends AppCompatActivity {
         Uri appLinkData = appLinkIntent.getData();
     }
 
-    //@DebugLog
     @Override
     protected void onResume() {
         super.onResume();
-        //Handler handler = new Handler();
         new Runnable() {
             @Override
-            //@DebugLog
             public void run() {
-                firstStart();                           //TODO
+                firstStart();
                 SharedPreferences.Editor e = sharedPreferences.edit();
                 e.putLong("last_opened", System.currentTimeMillis());
                 Timber.v("Last opened on" + System.currentTimeMillis());
@@ -96,12 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }.run();
     }
 
-    //@DebugLog
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     void firstStart() {
-        if (mayAccessStorage()) Helper.makeDirectory(Helper.APP_FOLDER);
-        else return;
-
         if (sharedPreferences.getLong("last_opened", 0) == 0) {
             AdView adView = findViewById(R.id.adView);
             adView.setVisibility(View.VISIBLE);
@@ -144,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //@DebugLog
     public void setAdapter() {
         final List<Item> list = setList();
 
