@@ -129,16 +129,19 @@ public class Cards extends DisciplineFragment {
                 for (int j = 0; j < 52; j++)
                     indexList.add(j);
 
+            try {
+                for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
+                    if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++)
+                        indexList.add(j);
 
-            for (int i = 0; i < (a.get(NO_OF_VALUES)) * 52; i++) {
-                if (!shuffleDecks && indexList.size() == 0) for (int j = 0; j < 52; j++) {
-                    indexList.add(j);
+                    n = (new Random()).nextInt(indexList.size());
+                    cards.add(indexList.get(n));
+                    indexList.remove(n);
+                    if (a.get(RUNNING) == FALSE) break;
                 }
-
-                n = (new Random()).nextInt(indexList.size());
-                cards.add(indexList.get(n));
-                indexList.remove(n);
-                if (a.get(RUNNING) == FALSE) break;
+            } catch (IllegalStateException e) {
+                throw new RuntimeException("IllegalStateException from ViewPager.populate() "
+                        + "caused in Cards.backgroundString while generating random", e);
             }
 
             StringBuilder stringBuilder = new StringBuilder();
@@ -146,9 +149,10 @@ public class Cards extends DisciplineFragment {
             for (Integer i : cards)
                 stringBuilder.append(Integer.toString(i)).append(getString(R.string.tab));
             return stringBuilder.toString();
+
         } catch (IllegalStateException e) {
             throw new RuntimeException("IllegalStateException from ViewPager.populate() "
-                    + "caused in Cards.backgroundString");
+                    + "caused in Cards.backgroundString", e);
         }
     }
 

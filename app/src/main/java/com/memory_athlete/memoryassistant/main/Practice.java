@@ -32,41 +32,41 @@ public class Practice extends AppCompatActivity {
         Helper.theme(this, Practice.this);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.practice));
-        final ArrayList<Category> disc = new ArrayList<>();
-        setList(disc);
-        DisciplineAdapter discipline = new DisciplineAdapter(this, disc);
+        final ArrayList<Discipline> disciplines = new ArrayList<>();
+        setList(disciplines);
+        DisciplineAdapter discipline = new DisciplineAdapter(this, disciplines);
         ListView disciplineList = findViewById(R.id.main_list);
         disciplineList.setAdapter(discipline);
         disciplineList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             //@DebugLog
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Category cat = disc.get(position);
+                Discipline disc = disciplines.get(position);
                 Intent intent = new Intent(Practice.this, DisciplineActivity.class);
-                intent.putExtra("class", cat.mClass);
-                intent.putExtra("hasSpinner", cat.hasSpinner);
-                intent.putExtra("hasAsyncTask", cat.hasAsyncTask);
-                intent.putExtra("nameID", cat.mNameId);
-                intent.putExtra("spinnerContent", cat.mDifferentString);
+                intent.putExtra("class", disc.mClass);
+                intent.putExtra("hasSpinner", disc.hasSpinner);
+                intent.putExtra("hasAsyncTask", disc.hasAsyncTask);
+                intent.putExtra("nameID", disc.mNameId);
+                intent.putExtra("spinnerContent", disc.mDifferentString);
                 startActivity(intent);
             }
         });
     }
 
-    private void setList(ArrayList<Category> disc) {
-        disc.add(new Category(R.string.numbers, R.drawable.numbers, 1, true, false, 1));
-        disc.add(new Category(R.string.words, R.drawable.words, 2, false, true));
-        disc.add(new Category(R.string.names, R.drawable.names, 3, false, true));
-        disc.add(new Category(R.string.places_capital, R.drawable.places, 4, false, true));
-        disc.add(new Category(R.string.cards, R.drawable.cards, 5, false, false));
-        disc.add(new Category(R.string.dates, R.drawable.dates, 8, false, true));
-        disc.add(new Category(R.string.binary, R.drawable.binary, 6, true, false));
-        disc.add(new Category(R.string.letters, R.drawable.letters, 7, true, false));
-        //disc.add(new Category(R.string.a, R.drawable.equations, Equations.class, false, false));
-        //disc.add(new Category(R.string.i, R.drawable.foods, Foods.class, false, false));
-        //disc.add(new Category(R.string.j, R.drawable.colours, Colours.class, false, false));
+    private void setList(ArrayList<Discipline> disc) {
+        disc.add(new Discipline(R.string.numbers, R.drawable.numbers, 1, true, false, 1));
+        disc.add(new Discipline(R.string.words, R.drawable.words, 2, false, true));
+        disc.add(new Discipline(R.string.names, R.drawable.names, 3, false, true));
+        disc.add(new Discipline(R.string.places_capital, R.drawable.places, 4, false, true));
+        disc.add(new Discipline(R.string.cards, R.drawable.cards, 5, false, false));
+        disc.add(new Discipline(R.string.dates, R.drawable.dates, 8, false, true));
+        disc.add(new Discipline(R.string.binary, R.drawable.binary, 6, true, false));
+        disc.add(new Discipline(R.string.letters, R.drawable.letters, 7, true, false));
+        //disc.add(new Discipline(R.string.a, R.drawable.equations, Equations.class, false, false));
+        //disc.add(new Discipline(R.string.i, R.drawable.foods, Foods.class, false, false));
+        //disc.add(new Discipline(R.string.j, R.drawable.colours, Colours.class, false, false));
     }
 
-    private class Category {
+    private class Discipline {
         private int mNameId;
         private int mImageId;
         private int mDifferentString=0;
@@ -74,7 +74,7 @@ public class Practice extends AppCompatActivity {
         private boolean hasSpinner;
         private boolean hasAsyncTask;
 
-        Category(int nm, int im, int classId, boolean spinner, boolean async){
+        Discipline(int nm, int im, int classId, boolean spinner, boolean async){
             mNameId = nm;
             mImageId = im;
             mClass = classId;
@@ -82,7 +82,7 @@ public class Practice extends AppCompatActivity {
             hasAsyncTask = async;
         }
 
-        Category(int nm, int im, int classId, boolean spinner, boolean async, int num){
+        Discipline(int nm, int im, int classId, boolean spinner, boolean async, int num){
             mNameId = nm;
             mImageId = im;
             mClass = classId;
@@ -92,8 +92,8 @@ public class Practice extends AppCompatActivity {
         }
     }
 
-    private class DisciplineAdapter extends ArrayAdapter<Category> {
-        DisciplineAdapter(Context context, ArrayList<Category> cats) {
+    private class DisciplineAdapter extends ArrayAdapter<Discipline> {
+        DisciplineAdapter(Context context, ArrayList<Discipline> cats) {
             super(context, 0, cats);
         }
 
@@ -104,7 +104,7 @@ public class Practice extends AppCompatActivity {
             if (listView == null) listView = LayoutInflater.from(getContext())
                     .inflate(R.layout.category, null, true);
 
-            Category cat = getItem(position);
+            Discipline cat = getItem(position);
             TextView txt = listView.findViewById(R.id.text);
             ImageView img = listView.findViewById(R.id.image);
             txt.setText(Objects.requireNonNull(cat).mNameId);

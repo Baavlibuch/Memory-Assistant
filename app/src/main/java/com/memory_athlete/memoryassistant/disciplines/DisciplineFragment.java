@@ -349,7 +349,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             ListView l = rootView.findViewById(R.id.practice_list_view);
             StringBuilder s = new StringBuilder();
             int count = l.getAdapter().getCount();
-            Timber.v("view count = " + count);
+            Timber.d("view count = " + count);
             for (int i = 0; i < count; i++) s.append(l.getAdapter().getItem(i));
             stringToSave = s.toString();
         } else if (!speechCheckBox.isChecked()) stringToSave =
