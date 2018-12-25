@@ -85,7 +85,6 @@ public class RecallSimple extends AppCompatActivity {
         if (intent.getBooleanExtra("file exists", false)) {
             File dir = new File(getFilesDir().getAbsolutePath() + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline);
-            //ArrayList<String> fileList = new ArrayList<>();
             File[] files = dir.listFiles();
             if (files == null) {
                 finish();
@@ -210,7 +209,9 @@ public class RecallSimple extends AppCompatActivity {
 
     protected void getResponse() {
         EditText editText = findViewById(R.id.response_input);
-        String values = editText.getText().toString(), value = "";
+        String values = editText.getText().toString();
+        String value = "";
+        responses.clear();
 
         if (responseFormat == ResponseFormat.CHARACTER_RESPONSE_FORMAT) {
             for (int i = 0; i < values.length(); i++) {
@@ -220,7 +221,6 @@ public class RecallSimple extends AppCompatActivity {
                 Timber.v("response = " + String.valueOf(values.charAt(i)));
             }
         } else {
-            //while (responses.size() <= mResponsePosition) responses.add(" ");
             char delimiter = (responseFormat == ResponseFormat.SIMPLE_RESPONSE_FORMAT ? ' ' : '\n');
             for (int i = 0; i < values.length(); i++) {
                 if (!(values.charAt(i) == delimiter)) {
@@ -244,7 +244,6 @@ public class RecallSimple extends AppCompatActivity {
         String text = ((TextView) findViewById(R.id.responses_text)).getText() + value + " " + getString(R.string.tab);
         ((TextView) findViewById(R.id.responses_text)).setText(text);
         Timber.v("onEditorAction complete");
-        editText.setText("");
     }
 
     void hideResponseLayout() {
@@ -540,7 +539,6 @@ public class RecallSimple extends AppCompatActivity {
         responses.clear();
         mTextAnswer = new StringBuilder();
         mTextResponse = new StringBuilder();
-        ((EditText) findViewById(R.id.response_input)).setText("");
 
         setResponseLayout(false);
         givenUp = false;
@@ -551,16 +549,7 @@ public class RecallSimple extends AppCompatActivity {
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
 
-        //findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
-
-        //((TextView) findViewById(R.id.responses_text)).setText("");
-        //((TextView) findViewById(R.id.answers_text)).setText("");
-
         Timber.v("Recall Reset Complete");
-    }
-
-    public void reset(View view) {
-        reset();
     }
 
     public void check(View view) {

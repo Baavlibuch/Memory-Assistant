@@ -118,8 +118,8 @@ public class RecallComplex extends RecallSimple {
     @Override
     protected void compare(boolean words) {
         whitespace = getString(R.string.tab);
-        mTextAnswer = new StringBuilder();        // Used in super
-        mTextResponse = new StringBuilder();      // Used in super
+        mTextAnswer = new StringBuilder();        // Used in super class
+        mTextResponse = new StringBuilder();      // Used in super class
 
         for (int i = 0; i < answers.size(); i++) {
             Timber.v("Entered loop " + i);
@@ -180,7 +180,6 @@ public class RecallComplex extends RecallSimple {
         recallList.clear();
         mTextAnswer = new StringBuilder();
         mTextResponse = new StringBuilder();
-        for (int i = 0; i < responses.size(); i++) responses.set(i, "");
         complexListView.setAdapter(null);
 
         setResponseLayout(false);

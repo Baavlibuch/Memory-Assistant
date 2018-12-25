@@ -3,6 +3,7 @@ app/src/main/java/com/memory_athlete/memoryassistant/inAppBilling/Encryption.jav
 app/google-services.json
 .signing/
 .keystore.properties
+app/fabric.properties
 gradle.properties
 resources/
 
