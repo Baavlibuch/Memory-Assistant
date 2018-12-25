@@ -143,9 +143,10 @@
     <string name="wardrobe_method">Wardrobe Method</string>
     <string name="vocab">Vocabulary</string>
 
-    <!--Play Billing-->
+    <!--Revenue-->
     <string name="already_purchased">You have already made that transaction\nTry something else :p</string>
     <string name="donate_amounts">List of donatable amounts</string>
+    <string name="banner_ad_unit_id">ca-app-pub-4029732742326098~4722961458</string>
 
     <!--other-->
     <string name="tab">\t</string>
@@ -158,9 +159,5 @@
     <string name="discipline">discipline</string>
     <string name="speech_rate">Speech rate</string>
     <string name="word_new">New</string>
-
-    <!--TODO change value before publishing
-    ca-app-pub-4029732742326098~4722961458-->
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
 </resources>

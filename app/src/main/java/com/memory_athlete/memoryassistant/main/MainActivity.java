@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
@@ -108,9 +109,13 @@ public class MainActivity extends AppCompatActivity {
         else return;
 
         if (sharedPreferences.getLong("last_opened", 0) == 0) {
-            Helper.showAdd((AdView) findViewById(R.id.adView), true, 1);
+            AdView adView = findViewById(R.id.adView);
+            adView.setVisibility(View.VISIBLE);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+
             makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
-            Timber.v("firstStart");
+            Timber.d("firstStart");
         } else {
             String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.my_space) + File.separator;
             String mySpaceDir = Helper.APP_FOLDER + File.separator + getString(R.string.my_space) + File.separator;

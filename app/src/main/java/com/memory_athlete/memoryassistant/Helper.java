@@ -6,11 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import java.io.File;
 import java.io.IOException;
@@ -228,11 +224,4 @@ public class Helper {
         return true;
     }
 
-    public static void showAdd(AdView AdView, boolean firstStart, float probability) {
-        if (firstStart || probability < 0.1) {
-            AdView.setVisibility(View.VISIBLE);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            AdView.loadAd(adRequest);
-        }
-    }
 }
