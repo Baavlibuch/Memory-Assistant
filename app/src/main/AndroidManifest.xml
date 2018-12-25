@@ -38,6 +38,7 @@
 
                 <data
                     android:host="memory-athlete.com"
+                    android:pathPrefix="/learn.html"
                     android:scheme="https" />
             </intent-filter>
         </activity>
@@ -51,7 +52,21 @@
         <activity
             android:name=".main.Learn"
             android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean" />
+            tools:targetApi="jelly_bean">
+            <intent-filter
+                android:autoVerify="true"
+                tools:targetApi="m">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="memory-athlete.com"
+                    android:pathPrefix="/learn.html"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".lessons.Lessons"
             android:parentActivityName=".main.Learn"
@@ -60,7 +75,21 @@
             android:name=".main.Practice"
             android:launchMode="singleTask"
             android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean" />
+            tools:targetApi="jelly_bean">
+            <intent-filter
+                android:autoVerify="true"
+                tools:targetApi="m">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="memory-athlete.com"
+                    android:pathPrefix="/practice.html"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".main.DisciplineActivity"
             android:launchMode="singleTask"
@@ -146,7 +175,7 @@
             android:value="32fd3e2a89a1903109b82b78e8ad3641cb25e326" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4029732742326098~4722961458"/>
+            android:value="ca-app-pub-4029732742326098~4722961458" />
     </application>
 
 </manifest>
