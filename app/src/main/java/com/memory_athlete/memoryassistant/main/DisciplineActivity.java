@@ -205,7 +205,8 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         //Stop the loading
         tag = "android:switcher:" + R.id.viewpager + ":" + 0;
         DisciplineFragment disciplineFragment = (DisciplineFragment) getSupportFragmentManager().findFragmentByTag(tag);
-        if (Objects.requireNonNull(disciplineFragment).a.get(disciplineFragment.RUNNING) == disciplineFragment.TRUE) {
+        assert disciplineFragment != null;
+        if (disciplineFragment.a.get(disciplineFragment.RUNNING) == disciplineFragment.TRUE) {
             //Stop the generation of the random list if it were being generated
             disciplineFragment.a.set(disciplineFragment.RUNNING, disciplineFragment.FALSE);
             return;

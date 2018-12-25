@@ -56,7 +56,8 @@ import static java.lang.Math.pow;
 public abstract class DisciplineFragment extends Fragment implements View.OnClickListener {
     protected long mTime = 0;
     protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true, hasSpeech = true;
-    public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2, TRUE = 1, FALSE = 0, NORMAL = 0;
+    public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2;     // Indices for a(array sent to RandomGeneration AsyncTasks to make decisions)
+    public final int TRUE = 1, FALSE = 0, NORMAL = 0;
     protected float speechSpeedMultiplier = 1;
 
     protected String stringToSave;
@@ -394,7 +395,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     //}
 
     public boolean reset() {
-        if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE) return true;
+        if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE) return true;    // free. ready to leave activity
         if (((RadioButton) rootView.findViewById(R.id.timer)).isChecked()) {
             if (cdt != null) cdt.cancel();
             (rootView.findViewById(R.id.clock_text)).setVisibility(View.GONE);
@@ -425,7 +426,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         ((TextView) rootView.findViewById(R.id.random_values)).setText("");
         isTimerRunning = false;
         ttsStop();
-        return false;
+        return false;                                                                   // reset fragment. cannot leave yet
     }
 
     protected void setViews() {
