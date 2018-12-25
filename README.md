@@ -36,7 +36,7 @@ Memory sports android app
 
 ### Contribution guidelines ###
 
-* **Writing tests** – Recommended Espresso tests. Overrite the ones already present.
+* **Writing tests** – Recommended Espresso tests. Overwite the ones already present.
 * **Code review**
 * **Other guidelines**
 ### Who do I talk to? ###
