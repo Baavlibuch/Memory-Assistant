@@ -187,21 +187,27 @@ public class Helper {
         }
     }
 
-    public static boolean makeDirectory(String path) {
+    public static boolean makeDirectory(String path) {                  // return true if directory was created successfully. throws exception otherwise
         File pDir = new File(path);
         boolean isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 try {
-                    Files.createDirectory(pDir.toPath());
+                    Files.createDirectories(pDir.toPath());
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    try {                                               // second try
+                        Files.createDirectories(pDir.toPath());
+                    } catch (IOException e1) {
+                        throw new RuntimeException(e1);                 // throw exception if fails twice
+                    }
                 }
                 return true;
             } else isDirectoryCreated = pDir.mkdirs();
         }
         if (isDirectoryCreated) return true;
-        throw new RuntimeException("Couldn't create the directory. Path = " + path);
+        isDirectoryCreated = pDir.mkdirs();                             // second try
+        if (isDirectoryCreated) return true;
+        throw new RuntimeException("Couldn't create the directory. Path = " + path);// throw exception if fails twice
     }
 
     public static boolean externalStorageNotWritable() {
