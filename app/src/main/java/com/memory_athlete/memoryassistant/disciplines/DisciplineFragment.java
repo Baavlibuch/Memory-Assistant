@@ -183,7 +183,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         if (bundle.getBoolean("hasSpinner", false))
             makeSpinner(bundle.getInt("spinnerContent", 0));
-        levelSpinner();
+        //levelSpinner();                                           // commented on 26 Dec. Moved to onResume()
         if (!hasStandard) {
             rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
             rootView.findViewById(R.id.custom_layout).setVisibility(View.VISIBLE);
@@ -199,6 +199,12 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         rootView.setOnClickListener(this);
         mRecallClass = RecallSimple.class;
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        levelSpinner();
     }
 
     //Build the levelSpinner
@@ -395,7 +401,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     //}
 
     public boolean reset() {
-        if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE) return true;    // free. ready to leave activity
+        if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE)
+            return true;    // free. ready to leave activity
         if (((RadioButton) rootView.findViewById(R.id.timer)).isChecked()) {
             if (cdt != null) cdt.cancel();
             (rootView.findViewById(R.id.clock_text)).setVisibility(View.GONE);
@@ -539,9 +546,11 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         //set NO_OF_Values based on level, level 1 is 8, every level doubles the values
         if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked() && hasStandard) {
-            String s = ((Spinner) rootView.findViewById(R.id.level)).getSelectedItem().toString();
+            Spinner spinner = rootView.findViewById(R.id.level);
+            String s = spinner.getSelectedItem().toString();
             noOfValues = (s.equals(getString(R.string.choose_level)))
-                    ? 8 : (int) pow(2, Integer.parseInt(s) + 2);
+                    ? 8 * Integer.parseInt(String.valueOf(spinner.getItemAtPosition(1)))        // get highest level
+                    : (int) pow(2, Integer.parseInt(s) + 2);
             a.set(NO_OF_VALUES, noOfValues);
             return;
         }
