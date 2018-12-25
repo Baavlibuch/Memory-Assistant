@@ -56,7 +56,6 @@ public class RecallComplex extends RecallSimple {
         findViewById(R.id.response_input).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
         findViewById(R.id.response_layout).setVisibility(View.VISIBLE);
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
 
@@ -119,8 +118,8 @@ public class RecallComplex extends RecallSimple {
     @Override
     protected void compare(boolean words) {
         whitespace = getString(R.string.tab);
-        mTextAnswer = new StringBuilder("");        // Used in super
-        mTextResponse = new StringBuilder("");      // Used in super
+        mTextAnswer = new StringBuilder();        // Used in super
+        mTextResponse = new StringBuilder();      // Used in super
 
         for (int i = 0; i < answers.size(); i++) {
             Timber.v("Entered loop " + i);
@@ -185,12 +184,12 @@ public class RecallComplex extends RecallSimple {
         complexListView.setAdapter(null);
 
         setResponseLayout(false);
+        givenUp = false;
 
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.result).setVisibility(View.GONE);
-        findViewById(R.id.reset).setVisibility(View.GONE);
 
         Timber.v("Recall Reset Complete");
     }
@@ -285,9 +284,9 @@ public class RecallComplex extends RecallSimple {
             eventTextView.setVisibility(View.VISIBLE);
 
             eventTextView.setText(item.getKey());
-            ((TextView) convertView.findViewById(R.id.response_text)).setText(Html.fromHtml(
+            ((TextView) convertView.findViewById(R.id.complex_response_text)).setText(Html.fromHtml(
                     item.getResponse()), TextView.BufferType.SPANNABLE);
-            ((TextView) convertView.findViewById(R.id.answer_text)).setText(Html.fromHtml(
+            ((TextView) convertView.findViewById(R.id.complex_answer_text)).setText(Html.fromHtml(
                     item.getAnswer()), TextView.BufferType.SPANNABLE);
 
             return convertView;

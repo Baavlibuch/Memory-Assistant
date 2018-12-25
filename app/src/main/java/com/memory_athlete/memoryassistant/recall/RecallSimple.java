@@ -35,7 +35,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 public class RecallSimple extends AppCompatActivity {
-    boolean backPressed = false;
+    protected boolean givenUp = false;
 
     protected ArrayList<String> responses = new ArrayList<>();
     protected ArrayList<String> answers = new ArrayList<>();
@@ -61,7 +61,7 @@ public class RecallSimple extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (findViewById(R.id.result).getVisibility() == View.VISIBLE && !backPressed) backPressed = true;
+        if (findViewById(R.id.result).getVisibility() == View.VISIBLE || givenUp) reset();                  // answers are visible, go back to responses
         else super.onBackPressed();
     }
 
@@ -180,6 +180,7 @@ public class RecallSimple extends AppCompatActivity {
 
     protected String giveUp() {
         Timber.v("Give Up! pressed");
+        givenUp = true;
         String whitespace;
         switch (responseFormat) {
             case SIMPLE_RESPONSE_FORMAT:
@@ -542,6 +543,7 @@ public class RecallSimple extends AppCompatActivity {
         ((EditText) findViewById(R.id.response_input)).setText("");
 
         setResponseLayout(false);
+        givenUp = false;
 
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.result).setVisibility(View.GONE);

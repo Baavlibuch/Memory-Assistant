@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:id="@+id/response_text"/>
+            android:id="@+id/complex_response_text"/>
 
         <TextView
             android:layout_width="0dp"
@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textAppearance="?android:textAppearanceSmall"
-            android:id="@+id/answer_text"/>
+            android:id="@+id/complex_answer_text"/>
 
     </LinearLayout>
 

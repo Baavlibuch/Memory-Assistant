@@ -145,7 +145,6 @@ public class RecallCards extends RecallSimple {
             numberLayout.addView(textView);
         }
 
-        findViewById(R.id.reset).setVisibility(View.GONE);
         findViewById(R.id.result).setVisibility(View.GONE);
         findViewById(R.id.recall_layout).setVisibility(View.GONE);
         findViewById(R.id.progress_bar_recall).setVisibility(View.GONE);
