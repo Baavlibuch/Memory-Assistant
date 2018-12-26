@@ -132,7 +132,7 @@ public class WriteFile extends AppCompatActivity {
 
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = " + fname);
-        if (Helper.mayNotAccessStorage(this)) {
+        if (!Helper.mayAccessStorage(this)) {
             if (name) {
                 Toast.makeText(this, "Permission to access storage is needed",
                         Toast.LENGTH_SHORT).show();

@@ -49,11 +49,12 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
         tabTitles.add(getString(R.string.apply));
         int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
                 .getString(getString(R.string.no_my_space_frags), "1")));
-        for (int i = 0; i < noOfMySpaceScreens; i++) {
+        boolean storageAccess = Helper.mayAccessStorage(this);
+        for (int i = 0; i < noOfMySpaceScreens && storageAccess; i++) {
             if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
             else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
         }
-        if (tabTitles.size() == 1 || Helper.mayNotAccessStorage(this))
+        if (tabTitles.size() == 1 || !storageAccess)
             findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         viewPager = findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(9);
@@ -120,7 +121,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
 
         @Override
         public int getCount() {
-            if(Helper.mayNotAccessStorage(ImplementLesson.this)) return 1;
+            if(!Helper.mayAccessStorage(ImplementLesson.this)) return 1;
             return tabTitles.size();
         }
     }

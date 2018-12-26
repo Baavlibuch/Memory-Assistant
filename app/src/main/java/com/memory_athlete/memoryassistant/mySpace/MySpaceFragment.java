@@ -315,7 +315,7 @@ public class MySpaceFragment extends Fragment {
                 from.renameTo(to);
             }
         }
-        if (Helper.mayNotAccessStorage(getContext())) {
+        if (!Helper.mayAccessStorage(getContext())) {
             if (name) {
                 Toast.makeText(getContext(), "Permission to access storage is needed",
                         Toast.LENGTH_SHORT).show();

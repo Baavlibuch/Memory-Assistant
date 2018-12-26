@@ -156,7 +156,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         @Override
         public int getCount() {
-            if (Helper.mayNotAccessStorage(DisciplineActivity.this)) return 1;
+            if (!Helper.mayAccessStorage(DisciplineActivity.this)) return 1;
             return tabTitles.size();
         }
 
@@ -260,20 +260,22 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if (tabTitles.size() == 1 || Helper.mayNotAccessStorage(DisciplineActivity.this))
+            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(DisciplineActivity.this))
                 findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
         }
 
         @Override
         protected SimpleFragmentPagerAdapter doInBackground(Void... v) {
-            int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
-                    .getString(getString(R.string.no_my_space_frags), "1")));
-            for (int i = 0; i < noOfMySpaceScreens; i++) {
-                if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
-                else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
-            }
+            if (Helper.mayAccessStorage(DisciplineActivity.this)) {
+                int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
+                        .getString(getString(R.string.no_my_space_frags), "1")));
+                for (int i = 0; i < noOfMySpaceScreens; i++) {
+                    if (noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
+                    else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
+                }
             Timber.v("tabTitles.size() = " + tabTitles.size());
             viewPager.setOffscreenPageLimit(9);
+            }
             return new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         }
 

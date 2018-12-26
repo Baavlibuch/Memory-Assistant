@@ -53,7 +53,7 @@ public class RecallSelector extends AppCompatActivity {
         listViewId = MIN_DYNAMIC_VIEW_ID;
         findViewById(R.id.add).setVisibility(View.GONE);
 
-        if (Helper.mayNotAccessStorage(this)) {
+        if (!Helper.mayAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.my_space_relative_layout),
                     "Storage permissions are required", Snackbar.LENGTH_SHORT)
                     .setAction("Grant", new View.OnClickListener() {

@@ -215,11 +215,11 @@ public class Helper {
         return !Environment.MEDIA_MOUNTED.equals(state);
     }
 
-    public static boolean mayNotAccessStorage(Context context) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return false;
+    public static boolean mayAccessStorage(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
 
         if (checkSelfPermission(context, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            return false;
+            return true;
         //if (shouldShowRequestPermissionRationale((Activity) context, READ_EXTERNAL_STORAGE)) {
         requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
                 WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
@@ -227,7 +227,7 @@ public class Helper {
         //    requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
         //            WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
         //}
-        return true;
+        return false;
     }
 
 }

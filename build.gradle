@@ -12,8 +12,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'com.google.firebase:firebase-plugins:1.1.5'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         //classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
