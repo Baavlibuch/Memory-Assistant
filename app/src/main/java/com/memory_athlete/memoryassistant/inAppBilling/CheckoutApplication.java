@@ -1,13 +1,13 @@
 package com.memory_athlete.memoryassistant.inAppBilling;
 
 import android.app.Activity;
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import org.solovyev.android.checkout.Billing;
 
 import javax.annotation.Nonnull;
 
-public class CheckoutApplication extends Application {
+public class CheckoutApplication extends MultiDexApplication {
 
     @Nonnull
     private final Billing mBilling = new Billing(this, new Billing.DefaultConfiguration() {
