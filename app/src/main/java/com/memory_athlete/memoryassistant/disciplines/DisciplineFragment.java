@@ -347,11 +347,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         //practice_list_view is visible (0) if arrays are used, gone (8) if a single string is used
         if (rootView.findViewById(R.id.practice_list_view).getVisibility() == View.VISIBLE) {
             ListView l = rootView.findViewById(R.id.practice_list_view);
-            StringBuilder s = new StringBuilder();
-            int count = l.getAdapter().getCount();
-            Timber.v("view count = " + count);
-            for (int i = 0; i < count; i++) s.append(l.getAdapter().getItem(i));
-            stringToSave = s.toString();
+            stringToSave = getStringToSaveFromAdapter((RandomAdapter) l.getAdapter());
         } else if (!speechCheckBox.isChecked()) stringToSave =
                 ((TextView) rootView.findViewById(R.id.random_values)).getText().toString();
         Timber.v("stringToSave = " + stringToSave);
@@ -383,6 +379,14 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             }
         }
         return false;
+    }
+
+    protected String getStringToSaveFromAdapter(RandomAdapter randomAdapter) {
+        StringBuilder s = new StringBuilder();
+        int count = randomAdapter.getCount();
+        Timber.v("view count = " + count);
+        for (int i = 0; i < count; i++) s.append(randomAdapter.getItem(i));
+        return s.toString();
     }
 
     //// Checks if external storage is available for read and write
