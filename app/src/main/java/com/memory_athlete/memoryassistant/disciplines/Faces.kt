@@ -10,6 +10,7 @@ import android.widget.*
 import com.memory_athlete.memoryassistant.R
 import com.memory_athlete.memoryassistant.recall.RecallComplex
 import com.squareup.picasso.Picasso
+import timber.log.Timber
 import java.io.File
 import java.util.*
 
@@ -73,8 +74,8 @@ class Faces : ComplexDisciplineFragment() {
                     ViewGroup.LayoutParams.MATCH_PARENT)
         }
 
-        val face = linearLayout.findViewById<View>(R.id.face) as ImageView
-        val name = linearLayout.findViewById<View>(R.id.name) as TextView
+        val face = linearLayout.findViewById<ImageView>(R.id.face)
+        val name = linearLayout.findViewById<TextView>(R.id.name)
 
         val s = mFirstName.get(randomItem.firstName) + " " + mLastName.get(randomItem.lastName)
         name.text = s
@@ -89,6 +90,19 @@ class Faces : ComplexDisciplineFragment() {
                 .into(face)
 
         return linearLayout
+    }
+
+    override fun getStringToSaveFromAdapter(randomAdapter: DisciplineFragment.RandomAdapter): String {
+        val s = StringBuilder()
+        val count = randomAdapter.count
+        Timber.v("view count = $count")
+        for (i in 0 until count) {
+            val person = randomAdapter.getItem(i) as RandomObject
+            s.append(person.face).append("\t")
+                    .append(person.firstName).append(" ").append(person.lastName)
+                    .append("\n")
+        }
+        return s.toString()
     }
 }
 

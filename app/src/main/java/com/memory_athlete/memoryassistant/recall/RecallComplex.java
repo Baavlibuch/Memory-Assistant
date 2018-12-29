@@ -64,14 +64,14 @@ public class RecallComplex extends RecallSimple {
         complexListView.setVisibility(View.VISIBLE);
         if (complexListView.getAdapter() == null)
             complexListView.setAdapter(new ResponseAdapter(this, answers));
-        Timber.v("answers.size() = " + answers.size());
+        Timber.v("answers.size() = %s", answers.size());
         Timber.v("setResponseLayout() complete");
     }
 
     @Override
     protected void getAnswers() throws FileNotFoundException {
         if (answers.size() > 0) {
-            Timber.i("getAnswers() is returning early because the answers have already been read");
+            Timber.v("getAnswers() is returning early because the answers have already been read");
             return;
         }
         Timber.v("getAnswersEntered");
@@ -85,7 +85,7 @@ public class RecallComplex extends RecallSimple {
             responses.add("");
         }
         Collections.shuffle(answers);
-        Timber.v("answers.size() = " + String.valueOf(answers.size()));
+        Timber.v("answers.size() = %s", String.valueOf(answers.size()));
         scanner.close();
 
         Timber.v("getAnswers() complete");
@@ -118,11 +118,11 @@ public class RecallComplex extends RecallSimple {
     @Override
     protected void compare(boolean words) {
         whitespace = getString(R.string.tab);
-        mTextAnswer = new StringBuilder();        // Used in super class
-        mTextResponse = new StringBuilder();      // Used in super class
+        mTextAnswer = new StringBuilder();        // Used in super
+        mTextResponse = new StringBuilder();      // Used in super
 
         for (int i = 0; i < answers.size(); i++) {
-            Timber.v("Entered loop " + i);
+            Timber.v("Entered loop %s", i);
             if (isCorrect(i)) continue;
             if (missed > 8 && missed > correct) break;
             if (isLeft(i)) continue;
