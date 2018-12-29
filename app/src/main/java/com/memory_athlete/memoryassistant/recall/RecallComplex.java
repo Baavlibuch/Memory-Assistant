@@ -14,11 +14,13 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memory_athlete.memoryassistant.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -31,6 +33,7 @@ import timber.log.Timber;
 
 public class RecallComplex extends RecallSimple {
     ArrayList<RecallObject> recallList;
+    boolean givenUp = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -193,6 +196,14 @@ public class RecallComplex extends RecallSimple {
         Timber.v("Recall Reset Complete");
     }
 
+    @Override
+    public void giveUp(View view) {
+        if (mDiscipline.equalsIgnoreCase(getString(R.string.faces))) {
+            givenUp = true;
+
+        } else super.giveUp();
+    }
+
     class LoadAnswersAsyncTask extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected void onPreExecute() {
@@ -234,7 +245,7 @@ public class RecallComplex extends RecallSimple {
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.item_recall_date, parent, false);
+                    .inflate(R.layout.item_recall_complex, parent, false);
 
             String item = Objects.requireNonNull(getItem(position));
             TextView textView = convertView.findViewById(R.id.event);
@@ -278,17 +289,38 @@ public class RecallComplex extends RecallSimple {
                     .inflate(R.layout.item_complex_recall, parent, false);
 
             RecallObject item = Objects.requireNonNull(getItem(position));
+            TextView complexRecallItemTextView = convertView.findViewById(R.id.event);
+            ImageView faceImageView = convertView.findViewById(R.id.face);
 
-            TextView eventTextView = convertView.findViewById(R.id.event);
-            eventTextView.setVisibility(View.VISIBLE);
+            if (mDiscipline.equalsIgnoreCase(getString(R.string.faces))) {          // faces
+                faceImageView.setVisibility(View.VISIBLE);
+                Picasso
+                        //.setLoggingEnabled(true)
+                        .with(getContext())
+                        .load(getObbDir().getPath() + File.separator + "faces" + File.separator + item)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .fit()
+                        //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ
+                        .into(faceImageView);
+                if (givenUp) {
+                    complexRecallItemTextView.setVisibility(View.VISIBLE);
+                    complexRecallItemTextView.setText(item.answer);
+                }
+                else complexRecallItemTextView.setVisibility(View.GONE);
+                return convertView;
+            }
 
-            eventTextView.setText(item.getKey());
-            ((TextView) convertView.findViewById(R.id.complex_response_text)).setText(Html.fromHtml(
-                    item.getResponse()), TextView.BufferType.SPANNABLE);
-            ((TextView) convertView.findViewById(R.id.complex_answer_text)).setText(Html.fromHtml(
-                    item.getAnswer()), TextView.BufferType.SPANNABLE);
-
-            return convertView;
+            if (mDiscipline.equalsIgnoreCase(getString(R.string.dates))) {   // dates
+                faceImageView.setVisibility(View.GONE);
+                complexRecallItemTextView.setVisibility(View.VISIBLE);
+                complexRecallItemTextView.setText(item.getKey());
+                ((TextView) convertView.findViewById(R.id.complex_response_text)).setText(Html.fromHtml(
+                        item.getResponse()), TextView.BufferType.SPANNABLE);
+                ((TextView) convertView.findViewById(R.id.complex_answer_text)).setText(Html.fromHtml(
+                        item.getAnswer()), TextView.BufferType.SPANNABLE);
+                return convertView;
+            }
+            throw new RuntimeException("Wrong complex discipline. Got - " + mDiscipline);
         }
     }
 

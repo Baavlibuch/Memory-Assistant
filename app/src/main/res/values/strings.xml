@@ -28,6 +28,7 @@
     <string name="random">Random</string>
     <string name="digits">Digits</string>
     <string name="choose_file">Choose File</string>
+    <string name="faces">Faces</string>
 
     <!--Recall-->
     <string name="enter_ans">Enter responses</string>
@@ -159,6 +160,7 @@
     <string name="discipline">discipline</string>
     <string name="speech_rate">Speech rate</string>
     <string name="word_new">New</string>
+    <string name="face">Face</string>
     <string name="privacy_policy">Privacy Policy</string>
 
 </resources>
