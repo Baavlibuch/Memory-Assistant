@@ -45,7 +45,7 @@ public class RecallSimple extends AppCompatActivity {
     protected CompareFormat compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
     protected ResponseFormat responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;
 
-    protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling = 0;
+    protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling = 0;      // result
     protected StringBuilder mTextAnswer = null, mTextResponse = null;
     protected String whitespace;
     //protected CompareAsyncTask task = new CompareAsyncTask(); //use to cancel the async task, don't remember how
@@ -53,6 +53,7 @@ public class RecallSimple extends AppCompatActivity {
     protected String mFilePath;
     protected String mDiscipline = null;
 
+    // views
     protected ListView complexListView;
     protected GridView gridView;
 

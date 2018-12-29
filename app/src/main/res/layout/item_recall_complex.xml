@@ -6,6 +6,12 @@
     android:orientation="vertical"
     android:layout_margin="4dp">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/face"
+        android:id="@+id/face" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
