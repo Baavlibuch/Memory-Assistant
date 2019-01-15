@@ -6,13 +6,32 @@
         <item>Contribute</item>
         <item>Fund</item>
         <item>Commit</item>
+        <item>Credits</item>
     </string-array>
 
     <string-array name="contribute_bodies">
         <item>Give an honest review (Useless)</item>
         <item>Join the alpha testers (Not useless)</item>
         <item>Donate to development (Useful)</item>
-        <item>Build the application (Required)</item>
+        <item>List of contributors</item>
+    </string-array>
+
+    <string-array name="contributors_text">
+        <item>Manik Sejwal</item>
+        <item>Sharad Verma</item>
+        <item>Amartyo Roy</item>
+        <item>Mehak Sejwal</item>
+        <item>Pexels</item>
+        <item>www.flaticon.com</item>
+    </string-array>
+
+    <string-array name="contributors_url">
+        <item>https://github.com/maniksejwal/</item>
+        <item>https://github.com/sharadv245</item>
+        <item>https://github.com/AmartyoRoy</item>
+        <item><![CDATA[https://www.google.com/search?source=hp&ei=_iU-XPTRAofIvgT85LmQAg&q=mehak+sejwal&btnK=Google+Search&oq=mehak+sejwal&gs_l=psy-ab.3..0i22i30.2064.4728..5393…1.0..0.233.1720.0j12j1......0....1..gws-wiz.....0..0j0i131j35i39j0i10j0i131i10.YQ2vaN41i0k]]></item>
+        <item>www.pexels.com</item>
+        <item>www.flaticon.com</item>
     </string-array>
 
     <string-array name="themes">

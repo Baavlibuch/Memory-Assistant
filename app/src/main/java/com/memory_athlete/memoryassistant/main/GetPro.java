@@ -27,7 +27,6 @@ import timber.log.Timber;
 
 
 public class GetPro extends AppCompatActivity {
-    final int TYPE_PLAY_STORE = 0, TYPE_ACTIVITY = 1, TYPE_GITHUB = 2, TYPE_EMAIL = 3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,7 @@ public class GetPro extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Item item = list.get(position);
                 switch (item.type) {
-                    case TYPE_PLAY_STORE:
+                    case PLAY_STORE:
                         try {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(
                                     "market://details?id=" + getPackageName())));
@@ -57,14 +56,14 @@ public class GetPro extends AppCompatActivity {
                                     "https://play.google.com/store/apps/details?id=" + getPackageName())));
                         }
                         break;
-                    case TYPE_ACTIVITY:
+                    case ACTIVITY:
                         startActivity(new Intent(getApplicationContext(), DonateActivity.class));
                         break;
-                    case TYPE_GITHUB:
+                    case GITHUB:
                         startActivity(new Intent(Intent.ACTION_VIEW,
                                 Uri.parse("https://github.com/maniksejwal/Memory-Assistant")));
                         break;
-                    case TYPE_EMAIL:
+                    case EMAIL:
                         Toast.makeText(getApplicationContext(),
                                 "Your eMail address will be added to the list of alpha testers manually",
                                 Toast.LENGTH_SHORT).show();
@@ -82,6 +81,9 @@ public class GetPro extends AppCompatActivity {
                                     "No eMail application found", Toast.LENGTH_SHORT).show();
                         }
                         break;
+                    case CREDITS:
+                        startActivity(new Intent(getApplicationContext(), CreditsActivity.class));
+                        break;
                 }
             }
         });
@@ -92,17 +94,18 @@ public class GetPro extends AppCompatActivity {
         String[] headers = getResources().getStringArray(R.array.contribute_headers);
         String[] bodies = getResources().getStringArray(R.array.contribute_bodies);
         return Arrays.asList(
-                new Item(headers[0], bodies[0], TYPE_PLAY_STORE),
-                new Item(headers[1], bodies[1], TYPE_EMAIL),
-                new Item(headers[2], bodies[2], TYPE_ACTIVITY),
-                new Item(headers[3], bodies[3], TYPE_GITHUB));
+                new Item(headers[0], bodies[0], PART_TYPE.PLAY_STORE),
+                new Item(headers[1], bodies[1], PART_TYPE.EMAIL),
+                new Item(headers[2], bodies[2], PART_TYPE.ACTIVITY),
+                new Item(headers[3], bodies[3], PART_TYPE.GITHUB),
+                new Item(headers[4], bodies[4], PART_TYPE.CREDITS));
     }
 
     private class Item {
         String head, body;
-        int type;
+        PART_TYPE type;
 
-        Item(String title, String body, int type) {
+        Item(String title, String body, PART_TYPE type) {
             this.head = title;
             this.body = body;
             this.type = type;
@@ -121,14 +124,14 @@ public class GetPro extends AppCompatActivity {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.item_contribute, parent, false);
 
-            ((TextView) convertView.findViewById(R.id.contribute_head))
-                    .setText(getItem(position).head);
-            ((TextView) convertView.findViewById(R.id.contribute_body))
-                    .setText(getItem(position).body);
+            Item item = getItem(position);
+            assert item != null;
+            ((TextView) convertView.findViewById(R.id.contribute_head)).setText(item.head);
+            ((TextView) convertView.findViewById(R.id.contribute_body)).setText(item.body);
 
             return convertView;
         }
-
     }
 
+    enum PART_TYPE {PLAY_STORE, ACTIVITY, GITHUB, EMAIL, CREDITS}
 }

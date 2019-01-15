@@ -26,6 +26,7 @@
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter
@@ -176,6 +177,8 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4029732742326098~4722961458" />
+
+        <activity android:name=".main.CreditsActivity"></activity>
     </application>
 
 </manifest>

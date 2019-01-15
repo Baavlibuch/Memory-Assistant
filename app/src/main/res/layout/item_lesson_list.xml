@@ -1,54 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lesson_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/lesson_item">
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/lesson_item_header_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/lesson_item_header_layout"
         tools:ignore="UseCompoundDrawables">
         <!--will be filled programmatically-->
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/lesson_item_header_text"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:textAppearance="?android:textAppearanceMedium" />
+        <TextView
+            android:id="@+id/lesson_item_header_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:textAppearance="?android:textAppearanceMedium" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_action_drop_down"
-            android:padding="8dp"
             android:layout_gravity="center_vertical"
-            android:contentDescription="@string/drop_down" />
+            android:contentDescription="@string/drop_down"
+            android:padding="8dp"
+            android:src="@drawable/ic_action_drop_down" />
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/lesson_item_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lesson_item_body"
+        android:linksClickable="true"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:linksClickable="true"
-        />
+        android:textAppearance="?android:textAppearanceMedium" />
 
     <ProgressBar
+        android:id="@+id/lesson_list_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/lesson_list_progress_bar"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
 </LinearLayout>
