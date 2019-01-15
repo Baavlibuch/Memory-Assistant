@@ -225,7 +225,7 @@ public class MySpace extends AppCompatActivity {
                 Picasso
                         .with(getApplicationContext())
                         .load(item.mImageId)
-                        .placeholder(R.mipmap.launcher_ic)
+                        .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
                         .into(img);

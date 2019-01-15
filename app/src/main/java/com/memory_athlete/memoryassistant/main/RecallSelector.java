@@ -273,7 +273,7 @@ public class RecallSelector extends AppCompatActivity {
                 ImageView img = listItemView.findViewById(R.id.image);
                 Picasso.with(getApplicationContext())
                         .load(Objects.requireNonNull(getItem(position)).mImageId)
-                        .placeholder(R.mipmap.launcher_ic)
+                        .placeholder(R.mipmap.ic_launcher)
                         .fit()
                         .centerCrop()
                         .into(img);

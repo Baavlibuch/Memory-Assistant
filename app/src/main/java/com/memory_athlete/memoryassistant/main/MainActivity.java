@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
             Picasso
                     .with(getApplicationContext())
                     .load(Objects.requireNonNull(getItem(position)).mImageId)
-                    .placeholder(R.mipmap.launcher_ic)
+                    .placeholder(R.mipmap.ic_launcher)
                     .fit()
                     .centerCrop()
                     //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ

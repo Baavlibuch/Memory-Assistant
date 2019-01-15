@@ -111,7 +111,7 @@ public class Practice extends AppCompatActivity {
             Picasso
                     .with(getApplicationContext())
                     .load(cat.mImageId)
-                    .placeholder(R.mipmap.launcher_ic)
+                    .placeholder(R.mipmap.ic_launcher)
                     .fit()
                     .centerCrop()
                     //.centerInside()                 // or .centerCrop() to avoid a stretched imageÒ

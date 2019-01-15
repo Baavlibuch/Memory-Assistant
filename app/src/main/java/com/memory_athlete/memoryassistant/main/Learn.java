@@ -109,7 +109,7 @@ public class Learn extends AppCompatActivity {
             Picasso
                     .with(getApplicationContext())
                     .load(getItem(position).mImageId)
-                    .placeholder(R.mipmap.launcher_ic)
+                    .placeholder(R.mipmap.ic_launcher)
                     .fit()
                     .centerCrop()
                     .into(img);
