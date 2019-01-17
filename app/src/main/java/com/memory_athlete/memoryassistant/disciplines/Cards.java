@@ -42,6 +42,9 @@ public class Cards extends DisciplineFragment {
 
     @Override
     public void onClick(View v) {
+        Timber.v("clicked viewId " + v.getId());
+        Timber.v("R.id.cards_and_speech = " + R.id.cards_and_speech);
+        Timber.v("R.id.activity_cards = " + R.id.activity_cards);
         switch (v.getId()) {
             case R.id.cards_and_speech:
                 next();
@@ -83,6 +86,8 @@ public class Cards extends DisciplineFragment {
         hasSpeech = false;
         mRecallClass = RecallCards.class;
         rootView.findViewById(R.id.speech_check_box).setVisibility(View.GONE);
+        cardAndSpeechImageView.setOnClickListener(this);
+        rootView.findViewById(R.id.prev).setOnClickListener(this);
         return rootView;
     }
 
@@ -94,8 +99,8 @@ public class Cards extends DisciplineFragment {
         } else gridView.setVisibility(visibility);
     }
 
-
     void setCard() {
+        Timber.v("setting card");
         cardAndSpeechImageView.setImageResource(cards[randomList.get(mPosition)]);
     }
 
@@ -110,6 +115,7 @@ public class Cards extends DisciplineFragment {
     //Show the next card
     public void next() {
         if (mPosition < a.get(NO_OF_VALUES) * 52 - 1) {
+            Timber.v("next card");
             mPosition++;
             setCard();
         } else Toast.makeText(activity, "This is the last card!", Toast.LENGTH_LONG).show();
