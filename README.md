@@ -4,8 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* Quick summary-
-Memory sports android app
+* Quick summary - Memory sports android app. [Website's repository](https://github.com/sharadv245/Memory-Assistant)
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
@@ -16,7 +15,7 @@ Memory sports android app
 2. Import new project from git or open the project as an existing android studio project. 
 3. Create your own `final class Encryption.java` in `app/src/main/java/com.memory_athlete.memoryassistant/inAppBilling/`. Add `static` functions, `decrypt` and `addSomePepper` with return type `String`. You can return empty strings. 
 4. Remove apk signing by removing `keystoreProperties` and `signingConfigs{...}` from app level `build.gradle`. To use your own signarure, refer to the [documentation](https://developer.android.com/studio/publish/app-signing).
-5. Add your own `google-services.json` to `app/src/`. Download it by linking your builds to Firebase. To run the app without it remove – all mentions to firebase from the app level `build.gradle`; code for ads from `Mainactivity.firststart()`; `meta-data` tag from the `AndroidManifests.xml`. **Do NOT remove `firebase-jobdispatcher`!**
+5. Add your own `google-services.json` to `app/src/`. Download it by linking your builds to Firebase. To run the app without it remove – all mentions to firebase from the app level `build.gradle`; code for ads from `Mainactivity.firststart()`; `meta-data` tag from the `AndroidManifests.xml`. **Do NOT remove `firebase-jobdispatcher`** it is important for reminders.
 6. Add your own `fabric.properties` to `app/src/`. Download it after connecting your builds to Crashlytics through Fabric. To run the app without it remove – the crashlytics dependency and fabric repository and plugin from `build.gradle`; the `meta-data` tag from the `AndroidManifests.xml`; Crashlytics calls from all java files.   
 
 * **Configuration**
