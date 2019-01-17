@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -69,16 +70,13 @@ public class CreditsActivity extends AppCompatActivity {
         @NonNull
         @Override
         public View getView(final int position, View listItemView, @NonNull final ViewGroup parent) {
+            TextView textView = (TextView) listItemView;
+            if (textView == null) textView = (TextView) LayoutInflater.from(getContext())
+                    .inflate(R.layout.credit_text_view, null, true);
             Item item = getItem(position);
             assert item != null;
-
-            TextView textView = new TextView(getApplicationContext());
-            textView.setLayoutParams(new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT,
-                    ListView.LayoutParams.WRAP_CONTENT));
             textView.setText(item.mName);
-            parent.addView(textView);
-
-            return listItemView;
+            return textView;
         }
     }
 }
