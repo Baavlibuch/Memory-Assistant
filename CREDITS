@@ -1,7 +1,43 @@
-[Manik Sejwal](https://github.com/maniksejwal/)
-Sharad Verma      (https://github.com/sharadv245)
-Amartyo Roy       (https://github.com/AmartyoRoy)
-Mehak Sejwal      (https://www.google.com/search?source=hp&ei=_iU-XPTRAofIvgT85LmQAg&q=mehak+sejwal&btnK=Google+Search&oq=mehak+sejwal&gs_l=psy-ab.3..0i22i30.2064.4728..5393…1.0..0.233.1720.0j12j1......0....1..gws-wiz.....0..0j0i131j35i39j0i10j0i131i10.YQ2vaN41i0k)
-John Prause       (https://github.com/JPrause)
-Pexels            (https://www.pexels.com)
-www.flaticon.com  (https://www.flaticon.com)
+This is at least a partial credits-file of people that have
+contributed to the Linux project.  It is sorted by name and
+formatted to allow easy grepping and beautification by
+scripts.  The fields are: name (N), email (E), web-address
+(W), PGP key ID and fingerprint (P), description (D), and
+snail-mail address (S).
+
+Thanks,
+
+Manik
+
+N : Manik Sejwal      
+W : https://github.com/maniksejwal/
+E : maniksejwal@ieee.com
+D : Primary Contributor
+
+N : Sharad Verma
+W : https://github.com/sharadv245
+E : sharadv245@gmail.com
+D : Created the website
+
+N : Amartyo Roy
+W : https://github.com/AmartyoRoy
+E : 
+D : Web scraping for dates
+
+N : Mehak Sejwal
+W : https://www.linkedin.com/in/mehak-sejwal-9a9b84175/
+D : Quality assurace
+D : Layout design
+
+N : John Prause
+W : https://github.com/JPrause
+D : Rectification of grammatical issues
+
+N : Pexels
+W : https://www.pexels.com
+D : Images for faces
+
+N : www.flaticon.com
+W : https://www.flaticon.com
+D : Icons including app icon
+
