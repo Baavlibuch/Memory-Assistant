@@ -2,6 +2,9 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
+### I don't understand anything! ###
+* Join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U) and ask your questions.
+
 ### What is this repository for? ###
 
 * Quick summary - Memory sports android app. [Website's repository](https://github.com/sharadv245/Memory-Assistant)
