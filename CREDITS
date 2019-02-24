@@ -1,43 +1,42 @@
-This is at least a partial credits-file of people that have
-contributed to the Linux project.  It is sorted by name and
-formatted to allow easy grepping and beautification by
-scripts.  The fields are: name (N), email (E), web-address
-(W), PGP key ID and fingerprint (P), description (D), and
-snail-mail address (S).
+        This is at least a partial credits-file of people that have
+        contributed to the Linux project.  It is sorted by name and
+        formatted to allow easy grepping and beautification by
+        scripts.  The fields are: name (N), email (E), web-address
+        (W) and description (D).
 
-Thanks,
+        Thanks,
+                                Manik
 
-Manik
 
-N : Manik Sejwal      
-W : https://github.com/maniksejwal/
-E : maniksejwal@ieee.com
-D : Primary Contributor
-
-N : Sharad Verma
-W : https://github.com/sharadv245
-E : sharadv245@gmail.com
-D : Created the website
 
 N : Amartyo Roy
 W : https://github.com/AmartyoRoy
 E : amartyo09@gmail.com
 D : Web scraping for dates
 
-N : Mehak Sejwal
-W : https://www.linkedin.com/in/mehak-sejwal-9a9b84175/
-D : Quality assurace
-D : Layout design
+N : www.flaticon.com
+W : https://www.flaticon.com
+D : Icons including app icon
 
 N : John Prause
 W : https://github.com/JPrause
 D : Rectification of grammatical issues
 
+N : Manik Sejwal      
+W : https://github.com/maniksejwal/
+E : maniksejwal@ieee.com
+D : Primary Contributor
+
+N : Mehak Sejwal
+W : https://www.linkedin.com/in/mehak-sejwal-9a9b84175/
+D : Quality assurace
+D : Layout design
+
 N : Pexels
 W : https://www.pexels.com
 D : Images for faces
 
-N : www.flaticon.com
-W : https://www.flaticon.com
-D : Icons including app icon
-
+N : Sharad Verma
+W : https://github.com/sharadv245
+E : sharadv245@gmail.com
+D : Created the website
