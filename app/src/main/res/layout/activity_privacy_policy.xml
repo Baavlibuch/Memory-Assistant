@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<WebView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/privacy_policy_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.memory_athlete.memoryassistant.main.PrivacyPolicy">
+    android:layout_margin="8dp"
+    tools:context="com.memory_athlete.memoryassistant.main.PrivacyPolicy" />
 
-    <WebView
-        android:id="@+id/privacy_policy_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/privacy_policy_button"
-        android:layout_margin="32dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        tools:ignore="RelativeOverlap"
-        android:src="@drawable/ic_open_in_browser"/>
-
-</RelativeLayout>
