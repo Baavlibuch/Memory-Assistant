@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.preference.Preference;
 import android.util.AttributeSet;
 
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
@@ -24,6 +25,7 @@ public class ClearPracticePreference extends Preference {
         super.onClick();
         String path = getContext().getFilesDir() + File.separator;
         Resources resources = getContext().getResources();
+        // purge everything from filesDir
         File[] arr = {
                 new File(path + resources.getString(R.string.digits)),
                 new File(path + resources.getString(R.string.equations)),
@@ -37,15 +39,12 @@ public class ClearPracticePreference extends Preference {
                 new File(path + resources.getString(R.string.i)),
                 new File(path + resources.getString(R.string.j)),
                 new File(path + resources.getString(R.string.letters)),
-                new File(path + resources.getString(R.string.practice))
+                new File(path + resources.getString(R.string.practice)),
+                new File(Helper.APP_FOLDER + File.separator + R.string.practice)
         };
+        for (File file : arr)
+            if (file.exists()) deleteRecursive(file);
 
-        for (File file : arr) {
-            if (file.exists()) {
-                deleteRecursive(file);
-            }
-        }
-        (new File(path + resources.getString(R.string.practice))).mkdirs();
     }
 
     private void deleteRecursive(File fileOrDirectory) {

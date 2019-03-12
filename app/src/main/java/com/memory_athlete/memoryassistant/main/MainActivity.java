@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.privacy_policy_menu:
-                NavUtils.navigateUpFromSameTask(this);
+                startActivity(new Intent(MainActivity.this, PrivacyPolicy.class));
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferences.getLong("last_opened", 0) == 0) {
             makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
             Timber.d("firstStart");
-        } else {
+        } else if (mayAccessStorage()) {
             String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice) + File.separator;
             String practiceDir = Helper.APP_FOLDER + File.separator + getString(R.string.practice) + File.separator;
             Helper.makeDirectory(practiceDir);

@@ -14,6 +14,6 @@ public class PrivacyPolicy extends AppCompatActivity {
         setContentView(R.layout.activity_privacy_policy);
         ((WebView) findViewById(R.id.privacy_policy_view))
                 .loadUrl("file:///android_res/raw/privacy_policy.html");
-        setTitle("Privacy Policy");
+        setTitle(R.string.privacy_policy);
     }
 }

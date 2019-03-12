@@ -152,6 +152,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="main.GetPro" />
         </activity>
+        <activity android:name=".main.CreditsActivity"
+            android:parentActivityName=".main.MainActivity"/>
+        <activity android:name=".main.PrivacyPolicy"
+            android:parentActivityName=".main.MainActivity"/>
 
         <!-- Services -->
 
@@ -178,8 +182,6 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4029732742326098~4722961458" />
 
-        <activity android:name=".main.CreditsActivity" />
-        <activity android:name=".main.PrivacyPolicy" />
     </application>
 
 </manifest>
