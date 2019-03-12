@@ -83,7 +83,7 @@ public class RecallSimple extends AppCompatActivity {
         findViewById(R.id.result).setVisibility(View.GONE);
 
         if (intent.getBooleanExtra("file exists", false)) {
-            File dir = new File(getFilesDir().getAbsolutePath() + File.separator
+            File dir = new File(Helper.APP_FOLDER + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline);
             File[] files = dir.listFiles();
             if (files == null) {

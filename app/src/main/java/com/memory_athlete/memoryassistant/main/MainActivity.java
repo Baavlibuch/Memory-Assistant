@@ -31,6 +31,11 @@ import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -91,12 +96,73 @@ public class MainActivity extends AppCompatActivity {
         }.run();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     void firstStart() {
         if (sharedPreferences.getLong("last_opened", 0) == 0) {
-
-
             makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
             Timber.d("firstStart");
+        } else {
+            String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice) + File.separator;
+            String practiceDir = Helper.APP_FOLDER + File.separator + getString(R.string.practice) + File.separator;
+            Helper.makeDirectory(practiceDir);
+            String folder;
+
+            for (int i = 0; i < 8; i++) {
+                switch (i) {
+                    case 0:
+                        folder = getString(R.string.binary);
+                        break;
+                    case 1:
+                        folder = getString(R.string.cards);
+                        break;
+                    case 2:
+                        folder = getString(R.string.dates);
+                        break;
+                    case 3:
+                        folder = getString(R.string.letters);
+                        break;
+                    case 4:
+                        folder = getString(R.string.names);
+                        break;
+                    case 5:
+                        folder = getString(R.string.numbers);
+                        break;
+                    case 6:
+                        folder = getString(R.string.places_capital);
+                        break;
+                    case 7:
+                        folder = getString(R.string.words);
+                        break;
+                    default:
+                        continue;
+                }
+                //Timber.v("Folder " + folder);
+                File from = new File(filesDir + folder);
+
+                if (from.exists()) {
+                    File[] files = from.listFiles();
+                    Helper.makeDirectory(practiceDir + folder);
+                    try {
+                        for (File f : files) {
+                            File to = new File(practiceDir + folder + File.separator
+                                    + f.getName());
+                            copyFile(f, to);
+                            f.delete();
+                        }
+                    } catch (IOException e) {
+                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                }
+                from.delete();
+            }
+            (new File(filesDir)).delete();
+        }
+    }
+
+    public static void copyFile(File src, File dst) throws IOException {
+        try (FileChannel inChannel = new FileInputStream(src).getChannel(); FileChannel outChannel = new FileOutputStream(dst).getChannel()) {
+            inChannel.transferTo(0, inChannel.size(), outChannel);
         }
     }
 

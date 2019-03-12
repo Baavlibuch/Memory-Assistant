@@ -366,7 +366,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         if (stringToSave == null || stringToSave.equals("")) return false;
 
         //Directory of practice
-        String path = activity.getFilesDir().getAbsolutePath() + File.separator
+        String path = Helper.APP_FOLDER + File.separator
                 + getString(R.string.practice) + File.separator + activity.getTitle().toString();
         if (Helper.makeDirectory(path)) {
             path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",

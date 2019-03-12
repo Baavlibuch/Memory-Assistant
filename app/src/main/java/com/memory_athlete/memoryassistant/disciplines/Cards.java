@@ -177,7 +177,7 @@ public class Cards extends DisciplineFragment {
         StringBuilder stringBuilder = new StringBuilder();
 
         //Practice Directory
-        String path = activity.getFilesDir().getAbsolutePath() + File.separator
+        String path = Helper.APP_FOLDER + File.separator
                 + getString(R.string.practice);
 
         if (Helper.makeDirectory(path)) {
