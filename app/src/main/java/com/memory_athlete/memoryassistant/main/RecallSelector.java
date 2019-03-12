@@ -76,7 +76,7 @@ public class RecallSelector extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Timber.v("listViewId = " + listViewId);
+        Timber.v("listViewId = %s", listViewId);
         if (findViewById(R.id.my_space_relative_layout).findViewById(listViewId) != null)
             ((RelativeLayout) findViewById(R.id.my_space_relative_layout)).removeViewAt(listViewId);
         setAdapter();
@@ -84,7 +84,7 @@ public class RecallSelector extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Timber.v("listViewId = " + listViewId);
+        Timber.v("listViewId = %s", listViewId);
         if (listViewId == MIN_DYNAMIC_VIEW_ID) {
             super.onBackPressed();
             return;
@@ -108,7 +108,7 @@ public class RecallSelector extends AppCompatActivity {
             File[] files = dir.listFiles();
             if (files == null || files.length == 0) return;
             for (File file : files) {
-                Timber.d("FileName: " + file.getName());
+                Timber.d("FileName: %s", file.getName());
                 arrayList.add(new Item(file.getName()));
             }
         }
@@ -157,20 +157,20 @@ public class RecallSelector extends AppCompatActivity {
 
     private void onMyItemClick(ArrayList<Item> finalArrayList, int position, RelativeLayout layout) {
         Item item = finalArrayList.get(position);
-        Timber.v("item.mPath = " + item.mFileName);
+        Timber.v("item.mPath = %s", item.mFileName);
         if (listViewId == MIN_DYNAMIC_VIEW_ID) {
             targetClass = item.mClass;
             mDiscipline = item.mFileName;
 
-            dir = new File(getFilesDir().getAbsolutePath() + File.separator
+            dir = new File(Helper.APP_FOLDER + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline);
-            Timber.v("directory path = " + dir.getAbsolutePath());
+            Timber.v("directory path = %s", dir.getAbsolutePath());
 
             File[] files = dir.listFiles();
             if (files == null || files.length == 0) {
                 String s = (mDiscipline.equals(getString(R.string.digits)))
                         ? getString(R.string.numbers) : mDiscipline;
-                practice(getFilesDir().getAbsolutePath() + File.separator
+                practice(Helper.APP_FOLDER + File.separator
                         + getString(R.string.practice) + File.separator + s);
                 return;
             }
@@ -180,10 +180,10 @@ public class RecallSelector extends AppCompatActivity {
             setTitle(item.mName);
             setTitle(R.string.choose_file);
             setAdapter();
-            Timber.v("going to id 1, listViewId = " + listViewId);
+            Timber.v("going to id 1, listViewId = %s", listViewId);
         } else {
-            Timber.v("listViewId = " + listViewId);
-            String filePath = getFilesDir().getAbsolutePath() + File.separator
+            Timber.v("listViewId = %s", listViewId);
+            String filePath = Helper.APP_FOLDER + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline + File.separator + item.mFileName;
             Intent intent = new Intent(getApplicationContext(), targetClass);
             intent.putExtra("name", item.mName);
@@ -209,7 +209,7 @@ public class RecallSelector extends AppCompatActivity {
                         String s = discipline;
                         if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
                         s = s.replaceAll("\\s", "");
-                        Timber.v("s= " + s);
+                        Timber.v("s= %s", s);
 
                         int classId;
                         if (discipline.equals(getString(R.string.numbers))) classId = 1;
@@ -227,7 +227,7 @@ public class RecallSelector extends AppCompatActivity {
                                     "\tDiscipline = " + discipline);
                         }
 
-                        Timber.v("classId = " + classId);
+                        Timber.v("classId = %s", classId);
                         //Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
                         Intent i = new Intent(getApplicationContext(), DisciplineActivity.class);
                         i.putExtra("class", classId);

@@ -40,7 +40,7 @@ public class ClearPracticePreference extends Preference {
                 new File(path + resources.getString(R.string.j)),
                 new File(path + resources.getString(R.string.letters)),
                 new File(path + resources.getString(R.string.practice)),
-                new File(Helper.APP_FOLDER + File.separator + R.string.practice)
+                new File(Helper.APP_FOLDER + File.separator + resources.getString(R.string.practice))
         };
         for (File file : arr)
             if (file.exists()) deleteRecursive(file);

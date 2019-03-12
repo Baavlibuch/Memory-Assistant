@@ -147,15 +147,19 @@
         <activity
             android:name=".inAppBilling.DonateActivity"
             android:parentActivityName="main.GetPro"
-            tools:ignore="UnusedAttribute">
+            tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="main.GetPro" />
         </activity>
-        <activity android:name=".main.CreditsActivity"
-            android:parentActivityName=".main.MainActivity"/>
-        <activity android:name=".main.PrivacyPolicy"
-            android:parentActivityName=".main.MainActivity"/>
+        <activity
+            android:name=".main.CreditsActivity"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".main.PrivacyPolicy"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
 
         <!-- Services -->
 
