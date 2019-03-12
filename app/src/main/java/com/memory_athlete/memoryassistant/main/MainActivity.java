@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 firstStart();
+
+                AdView adView = findViewById(R.id.adView);
+                adView.setVisibility(View.VISIBLE);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                adView.loadAd(adRequest);
+
                 SharedPreferences.Editor e = sharedPreferences.edit();
                 e.putLong("last_opened", System.currentTimeMillis());
                 Timber.v("Last opened on" + System.currentTimeMillis());
@@ -87,10 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     void firstStart() {
         if (sharedPreferences.getLong("last_opened", 0) == 0) {
-            AdView adView = findViewById(R.id.adView);
-            adView.setVisibility(View.VISIBLE);
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
+
 
             makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
             Timber.d("firstStart");
