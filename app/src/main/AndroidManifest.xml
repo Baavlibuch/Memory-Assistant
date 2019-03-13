@@ -156,6 +156,10 @@
             android:name=".main.CreditsActivity"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".main.PrivacyPolicy"
+            android:parentActivityName=".main.MainActivity"
+            tools:targetApi="jelly_bean" />
 
         <!-- Services -->
 
