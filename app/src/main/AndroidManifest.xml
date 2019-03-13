@@ -156,10 +156,6 @@
             android:name=".main.CreditsActivity"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".main.PrivacyPolicy"
-            android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean" />
 
         <!-- Services -->
 
@@ -182,9 +178,6 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="32fd3e2a89a1903109b82b78e8ad3641cb25e326" />
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4029732742326098~4722961458" />
 
     </application>
 
