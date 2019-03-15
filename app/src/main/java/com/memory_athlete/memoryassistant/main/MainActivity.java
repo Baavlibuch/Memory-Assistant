@@ -24,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -99,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 firstStart();
+
+                AdView adView = findViewById(R.id.adView);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                adView.loadAd(adRequest);
 
                 SharedPreferences.Editor e = sharedPreferences.edit();
                 e.putLong("last_opened", System.currentTimeMillis());
