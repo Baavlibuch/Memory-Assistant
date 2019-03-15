@@ -55,7 +55,7 @@ public class Practice extends AppCompatActivity {
         });
 
         if (!Helper.mayAccessStorage(this)) {
-            Snackbar.make(findViewById(R.id.my_space_relative_layout),
+            Snackbar.make(findViewById(R.id.main_list),
                     "Storage permissions are required", Snackbar.LENGTH_SHORT)
                     .setAction("Grant", new View.OnClickListener() {
                         @Override
