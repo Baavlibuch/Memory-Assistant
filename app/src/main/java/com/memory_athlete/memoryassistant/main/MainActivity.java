@@ -92,35 +92,19 @@ public class MainActivity extends AppCompatActivity {
         setTitle(getString(R.string.app_name));
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         setAdapter();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
         new Runnable() {
             @Override
             public void run() {
+                moveFiles();
                 firstStart();
-
-                AdView adView = findViewById(R.id.adView);
-                AdRequest adRequest = new AdRequest.Builder().build();
-                adView.loadAd(adRequest);
-
-                SharedPreferences.Editor e = sharedPreferences.edit();
-                e.putLong("last_opened", System.currentTimeMillis());
-                Timber.v("Last opened on %s", System.currentTimeMillis());
-                e.apply();
-                ReminderUtils.scheduleReminder(getApplicationContext());
             }
         }.run();
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    void firstStart() {
-        if (sharedPreferences.getLong("last_opened", 0) == 0) {
-            makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
-            Timber.d("firstStart");
-        } else if (mayAccessStorage()) {
+    void moveFiles(){
+        if (mayAccessStorage()) {
             String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice) + File.separator;
             String practiceDir = Helper.APP_FOLDER + File.separator + getString(R.string.practice) + File.separator;
             Helper.makeDirectory(practiceDir);
@@ -177,6 +161,31 @@ public class MainActivity extends AppCompatActivity {
             }
             (new File(filesDir)).delete();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Runnable() {
+            @Override
+            public void run() {
+                AdView adView = findViewById(R.id.adView);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                adView.loadAd(adRequest);
+
+                SharedPreferences.Editor e = sharedPreferences.edit();
+                e.putLong("last_opened", System.currentTimeMillis());
+                Timber.v("Last opened on %s", System.currentTimeMillis());
+                e.apply();
+                ReminderUtils.scheduleReminder(getApplicationContext());
+            }
+        }.run();
+    }
+
+    void firstStart() {
+        if (sharedPreferences.getLong("last_opened", 0) != 0) return;
+        makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
+        Timber.d("firstStart");
     }
 
     public static void copyFile(File src, File dst) throws IOException {
