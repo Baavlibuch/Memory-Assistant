@@ -57,12 +57,12 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         tabTitles.add(getString(R.string.practice));
         viewPager = findViewById(R.id.viewpager);
 
-        try{
-            new LoadFragmentsAsyncTask().execute();
-        } catch (IllegalStateException e){
-            throw new RuntimeException("IllegalStateException from ViewPager.populate() " +
-                    "caused in DisciplineActivity.onCreate() by new LoadFragmentsAsyncTask().execute()");
+        if (!Helper.mayAccessStorage(this)) {
+            Toast.makeText(this, "Storage permissions are required", Toast.LENGTH_LONG).show();
+            finish();
         }
+
+        new LoadFragmentsAsyncTask().execute();
     }
 
     // Function to set the theme
@@ -83,7 +83,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         if (header != 0) setTitle(getString(header));
         else setTitle(intent.getStringExtra("headerString"));
 
-        Timber.v("theme = " + theme);
+        Timber.v("theme = %s", theme);
         if (sharedPreferences.getBoolean(getString(R.string.bottom_tabs), false))
             setContentView(R.layout.activity_view_pager_bottom_tab);
         else setContentView(R.layout.activity_view_pager);
@@ -273,7 +273,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                     if (noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
                     else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
                 }
-            Timber.v("tabTitles.size() = " + tabTitles.size());
+            Timber.v("tabTitles.size() = %s", tabTitles.size());
             viewPager.setOffscreenPageLimit(9);
             }
             return new SimpleFragmentPagerAdapter(getSupportFragmentManager());
