@@ -166,13 +166,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        AdView adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
         new Runnable() {
             @Override
             public void run() {
-                AdView adView = findViewById(R.id.adView);
-                AdRequest adRequest = new AdRequest.Builder().build();
-                adView.loadAd(adRequest);
-
                 SharedPreferences.Editor e = sharedPreferences.edit();
                 e.putLong("last_opened", System.currentTimeMillis());
                 Timber.v("Last opened on %s", System.currentTimeMillis());
