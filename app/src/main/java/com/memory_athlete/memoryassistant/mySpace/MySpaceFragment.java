@@ -123,7 +123,7 @@ public class MySpaceFragment extends Fragment {
             File[] files = dir.listFiles();
             if (files == null || files.length == 0) return;
             for (File file : files) {
-                Timber.d("FileName: " + file.getName());
+                Timber.d("FileName: %s", file.getName());
                 arrayList.add(new Item(file.getName(), WriteFile.class));
             }
         }
@@ -148,9 +148,9 @@ public class MySpaceFragment extends Fragment {
         final ArrayList<Item> finalArrayList = arrayList;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Timber.d("listView id = " + listView.getId());
+                Timber.d("listView id = %s", listView.getId());
                 Item item = finalArrayList.get(position);
-                Timber.v("item.mPath = " + item.mPath);
+                Timber.v("item.mPath = %s", item.mPath);
                 if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
                     dir = new File(Helper.APP_FOLDER + File.separator
                             + getString(R.string.my_space) + File.separator + item.mPath);
@@ -160,11 +160,11 @@ public class MySpaceFragment extends Fragment {
                     mCallback.tabTitleUpdate(title);
                     rootView.findViewById(R.id.add).setVisibility(View.VISIBLE);
                     setAdapter(rootView);
-                    Timber.v("going to id 1, listViewId = " + fragListViewId);
+                    Timber.v("going to id 1, listViewId = %s", fragListViewId);
                     //rootView.findViewById(R.id.back_button).setVisibility(View.VISIBLE);
                     //rootView.findViewById(R.id.back_button).bringToFront();
                 } else {
-                    Timber.v("listViewId = " + fragListViewId);
+                    Timber.v("listViewId = %s", fragListViewId);
                     fileName = Helper.APP_FOLDER + File.separator
                             + getString(R.string.my_space) + File.separator + title;
                     //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
@@ -193,13 +193,13 @@ public class MySpaceFragment extends Fragment {
     }
 
     public void back() {
-        Timber.v("back_button clicked, fragListViewId = " + fragListViewId);
+        Timber.v("back_button clicked, fragListViewId = %s", fragListViewId);
         if (activity.getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
         if (rootView.findViewById(R.id.f_name).getVisibility() == VISIBLE) {
-            Timber.v("fileName = " + fileName);
+            Timber.v("fileName = %s", fileName);
             if (!save(rootView)) return;
             rootView.findViewById(R.id.f_name).setVisibility(GONE);
             rootView.findViewById(R.id.my_space_editText).setVisibility(GONE);
@@ -207,7 +207,7 @@ public class MySpaceFragment extends Fragment {
         }
         if (rootView.findViewById(fragListViewId) != null) {
             ((RelativeLayout) rootView).removeViewAt(fragListViewId);
-            Timber.v("Removed view at fragListViewId " + fragListViewId);
+            Timber.v("Removed view at fragListViewId %s", fragListViewId);
         }
         if (rootView.findViewById(--fragListViewId) != null) {
             ((RelativeLayout) rootView).removeViewAt(fragListViewId);
@@ -350,7 +350,7 @@ public class MySpaceFragment extends Fragment {
                 Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
         }
-        Timber.v("fileName = " + fileName);
+        Timber.v("fileName = %s", fileName);
         return true;
     }
 
