@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.BufferedReader;
@@ -39,7 +40,7 @@ public class LessonFragment extends Fragment {
         Bundle bundle = getArguments();
         activity = getActivity();
 
-        StringBuilder sb = new StringBuilder("");   // Initialised to empty string to distinguish
+        StringBuilder sb = new StringBuilder();     // Initialised to empty string to distinguish
                                                     // from null which is returned after reading
         assert bundle != null;
         int fileInt = bundle.getInt("file", 0);
@@ -48,7 +49,7 @@ public class LessonFragment extends Fragment {
                 ListView listView = rootView.findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readResourceList(fileInt);
                 assert list != null;
-                Timber.v("list length = " + list.size());
+                Timber.v("list length = %s", list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(activity, list);
                 Timber.v("adapter set");
                 listView.setAdapter(lessonAdapter);
@@ -57,9 +58,15 @@ public class LessonFragment extends Fragment {
                 return rootView;
             } else sb = readResource(fileInt);                                      // non-list
         } else {                                                                    // Asset
-            if (bundle.getBoolean("list", false)) {                // list
-                ListView listView = rootView.findViewById(R.id.lesson_list);
+            if (bundle.getBoolean("list", false)) {                  // list
                 ArrayList<Item> list = readAssetList(bundle);
+
+                Crashlytics.log("activity = " + activity.getLocalClassName());
+                Crashlytics.log("bundle = " + bundle);
+                assert list != null;
+                for (Item item : list) Crashlytics.log(item.mHeader);
+
+                ListView listView = rootView.findViewById(R.id.lesson_list);
                 //Timber.v("list length = " + list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(activity, list);
                 Timber.v("adapter set");
@@ -292,7 +299,7 @@ public class LessonFragment extends Fragment {
             }
 
             assert item != null;
-            Timber.v("mHeader = " + item.mHeader);
+            Timber.v("mHeader = %s", item.mHeader);
 
             TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
             View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
@@ -301,7 +308,7 @@ public class LessonFragment extends Fragment {
                 textView1.setText(Html.fromHtml("<font color=#111111>" + item.mText
                         + "</font>"));
                 textView1.setVisibility(View.VISIBLE);
-                Timber.v("body = " + item.mText);
+                Timber.v("body = %s", item.mText);
             } else {
                 textView.setText(Html.fromHtml("<font color=#000000>" + item.mHeader
                         + "</font>"));
@@ -313,7 +320,7 @@ public class LessonFragment extends Fragment {
                             progressBar.setVisibility(View.VISIBLE);
                             textView1.post(new Runnable() {
                                 public void run() {
-                                    Timber.v("mText = " + item.mText);
+                                    Timber.v("mText = %s", item.mText);
                                     textView1.setText(Html.fromHtml("<font color=#111111>"
                                             + item.mText + "</font>"));
                                     progressBar.setVisibility(View.GONE);
