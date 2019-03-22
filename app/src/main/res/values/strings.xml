@@ -146,6 +146,11 @@
     <!--Revenue-->
     <string name="already_purchased">You have already made that transaction\nTry something else :p</string>
     <string name="donate_amounts">List of donatable amounts</string>
+    <string name="debug_ad_mob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="debug_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="ad_mob_ap_id">ca-app-pub-4029732742326098~4722961458</string>
+    <string name="main_ad_unit_id">ca-app-pub-4029732742326098/1380877584</string>
+    <string name="learn_ad_unit_id">ca-app-pub-4029732742326098/4170242080</string>
 
     <!--other-->
     <string name="tab">\t</string>

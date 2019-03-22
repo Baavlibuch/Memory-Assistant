@@ -1,8 +1,10 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +12,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.memory_athlete.memoryassistant.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
 import com.squareup.picasso.Picasso;
 
@@ -22,6 +29,14 @@ import java.util.ArrayList;
 
 
 public class Learn extends AppCompatActivity {
+    private AdView adView;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +45,14 @@ public class Learn extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
         setTitle(getString(R.string.learn));
         setAdapter();
+
+        String ad_unit_id;
+        if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_ad_unit_id);
+        else ad_unit_id = getString(R.string.learn_ad_unit_id);
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId(ad_unit_id);
+        ((LinearLayout) findViewById(R.id.learn_linear_layout)).addView(adView);
     }
 
     public void setAdapter() {
@@ -37,7 +60,7 @@ public class Learn extends AppCompatActivity {
         setList(list);
 
         LearnAdapter adapter = new LearnAdapter(this, list);
-        ListView listView = (ListView) findViewById(R.id.learn_list);
+        ListView listView = findViewById(R.id.learn_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -97,23 +120,24 @@ public class Learn extends AppCompatActivity {
             super(context, 0, list);
         }
 
+        @SuppressLint("InflateParams")
+        @NonNull
         @Override
-        public View getView(int position, View listItemView, ViewGroup parent) {
-            if (listItemView == null) {
-                listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
-            }
+        public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
+            if (listItemView == null) listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
 
+            Item item = getItem(position);
+            assert item != null;
             TextView textView = listItemView.findViewById(R.id.text);
-            textView.setText(getItem(position).mItem);
+            textView.setText(item.mItem);
             ImageView img = listItemView.findViewById(R.id.image);
             Picasso
                     .with(getApplicationContext())
-                    .load(getItem(position).mImageId)
+                    .load(item.mImageId)
                     .placeholder(R.mipmap.ic_launcher)
                     .fit()
                     .centerCrop()
                     .into(img);
-
 
             return listItemView;
         }
