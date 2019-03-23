@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.main;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -30,12 +31,15 @@ import java.util.ArrayList;
 
 public class Learn extends AppCompatActivity {
     private AdView adView;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onResume() {
         super.onResume();
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        }
     }
 
     @Override
@@ -46,13 +50,15 @@ public class Learn extends AppCompatActivity {
         setTitle(getString(R.string.learn));
         setAdapter();
 
-        String ad_unit_id;
-        if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_ad_unit_id);
-        else ad_unit_id = getString(R.string.learn_ad_unit_id);
-        adView = new AdView(this);
-        adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId(ad_unit_id);
-        ((LinearLayout) findViewById(R.id.learn_linear_layout)).addView(adView);
+        if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+            String ad_unit_id;
+            if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_ad_unit_id);
+            else ad_unit_id = getString(R.string.learn_ad_unit_id);
+            adView = new AdView(this);
+            adView.setAdSize(AdSize.BANNER);
+            adView.setAdUnitId(ad_unit_id);
+            ((LinearLayout) findViewById(R.id.learn_linear_layout)).addView(adView);
+        }
     }
 
     public void setAdapter() {

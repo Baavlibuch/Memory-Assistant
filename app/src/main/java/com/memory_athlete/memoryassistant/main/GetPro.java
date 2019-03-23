@@ -66,7 +66,7 @@ public class GetPro extends AppCompatActivity {
                     case EMAIL:
                         Toast.makeText(getApplicationContext(),
                                 "Your eMail address will be added to the list of alpha testers manually",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
                         String mailto = "mailto:memoryassistantapp@gmail.com" +
                                 "?cc=" + "" +
                                 "&subject=" + Uri.encode("Alpha tester") +

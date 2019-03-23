@@ -95,16 +95,18 @@ public class MainActivity extends AppCompatActivity {
         Helper.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
 
-        String ad_mob_app_id, ad_unit_id;
-        if (BuildConfig.DEBUG) ad_mob_app_id = getString(R.string.debug_ad_mob_app_id);
-        else ad_mob_app_id = getString(R.string.ad_mob_ap_id);
-        MobileAds.initialize(this, ad_mob_app_id);
-        if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_ad_unit_id);
-        else ad_unit_id = getString(R.string.main_ad_unit_id);
-        adView = new AdView(this);
-        adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId(ad_unit_id);
-        ((LinearLayout) findViewById(R.id.main_linear_layout)).addView(adView);
+        if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+            String ad_mob_app_id, ad_unit_id;
+            if (BuildConfig.DEBUG) ad_mob_app_id = getString(R.string.debug_ad_mob_app_id);
+            else ad_mob_app_id = getString(R.string.ad_mob_ap_id);
+            MobileAds.initialize(this, ad_mob_app_id);
+            if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_ad_unit_id);
+            else ad_unit_id = getString(R.string.main_ad_unit_id);
+            adView = new AdView(this);
+            adView.setAdSize(AdSize.BANNER);
+            adView.setAdUnitId(ad_unit_id);
+            ((LinearLayout) findViewById(R.id.main_linear_layout)).addView(adView);
+        }
 
         setTitle(getString(R.string.app_name));
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -185,8 +187,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+        if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        }
 
         new Runnable() {
             @Override

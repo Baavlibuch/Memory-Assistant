@@ -151,6 +151,7 @@
     <string name="ad_mob_ap_id">ca-app-pub-4029732742326098~4722961458</string>
     <string name="main_ad_unit_id">ca-app-pub-4029732742326098/1380877584</string>
     <string name="learn_ad_unit_id">ca-app-pub-4029732742326098/4170242080</string>
+    <string name="donated">donated</string>
 
     <!--other-->
     <string name="tab">\t</string>
