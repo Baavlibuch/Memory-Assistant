@@ -6,6 +6,6 @@
     android:layout_margin="8dp"
     android:divider="@android:color/transparent"
     android:dividerHeight="8dp"
-    tools:context="com.memory_athlete.memoryassistant.main.GetPro">
+    tools:context="com.memory_athlete.memoryassistant.main.Contribute">
 
 </ListView>

@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
                 new Item(R.string.apply, R.drawable.implement, Implement.class),
                 new Item(R.string.my_space, R.drawable.my_space, MySpace.class),
                 new Item(R.string.preferences, R.drawable.preferences, Preferences.class),
-                new Item(R.string.get_pro, R.drawable.get_pro, GetPro.class));
+                new Item(R.string.get_pro, R.drawable.get_pro, Contribute.class));
         //list.add(new Item(R.string.login, Login.class));
         //list.add(new Item(R.string.reminders, ))
         //Timber.v("List set!");

@@ -141,16 +141,16 @@
             android:parentActivityName=".mySpace.MySpace"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".main.GetPro"
+            android:name=".main.Contribute"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".inAppBilling.DonateActivity"
-            android:parentActivityName="main.GetPro"
+            android:parentActivityName=".main.Contribute"
             tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="main.GetPro" />
+                android:value=".main.Contribute" />
         </activity>
         <activity
             android:name=".main.CreditsActivity"
