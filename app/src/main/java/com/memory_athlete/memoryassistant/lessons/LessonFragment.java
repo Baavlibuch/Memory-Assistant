@@ -59,12 +59,11 @@ public class LessonFragment extends Fragment {
             } else sb = readResource(fileInt);                                      // non-list
         } else {                                                                    // Asset
             if (bundle.getBoolean("list", false)) {                  // list
-                ArrayList<Item> list = readAssetList(bundle);
-
                 Crashlytics.log("activity = " + activity.getLocalClassName());
                 Crashlytics.log("bundle = " + bundle);
-                assert list != null;
-                for (Item item : list) Crashlytics.log(item.mHeader);
+                Crashlytics.log("title = " + activity.getTitle());
+
+                ArrayList<Item> list = readAssetList(bundle);
 
                 ListView listView = rootView.findViewById(R.id.lesson_list);
                 //Timber.v("list length = " + list.size());
@@ -198,7 +197,7 @@ public class LessonFragment extends Fragment {
     private ArrayList<Item> readAssetList(Bundle bundle) {
         Timber.v("readAssetList() entered");
         String header = "", line = bundle.getString("fileString"); //For assets and filesDir
-        if (line == null || line.equals("")) return null;
+        if (line == null || line.equals("")) throw new RuntimeException("Got null in bundle!");
         BufferedReader reader = null;
         StringBuilder sb = new StringBuilder();
         ArrayList<Item> letterList = new ArrayList<>();
@@ -212,24 +211,20 @@ public class LessonFragment extends Fragment {
                 } else sb.append(line);
             }
             letterList.add(new Item(header, sb.toString()));
-            try {
-                reader.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            reader.close();
             return letterList;
-
         } catch (IOException e) {
             Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
             activity.finish();
-        }
-        try {
-            if (reader != null)
+        } finally {
+            try {
+                assert reader != null;
                 reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        return null;
+        throw new RuntimeException("failure");
     }
 
     private StringBuilder readAsset(StringBuilder sb, Bundle intent) {
