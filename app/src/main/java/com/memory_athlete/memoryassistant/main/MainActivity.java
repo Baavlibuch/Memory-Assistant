@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         Helper.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
 
+        setTitle(getString(R.string.app_name));
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        setAdapter();
+
         if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
             String ad_mob_app_id, ad_unit_id;
             if (BuildConfig.DEBUG) ad_mob_app_id = getString(R.string.debug_ad_mob_app_id);
@@ -107,11 +111,6 @@ public class MainActivity extends AppCompatActivity {
             adView.setAdUnitId(ad_unit_id);
             ((LinearLayout) findViewById(R.id.main_linear_layout)).addView(adView);
         }
-
-        setTitle(getString(R.string.app_name));
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        setAdapter();
-
 
         new Runnable() {
             @Override
