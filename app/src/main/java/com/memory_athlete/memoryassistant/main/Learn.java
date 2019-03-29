@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -49,6 +50,8 @@ public class Learn extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
         setTitle(getString(R.string.learn));
         setAdapter();
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
             String ad_unit_id;
