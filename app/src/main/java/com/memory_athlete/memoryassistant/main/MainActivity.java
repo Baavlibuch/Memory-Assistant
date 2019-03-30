@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         setAdapter();
 
-        if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
             String ad_mob_app_id, ad_unit_id;
             if (BuildConfig.DEBUG) ad_mob_app_id = getString(R.string.debug_ad_mob_app_id);
             else ad_mob_app_id = getString(R.string.ad_mob_ap_id);
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
         }

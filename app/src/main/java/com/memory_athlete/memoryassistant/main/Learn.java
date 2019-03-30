@@ -37,7 +37,7 @@ public class Learn extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
         }
@@ -53,7 +53,7 @@ public class Learn extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        if (sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
             String ad_unit_id;
             if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_ad_unit_id);
             else ad_unit_id = getString(R.string.learn_ad_unit_id);
