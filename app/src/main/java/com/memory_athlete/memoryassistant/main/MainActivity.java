@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
             if (BuildConfig.DEBUG) ad_mob_app_id = getString(R.string.debug_ad_mob_app_id);
             else ad_mob_app_id = getString(R.string.ad_mob_ap_id);
             MobileAds.initialize(this, ad_mob_app_id);
-            if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_ad_unit_id);
+            if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_banner_ad_unit_id);
             else ad_unit_id = getString(R.string.main_ad_unit_id);
             adView = new AdView(this);
             adView.setAdSize(AdSize.BANNER);
