@@ -5,21 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/cd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="16dp"
-        android:paddingBottom="8dp"
-        android:text="@string/choose_discipline"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textSize="32sp" />
-
     <ListView
         android:id="@+id/main_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:divider="@color/color_transparent"
         android:dividerHeight="0dp" />

@@ -26,12 +26,12 @@ import java.util.List;
 import timber.log.Timber;
 
 
-public class GetPro extends AppCompatActivity {
+public class Contribute extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Helper.theme(this, GetPro.this);
+        Helper.theme(this, Contribute.this);
         setContentView(R.layout.activity_get_pro);
         setTitle(R.string.get_pro);
         setAdapter();
@@ -66,7 +66,7 @@ public class GetPro extends AppCompatActivity {
                     case EMAIL:
                         Toast.makeText(getApplicationContext(),
                                 "Your eMail address will be added to the list of alpha testers manually",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
                         String mailto = "mailto:memoryassistantapp@gmail.com" +
                                 "?cc=" + "" +
                                 "&subject=" + Uri.encode("Alpha tester") +

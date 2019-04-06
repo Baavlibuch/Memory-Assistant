@@ -173,14 +173,16 @@ public class MySpaceFragment extends Fragment {
                     //intent.putExtra("fileName", fileName);
                     File file = new File(fileName);
                     boolean isDirectoryCreated = file.exists();
-                    if (!isDirectoryCreated) {
-                        isDirectoryCreated = file.mkdirs();
-                    }
+                    if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
                     if (isDirectoryCreated) {
                         name = true;
                         //rootView.findViewById(R.id.back_button).setVisibility(View.GONE);
                         rootView.findViewById(R.id.add).setVisibility(View.GONE);
-                        rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
+                        try {
+                            rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
+                        } catch (NullPointerException e){
+                            throw new RuntimeException("Wrong value of fragListViewId = " + fragListViewId);
+                        }
                         rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
                         rootView.findViewById(R.id.my_space_scroll_view).setVisibility(View.VISIBLE);
                         rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);

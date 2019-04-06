@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.BufferedReader;
@@ -39,7 +40,7 @@ public class LessonFragment extends Fragment {
         Bundle bundle = getArguments();
         activity = getActivity();
 
-        StringBuilder sb = new StringBuilder("");   // Initialised to empty string to distinguish
+        StringBuilder sb = new StringBuilder();     // Initialised to empty string to distinguish
                                                     // from null which is returned after reading
         assert bundle != null;
         int fileInt = bundle.getInt("file", 0);
@@ -48,7 +49,7 @@ public class LessonFragment extends Fragment {
                 ListView listView = rootView.findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readResourceList(fileInt);
                 assert list != null;
-                Timber.v("list length = " + list.size());
+                Timber.v("list length = %s", list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(activity, list);
                 Timber.v("adapter set");
                 listView.setAdapter(lessonAdapter);
@@ -57,9 +58,14 @@ public class LessonFragment extends Fragment {
                 return rootView;
             } else sb = readResource(fileInt);                                      // non-list
         } else {                                                                    // Asset
-            if (bundle.getBoolean("list", false)) {                // list
-                ListView listView = rootView.findViewById(R.id.lesson_list);
+            if (bundle.getBoolean("list", false)) {                  // list
+                Crashlytics.log("activity = " + activity.getLocalClassName());
+                Crashlytics.log("bundle = " + bundle);
+                Crashlytics.log("title = " + activity.getTitle());
+
                 ArrayList<Item> list = readAssetList(bundle);
+
+                ListView listView = rootView.findViewById(R.id.lesson_list);
                 //Timber.v("list length = " + list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(activity, list);
                 Timber.v("adapter set");
@@ -191,7 +197,7 @@ public class LessonFragment extends Fragment {
     private ArrayList<Item> readAssetList(Bundle bundle) {
         Timber.v("readAssetList() entered");
         String header = "", line = bundle.getString("fileString"); //For assets and filesDir
-        if (line == null || line.equals("")) return null;
+        if (line == null || line.equals("")) throw new RuntimeException("Got null in bundle!");
         BufferedReader reader = null;
         StringBuilder sb = new StringBuilder();
         ArrayList<Item> letterList = new ArrayList<>();
@@ -205,24 +211,20 @@ public class LessonFragment extends Fragment {
                 } else sb.append(line);
             }
             letterList.add(new Item(header, sb.toString()));
-            try {
-                reader.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            reader.close();
             return letterList;
-
         } catch (IOException e) {
             Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
             activity.finish();
-        }
-        try {
-            if (reader != null)
+        } finally {
+            try {
+                assert reader != null;
                 reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        return null;
+        throw new RuntimeException("failure");
     }
 
     private StringBuilder readAsset(StringBuilder sb, Bundle intent) {
@@ -292,7 +294,7 @@ public class LessonFragment extends Fragment {
             }
 
             assert item != null;
-            Timber.v("mHeader = " + item.mHeader);
+            Timber.v("mHeader = %s", item.mHeader);
 
             TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
             View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
@@ -301,7 +303,7 @@ public class LessonFragment extends Fragment {
                 textView1.setText(Html.fromHtml("<font color=#111111>" + item.mText
                         + "</font>"));
                 textView1.setVisibility(View.VISIBLE);
-                Timber.v("body = " + item.mText);
+                Timber.v("body = %s", item.mText);
             } else {
                 textView.setText(Html.fromHtml("<font color=#000000>" + item.mHeader
                         + "</font>"));
@@ -313,7 +315,7 @@ public class LessonFragment extends Fragment {
                             progressBar.setVisibility(View.VISIBLE);
                             textView1.post(new Runnable() {
                                 public void run() {
-                                    Timber.v("mText = " + item.mText);
+                                    Timber.v("mText = %s", item.mText);
                                     textView1.setText(Html.fromHtml("<font color=#111111>"
                                             + item.mText + "</font>"));
                                     progressBar.setVisibility(View.GONE);

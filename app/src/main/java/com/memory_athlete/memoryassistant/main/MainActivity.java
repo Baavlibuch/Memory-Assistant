@@ -19,13 +19,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
     private final int REQUEST_STORAGE_ACCESS = 444;
     private SharedPreferences sharedPreferences;
+    private AdView adView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -87,40 +91,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+
         Helper.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
+
         setTitle(getString(R.string.app_name));
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         setAdapter();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+            String ad_mob_app_id, ad_unit_id;
+            if (BuildConfig.DEBUG) ad_mob_app_id = getString(R.string.debug_ad_mob_app_id);
+            else ad_mob_app_id = getString(R.string.ad_mob_ap_id);
+            MobileAds.initialize(this, ad_mob_app_id);
+            if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_banner_ad_unit_id);
+            else ad_unit_id = getString(R.string.main_ad_unit_id);
+            adView = new AdView(this);
+            adView.setAdSize(AdSize.BANNER);
+            adView.setAdUnitId(ad_unit_id);
+            ((LinearLayout) findViewById(R.id.main_linear_layout)).addView(adView);
+        }
+
         new Runnable() {
             @Override
             public void run() {
+                moveFiles();
                 firstStart();
-
-                AdView adView = findViewById(R.id.adView);
-                AdRequest adRequest = new AdRequest.Builder().build();
-                adView.loadAd(adRequest);
-
-                SharedPreferences.Editor e = sharedPreferences.edit();
-                e.putLong("last_opened", System.currentTimeMillis());
-                Timber.v("Last opened on %s", System.currentTimeMillis());
-                e.apply();
-                ReminderUtils.scheduleReminder(getApplicationContext());
             }
         }.run();
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    void firstStart() {
-        if (sharedPreferences.getLong("last_opened", 0) == 0) {
-            makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
-            Timber.d("firstStart");
-        } else if (mayAccessStorage()) {
+    void moveFiles(){
+        if (mayAccessStorage()) {
             String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice) + File.separator;
             String practiceDir = Helper.APP_FOLDER + File.separator + getString(R.string.practice) + File.separator;
             Helper.makeDirectory(practiceDir);
@@ -177,6 +180,33 @@ public class MainActivity extends AppCompatActivity {
             }
             (new File(filesDir)).delete();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        }
+
+        new Runnable() {
+            @Override
+            public void run() {
+                SharedPreferences.Editor e = sharedPreferences.edit();
+                e.putLong("last_opened", System.currentTimeMillis());
+                Timber.v("Last opened on %s", System.currentTimeMillis());
+                e.apply();
+                ReminderUtils.scheduleReminder(getApplicationContext());
+            }
+        }.run();
+    }
+
+    void firstStart() {
+        if (sharedPreferences.getLong("last_opened", 0) != 0) return;
+        makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
+        Timber.d("firstStart");
     }
 
     public static void copyFile(File src, File dst) throws IOException {
@@ -243,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                 new Item(R.string.apply, R.drawable.implement, Implement.class),
                 new Item(R.string.my_space, R.drawable.my_space, MySpace.class),
                 new Item(R.string.preferences, R.drawable.preferences, Preferences.class),
-                new Item(R.string.get_pro, R.drawable.get_pro, GetPro.class));
+                new Item(R.string.get_pro, R.drawable.get_pro, Contribute.class));
         //list.add(new Item(R.string.login, Login.class));
         //list.add(new Item(R.string.reminders, ))
         //Timber.v("List set!");

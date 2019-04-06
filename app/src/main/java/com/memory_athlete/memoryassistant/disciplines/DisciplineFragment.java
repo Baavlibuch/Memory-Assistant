@@ -671,7 +671,21 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     protected View getMyView(View convertView, int textSize, Object item, Context context){
-        return convertView;
+        TextView textView = (TextView) convertView;
+        if (convertView == null) {
+            textView = new TextView(getContext());
+            textView.setLayoutParams(new ListView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            textView.setTextSize(textSize);
+            textView.setVisibility(View.VISIBLE);
+        }
+
+        Timber.v((String) item);
+        textView.setText((String) item);
+
+        Timber.v("getView() complete");
+
+        return textView;
     }
 
     //Thread to generate the random list as string

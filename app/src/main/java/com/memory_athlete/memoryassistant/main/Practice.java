@@ -33,7 +33,7 @@ public class Practice extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Helper.theme(this, Practice.this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_practice);
         setTitle(getString(R.string.practice));
         final ArrayList<Discipline> disciplines = new ArrayList<>();
         setList(disciplines);
@@ -56,7 +56,7 @@ public class Practice extends AppCompatActivity {
 
         if (!Helper.mayAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.main_list),
-                    "Storage permissions are required", Snackbar.LENGTH_SHORT)
+                    "Storage permissions are required", Snackbar.LENGTH_LONG)
                     .setAction("Grant", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
