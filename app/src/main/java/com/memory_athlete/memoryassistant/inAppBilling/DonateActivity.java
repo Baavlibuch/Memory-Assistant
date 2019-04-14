@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
@@ -63,6 +64,8 @@ public class DonateActivity extends AppCompatActivity {
     }
 
     private static String[] getInAppSkus() {
+        if (BuildConfig.DEBUG) return new String[]{"1_1", "2_5", "3_20", "4_100", "5_500",
+                "test_1_50", "test_2_105", "test_3_205"};
         return new String[]{"1_1", "2_5", "3_20", "4_100", "5_500"};
     }
 
@@ -79,6 +82,12 @@ public class DonateActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         mCheckout.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Toast.makeText(this, "Thanks", Toast.LENGTH_LONG).show();
+            SharedPreferences.Editor e = sharedPreferences.edit();
+            e.putBoolean(getString(R.string.donated), true);
+            e.apply();
+        }
     }
 
     @Override
@@ -114,7 +123,6 @@ public class DonateActivity extends AppCompatActivity {
                     editor.apply();
                 }
                 reloadInventory();
-
             }
         };
     }
@@ -185,7 +193,6 @@ public class DonateActivity extends AppCompatActivity {
                 return;
             }
             mAdapter.onClick(mSku);
-
         }
     }
 
@@ -243,6 +250,5 @@ public class DonateActivity extends AppCompatActivity {
             if (purchase != null) consume(purchase);
             else purchase(sku);
         }
-
     }
 }
