@@ -3,8 +3,10 @@ package com.memory_athlete.memoryassistant.main;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -16,6 +18,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.inAppBilling.DonateActivity;
@@ -27,14 +32,31 @@ import timber.log.Timber;
 
 
 public class Contribute extends AppCompatActivity {
+    InterstitialAd mInterstitialAd;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mInterstitialAd.show();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Helper.theme(this, Contribute.this);
         setContentView(R.layout.activity_get_pro);
         setTitle(R.string.get_pro);
         setAdapter();
+
+        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
+            String ad_unit_id;
+            if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_interstitial_ad_unit_id);
+            else ad_unit_id = getString(R.string.contribute_ad_unit_id);
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(ad_unit_id);
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        }
     }
 
     public void setAdapter() {
