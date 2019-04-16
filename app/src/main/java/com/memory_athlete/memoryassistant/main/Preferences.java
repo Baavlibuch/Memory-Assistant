@@ -8,9 +8,6 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
@@ -22,13 +19,6 @@ import timber.log.Timber;
 public class Preferences extends AppCompatActivity {
     String mTheme;
     static SharedPreferences sharedPreferences;
-    InterstitialAd mInterstitialAd;
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        mInterstitialAd.show();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +28,6 @@ public class Preferences extends AppCompatActivity {
         Helper.theme(this, Preferences.this);
         setContentView(R.layout.activity_preferences);
         setTitle(getString(R.string.preferences));
-
-        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
-            String ad_unit_id;
-            if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_interstitial_ad_unit_id);
-            else ad_unit_id = getString(R.string.preferences_ad_unit_id);
-            mInterstitialAd = new InterstitialAd(this);
-            mInterstitialAd.setAdUnitId(ad_unit_id);
-            mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        }
     }
 
     public static class MemoryPreferenceFragment extends PreferenceFragment implements

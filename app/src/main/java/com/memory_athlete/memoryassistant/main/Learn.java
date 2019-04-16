@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -14,14 +13,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
@@ -31,17 +25,6 @@ import java.util.ArrayList;
 
 
 public class Learn extends AppCompatActivity {
-    private AdView adView;
-    private SharedPreferences sharedPreferences;
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
-        }
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,18 +33,6 @@ public class Learn extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
         setTitle(getString(R.string.learn));
         setAdapter();
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
-        if (!sharedPreferences.getBoolean(getString(R.string.donated), false)) {
-            String ad_unit_id;
-            if (BuildConfig.DEBUG) ad_unit_id = getString(R.string.debug_banner_ad_unit_id);
-            else ad_unit_id = getString(R.string.learn_ad_unit_id);
-            adView = new AdView(this);
-            adView.setAdSize(AdSize.BANNER);
-            adView.setAdUnitId(ad_unit_id);
-            ((LinearLayout) findViewById(R.id.learn_linear_layout)).addView(adView);
-        }
     }
 
     public void setAdapter() {
