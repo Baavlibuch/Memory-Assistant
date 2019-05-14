@@ -1,10 +1,8 @@
 package com.memory_athlete.memoryassistant.inAppBilling;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +41,6 @@ public class DonateActivity extends AppCompatActivity {
     RecyclerView mRecycler;
     private ActivityCheckout mCheckout;
     private InventoryCallback mInventoryCallback;
-    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +57,6 @@ public class DonateActivity extends AppCompatActivity {
         mCheckout = Checkout.forActivity(this, billing);
         mCheckout.start();
         reloadInventory();
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     }
 
     private static String[] getInAppSkus() {
@@ -82,12 +78,7 @@ public class DonateActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         mCheckout.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            Toast.makeText(this, "Thanks", Toast.LENGTH_LONG).show();
-            SharedPreferences.Editor e = sharedPreferences.edit();
-            e.putBoolean(getString(R.string.donated), true);
-            e.apply();
-        }
+        if (resultCode == RESULT_OK) Toast.makeText(this, R.string.thanks, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -113,15 +104,10 @@ public class DonateActivity extends AppCompatActivity {
 
             @Override
             public void onError(int response, @Nonnull Exception e) {
-                if(response == ITEM_ALREADY_OWNED) {
+                if(response == ITEM_ALREADY_OWNED)
                     Toast.makeText(getApplicationContext(),
                             R.string.already_purchased,
                             Toast.LENGTH_SHORT).show();
-
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean(getString(R.string.donated), true);
-                    editor.apply();
-                }
                 reloadInventory();
             }
         };
