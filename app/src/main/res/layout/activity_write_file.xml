@@ -35,7 +35,7 @@
             android:layout_marginBottom="16dp"
             android:hint="@string/here"
             android:importantForAutofill="no"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp"
             tools:targetApi="o" />
