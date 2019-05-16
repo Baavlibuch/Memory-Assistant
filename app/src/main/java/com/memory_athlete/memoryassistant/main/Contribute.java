@@ -98,7 +98,7 @@ public class Contribute extends AppCompatActivity {
         String[] bodies = getResources().getStringArray(R.array.contribute_bodies);
         return Arrays.asList(
                 new Item(headers[0], bodies[0], PART_TYPE.PLAY_STORE),
-                new Item(headers[1], bodies[1], PART_TYPE.EMAIL),
+                //new Item(headers[1], bodies[1], PART_TYPE.EMAIL),             alpha testers no longer needed
                 new Item(headers[2], bodies[2], PART_TYPE.ACTIVITY),
                 new Item(headers[3], bodies[3], PART_TYPE.GITHUB),
                 new Item(headers[4], bodies[4], PART_TYPE.CREDITS));

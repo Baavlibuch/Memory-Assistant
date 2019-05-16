@@ -10,10 +10,10 @@
     </string-array>
 
     <string-array name="contribute_bodies">
-        <item>Give an honest review (Useless)</item>
-        <item>Join the alpha testers (Not useless)</item>
-        <item>Donate to development (Useful)</item>
-        <item>Build the application (Required)</item>
+        <item>Give an honest review</item>
+        <item>Join the alpha testers</item>
+        <item>Donate to development</item>
+        <item>Build the application (Highly required)</item>
         <item>List of contributors</item>
     </string-array>
 
