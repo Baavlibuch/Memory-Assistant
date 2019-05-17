@@ -38,7 +38,9 @@ import com.memory_athlete.memoryassistant.main.RecallSelector;
 import com.memory_athlete.memoryassistant.recall.RecallSimple;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -74,6 +76,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     protected TextToSpeech textToSpeech;
 
     protected SharedPreferences sharedPreferences;
+    protected int saveErrorCount = 0;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
@@ -380,9 +383,26 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 outputStream.close();
                 Toast.makeText(activity.getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
                 return true;
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+            } catch (FileNotFoundException e) {
+                if (saveErrorCount == 0) {
+                    Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                    saveErrorCount++;
+                    return false;
+                }
+                File f = new File(path);
+                if (!f.exists()) throw new RuntimeException(
+                        activity.getTitle().toString() + " directory doesn't exist", e);
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                if (saveErrorCount == 0) {
+                    Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                    saveErrorCount++;
+                    return false;
+                }
+                File f = new File(path);
+                if (!f.exists() && !f.isDirectory())
+                    throw new RuntimeException(path + " doesn't exist", e);
+                throw new RuntimeException(e);
             }
         }
         return false;
