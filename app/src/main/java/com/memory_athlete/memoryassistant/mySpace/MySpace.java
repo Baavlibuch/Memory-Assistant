@@ -10,7 +10,6 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -68,7 +67,7 @@ public class MySpace extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Timber.v("listViewId = " + listViewId);
+        Timber.v("listViewId = %s", listViewId);
         if (findViewById(R.id.my_space_relative_layout).findViewById(listViewId) != null)
             ((RelativeLayout) findViewById(R.id.my_space_relative_layout)).removeViewAt(listViewId);
         setAdapter();
@@ -77,7 +76,7 @@ public class MySpace extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (listViewId != 0) {
-            Timber.v("listViewId = " + listViewId);
+            Timber.v("listViewId = %s", listViewId);
             RelativeLayout relativeLayout = findViewById(R.id.my_space_relative_layout);
             if (relativeLayout.findViewById(listViewId) != null)
                 relativeLayout.removeViewAt(listViewId);
@@ -100,7 +99,7 @@ public class MySpace extends AppCompatActivity {
             File[] files = dir.listFiles();
             if (files == null || files.length == 0) return;
             for (File file : files) {
-                Timber.d("FileName: " + file.getName());
+                Timber.d("FileName: %s", file.getName());
                 arrayList.add(new Item(file.getName(), WriteFile.class));
             }
         }
@@ -127,38 +126,34 @@ public class MySpace extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         final ArrayList<Item> finalArrayList = arrayList;
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Item item = finalArrayList.get(position);
-                Timber.v("item.mPath = " + item.mItem);
-                if (listViewId == MIN_DYNAMIC_VIEW_ID) {
-                    dir = new File(Helper.APP_FOLDER + File.separator
-                            + getString(R.string.my_space) + File.separator + item.mItem);
-                    layout.findViewById(listViewId).setVisibility(View.GONE);
-                    listViewId++;
-                    setTitle(item.mName);
-                    findViewById(R.id.add).setVisibility(View.VISIBLE);
-                    setAdapter();
-                    Timber.v("going to id 1, listViewId = " + listViewId);
-                    return;
-                }
-
-                Timber.v("listViewId = " + listViewId);
-                String fileName = Helper.APP_FOLDER + File.separator
-                        + getString(R.string.my_space) + File.separator + getTitle();
-
-                Intent intent = new Intent(getApplicationContext(), WriteFile.class);
-                intent.putExtra("mHeader", item.mName);
-                intent.putExtra("fileString", item.mItem);
-                intent.putExtra("fileName", fileName);
-
-                File file = new File(fileName);
-                boolean isDirectoryCreated = file.exists();
-                if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
-                if (isDirectoryCreated) startActivity(intent);
-                else
-                    Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Item item = finalArrayList.get(position);
+            Timber.v("item.mPath = %s", item.mItem);
+            if (listViewId == MIN_DYNAMIC_VIEW_ID) {
+                dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mItem);
+                layout.findViewById(listViewId).setVisibility(View.GONE);
+                listViewId++;
+                setTitle(item.mName);
+                findViewById(R.id.add).setVisibility(View.VISIBLE);
+                setAdapter();
+                Timber.v("going to id 1, listViewId = %s", listViewId);
+                return;
             }
+
+            Timber.v("listViewId = %s", listViewId);
+            String fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + getTitle();
+
+            Intent intent = new Intent(getApplicationContext(), WriteFile.class);
+            intent.putExtra("mHeader", item.mName);
+            intent.putExtra("fileString", item.mItem);
+            intent.putExtra("fileName", fileName);
+
+            File file = new File(fileName);
+            boolean isDirectoryCreated = file.exists();
+            if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
+            if (isDirectoryCreated) startActivity(intent);
+            else
+                Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -166,8 +161,7 @@ public class MySpace extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
         intent.putExtra("name", false);
-        intent.putExtra("fileName", Helper.APP_FOLDER + File.separator
-                + getString(R.string.my_space) + File.separator + getTitle());
+        intent.putExtra("fileName", Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + getTitle());
         startActivity(intent);
     }
 

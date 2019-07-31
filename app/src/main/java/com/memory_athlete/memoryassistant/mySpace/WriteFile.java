@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
@@ -26,7 +27,9 @@ import timber.log.Timber;
 
 public class WriteFile extends AppCompatActivity {
     private boolean name = false;
-    String path, oldName = null;
+    String path;
+    String oldName = null;
+    boolean deleted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +77,12 @@ public class WriteFile extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_delete:
+                Timber.d(getTitle().toString());
                 File file = new File(path + File.separator + getTitle().toString() + ".txt");
+                deleted = true;
                 finish();
                 return !file.exists() || file.delete();
             case R.id.dont_save:
@@ -96,7 +101,7 @@ public class WriteFile extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        save();
+        if (!deleted) save();
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -132,7 +137,7 @@ public class WriteFile extends AppCompatActivity {
         }
 
         fname = path + File.separator + fname + ".txt";
-        Timber.v("fname = " + fname);
+        Timber.v("fname = %s", fname);
         if (!Helper.mayAccessStorage(this)) {
             if (name) {
                 Toast.makeText(this, "Permission to access storage is needed",
@@ -167,7 +172,7 @@ public class WriteFile extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
         }
-        Timber.v("fileName = " + path);
+        Timber.v("fileName = %s", path);
         return true;
     }
 }

@@ -41,17 +41,17 @@ import static android.view.View.VISIBLE;
 
 public class MySpaceFragment extends Fragment {
     public int fragListViewId = 0, MIN_DYNAMIC_VIEW_ID = 3;
-    File dir = null;
-    String title = "", fileName, oldTabTitle, oldName = null;
-    Boolean name;
-    View rootView;
-    Activity activity;
+    private File dir = null;
+    private String title = "", fileName, oldTabTitle, oldName = null;
+    private Boolean name;
+    private View rootView;
+    private Activity activity;
 
     public interface TabTitleUpdater {
         void tabTitleUpdate(String title);
     }
 
-    TabTitleUpdater mCallback;
+    private TabTitleUpdater mCallback;
 
     @Override
     public void onAttach(Context context) {
@@ -98,7 +98,7 @@ public class MySpaceFragment extends Fragment {
         return rootView;
     }
 
-    ArrayList<Item> setList() {
+    private ArrayList<Item> setList() {
         return new ArrayList<>(Arrays.asList(
                 new Item(activity.getString(R.string.majors), WriteFile.class),
                 new Item(activity.getString(R.string.ben), WriteFile.class),
@@ -153,8 +153,7 @@ public class MySpaceFragment extends Fragment {
                 Item item = finalArrayList.get(position);
                 Timber.v("item.mPath = %s", item.mPath);
                 if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
-                    dir = new File(Helper.APP_FOLDER + File.separator
-                            + getString(R.string.my_space) + File.separator + item.mPath);
+                    dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mPath);
                     layout.findViewById(fragListViewId).setVisibility(View.GONE);
                     fragListViewId++;
                     title = item.mName;
@@ -166,8 +165,7 @@ public class MySpaceFragment extends Fragment {
                     //rootView.findViewById(R.id.back_button).bringToFront();
                 } else {
                     Timber.v("listViewId = %s", fragListViewId);
-                    fileName = Helper.APP_FOLDER + File.separator
-                            + getString(R.string.my_space) + File.separator + title;
+                    fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
                     //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                     //intent.putExtra("mHeader", item.mName);
                     //intent.putExtra("fileString", item.mItem);
@@ -199,6 +197,7 @@ public class MySpaceFragment extends Fragment {
         Timber.v("back_button clicked, fragListViewId = %s", fragListViewId);
         if (activity.getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
+            assert inputMethodManager != null;
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
         if (rootView.findViewById(R.id.f_name).getVisibility() == VISIBLE) {
@@ -230,7 +229,7 @@ public class MySpaceFragment extends Fragment {
         else mCallback.tabTitleUpdate(oldTabTitle);
     }
 
-    void setButtons(final View rootView) {
+    private void setButtons(final View rootView) {
         /*rootView.findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -243,8 +242,7 @@ public class MySpaceFragment extends Fragment {
             public void onClick(View v) {
                 Timber.v("add button clicked");
                 name = false;
-                fileName = Helper.APP_FOLDER + File.separator
-                        + getString(R.string.my_space) + File.separator + title;
+                fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
                 rootView.findViewById(R.id.add).setVisibility(View.GONE);
                 if (rootView.findViewById(fragListViewId) != null)
                     rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
@@ -257,7 +255,7 @@ public class MySpaceFragment extends Fragment {
         });
     }
 
-    void writeFile(View rootView, String path, String header) {
+    private void writeFile(View rootView, String path, String header) {
         oldTabTitle = title;
         mCallback.tabTitleUpdate(header);
         oldName = header;
