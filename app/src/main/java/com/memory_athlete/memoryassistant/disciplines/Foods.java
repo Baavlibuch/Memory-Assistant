@@ -1,7 +1,8 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Foods extends AppCompatActivity {
 

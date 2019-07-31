@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.squareup.picasso.Picasso;
@@ -121,7 +122,7 @@ public class Practice extends AppCompatActivity {
         @Override
         public View getView(int position, View listView, @NonNull ViewGroup parent) {
             if (listView == null) listView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.category, null, true);
+                    .inflate(R.layout.item_category, null, true);
 
             Discipline cat = getItem(position);
             TextView txt = listView.findViewById(R.id.text);

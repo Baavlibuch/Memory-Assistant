@@ -14,8 +14,8 @@ import java.nio.file.Files;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.support.v4.app.ActivityCompat.requestPermissions;
-import static android.support.v4.content.PermissionChecker.checkSelfPermission;
+import static androidx.core.app.ActivityCompat.requestPermissions;
+import static androidx.core.content.PermissionChecker.checkSelfPermission;
 
 /**
  * Created by Manik on 15/07/17.

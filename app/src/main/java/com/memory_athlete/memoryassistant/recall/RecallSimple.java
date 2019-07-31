@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -18,8 +17,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;

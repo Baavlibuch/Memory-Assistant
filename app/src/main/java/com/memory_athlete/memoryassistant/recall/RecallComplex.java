@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Html;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;

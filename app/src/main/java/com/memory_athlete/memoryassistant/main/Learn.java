@@ -3,10 +3,7 @@ package com.memory_athlete.memoryassistant.main;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -104,7 +104,7 @@ public class Learn extends AppCompatActivity {
         @NonNull
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
-            if (listItemView == null) listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category, null, true);
+            if (listItemView == null) listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_category, null, true);
 
             Item item = getItem(position);
             assert item != null;

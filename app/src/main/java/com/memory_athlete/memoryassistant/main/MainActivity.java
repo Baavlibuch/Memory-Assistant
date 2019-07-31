@@ -8,9 +8,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +20,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.crashlytics.android.Crashlytics;
+import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.privacy_policy_menu:
                 startActivity(new Intent(MainActivity.this, PrivacyPolicy.class));
@@ -277,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.category, null, true);
+                    .inflate(R.layout.item_category, null, true);
 
             TextView textView = convertView.findViewById(R.id.text);
             textView.setText(getString(Objects.requireNonNull(getItem(position)).mItem));

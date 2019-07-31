@@ -4,16 +4,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.memory_athlete.memoryassistant.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
 import java.io.BufferedReader;

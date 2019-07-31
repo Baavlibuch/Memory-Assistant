@@ -1,7 +1,7 @@
 package com.memory_athlete.memoryassistant.inAppBilling;
 
 import android.app.Activity;
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 import org.solovyev.android.checkout.Billing;
 

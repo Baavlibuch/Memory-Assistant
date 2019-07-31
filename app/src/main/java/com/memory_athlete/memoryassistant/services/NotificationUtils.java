@@ -7,7 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;

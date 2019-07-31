@@ -7,9 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +18,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.recall.RecallCards;
@@ -264,7 +265,7 @@ public class RecallSelector extends AppCompatActivity {
             //Chose discipline
             if (listViewId == MIN_DYNAMIC_VIEW_ID) {
                 if (listItemView == null)
-                    listItemView = LayoutInflater.from(getContext()).inflate(R.layout.category,
+                    listItemView = LayoutInflater.from(getContext()).inflate(R.layout.item_category,
                             null, true);
 
                 ((TextView) listItemView.findViewById(R.id.text)).setText(Objects.requireNonNull(

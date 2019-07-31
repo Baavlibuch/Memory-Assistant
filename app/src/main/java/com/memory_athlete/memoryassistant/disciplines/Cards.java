@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,8 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
