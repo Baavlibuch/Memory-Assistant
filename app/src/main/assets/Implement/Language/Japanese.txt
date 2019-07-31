@@ -1,0 +1,98 @@
+<h4>0</h4>
+<p><b>Hiragana<&nbsp><&nbsp><&nbsp><&nbsp>Katakana
+<p><b>あ</b><&nbsp><&nbsp>a<&nbsp><&nbsp>ア</p>
+<p><b>い</b><&nbsp><&nbsp>i<&nbsp><&nbsp></p>
+<p><b>う</b><&nbsp><&nbsp>u<&nbsp><&nbsp></p>
+<p><b>え</b><&nbsp><&nbsp>e<&nbsp><&nbsp></p>
+<p><b>お</b><&nbsp><&nbsp>o<&nbsp><&nbsp></p>
+<p><b>か</b><&nbsp><&nbsp>ka<&nbsp><&nbsp>カ</p>
+<p><b>き</b><&nbsp><&nbsp>ki<&nbsp><&nbsp></p>
+<p><b>く</b><&nbsp><&nbsp>ku<&nbsp><&nbsp></p>
+<p><b>け</b><&nbsp><&nbsp>ke<&nbsp><&nbsp></p>
+<p><b>こ</b><&nbsp><&nbsp>ko<&nbsp><&nbsp></p>
+<p>k → g　だ　ga</p>
+<p><b>な</b><&nbsp><&nbsp>na<&nbsp><&nbsp></p>
+<p><b>に</b><&nbsp><&nbsp>ni<&nbsp><&nbsp></p>　　　　　
+<p><b>ぬ</b><&nbsp><&nbsp>nu<&nbsp><&nbsp></p>
+<p><b>ね</b><&nbsp><&nbsp>ne<&nbsp><&nbsp></p>
+<p><b>の</b><&nbsp><&nbsp>no<&nbsp><&nbsp></p>
+<p><b>ま</b><&nbsp><&nbsp>ma<&nbsp><&nbsp>メ</p>
+<p><b>み</b><&nbsp><&nbsp>mi<&nbsp><&nbsp></p>
+<p><b>む</b><&nbsp><&nbsp>mu<&nbsp><&nbsp></p>
+<p><b>め</b><&nbsp><&nbsp>me<&nbsp><&nbsp></p>
+<p><b>も</b><&nbsp><&nbsp>mo<&nbsp><&nbsp></p>
+<p><b>ら</b><&nbsp><&nbsp>ra<&nbsp><&nbsp></p>
+<p><b>り</b><&nbsp><&nbsp>ri<&nbsp><&nbsp>リ</p>
+<p><b>る</b><&nbsp><&nbsp>ru<&nbsp><&nbsp></p>
+<p><b>れ</b><&nbsp><&nbsp>re<&nbsp><&nbsp></p>
+<p><b>ろ</b><&nbsp><&nbsp>ro<&nbsp><&nbsp></p>
+<p><b>さ</b><&nbsp><&nbsp>sa<&nbsp><&nbsp></p>
+<p><b>し</b><&nbsp><&nbsp>shi<&nbsp><&nbsp><br/><b>じ</b><br/>ji<&nbsp><&nbsp></p>
+<p><b>す</b><&nbsp><&nbsp>su<&nbsp><&nbsp></p>
+<p><b>せ</b><&nbsp><&nbsp>se<&nbsp><&nbsp></p>
+<p><b>そ</b><&nbsp><&nbsp>so<&nbsp><&nbsp></p>
+<p>s → z　ざ　za</p>
+<p><b>た</b><&nbsp><&nbsp>ta<&nbsp><&nbsp></p>
+<p><b>ち</b><&nbsp><&nbsp>chi<&nbsp><&nbsp><br/><b>ぢ</b><br/>ji<&nbsp><&nbsp>ジ</p>
+<p><b>つ</b><&nbsp><&nbsp>tsu<&nbsp><&nbsp><br/><b>づ</b><br/>zu<&nbsp><&nbsp></p>
+<p><b>て</b><&nbsp><&nbsp>te<&nbsp><&nbsp></p>
+<p><b>と</b><&nbsp><&nbsp>to<&nbsp><&nbsp></p>
+<p>t → d　だ　da</p>
+<p><b>は</b><&nbsp><&nbsp>ha<&nbsp><&nbsp></p>
+<p><b>ひ</b><&nbsp><&nbsp>hi<&nbsp><&nbsp></p>
+<p><b>ふ</b><&nbsp><&nbsp>fu<&nbsp><&nbsp></p>
+<p><b>へ</b><&nbsp><&nbsp>he<&nbsp><&nbsp></p>
+<p><b>ほ</b><&nbsp><&nbsp>ho<&nbsp><&nbsp></p>　　　　　　
+<p>h → b　ば　ba</p>
+<p>h → p　ぱ　pa</p>
+<p><b>や</b><&nbsp><&nbsp>ya<&nbsp><&nbsp></p>
+<p><b>ゆ</b><&nbsp><&nbsp>yu<&nbsp><&nbsp></p>　　　　　
+<p><b>よ</b><&nbsp><&nbsp>yo<&nbsp><&nbsp>ョ</p>
+<p><b>ん</b><&nbsp><&nbsp>n<&nbsp><&nbsp>ン</p>
+<p><b>わ</b><&nbsp><&nbsp>wa<&nbsp><&nbsp></p>
+<p>small vowel→replaces previous vowel</p>
+<p>っ(small)→double next consonant</p>
+
+<h4>1</h4>
+<p><b>Kanji<&nbsp><&nbsp><&nbsp><&nbsp>Hiragana<&nbsp><&nbsp><&nbsp><&nbsp>Translation</b></p>
+<p><b>人</b><&nbsp><&nbsp>じん<&nbsp><&nbsp>person</p>
+<p><b>日本</b><&nbsp><&nbsp>にほん<&nbsp><&nbsp>Japan</p>
+<p><b>中国</b><&nbsp><&nbsp>ちゅうごく<&nbsp><&nbsp>China</p>
+<p><b>出身</b><&nbsp><&nbsp>しゅっしん<&nbsp><&nbsp>From</p>
+
+<h4>2</h4>
+<p><b>はれ</b><&nbsp><&nbsp>sunny</p>
+<p><b>くもり</b><&nbsp><&nbsp>cloudy</p>
+
+<p><b>きる</b><&nbsp><&nbsp>wear</p>
+<p><b>よむ</b><&nbsp><&nbsp>read</p>
+
+<p><b>かぜ</b><&nbsp><&nbsp>wind</p>
+
+<p><b>よる</b><&nbsp><&nbsp>night</p>
+<p><b>なつ</b><&nbsp><&nbsp>summer</p>
+<p><b>ふゆ</b><&nbsp><&nbsp>winter</p>
+<p><b>ひる</b><&nbsp><&nbsp>daytime</p>
+
+<p><b>せなか</b><&nbsp><&nbsp>back</p>
+<p><b>め</b><&nbsp><&nbsp>eye</p>
+<p><b>みみ</b><&nbsp><&nbsp>ear</p>
+
+<p><b>がっこう</b><&nbsp><&nbsp>school</p>
+<p><b>ぎんこう</b><&nbsp><&nbsp>bank</p>
+<p><b>へや</b><&nbsp><&nbsp>room</p>
+<p><b>いえ</b><&nbsp><&nbsp>house</p>
+<p><b>そと</b><&nbsp><&nbsp>outside</p>
+
+<p><b>なっとう</b><&nbsp><&nbsp>fermented soy beans</p>
+<p><b>くだもの</b><&nbsp><&nbsp>fruit</p>
+
+<p><b>きっぷ</b><&nbsp><&nbsp>ticket</p>
+<p><b>まんが</b><&nbsp><&nbsp>manga</p>
+<p><b>ちず</b><&nbsp><&nbsp>map</p>
+<p><b>でんわ</b><&nbsp><&nbsp>telephone
+
+<h4>3</h4>
+<p><b>はじめまして</b><&nbsp><&nbsp>Nice to meet you</p>
+<p><b>です</b><&nbsp><&nbsp>Am from, Are from</p>
+<p><b>よろしくおねがいします</b><&nbsp><&nbsp>Nice to meet you</p>

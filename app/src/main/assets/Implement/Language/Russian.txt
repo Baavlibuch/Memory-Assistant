@@ -1,0 +1,124 @@
+<h4>0</h4>
+<p><b>ч</b><br/>u, ch</p>
+<p><b>a</b><br/>a, aa</p>
+<p><b>а́</b><br/>aa</p>
+<p><b>ы</b><br/>aee, æ</p>
+<p><b>б</b><br/>b</p>
+<p><b>ь</b><br/>ch</p>
+<p><b>д</b><br/>d</p>
+<p><b>э</b><br/>e</b><br/>egg</p>
+<p><b>e</b><br/>a, eea</p>
+<p><b>й</b><br/>ai</p>
+<p><b>ф</b><br/>f</p>
+<p><b>г</b><br/>g</p>
+<p><b>и</b><br/>i</p>
+<p><b>дж</b><br/>j</p>
+<p><b>к</b><br/>k</p>
+<p><b>л</b><br/>l</p>
+<p><b>н</b><br/>n</p>
+<p><b>о</b><br/>a, o</p>
+<p><b>ó</b><br/>o</p>
+<p><b>ё</b><br/>o</p>
+<p><b>у</b><br/>oo</p>
+<p><b>п</b><br/>p</p>
+<p><b>р</b><br/>r</p>
+<p><b>с</b><br/>s</p>
+<p><b>ж</b><br/>sh, zh</p>
+<p><b>щ</b><br/>sh</p>
+<p><b>ш</b><br/>sh</p>
+<p><b>т</b><br/>t</p>
+<p><b>п</b><br/>t</p>
+<p><b>ю</b><br/>u</p>
+<p><b>в</b><br/>v</p>
+<p><b>х</b><br/>kh</p>
+<p><b>я</b><br/>ya</p>
+<p><b>я́</b><br/>уа</p>
+<p><b>ц</b><br/>z</p>
+<p><b>з</b><br/>z</p>
+
+<h4>1</h4>
+<p><b>Да</b><br/>Yes</p>
+<p><b>Не</b><br/>Not</p>
+<p><b>Нет</b><br/>No</p>
+<p><b>А</b><br/>And</p>
+<p><b>И</b><br/>And</p>
+
+<p><b>Всё</b><br/>All</p>
+
+<h4>2</h4>
+<p><b>Привет</b><br/>Hi</p>
+<p><b>Пака</b><br/>Bye</p>
+<p><b>Пажулйста</b><br/>Welcome, Please</p>
+<p><b>Спасибо</b><br/>Thanks</p>
+<p><b>Извините</b><br/>Excuse me</p>
+
+<h4>3</h4>
+<p><b>Я</b><br/>I, Me, I am</p>
+<p><b>Мои́</b><br/>My</p>
+<p><b>Вы</b><br/>You</p>
+<p><b>Ты</b><br/>Are you</p>
+<p><b>Он</b><br/>He, Him</p>
+<p><b>Она</b><br/>She, Her</p>
+<p><b>Наше</b><br/>Our</p>
+<p><b>Они</b><br/>They</p>
+
+<h4>4</h4>
+<p><b>Это</b><br/>This, The</p>
+<p><b>Этот</b><br/>This</p>
+<p><b>Там</b><br/>There</p>
+<p><b>Вот</b><br/>Here is</p>
+<p><b>Где</b><br/>Where</p>
+<p><b>Здесь</b><br/>Here</p>
+<p><b>Kak</b><br/>How</p>
+<p><b>Уже</b><br/>Already</p>
+
+<h4>5</h4>
+<p><b>Добрый</b><br/>Good</p>
+<p><b>Доброе</b><br/>Good</p>
+<p><b>Спокойной</b><br/>Quiet</p>
+<p><b>Хорошо</b><br/>Nice</p>
+
+<h4>6</h4>
+<p><b>Ем</b><br/>Eat</p>
+<p><b>Ест</b><br/>Eats</p>
+
+<h4>7</h4>
+<p><b>День</b><br/>Day, Afternoon</p>
+<p><b>Вечер</b><br/>Evening</p>
+<p><b>Ночи</b><br/>Night</p>
+<p><b>Утрo</b><br/>Morning</p>
+
+<h4>8</h4>
+<p><b>Пюре</b><br/>Mashed potato</p>
+<p><b>Борщ</b><br/>Borscht (a Ukrainian soup)</p>
+<p><b>Кофе</b><br/>Coffee</p>
+<p><b>Я́блоко</b><br/>Apple</p>
+<p><b>Хлеб</b><br/>Bread</p>
+
+<h4>9</h4>
+<p><b>Дом</b><br/>House, Home</p>
+<p><b>Парк</b><br/>Park</p>
+<p><b>Площадь</b><br/>Square, Plaza, Area</p>
+
+<h4>10</h4>
+<p><b>Ма́ма</b><br/>Mom</p>
+<p><b>Папа</b><br/>Papa</p>
+<p><b>Мальчик</b><br/>Boy</p>
+<p><b>Мужчи́на</b><br/>Man</p>
+<p><b>Человек</b><br/>Man</p>
+<p><b>Же́нщина</b><br/>Woman</p>
+<p><b>Девочка</b><br/>Girl (little)</p>
+
+<h4>11</h4>
+<p><b>Медик</b><br/>Medic</p>
+<p><b>Дела</b><br/>Case</p>
+
+<p><b>Ра́дио</b><br/>Radio</p>
+<p><b>гитара</b><br/>Guitar</p>
+<p><b>Мото́р</b><br/>Motor</p>
+<p><b>Багаж</b><br/>Luggage</p>
+
+<p><b>Метро</b><br/>Metro</p>
+<p><b>Такси</b><br/>Taxi</p>
+
+<p><b>Свитер</b><br/>Sweater</p>

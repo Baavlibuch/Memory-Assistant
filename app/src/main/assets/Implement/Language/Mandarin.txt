@@ -1,0 +1,84 @@
+<h4>0</h4>
+<p><b>我</b><br/>wǒ</b><br/>I, Me, My</p>
+<p><b>你</b><br/>nǐ</b><br/>You, Your</p>
+<p><b>他</b><br/>tā</b><br/>Him</p>
+<p><b>她</b><br/>tā</b><br/>She</p>
+
+<h4>1</h4>
+<p><b>们</b><br/>men</b><br/>Pluralize</p>
+<p><b>吗</b><br/>ma</b><br/>?</p>
+
+<h4>2</h4>
+<p><b>好</b><br/>hào</b><br/>Good</p>
+<p><b>再</b><br/>zài</b><br/>Again</p>
+<p><b>见</b><br/>jiàn</b><br/>See</p>
+
+<h4>3</h4>
+<p><b>也</b><br/>yě</b><br/>Also</p>
+<p><b>不</b><br/>bù</b><br/>Not</p>
+<p><b>呢</b><br/>ne</b><br/>How about</p>
+
+<h4>4</h4>
+<p><b>很</b><br/>hěn</p>
+<p><b>高</b><br/>gāo</p>
+<p><b>兴</b><br/>xìng</p>
+
+<h4>5</h4>
+<p><b>么</b><br/>me</p>
+<p><b>叫</b><br/>jiào</b><br/>Call</p>
+<p><b>姓</b><br/>xíng</b><br/>Last name</p>
+<p><b>字</b><br/>zì</b><br/>1st name</p>
+<p><b>名</b><br/>míng</b><br/>Name</p>
+
+<h4>6</h4>
+<p><b>认</b><br/>rèn</p>
+<p><b>识</b><br/>shí</p>
+
+<h4>7</h4>
+<p><b>喝</b><br/>hē</b><br/>Drink</p>
+<p><b>吃</b><br/>chī</b><br/>Eat</p>
+<p><b>面</b><br/>miàn</b><br/>Noodles</p>
+<p><b>鱼</b><br/>yú</b><br/>Fish</p>
+<p><b>饭</b><br/>fàn</b><br/>Rice</p>
+<p><b>茶</b><br/>chá</b><br/>Tea</p>
+<p><b>水</b><br/>shuǐ</b><br/>Water</p>
+
+<h4>8</h4>
+<p><b>是</b><br/>shì</b><br/>Be</p>
+<p><b>生</b><br/>shēng</p>
+<p><b>学</b><br/>xué</p>
+
+<h4>9</h4>
+<p><b>零</b><br/>lǐ</b><br/>0</p>
+<p><b>一</b><br/>yī</b><br/>1</p>
+<p><b>二</b><br/>ér</b><br/>2</p>
+<p><b>三</b><br/>sān</b><br/>3</p>
+<p><b>四</b><br/>si</b><br/>4</p>
+<p><b>五</b><br/>wǔ</b><br/>5</p>
+<p><b>六</b><br/>líu</b><br/>6</p>
+<p><b>七</b><br/>qī</b><br/>7</p>
+<p><b>八</b><br/>bā</b><br/>8</p>
+<p><b>九</b><br/>jiǔ</b><br/>9</p>
+<p><b>十</b><br/>shí</b><br/>10</p>
+<p><b>百</b><br/>bǎi</b><br/>100</p>
+<p><b>元</b><br/>yuán</b><br/>Yuan</p>
+
+<h4>10</h4>
+<p><b>什</b><br/>Shén</p>
+<p><b>明</b><br/>Míng</p>
+<p><b>王</b><br/>Wáng</p>
+<p><b>张</b><br/>Zhang</p>
+<p><b>华</b><br/>Hua</p>
+<p><b>李</b><br/>Li</p>
+
+<h4>11</h4>
+<p><b>再见</b><br/>See you again</p>
+<p><b>你好</b><br/>Hello</p>
+<p><b>你叫什么</b><br/>What is your name</p>
+<p><b>你叫什么名字</b><br/>What's your first name</p>
+<p><b>什么</b><br/>What</p>
+<p><b>名字</b><br/>First name</p>
+<p><b>高兴</b><br/>Happy</p>
+<p><b>很高兴</b><br/>Happy</p>
+<p><b>认识</b><br/>Know</p>
+<p><b>学生</b><br/>Student</p>

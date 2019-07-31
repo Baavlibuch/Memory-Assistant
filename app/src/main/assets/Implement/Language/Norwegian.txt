@@ -1,0 +1,152 @@
+<h4>0</h4>
+<p><b>ø</b><br/>œ</p>
+<p><b>k</b><br/>sh</p>
+
+<h4>1</h4>
+<p><b>Jeg</b><br/>I</p>
+<p><b>Meg</b><br/>Me</p>
+<p><b>Er</b><br/>Am, Are</p>
+<p><b>Du</b><br/>You (subject)</p>
+<p><b>Deg</b><br/>You (object), Yourself</p>
+<p><b>Han</b><br/>He</p>
+<p><b>Ham</b><br/>Him</p>
+<p><b>Hun</b><br/>She</p>
+<p><b>Henne</b><br/>Her</p>
+<p><b>Vi</b><br/>We</p>
+<p><b>Oss</b><br/>Us</p>
+<p><b>Dere</b><br/>You (p)</p>
+<p><b>De</b><br/>They, The</p>
+<p><b>Det</b><br/>It (subject), There</p>
+<p><b>Den</b><br/>The, It(object), That</p>
+
+<h4>2</h4>
+<p><b>Ja</b><br/>Yes</p>
+<p><b>Nei</b><br/>No</p>
+<p><b>Eller</b><br/>Or</p>
+<p><b>Så</b><br/>So, then</p>
+<p><b>Et</b><br/>A</p>
+<p><b>Ei</b><br/>A(f)</p>
+<p><b>En</b><br/>One</p>
+<p><b>Og</b><br/>And</p>
+<p><b>Vet</b><br/>Do _ know</p>
+<p><b>Noe</b><br/>Something</p>
+<p><b>Kanskje</b><br/>Maybe</p>
+
+<h4>3</h4>
+<p><b>I</b><br/>In, On, From</p>
+<p><b>Ikke</b><br/>Not</p>
+<p><b>Der</b><br/>There, Where</p>
+<p><b>Vet</b><br/>Know</p>
+<p><b>Her</b><br/>Here</p>
+<p><b>Hvem</b><br/>Who</p>
+<p><b>Har</b><br/>Have</p>
+<p><b>Ha</b><br/>Have</p>
+<p><b>Hva</b><br/>What</p>
+<p><b>Hvor</b><br/>Where, How</p>
+<p><b>Bare</b><br/>Only, Just</p>
+
+<h4>4</h4>
+<p><b>God</b><br/>Good</p>
+<p><b>Bra</b><br/>Well, Fine</p>
+<p><b>Hyggelig</b><br/>Pleasant, Nice</p>
+<p><b>Snill</b><br/>Kind</p>
+<p><b>Fin</b><br/>Fine</p>
+
+<h4>5</h4>
+<p><b>Tur</b><br/>Trip</p>
+
+<p><b>Vær</b><br/>Be</p>
+<p><b>Vet</b><br/>Know</p>
+<p><b>Sitter</b><br/>Sit</p>
+<p><b>Heter</b><br/>Is named</p>
+<p><b>Snakker</b><br/>Speaks</p>
+<p><b>Bor</b><br/>Live</p>
+<p><b>Spiser</b><br/>Eat</p>
+<p><b>Drikker</b><br/>Drink</p>
+<p><b>Leser</b><br/>Read</p>
+<p><b>Ser</b><br/>See</p>
+<p><b>Liker</b><br/>Like</p>
+<p><b>Kjøper</b><br/>Buy</p>
+<p><b>Elsker</b><br/>Love</p>
+<p><b>Trenger</b><br/>Need</p>
+<p><b>Lager</b><br/>Make</p>
+<p><b>Viser</b><br/>Show</p>
+
+<h4>6</h4>
+<p><b>Liv</b><br/>Life</p>
+<p><b>Heter</b><br/>Name</p>
+
+<p><b>Kvinne</b><br/>Woman</p>
+<p><b>Mann</b><br/>Man</p>
+<p><b>Barn</b><br/>Child</p>
+<p><b>Jente</b><br/>Girl</p>
+<p><b>Gutt</b><br/>Boy</p>
+
+<h4>7</h4>
+<p><b>Brev</b><br/>Letter</p>
+
+<p><b>Hytte</b><br/>Cabin</p>
+
+<h4>8</h4>
+<p><b>Dyr</b><br/>Animal</p>
+<p><b>Katt</b><br/>Cat</p>
+<p><b>And</b><br/>Duck</p>
+<p><b>Hest</b><br/>Horse</p>
+<p><b>Hund</b><br/>Dog</p>
+<p><b>Bjørn</b><br/>Bear</p>
+<p><b>Elg</b><br/>Moose</p>
+<p><b>Fugl</b><br/>Bird</p>
+<p><b>Edderkopp</b><br/>Spider</p>
+<p><b>Ulv</b><br/>Wolf</p>
+<p><b>Fisk</b><br/>Fish</p>
+
+<h4>9</h4>
+<p><b>Mat</b><br/>Food</p>
+<p><b>Frokost</b><br/>Breakfast</p>
+<p><b>Eple</b><br/>Apple</p>
+<p><b>Brød</b><br/>Bread</p>
+<p><b>Bok</b><br/>Book</p>
+<p><b>Vann</b><br/>Water</p>
+<p><b>Ris</b><br/>Rice</p>
+<p><b>Melk</b><br/>Milk</p>
+<p><b>Kjøtt</b><br/>Meat</p>
+<p><b>Suppe</b><br/>Soup</p>
+<p><b>Kylling</b><br/>Chicken</p>
+<p><b>Frukt</b><br/>Fruit</p>
+<p><b>Tomat</b><br/>Tomato</p>
+<p><b>Ost</b><br/>Cheese</p>
+<p><b>Egg</b><br/>Egg</p>
+<p><b>Øl</b><br/>Beer</p>
+<p><b>Pepper</b><br/>Pepper</p>
+<p><b>Sukker</b><br/>Sugar</p>
+<p><b>Tomoasuppe</b><br/>Tomato soup</p>
+
+<h4>10</h4>
+<p><b>Morgen</b><br/>Morning</p>
+<p><b>Kveld</b><br/>Evening</p>
+<p><b>Dag</b><br/>Day</p>
+<p><b>Natt</b><br/>Night</p>
+<p><b>Helg</b><br/>Week end</p>
+
+<h4>11</h4>
+<p><b>Norge</b><br/>Norway</p>
+<p><b>Engelsk</b><br/>English</p>
+<p><b>Norsk</b><br/>Norwegian</p>
+
+<h4>12</h4>
+<p><b>Tusen</b><br/>Thousand</p>
+
+<h4>13</h4>
+<p><b>Hai</b><br/>Hi</p>
+<p><b>Takke</b><br/>Thanks, Please</p>
+<p><b>Velkommen</b><br/>Welcome</p>
+<p><b>Unnskyld</b><br/>Excuse me, Sorry</p>
+<p><b>Ha det</b><br/>Good bye</p>
+<p><b>Bare hyggelig</b><br/>My pleasure, You are welcome</p>
+<p><b>Vær så snill</b><br/>Please</p>
+
+<h4>14</h4>
+<p><b>-en</b><br/>The</p>
+<p><b>-et</b><br/>The</p>
+<p><b>-e</b><br/>The</p>
+<p><b>-a</b><br/>The</p>

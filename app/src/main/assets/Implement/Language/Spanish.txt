@@ -1,0 +1,261 @@
+<h4>0</h4>
+<p><b>á</b><br/>aa</p>
+<p><b>i</b><br/>ee</p>
+
+<h4>1</h4>
+<p><b>Yo</b><br/>I</p>
+<p><b>Soy</b><br/>I am</p>
+<p><b>Estoy</b><br/>I am</p>
+<p><b>Mi</b><br/>My</p>
+<p><b>Mía</b><br/>Mine</p>
+<p><b>Me</b><br/>I, Me, Myself</p>
+<p><b>Tú</b><br/>You (informal), Your</p>
+<p><b>Te</b><br/>Yourself</p>
+<p><b>Usted</b><br/>You (formal)</p>
+<p><b>Eres</b><br/>Are, You are</p>
+<p><b>Estás</b><br/>Are you</p>
+<p><b>Il</b><br/>He</p>
+<p><b>Él</b><br/>He</p>
+<p><b>Ella</b><br/>She</p>
+<p><b>Es</b><br/>Is</p>
+<p><b>Está</b><br/>Is, It is</p>
+<p><b>Lo</b><br/>It</p>
+<p><b>Ese</b><br/>That</p>
+<p><b>Este</b><br/>This</p>
+
+<h4>2</h4>
+<p><b>O</b><br/>And, Or</p>
+<p><b>Y</b><br/>And, Past</p>
+<p><b>Sí</b><br/>Yes</p>
+<p><b>No</b><br/>No, Not</p>
+<p><b>Bien</b><br/>Okay</p>
+<p><b>Demasiado</b><br/>Too</p>
+
+<h4>3</h4>
+<p><b>Qué</b><br/>Why</p>
+<p><b>Donde</b><br/>Where</p>
+<p><b>Aquí</b><br/>Here</p>
+<p><b>Cómo</b><br/>How</p>
+<p><b>De</b><br/>For, With, On, About, From</p>
+<p><b>Por</b><br/>On, About</p>
+<p><b>En</b><br/>In, On, Into, At</p>
+<p><b>A</b><br/>To</p>
+<p><b>Para</b><br/>For</p>
+<p><b>Con</b><br/>With</p>
+<p><b>Sin</b><br/>Without</p>
+<p><b>Conmigo</b><br/>With me</p>
+<p><b>Hasta</b><br/>Until</p>
+<p><b>Luego</b><br/>Later</p>
+
+<h4>4</h4>
+<p><b>Buenas</b><br/>Good</p>
+<p><b>Cerrado</b><br/>Closed</p>
+<p><b>Inteligente</b><br/>Intelligent</p>
+<p><b>Elegante</b><br/>Elegant</p>
+<p><b>Bonito</b><br/>Pretty, Nice</p>
+<p><b>Muy</b><br/>Very</p>
+<p><b>Demasiado</b><br/>Too, Too much</p>
+<p><b>Grande</b><br/>Big</p>
+<p><b>Interesante</b><br/>Interesting</p>
+<p><b>Mucho</b><br/>A lot</p>
+<p><b>Más</b><br/>More</p>
+<p><b>Tranquilo</b><br/>Tranquil</p>
+<p><b>Barato</b><br/>Cheap</p>
+<p><b>Caro</b><br/>Expensive</p>
+<p><b>Diferente</b><br/>Different</p>
+<p><b>Cómoda</b><br/>Comfortable</p>
+<p><b>Fácil</b><br/>Easy</p>
+<p><b>Defícíl</b><br/>Difficult</p>
+<p><b>Cansada</b><br/>Tired</p>
+<p><b>Favorita</b><br/>Favourite</p>
+
+<h4>5</h4>
+<p><b>Estar</b><br/>To be (temporary)</p>
+<p><b>Ser</b><br/>To be (permanent)</p>
+<p><b>Bebe</b><br/>Drink</p>
+<p><b>Come</b><br/>Eat</p>
+<p><b>Hablo</b><br/>Speak, Talk</p>
+<p><b>Queiro</b><br/>Want</p>
+<p><b>Pagar</b><br/>Pay</p>
+<p><b>Vivo</b><br/>Live</p>
+<p><b>Comprar</b><br/>Buy</p>
+<p><b>Das</b><br/>Give</p>
+<p><b>Me das</b><br/>Give me</p>
+<p><b>Bailar</b><br/>Dance</p>
+<p><b>Salir</b><br/>Go out</p>
+<p><b>Vamos</b><br/>Go out</p>
+<p><b>Gustas</b><br/>Like</p>
+<p><b>Llamo</b><br/>Call</p>
+<p><b>Escribir</b><br/>Writes</p>
+<p><b>Estudias</b><br/>Study</p>
+<p><b>Leer</b><br/>Read</p>
+
+<h4>6</h4>
+<p><b>Tiene</b><br/>Has</p>
+<p><b>Siento</b><br/>Feel</p>
+<p><b>Necesito</b><br/>Need</p>
+<p><b>Tengo</b><br/>Have</p>
+<p><b>Quieres</b><br/>Want</p>
+<p><b>Comprendo</b><br/>Understand</p>
+
+<h4>7</h4>
+<p><b>Noches</b><br/>At night, Nights</p>
+<p><b>Días</b><br/>Days</p>
+<p><b>Tardes</b><br/>Afternoon</p>
+<p><b>Mañana</b><br/>Tomorrow</p>
+
+<p><b>Sitio</b><br/>Somewhere</p>
+<h4>8</h4>
+<p><b>Nada</b><br/>Nothing</p>
+<p><b>Número</b><br/>Number</p>
+<p><b>Pregunta</b><br/>Question</p>
+<p><b>Problema</b><br/>Problem</p>
+<p><b>Nombre</b><br/>Name</p>
+
+<p><b>Classe</b><br/>Class</p>
+<p><b>Examen</b><br/>Exam</p>
+
+<h4>9</h4>
+<p><b>Mujer</b><br/>Woman</p>
+<p><b>Personas</b><br/>People</p>
+<p><b>Hermano</b><br/>Brother</p>
+<p><b>Hermana</b><br/>Sister</p>
+<p><b>Abuelo</b><br/>Grandfather</p>
+<p><b>Esposo</b><br/>Husband</p>
+<p><b>Familia</b><br/>Family</p>
+<p><b>Hija</b><br/>Daughter</p>
+<p><b>Estudiante</b><br/>Student</p>
+<p><b>Modelo</b><br/>Model</p>
+<p><b>Maestro</b><br/>Teacher</p>
+<p><b>Profesor</b><br/>Professor</p>
+<p><b>Señorita</b><br/>Miss, Lady</p>
+<p><b>Señora</b><br/>Mrs, Ma'am</p>
+
+<h4>10</h4>
+<p><b>Reserva</b><br/>Reservation</p>
+<p><b>Favor</b><br/>Favour</p>
+
+<h4>11</h4>
+<p><b>Pan</b><br/>Bread</p>
+<p><b>Agua</b><br/>Water</p>
+<p><b>Leche</b><br/>Milk</p>
+<p><b>Carne</b><br/>Meat</p>
+<p><b>Queso</b><br/>Cheese</p>
+<p><b>Sándwich</b><br/>Sandwich</p>
+<p><b>Hamburguesa</b><br/>Hamburger</p>
+<p><b>Café</b><br/>Coffee</p>
+<p><b>Jugo</b><br/>Juice</p>
+<p><b>Naranja</b><br/>Orange</p>
+<p><b>Azúcar</b><br/>Sugar</p>
+<p><b>Tomate</b><br/>Tomato</p>
+<p><b>Sal</b><br/>Salt</p>
+<p><b>Ensalada</b><br/>Salad</p>
+
+<h4>12</h4>
+<p><b>Camisa</b><br/>Shirt</p>
+<p><b>Chaqueta</b><br/>Jacket</p>
+<p><b>Vestido</b><br/>Dress</p>
+<p><b>Sombrero</b><br/>Hat</p>
+<p><b>Abrigo</b><br/>Coat</p>
+<p><b>Falda</b><br/>Skirt</p>
+<p><b>Cartera</b><br/>Purse</p>
+<p><b>Reloj</b><br/>Watch</p>
+<p><b>Cinturón</b><br/>Belt</p>
+
+<h4>13</h4>
+<p><b>Pasaporte</b><br/>Passport</p>
+<p><b>Teléfono</b><br/>Telephone</p>
+<p><b>Maleta</b><br/>Suitcase</p>
+<p><b>Boleto</b><br/>Ticket</p>
+<p><b>Cuenta</b><br/>Check</p>
+<p><b>Dinero</b><br/>Money</p>
+<p><b>Medicina</b><br/>Medicine</p>
+<p><b>Regalo</b><br/>Gift</p>
+<p><b>Mesa</b><br/>Table</p>
+<p><b>Bolígrafo</b><br/>Pen</p>
+<p><b>Libro</b><br/>Book</p>
+<p><b>Computadora</b><br/>Computer</p>
+<p><b>Vaso</b><br/>Glass</p>
+<p><b>Taza</b><br/>Cup</p>
+
+<h4>14</h4>
+<p><b>Aeropuerto</b><br/>Airport</p>
+<p><b>Tienda</b><br/>Shop</p>
+<p><b>Esquela</b><br/>School</p>
+<p><b>Baño</b><br/>Bathroom</p>
+<p><b>Banco</b><br/>Bank</p>
+<p><b>Calle</b><br/>Street</p>
+<p><b>Museo</b><br/>Museum</p>
+<p><b>Supermercado</b><br/>Supermarket</p>
+<p><b>Restaurante</b><br/>Restaurant</p>
+<p><b>Casa</b><br/>House</p>
+<p><b>Apartamento</b><br/>Apartment</p>
+<p><b>Tienda</b><br/>Store</p>
+<p><b>Universidad</b><br/>University</p>
+
+<h4>15</h4>
+<p><b>Tren</b><br/>Train</p>
+<p><b>Autobus</b><br/>Bus</p>
+<p><b>Bicicleta</b><br/>Bicycle</p>
+<p><b>Carro</b><br/>Car</p>
+
+<h4>16</h4>
+<p><b>Pescado</b><br/>Fish</p>
+<p><b>Perro</b><br/>Dog</p>
+<p><b>Gato</b><br/>Cat</p>
+
+<h4>17</h4>
+<p><b>China</b><br/>China</p>
+<p><b>Francia</b><br/>France</p>
+<p><b>Estados Unidos</b><br/>United States</p>
+<p><b>Americano</b><br/>American</p>
+<p><b>México</b><br/>Mexico</p>
+<p><b>Mexicano</b><br/>Mexican</p>
+<p><b>Inglés</b><br/>English</p>
+<p><b>Cuba</b><br/>Cuba</p>
+<p><b>Cubana</b><br/>Cuban</p>
+
+<h4>18</h4>
+<p><b>Verde</b><br/>Green</p>
+<p><b>Azul</b><br/>Blue</p>
+<p><b>Marrón</b><br/>Brown</p>
+<p><b>Gris</b><br/>Gray</p>
+<p><b>Rojo</b><br/>Red</p>
+
+<h4>19</h4>
+<p><b>Adiós</b><br/>Bye</p>
+<p><b>Mucho Gusto</b><br/>Nice to meet you</p>
+<p><b>Gracias</b><br/>Thank you</p>
+<p><b>De nada</b><br/>Don't mention it, You are welcome</p>
+<p><b>Lo siento</b><br/>Sorry</p>
+<p><b>Perdón</b><br/>Pardon</p>
+<p><b>Discuple</b><br/>Excuse me</p>
+
+<h4>20</h4>
+<p><b>Cómo estás tú?</b><br/>How are you? (informal)</p>
+<p><b>Cómo está usted</b><br/>How are you? (formal)</p>
+<p><b>Cómo te llamas</b><br/>What is your name (in)</p>
+<p><b>Cómo se llamas usted</b><br/>What is your name (for)</p>
+
+<h4>21</h4>
+<p><b></b><br/>Estar</p>
+<p><b>Estoy</b><br/>I am</p>
+<p><b>Estás</b><br/>You are (in)</p>
+<p><b>Está</b><br/>He/She/It is, You are (for)</p>
+<h4>22</h4>
+<p><b></b><br/>Ser</p>
+<p><b>Soy</b><br/>I am</p>
+<p><b>Eres</b><br/>You are (in)</p>
+<p><b>Es</b><br/>He/She/It is, You are (for)</p>
+<h4>23</h4>
+<p><b>Yo</b><br/>Como</p>
+<p><b>Tú</b><br/>Comes</p>
+<p><b>Il/Ella</b><br/>Comes</p>
+<h4>24</h4>
+<p><b>Yo</b><br/>Hanblo</p>
+<p><b>Tú</b><br/>Hablas</p>
+<h4>25</h4>
+<p><b>Yo</b><br/>Tengo</p>
+<p><b>Tú</b><br/>Tienes</p>
+<h4>26</h4>
+<p><b>Yo</b><br/>Estudiar</p>

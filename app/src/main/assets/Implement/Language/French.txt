@@ -1,0 +1,202 @@
+<h4>0</h4>
+<p><b>ç</b><br/>s (sell)</p>
+<p><b>é</b><br/>ai (hey)</p>
+<p><b>è</b><br/>e (egg)</p>
+
+<h4>1</h4>
+<p><b>Je</b><br/>I</p>
+<p><b>Moi</b><br/>Me</p>
+<p><b>Mon (m)</b><br/>My</p>
+<p><b>Ma (f)</b><br/>My</p>
+<p><b>Mes (p)</b><br/>Mes</p>
+<p><b>Tu</b><br/>You(s)</p>
+<p><b>Ta</b><br/>(f)</b><br/>Your</p>
+<p><b>Ton</b><br/>(m)</b><br/>Your</p>
+<p><b>Tes (p)</b><br/>Your</p>
+<p><b>Toi</b><br/>You (object)</p>
+<p><b>Il</b><br/>He</p>
+<p><b>Elle</b><br/>She</p>
+<p><b>Son</b><br/>(m)</b><br/>His, Her</p>
+<p><b>Sa (f)</b><br/>His, Her</p>
+<p><b>Nous</b><br/>We</p>
+<p><b>Vous</b><br/>You (p)</p>
+<p><b>Vos</b><br/>Your</p>
+
+<h4>1</h4>
+<p><b>Le</b><br/>The (m)</p>
+<p><b>La</b><br/>The (f)</p>
+<p><b>Les</b><br/>The (p)</p>
+
+<h4>2</h4>
+<p><b>Trés</b><br/>Very</p>
+<p><b>Beaucoup</b><br/>A lot</p>
+
+<h4>3</h4>
+<p><b>Bienvenu</b><br/>Welcome</p>
+<p><b>Enchenté</b><br/>Nice to meet you</p>
+<p><b>Bonne journée</b><br/>Day</p>
+<p><b>Bonne Soirée</b><br/>Evening</p>
+<p><b>À demain</b><br/>See you tomorrow</p>
+
+<h4>4</h4>
+<p><b>À</b><br/>On, About, From</p>
+<p><b>Bientôt</b><br/>Soon</p>
+<p><b>Ici</b><br/>Here</p>
+<p><b>Avec</b><br/>With</p>
+<p><b>Où</b><br/>Where</p>
+<p><b>En</b><br/>In, On, By</p>
+<p><b>Dans</b><br/>In, Inside</p>
+<p><b>De</b><br/>Of</p>
+<p><b>Pour</b><br/>For</p>
+
+<h4>5</h4>
+<p><b>Avoir</b><br/>To Have</p>
+<p><b>Manger</b><br/>Eat</p>
+<p><b>Va</b><br/>Go</p>
+<p><b>Aller</b><br/>Go</p>
+<p><b>Travailler</b><br/>Work</p>
+<p><b>Prender</b><br/>Take</p>
+<p><b>Vouloir</b><br/>Want</p>
+<p><b>Aimer</b><br/>To Like</p>
+<p><b>Lire</b><br/>To read</p>
+<p><b>Danser</b><br/>To dance</p>
+<p><b>Parler</b><br/>To talk</p>
+<p><b>Étudier</b><br/>To study</p>
+<p><b>Sont</b><br/>Feel</p>
+
+<h4>6</h4>
+<p><b>Compagnie</b><br/>Company</p>
+
+<p><b>Musique</b><br/>Music</p>
+<p><b>Travail</b><br/>Work</p>
+
+<h4>7</h4>
+<p><b>Père</b><br/>Father</p>
+<p><b>Mère</b><br/>Mother</p>
+<p><b>Grand-Père</b><br/>Father</p>
+<p><b>Grand-Mère</b><br/>Mother</p>
+<p><b>Frère</b><br/>Brother</p>
+<p><b>Sœur</b><br/>Sister</p>
+<p><b>Garçon</b><br/>Boy</p>
+<p><b>Fille</b><br/>Girl</p>
+<p><b>Fils</b><br/>Son</p>
+<p><b>Homme</b><br/>Man</p>
+<p><b>Femme</b><br/>Woman</p>
+<p><b>Professeur</b><br/>Professor</p>
+<p><b>Journalist</b><br/>Journalist</p>
+<p><b>Famille</b><br/>Family</p>
+<p><b>Mari</b><br/>Husband</p>
+<p><b>Personnes</b><br/>People</p>
+<p><b>Person</b><br/>Person</p>
+
+<h4>7</h4>
+<p><b>Gare</b><br/>Station</p>
+<p><b>Aéroport</b><br/>Airport</p>
+<p><b>Université</b><br/>University</p>
+<p><b>École</b><br/>School</p>
+<p><b>Banque</b><br/>Bank</p>
+<p><b>Parc</b><br/>Park</p>
+<p><b>Boulangerie</b><br/>Bakery</p>
+<p><b>Appartement</b><br/>Apartment</p>
+<p><b>Maison</b><br/>House</p>
+<p><b>Cinéma</b><br/>Cinema hall</p>
+<p><b>Zoo</b><br/>Zoo</p>
+<p><b>Restaurant</b><br/>Restaurant</p>
+<p><b>Toilette</b><br/>Toilet</p>
+<p><b>Jardin</b><br/>Garden</p>
+
+<h4>8</h4>
+<p><b>Avion</b><br/>Aeroplane</p>
+<p><b>Voiture</b><br/>Car</p>
+<p><b>Taxi</b><br/>Taxi</p>
+<p><b>Métro</b><br/>Métro</p>
+
+<p><b>Valise</b><br/>Suit case</p>
+<p><b>Passeport</b><br/>Passport</p>
+<p><b>Billet</b><br/>Ticket</p>
+<p><b>Livre</b><br/>Book</p>
+<p><b>Table</b><br/>Table</p>
+
+<h4>9</h4>
+<p><b>Chocolat</b><br/>Chocolate</p>
+<p><b>Orange</b><br/>Orange</p>
+
+<h4>10</h4>
+<p><b>Mexique</b><br/>Mexico</p>
+<p><b>Angleterre</b><br/>England</p>
+<p><b>Italie</b><br/>Italy</p>
+<p><b>Europe</b><br/>Europe</p>
+
+<h4>11</h4>
+<p><b>Chouette</b><br/>Owl</p>
+<p><b>Chat</b><br/>Cat</p>
+<p><b>Chien</b><br/>Dog</p>
+<p><b>Cheval</b><br/>Horse</p>
+
+<h4>12</h4>
+<p><b>Un</b><br/>1</p>
+<p><b>Deux</b><br/>2</p>
+<p><b>Trois</b><br/>3</p>
+<p><b>Quatre</b><br/>4</p>
+<p><b>Cinq</b><br/>5</p>
+<p><b>Six</b><br/>6</p>
+<p><b>Sept</b><br/>7</p>
+<p><b>Huit</b><br/>8</p>
+<p><b>Neuf</b><br/>9</p>
+<p><b>Dix</b><br/>10</p>
+<p><b>Vingt</b><br/>20</p>
+<p><b>Cent</b><br/>100</p>
+
+<h4>13</h4>
+<p><b>Animal de compagnie</b><br/>Pet</p>
+
+<h4>14</h4>
+<p><b></b><br/>-er</p>
+<p><b>Je</b><br/>-i</p>
+<p><b>Tu</b><br/>-s</p>
+<p><b>Il/Elle</b><br/>-</p>
+<p><b>Nous</b><br/>-ons</p>
+<p><b>Vous</b><br/>-ent</p>
+<p><b>Ils/Ells</b><br/>-ent</p>
+
+<h4>15</h4>
+<p><b></b><br/>Vouloir</p>
+<p><b>Je</b><br/>veux</p>
+<p><b>Tu</b><br/>veux</p>
+<p><b>Il/Elle</b><br/>veut</p>
+<p><b>Nous</b><br/>voulons</p>
+<p><b>Vous</p>
+<p><b>Ils/Elles</b><br/>ont</p>
+
+<h4>16</h4>
+<p><b></b><br/>Aller</p>
+<p><b>Je</b><br/>ai</p>
+<p><b>Tu</p>
+<p><b>Il/Elle</b><br/>a</p>
+<p><b>Nous</p>
+<p><b>Vous</p>
+<p><b>Ils/Elles</p>
+
+<h4>17</h4>
+<p><b></b><br/>Avoir</p>
+<p><b>Je</p>
+<p><b>Tu</p>
+<p><b>Il/Elle</p>
+<p><b>Nous</p>
+<p><b>Vous</p>
+<p><b>Ils/Elles</b><br/>ont</p>
+<p><b></b><br/></p>
+<p><b>Je</b><br/>suis</p>
+<p><b>Tu</b><br/>es</p>
+<p><b>Il/Elle</b><br/>es</p>
+<p><b>Nous</b><br/>sons</p>
+<p><b>Vous</b><br/>etes</p>
+<p><b>Ils/Elles</b><br/>sont</p>
+
+<h4>18</h4>
+<p><b>Je</b><br/>vais</p>
+<p><b>Tu</p>
+<p><b>Il/Elle</p>
+<p><b>Nous</p>
+<p><b>Vous</p>
+<p><b>Ils/Elles</p>

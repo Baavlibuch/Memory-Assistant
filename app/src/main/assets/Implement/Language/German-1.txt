@@ -1,0 +1,414 @@
+<p><b>This contains many errors. Use it at your discretion and feel free to suggest corrections.</b><br/><p>
+<h4>1</h4>
+<!--Pronouns-->
+<p><b>Ich</b><br/>I</p>
+<p><b>Mich</b><br/>Me, Myself</p>
+<p><b>Mir</b><br/>Me, To me</p>
+<p><b>Mein/Meine</b><br/>My</p>
+<p><b>Er</b><br/>He</p>
+<p><b>Ihr</b><br/>Her</p>
+<p><b>Ihm</b><br/>Him</p>
+<p><b>Man</b><br/>You</p>
+<p><b>Sie</b><br/>You, They, Them, She</p>
+<p><b>Jemand</b><br/>Someone</p>
+<p><b>Es</b><br/>It</p>
+<p><b>Dieser</b><br/>This</p>
+<p><b>Anderes</b><br/>Other</p>
+<h4>2</h4>
+<!--People-->
+<p><b>Männer</b><br/>Men</p>
+<p><b>Herren</b><br/>Gentlemen</p>
+<p><b>Frauen</b><br/>Women</p>
+<p><b>Damen</b><br/>Ladies</p>
+<p><b>Kellner</b><br/>Waiter</p>
+<p><b>Kellnerin</b><br/>Waitress</p>
+<h4>3</h4>
+<!--Prepositions-->
+<p><b>Dann</b><br/>Then</p>
+<p><b>In</b><br/>In</p>
+<p><b>Im</b><br/>In the</p>
+<p><b>An</b><br/>At</p>
+<p><b>Wohin</b><br/>Where</p>
+<p><b>Hier</b><br/>Here</p>
+<p><b>Den</b><br/>The</p>
+<p><b>Das</b><br/>The, That, This, It, Who</p>
+<p><b>Aus</b><br/>From, Of</p>
+<p><b>Auf</b><br/>On</p>
+<p><b>Schon seit</b><br/>Since</p>
+<p><b>Dort</b><br/>There</p>
+<p><b>Für</b><br/>For</p>
+<p><b>Da</b><br/>Since</p>
+<p><b>Bis</b><br/>Until</p>
+<p><b>Dabei</b><br/>With it, Yet</p>
+<p><b>Einer</b><br/>Either, One</p>
+<p><b>Welcher</b><br/>Which one</p>
+<p><b>Ein</b><br/>Or</p>
+<p><b>Um</b><br/>Around</p>
+<p><b>Der</b><br/>Of the</p>
+<p><b>Zwischen</b><br/>Between</p>
+<p><b>Mit</b><br/>With</p>
+<p><b>Ohne</b><br/>Without</p>
+<p><b>Später</b><br/>Later</p>
+<p><b>Weit</b><br/>Far</p>
+<p><b>Da</b><br/>Here, Then, So, In, At that, To that</p>
+<p><b>Um</b><br/>Around, By, At</p>
+<p><b>Nach</b><br/>After, To</p>
+<p><b>Geradeaus</b><br/>Straight ahead</p>
+<p><b>Oben</b><br/>Upstairs</p>
+<p><b>Unten</b><br/>Downstairs</p>
+<p><b>Zurück</b><br/>Back</p>
+<p><b>Nord</b><br/>North</p>
+<p><b>Süd</b><br/>South</p>
+<p><b>Ost</b><br/>East</p>
+<p><b>West</b><br/>West</p>
+<h4>4</h4>
+<!--Conjunctions-->
+<p><b>Geworden</b><br/>Because</p>
+<p><b>Weil</b><br/>Because</p>
+<!--Helping verbs-->
+<p><b>Kann</b><br/>Can, Know</p>
+<p><b>Möchten</b><br/>Would</p>
+<p><b>Sollte</b><br/>Should</p>
+<p><b>Nur</b><br/>Just</p>
+<p><b>Tu</b><br/>To</p>
+<p><b>Zum</b><br/>To the</p>
+<!--Gerunds-->
+<p><b>Die</b><br/>The</p>
+<p><b>Dem</b><br/>The</p>
+<h4>5</h4>
+<!--Adjectives and adverbs-->
+<p><b>Nicht</b><br/>Not</p>
+<p><b>Guten</b><br/>Good</p>
+<p><b>Gut</b><br/>Well, Fine</p>
+<p><b>Viel</b><br/>Much, A lot of</p>
+<p><b>Billigeres</b><br/>Cheaper</p>
+<p><b>Kleineren</b><br/>Smaller</p>
+<p><b>Wenig</b><br/>Little</p>
+<p><b>Größeren</b><br/>Larger</p>
+<p><b>Größe</b><br/>Size</p>
+<p><b>Einen</b><br/>A, Unite</p>
+<p><b>Gern</b><br/>Gladly</p>
+<p><b>Vegetarisches</b><br/>Vegetarian</p>
+<p><b>Wohl</b><br/>Well</p>
+<p><b>Noch</b><br/>More, Still, Yet</p>
+<p><b>Weg</b><br/>Away, Of, Forth, Gone</p>
+<p><b>Nächste</b><br/>Nearest</p>
+<p><b>Neben</b><br/>Next</p>
+<p><b>Links</b><br/>Left, To the left</p>
+<p><b>Rechts</b><br/>Right, To the left</p>
+<p><b>Lange</b><br/>Long</p>
+<p><b>Frei</b><br/>Free, Open, Empty</p>
+<p><b>Beste</b><br/>Best</p>
+<p><b>Leckerste</b><br/>Delicious</p>
+<p><b>Krank</b><br/>Sick</p>
+<h4>6</h4>
+<!--Salutations-->
+<p><b>Hallo</b><br/>Hello</p>
+<p><b>Tschüß</b><br/>Bye</p>
+<p><b>Prost</b><br/>Cheers</p>
+<p><b>Heiße</b><br/>Am called, Hot, Go</p>
+<p><b>Wie</b><br/>How, When, As, Like</p>
+<p><b>Was</b><br/>What</p>
+<p><b>Wo</b><br/>Where</p>
+<p><b>Darf</b><br/>May</p>
+<p><b>Bitte</b><br/>Plea, Welcome, Request</p>
+<p><b>Entschuldigung</b><br/>Excuse me</p>
+<h4>7</h4>
+<!--Verbs-->
+<p><b>Ist</b><br/>Is</p>
+<p><b>Bin</b><br/>Am</p>
+<p><b>Geht</b><br/>Go, Walk, Move</p>
+<p><b>Komme</b><br/>Come, Happen</p>
+<p><b>Hilfe</b><br/>Help</p>
+<p><b>Bleibe</b><br/>Stay</p>
+<p><b>Haben</b><br/>To have</p>
+<p><b>Kostet</b><br/>Cost</p>
+<p><b>Bezahlen</b><br/>Pay</p>
+<p><b>Habe</b><br/>Have</p>
+<p><b>Kaufen</b><br/>Buy</p>
+<p><b>Verkaufen</b><br/>Sell</p>
+<p><b>Öffnet</b><br/>Opens</p>
+<p><b>Schließt</b><br/>Closes</p>
+<p><b>Suchen</b><br/>Search</p>
+<p><b>Reserviert</b><br/>Reserved</p>
+<p><b>Sehen</b><br/>See</p>
+<p><b>Hätte</b><br/>Have, Own, Would have</p>
+<p><b>Essen</b><br/>Eat</p>
+<p><b>Bringen</b><br/>Bring, Take, Get, Carry</p>
+<p><b>Halten</b><br/>Stop, Hold</p>
+<p><b>Fährt</b><br/>Moves, Drive, Run</p>
+<p><b>Zeigen</b><br/>Demonstrate, Show, Point</p>
+<p><b>Umsteigen</b><br/>Change, Switch</p>
+<p><b>Empfehlen</b><br/>Recommend</p>
+<p><b>Inklusiv</b><br/>Included</p>
+<p><b>Weck</b><br/>Wake, Rouse</p>
+<p><b>Auschecken</b><br/>Check out</p>
+<p><b>Verloren</b><br/>Lost</p>
+<p><b>Hat</b><br/>Has</p>
+<p><b>Genommen</b><br/>Took</p>
+<p><b>Lassen</b><br/>Leave, Let</p>
+<p><b>Fassen</b><br/>Take</p>
+<p><b>Verstehe</b><br/>Understand</p>
+<p><b>Wiederholen</b><br/>Repeat</p>
+<p><b>Sprechen</b><br/>Speak</p>
+<p><b>Übersetzen</b><br/>Translate</p>
+<h4>8</h4>
+<!--Nouns-->
+<p><b>Andenken</b><br/>Souvenirs</p>
+<p><b>Habe</b><br/>Belongings, Goods</p>
+<p><b>Etwas</b><br/>Something</p>
+<p><b>Uhr</b><br/>Clock, Watch, Meter</p>
+<p><b>Bargeld</b><br/>Cash</p>
+<p><b>Kreditkarte</b><br/>Credit Card</p>
+<p><b>Unterschied</b><br/>Difference</p>
+<p><b>Leitungs</b><br/>Line</p>
+<p><b>Rechnung</b><br/>Bill</p>
+<p><b>Quittung</b><br/>Receipt</p>
+<p><b>Richtung</b><br/>Direction</p>
+<p><b>Weg</b><br/>Path</p>
+<p><b>Ecke</b><br/>Corner</p>
+<p><b>Bus</b><br/>Bus, Coach</p>
+<p><b>Zug</b><br/>Train</p>
+<p><b>Bahn</b><br/>Railway</p>
+<p><b>Fahrkarte</b><br/>Ticket</p>
+<p><b>Stadtplan</b><br/>City map</p>
+<p><b>Karte</b><br/>Map</p>
+<p><b>Reservierung</b><br/>Reservaion</p>
+<p><b>Post</b><br/>Post, Mail</p>
+<p><b>Fluss</b><br/>Flow</p>
+<p><b>Polizei</b><br/>Police</p>
+<p><b>Tasche</b><br/>Bag</p>
+<p><b>Portemonnaie</b><br/>Wallet</p>
+<p><b>Reise</b><br/>Trip, Travel</p>
+<h4>9</h4>
+<p><b>Ruhe</b><br/>Quiet</p>
+<p><b>Notfall</b><br/>Emergency</p>
+
+<p><b>Können</b><br/>Can, Ability</p>
+<p><b>Muss</b><br/>Must</p>
+<p><b>Brauche</b><br/>Need</p>
+
+<p><b>Morgen</b><br/>Morning</p>
+<p><b>Tag</b><br/>Day</p>
+<p><b>Abend</b><br/>Evening</p>
+<p><b>Wochen</b><br/>Week</p>
+<p><b>Nacht</b><br/>Night</p>
+<h4>10</h4>
+<!--Kitchen-->
+<p><b>Tisch</b><br/>Table</p>
+<p><b>Speisekarte</b><br/>Menu</p>
+<p><b>Weinkarte</b><br/>Wine list</p>
+<p><b>Sprudel</b><br/>Sparkling water</p>
+<p><b>Milch</b><br/>Milk</p>
+<p><b>Essen</b><br/>Food</p>
+<p><b>Wasser</b><br/>Water</p>
+<p><b>Glas</b><br/>Glass</p>
+<p><b>Leitungswasser</b><br/>Tap water</p>
+<p><b>Frühstück</b><br/>Breakfast</p>
+<p><b>Mittagessen</b><br/>Lunch</p>
+<p><b>Abendessen</b><br/>Dinner</p>
+<p><b>Salz</b><br/>Salt</p>
+<p><b>Pfeffer</b><br/>Pepper</p>
+<p><b>Zucker</b><br/>Sugar</p>
+<p><b>Scharf</b><br/>Spicy</p>
+<p><b>Süß</b><br/>Sweet</p>
+<p><b>Sauer</b><br/>Sour</p>
+<p><b>Serviette</b><br/>Napkin</p>
+<p><b>Teller</b><br/>Plate</p>
+<p><b>Gabel</b><br/>Fork</p>
+<p><b>Löffel</b><br/>Spoon</p>
+<p><b>Messer</b><br/>Knife</p>
+<p><b>Tasse</b><br/>Cup</p>
+
+<!--Hotel-->
+<p><b>Zimmer</b><br/>Room</p>
+<p><b>Zimmerdienst</b><br/>Room service</p>
+<p><b>Dusche</b><br/>Shower</p>
+<p><b>Einzelzimmer</b><br/>Single room</p>
+<p><b>Klimaanlage</b><br/>Air conditioning</p>
+<p><b>Schlüssel</b><br/>Key</p>
+<h4>11</h4>
+<!--Places-->
+<p><b>Nähe</b><br/>Neighborhood</p>
+<p><b>Eingang</b><br/>Entrance, Beginning</p>
+<p><b>Ausgang</b><br/>Exit, Output, Start, Ending, Gate</p>
+<p><b>Stadtzentrum</b><br/>Downtown, City center</p>
+<p><b>Adresse</b><br/>Address, Destination</p>
+<p><b>Bahnhof</b><br/>Train station</p>
+<p><b>Flughafen</b><br/>Airport</p>
+<p><b>Bushaltestelle</b><br/>Bus stop</p>
+<p><b>Bank</b><br/>Bank</p>
+<p><b>Supermarkt</b><br/>Supermarket</p>
+<p><b>Bäckerei</b><br/>Bakery</p>
+<p><b>Tankstelle</b><br/>Gas station</p>
+<p><b>Krankenhaus</b><br/>Hospital</p>
+<p><b>Apotheke</b><br/>Pharmacy</p>
+<p><b>Konsulaten</b><br/>Consulates</p>
+<h4>12</h4>
+<!--Countries-->
+<p><b>Deutschland</b><br/>Germany</p>
+<p><b>Deutsche</b><br/>German</p>
+<p><b>Österreich</b><br/>Austria</p>
+<p><b>Österreichisch</b><br/>Austrian</p>
+<p><b>der Schweiz</b><br/>Switzerland</p>
+<p><b>Schweizerisch</b><br/>Swiss</p>
+<p><b>USA</b><br/>USA</p>
+<p><b>Amerikanischen</b><br/>American</p>
+<p><b>Kanada</b><br/>Canada</p>
+<p><b>Kanadischen</b><br/>Canadian</p>
+<p><b>Australien</b><br/>Australia</p>
+<p><b>Australischen</b><br/>Australian</p>
+<p><b>Großbritannien</b><br/>Great Britain</p>
+<p><b>Britischen</b><br/>British</p>
+<p><b>Englisch</b><br/>English</p>
+<p><b>Indien</b><br/>India</p>
+<p><b>Indisch</b><br/>Indian</p>
+<p><b>Frankreich</b><br/>France</p>
+<p><b>Französisch</b><br/>French</p>
+<p><b>Schweden</b><br/>Sweden</p>
+<p><b>Schwedisch</b><br/>Swedish</p>
+<p><b>Norwegen</b><br/>Norway</p>
+<p><b>Norwegisch</b><br/>Norwegian</p>
+<p><b>Spanien</b><br/>Spain</p>
+<p><b>Spanisch</b><br/>Spainish</p>
+<p><b>Russland</b><br/>Russia</p>
+<p><b>Russisch</b><br/>Russian</p>
+<p><b>China</b><br/>China</p>
+<p><b>Chinesisch</b><br/>Chinese</p>
+<p><b>Kantonesisch</b><br/>Cantonese</p>
+<p><b>Japan</b><br/>Japan</p>
+<p><b>Japanisch</b><br/>Japanese</p>
+<h4>13</h4>
+<!--Numbers-->
+<p><b>Null</b><br/>Zero</p>
+<p><b>Ein</b><br/>One</p>
+<p><b>Zwei</b><br/>Two</p>
+<p><b>Drei</b><br/>Three</p>
+<p><b>Vier</b><br/>Four</p>
+<p><b>Funf</b><br/>Five</p>
+<p><b>Sechs</b><br/>Six</p>
+<p><b>Sieben</b><br/>Seven</p>
+<p><b>Acht</b><br/>Eight</p>
+<p><b>Neun</b><br/>Nine</p>
+<p><b>Zehn</b><br/>Ten</p>
+<p><b>Elf</b><br/>Eleven</p>
+<p><b>Zwölf</b><br/>Twelve</p>
+<p><b>Dreizehn</b><br/>Thirteen</p>
+<p><b>Zwanzig</b><br/>Twenty</p>
+<p><b>Einundzwanzig</b><br/>Twenty one</p>
+<p><b>Zweiundzwanzig</b><br/>Twenty two</p>
+<p><b>Dreißig</b><br/>Thirty</p>
+<p><b>Vierzig</b><br/>Forty</p>
+<p><b>Fünfzig</b><br/>Fifty</p>
+<p><b>Sechzig</b><br/>Sixty</p>
+<p><b>Siebzig</b><br/>Seventy</p>
+<p><b>Achtzig</b><br/>Eighty</p>
+<p><b>Neunzig</b><br/>Nintey</p>
+<p><b>Hunderter</b><br/>Hundered</p>
+<p><b>Tausend</b><br/>Thousand</p>
+<p><b>Million</b><br/>Million</p>
+<p><b>Milliarde</b><br/>Billion</p>
+<p><b>Billion</b><br/>Trillion</p>
+<p><b>Billiarde</b><br/>Quadrillion</p>
+<p><b>Trillion</b><br/>Quintillion</p>
+<h4>14</h4>
+<!--Phrases-->
+<p><b>Guten Morgen</b><br/>Good Morning</p>
+<p><b>Guten Tag</b><br/>Good day</p>
+<p><b>Guten Abend</b><br/>Good Evening</p>
+<p><b>Ich heiße…</b><br/>My name is…</p>
+<p><b>Wie heißen Sie?</b><br/>What is your name?</p>
+<p><b>Wie geht’s?</b><br/>How are you?</p>
+<p><b>Mir geht’s gut.</b><br/>I’m doing well.</p>
+<p><b>Mir geht’s nicht gut.</b><br/>I’m not doing well.</p>
+<p><b>Ich komme aus…</b><br/> I am from…</p>
+<p><b>Wie lange bleiben Sie in…</b><br/>How long are you staying in…</p>
+<p><b>Ich bin da für…</b><br/>I am here for…</p>
+<p><b>Bis später</b><br/>See you later</p>
+<p><b>Haben Sie Andenken?</b><br/>Do you have souvenirs?</p>
+<p><b>Verkaufen Sie…</b><br/>Do you sell…</p>
+<p><b>Wie viel kostet das?</b><br/>How much is that?</p>
+<p><b>Ich kann nur X Euro bezahlen.</b><br/>I can only pay X euros.</p>
+<p><b>Ich habe nur X Euro dabei.</b><br/>I only have X euros with me.</p>
+<p><b>Kann ich es für X Euro kaufen?</b><br/>Can I buy it for X euros?</p>
+<p><b>Haben Sie etwas Billigeres?</b><br/>Do you have something cheaper?</p>
+<p><b>Haben Sie das in einer kleineren/größeren Größe?</b><br/>Do you have that in a smaller/bigger size?</p>
+<p><b>Um wie viel Uhr öffnet/schließt das Geschäft?</b><br/>What time does the shop open/close?</p>
+<p><b>Was möchten Sie?</b><br/>What would you like?</p>
+<p><b>Was suchen Sie?</b><br/>What are you looking for?</p>
+<p><b>Darf ich mit Bargeld bezahlen?</b><br/>May I pay with cash?</p>
+<p><b>Darf ich mit Kreditkarte bezahlen?</b><br/>May I pay with credit card?</p>
+<p><b>Einen Tisch für …, bitte.</b><br/> A table for …, please.</p>
+<p><b>Ich habe einen Tisch reserviert.</b><br/>I reserved a table.</p>
+<p><b>Kann ich bitte die Speisekarte/Weinkarte sehen?</b><br/>Can I see the menu/wine list, please?</p>
+<p><b>Ich hätte gern…</b><br/>I would like…</p>
+<p><b>Was ist der Unterschied zwischen X und Y?</b><br/>What’s the difference between X and Y?</p>
+<p><b>Mit laktosefreier Milch, bitte.</b><br/>With lactose-free milk, please.</p>
+<p><b>Ist das glutenfrei?</b><br/>Is that gluten-free?</p>
+<h4>15</h4>
+<p><b>Haben Sie vegetarisches Essen?</b><br/>Do you have vegetarian food?</p>
+<p><b>Ein Glas Wasser, bitte.</b><br/>A glass of water, please.</p>
+<p><b>[Mit/ohne] Sprudel, bitte.</b><br/>[Sparkling/not sparkling], please.</p>
+<p><b>Ein Glas Leitungswasser, bitte.</b><br/>A glass of tap water, please.</p>
+<p><b>Zum Wohl</b><br/>Cheers</p>
+<p><b>Guten Appetit</b><br/>Enjoy your meal</p>
+<p><b>Noch eine, bitte</b><br/>Another one, please</p>
+<p><b>Wo ist die Toilette?</b><br/>Where is the bathroom?</p>
+<p><b>Darf ich eine Quittung haben, bitte?</b><br/>Can I have a receipt, please?</p>
+<p><b>Entschuldigung, wo ist…?</b><br/>Excuse me, where is…?</p>
+<p><b>In welcher Richtung ist …?</b><br/>In what direction is …?</p>
+<p><b>Ist es in der Nähe?</b><br/>Is it nearby?</p>
+<p><b>Ist es weit weg?</b><br/>Is it far away?</p>
+<p><b>Wo ist der [Eingang/Ausgang]?</b><br/>Where is the [entrance/exit]?</p>
+<p><b>Bringen Sie mich bitte zu dieser Adresse.</b><br/>Please bring me to this address.</p>
+<p><b>Zum Stadtzentrum, bitte.</b><br/>To the city center, please.</p>
+<p><b>Zum Bahnhof, bitte.</b><br/>To the train station, please.</p>
+<p><b>Zum Flughafen, bitte.</b><br/>To the airport, please.</p>
+<p><b>Es ist da.</b><br/>It’s there.</p>
+<p><b>Da ist es.</b><br/>There it is.</p>
+<p><b>Um die Ecke</b><br/>Around the corner</p>
+<p><b>Nach links</b><br/>To the left</p>
+<p><b>Nach rechts</b><br/>To the right</p>
+<p><b>Halten Sie bitte hier an.</b><br/>Please stop here.</p>
+<p><b>Wo ist die Bushaltestelle?</b><br/>Where is the bus stop?</p>
+<p><b>Wo ist die U-Bahn?</b><br/>Where is the underground train (subway/metro)?</p>
+<p><b>Wie viel kostet eine Fahrkarte nach X?</b><br/>How much is a ticket to X?</p>
+<p><b>Fährt dieser Zug nach…?</b><br/>Does this train go to…?</p>
+<p><b>Wohin fährt dieser Bus?</b><br/>To where does this bus go?</p>
+<p><b>Darf ich bitte einen Stadtplan haben?</b><br/>May I have a city map please?</p>
+<p><b>Darf ich bitte einen U-Bahnplan haben?</b><br/>May I have a underground train map, please?</p>
+<p><b>Können Sie mir das auf der Karte zeigen?</b><br/>Can you show me on the map?</p>
+<p><b>Muss ich umsteigen?</b><br/>Do I have to change?</p>
+<p><b>Ich habe eine Reservierung.</b><br/>I have a reservation.</p>
+<p><b>Haben Sie noch ein Zimmer frei?</b><br/>Do you have a free room?</p>
+<h4>16</h4>
+<p><b>Können Sie mir ein anderes Hotel empfehlen?</b><br/>Can you recommend another hotel?</p>
+<p><b>Ich hätte gern ein Zimmer.</b><br/>I would like a room.</p>
+<p><b>Ich bleibe [eine Nacht/zwei Nächte/drei Nächte].</b><br/>I am staying [one night/two nights/three nights].</p>
+<p><b>Ist Frühstück inklusiv?</b><br/>Is breakfast included?</p>
+<p><b>Können Sie mich um X Uhr wecken?</b><br/>Can you wake me up at X o’clock?</p>
+<p><b>Um wie viel Uhr muss man auschecken?</b><br/>What time is check out?</p>
+<p><b>Wo ist die Bank?</b><br/>Where is the bank?</p>
+<p><b>Ist die Post im Stadtzentrum?</b><br/>Is the post office in the city center?</p>
+<p><b>Wo ist der beste Supermarkt?</b><br/>Where is the best supermarket?</p>
+<p><b>Wo ist die leckerste Bäckerei?</b><br/>Where is the yummiest bakery?</p>
+<p><b>Wo ist die nächste Tankstelle?</b><br/>Where is the nearest gas station?</p>
+<p><b>Ist der Bahnhof neben dem Fluss?</b><br/>Is the train station next to the river?</p>
+<p><b>Ist der Flughafen weit weg?</b><br/>Is the airport far away?</p>
+<p><b>Ich brauche die Polizei.</b><br/>I need the police.</p>
+<p><b>Ich habe [meine Tasche/mein Portemonnaie] verloren.</b><br/>I’ve lost [my bag/my wallet].</p>
+<p><b>Jemand hat meine Tasche genommen.</b><br/>Someone took my bag.</p>
+<p><b>Wo ist das Krankenhaus?</b><br/>Where is the hospital?</p>
+<p><b>Wo ist die Apotheke?</b><br/>Where is the pharmacy?</p>
+<p><b>Ich bin krank geworden.</b><br/>I got sick.</p>
+<p><b>Lassen Sie mich in Ruhe.</b><br/>Leave me alone.</p>
+<p><b>Fassen Sie mich nicht an</b><br/>Don’t touch me</p>
+<p><b>Es ist ein Notfall.</b><br/>It’s an emergency.</p>
+<p><b>Ich habe mich verlaufen.</b><br/>I got lost.</p>
+<p><b>Wie komme ich zum … Konsulaten?</b><br/>How do I get to the … consulate?</p>
+<p><b>Ich verstehe nicht.</b><br/>I don’t understand.</p>
+<p><b>Können Sie das bitte wiederholen?</b><br/>Can you repeat that please?</p>
+<p><b>Sprechen Sie Englisch?</b><br/>Do you speak English?</p>
+<p><b>Ich spreche nur ein wenig Deutsch.</b><br/>I only speak a little German.</p>
+<p><b>Können Sie das übersetzen?</b><br/>Can you translate that please?</p>
+<p><b>Gute Reise</b><br/>Have a good trip</p>
