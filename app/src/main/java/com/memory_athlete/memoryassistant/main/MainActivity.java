@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -62,12 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.privacy_policy_menu:
-                startActivity(new Intent(MainActivity.this, PrivacyPolicy.class));
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.privacy_policy_menu) {
+            startActivity(new Intent(MainActivity.this, PrivacyPolicy.class));
+        } else {
+            return super.onOptionsItemSelected(item);
         }
         return true;
     }
@@ -94,13 +91,10 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         setAdapter();
 
-        new Runnable() {
-            @Override
-            public void run() {
-                moveFiles();
-                firstStart();
-            }
-        }.run();
+        new Thread(() -> {
+            moveFiles();
+            firstStart();
+        }).start();
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -147,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     File[] files = from.listFiles();
                     Helper.makeDirectory(practiceDir + folder);
                     try {
+                        assert files != null;
                         for (File f : files) {
                             File to = new File(practiceDir + folder + File.separator
                                     + f.getName());
@@ -167,17 +162,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        new Runnable() {
-            @Override
-            public void run() {
-                SharedPreferences.Editor e = sharedPreferences.edit();
-                e.putLong("last_opened", System.currentTimeMillis());
-                Timber.v("Last opened on %s", System.currentTimeMillis());
-                e.apply();
-                ReminderUtils.scheduleReminder(getApplicationContext());
-            }
-        }.run();
+        new Thread(() -> {
+            SharedPreferences.Editor e = sharedPreferences.edit();
+            e.putLong("last_opened", System.currentTimeMillis());
+            Timber.v("Last opened on %s", System.currentTimeMillis());
+            e.apply();
+            ReminderUtils.scheduleReminder(getApplicationContext());
+        }).start();
     }
 
     void firstStart() {
@@ -213,12 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 Helper.makeDirectory(Helper.APP_FOLDER);
             } else {
                 Snackbar.make(findViewById(R.id.main_list), "The app might crash without these permissions",
-                        Snackbar.LENGTH_SHORT).setAction("Grant", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        firstStart();
-                    }
-                });
+                        Snackbar.LENGTH_SHORT).setAction("Grant", view -> firstStart());
             }
         }
     }
@@ -229,15 +215,13 @@ public class MainActivity extends AppCompatActivity {
         MainAdapter adapter = new MainAdapter(this, list);
         ListView listView = findViewById(R.id.main_list);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Item item = list.get(position);
-                Intent intent = new Intent(MainActivity.this, item.mClass);
-                if (item.mItem == R.string.apply)
-                    intent.putExtra(getString(R.string.apply), getString(R.string.apply));
-                intent.putExtra(Helper.TYPE, item.mItem);
-                startActivity(intent);
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Item item = list.get(position);
+            Intent intent = new Intent(MainActivity.this, item.mClass);
+            if (item.mItem == R.string.apply)
+                intent.putExtra(getString(R.string.apply), getString(R.string.apply));
+            intent.putExtra(Helper.TYPE, item.mItem);
+            startActivity(intent);
         });
         Timber.v("Adapter set!");
     }

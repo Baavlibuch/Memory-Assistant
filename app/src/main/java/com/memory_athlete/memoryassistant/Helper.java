@@ -172,7 +172,6 @@ public class Helper {
     public static void theme(Context context, Activity activity) {
         String theme = PreferenceManager.getDefaultSharedPreferences(context).getString(
                 context.getString(R.string.theme), "AppTheme");
-        assert theme != null;
         switch (theme) {
             case "Dark":
                 context.setTheme(R.style.dark);

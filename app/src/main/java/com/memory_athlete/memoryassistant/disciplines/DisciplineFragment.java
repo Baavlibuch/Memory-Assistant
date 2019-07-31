@@ -58,26 +58,34 @@ import static java.lang.Math.pow;
 
 public abstract class DisciplineFragment extends Fragment implements View.OnClickListener {
     protected long mTime = 0;
-    protected boolean isTimerRunning = false, hasStandard = true, hasGroup = true, hasSpeech = true;
-    public final int GROUP_SIZE = 0, NO_OF_VALUES = 1, RUNNING = 2;     // Indices for a(array sent to RandomGeneration AsyncTasks to make decisions)
-    public final int TRUE = 1, FALSE = 0, NORMAL = 0;
+    protected boolean isTimerRunning = false;
+    protected boolean hasStandard = true;
+    protected boolean hasGroup = true;
+    protected boolean hasSpeech = true;
+    public final int GROUP_SIZE = 0;
+    public final int NO_OF_VALUES = 1;
+    public final int RUNNING = 2;     // Indices for a(array sent to RandomGeneration AsyncTasks to make decisions)
+    public final int TRUE = 1;
+    public final int FALSE = 0;
+    public final int NORMAL = 0;
     protected float speechSpeedMultiplier = 1;
 
-    protected String stringToSave;
+    String stringToSave;
     public ArrayList<Integer> a = new ArrayList<>();        //Instructs the backgroundString thread
 
     protected Activity activity;
     protected View rootView;
-    protected ImageView cardAndSpeechImageView;
-    protected CheckBox speechCheckBox, negativeOrDateCheckBox;
-    protected Spinner groupSpinner;
+    ImageView cardAndSpeechImageView;
+    private CheckBox speechCheckBox;
+    CheckBox negativeOrDateCheckBox;
+    private Spinner groupSpinner;
 
-    protected Class mRecallClass;
-    protected CountDownTimer cdt;
-    protected TextToSpeech textToSpeech;
+    Class mRecallClass;
+    private CountDownTimer cdt;
+    private TextToSpeech textToSpeech;
 
     protected SharedPreferences sharedPreferences;
-    protected int saveErrorCount = 0;
+    private int saveErrorCount = 0;
     //protected boolean hasAsync;
 
     public DisciplineFragment() {
@@ -212,7 +220,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     //Build the levelSpinner
-    protected void levelSpinner() {
+    private void levelSpinner() {
         Timber.v("Entered levelSpinner()");
         //Get the current level
         int level = sharedPreferences.getInt("level", 1);
@@ -228,7 +236,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     //Builds the spinner to select the size of groupings
-    protected void makeSpinner(int spinnerContent) {
+    private void makeSpinner(int spinnerContent) {
         Timber.v("makeSpinner() entered");
         groupSpinner.setVisibility(View.VISIBLE);
         groupSpinner.setOnTouchListener(new View.OnTouchListener() {
@@ -298,7 +306,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         (rootView.findViewById(R.id.random_values)).setVisibility(v);
     }
 
-    protected void Start() {
+    private void Start() {
         Timber.v("Start entered");
 
         //Hide the keypad
@@ -457,7 +465,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return false;                                                                   // reset fragment. cannot leave yet
     }
 
-    protected void setViews() {
+    private void setViews() {
         groupSpinner = rootView.findViewById(R.id.group);
         speechCheckBox = rootView.findViewById(R.id.speech_check_box);
         negativeOrDateCheckBox = rootView.findViewById(R.id.negative_or_date);
@@ -508,7 +516,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     //To set the timer.
-    protected void timer() {
+    private void timer() {
         Timber.v("timer() entered");
         ((TextView) rootView.findViewById(R.id.clock_text)).setText("");
         if (!isTimerRunning) {
@@ -594,7 +602,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return null;
     }
 
-    protected void tts(final String s) {
+    private void tts(final String s) {
         Timber.v("tts() entered");
         stringToSave = s;
         cardAndSpeechImageView.setVisibility(View.VISIBLE);
@@ -629,13 +637,13 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         });
     }
 
-    protected void tts(ArrayList list) {
+    private void tts(ArrayList list) {
         StringBuilder s = new StringBuilder();
         for (Object i : list) s.append(i.toString());
         tts(s.toString());
     }
 
-    protected void ttsStop() {
+    private void ttsStop() {
         if (textToSpeech == null) return;
         textToSpeech.stop();
         textToSpeech.shutdown();
@@ -662,7 +670,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
     }
 
-    protected void postExecuteArrayList(ArrayList list) {
+    private void postExecuteArrayList(ArrayList list) {
         try {
             (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
             (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
