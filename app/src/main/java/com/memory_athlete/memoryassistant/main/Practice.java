@@ -9,7 +9,6 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -41,18 +40,17 @@ public class Practice extends AppCompatActivity {
         DisciplineAdapter discipline = new DisciplineAdapter(this, disciplines);
         ListView disciplineList = findViewById(R.id.main_list);
         disciplineList.setAdapter(discipline);
-        disciplineList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            //@DebugLog
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Discipline disc = disciplines.get(position);
-                Intent intent = new Intent(Practice.this, DisciplineActivity.class);
-                intent.putExtra("class", disc.mClass);
-                intent.putExtra("hasSpinner", disc.hasSpinner);
-                intent.putExtra("hasAsyncTask", disc.hasAsyncTask);
-                intent.putExtra("nameID", disc.mNameId);
-                intent.putExtra("spinnerContent", disc.mDifferentString);
-                startActivity(intent);
-            }
+        //@DebugLog
+        disciplineList.setOnItemClickListener((parent, view, position, id) -> {
+            Discipline disc = disciplines.get(position);
+            Intent intent = new Intent(Practice.this, DisciplineActivity.class);
+            intent.putExtra("class", disc.mClass);
+            intent.putExtra("hasSpinner", disc.hasSpinner);
+            intent.putExtra("hasAsyncTask", disc.hasAsyncTask);
+            intent.putExtra("nameID", disc.mNameId);
+            intent.putExtra("spinnerContent", disc.mDifferentString);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 
         if (!Helper.mayAccessStorage(this)) {

@@ -22,7 +22,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 
@@ -41,6 +40,12 @@ import static com.memory_athlete.memoryassistant.Helper.clickableViewAnimation;
  */
 
 public class Lessons extends AppCompatActivity {
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -311,8 +316,8 @@ public class Lessons extends AppCompatActivity {
             TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
             View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
 
-            clickableViewAnimation(headerLayout, getContext(), Helper.ClickableType.SHORT);
-            clickableViewAnimation(textView1, getContext(), Helper.ClickableType.LONG);
+            clickableViewAnimation(headerLayout, getContext());
+            clickableViewAnimation(textView1, getContext());
 
             if (position == 0) textView1.setMovementMethod(LinkMovementMethod.getInstance());
             else {

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -42,16 +41,15 @@ public class Learn extends AppCompatActivity {
         LearnAdapter adapter = new LearnAdapter(this, list);
         ListView listView = findViewById(R.id.learn_list);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Item item = list.get(position);
-                Intent intent = new Intent(getApplicationContext(), item.mClass);
-                intent.putExtra("mHeader", item.mItem);
-                intent.putExtra("file", item.mFile);
-                intent.putExtra("mWebView", item.mWebView);
-                intent.putExtra("list", true);
-                startActivity(intent);
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Item item = list.get(position);
+            Intent intent = new Intent(getApplicationContext(), item.mClass);
+            intent.putExtra("mHeader", item.mItem);
+            intent.putExtra("file", item.mFile);
+            intent.putExtra("mWebView", item.mWebView);
+            intent.putExtra("list", true);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
     }
 
@@ -72,12 +70,6 @@ public class Learn extends AppCompatActivity {
         int mItem, mFile, mImageId;
         Class mClass;
         boolean mWebView = false;
-
-        Item(int item, Class class1, int file) {
-            mItem = item;
-            mClass = class1;
-            mFile = file;
-        }
 
         Item(int item, int im, Class class1, int file) {
             mItem = item;

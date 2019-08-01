@@ -31,11 +31,6 @@ import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -92,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         setAdapter();
 
         firstStart();
+        mayAccessStorage();
     }
 
     @Override
@@ -112,22 +108,16 @@ public class MainActivity extends AppCompatActivity {
         Timber.d("firstStart");
     }
 
-    public static void copyFile(File src, File dst) throws IOException {
-        try (FileChannel inChannel = new FileInputStream(src).getChannel(); FileChannel outChannel = new FileOutputStream(dst).getChannel()) {
-            inChannel.transferTo(0, inChannel.size(), outChannel);
-        }
-    }
 
-    private boolean mayAccessStorage() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return true;
+    private void mayAccessStorage() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return;
 
         if (checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            return true;
+            return;
         if (shouldShowRequestPermissionRationale(READ_EXTERNAL_STORAGE)) requestPermissions(new
                 String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
         else requestPermissions(new
                 String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
-        return false;
     }
 
     @Override
@@ -170,7 +160,6 @@ public class MainActivity extends AppCompatActivity {
                 new Item(R.string.my_space, R.drawable.my_space, MySpace.class),
                 new Item(R.string.preferences, R.drawable.preferences, Preferences.class),
                 new Item(R.string.get_pro, R.drawable.get_pro, Contribute.class));
-        //list.add(new Item(R.string.login, Login.class));
         //list.add(new Item(R.string.reminders, ))
         //Timber.v("List set!");
     }

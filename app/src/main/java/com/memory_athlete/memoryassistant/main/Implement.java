@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -51,6 +51,7 @@ public class Implement extends AppCompatActivity {
     public void onBackPressed() {
         if (listViewId == 0) {
             super.onBackPressed();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             return;
         }
         LinearLayout linearLayout = findViewById(R.id.apply_layout);
@@ -61,16 +62,16 @@ public class Implement extends AppCompatActivity {
 
     public void setAdapter() {
         try {
-            StringBuilder path = new StringBuilder("");
+            StringBuilder path = new StringBuilder();
             for (String i : pathList) path.append(i);
-            Timber.v("path = " + path);
+            Timber.v("path = %s", path);
             String[] list = listAssetFiles(path.toString());
             Timber.v("list set");
             if (list == null) {
                 Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();
                 return;
             }
-            Timber.v("list.size() = " + list.length);
+            Timber.v("list.size() = %s", list.length);
             final ArrayList<Item> arrayList = new ArrayList<>();
             for (String i : list) arrayList.add(new Item(i, true));
             Timber.v("arrayList set");
@@ -85,35 +86,34 @@ public class Implement extends AppCompatActivity {
             final LinearLayout linearLayout = findViewById(R.id.apply_layout);
             linearLayout.addView(listView);
             listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                    Item item = arrayList.get(position);
-                    boolean webView, hasList;
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                Item item = arrayList.get(position);
+                boolean webView, hasList;
 
-                    if (checkPathContents(pathList, "Language") || item.mFileName.equals("Dates.txt")) {
-                        webView = false;
-                        hasList = true;
-                    } else {
-                        webView = true;
-                        hasList = false;
-                    }
+                if (checkPathContents(pathList, "Language") || item.mFileName.equals("Dates.txt")) {
+                    webView = false;
+                    hasList = true;
+                } else {
+                    webView = true;
+                    hasList = false;
+                }
 
-                    if (item.mFileName.endsWith(".txt")) {
-                        Intent intent = new Intent(getApplicationContext(), ImplementLesson.class);
-                        intent.putExtra("headerString", item.mItem);
-                        intent.putExtra("webView", webView);
-                        intent.putExtra("list", hasList);
-                        intent.putExtra("resource", true);
-                        StringBuilder path = new StringBuilder("");
-                        for (String i : pathList) path.append(i);
-                        intent.putExtra("fileString", path + "/" + item.mFileName);
-                        startActivity(intent);
-                    } else {
-                        pathList.add("/" + item.mFileName);
-                        linearLayout.findViewById(listViewId).setVisibility(View.GONE);
-                        listViewId++;
-                        setAdapter();
-                    }
+                if (item.mFileName.endsWith(".txt")) {
+                    Intent intent = new Intent(getApplicationContext(), ImplementLesson.class);
+                    intent.putExtra("headerString", item.mItem);
+                    intent.putExtra("webView", webView);
+                    intent.putExtra("list", hasList);
+                    intent.putExtra("resource", true);
+                    StringBuilder path1 = new StringBuilder("");
+                    for (String i : pathList) path1.append(i);
+                    intent.putExtra("fileString", path1 + "/" + item.mFileName);
+                    startActivity(intent);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                } else {
+                    pathList.add("/" + item.mFileName);
+                    linearLayout.findViewById(listViewId).setVisibility(View.GONE);
+                    listViewId++;
+                    setAdapter();
                 }
             });
         } catch (Exception e) {
@@ -157,6 +157,7 @@ public class Implement extends AppCompatActivity {
             super(context, 0, list);
         }
 
+        @SuppressLint("InflateParams")
         @NonNull
         @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {

@@ -75,7 +75,7 @@ public class RecallCards extends RecallSimple {
     @Override
     protected void setResponseLayout(boolean onCreate) {
         if (onCreate) theme();
-        gridView.setNumColumns(Integer.parseInt(Objects.requireNonNull(sharedPreferences.getString(
+        gridView.setNumColumns(parseInt(Objects.requireNonNull(sharedPreferences.getString(
                 getString(R.string.recall_grid_columns), "6"))));
         cardImageIds = Helper.makeCards();
         Timber.v("cardResponseLayout() started");
@@ -100,7 +100,7 @@ public class RecallCards extends RecallSimple {
             imageView.setId(i);
             imageView.setOnClickListener(view -> {
                 for (int j = 0; j < 4; j++)
-                    findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
+                    suitLayout.findViewById(j).setBackgroundColor(0);
 
                 view.setBackgroundColor(getResources().getColor(mSuitBackground));
                 selectedSuit = view.getId() * 13;
@@ -129,7 +129,7 @@ public class RecallCards extends RecallSimple {
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36);
             if (cardSelectorTextColour != -1) textView.setTextColor(cardSelectorTextColour);
 
-            Helper.clickableViewAnimation(textView, this, Helper.ClickableType.SHORT);
+            Helper.clickableViewAnimation(textView, this);
             textView.setOnClickListener(view -> {
                 cardSelected(view.getId());
                 Timber.v("Selected Card = %s", view.getId());

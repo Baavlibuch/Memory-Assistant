@@ -48,20 +48,16 @@ public class MySpace extends AppCompatActivity {
         if (!Helper.mayAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.my_space_relative_layout),
                     "Storage permissions are required", Snackbar.LENGTH_SHORT)
-                    .setAction("Grant", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        }
+                    .setAction("Grant", view -> {
+                        Intent intent = new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     })
                     .show();
         }
-        //findViewById(R.id.)
-        //setAdapter();
     }
 
     @Override
@@ -89,6 +85,7 @@ public class MySpace extends AppCompatActivity {
             }
         }
         super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     public void setAdapter() {
@@ -151,7 +148,10 @@ public class MySpace extends AppCompatActivity {
             File file = new File(fileName);
             boolean isDirectoryCreated = file.exists();
             if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
-            if (isDirectoryCreated) startActivity(intent);
+            if (isDirectoryCreated) {
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
             else
                 Toast.makeText(getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
         });
@@ -163,6 +163,7 @@ public class MySpace extends AppCompatActivity {
         intent.putExtra("name", false);
         intent.putExtra("fileName", Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + getTitle());
         startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private ArrayList<Item> setList() {
@@ -172,10 +173,6 @@ public class MySpace extends AppCompatActivity {
                 new Item(getString(R.string.wardrobes), R.drawable.wardrobe_method, WriteFile.class),
                 new Item(getString(R.string.lists), R.drawable.lists, WriteFile.class),
                 new Item(getString(R.string.words), R.drawable.words1, WriteFile.class)));
-        //TODO:
-        //list.add(new Item(getString(R.string.equations), WriteEquations.class));
-        //list.add(new Item(getString(R.string.algos), WriteAlgo.class));
-        //list.add(new Item(getString(R.string.derivations), WriteEquations.class));
     }
 
     private class Item {

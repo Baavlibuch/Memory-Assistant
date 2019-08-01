@@ -231,12 +231,14 @@ public class Helper {
         return false;
     }
 
-    public static void clickableViewAnimation(View view, Context context, ClickableType clickableType) {
+    public static void clickableViewAnimation(View view, Context context) {
         view.setClickable(true);
         TypedValue outValue = new TypedValue();
         context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
         view.setBackgroundResource(outValue.resourceId);
     }
 
-    public enum ClickableType {SHORT, LONG}
+    public static float oneDpAsPixels(int dp, Context context){
+        return dp * context.getResources().getDisplayMetrics().density;
+    }
 }

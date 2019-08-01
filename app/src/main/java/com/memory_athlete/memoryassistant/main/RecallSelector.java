@@ -10,7 +10,6 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -57,15 +56,13 @@ public class RecallSelector extends AppCompatActivity {
         if (!Helper.mayAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.my_space_relative_layout),
                     "Storage permissions are required", Snackbar.LENGTH_SHORT)
-                    .setAction("Grant", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        }
+                    .setAction("Grant", view -> {
+                        Intent intent = new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     }).show();
         }
 
@@ -135,11 +132,7 @@ public class RecallSelector extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         final ArrayList<Item> finalArrayList = arrayList;
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                onMyItemClick(finalArrayList, position, layout);
-            }
-        });
+        listView.setOnItemClickListener((parent, view, position, id) -> onMyItemClick(finalArrayList, position, layout));
 
         if (listViewId == MIN_DYNAMIC_VIEW_ID && intentDisciple != null && !intentDisciple.equals("")) {
             ArrayList<String> list = new ArrayList<>();
@@ -194,7 +187,10 @@ public class RecallSelector extends AppCompatActivity {
             File file = new File(filePath);
             boolean isDirectoryCreated = file.exists();
             if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
-            if (isDirectoryCreated) startActivity(intent);
+            if (isDirectoryCreated) {
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
             else Toast.makeText(getApplicationContext(), "Try again",
                     Toast.LENGTH_SHORT).show();
         }
@@ -204,37 +200,35 @@ public class RecallSelector extends AppCompatActivity {
         String[] strings = disciplinePath.split("/");
         final String discipline = strings[strings.length - 1];
         Snackbar.make(findViewById(listViewId), "Nothing saved, try practicing", Snackbar.LENGTH_SHORT)
-                .setAction(R.string.practice, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String s = discipline;
-                        if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
-                        s = s.replaceAll("\\s", "");
-                        Timber.v("s= %s", s);
+                .setAction(R.string.practice, view -> {
+                    String s = discipline;
+                    if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
+                    s = s.replaceAll("\\s", "");
+                    Timber.v("s= %s", s);
 
-                        int classId;
-                        if (discipline.equals(getString(R.string.numbers))) classId = 1;
-                        else if (discipline.equals(getString(R.string.digits))) classId = 1;
-                        else if (discipline.equals(getString(R.string.words))) classId = 2;
-                        else if (discipline.equals(getString(R.string.names))) classId = 3;
-                        else if (discipline.equals(getString(R.string.places_capital))) classId = 4;
-                        else if (discipline.equals(getString(R.string.cards))) classId = 5;
-                        else if (discipline.equals(getString(R.string.binary))) classId = 6;
-                        else if (discipline.equals(getString(R.string.letters))) classId = 7;
-                        else if (discipline.equals(getString(R.string.dates))) classId = 8;
-                        else {
-                            Helper.fixBug(getApplicationContext());
-                            throw new RuntimeException("Practice from recall received unexpected case" +
-                                    "\tDiscipline = " + discipline);
-                        }
-
-                        Timber.v("classId = %s", classId);
-                        //Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
-                        Intent i = new Intent(getApplicationContext(), DisciplineActivity.class);
-                        i.putExtra("class", classId);
-                        i.putExtra("name", s);
-                        startActivity(i);
+                    int classId;
+                    if (discipline.equals(getString(R.string.numbers))) classId = 1;
+                    else if (discipline.equals(getString(R.string.digits))) classId = 1;
+                    else if (discipline.equals(getString(R.string.words))) classId = 2;
+                    else if (discipline.equals(getString(R.string.names))) classId = 3;
+                    else if (discipline.equals(getString(R.string.places_capital))) classId = 4;
+                    else if (discipline.equals(getString(R.string.cards))) classId = 5;
+                    else if (discipline.equals(getString(R.string.binary))) classId = 6;
+                    else if (discipline.equals(getString(R.string.letters))) classId = 7;
+                    else if (discipline.equals(getString(R.string.dates))) classId = 8;
+                    else {
+                        Helper.fixBug(getApplicationContext());
+                        throw new RuntimeException("Practice from recall received unexpected case" +
+                                "\tDiscipline = " + discipline);
                     }
+
+                    Timber.v("classId = %s", classId);
+                    //Timber.d("com.memory_athlete.memoryassistant.disciplines." + s);
+                    Intent i = new Intent(getApplicationContext(), DisciplineActivity.class);
+                    i.putExtra("class", classId);
+                    i.putExtra("name", s);
+                    startActivity(i);
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 }).show();
     }
 

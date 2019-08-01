@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -57,6 +58,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         Timber.v("fragIndex = " + fragIndex + "tabTitles.size() = " + tabTitles.size());
         tabTitles.add(getString(R.string.practice));
         viewPager = findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(9);
 
         if (!Helper.mayAccessStorage(this)) {
             Toast.makeText(this, "Storage permissions are required", Toast.LENGTH_LONG).show();
@@ -107,44 +109,42 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         @Override
         public Fragment getItem(int position) {
             try {
-                switch (position) {
-                    case 0:
-                        Bundle bundle = intent.getExtras();
-                        Fragment fragment;
-                        switch (intent.getIntExtra("class", 0)) {
-                            case 1:
-                                fragment = new Numbers();
-                                break;
-                            case 2:
-                                fragment = new Words();
-                                break;
-                            case 3:
-                                fragment = new Names();
-                                break;
-                            case 4:
-                                fragment = new Places();
-                                break;
-                            case 5:
-                                fragment = new Cards();
-                                break;
-                            case 6:
-                                fragment = new BinaryDigits();
-                                break;
-                            case 7:
-                                fragment = new Letters();
-                                break;
-                            case 8:
-                                fragment = new Dates();
-                                break;
-                            default:
-                                throw new RuntimeException("wrong practice, received "
-                                        + intent.getIntExtra("class", 0));
-                        }
-                        fragment.setArguments(bundle);
-                        return fragment;
-                    default:
-                        return new MySpaceFragment();
+                if (position == 0) {
+                    Bundle bundle = intent.getExtras();
+                    Fragment fragment;
+                    switch (intent.getIntExtra("class", 0)) {
+                        case 1:
+                            fragment = new Numbers();
+                            break;
+                        case 2:
+                            fragment = new Words();
+                            break;
+                        case 3:
+                            fragment = new Names();
+                            break;
+                        case 4:
+                            fragment = new Places();
+                            break;
+                        case 5:
+                            fragment = new Cards();
+                            break;
+                        case 6:
+                            fragment = new BinaryDigits();
+                            break;
+                        case 7:
+                            fragment = new Letters();
+                            break;
+                        case 8:
+                            fragment = new Dates();
+                            break;
+                        default:
+                            throw new RuntimeException("wrong practice, received "
+                                    + intent.getIntExtra("class", 0));
+                    }
+                    fragment.setArguments(bundle);
+                    return fragment;
                 }
+                return new MySpaceFragment();
             } catch (IllegalStateException e){
                 throw new RuntimeException("IllegalStateException from ViewPager.populate() caused in DisciplineActivity.getItem()");
             }
@@ -221,6 +221,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             return;
         }
         super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     @Override
@@ -229,7 +230,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + 0;
             DisciplineFragment disciplineFragment = (DisciplineFragment) getSupportFragmentManager().
@@ -275,7 +276,6 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                     else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
                 }
             Timber.v("tabTitles.size() = %s", tabTitles.size());
-            viewPager.setOffscreenPageLimit(9);
             }
             return new SimpleFragmentPagerAdapter(getSupportFragmentManager());
         }
