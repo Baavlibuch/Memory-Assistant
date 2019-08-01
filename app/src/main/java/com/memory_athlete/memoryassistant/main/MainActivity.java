@@ -91,72 +91,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         setAdapter();
 
-        new Thread(() -> {
-            moveFiles();
-            firstStart();
-        }).start();
-    }
-
-    @SuppressWarnings("ResultOfMethodCallIgnored")
-    void moveFiles(){
-        if (mayAccessStorage()) {
-            String filesDir = getFilesDir().getAbsolutePath() + File.separator + getString(R.string.practice) + File.separator;
-            String practiceDir = Helper.APP_FOLDER + File.separator + getString(R.string.practice) + File.separator;
-            Helper.makeDirectory(practiceDir);
-            String folder;
-
-            for (int i = 0; i < 8; i++) {
-                switch (i) {
-                    case 0:
-                        folder = getString(R.string.binary);
-                        break;
-                    case 1:
-                        folder = getString(R.string.cards);
-                        break;
-                    case 2:
-                        folder = getString(R.string.dates);
-                        break;
-                    case 3:
-                        folder = getString(R.string.letters);
-                        break;
-                    case 4:
-                        folder = getString(R.string.names);
-                        break;
-                    case 5:
-                        folder = getString(R.string.numbers);
-                        break;
-                    case 6:
-                        folder = getString(R.string.places_capital);
-                        break;
-                    case 7:
-                        folder = getString(R.string.words);
-                        break;
-                    default:
-                        continue;
-                }
-                //Timber.v("Folder " + folder);
-                File from = new File(filesDir + folder);
-
-                if (from.exists()) {
-                    File[] files = from.listFiles();
-                    Helper.makeDirectory(practiceDir + folder);
-                    try {
-                        assert files != null;
-                        for (File f : files) {
-                            File to = new File(practiceDir + folder + File.separator
-                                    + f.getName());
-                            copyFile(f, to);
-                            f.delete();
-                        }
-                    } catch (IOException e) {
-                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
-                    }
-                }
-                from.delete();
-            }
-            (new File(filesDir)).delete();
-        }
+        firstStart();
     }
 
     @Override
