@@ -695,6 +695,24 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return new RandomAdapter(activity, list);
     }
 
+    protected View getMyView(View convertView, int textSize, Object item, Context context){
+        TextView textView = (TextView) convertView;
+        if (convertView == null) {
+            textView = new TextView(getContext());
+            textView.setLayoutParams(new ListView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            textView.setTextSize(textSize);
+            textView.setVisibility(View.VISIBLE);
+        }
+
+        Timber.v((String) item);
+        textView.setText((String) item);
+
+        Timber.v("getView() complete");
+
+        return textView;
+    }
+
     //Thread to generate the random list as string
     protected class GenerateRandomStringAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
         @Override
@@ -749,7 +767,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
     }
 
-
+    // This adapter is used to display the generated random list
     protected class RandomAdapter extends ArrayAdapter {
         private int textSize = 24;
 
@@ -767,21 +785,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         @NonNull
         @Override
         public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
-            TextView textView = (TextView) convertView;
-            if (convertView == null) {
-                textView = new TextView(getContext());
-                textView.setLayoutParams(new ListView.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                textView.setTextSize(textSize);
-                textView.setVisibility(View.VISIBLE);
-            }
-
-            Timber.v((String) getItem(position));
-            textView.setText((String) getItem(position));
-
-            Timber.v("getView() complete");
-
-            return textView;
+            return getMyView(convertView, textSize, getItem(position), getContext());
         }
     }
 }

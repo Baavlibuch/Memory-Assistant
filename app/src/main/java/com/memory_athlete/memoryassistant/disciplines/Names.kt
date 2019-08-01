@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.disciplines
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,49 +28,7 @@ class Names : WordDisciplineFragment() {
 
     //Read files and make a list of names
     override fun createDictionary() {
-        var dict: BufferedReader? = null                 //Reads a line from the file
-
-        try {
-            dict = BufferedReader(InputStreamReader(resources.openRawResource(first)))
-            var first = dict.readLine()
-            while (first != null) {
-                mFirstName.add(first.substring(0, 1) + first.substring(1).toLowerCase())//All were in caps
-                first = dict.readLine()
-            }
-
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
-        try {
-            dict!!.close()
-        } catch (e: IOException) {
-            Timber.e("File not closed")
-        }
-
-        dict = null
-
-        try {
-            dict = BufferedReader(InputStreamReader(resources.openRawResource(R.raw.last)))
-            var last = dict.readLine()
-            while (last != null) {
-                // if(last.length()>1)
-                mLastName.add(last.substring(0, 1) + last.substring(1).toLowerCase())
-                last = dict.readLine()
-            }
-
-        } catch (e: IOException) {
-            e.printStackTrace()
-            // } catch (StringIndexOutOfBoundsException e){
-            //   Log.e(LOG_TAG, "error" + mLastName.size());
-        }
-
-        try {
-            dict!!.close()
-        } catch (e: IOException) {
-            Timber.e("File not closed")
-        }
-
+        readNames(mFirstName, mLastName, resources)
     }
 
     override fun backgroundArray(): ArrayList<*>? {
@@ -97,6 +56,54 @@ class Names : WordDisciplineFragment() {
         } catch (e: IllegalStateException) {
             throw RuntimeException("IllegalStateException from ViewPager.populate() "
                     + "caused in Names.backgroundArray")
+        }
+    }
+
+    companion object {
+        fun readNames(mFirstName: ArrayList<String>, mLastName: ArrayList<String>, resources: Resources) {
+            var dict: BufferedReader? = null                 //Reads a line from the file
+
+            try {
+                dict = BufferedReader(InputStreamReader(resources.openRawResource(first)))
+                var first = dict.readLine()
+                while (first != null) {
+                    mFirstName.add(first.substring(0, 1) + first.substring(1).toLowerCase())//All were in caps
+                    first = dict.readLine()
+                }
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+            try {
+                dict!!.close()
+            } catch (e: IOException) {
+                Timber.e("File not closed")
+            }
+
+            dict = null
+
+            try {
+                dict = BufferedReader(InputStreamReader(resources.openRawResource(R.raw.last)))
+                var last = dict.readLine()
+                while (last != null) {
+                    // if(last.length()>1)
+                    mLastName.add(last.substring(0, 1) + last.substring(1).toLowerCase())
+                    last = dict.readLine()
+                }
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+                // } catch (StringIndexOutOfBoundsException e){
+                //   Log.e(LOG_TAG, "error" + mLastName.size());
+            }
+
+            try {
+                dict!!.close()
+            } catch (e: IOException) {
+                Timber.e("File not closed")
+            }
+
         }
     }
 }
