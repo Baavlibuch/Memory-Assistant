@@ -22,6 +22,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 
@@ -32,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import timber.log.Timber;
+
+import static com.memory_athlete.memoryassistant.Helper.clickableViewAnimation;
 
 /**
  * Created by Manik on 14/04/17.
@@ -45,7 +48,7 @@ public class Lessons extends AppCompatActivity {
         Intent intent = getIntent();
         theme(intent);
 
-        StringBuilder sb = new StringBuilder("");   // Empty string used to distinguish from null
+        StringBuilder sb = new StringBuilder();   // Empty string used to distinguish from null
                                                     // that might be returned after file is read
         int fileInt = intent.getIntExtra("file", 0);
         if (fileInt != 0 && intent.getBooleanExtra("resource", true)) { // Raw
@@ -53,7 +56,7 @@ public class Lessons extends AppCompatActivity {
             if (intent.getBooleanExtra("list", false)) {                // list
                 ListView listView = findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readResourceList(fileInt);
-                Timber.v("list length = " + list.size());
+                Timber.v("list length = %s", list.size());
                 LessonAdapter lessonAdapter = new LessonAdapter(this, list);
                 Timber.v("adapter set");
                 listView.setAdapter(lessonAdapter);
@@ -98,7 +101,7 @@ public class Lessons extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.visit_my_space:
                 startActivity(new Intent(this, MySpace.class));
@@ -110,7 +113,6 @@ public class Lessons extends AppCompatActivity {
 
     protected void theme(Intent intent) {
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        assert theme != null;
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -127,7 +129,7 @@ public class Lessons extends AppCompatActivity {
             setTitle(getString(header));
         else setTitle(intent.getStringExtra("headerString"));
 
-        Timber.v("theme = " + theme);
+        Timber.v("theme = %s", theme);
         setContentView(R.layout.activity_lesson);
     }
 
@@ -262,6 +264,7 @@ public class Lessons extends AppCompatActivity {
         String line = intent.getStringExtra("fileString"); //For assets and filesDir
         BufferedReader bufferedReader = null;
         try {
+            assert line != null;
             bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
             while ((line = bufferedReader.readLine()) != null) sb.append(line);
         } catch (IOException e) {
@@ -308,49 +311,45 @@ public class Lessons extends AppCompatActivity {
             TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
             View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
 
+            clickableViewAnimation(headerLayout, getContext(), Helper.ClickableType.SHORT);
+            clickableViewAnimation(textView1, getContext(), Helper.ClickableType.LONG);
+
             if (position == 0) textView1.setMovementMethod(LinkMovementMethod.getInstance());
             else {
                 textView1.setVisibility(View.GONE);
-                textView1.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View view) {
-                        textView1.setVisibility(View.GONE);
-                        return false;
-                    }
+                textView1.setOnLongClickListener(view -> {
+                    textView1.setVisibility(View.GONE);
+                    return false;
                 });
             }
             assert item != null;
-            Timber.v("mHeader = " + item.mHeader);
+            Timber.v("mHeader = %s", item.mHeader);
 
             if (item.mHeader == null || item.mHeader.equals("")) {
                 headerLayout.setVisibility(View.GONE);
                 textView1.setText(Html.fromHtml("<font color=#111111>"
                         + item.mText + "</font>"));
                 textView1.setVisibility(View.VISIBLE);
-                Timber.v("body = " + item.mText);
+                Timber.v("body = %s", item.mText);
             } else {
                 textView.setText(Html.fromHtml("<font color=#000000>"
                         + item.mHeader + "</font>"));
                 headerLayout.setVisibility(View.VISIBLE);
-                headerLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (textView1.getVisibility() == View.GONE) {
-                            progressBar.setVisibility(View.VISIBLE);
-                            textView1.post(new Runnable() {
-                                public void run() {
-                                    Timber.v("mText = " + item.mText);
-                                    textView1.setText(Html.fromHtml("<font color=#111111>"
-                                            + item.mText + "</font>"));
-                                    progressBar.setVisibility(View.GONE);
-                                    textView1.setVisibility(View.VISIBLE);
-                                    ((ListView) parent).smoothScrollToPosition(position);
-                                }
-                            });
-                        } else textView1.setVisibility(View.GONE);
-                    }
+                headerLayout.setOnClickListener(view -> {
+                    if (textView1.getVisibility() == View.GONE) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        textView1.post(() -> {
+                            Timber.v("mText = %s", item.mText);
+                            textView1.setText(Html.fromHtml("<font color=#111111>"
+                                    + item.mText + "</font>"));
+                            progressBar.setVisibility(View.GONE);
+                            textView1.setVisibility(View.VISIBLE);
+                            ((ListView) parent).smoothScrollToPosition(position);
+                        });
+                    } else textView1.setVisibility(View.GONE);
                 });
             }
+
             return listItemView;
         }
     }

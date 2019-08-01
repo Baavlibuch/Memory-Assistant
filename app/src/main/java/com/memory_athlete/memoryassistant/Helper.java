@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.util.TypedValue;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
@@ -229,4 +231,12 @@ public class Helper {
         return false;
     }
 
+    public static void clickableViewAnimation(View view, Context context, ClickableType clickableType) {
+        view.setClickable(true);
+        TypedValue outValue = new TypedValue();
+        context.getTheme().resolveAttribute(android.R.attr.selectableItemBackground, outValue, true);
+        view.setBackgroundResource(outValue.resourceId);
+    }
+
+    public enum ClickableType {SHORT, LONG}
 }

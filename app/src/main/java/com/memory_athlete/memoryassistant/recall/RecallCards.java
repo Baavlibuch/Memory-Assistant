@@ -4,16 +4,16 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -37,18 +37,14 @@ public class RecallCards extends RecallSimple {
         super.onCreate(savedInstanceState);
         mAdapter = new CardAdapter(this, responses);
         gridView.setAdapter(mAdapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                responses.remove(position);
-                mAdapter.notifyDataSetChanged();
-            }
+        gridView.setOnItemClickListener((parent, view, position, id) -> {
+            responses.remove(position);
+            mAdapter.notifyDataSetChanged();
         });
     }
 
     private void theme() {
         String theme = sharedPreferences.getString(getString(R.string.theme), "AppTheme");
-        assert theme != null;
         switch (theme) {
             case "Dark":
                 mSuitBackground = R.color.color_suit_background_dark;
@@ -75,6 +71,7 @@ public class RecallCards extends RecallSimple {
         Timber.v("cardSelected complete");
     }
 
+    @SuppressLint("ResourceType")
     @Override
     protected void setResponseLayout(boolean onCreate) {
         if (onCreate) theme();
@@ -85,6 +82,7 @@ public class RecallCards extends RecallSimple {
         compareFormat = CompareFormat.CARD_COMPARE_FORMAT;
         responseFormat = ResponseFormat.CARD_RESPONSE_FORMAT;
 
+        // Suit selection
         LinearLayout suitLayout = findViewById(R.id.card_suit);
         if (suitLayout.getChildCount() != 0) return;
         for (int i = 0; i < 4; i++) {
@@ -100,24 +98,19 @@ public class RecallCards extends RecallSimple {
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setPadding(2 * dpAsPixels, dpAsPixels, 2 * dpAsPixels, dpAsPixels);
             imageView.setId(i);
+            imageView.setOnClickListener(view -> {
+                for (int j = 0; j < 4; j++)
+                    findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
 
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceType")
-                @Override
-                public void onClick(View view) {
-                    for (int j = 0; j < 4; j++)
-                        findViewById(R.id.card_suit).findViewById(j).setBackgroundColor(0);
-
-                    view.setBackgroundColor(getResources().getColor(mSuitBackground));
-                    selectedSuit = view.getId() * 13;
-                    Timber.v("selectedSuit = " + selectedSuit);
-                }
+                view.setBackgroundColor(getResources().getColor(mSuitBackground));
+                selectedSuit = view.getId() * 13;
+                Timber.v("selectedSuit = %s", selectedSuit);
             });
-
             suitLayout.addView(imageView);
         }
         suitLayout.findViewById(0).setBackgroundColor(getResources().getColor(mSuitBackground));
 
+        // Card selection
         LinearLayout numberLayout = findViewById(R.id.card_numbers);
         for (int i = 0; i <= 13; i++) {
             TextView textView = new TextView(this);
@@ -135,13 +128,13 @@ public class RecallCards extends RecallSimple {
             textView.setPadding(dpAsPixels, 0, dpAsPixels, 0);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36);
             if (cardSelectorTextColour != -1) textView.setTextColor(cardSelectorTextColour);
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    cardSelected(view.getId());
-                    Timber.v("Selected Card = " + view.getId());
-                }
+
+            Helper.clickableViewAnimation(textView, this, Helper.ClickableType.SHORT);
+            textView.setOnClickListener(view -> {
+                cardSelected(view.getId());
+                Timber.v("Selected Card = %s", view.getId());
             });
+
             numberLayout.addView(textView);
         }
 
@@ -166,7 +159,7 @@ public class RecallCards extends RecallSimple {
         while (scanner.hasNext())
             sb.append(cards[Integer.parseInt(scanner.next())]).append(whitespace);
 
-        Timber.v("giveUp() complete, returns " + sb.toString());
+        Timber.v("giveUp() complete, returns %s", sb.toString());
         return sb.toString();
     }
 
@@ -210,7 +203,7 @@ public class RecallCards extends RecallSimple {
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             ImageView imageView = (ImageView) convertView;
-            Timber.v("position " + position);
+            Timber.v("position %s", position);
             if (convertView == null) {
                 imageView = new ImageView(getApplicationContext());
                 imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
