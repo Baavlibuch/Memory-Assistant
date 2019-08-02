@@ -174,13 +174,7 @@ public class RecallCards extends RecallSimple {
         for (int i = 0; i < responses.size(); i++)
             responses.set(i, cardStrings[Integer.parseInt(responses.get(i))]);
         for (int i = 0; i < answers.size(); i++) {
-            // TODO remove this try catch block
-            try {
-                answers.set(i, cardStrings[Integer.parseInt(answers.get(i))]);
-            } catch (NumberFormatException e) {
-                throw new NumberFormatException("The value of the string to be parsed into int i '"
-                        + answers.get(i) + "'");
-            }
+            answers.set(i, cardStrings[Integer.parseInt(answers.get(i))]);
         }
         super.compare(false);
         Timber.v("compareCards() complete");
@@ -213,7 +207,7 @@ public class RecallCards extends RecallSimple {
                 imageView.setAdjustViewBounds(true);
             }
 
-            Picasso.with(getApplicationContext())
+            Picasso.get()
                     .load(cardImageIds[parseInt(responses.get(position))])
                     .placeholder(R.drawable.sa)
                     .fit()

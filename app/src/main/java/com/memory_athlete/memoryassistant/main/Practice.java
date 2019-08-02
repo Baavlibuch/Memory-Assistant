@@ -127,7 +127,7 @@ public class Practice extends AppCompatActivity {
             ImageView img = listView.findViewById(R.id.image);
             txt.setText(Objects.requireNonNull(cat).mNameId);
             Picasso
-                    .with(getApplicationContext())
+                    .get()
                     .load(cat.mImageId)
                     .placeholder(R.mipmap.ic_launcher)
                     .fit()

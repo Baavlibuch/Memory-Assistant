@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(getString(Objects.requireNonNull(getItem(position)).mItem));
             ImageView img = convertView.findViewById(R.id.image);
             Picasso
-                    .with(getApplicationContext())
+                    .get()
                     .load(Objects.requireNonNull(getItem(position)).mImageId)
                     .placeholder(R.mipmap.ic_launcher)
                     .fit()

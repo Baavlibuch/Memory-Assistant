@@ -266,7 +266,7 @@ public class RecallSelector extends AppCompatActivity {
                         getItem(position)).mName);
 
                 ImageView img = listItemView.findViewById(R.id.image);
-                Picasso.with(getApplicationContext())
+                Picasso.get()
                         .load(Objects.requireNonNull(getItem(position)).mImageId)
                         .placeholder(R.mipmap.ic_launcher)
                         .fit()
@@ -309,6 +309,3 @@ public class RecallSelector extends AppCompatActivity {
         }
     }
 }
-
-// TODO: recall from practice,
-// TODO: dates

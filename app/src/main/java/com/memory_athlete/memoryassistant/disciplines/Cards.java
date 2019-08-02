@@ -249,7 +249,7 @@ public class Cards extends DisciplineFragment {
 
             Picasso
                     //.setLoggingEnabled(true)
-                    .with(getContext())
+                    .get()
                     .load(cards[randomList.get(position)])
                     .placeholder(R.drawable.sa)
                     .fit()

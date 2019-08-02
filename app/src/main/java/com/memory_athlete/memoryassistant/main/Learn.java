@@ -104,7 +104,7 @@ public class Learn extends AppCompatActivity {
             textView.setText(item.mItem);
             ImageView img = listItemView.findViewById(R.id.image);
             Picasso
-                    .with(getApplicationContext())
+                    .get()
                     .load(item.mImageId)
                     .placeholder(R.mipmap.ic_launcher)
                     .fit()
