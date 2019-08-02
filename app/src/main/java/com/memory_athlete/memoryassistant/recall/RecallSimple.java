@@ -47,8 +47,15 @@ public class RecallSimple extends AppCompatActivity {
     protected CompareFormat compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
     protected ResponseFormat responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;
 
-    protected int correct = 0, wrong = 0, missed = 0, extra = 0, spelling = 0;
-    protected StringBuilder mTextAnswer = null, mTextResponse = null;
+    protected int correct = 0;
+    protected int wrong = 0;
+    protected int missed = 0;
+    protected int extra = 0;
+    protected int spelling = 0;
+
+    protected StringBuilder mTextAnswer = null;
+    protected StringBuilder mTextResponse = null;
+
     protected String whitespace;
     //protected CompareAsyncTask task;                  //use to cancel the async task if it is instantiated
 
@@ -92,7 +99,7 @@ public class RecallSimple extends AppCompatActivity {
                 return;
             }
             mFilePath = files[files.length - 1].getAbsolutePath();
-            Timber.v("filePath = " + mFilePath);
+            Timber.v("filePath = %s", mFilePath);
         }
 
         setResponseLayout(true);
@@ -204,7 +211,7 @@ public class RecallSimple extends AppCompatActivity {
 
     protected String formatAnswers(Scanner scanner, StringBuilder sb, String whitespace) {
         while (scanner.hasNext()) sb.append(scanner.next()).append(whitespace);
-        Timber.v("giveUp() complete, returns " + sb.toString());
+        Timber.v("giveUp() complete, returns %s", sb.toString());
         return sb.toString();
     }
 
@@ -215,31 +222,31 @@ public class RecallSimple extends AppCompatActivity {
         responses.clear();
 
         if (responseFormat == ResponseFormat.CHARACTER_RESPONSE_FORMAT) {
+            // just a simple list of characters. Convert it into an ArrayList
             for (int i = 0; i < values.length(); i++) {
                 if (values.charAt(i) == ' ' || values.charAt(i) == '\n'
                         || values.charAt(i) == getString(R.string.tab).charAt(0)) continue;
                 responses.add(String.valueOf(values.charAt(i)));
-                Timber.v("response = " + String.valueOf(values.charAt(i)));
+                Timber.v("response = %s", String.valueOf(values.charAt(i)));
             }
         } else {
+            // words or sentences
+            // simple response format - ' ' delimited
             char delimiter = (responseFormat == ResponseFormat.SIMPLE_RESPONSE_FORMAT ? ' ' : '\n');
             for (int i = 0; i < values.length(); i++) {
-                if (!(values.charAt(i) == delimiter)) {
-                    value += values.charAt(i);
+                // append character to the value if it is not equal to the delimiter
+                if (!(values.charAt(i) == delimiter)) value += values.charAt(i);
+                // search for value's end (delimiter) and move to next
+                if (i != 0 && (values.charAt(i) == delimiter && values.charAt(i - 1) != delimiter)) {
+                    responses.add(value);
+                    value = "";                             // reset for new value
+                    continue;
                 }
+                // check if the end has been reached. If yes, add to responses list and end loop
                 if (i + 1 == values.length()) {
                     responses.add(value);
-                    continue;
                 }
-                if ((values.charAt(i) == delimiter && values.charAt(i - 1) != delimiter)) {
-                    responses.add(value);
-                    value = "";
-                    continue;
-                }
-                if ((values.charAt(i) == delimiter && values.charAt(i + 1) == delimiter)) {
-                    responses.add(" ");
-                    value = "";
-                }
+                // elsed multiple delimiters encountered. ignore and move on
             }
         }
         String text = ((TextView) findViewById(R.id.responses_text)).getText() + value + " " + getString(R.string.tab);
@@ -275,7 +282,6 @@ public class RecallSimple extends AppCompatActivity {
             Timber.v("Entered loop " + (i + j) + " - response " + responses.get(i) + ", answer " + answers.get(j));
             if (isCorrect(i, j)) continue;
             if (missed > 8 && missed > correct) break;
-            if (isLeft(i, j)) continue;
             if (words && isSpelling(i, j)) {
                 spelling++;
                 mTextAnswer.append("<font color=#EEEE00>").append(answers.get(j))
@@ -311,16 +317,6 @@ public class RecallSimple extends AppCompatActivity {
         Timber.v("compare() complete ");
     }
 
-    protected boolean isLeft(int i, int j) {
-        if (responses.get(i).equals(" ")) {
-            missed++;
-            mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
-            mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
-                    .append(" ").append(whitespace);
-            return true;
-        } else return false;
-    }
-
     protected boolean isCorrect(int i, int j) {
         if (responses.get(i).equalsIgnoreCase(answers.get(j))) {
             correct++;
@@ -330,28 +326,34 @@ public class RecallSimple extends AppCompatActivity {
         } else return false;
     }
 
+    // check if the value is missing or not
+    // somewhat similar to n-grams
     protected boolean isMiss(int i, int j) {
-        int match = 0, k, checkRange = 10 + missed;
+        int match = 0;                                      // count the number of matches
+        int k;                                              // position to be compared in the n-gram
+        int checkRange = 10;                                // similar to n in n-grams
 
-        if (i < 3) k = 1;
-        else if (responses.size() - i < 5) k = -1;
-        else if (i < 10) k = -(i / 3);
-        else k = -4;
+        // initialise k
+        // k != 0 because that would be an obvious mismatch as it is checked in the driver function
+        if (i < 3) k = 1;                                   // ? it works for some reason. Can't remember why
+        else if (responses.size() - i < 5) k = -1;          // keep the lookback small near the end because lookahead is small
+        else if (i < 10) k = -(i / 3);                      // keep the window small and don't look beyond 0
+        else k = -4;                                        // preferred look back
 
         for (; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
             Timber.v("j = " + j + " k = " + k);
-            if (j + k < 0) continue;
-            if (responses.get(i + k).equals(" ")) continue;
-            if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) {
-                match++;
-            }
+            if (j + k < 0) continue;                        // just for saftey. Might never be true
+            if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k))) match++;
         }
-        Timber.v(match + "");
-        return ((float) match / k) <= 0.5;
+        Timber.v("%s", match);
+        return ((float) match / k) <= 0.5;                  // too many mismatches -> missed
     }
 
     protected boolean isExtra(int i, int j) {
-        int match = 0, k, checkRange = 10, l = 0;
+        int match = 0;
+        int k;
+        int checkRange = 10;
+        int l = 0;
 
         for (; l < 5; l++) {
             //if (i < 3) k = 1;
@@ -361,13 +363,9 @@ public class RecallSimple extends AppCompatActivity {
 
             for (k = 0; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
                 if (i == -k || j == -k) continue;
-                if (!responses.get(i + k).equals(" ")) {
-                    if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k - 1))) {
-                        match++;
-                    }
-                }
+                if (responses.get(i + k).equalsIgnoreCase(answers.get(j + k - 1))) match++;
             }
-            Timber.v(match + "");
+            Timber.v("%s", match);
             if (((float) match / k) > 0.3) {            //Extra
                 mTextResponse.append("<font color=#1D6C21>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
@@ -400,7 +398,7 @@ public class RecallSimple extends AppCompatActivity {
             }
             Timber.d("Not a match");
             for (int b = -2; b < 3; b++) {
-                Timber.v("" + b);
+                Timber.v("%s", b);
                 if (a + b > 0 && a + b < responses.get(i).length() && a + b < answers.get(j).length()) {
                     if (responses.get(i).charAt(a) == answers.get(j).charAt(a + b)) {
                         count++;
@@ -410,12 +408,13 @@ public class RecallSimple extends AppCompatActivity {
                 }
             }
         }
-        Timber.v("Count = " + count);
+        Timber.v("Count = %s", count);
         return ((float) count / answers.get(j).length()) > 0.6;
 
     }
 
 
+    // Match the following. Example - dates, names and faces, abstract images
     protected void compareMixed() {
         Timber.v("Comparing answers and responses in compareMixed");
         mTextResponse = new StringBuilder();
@@ -489,7 +488,7 @@ public class RecallSimple extends AppCompatActivity {
                 match++;
             }
         }
-        Timber.v(match + "");
+        Timber.v("%s", match);
         return ((float) match / k) <= 0.5;
     }
 
@@ -510,7 +509,7 @@ public class RecallSimple extends AppCompatActivity {
                     }
                 }
             }
-            Timber.v(match + "");
+            Timber.v("%s", match);
             if (((float) match / k) > 0.3) {            //Extra
                 mTextResponse.append("<font color=#1D6C21>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
@@ -557,8 +556,10 @@ public class RecallSimple extends AppCompatActivity {
         View v = this.getCurrentFocus();
         if (v != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            assert imm != null;
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         }
+        ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         (new CompareAsyncTask()).execute();
     }
 
@@ -570,6 +571,7 @@ public class RecallSimple extends AppCompatActivity {
     }
 
     public void giveUp(View view) {
+        ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         (new JustAnswersAsyncTask()).execute();
     }
 
@@ -592,7 +594,7 @@ public class RecallSimple extends AppCompatActivity {
             getResponse();
             findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
             hideResponseLayout();
-            Timber.v("responses.size() = " + String.valueOf(responses.size()));
+            Timber.v("responses.size() = %s", String.valueOf(responses.size()));
         }
 
         @SafeVarargs
@@ -620,9 +622,9 @@ public class RecallSimple extends AppCompatActivity {
                 return;
             }
 
-            Timber.v("mTextResponse length = " + String.valueOf(mTextAnswer.toString().length()));
-            Timber.v("mTextAnswer length = " + String.valueOf(mTextResponse.toString().length()));
-            Timber.v("answer 0 = " + answers.get(0));
+            Timber.v("mTextResponse length = %s", String.valueOf(mTextAnswer.toString().length()));
+            Timber.v("mTextAnswer length = %s", String.valueOf(mTextResponse.toString().length()));
+            Timber.v("answer 0 = %s", answers.get(0));
 
             if (correct == answers.size() && !mDiscipline.equals(getString(R.string.binary))) {
                 SharedPreferences sharedPreferences = PreferenceManager
