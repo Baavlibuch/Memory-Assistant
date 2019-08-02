@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lay"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/lay">
+    android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/save_failed"
         android:layout_centerHorizontal="true"
-        />
+        android:text="@string/save_failed" />
 
     <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/yes"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/yes"
-            android:id="@+id/yes"/>
+            android:text="@string/yes" />
 
         <Button
+            android:id="@+id/no"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no"
-            android:id="@+id/no"/>
+            android:text="@string/no" />
 
     </LinearLayout>
 

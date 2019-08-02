@@ -60,11 +60,6 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         viewPager = findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(9);
 
-        if (!Helper.mayAccessStorage(this)) {
-            Toast.makeText(this, "Storage permissions are required", Toast.LENGTH_LONG).show();
-            finish();
-        }
-
         new LoadFragmentsAsyncTask().execute();
     }
 
@@ -260,13 +255,6 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             SimpleFragmentPagerAdapter> {
 
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(DisciplineActivity.this))
-                findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
-        }
-
-        @Override
         protected SimpleFragmentPagerAdapter doInBackground(Void... v) {
             if (Helper.mayAccessStorage(DisciplineActivity.this)) {
                 int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
@@ -283,6 +271,10 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         @Override
         protected void onPostExecute(SimpleFragmentPagerAdapter adapter) {
             super.onPostExecute(adapter);
+
+            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(DisciplineActivity.this))
+                findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
+
             viewPager.setAdapter(adapter);
             Timber.v("adapter set");
 

@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:animateLayoutChanges="true"
     tools:context="com.memory_athlete.memoryassistant.main.DisciplineActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <RadioGroup
@@ -58,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:animateLayoutChanges="true"
                 android:visibility="gone">
 
                 <EditText
@@ -141,6 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:animateLayoutChanges="true"
                     android:visibility="gone">
 
                     <EditText
@@ -223,6 +227,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:animateLayoutChanges="true"
         android:visibility="gone">
 
         <ProgressBar
@@ -256,6 +261,7 @@
             style="?android:attr/buttonBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:orientation="horizontal">
 
             <Button

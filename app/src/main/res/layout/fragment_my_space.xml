@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.memory_athlete.memoryassistant.mySpace.MySpace"
+    android:animateLayoutChanges="true"
     android:contentDescription="@string/my_space_file_picker">
 
     <!--

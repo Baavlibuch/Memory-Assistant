@@ -3,10 +3,8 @@ package com.memory_athlete.memoryassistant.main;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,9 +32,8 @@ public class Contribute extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Helper.theme(this, Contribute.this);
-        setContentView(R.layout.activity_get_pro);
+        setContentView(R.layout.activity_contribute);
         setTitle(R.string.get_pro);
         setAdapter();
     }

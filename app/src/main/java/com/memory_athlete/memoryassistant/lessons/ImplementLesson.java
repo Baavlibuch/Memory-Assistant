@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -52,7 +53,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
                 .getString(getString(R.string.no_my_space_frags), "1")));
         boolean storageAccess = Helper.mayAccessStorage(this);
         for (int i = 0; i < noOfMySpaceScreens && storageAccess; i++) {
-            if(noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
+            if (noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
             else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
         }
         if (tabTitles.size() == 1 || !storageAccess)
@@ -69,7 +70,6 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
 
     protected void theme(Intent intent) {
         String theme = sharedPreferences.getString(getString(R.string.theme), "AppTheme");
-        assert theme != null;
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
@@ -86,7 +86,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
             setTitle(getString(header));
         else setTitle(intent.getStringExtra("headerString"));
 
-        Timber.v("theme = " + theme);
+        Timber.v("theme = %s", theme);
         if (sharedPreferences.getBoolean(getString(R.string.bottom_tabs), false))
             setContentView(R.layout.activity_view_pager_bottom_tab);
         else setContentView(R.layout.activity_view_pager);
@@ -100,19 +100,13 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    Bundle bundle = intent.getExtras();
-                    LessonFragment lessonFragment = new LessonFragment();
-                    lessonFragment.setArguments(bundle);
-                    return lessonFragment;
-                default:
-                    return new MySpaceFragment();
-                /*default :
-                    finish();
-                    Timber.w("couldn't open lessonFragment");
-                    return null;*/
+            if (position == 0) {
+                Bundle bundle = intent.getExtras();
+                LessonFragment lessonFragment = new LessonFragment();
+                lessonFragment.setArguments(bundle);
+                return lessonFragment;
             }
+            return new MySpaceFragment();
         }
 
         @Override
@@ -122,7 +116,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
 
         @Override
         public int getCount() {
-            if(!Helper.mayAccessStorage(ImplementLesson.this)) return 1;
+            if (!Helper.mayAccessStorage(ImplementLesson.this)) return 1;
             return tabTitles.size();
         }
     }
@@ -144,6 +138,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
         if (cur != 0) {
             String tag = "android:switcher:" + R.id.viewpager + ":" + cur;
             MySpaceFragment fragment = (MySpaceFragment) getSupportFragmentManager().findFragmentByTag(tag);
+            assert fragment != null;
             if (fragment.fragListViewId == 0 || fragment.fragListViewId == fragment.MIN_DYNAMIC_VIEW_ID)
                 viewPager.setCurrentItem(0, true);
             else fragment.back();
@@ -167,7 +162,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             for (int i = 1; i < tabTitles.size(); i++) {
                 String tag = "android:switcher:" + R.id.viewpager + ":" + i;

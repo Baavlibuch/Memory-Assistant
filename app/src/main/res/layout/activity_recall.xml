@@ -4,17 +4,20 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
+    android:animateLayoutChanges="true"
     tools:context=".recall.RecallSimple">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <ScrollView
@@ -28,6 +31,7 @@
                     android:layout_height="wrap_content"
                     android:baselineAligned="false"
                     android:orientation="horizontal"
+                    android:animateLayoutChanges="true"
                     android:visibility="gone">
 
                     <LinearLayout
@@ -36,6 +40,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
+                        android:animateLayoutChanges="true"
                         android:orientation="vertical">
 
                         <TextView
@@ -60,6 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
+                        android:animateLayoutChanges="true"
                         android:orientation="vertical">
 
                         <TextView
@@ -107,6 +113,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:animateLayoutChanges="true"
                 android:visibility="gone"
                 tools:ignore="NestedWeights">
 
@@ -124,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
+                android:animateLayoutChanges="true"
                 android:visibility="gone">
 
                 <ScrollView
@@ -162,6 +170,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:animateLayoutChanges="true"
                     android:orientation="horizontal">
 
                 </LinearLayout>
@@ -177,6 +186,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawSelectorOnTop="true"
+                        android:animateLayoutChanges="true"
                         android:orientation="horizontal" />
 
                 </HorizontalScrollView>
@@ -189,6 +199,7 @@
             android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
@@ -198,12 +209,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:animateLayoutChanges="true"
                 android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
+                    android:animateLayoutChanges="true"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -225,6 +238,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
+                    android:animateLayoutChanges="true"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
@@ -249,6 +263,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:animateLayoutChanges="true"
                     android:orientation="horizontal">
 
                     <TextView
@@ -270,6 +285,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:animateLayoutChanges="true"
                     android:orientation="horizontal">
 
                     <TextView
@@ -292,12 +308,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:animateLayoutChanges="true"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:animateLayoutChanges="true"
                     android:orientation="vertical">
 
                     <TextView
@@ -318,6 +336,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:animateLayoutChanges="true"
                     android:orientation="vertical">
 
                     <TextView
@@ -350,6 +369,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:animateLayoutChanges="true"
                 android:orientation="horizontal">
 
                 <!--<Button

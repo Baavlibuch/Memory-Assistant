@@ -231,7 +231,7 @@ public class DonateActivity extends AppCompatActivity {
             notifyDataSetChanged();
         }
 
-        public void onClick(Sku sku) {
+        void onClick(Sku sku) {
             final Purchase purchase = mProduct.getPurchaseInState(sku, Purchase.State.PURCHASED);
             Timber.v("purchase =%s", purchase);
             if (purchase != null) consume(purchase);

@@ -4,6 +4,7 @@
     android:id="@+id/lesson_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:animateLayoutChanges="true"
         tools:ignore="UseCompoundDrawables">
         <!--will be filled programmatically-->
 
