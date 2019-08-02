@@ -32,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lesson_list"
+        android:animateLayoutChanges="true"
         android:visibility="gone"/>
 
 </LinearLayout>
