@@ -116,46 +116,42 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         @Override
         public Fragment getItem(int position) {
-            try {
-                if (position == 0) {
-                    Bundle bundle = intent.getExtras();
-                    Fragment fragment;
-                    switch (intent.getIntExtra("class", 0)) {
-                        case 1:
-                            fragment = new Numbers();
-                            break;
-                        case 2:
-                            fragment = new Words();
-                            break;
-                        case 3:
-                            fragment = new Names();
-                            break;
-                        case 4:
-                            fragment = new Places();
-                            break;
-                        case 5:
-                            fragment = new Cards();
-                            break;
-                        case 6:
-                            fragment = new BinaryDigits();
-                            break;
-                        case 7:
-                            fragment = new Letters();
-                            break;
-                        case 8:
-                            fragment = new Dates();
-                            break;
-                        default:
-                            throw new RuntimeException("wrong practice, received "
-                                    + intent.getIntExtra("class", 0));
-                    }
-                    fragment.setArguments(bundle);
-                    return fragment;
+            if (position == 0) {
+                Bundle bundle = intent.getExtras();
+                Fragment fragment;
+                switch (intent.getIntExtra("class", 0)) {
+                    case 1:
+                        fragment = new Numbers();
+                        break;
+                    case 2:
+                        fragment = new Words();
+                        break;
+                    case 3:
+                        fragment = new Names();
+                        break;
+                    case 4:
+                        fragment = new Places();
+                        break;
+                    case 5:
+                        fragment = new Cards();
+                        break;
+                    case 6:
+                        fragment = new BinaryDigits();
+                        break;
+                    case 7:
+                        fragment = new Letters();
+                        break;
+                    case 8:
+                        fragment = new Dates();
+                        break;
+                    default:
+                        throw new RuntimeException("wrong practice, received "
+                                + intent.getIntExtra("class", 0));
                 }
-                return new MySpaceFragment();
-            } catch (IllegalStateException e){
-                throw new RuntimeException("IllegalStateException from ViewPager.populate() caused in DisciplineActivity.getItem()");
+                fragment.setArguments(bundle);
+                return fragment;
             }
+            return new MySpaceFragment();
         }
 
         @Override

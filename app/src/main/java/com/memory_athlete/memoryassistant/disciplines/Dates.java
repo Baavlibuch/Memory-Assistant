@@ -133,65 +133,60 @@ public class Dates extends WordDisciplineFragment {
 
     @Override
     protected ArrayList backgroundArray() {
-        try {
-            StringBuilder stringBuilder = new StringBuilder();
-            Random rand = new Random();
-            ArrayList<String> arrayList = new ArrayList<>();
-            int n, year;
+        StringBuilder stringBuilder = new StringBuilder();
+        Random rand = new Random();
+        ArrayList<String> arrayList = new ArrayList<>();
+        int n, year;
 
-            ArrayList<Integer> indexList = new ArrayList<>();
-            for (int i = 0; i < events.size(); i++) indexList.add(i);
+        ArrayList<Integer> indexList = new ArrayList<>();
+        for (int i = 0; i < events.size(); i++) indexList.add(i);
 
-            for (int i = 0; i < a.get(NO_OF_VALUES); ) {
-                year = rand.nextInt(endYear - startYear) + startYear;
-                stringBuilder.append(String.format(Locale.getDefault(), "%04d", year));
-                n = (short) rand.nextInt(indexList.size());
-                // Date
-                if (!negativeOrDateCheckBox.isChecked()) {
-                    n = rand.nextInt(12);
-                    stringBuilder.append("/");
-                    if (n < 10) stringBuilder.append(0);
-                    stringBuilder.append(n).append("/");
+        for (int i = 0; i < a.get(NO_OF_VALUES); ) {
+            year = rand.nextInt(endYear - startYear) + startYear;
+            stringBuilder.append(String.format(Locale.getDefault(), "%04d", year));
+            n = (short) rand.nextInt(indexList.size());
+            // Date
+            if (!negativeOrDateCheckBox.isChecked()) {
+                n = rand.nextInt(12);
+                stringBuilder.append("/");
+                if (n < 10) stringBuilder.append(0);
+                stringBuilder.append(n).append("/");
 
-                    switch (n) {
-                        case 0:
-                        case 2:
-                        case 4:
-                        case 6:
-                        case 7:
-                        case 9:
-                        case 11:                    //month of 31 days
-                            stringBuilder.append(rand.nextInt(32) + 1);
-                            break;
-                        case 3:
-                        case 5:
-                        case 8:
-                        case 10:                    //month of 30 days
-                            stringBuilder.append(rand.nextInt(31) + 1);
-                            break;
-                        case 1:                     //February
-                            int max = 29;
-                            if (year % 4 == 0) max++;
-                            stringBuilder.append(rand.nextInt(max) + 1);
-                    }
+                switch (n) {
+                    case 0:
+                    case 2:
+                    case 4:
+                    case 6:
+                    case 7:
+                    case 9:
+                    case 11:                    //month of 31 days
+                        stringBuilder.append(rand.nextInt(32) + 1);
+                        break;
+                    case 3:
+                    case 5:
+                    case 8:
+                    case 10:                    //month of 30 days
+                        stringBuilder.append(rand.nextInt(31) + 1);
+                        break;
+                    case 1:                     //February
+                        int max = 29;
+                        if (year % 4 == 0) max++;
+                        stringBuilder.append(rand.nextInt(max) + 1);
                 }
-                // Delimiter
-                stringBuilder.append(" - ");
-                // Event
-                stringBuilder.append(events.get(indexList.get(n))).append("\n\n");
-                if ((++i) % 20 == 0) {
-                    arrayList.add(stringBuilder.toString());
-                    stringBuilder = new StringBuilder();
-                }
-                indexList.remove(n);
-                if (a.get(RUNNING) == FALSE || indexList.size() == 0) break;
             }
-            arrayList.add(stringBuilder.toString());
-            return arrayList;
-        } catch (IllegalStateException e) {
-            throw new RuntimeException("IllegalStateException from ViewPager.populate() "
-                    + "caused in Dates.backgroundArray");
+            // Delimiter
+            stringBuilder.append(" - ");
+            // Event
+            stringBuilder.append(events.get(indexList.get(n))).append("\n\n");
+            if ((++i) % 20 == 0) {
+                arrayList.add(stringBuilder.toString());
+                stringBuilder = new StringBuilder();
+            }
+            indexList.remove(n);
+            if (a.get(RUNNING) == FALSE || indexList.size() == 0) break;
         }
+        arrayList.add(stringBuilder.toString());
+        return arrayList;
     }
 
     @Override

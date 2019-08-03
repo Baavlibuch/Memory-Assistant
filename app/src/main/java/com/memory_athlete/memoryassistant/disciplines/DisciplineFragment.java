@@ -55,19 +55,19 @@ import static java.lang.Math.pow;
  */
 
 public abstract class DisciplineFragment extends Fragment implements View.OnClickListener {
-    protected long mTime = 0;
+    private long mTime = 0;
 
-    protected boolean isTimerRunning = false;
-    protected boolean hasStandard = true;
-    protected boolean hasGroup = true;
-    protected boolean hasSpeech = true;
+    private boolean isTimerRunning = false;
+    private boolean hasStandard = true;
+    boolean hasGroup = true;
+    boolean hasSpeech = true;
 
     public final int GROUP_SIZE = 0;
     public final int NO_OF_VALUES = 1;
     public final int RUNNING = 2;     // Indices for a(array sent to RandomGeneration AsyncTasks to make decisions)
     public final int TRUE = 1;
     public final int FALSE = 0;
-    public final int NORMAL = 0;
+    //private final int NORMAL = 0;             // used in makeSpinner
 
     protected float speechSpeedMultiplier = 1;
 
@@ -80,7 +80,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     private CheckBox speechCheckBox;
     CheckBox negativeOrDateCheckBox;
     private Spinner groupSpinner;
-    TextView randomTextView;
+    private TextView randomTextView;
 
     Class mRecallClass;
     private CountDownTimer cdt;
@@ -252,6 +252,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             return false;
         });
         ArrayList<String> categories = new ArrayList<>(11);
+        int NORMAL = 0;
         if (spinnerContent == NORMAL) {                         //All the disciplines
             categories.add(0, getString(R.string.clump));
             categories.add(1, "Don't group");
@@ -640,43 +641,33 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //Runs when the random generating thread is complete
     protected void postExecuteString(String s) {
-        try {
-            (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
-            (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
-            if (a.get(RUNNING) == FALSE) {
-                reset();
-                return;
-            }
-            Timber.v("Setting text");
-            if (speechCheckBox.isChecked()) tts(s);
-            else {
-                randomTextView.setText(s);
-                numbersVisibility(View.VISIBLE);
-            }
-        } catch (IllegalStateException e) {
-            throw new RuntimeException("IllegalStateException from ViewPager.populate() " +
-                    "caused in DisciplineFragment.postExecuteString(String)");
+        (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
+        (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
+        if (a.get(RUNNING) == FALSE) {
+            reset();
+            return;
+        }
+        Timber.v("Setting text");
+        if (speechCheckBox.isChecked()) tts(s);
+        else {
+            randomTextView.setText(s);
+            numbersVisibility(View.VISIBLE);
         }
     }
 
     private void postExecuteArrayList(ArrayList list) {
-        try {
-            (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
-            (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
-            if (a.get(RUNNING) == FALSE) {
-                reset();
-                return;
-            }
-            numbersVisibility(View.VISIBLE);
-            Timber.v("Setting text");
-            if (speechCheckBox.isChecked()) tts(list);
-            else {
-                ((ListView) rootView.findViewById(R.id.practice_list_view))
-                        .setAdapter(startRandomAdapter(list));
-            }
-        } catch (IllegalStateException e) {
-            throw new RuntimeException("IllegalStateException from ViewPager.populate() " +
-                    "caused in DisciplineFragment.postExecuteString(ArrayList)");
+        (rootView.findViewById(R.id.save)).setVisibility(View.VISIBLE);
+        (rootView.findViewById(R.id.progress_bar_discipline)).setVisibility(View.GONE);
+        if (a.get(RUNNING) == FALSE) {
+            reset();
+            return;
+        }
+        numbersVisibility(View.VISIBLE);
+        Timber.v("Setting text");
+        if (speechCheckBox.isChecked()) tts(list);
+        else {
+            ((ListView) rootView.findViewById(R.id.practice_list_view))
+                    .setAdapter(startRandomAdapter(list));
         }
     }
 
@@ -695,13 +686,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         @SafeVarargs
         @Override
         protected final String doInBackground(ArrayList<Integer>... a) {
-            try {
-                Timber.v("doInBackground entered");
-                return backgroundString();
-            } catch (IllegalStateException e) {
-                throw new RuntimeException("IllegalStateException from ViewPager.populate() " +
-                        "caused in DisciplineFragment.GenerateStringAsyncTask.doInBackground()");
-            }
+            Timber.v("doInBackground entered");
+            return backgroundString();
         }
 
         @Override
@@ -723,12 +709,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         @Override
         protected ArrayList doInBackground(ArrayList<Integer>[] a) {
-            try {
-                return backgroundArray();
-            } catch (IllegalStateException e) {
-                throw new RuntimeException("IllegalStateException from ViewPager.populate() " +
-                        "caused in DisciplineFragment.GenerateStringAsyncTask.doInBackground()");
-            }
+            return backgroundArray();
         }
 
         @Override
