@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -49,7 +50,7 @@ public class Dates extends WordDisciplineFragment {
         return rootView;
     }
 
-    void setDateSpinners() {
+    private void setDateSpinners() {
         ArrayList<String> arrayList = new ArrayList<>(), arrayList1 = new ArrayList<>();
         Spinner dateSpinner = rootView.findViewById(R.id.start_date);
         dateSpinner.setOnTouchListener(new View.OnTouchListener() {
@@ -58,7 +59,7 @@ public class Dates extends WordDisciplineFragment {
                 view.performClick();
                 InputMethodManager im = (InputMethodManager) activity.getSystemService(
                         Context.INPUT_METHOD_SERVICE);
-                if (activity.getCurrentFocus() != null) im.hideSoftInputFromWindow(
+                if (activity.getCurrentFocus() != null) Objects.requireNonNull(im).hideSoftInputFromWindow(
                         activity.getCurrentFocus().getWindowToken(), 0);
                 return false;
             }
@@ -89,7 +90,7 @@ public class Dates extends WordDisciplineFragment {
                 view.performClick();
                 InputMethodManager im = (InputMethodManager) activity.getSystemService(
                         Context.INPUT_METHOD_SERVICE);
-                if (activity.getCurrentFocus() != null) im.hideSoftInputFromWindow(
+                if (activity.getCurrentFocus() != null) Objects.requireNonNull(im).hideSoftInputFromWindow(
                         activity.getCurrentFocus().getWindowToken(), 0);
                 return false;
             }

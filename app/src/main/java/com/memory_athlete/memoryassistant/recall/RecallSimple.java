@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
@@ -157,30 +158,23 @@ public class RecallSimple extends AppCompatActivity {
 
     protected void getAnswers() throws FileNotFoundException {
         Timber.v("getAnswersEntered");
+        String string;
+        Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\t|\n|\n\n");
 
-        try {
-            String string;
-
-            Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\t|\n|\n\n");
-
-            while (scanner.hasNext()) {
-                string = scanner.next();
-                if (mDiscipline.equals(getString(R.string.numbers)) || mDiscipline.equals(getString(R.string.cards)))
-                    answers.add(string.trim());
-                    //else if (mDiscipline == getString(e))
-                else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
-                        || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
-                        || mDiscipline.equalsIgnoreCase(getString(R.string.digits))) {
-                    for (char c : string.toCharArray())
-                        if (c != ' ') answers.add("" + c);
-                } else answers.add(string);
-            }
-            Timber.v(String.valueOf(answers.size()));
-            scanner.close();
-        } catch (Exception e) {
-            //Toast.makeText(this, "Couldn't read the saved answers", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
+        while (scanner.hasNext()) {
+            string = scanner.next();
+            if (mDiscipline.equals(getString(R.string.numbers)) || mDiscipline.equals(getString(R.string.cards)))
+                answers.add(string.trim());
+                //else if (mDiscipline == getString(e))
+            else if (mDiscipline.equalsIgnoreCase(getString(R.string.letters))
+                    || mDiscipline.equalsIgnoreCase(getString(R.string.binary))
+                    || mDiscipline.equalsIgnoreCase(getString(R.string.digits))) {
+                for (char c : string.toCharArray())
+                    if (c != ' ') answers.add("" + c);
+            } else answers.add(string);
         }
+        Timber.v(String.valueOf(answers.size()));
+        scanner.close();
 
         Timber.v("getAnswers() complete");
     }
@@ -243,12 +237,11 @@ public class RecallSimple extends AppCompatActivity {
                     continue;
                 }
                 // check if the end has been reached. If yes, add to responses list and end loop
-                if (i + 1 == values.length()) {
-                    responses.add(value);
-                }
+                if (i + 1 == values.length()) responses.add(value);
                 // elsed multiple delimiters encountered. ignore and move on
             }
         }
+        // No clue what this does!
         String text = ((TextView) findViewById(R.id.responses_text)).getText() + value + " " + getString(R.string.tab);
         ((TextView) findViewById(R.id.responses_text)).setText(text);
         Timber.v("onEditorAction complete");
@@ -591,7 +584,6 @@ public class RecallSimple extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             gridView.setVisibility(View.GONE);
-            getResponse();
             findViewById(R.id.progress_bar_recall).setVisibility(View.VISIBLE);
             hideResponseLayout();
             Timber.v("responses.size() = %s", String.valueOf(responses.size()));
@@ -601,6 +593,7 @@ public class RecallSimple extends AppCompatActivity {
         @Override
         protected final Boolean doInBackground(ArrayList<Integer>... a) {
             try {
+                getResponse();
                 getAnswers();
                 if (compareFormat == CompareFormat.SIMPLE_COMPARE_FORMAT
                         || compareFormat == CompareFormat.CARD_COMPARE_FORMAT)
@@ -608,7 +601,7 @@ public class RecallSimple extends AppCompatActivity {
                 else if (compareFormat == CompareFormat.WORD_COMPARE_FORMAT) compare(true);
                 return false;
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                Crashlytics.logException(e);
                 return true;
             }
         }
@@ -617,7 +610,7 @@ public class RecallSimple extends AppCompatActivity {
         protected void onPostExecute(Boolean error) {
             super.onPostExecute(error);
             if (error) {
-                Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "File not found. Please try again", Toast.LENGTH_SHORT).show();
                 finish();
                 return;
             }
@@ -626,12 +619,10 @@ public class RecallSimple extends AppCompatActivity {
             Timber.v("mTextAnswer length = %s", String.valueOf(mTextResponse.toString().length()));
             Timber.v("answer 0 = %s", answers.get(0));
 
-            if (correct == answers.size() && !mDiscipline.equals(getString(R.string.binary))) {
-                SharedPreferences sharedPreferences = PreferenceManager
-                        .getDefaultSharedPreferences(getApplicationContext());
-                if (pow(2, sharedPreferences.getInt("level", 1) + 2) == correct)
-                    sharedPreferences.edit().putInt("level", 1 + sharedPreferences.getInt("level", 1)).apply();
-            }
+            if (correct == answers.size() && !mDiscipline.equals(getString(R.string.binary)) &&
+                    pow(2, sharedPreferences.getInt("level", 1) + 2) == correct)
+                sharedPreferences.edit().putInt("level",
+                        1 + sharedPreferences.getInt("level", 1)).apply();
 
             findViewById(R.id.responses_text).setVisibility(View.VISIBLE);
             findViewById(R.id.result).setVisibility(View.VISIBLE);

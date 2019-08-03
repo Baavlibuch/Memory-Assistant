@@ -192,7 +192,7 @@ public class Cards extends DisciplineFragment {
                     FileOutputStream outputStream = new FileOutputStream(new File(path));
 
                     for (Integer i : randomList)// 0; i < randomList.size(); i++)
-                        stringBuilder.append(Integer.toString(i)).append("\n");
+                        stringBuilder.append(i).append("\n");
                     //\n is also a delimiter used in recall
 
                     outputStream.write(stringBuilder.toString().getBytes());
