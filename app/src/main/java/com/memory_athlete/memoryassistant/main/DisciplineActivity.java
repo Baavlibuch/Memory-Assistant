@@ -41,11 +41,16 @@ import static java.util.Objects.requireNonNull;
 public class DisciplineActivity extends AppCompatActivity implements MySpaceFragment.TabTitleUpdater {
     boolean backPressed = false;
 
-    private ArrayList<String> tabTitles = new ArrayList<>();
-    Intent intent;                                      //Contains data sent to this activity
-    ViewPager viewPager;
+    private static ArrayList<String> tabTitles;
+    static Intent intent;                                      //Contains data sent to this activity
+    static ViewPager viewPager;
+    private static TabLayout tabLayout;
+    private static boolean mayAccessStorage;
+    static String noOfMySpaceFrags;
+    static String mySpace;
 
-    private SharedPreferences sharedPreferences;
+    private static SharedPreferences sharedPreferences;
+    private static FragmentManager fragManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +58,17 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         Timber.v("entered onCreate()");
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         intent = getIntent();
+
         theme(intent);
+        tabLayout = findViewById(R.id.sliding_tabs);
+        mayAccessStorage = Helper.mayAccessStorage(this);
+        noOfMySpaceFrags = getString(R.string.no_my_space_frags);
+        mySpace = getString(R.string.my_space);
+        fragManager = getSupportFragmentManager();
+
         int fragIndex = intent.getIntExtra("class", 0);
-        Timber.v("fragIndex = " + fragIndex + "tabTitles.size() = " + tabTitles.size());
+        Timber.v("fragIndex = %s", fragIndex);
+        tabTitles = new ArrayList<>();
         tabTitles.add(getString(R.string.practice));
         viewPager = findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(9);
@@ -95,7 +108,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         requireNonNull(slidingTabs.getTabAt(viewPager.getCurrentItem())).setText(title);
     }
 
-    private class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
+    private static class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
         private SimpleFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -152,7 +165,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         @Override
         public int getCount() {
-            if (!Helper.mayAccessStorage(DisciplineActivity.this)) return 1;
+            if (!mayAccessStorage) return 1;
             return tabTitles.size();
         }
 
@@ -251,34 +264,31 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         return super.onOptionsItemSelected(item);
     }
 
-    protected class LoadFragmentsAsyncTask extends AsyncTask<Void, SimpleFragmentPagerAdapter,
-            SimpleFragmentPagerAdapter> {
+    static protected class LoadFragmentsAsyncTask extends AsyncTask<Void, Void, SimpleFragmentPagerAdapter> {
 
         @Override
         protected SimpleFragmentPagerAdapter doInBackground(Void... v) {
-            if (Helper.mayAccessStorage(DisciplineActivity.this)) {
+            if (mayAccessStorage) {
                 int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
-                        .getString(getString(R.string.no_my_space_frags), "1")));
+                        .getString(noOfMySpaceFrags, "1")));
                 for (int i = 0; i < noOfMySpaceScreens; i++) {
-                    if (noOfMySpaceScreens == 1) tabTitles.add(getString(R.string.my_space));
-                    else tabTitles.add(getString(R.string.my_space) + " " + (i + 1));
+                    if (noOfMySpaceScreens == 1) tabTitles.add(mySpace);
+                    else tabTitles.add(mySpace + " " + (i + 1));
                 }
             Timber.v("tabTitles.size() = %s", tabTitles.size());
             }
-            return new SimpleFragmentPagerAdapter(getSupportFragmentManager());
+            return new SimpleFragmentPagerAdapter(fragManager);
         }
 
         @Override
         protected void onPostExecute(SimpleFragmentPagerAdapter adapter) {
             super.onPostExecute(adapter);
-
-            if (tabTitles.size() == 1 || !Helper.mayAccessStorage(DisciplineActivity.this))
-                findViewById(R.id.sliding_tabs).setVisibility(View.GONE);
+            if (tabTitles.size() == 1 || !mayAccessStorage)
+                tabLayout.setVisibility(View.GONE);
 
             viewPager.setAdapter(adapter);
             Timber.v("adapter set");
 
-            TabLayout tabLayout = findViewById(R.id.sliding_tabs);
             tabLayout.setupWithViewPager(viewPager);
         }
     }
