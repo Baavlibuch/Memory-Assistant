@@ -4,9 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import android.text.Html;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.memory_athlete.memoryassistant.R;
 
@@ -64,7 +64,7 @@ public class RecallComplex extends RecallSimple {
         complexListView.setVisibility(View.VISIBLE);
         if (complexListView.getAdapter() == null)
             complexListView.setAdapter(new ResponseAdapter(this, answers));
-        Timber.v("answers.size() = " + answers.size());
+        Timber.v("answers.size() = %s", answers.size());
         Timber.v("setResponseLayout() complete");
     }
 
@@ -85,7 +85,7 @@ public class RecallComplex extends RecallSimple {
             responses.add("");
         }
         Collections.shuffle(answers);
-        Timber.v("answers.size() = " + String.valueOf(answers.size()));
+        Timber.v("answers.size() = %s", String.valueOf(answers.size()));
         scanner.close();
 
         Timber.v("getAnswers() complete");
@@ -122,7 +122,7 @@ public class RecallComplex extends RecallSimple {
         mTextResponse = new StringBuilder();      // Used in super class
 
         for (int i = 0; i < answers.size(); i++) {
-            Timber.v("Entered loop " + i);
+            Timber.v("Entered loop %s", i);
             if (isCorrect(i)) continue;
             if (missed > 8 && missed > correct) break;
             if (isLeft(i)) continue;
@@ -184,6 +184,7 @@ public class RecallComplex extends RecallSimple {
 
         setResponseLayout(false);
         givenUp = false;
+        resetSWFlag = true;
 
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.button_bar).setVisibility(View.VISIBLE);
@@ -193,6 +194,7 @@ public class RecallComplex extends RecallSimple {
         Timber.v("Recall Reset Complete");
     }
 
+    @SuppressLint("StaticFieldLeak")
     class LoadAnswersAsyncTask extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected void onPreExecute() {
@@ -244,22 +246,17 @@ public class RecallComplex extends RecallSimple {
             editText.setText(responses.get(position));
             editText.setTag(Integer.toString(position));
 
-            editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_NEXT)
-                        ((ListView) (editText.getParent()).getParent()).smoothScrollToPosition(
-                                2 + Integer.parseInt(editText.getTag().toString()));
-                    return false;
-                }
+            editText.setOnEditorActionListener((v, actionId, event) -> {
+                if (actionId == EditorInfo.IME_ACTION_NEXT)
+                    ((ListView) (editText.getParent()).getParent()).smoothScrollToPosition(
+                            2 + Integer.parseInt(editText.getTag().toString()));
+                return false;
             });
 
-            editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (hasFocus) return;
-                    int position = Integer.parseInt(editText.getTag().toString());
-                    responses.set(position, editText.getText().toString());
-                }
+            editText.setOnFocusChangeListener((v, hasFocus) -> {
+                if (hasFocus) return;
+                int position1 = Integer.parseInt(editText.getTag().toString());
+                responses.set(position1, editText.getText().toString());
             });
 
             return convertView;

@@ -1,10 +1,12 @@
 package com.memory_athlete.memoryassistant.recall;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.View;
@@ -38,6 +40,7 @@ import static java.lang.Math.pow;
 
 public class RecallSimple extends AppCompatActivity {
     protected boolean givenUp = false;
+    protected boolean resetSWFlag = true;
 
     protected ArrayList<String> responses = new ArrayList<>();
     protected ArrayList<String> answers = new ArrayList<>();
@@ -535,6 +538,7 @@ public class RecallSimple extends AppCompatActivity {
 
         setResponseLayout(false);
         givenUp = false;
+        resetSWFlag = true;
 
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
         findViewById(R.id.result).setVisibility(View.GONE);
@@ -553,14 +557,18 @@ public class RecallSimple extends AppCompatActivity {
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         }
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
+        //noinspection unchecked            // couldn't find a fix. Help out if you can
         (new CompareAsyncTask()).execute();
     }
 
     public void startSW(View view) {
-        ((Chronometer) findViewById(R.id.time_elapsed_value)).start();
+        Chronometer chronometer = findViewById(R.id.time_elapsed_value);
+        if (resetSWFlag) chronometer.setBase(SystemClock.elapsedRealtime());           // start from zero if reset
+        chronometer.start();
         findViewById(R.id.time_elapsed_value).setVisibility(View.VISIBLE);
         findViewById(R.id.result).setVisibility(View.VISIBLE);
         ((TextView) findViewById(R.id.time_elapsed_header)).setText(R.string.time_elapsed);
+        resetSWFlag = false;
     }
 
     public void giveUp(View view) {
@@ -578,6 +586,7 @@ public class RecallSimple extends AppCompatActivity {
                 TextView.BufferType.SPANNABLE);
     }
 
+    @SuppressLint("StaticFieldLeak")
     protected class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Boolean> {
 
         @Override
@@ -642,6 +651,7 @@ public class RecallSimple extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class JustAnswersAsyncTask extends AsyncTask<Void, String, String> {
         @Override
         protected void onPreExecute() {
