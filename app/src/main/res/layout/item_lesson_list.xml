@@ -32,7 +32,8 @@
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/drop_down"
             android:padding="8dp"
-            android:src="@drawable/ic_action_drop_down" />
+            android:id="@+id/arrow_image_view"
+            android:src="@drawable/ic_arrow_drop_down_dark" />
 
     </LinearLayout>
 
