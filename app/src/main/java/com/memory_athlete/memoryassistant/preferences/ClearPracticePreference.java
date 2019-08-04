@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 
-import androidx.preference.Preference;
+import android.preference.Preference;
 
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
+import java.util.Objects;
 
 /**
  * Created by Manik on 10/09/17.
@@ -45,14 +46,14 @@ public class ClearPracticePreference extends Preference {
         };
         for (File file : arr)
             if (file.exists()) deleteRecursive(file);
-
     }
 
     private void deleteRecursive(File fileOrDirectory) {
         if (fileOrDirectory.isDirectory())
-            for (File child : fileOrDirectory.listFiles())
+            for (File child : Objects.requireNonNull(fileOrDirectory.listFiles()))
                 deleteRecursive(child);
 
+        //noinspection ResultOfMethodCallIgnored
         fileOrDirectory.delete();
     }
 }
