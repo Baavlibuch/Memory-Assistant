@@ -86,7 +86,6 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
-    //androidTestImplementation 'androidx.annotation:annotation:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:' + espressoVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + espressoVersion
 }
