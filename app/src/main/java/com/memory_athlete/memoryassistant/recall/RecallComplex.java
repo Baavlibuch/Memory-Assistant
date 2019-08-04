@@ -124,7 +124,7 @@ public class RecallComplex extends RecallSimple {
         for (int i = 0; i < answers.size(); i++) {
             Timber.v("Entered loop %s", i);
             if (isCorrect(i)) continue;
-            if (missed > 8 && missed > correct) break;
+            if (missedCount > 8 && missedCount > correctCount) break;
             if (isLeft(i)) continue;
             // TODO : add spell check
             isWrong(i);
@@ -135,7 +135,7 @@ public class RecallComplex extends RecallSimple {
     protected boolean isLeft(int i) {
         String event = answers.get(i).split(" - ")[0];
         if (responses.get(i).equals("") || responses.get(i).equals(" ")) {
-            missed++;
+            missedCount++;
             recallList.add(new RecallObject(answers.get(i).split(" - ")[1],
                     responses.get(i), "<font color=#FF9500>" + event + "</font>"));
             return true;
@@ -146,7 +146,7 @@ public class RecallComplex extends RecallSimple {
     protected boolean isCorrect(int i) {
         String event = answers.get(i).split(" - ")[0];
         if (responses.get(i).equalsIgnoreCase(event)) {
-            correct++;
+            correctCount++;
             recallList.add(new RecallObject(answers.get(i).split(" - ")[1], responses.get(i),
                     event));
             return true;
@@ -156,7 +156,7 @@ public class RecallComplex extends RecallSimple {
 
     protected void isWrong(int i) {
         String event = answers.get(i).split(" - ")[0];
-        wrong++;
+        wrongCount++;
         recallList.add(new RecallObject(answers.get(i).split(" - ")[1],
                 "<font color=#FF0000>" + responses.get(i) + "</font>",
                 "<font color=#FF0000>" + event + "</font>"));
@@ -174,9 +174,10 @@ public class RecallComplex extends RecallSimple {
 
     @Override
     protected void reset() {
-        wrong = 0;
-        missed = 0;
-        correct = 0;
+        wrongCount = 0;
+        missedCount = 0;
+        correctCount = 0;
+        extraCount = 0;
         recallList.clear();
         mTextAnswer = new StringBuilder();
         mTextResponse = new StringBuilder();

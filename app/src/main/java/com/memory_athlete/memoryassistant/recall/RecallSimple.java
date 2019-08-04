@@ -51,11 +51,11 @@ public class RecallSimple extends AppCompatActivity {
     protected CompareFormat compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
     protected ResponseFormat responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;
 
-    protected int correct = 0;
-    protected int wrong = 0;
-    protected int missed = 0;
-    protected int extra = 0;
-    protected int spelling = 0;
+    protected int correctCount = 0;                     // 1 point
+    protected int wrongCount = 0;                       // 10 points penalized
+    protected int missedCount = 0;                      // 5 points penalized
+    protected int extraCount = 0;                       // 2 points penalized
+    protected int spelling = 0;                         // 1 point penalized. not displayed
 
     protected StringBuilder mTextAnswer = null;
     protected StringBuilder mTextResponse = null;
@@ -277,14 +277,14 @@ public class RecallSimple extends AppCompatActivity {
         for (; i < responses.size() && j < answers.size(); i++, j++) {
             Timber.v("Entered loop " + (i + j) + " - response " + responses.get(i) + ", answer " + answers.get(j));
             if (isCorrect(i, j)) continue;
-            if (missed > 8 && missed > correct) break;
+            if (missedCount > 8 && missedCount > correctCount) break;
             if (words && isSpelling(i, j)) {
                 spelling++;
                 mTextAnswer.append("<font color=#EEEE00>").append(answers.get(j))
                         .append("</font>").append(" ").append(whitespace);
                 mTextResponse.append("<font color=#EEEE00>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
-                correct++;
+                correctCount++;
                 continue;
             }
 
@@ -294,7 +294,7 @@ public class RecallSimple extends AppCompatActivity {
                     continue;
                 }
                 Timber.v("missed");
-                missed++;
+                missedCount++;
                 mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
                 mTextResponse.append("<font color=#FF9500>").append(answers.get(j))
                         .append("</font>").append(" ").append(whitespace);
@@ -315,7 +315,7 @@ public class RecallSimple extends AppCompatActivity {
 
     protected boolean isCorrect(int i, int j) {
         if (responses.get(i).equalsIgnoreCase(answers.get(j))) {
-            correct++;
+            correctCount++;
             mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
             mTextResponse.append(responses.get(i)).append(" ").append(whitespace);
             return true;
@@ -367,7 +367,7 @@ public class RecallSimple extends AppCompatActivity {
                         .append("</font>").append(" ").append(whitespace);
                 mTextAnswer.append("<font color=#1D6C21>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
-                extra++;
+                extraCount++;
                 return true;
             }
         }
@@ -375,7 +375,7 @@ public class RecallSimple extends AppCompatActivity {
     }
 
     protected void isWrong(int i, int j) {
-        wrong++;
+        wrongCount++;
         mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
                 .append(" ").append(whitespace);
         mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
@@ -421,7 +421,7 @@ public class RecallSimple extends AppCompatActivity {
         for (; i < responses.size() && j < answers.size(); i++, j++) {
             Timber.v("Entered loop " + (i + j) + " - response " + responses.get(i) + ", answer " + answers.get(j));
             if (isCorrectMixed(i, j)) continue;
-            if (missed > 8 && missed > correct) break;
+            if (missedCount > 8 && missedCount > correctCount) break;
             if (isLeftMixed(i, j)) continue;
 
             if (isMissMixed(i, j)) {
@@ -430,7 +430,7 @@ public class RecallSimple extends AppCompatActivity {
                     continue;
                 }
                 Timber.v("missed");
-                missed++;
+                missedCount++;
                 mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
                 mTextResponse.append("<font color=#FF9500>").append(answers.get(j))
                         .append("</font>").append(" ").append(whitespace);
@@ -451,7 +451,7 @@ public class RecallSimple extends AppCompatActivity {
 
     protected boolean isLeftMixed(int i, int j) {
         if (responses.get(i).equals(" ")) {
-            missed++;
+            missedCount++;
             mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
             mTextResponse.append("<font color=#FF9500>").append(answers.get(j)).append("</font>")
                     .append(" ").append(whitespace);
@@ -461,7 +461,7 @@ public class RecallSimple extends AppCompatActivity {
 
     protected boolean isCorrectMixed(int i, int j) {
         if (responses.get(i).equals(answers.get(j))) {
-            correct++;
+            correctCount++;
             mTextAnswer.append(answers.get(j)).append(" ").append(whitespace);
             mTextResponse.append(responses.get(i)).append(" ").append(whitespace);
             return true;
@@ -469,7 +469,7 @@ public class RecallSimple extends AppCompatActivity {
     }
 
     protected boolean isMissMixed(int i, int j) {
-        int match = 0, k, checkRange = 10 + missed;
+        int match = 0, k, checkRange = 10 + missedCount;
 
         if (i < 3) k = 1;
         else if (responses.size() - i < 5) k = -1;
@@ -511,7 +511,7 @@ public class RecallSimple extends AppCompatActivity {
                         .append("</font>").append(" ").append(whitespace);
                 mTextAnswer.append("<font color=#1D6C21>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
-                extra++;
+                extraCount++;
                 return true;
             }
         }
@@ -519,7 +519,7 @@ public class RecallSimple extends AppCompatActivity {
     }
 
     protected void isWrongMixed(int i, int j) {
-        wrong++;
+        wrongCount++;
         mTextAnswer.append("<font color=#FF0000>").append(answers.get(j)).append("</font>")
                 .append(" ").append(whitespace);
         mTextResponse.append("<font color=#FF0000>").append(responses.get(i))
@@ -528,9 +528,10 @@ public class RecallSimple extends AppCompatActivity {
 
 
     protected void reset() {
-        wrong = 0;
-        missed = 0;
-        correct = 0;
+        wrongCount = 0;
+        missedCount = 0;
+        correctCount = 0;
+        extraCount = 0;
         answers.clear();
         responses.clear();
         mTextAnswer = new StringBuilder();
@@ -628,8 +629,8 @@ public class RecallSimple extends AppCompatActivity {
             Timber.v("mTextAnswer length = %s", String.valueOf(mTextResponse.toString().length()));
             Timber.v("answer 0 = %s", answers.get(0));
 
-            if (correct == answers.size() && !mDiscipline.equals(getString(R.string.binary)) &&
-                    pow(2, sharedPreferences.getInt("level", 1) + 2) == correct)
+            if (correctCount == answers.size() && !mDiscipline.equals(getString(R.string.binary)) &&
+                    pow(2, sharedPreferences.getInt("level", 1) + 2) == correctCount)
                 sharedPreferences.edit().putInt("level",
                         1 + sharedPreferences.getInt("level", 1)).apply();
 
@@ -638,14 +639,14 @@ public class RecallSimple extends AppCompatActivity {
             findViewById(R.id.recall_layout).setVisibility(View.VISIBLE);
             findViewById(R.id.responses_text_layout).setVisibility(View.VISIBLE);
 
-            ((TextView) findViewById(R.id.no_of_correct)).setText(String.valueOf(correct));
-            ((TextView) findViewById(R.id.no_of_wrong)).setText(String.valueOf(wrong));
-            ((TextView) findViewById(R.id.no_of_missed)).setText(String.valueOf(missed));
-            ((TextView) findViewById(R.id.no_of_extra)).setText(String.valueOf(extra));
+            ((TextView) findViewById(R.id.no_of_correct)).setText(String.valueOf(correctCount));
+            ((TextView) findViewById(R.id.no_of_wrong)).setText(String.valueOf(wrongCount));
+            ((TextView) findViewById(R.id.no_of_missed)).setText(String.valueOf(missedCount));
+            ((TextView) findViewById(R.id.no_of_extra)).setText(String.valueOf(extraCount));
             ((TextView) findViewById(R.id.value_of_score)).setText(String.valueOf(
-                    correct - 10 * wrong - 5 * missed - 2 * extra - spelling));
+                    correctCount - 10 * wrongCount - 5 * missedCount - 2 * extraCount - spelling));
 
-            if (missed > 8 && missed > correct) Toast.makeText(getApplicationContext(),
+            if (missedCount > 8 && missedCount > correctCount) Toast.makeText(getApplicationContext(),
                     "Very less accuracy", Toast.LENGTH_SHORT).show();
             postExecuteCompare();
         }
