@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.lessons;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,11 +27,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import timber.log.Timber;
 
+import static com.memory_athlete.memoryassistant.Helper.clickableViewAnimation;
+
 public class LessonFragment extends Fragment {
     private Activity activity;
+    private int textColor;
+    private int dropDownResId;
+    private int dropUpResId;
 
     public LessonFragment() {
     }
@@ -40,6 +48,7 @@ public class LessonFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_lesson, container, false);
         Bundle bundle = getArguments();
         activity = getActivity();
+        theme();
 
         StringBuilder sb = new StringBuilder();     // Initialised to empty string to distinguish
                                                     // from null which is returned after reading
@@ -75,6 +84,7 @@ public class LessonFragment extends Fragment {
                 Timber.v("listView set");
                 return rootView;
             }
+            // ignore this warning. The code relies on reassigning values to the variable
             sb = readAsset(sb, bundle);                                             // non-list
         }
         if (sb == null) {
@@ -91,6 +101,27 @@ public class LessonFragment extends Fragment {
             rootView.findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
         }
         return rootView;
+    }
+
+    protected void theme() {
+        String theme = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getActivity()))
+                .getString(getString(R.string.theme), "AppTheme");
+        switch (theme) {
+            case "Dark":
+                textColor = Color.LTGRAY;
+                dropDownResId = R.drawable.ic_arrow_drop_down_dark;
+                dropUpResId = R.drawable.ic_arrow_drop_up_dark;
+                break;
+            case "Night":
+                textColor = Color.LTGRAY;
+                dropDownResId = R.drawable.ic_arrow_drop_down_pitch;
+                dropUpResId = R.drawable.ic_arrow_drop_up_pitch;
+                break;
+            default:
+                textColor = Color.DKGRAY;
+                dropDownResId = R.drawable.ic_arrow_drop_down_light;
+                dropUpResId = R.drawable.ic_arrow_drop_up_light;
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -115,7 +146,6 @@ public class LessonFragment extends Fragment {
     private String themeForWebView() {
         String theme = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getString(getString(R.string.theme), "AppTheme");
-        assert theme != null;
         switch (theme) {
             case "Dark":
                 return "<style>\n" +
@@ -275,55 +305,52 @@ public class LessonFragment extends Fragment {
                         R.layout.item_lesson_list, null, true);
 
             final Item item = getItem(position);
-            //if (item==null){
-            //  finish();
-            //return listItemView;
-            //}
-            final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);
+            final ImageView arrowImageView = listItemView.findViewById(R.id.arrow_image_view);
+            final TextView contentTextView = listItemView.findViewById(R.id.lesson_item_body);
             final View progressBar = listItemView.findViewById(R.id.lesson_list_progress_bar);
+            TextView headerTextView = listItemView.findViewById(R.id.lesson_item_header_text);
+            View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
+
+            arrowImageView.setImageResource(dropDownResId);
+            clickableViewAnimation(headerLayout, getContext());
+            clickableViewAnimation(contentTextView, getContext());
 
             if (position > 0) {
-                textView1.setVisibility(View.GONE);
-                textView1.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View view) {
-                        textView1.setVisibility(View.GONE);
-                        return false;
-                    }
+                contentTextView.setVisibility(View.GONE);
+                contentTextView.setOnLongClickListener(view -> {
+                    contentTextView.setVisibility(View.GONE);
+                    return false;
                 });
-                //Timber.v("listItem " + position + "-1 visibility=" + getItem(position-1).)
             }
 
             assert item != null;
             Timber.v("mHeader = %s", item.mHeader);
 
-            TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
-            View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
             if (item.mHeader == null || item.mHeader.equals("")) {
                 headerLayout.setVisibility(View.GONE);
-                textView1.setText(Html.fromHtml("<font color=#111111>" + item.mText
-                        + "</font>"));
-                textView1.setVisibility(View.VISIBLE);
+                contentTextView.setText(Html.fromHtml(item.mText));
+                contentTextView.setTextColor(textColor);
+                contentTextView.setVisibility(View.VISIBLE);
                 Timber.v("body = %s", item.mText);
             } else {
-                textView.setText(Html.fromHtml("<font color=#000000>" + item.mHeader
-                        + "</font>"));
+                headerTextView.setText(Html.fromHtml(item.mHeader));
+                headerTextView.setTextColor(textColor);
                 headerLayout.setVisibility(View.VISIBLE);
-                headerLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (textView1.getVisibility() == View.GONE) {
-                            progressBar.setVisibility(View.VISIBLE);
-                            textView1.post(new Runnable() {
-                                public void run() {
-                                    Timber.v("mText = %s", item.mText);
-                                    textView1.setText(Html.fromHtml("<font color=#111111>"
-                                            + item.mText + "</font>"));
-                                    progressBar.setVisibility(View.GONE);
-                                    textView1.setVisibility(View.VISIBLE);
-                                }
-                            });
-                        } else textView1.setVisibility(View.GONE);
+                headerLayout.setOnClickListener(view -> {
+                    if (contentTextView.getVisibility() == View.GONE) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        arrowImageView.setImageResource(dropUpResId);
+                        contentTextView.post(() -> {
+                            Timber.v("mText = %s", item.mText);
+                            contentTextView.setText(Html.fromHtml(item.mText));
+                            contentTextView.setTextColor(textColor);
+                            progressBar.setVisibility(View.GONE);
+                            contentTextView.setVisibility(View.VISIBLE);
+                            ((ListView) parent).smoothScrollToPosition(position);
+                        });
+                    } else {
+                        contentTextView.setVisibility(View.GONE);
+                        arrowImageView.setImageResource(dropDownResId);
                     }
                 });
             }
