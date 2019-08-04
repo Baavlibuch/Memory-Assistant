@@ -55,7 +55,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:layout_marginTop="8dp"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:shadowColor="#44cccccc"
+                            android:shadowRadius="2"/>
 
                     </LinearLayout>
 
@@ -80,7 +82,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:layout_marginTop="8dp"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:shadowColor="#44cccccc"
+                            android:shadowRadius="2"/>
 
                     </LinearLayout>
 
@@ -224,7 +228,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/correct"
-                        android:textColor="#00EE00" />
+                        android:textColor="#FF00EE00"
+                        android:shadowColor="#8800EE00"
+                        android:shadowRadius="1"/>
 
                     <TextView
                         android:id="@+id/no_of_correct"
@@ -247,7 +253,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wrong"
-                        android:textColor="#FF0000" />
+                        android:textColor="#FFFF0000"
+                        android:shadowColor="#88FF0000"
+                        android:shadowRadius="1"/>
 
                     <TextView
                         android:id="@+id/no_of_wrong"
@@ -270,7 +278,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/missed"
-                        android:textColor="#FF9500" />
+                        android:textColor="#FFFF9500"
+                        android:shadowColor="#88FF9500"
+                        android:shadowRadius="1"/>
 
                     <TextView
                         android:id="@+id/no_of_missed"
@@ -292,7 +302,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/extra"
-                        android:textColor="#1D6C21" />
+                        android:textColor="#FF1D6C21"
+                        android:shadowColor="#881D6C21"
+                        android:shadowRadius="1"/>
 
                     <TextView
                         android:id="@+id/no_of_extra"

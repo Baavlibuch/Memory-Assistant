@@ -280,9 +280,9 @@ public class RecallSimple extends AppCompatActivity {
             if (missedCount > 8 && missedCount > correctCount) break;
             if (words && isSpelling(i, j)) {
                 spelling++;
-                mTextAnswer.append("<font color=#EEEE00>").append(answers.get(j))
+                mTextAnswer.append("<font color=#EEE000>").append(answers.get(j))
                         .append("</font>").append(" ").append(whitespace);
-                mTextResponse.append("<font color=#EEEE00>").append(responses.get(i))
+                mTextResponse.append("<font color=#EEE000>").append(responses.get(i))
                         .append("</font>").append(" ").append(whitespace);
                 correctCount++;
                 continue;
