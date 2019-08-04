@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.lessons;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -40,6 +41,7 @@ import static com.memory_athlete.memoryassistant.Helper.clickableViewAnimation;
  */
 
 public class Lessons extends AppCompatActivity {
+    int textColor;
 
     @Override
     public void onBackPressed() {
@@ -121,13 +123,16 @@ public class Lessons extends AppCompatActivity {
         switch (theme) {
             case "Dark":
                 setTheme(R.style.dark);
+                textColor = Color.LTGRAY;
                 break;
             case "Night":
                 setTheme(R.style.pitch);
                 (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+                textColor = Color.LTGRAY;
                 break;
             default:
                 setTheme(R.style.light);
+                textColor = Color.DKGRAY;
         }
         int header = intent.getIntExtra("mHeader", 0);
         if (header != 0)
@@ -311,19 +316,19 @@ public class Lessons extends AppCompatActivity {
                         R.layout.item_lesson_list, null, true);
 
             final Item item = getItem(position);
-            final TextView textView1 = listItemView.findViewById(R.id.lesson_item_body);
+            final TextView contentTextView = listItemView.findViewById(R.id.lesson_item_body);
             final View progressBar = listItemView.findViewById(R.id.lesson_list_progress_bar);
-            TextView textView = listItemView.findViewById(R.id.lesson_item_header_text);
+            TextView headerTextView = listItemView.findViewById(R.id.lesson_item_header_text);
             View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
 
             clickableViewAnimation(headerLayout, getContext());
-            clickableViewAnimation(textView1, getContext());
+            clickableViewAnimation(contentTextView, getContext());
 
-            if (position == 0) textView1.setMovementMethod(LinkMovementMethod.getInstance());
+            if (position == 0) contentTextView.setMovementMethod(LinkMovementMethod.getInstance());
             else {
-                textView1.setVisibility(View.GONE);
-                textView1.setOnLongClickListener(view -> {
-                    textView1.setVisibility(View.GONE);
+                contentTextView.setVisibility(View.GONE);
+                contentTextView.setOnLongClickListener(view -> {
+                    contentTextView.setVisibility(View.GONE);
                     return false;
                 });
             }
@@ -332,26 +337,26 @@ public class Lessons extends AppCompatActivity {
 
             if (item.mHeader == null || item.mHeader.equals("")) {
                 headerLayout.setVisibility(View.GONE);
-                textView1.setText(Html.fromHtml("<font color=#111111>"
-                        + item.mText + "</font>"));
-                textView1.setVisibility(View.VISIBLE);
+                contentTextView.setText(Html.fromHtml(item.mText));
+                contentTextView.setTextColor(textColor);
+                contentTextView.setVisibility(View.VISIBLE);
                 Timber.v("body = %s", item.mText);
             } else {
-                textView.setText(Html.fromHtml("<font color=#000000>"
-                        + item.mHeader + "</font>"));
+                headerTextView.setText(Html.fromHtml(item.mHeader));
+                headerTextView.setTextColor(textColor);
                 headerLayout.setVisibility(View.VISIBLE);
                 headerLayout.setOnClickListener(view -> {
-                    if (textView1.getVisibility() == View.GONE) {
+                    if (contentTextView.getVisibility() == View.GONE) {
                         progressBar.setVisibility(View.VISIBLE);
-                        textView1.post(() -> {
+                        contentTextView.post(() -> {
                             Timber.v("mText = %s", item.mText);
-                            textView1.setText(Html.fromHtml("<font color=#111111>"
-                                    + item.mText + "</font>"));
+                            contentTextView.setText(Html.fromHtml(item.mText));
+                            contentTextView.setTextColor(textColor);
                             progressBar.setVisibility(View.GONE);
-                            textView1.setVisibility(View.VISIBLE);
+                            contentTextView.setVisibility(View.VISIBLE);
                             ((ListView) parent).smoothScrollToPosition(position);
                         });
-                    } else textView1.setVisibility(View.GONE);
+                    } else contentTextView.setVisibility(View.GONE);
                 });
             }
 

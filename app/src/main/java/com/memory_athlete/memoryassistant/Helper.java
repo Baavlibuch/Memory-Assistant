@@ -176,6 +176,7 @@ public class Helper {
                 context.setTheme(R.style.light);
         }
     }
+    // custom themes - Cards, Lessons,
 
     public static boolean makeDirectory(String path) {                  // return true if directory was created successfully. throws exception otherwise
         File pDir = new File(path);

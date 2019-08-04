@@ -11,7 +11,13 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
+    public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
+    }
+
+    @Test
+    public void parseDecimalFromHexString(){
+        String hex = "999999";
+        assertEquals(10066329, Integer.parseInt(hex, 16));
     }
 }
