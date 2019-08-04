@@ -5,10 +5,11 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.preference.PreferenceManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -95,18 +96,6 @@ public class Helper {
     public static String[] suitDescriptions() {
         return new String[]{"Spades", "Hearts", "Diamonds", "Clubs"};
     }
-
-//    public static int[] makePracticeFrags() {
-//        int[] frags = new int[7];
-//        frags[0] = R.string.numbers;
-//        frags[1] = R.string.words;
-//        frags[2] = R.string.names;
-//        frags[3] = R.string.places_capital;
-//        frags[4] = R.string.cards;
-//        frags[5] = R.string.binary;
-//        frags[6] = R.string.letters;
-//        return frags;
-//    }
 
     public static String[] makeCardString() {
         return new String[]{

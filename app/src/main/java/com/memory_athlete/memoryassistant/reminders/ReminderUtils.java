@@ -3,7 +3,7 @@ package com.memory_athlete.memoryassistant.reminders;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import androidx.annotation.NonNull;
 
 import com.firebase.jobdispatcher.Driver;

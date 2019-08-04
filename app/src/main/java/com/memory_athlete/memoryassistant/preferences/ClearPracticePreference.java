@@ -2,8 +2,9 @@ package com.memory_athlete.memoryassistant.preferences;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.preference.Preference;
 import android.util.AttributeSet;
+
+import androidx.preference.Preference;
 
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
