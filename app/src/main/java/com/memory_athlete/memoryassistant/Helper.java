@@ -26,7 +26,7 @@ import static androidx.core.content.PermissionChecker.checkSelfPermission;
  */
 
 public class Helper {
-    public static final String APP_FOLDER = Environment.getExternalStorageDirectory().toString()
+    public static final String APP_FOLDER = Environment.getExternalStorageDirectory().getAbsolutePath()
             + "/Memory Assistant/";
     private static final int REQUEST_STORAGE_ACCESS = 555;
 
