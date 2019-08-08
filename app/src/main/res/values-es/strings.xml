@@ -124,11 +124,9 @@
     <string name="associations">La asociación perfecta</string>
     <string name="major_system">El sistema mayor</string>
     <string name="equations">Ecuaciones</string>
-    <string name="derivations">Derivaciones</string>
     <string name="checkout">Hay más para aprender</string>
     <string name="pao">El sistema de memoria PAO</string>
     <string name="wardrobe_method">Método de vestuario</string>
-    <string name="vocab">Vocabulario</string>
     <string name="already_purchased">Ya ha realizado esa transacción\nProbar otra cosa: p</string>
     <string name="donate_amounts">Lista de cantidades donables</string>
     <string name="thanks">Gracias</string>
@@ -143,5 +141,21 @@
     <string name="speech_rate">Nivel de conversación</string>
     <string name="word_new">Nuevo</string>
     <string name="privacy_policy">Política de privacidad</string>
+    <string name="check_storage">Por favor verifique el almacenamiento</string>
+    <string name="dl_from_play">Para un correcto funcionamiento, descargue la aplicación desde Google Play Store</string>
+    <string name="enter_name">Por favor ingrese un nombre</string>
+    <string name="fnf_try_again">Archivo no encontrado. Inténtalo de nuevo</string>
+    <string name="io_try_again">IOException. Inténtalo de nuevo</string>
+    <string name="language">Idiomas</string>
+    <string name="nameless_file">No guardó el archivo sin nombre</string>
+    <string name="not_found">No encontrado</string>
+    <string name="saved">Salvado</string>
+    <string name="search">Buscar</string>
+    <string name="search_from_start">Alcanzó el fondo. Buscando desde arriba</string>
+    <string name="shorter_name">Inténtalo de nuevo con un nombre más corto</string>
+    <string name="storage_full">Dispositivo de almacenamiento lleno</string>
+    <string name="storage_permissions">Se necesita permiso para acceder al almacenamiento</string>
+    <string name="wait">por favor espera</string>
+    <string name="fake_dates">Estas fechas no son reales</string>
 
 </resources>

@@ -124,11 +124,9 @@
     <string name="associations">পারফেক্ট সমিতি</string>
     <string name="major_system">মেজর সিস্টেম</string>
     <string name="equations">সমীকরণ</string>
-    <string name="derivations">Derivations</string>
     <string name="checkout">আরও শিখতে হবে</string>
     <string name="pao">পিএও মেমরি সিস্টেম</string>
     <string name="wardrobe_method">ওয়ারড্রোব পদ্ধতি</string>
-    <string name="vocab">শব্দতালিকা</string>
     <string name="already_purchased">আপনি ইতিমধ্যে সেই লেনদেন করেছেন\n অন্য কিছু চেষ্টা করুন: পি</string>
     <string name="donate_amounts">অনুদানযোগ্য পরিমাণের তালিকা</string>
     <string name="thanks">ধন্যবাদ</string>
@@ -143,5 +141,21 @@
     <string name="speech_rate">স্পিচ রেট</string>
     <string name="word_new">নতুন</string>
     <string name="privacy_policy">গোপনীয়তা নীতি</string>
+    <string name="check_storage">স্টোরেজ পরীক্ষা করুন</string>
+    <string name="dl_from_play">সঠিক কাজের জন্য, দয়া করে গুগল প্লে স্টোর থেকে অ্যাপটি ডাউনলোড করুন</string>
+    <string name="enter_name">একটি নাম লিখুন</string>
+    <string name="fnf_try_again">ফাইল পাওয়া যায় নি। আবার চেষ্টা কর</string>
+    <string name="io_try_again">IOException। আবার চেষ্টা করুন</string>
+    <string name="language">ভাষাসমূহ</string>
+    <string name="nameless_file">নামহীন ফাইল সংরক্ষণ করেন নি</string>
+    <string name="not_found">খুঁজে পাওয়া যায়নি</string>
+    <string name="saved">সংরক্ষিত</string>
+    <string name="search">অনুসন্ধান করুন</string>
+    <string name="search_from_start">নীচে পৌঁছেছে। উপর থেকে অনুসন্ধান করা হচ্ছে</string>
+    <string name="shorter_name">সংক্ষিপ্ত নাম দিয়ে আবার চেষ্টা করুন</string>
+    <string name="storage_full">ডিভাইস স্টোরেজ পূর্ণ</string>
+    <string name="storage_permissions">স্টোরেজ অ্যাক্সেসের অনুমতি প্রয়োজন</string>
+    <string name="wait">অনুগ্রহপূর্বক অপেক্ষা করুন</string>
+    <string name="fake_dates">এই তারিখগুলি আসল নয়</string>
 
 </resources>

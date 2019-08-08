@@ -124,11 +124,9 @@
     <string name="associations">完全な協会</string>
     <string name="major_system">主要なシステム</string>
     <string name="equations">方程式</string>
-    <string name="derivations">派生物</string>
     <string name="checkout">学ぶべきことはまだあります</string>
     <string name="pao">PAOメモリシステム</string>
     <string name="wardrobe_method">ワードローブ方式</string>
-    <string name="vocab">単語</string>
     <string name="already_purchased">あなたはすでにそのトランザクションを行っています\ n他の何かを試してください：p</string>
     <string name="donate_amounts">寄付可能な金額のリスト</string>
     <string name="thanks">ありがとう</string>
@@ -143,5 +141,20 @@
     <string name="speech_rate">話速</string>
     <string name="word_new">新しい</string>
     <string name="privacy_policy">個人情報保護方針</string>
+    <string name="check_storage">ストレージを確認してください</string>
+    <string name="dl_from_play">正しく機能するには、Google Playストアからアプリをダウンロードしてください</string>
+    <string name="enter_name">名前を入力してください</string>
+    <string name="fnf_try_again">ファイルが見つかりません。再試行</string>
+    <string name="io_try_again">IOException。もう一度やり直してください</string>
+    <string name="language">言語</string>
+    <string name="nameless_file">名前のないファイルを保存しませんでした</string>
+    <string name="not_found">見つかりません</string>
+    <string name="saved">保存しました</string>
+    <string name="search">探す</string>
+    <string name="search_from_start">Reached the bottom. Searching from the top</string>
+    <string name="shorter_name">短い名前でもう一度お試しください</string>
+    <string name="storage_full">デバイスストレージがいっぱいです</string>
+    <string name="storage_permissions">ストレージへのアクセス許可が必要です</string>
+    <string name="wait">お待ちください</string>
 
 </resources>

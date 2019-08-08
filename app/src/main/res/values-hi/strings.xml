@@ -124,11 +124,9 @@
     <string name="associations">बिल्कुल सही एसोसिएशन</string>
     <string name="major_system">मेजर सिस्टम</string>
     <string name="equations">समीकरण</string>
-    <string name="derivations">derivations</string>
     <string name="checkout">वहाँ अधिक जानने के लिए है</string>
     <string name="pao">पीएओ मेमोरी सिस्टम</string>
     <string name="wardrobe_method">अलमारी विधि</string>
-    <string name="vocab">शब्दावली</string>
     <string name="already_purchased">आपने पहले ही उस लेन-देन\n को कुछ और कर दिया है: p</string>
     <string name="donate_amounts">दान करने योग्य राशियों की सूची</string>
     <string name="thanks">धन्यवाद</string>
@@ -143,5 +141,21 @@
     <string name="speech_rate">भाषण दर</string>
     <string name="word_new">नया</string>
     <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="check_storage">कृपया भंडारण की जाँच करें</string>
+    <string name="dl_from_play">सही कार्यप्रणाली के लिए, कृपया Google Play Store से ऐप डाउनलोड करें</string>
+    <string name="enter_name">कृपया एक नाम दर्ज करें</string>
+    <string name="fnf_try_again">फाइल नहीं मिली। पुनः प्रयास करें</string>
+    <string name="io_try_again">IOException। कृपया पुन: प्रयास करें</string>
+    <string name="language">बोली</string>
+    <string name="nameless_file">नेमलेस फाइल सेव नहीं की</string>
+    <string name="not_found">नहीं मिला</string>
+    <string name="saved">बचाया</string>
+    <string name="search">खोज</string>
+    <string name="search_from_start">नीचे तक पहुँच गया। ऊपर से खोजना</string>
+    <string name="shorter_name">एक छोटे नाम के साथ फिर से प्रयास करें</string>
+    <string name="storage_full">डिवाइस स्टोरेज फुल</string>
+    <string name="storage_permissions">भंडारण तक पहुंच की अनुमति आवश्यक है</string>
+    <string name="wait">कृपया प्रतीक्षा करें</string>
+    <string name="fake_dates">ये तारीखें वास्तविक नहीं हैं</string>
 
 </resources>

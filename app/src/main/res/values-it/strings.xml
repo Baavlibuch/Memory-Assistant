@@ -124,11 +124,9 @@
     <string name="associations">L\'associazione perfetta</string>
     <string name="major_system">Il sistema principale</string>
     <string name="equations">equazioni</string>
-    <string name="derivations">derivazioni</string>
     <string name="checkout">C\'è altro da imparare</string>
     <string name="pao">Il sistema di memoria PAO</string>
     <string name="wardrobe_method">Metodo guardaroba</string>
-    <string name="vocab">Vocabolario</string>
     <string name="already_purchased">Hai già effettuato la transazione\nProva qualcos\'altro: p</string>
     <string name="donate_amounts">Elenco degli importi donabili</string>
     <string name="thanks">Grazie</string>
@@ -143,5 +141,21 @@
     <string name="speech_rate">Velocità del parlato</string>
     <string name="word_new">Nuovo</string>
     <string name="privacy_policy">politica sulla riservatezza</string>
+    <string name="check_storage">Si prega di verificare la conservazione</string>
+    <string name="dl_from_play">Per un corretto funzionamento, scarica l\'app dal Google Play Store</string>
+    <string name="enter_name">Per favore inserisci un nome</string>
+    <string name="fnf_try_again">File non trovato. Riprova</string>
+    <string name="io_try_again">IOException. Per favore riprova</string>
+    <string name="language">Le lingue</string>
+    <string name="nameless_file">Non è stato salvato il file senza nome</string>
+    <string name="not_found">Non trovato</string>
+    <string name="saved">Salvato</string>
+    <string name="search">Ricerca</string>
+    <string name="search_from_start">Raggiunto il fondo. Ricerca dall\'alto</string>
+    <string name="shorter_name">Riprova con un nome più breve</string>
+    <string name="storage_full">Memoria del dispositivo piena</string>
+    <string name="storage_permissions">È necessaria l\'autorizzazione per accedere all\'archiviazione</string>
+    <string name="wait">attendere prego</string>
+    <string name="fake_dates">Queste date non sono reali</string>
 
 </resources>

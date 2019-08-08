@@ -124,11 +124,9 @@
     <string name="associations">Persatuan yang sempurna</string>
     <string name="major_system">Sistem Utama</string>
     <string name="equations">Persamaan</string>
-    <string name="derivations">Derivasi</string>
     <string name="checkout">Ada lebih banyak lagi untuk belajar</string>
     <string name="pao">Sistem Memori PAO</string>
     <string name="wardrobe_method">Kaedah Almari</string>
-    <string name="vocab">Perbendaharaan kata</string>
     <string name="already_purchased">Anda telah membuat urus niaga itu\nTry something else: p</string>
     <string name="donate_amounts">Senarai jumlah donat</string>
     <string name="thanks">Terima kasih</string>
@@ -143,5 +141,21 @@
     <string name="speech_rate">Kadar pertuturan</string>
     <string name="word_new">Baru</string>
     <string name="privacy_policy">Dasar Privasi</string>
+    <string name="check_storage">Sila semak storan</string>
+    <string name="dl_from_play">Untuk berfungsi dengan betul, sila muat turun aplikasi dari Gedung Google Play</string>
+    <string name="enter_name">Sila masukkan nama</string>
+    <string name="fnf_try_again">Fail tidak dijumpai. Cuba lagi</string>
+    <string name="io_try_again">IOException. Sila cuba lagi</string>
+    <string name="language">Bahasa</string>
+    <string name="nameless_file">Tidak menyimpan fail bernama</string>
+    <string name="not_found">Tidak ditemui</string>
+    <string name="saved">Disimpan</string>
+    <string name="search">Carian</string>
+    <string name="search_from_start">Mencapai bahagian bawah. Mencari dari bahagian atas</string>
+    <string name="shorter_name">Cuba lagi dengan nama yang lebih pendek</string>
+    <string name="storage_full">Penyimpanan peranti penuh</string>
+    <string name="storage_permissions">Kebenaran untuk mengakses storan diperlukan</string>
+    <string name="wait">Sila tunggu</string>
+    <string name="fake_dates">Tarikh-tarikh ini tidak benar</string>
 
 </resources>

@@ -124,11 +124,9 @@
     <string name="associations">الرابطة المثالية</string>
     <string name="major_system">النظام الرئيسي</string>
     <string name="equations">معادلات</string>
-    <string name="derivations">الاشتقاقات</string>
     <string name="checkout">هناك المزيد للتعلم</string>
     <string name="pao">نظام ذاكرة PAO</string>
     <string name="wardrobe_method">طريقة خزانة الملابس</string>
-    <string name="vocab">مفردات اللغه</string>
     <string name="already_purchased">لقد قمت بالفعل بهذه المعاملة\n جرب شيئًا آخر: ص</string>
     <string name="donate_amounts">قائمة المبالغ القابلة للتبرع</string>
     <string name="thanks">شكر</string>
@@ -143,5 +141,21 @@
     <string name="speech_rate">تقييم الخطاب</string>
     <string name="word_new">الجديد</string>
     <string name="privacy_policy">سياسة خاصة</string>
+    <string name="check_storage">يرجى التحقق من التخزين</string>
+    <string name="dl_from_play">للحصول على الأداء الصحيح ، يرجى تنزيل التطبيق من متجر Google Play</string>
+    <string name="enter_name">الرجاء إدخال اسم</string>
+    <string name="fnf_try_again">لم يتم العثور على الملف. حاول مجددا</string>
+    <string name="io_try_again">IOException. حاول مرة اخرى</string>
+    <string name="language">اللغات</string>
+    <string name="nameless_file">لم يحفظ ملف مجهول</string>
+    <string name="not_found">لم يتم العثور على</string>
+    <string name="saved">تم الحفظ</string>
+    <string name="search">بحث</string>
+    <string name="search_from_start">وصلت إلى القاع. البحث من الأعلى</string>
+    <string name="shorter_name">حاول مرة أخرى باستخدام اسم أقصر</string>
+    <string name="storage_full">تخزين الجهاز ممتلئ</string>
+    <string name="storage_permissions">مطلوب إذن للوصول إلى التخزين</string>
+    <string name="wait">أرجو الإنتظار</string>
+    <string name="fake_dates">これらの日付は本物ではありません</string>
 
 </resources>

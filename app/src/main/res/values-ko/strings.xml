@@ -124,11 +124,9 @@
     <string name="associations">완벽한 협회</string>
     <string name="major_system">주요 시스템</string>
     <string name="equations">방정식</string>
-    <string name="derivations">파생</string>
     <string name="checkout">더 배울 것이있다</string>
     <string name="pao">PAO 메모리 시스템</string>
     <string name="wardrobe_method">옷장 방법</string>
-    <string name="vocab">어휘</string>
     <string name="already_purchased">해당 거래를 이미 완료했습니다.\n 다른 것을 시도하십시오 : p</string>
     <string name="donate_amounts">기증 가능한 금액 목록</string>
     <string name="thanks">감사</string>
@@ -143,5 +141,21 @@
     <string name="speech_rate">말하기 속도</string>
     <string name="word_new">새로운</string>
     <string name="privacy_policy">개인 정보 정책</string>
+    <string name="check_storage">저장을 확인하십시오</string>
+    <string name="dl_from_play">제대로 작동하려면 Google Play 스토어에서 앱을 다운로드하십시오.</string>
+    <string name="enter_name">이름을 입력하십시오</string>
+    <string name="fnf_try_again">파일을 찾을 수 없습니다. 다시 시도하십시오</string>
+    <string name="io_try_again">IOException. 다시 시도하십시오</string>
+    <string name="language">언어</string>
+    <string name="nameless_file">이름없는 파일을 저장하지 않았습니다</string>
+    <string name="not_found">찾을 수 없음</string>
+    <string name="saved">저장되었습니다</string>
+    <string name="search">검색</string>
+    <string name="search_from_start">바닥에 도달했습니다. 상단에서 검색</string>
+    <string name="shorter_name">더 짧은 이름으로 다시 시도하십시오</string>
+    <string name="storage_full">기기 저장 용량 가득 참</string>
+    <string name="storage_permissions">스토리지 액세스 권한이 필요합니다</string>
+    <string name="wait">기다려주세요</string>
+    <string name="fake_dates">이 날짜는 실제가 아닙니다</string>
 
 </resources>

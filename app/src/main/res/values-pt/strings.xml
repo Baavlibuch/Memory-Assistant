@@ -124,11 +124,9 @@
     <string name="associations">A associação perfeita</string>
     <string name="major_system">O sistema principal</string>
     <string name="equations">Equações</string>
-    <string name="derivations">Derivações</string>
     <string name="checkout">Há mais para aprender</string>
     <string name="pao">O sistema de memória PAO</string>
     <string name="wardrobe_method">Método de guarda-roupa</string>
-    <string name="vocab">Vocabulário</string>
     <string name="already_purchased">Você já fez essa transação\nTente outra coisa: p</string>
     <string name="donate_amounts">Lista de quantias não doáveis</string>
     <string name="thanks">obrigado</string>
@@ -143,5 +141,21 @@
     <string name="speech_rate">Taxa de fala</string>
     <string name="word_new">Novo</string>
     <string name="privacy_policy">Política de Privacidade</string>
+    <string name="check_storage">Verifique o armazenamento</string>
+    <string name="dl_from_play">Para o funcionamento correto, faça o download do aplicativo na Google Play Store</string>
+    <string name="enter_name">Por favor insira um nome</string>
+    <string name="fnf_try_again">Arquivo não encontrado. Tente novamente</string>
+    <string name="io_try_again">IOException. Por favor, tente novamente</string>
+    <string name="language">línguas</string>
+    <string name="nameless_file">Não salvou o arquivo sem nome</string>
+    <string name="not_found">Não encontrado</string>
+    <string name="saved">Salvou</string>
+    <string name="search">Procurar</string>
+    <string name="search_from_start">Nådde bunnen. Søker fra toppen</string>
+    <string name="shorter_name">Prøv igjen med et kortere navn</string>
+    <string name="storage_full">Armazenamento do dispositivo cheio</string>
+    <string name="storage_permissions">É necessária permissão para acessar o armazenamento</string>
+    <string name="wait">Por favor, espere</string>
+    <string name="fake_dates">Essas datas não são reais</string>
 
 </resources>

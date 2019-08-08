@@ -175,5 +175,6 @@
     <string name="dl_from_play">For correct functioning, please download the app from the Google Play Store</string>
     <string name="storage_full">Device storage full</string>
     <string name="wait">Please wait</string>
+    <string name="fake_dates">These dates are not real</string>
 
 </resources>

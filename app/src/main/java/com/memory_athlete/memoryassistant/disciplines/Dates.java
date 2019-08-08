@@ -44,7 +44,7 @@ public class Dates extends WordDisciplineFragment {
         mRecallClass = RecallComplex.class;
         hasSpeech = false;
         rootView.findViewById(R.id.speech_check_box).setVisibility(View.GONE);
-        Toast.makeText(getContext(), "These dates are not real", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), R.string.fake_dates, Toast.LENGTH_LONG).show();
         return rootView;
     }
 
