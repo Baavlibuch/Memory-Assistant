@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.rule.GrantPermissionRule;
 
@@ -10,6 +11,7 @@ import com.memory_athlete.memoryassistant.main.MainActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +22,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static androidx.core.content.PermissionChecker.checkSelfPermission;
 import static com.memory_athlete.memoryassistant.Helper.APP_FOLDER;
 
+@RunWith(AndroidJUnit4ClassRunner.class)
 public class WithStoragePermissionInstrumentedUnitTests {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule

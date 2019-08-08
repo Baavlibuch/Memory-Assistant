@@ -59,7 +59,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     private long mTime = 0;
 
     private boolean isTimerRunning = false;
-    private boolean hasStandard = true;
+    private boolean hasStandard = true;                     // whether the discipline has levels
     boolean hasGroup = true;
     boolean hasSpeech = true;
 
@@ -82,6 +82,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     CheckBox negativeOrDateCheckBox;
     private Spinner groupSpinner;
     private TextView randomTextView;
+    private EditText noOfValuesEditText;
 
     Class mRecallClass;
     private CountDownTimer cdt;
@@ -180,6 +181,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
 
         randomTextView = rootView.findViewById(R.id.random_values);
+        noOfValuesEditText = rootView.findViewById(R.id.no_of_values);
 
         try {
             assert bundle != null;
@@ -292,10 +294,10 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         generateRandom();
         groupSpinner.setVisibility(View.GONE);
         speechCheckBox.setVisibility(View.GONE);
+        noOfValuesEditText.setVisibility(View.GONE);
         rootView.findViewById(R.id.time).setVisibility(View.GONE);
         rootView.findViewById(R.id.level).setVisibility(View.GONE);
         rootView.findViewById(R.id.start).setVisibility(View.GONE);
-        rootView.findViewById(R.id.no_of_values).setVisibility(View.GONE);
         rootView.findViewById(R.id.standard_custom_radio_group).setVisibility(View.GONE);
 
         rootView.findViewById(R.id.recall).setVisibility(View.VISIBLE);
@@ -314,6 +316,14 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     private void Start() {
         Timber.v("Start entered");
+
+        // number of custom random values is zero
+        if ((!((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked() || !hasStandard) &&
+                noOfValuesEditText.getText().toString().length() > 0 &&
+                Integer.parseInt(noOfValuesEditText.getText().toString()) == 0) {
+            noOfValuesEditText.setError("Invalid input");
+            return;
+        }
 
         //Hide the keypad
         InputMethodManager im = (InputMethodManager) activity.getSystemService(

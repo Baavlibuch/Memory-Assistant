@@ -1,11 +1,13 @@
 package com.memory_athlete.memoryassistant;
 
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.rule.ActivityTestRule;
 
 import com.memory_athlete.memoryassistant.recall.RecallSimple;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.io.File;
 import java.nio.file.Paths;
@@ -15,6 +17,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
 
+@RunWith(AndroidJUnit4ClassRunner.class)
 public class CompareInstrumentedUnitTest extends RecallSimple {
     @Rule
     public ActivityTestRule<RecallSimple> mActivityTestRule

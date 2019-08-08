@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class PackageNameInstrumentedUnitTest {
     @Test
