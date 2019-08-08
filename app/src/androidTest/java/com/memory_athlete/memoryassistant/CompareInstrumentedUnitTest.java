@@ -15,13 +15,13 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
 
-public class CompareTest extends RecallSimple {
+public class CompareInstrumentedUnitTest extends RecallSimple {
     @Rule
     public ActivityTestRule<RecallSimple> mActivityTestRule
             = new ActivityTestRule<>(RecallSimple.class);
 
     @Test
-    public void comparisionIsCorrect() throws Exception {
+    public void comparisionIsCorrect() {
         onView(withId(R.id.response_input)).perform(typeText(""));  // TODO fill in the tests
         // single letter
         runTest("a", "a", ResponseFormat.SIMPLE_RESPONSE_FORMAT, "Letters",

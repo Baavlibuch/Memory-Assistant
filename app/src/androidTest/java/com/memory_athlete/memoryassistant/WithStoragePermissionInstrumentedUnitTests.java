@@ -20,7 +20,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static androidx.core.content.PermissionChecker.checkSelfPermission;
 import static com.memory_athlete.memoryassistant.Helper.APP_FOLDER;
 
-public class WithStoragePermissionTests {
+public class WithStoragePermissionInstrumentedUnitTests {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule
             = new ActivityTestRule<>(MainActivity.class);

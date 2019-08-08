@@ -21,7 +21,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
-public class MainActivityTests {
+public class MainActivityInstrumentedUnitTests {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule

@@ -17,7 +17,7 @@ import static androidx.test.espresso.matcher.PreferenceMatchers.withTitle;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
-public class PreferenceActivityTests {
+public class PreferenceActivityInstrumentedUnitTests {
     @Rule
     public ActivityTestRule<Preferences> mActivityTestRule
             = new ActivityTestRule<>(Preferences.class);
