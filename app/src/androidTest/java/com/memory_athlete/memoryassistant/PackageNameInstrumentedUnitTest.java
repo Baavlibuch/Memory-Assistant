@@ -18,10 +18,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class PackageNameInstrumentedUnitTest {
     @Test
-    public void useAppContext() throws Exception {
+    public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         // No longer useful
-        assertEquals("com.memory_athlete.memoryassistant", appContext.getPackageName());
+        assertEquals("com.memory_athelte.memoryassistant", appContext.getPackageName());
     }
 }

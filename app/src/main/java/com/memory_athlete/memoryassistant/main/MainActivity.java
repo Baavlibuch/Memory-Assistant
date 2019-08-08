@@ -110,12 +110,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void mayAccessStorage() {
+        // permissions not needed at runtime
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return;
-
+        // permissions granted
         if (checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return;
+        // request permissions
+        // show popup if never ask again has not been selected
         if (shouldShowRequestPermissionRationale(READ_EXTERNAL_STORAGE)) requestPermissions(new
                 String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
+        // ?
         else requestPermissions(new
                 String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
     }

@@ -419,7 +419,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                     throw new RuntimeException(path + " doesn't exist", e);
                 throw new RuntimeException(e);
             }
-        }
+        } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
+                Toast.LENGTH_LONG).show();
         return false;
     }
 

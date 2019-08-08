@@ -47,7 +47,6 @@ public class Cards extends DisciplineFragment {
     public void onClick(View v) {
         Timber.v("clicked viewId %s", v.getId());
         Timber.v("R.id.cards_and_speech = %s", R.id.cards_and_speech);
-        Timber.v("R.id.activity_cards = %s", R.id.activity_cards);
         switch (v.getId()) {
             case R.id.cards_and_speech:
                 next();
@@ -196,7 +195,8 @@ public class Cards extends DisciplineFragment {
                     Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
                 }
             }
-        }
+        } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
+                Toast.LENGTH_LONG).show();
         return false;
     }
 

@@ -13,6 +13,7 @@ import androidx.preference.PreferenceManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -178,7 +179,8 @@ public class Helper {
     }
     // custom themes - Cards, Lessons,
 
-    public static boolean makeDirectory(String path) {        // return true if directory was created successfully. throws exception otherwise
+    // return true if directory was created successfully. returns false if it fails (when storage permissions are not granted)
+    public static boolean makeDirectory(String path) {
         File pDir = new File(path);
         boolean isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) {
@@ -186,16 +188,17 @@ public class Helper {
                 try {
                     Files.createDirectories(pDir.toPath());
                 } catch (AccessDeniedException e){
+                    // No write permissions
                     return false;
                 } catch (IOException e) {
+                    // Check whether there is another unknown cause;
                     throw new RuntimeException(e);
                 }
                 return true;
             } else isDirectoryCreated = pDir.mkdirs();
         }
         // Build.VERSION.SDK_INT < Build.VERSION_CODES.O
-        if (isDirectoryCreated) return true;
-        throw new RuntimeException("Couldn't create the directory. Path = " + path);// throw exception if fails twice
+        return isDirectoryCreated;
     }
 
     public static boolean externalStorageNotWritable() {

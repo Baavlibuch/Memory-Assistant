@@ -211,7 +211,8 @@ public class Numbers extends DisciplineFragment {
                         Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
+            } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
+                    Toast.LENGTH_LONG).show();
             return false;
         }
         //Case with more digits than 1 or Custom
