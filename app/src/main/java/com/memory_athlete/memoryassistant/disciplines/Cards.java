@@ -70,14 +70,14 @@ public class Cards extends DisciplineFragment {
 
         String theme = PreferenceManager.getDefaultSharedPreferences(activity)
                 .getString(getString(R.string.theme), getString(R.string.light));
-        switch (requireNonNull(theme)) {
-            case "Dark":
-                cardAndSpeechImageView.setAlpha(0.8f);
-                gridView.setAlpha(0.8f);
-                break;
-            case "Night":
-                cardAndSpeechImageView.setAlpha(0.7f);
-                gridView.setAlpha(0.8f);
+        String[] themes = getResources().getStringArray(R.array.themes);
+        String s = requireNonNull(theme);
+        if (themes[1].equals(s)) {
+            cardAndSpeechImageView.setAlpha(0.8f);
+            gridView.setAlpha(0.8f);
+        } else if (themes[2].equals(s)) {
+            cardAndSpeechImageView.setAlpha(0.7f);
+            gridView.setAlpha(0.8f);
         }
 
         mSingleCard = sharedPreferences.getBoolean(getString(R.string.single_card), false);

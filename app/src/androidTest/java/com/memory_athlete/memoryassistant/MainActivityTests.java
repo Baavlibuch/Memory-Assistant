@@ -65,4 +65,13 @@ public class MainActivityTests {
         e.putString(mActivityTestRule.getActivity().getString(R.string.theme), themes[new Random().nextInt(3)]);
         e.apply();
     }
+
+    @Test
+    public void valuesTest(){
+        String[] themes = mActivityTestRule.getActivity().getResources().getStringArray(R.array.themes);
+        assertEquals(themes[0], "Light (Default)");
+        assertEquals(themes[1], "Dark");
+        assertEquals(themes[2], "Night");
+
+    }
 }

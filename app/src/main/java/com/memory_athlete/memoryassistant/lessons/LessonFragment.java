@@ -38,6 +38,7 @@ public class LessonFragment extends Fragment {
     private int textColor;
     private int dropDownResId;
     private int dropUpResId;
+    private String themeForWebView;
 
     public LessonFragment() {
     }
@@ -51,7 +52,7 @@ public class LessonFragment extends Fragment {
         theme();
 
         StringBuilder sb = new StringBuilder();     // Initialised to empty string to distinguish
-                                                    // from null which is returned after reading
+                                                    // from null which is returned after reading resource
         assert bundle != null;
         int fileInt = bundle.getInt("file", 0);
         if (fileInt != 0 && bundle.getBoolean("resource", true)) {  // Raw
@@ -66,7 +67,10 @@ public class LessonFragment extends Fragment {
                 listView.setVisibility(View.VISIBLE);
                 Timber.v("listView set");
                 return rootView;
-            } else sb = readResource(fileInt);                                      // non-list
+            } else {
+                sb = readResource(fileInt);                                      // non-list
+                if (sb == null) throw new RuntimeException("Got null stringBuilder");
+            }
         } else {                                                                    // Asset
             if (bundle.getBoolean("list", false)) {                  // list
                 Crashlytics.log("activity = " + activity.getLocalClassName());
@@ -85,13 +89,14 @@ public class LessonFragment extends Fragment {
                 return rootView;
             }
             // ignore this warning. The code relies on reassigning values to the variable
-            sb = readAsset(sb, bundle);                                             // non-list
+            //sb = readAsset(sb, bundle);                                             // non-list
+            readAsset(sb, bundle);                                                  // non-list
         }
-        if (sb == null) {
-            Timber.e("String Builder sb is empty");
-            activity.finish();
-            return rootView;
-        }
+//        if (sb == null) {
+//            Timber.e("String Builder sb is empty");
+//            activity.finish();
+//            return rootView;
+//        }
 
         if (bundle.getBoolean("webView", false)) {                  // JQMath
             setWebView(sb, rootView);
@@ -106,21 +111,28 @@ public class LessonFragment extends Fragment {
     protected void theme() {
         String theme = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getActivity()))
                 .getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                textColor = Color.LTGRAY;
-                dropDownResId = R.drawable.ic_arrow_drop_down_dark;
-                dropUpResId = R.drawable.ic_arrow_drop_up_dark;
-                break;
-            case "Night":
-                textColor = Color.LTGRAY;
-                dropDownResId = R.drawable.ic_arrow_drop_down_pitch;
-                dropUpResId = R.drawable.ic_arrow_drop_up_pitch;
-                break;
-            default:
-                textColor = Color.DKGRAY;
-                dropDownResId = R.drawable.ic_arrow_drop_down_light;
-                dropUpResId = R.drawable.ic_arrow_drop_up_light;
+        String[] themes = getResources().getStringArray(R.array.themes);
+        if (themes[1].equals(theme)) {
+            textColor = Color.LTGRAY;
+            dropDownResId = R.drawable.ic_arrow_drop_down_dark;
+            dropUpResId = R.drawable.ic_arrow_drop_up_dark;
+            themeForWebView = "<style>\n" +
+                    "body {backgroundString-color: #303030;}\n" +
+                    "p    {color: #c1c1c1;}\n" +
+                    "</style>\n";
+        } else if (themes[2].equals(theme)) {
+            textColor = Color.LTGRAY;
+            dropDownResId = R.drawable.ic_arrow_drop_down_pitch;
+            dropUpResId = R.drawable.ic_arrow_drop_up_pitch;
+            themeForWebView = "<style>\n" +
+                    "body {backgroundString-color: #000000;}\n" +
+                    "p    {color: #c1c1c1;}\n" +
+                    "</style>\n";
+        } else {
+            textColor = Color.DKGRAY;
+            dropDownResId = R.drawable.ic_arrow_drop_down_light;
+            dropUpResId = R.drawable.ic_arrow_drop_up_light;
+            themeForWebView = "";
         }
     }
 
@@ -132,34 +144,11 @@ public class LessonFragment extends Fragment {
         StringBuilder sb1 = readResource(R.raw.jqmath_beg);
         if (sb1 == null) throw new RuntimeException("jqMath read error");
         StringBuilder sb2 = readResource(R.raw.jqmath_end);
-        if (sb2 == null) throw new RuntimeException("jqmath read error");
-        String js = sb1.toString() + themeForWebView() + sb.toString() + sb2.toString();
-        //String js = JQMATH_BEG + "asfd $$u_n/v_n$$" + JQMATH_END;
-        //webView.loadUrl("file:///android_asset/jqmath/index.html");
-        //((TextView) findViewById(R.id.lesson)).setText(js);
-        //findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
+        if (sb2 == null) throw new RuntimeException("jqMath read error");
+        String js = sb1.toString() + themeForWebView + sb.toString() + sb2.toString();
 
         webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "mText/html", "UTF-8", null);
         webView.setVisibility(View.VISIBLE);
-    }
-
-    private String themeForWebView() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(activity)
-                .getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                return "<style>\n" +
-                        "body {backgroundString-color: #303030;}\n" +
-                        "p    {color: #c1c1c1;}\n" +
-                        "</style>\n";
-            case "Night":
-                return "<style>\n" +
-                        "body {backgroundString-color: #000000;}\n" +
-                        "p    {color: #c1c1c1;}\n" +
-                        "</style>\n";
-            default:
-                return "";
-        }
     }
 
     private StringBuilder readResource(int path) {
@@ -169,23 +158,19 @@ public class LessonFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
         try {
             reader = new BufferedReader(new InputStreamReader(getResources().openRawResource(path)));
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);//.append("\n\n");
-            }
-            try {
-                reader.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            while ((line = reader.readLine()) != null) sb.append(line);
+            reader.close();
             return sb;
         } catch (IOException e) {
+            Crashlytics.logException(e);
             try {
                 reader.close();
             } catch (Exception e1) {
-                e1.printStackTrace();
+                Crashlytics.logException(e1);
             }
             Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
             activity.finish();
+            // need to return something in case of an error. Probably null
             return sb;
         }
     }
@@ -258,7 +243,7 @@ public class LessonFragment extends Fragment {
         throw new RuntimeException("failure");
     }
 
-    private StringBuilder readAsset(StringBuilder sb, Bundle intent) {
+    private void readAsset(StringBuilder sb, Bundle intent) {
         String line = intent.getString("fileString");           // For assets and filesDir
         BufferedReader bufferedReader = null;
         try {
@@ -273,9 +258,8 @@ public class LessonFragment extends Fragment {
             if (bufferedReader != null)
                 bufferedReader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to close the buffer");
         }
-        return sb;
     }
 
     private class Item {
@@ -294,10 +278,10 @@ public class LessonFragment extends Fragment {
             Timber.v("LessonAdapter() entered");
         }
 
+        @Override
+        @NonNull
         @SuppressLint("InflateParams")  // null is passed as rootView in inflate().
         // Will not cause error as a custom view is used later
-        @NonNull
-        @Override
         public View getView(int position, View listItemView, @NonNull ViewGroup parent) {
             Timber.v("getView() entered");
             if (listItemView == null)

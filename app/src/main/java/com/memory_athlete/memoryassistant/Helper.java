@@ -164,20 +164,17 @@ public class Helper {
     public static void theme(Context context, Activity activity) {
         String theme = PreferenceManager.getDefaultSharedPreferences(context).getString(
                 context.getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                context.setTheme(R.style.dark);
-                break;
-            case "Night":
-                context.setTheme(R.style.pitch);
-                (activity.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                //(activity.col)
-                break;
-            default:
-                context.setTheme(R.style.light);
+        String[] themes = context.getResources().getStringArray(R.array.themes);
+        if (themes[1].equals(theme)) {
+            context.setTheme(R.style.dark);
+        } else if (themes[2].equals(theme)) {
+            context.setTheme(R.style.pitch);
+            (activity.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+        } else {
+            context.setTheme(R.style.light);
         }
     }
-    // custom themes - Cards, Lessons,
+    // custom themes - Cards, Lessons, LessonFragment, ImplementLesson, RecallCards, DisciplineActivity
 
     // return true if directory was created successfully. returns false if it fails (when storage permissions are not granted)
     public static boolean makeDirectory(String path) {

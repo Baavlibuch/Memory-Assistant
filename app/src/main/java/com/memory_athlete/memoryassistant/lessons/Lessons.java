@@ -123,25 +123,23 @@ public class Lessons extends AppCompatActivity {
 
     protected void theme(Intent intent) {
         String theme = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                textColor = Color.LTGRAY;
-                dropDownResId = R.drawable.ic_arrow_drop_down_dark;
-                dropUpResId = R.drawable.ic_arrow_drop_up_dark;
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                textColor = Color.LTGRAY;
-                dropDownResId = R.drawable.ic_arrow_drop_down_pitch;
-                dropUpResId = R.drawable.ic_arrow_drop_up_pitch;
-                break;
-            default:
-                setTheme(R.style.light);
-                textColor = Color.DKGRAY;
-                dropDownResId = R.drawable.ic_arrow_drop_down_light;
-                dropUpResId = R.drawable.ic_arrow_drop_up_light;
+        String[] themes = getResources().getStringArray(R.array.themes);
+        if (themes[1].equals(theme)) {
+            setTheme(R.style.dark);
+            textColor = Color.LTGRAY;
+            dropDownResId = R.drawable.ic_arrow_drop_down_dark;
+            dropUpResId = R.drawable.ic_arrow_drop_up_dark;
+        } else if (themes[2].equals(theme)) {
+            setTheme(R.style.pitch);
+            (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+            textColor = Color.LTGRAY;
+            dropDownResId = R.drawable.ic_arrow_drop_down_pitch;
+            dropUpResId = R.drawable.ic_arrow_drop_up_pitch;
+        } else {
+            setTheme(R.style.light);
+            textColor = Color.DKGRAY;
+            dropDownResId = R.drawable.ic_arrow_drop_down_light;
+            dropUpResId = R.drawable.ic_arrow_drop_up_light;
         }
         int header = intent.getIntExtra("mHeader", 0);
         if (header != 0)
@@ -170,10 +168,6 @@ public class Lessons extends AppCompatActivity {
             return;
         }
         String js = sb1.toString() + sb.toString() + sb2.toString();
-        //String js = JQMATH_BEG + "asfd $$u_n/v_n$$" + JQMATH_END;
-        //webView.loadUrl("file:///android_asset/jqmath/index.html");
-        //((TextView) findViewById(R.id.lesson)).setText(js);
-        //findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
 
         webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "mText/html", "UTF-8", null);
         webView.setVisibility(View.VISIBLE);

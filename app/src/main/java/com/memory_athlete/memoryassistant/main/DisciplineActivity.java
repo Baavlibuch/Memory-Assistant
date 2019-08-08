@@ -79,16 +79,14 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     // Function to set the theme
     protected void theme(Intent intent) {
         String theme = requireNonNull(sharedPreferences.getString(getString(R.string.theme), "AppTheme"));
-        switch (theme) {
-            case "Dark":
-                setTheme(R.style.dark);
-                break;
-            case "Night":
-                setTheme(R.style.pitch);
-                (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
-                break;
-            default:
-                setTheme(R.style.light);
+        String[] themes = getResources().getStringArray(R.array.themes);
+        if (themes[1].equals(theme)) {
+            setTheme(R.style.dark);
+        } else if (themes[2].equals(theme)) {
+            setTheme(R.style.pitch);
+            (this.getWindow().getDecorView()).setBackgroundColor(0xff000000);
+        } else {
+            setTheme(R.style.light);
         }
         int header = intent.getIntExtra("mHeader", 0);
         if (header != 0) setTitle(getString(header));

@@ -201,8 +201,8 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:visibility="gone"
-        tools:ignore="ContentDescription" />
-    <!--Content description is set dynamically-->
+        android:contentDescription="@string/speaking" />
+    <!--Content description is set dynamically in cards-->
     <!--Used only in cards and during speech so there wont be any error;
          everywhere else, keep visibility gone unless needed-->
 

@@ -45,21 +45,19 @@ public class RecallCards extends RecallSimple {
 
     private void theme() {
         String theme = sharedPreferences.getString(getString(R.string.theme), "AppTheme");
-        switch (theme) {
-            case "Dark":
-                mSuitBackground = R.color.color_suit_background_dark;
-                //gridView = findViewById(R.id.cards_responses);
-                gridView.setAlpha(0.8f);
-                break;
-            case "Night":
-                mSuitBackground = R.color.color_suit_background_night;
-                //gridView = findViewById(R.id.cards_responses);
-                gridView.setAlpha(0.7f);
-                break;
-            default:
-                mSuitBackground = R.color.color_suit_background_light;
-                cardSelectorTextColour = Color.argb(155, 0, 0, 0);
-                //gridView = findViewById(R.id.cards_responses);
+        String[] themes = getResources().getStringArray(R.array.themes);
+        if (themes[1].equals(theme)) {
+            mSuitBackground = R.color.color_suit_background_dark;
+            //gridView = findViewById(R.id.cards_responses);
+            gridView.setAlpha(0.8f);
+        } else if (themes[2].equals(theme)) {
+            mSuitBackground = R.color.color_suit_background_night;
+            //gridView = findViewById(R.id.cards_responses);
+            gridView.setAlpha(0.7f);
+        } else {
+            mSuitBackground = R.color.color_suit_background_light;
+            cardSelectorTextColour = Color.argb(155, 0, 0, 0);
+            //gridView = findViewById(R.id.cards_responses);
         }
     }
 
