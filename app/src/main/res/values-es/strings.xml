@@ -119,7 +119,7 @@
     <string name="double_back_to_exit">Evitar salidas accidentales de aplicaciones</string>
     <string name="double_back_off">Presione hacia atrás solo una vez para salir de la pantalla principal</string>
     <string name="bottom_tabs">Pestañas en la parte inferior</string>
-    <string name="speech_rate_changed_message">Letras - 2x \ nNúmeros - 1x \ nDígitos binarios - 1x \ nPalabras - 1x \ nNombres - .5x \ nPlaces - .5x</string>
+    <string name="speech_rate_changed_message">Letras - 2x\nNúmeros - 1x\nDígitos binarios - 1x\nPalabras - 1x\nNombres - .5x\nPlaces - .5x</string>
     <string name="method_of_loci">Método de loci</string>
     <string name="associations">La asociación perfecta</string>
     <string name="major_system">El sistema mayor</string>
@@ -129,10 +129,10 @@
     <string name="pao">El sistema de memoria PAO</string>
     <string name="wardrobe_method">Método de vestuario</string>
     <string name="vocab">Vocabulario</string>
-    <string name="already_purchased">Ya ha realizado esa transacción \ nProbar otra cosa: p</string>
+    <string name="already_purchased">Ya ha realizado esa transacción\nProbar otra cosa: p</string>
     <string name="donate_amounts">Lista de cantidades donables</string>
     <string name="thanks">Gracias</string>
-    <string name="tab">\ t</string>
+    <string name="tab">\t</string>
     <string name="drop_down">Expandir</string>
     <string name="visit_my_space">Visita mi espacio</string>
     <string name="try_again">Inténtalo de nuevo</string>
