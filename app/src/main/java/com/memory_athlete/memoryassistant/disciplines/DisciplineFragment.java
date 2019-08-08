@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -170,6 +171,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         rootView = inflater.inflate(R.layout.fragment_disciplines, container, false);
         activity = getActivity();
+        assert activity != null;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
         Timber.i("0 means error in getting title resource string ID through bundle");
         if (activity == null) {
@@ -279,6 +281,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     protected void generateRandom() {
+        // TODO fix this
+        //noinspection unchecked
         (new GenerateRandomStringAsyncTask()).execute(a);
     }
 
@@ -676,6 +680,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     //Thread to generate the random list as string
+    // TODO: Fix this memory leak
+    @SuppressLint("StaticFieldLeak")
     protected class GenerateRandomStringAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
         @Override
         protected void onPreExecute() {
@@ -699,6 +705,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     }
 
     //Thread to generate the random list as arrayList
+    // TODO: Fix this memory leak
+    @SuppressLint("StaticFieldLeak")
     protected class GenerateRandomArrayListAsyncTask extends AsyncTask<ArrayList<Integer>, Void, ArrayList> {
         @Override
         protected void onPreExecute() {

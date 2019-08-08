@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class Cards extends DisciplineFragment {
     private ArrayList<Integer> randomList = new ArrayList<>();
     private boolean mSingleCard = false;
     private GridView gridView;
+    private String[] cardStrings = Helper.makeCardString();
 
     @Override
     public void onClick(View v) {
@@ -103,6 +105,7 @@ public class Cards extends DisciplineFragment {
     private void setCard() {
         Timber.v("setting card");
         cardAndSpeechImageView.setImageResource(cards[randomList.get(mPosition)]);
+        cardAndSpeechImageView.setContentDescription(cardStrings[randomList.get(mPosition)]);
     }
 
     //Button to show previous
@@ -147,8 +150,8 @@ public class Cards extends DisciplineFragment {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (Integer i : cards)
-            stringBuilder.append(i).append(getString(R.string.tab));
+        // delimiter
+        for (Integer i : cards) stringBuilder.append(i).append(getString(R.string.tab));
         return stringBuilder.toString();
     }
 
@@ -200,7 +203,7 @@ public class Cards extends DisciplineFragment {
     @Override
     public boolean reset() {
         mPosition = 0;
-        gridView.setAdapter(new CardAdapter(activity, new ArrayList<Integer>()));
+        gridView.setAdapter(new CardAdapter(activity, new ArrayList<>()));
         randomList.clear();
         numbersVisibility(GONE);
         rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.VISIBLE);
@@ -254,6 +257,8 @@ public class Cards extends DisciplineFragment {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
+    // TODO: fix this memory leak without losing inheritance
     private class RandomArrayScanner extends AsyncTask<String, Void, ArrayList<Integer>> {
 
         @Override

@@ -173,9 +173,8 @@ public class RecallCards extends RecallSimple {
         String[] cardStrings = makeCardString();
         for (int i = 0; i < responses.size(); i++)
             responses.set(i, cardStrings[Integer.parseInt(responses.get(i))]);
-        for (int i = 0; i < answers.size(); i++) {
+        for (int i = 0; i < answers.size(); i++)
             answers.set(i, cardStrings[Integer.parseInt(answers.get(i))]);
-        }
         super.compare(false);
         Timber.v("compareCards() complete");
     }

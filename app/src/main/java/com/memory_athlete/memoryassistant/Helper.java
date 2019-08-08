@@ -178,25 +178,22 @@ public class Helper {
     }
     // custom themes - Cards, Lessons,
 
-    public static boolean makeDirectory(String path) {                  // return true if directory was created successfully. throws exception otherwise
+    public static boolean makeDirectory(String path) {        // return true if directory was created successfully. throws exception otherwise
         File pDir = new File(path);
         boolean isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 try {
                     Files.createDirectories(pDir.toPath());
+                } catch (AccessDeniedException e){
+                    return false;
                 } catch (IOException e) {
-                    try {                                               // second try
-                        Files.createDirectories(pDir.toPath());
-                    } catch (IOException e1) {
-                        throw new RuntimeException(e1);                 // throw exception if fails twice
-                    }
+                    throw new RuntimeException(e);
                 }
                 return true;
             } else isDirectoryCreated = pDir.mkdirs();
         }
-        if (isDirectoryCreated) return true;
-        isDirectoryCreated = pDir.mkdirs();                             // second try
+        // Build.VERSION.SDK_INT < Build.VERSION_CODES.O
         if (isDirectoryCreated) return true;
         throw new RuntimeException("Couldn't create the directory. Path = " + path);// throw exception if fails twice
     }

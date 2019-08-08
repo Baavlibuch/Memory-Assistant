@@ -27,6 +27,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 import timber.log.Timber;
@@ -144,7 +145,7 @@ public class Numbers extends DisciplineFragment {
     }
 
     private boolean checkPrecedingZeros() {
-        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences s = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getActivity()));
         return s.getBoolean(activity.getString(R.string.preceding_zeros), false);
     }
 
@@ -223,14 +224,14 @@ public class Numbers extends DisciplineFragment {
                 || ((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2) {
             //Recall Digits
             boolean fileExists = save();
-            Timber.v("fileExists = " + fileExists);
+            Timber.v("fileExists = %s", fileExists);
             Intent intent;
             if (fileExists) intent = new Intent(getActivity(), RecallSimple.class);
             else intent = new Intent(activity.getApplicationContext(), RecallSelector.class);
 
             intent.putExtra("file exists", fileExists);
             intent.putExtra("discipline", "Digits");
-            Timber.v("recalling " + "Digits");
+            Timber.v("recalling Digits");
             startActivity(intent);
         } else super.recall();  //Recall Numbers
     }
