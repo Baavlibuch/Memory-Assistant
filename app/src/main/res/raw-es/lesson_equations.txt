@@ -1,0 +1,18 @@
+<p> La práctica de memorizar ecuaciones es un pecado imperdonable porque deben entenderse. Sin embargo, cuando se trata de deporte, estos pecados son perdonados. Desafortunadamente, la memorización de ecuaciones usando técnicas de memoria se encuentra en territorio sin control. He intentado crear un sistema de memorización de ecuaciones, pero es muy tosco e ineficiente, por lo que tendrás que modificarlo. Si logras mejorarlo, compártelo conmigo. </p>
+
+<p> Así es como memorizo ​​cosas. </p>
+<ul>
+<li> Puedes denotar números con objetos. Solo hago esto para números pequeños para que las cosas se mantengan fáciles. Para números más grandes, puede crear una constante y memorizarla por separado en un camino diferente. </li>
+<li> También puedes crear una ruta llena de fórmulas que ya conoces y usar sus clavijas aquí </li>
+<li> Para una constante como la velocidad de la luz (c) o la constante de gravitación universal (G) puede usar animales. Entonces, una jirafa para G y un camello para c. </li>
+<li> Use una acción para un operador. Ejemplo: golpe para la multiplicación. Puede memorizar paréntesis y subíndices como acciones también. </li>
+<li> Para una variable, una persona parece ser la mejor opción. Alan de The Hangover es una buena opción para A. No mezcle las letras mayúsculas y minúsculas, asigne diferentes personas a ambas. </li>
+<li> Para una ecuación química, las personas pueden denotar <b> nuevas </b> moléculas. No use nada para los elementos, debe conocerlos todos o simplemente puede usar las clavijas de otra ruta / armario. </li>
+</ul>
+<p> Para memorizar todos esos símbolos, crea una historia. Puede almacenar una ecuación corta, en una sola clavija, pero si se alarga, probablemente tendrá que continuarla en la siguiente clavija. En este último, asegúrese de marcarlo como la continuación. Se puede usar otra acción para esta tarea. </p>
+
+<p> Algunos consejos </p>
+
+<ul>
+<li> Intenta mantener todos los términos y variables en orden. Tiene sus pros y sus contras. La principal desventaja es que hace que las historias sean similares y repetitivas y aumenta las posibilidades de olvidar la ecuación. Esto resulta en un pro - alienta la comprensión de las ecuaciones para aquellos que aprenden de memoria. </li>
+</ul>
