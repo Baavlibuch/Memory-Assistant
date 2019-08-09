@@ -1,4 +1,4 @@
-<p> Praksisen med å memorere ligninger er en utilgivelig synd fordi de er ment å forstå. Når det gjelder sport, blir imidlertid disse syndene tilgitt. Dessverre ligger memorering av ligninger ved bruk av minneteknikker i et ikke-utvunnet territorium. Jeg har prøvd å lage et system for å huske ligninger, men det er veldig grovt og ineffektivt, så du må finpusse den. Hvis du klarer å forbedre det, kan du dele det med meg. </p>
+<p> Praksisen med å memorere ligninger er en utilgivelig synd fordi de er ment å forstå. Når det gjelder sport, blir imidlertid disse syndene tilgitt. Dessverre ligger memorering av ligninger ved bruk av minneteknikker i et ikke-utvunnet territorium. Jeg har prøvd å lage et system for å huske ligninger, men det er veldig grovt og ineffektivt, så du må finpusse den. Hvis du klarer å forbedre det, kan du dele det med meg. </ P>
 
 <p> Slik memorerer jeg ting. </p>
 <ul>
