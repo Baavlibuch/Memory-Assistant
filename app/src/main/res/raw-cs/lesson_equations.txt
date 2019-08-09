@@ -1,0 +1,18 @@
+<p> Praxe zapamatování rovnic je neodpustitelný hřích, protože se má chápat. Pokud však jde o sport, tyto hříchy jsou odpuštěny. Bohužel, zapamatování rovnic pomocí paměťových technik leží v neohroženém území. Snažil jsem se vytvořit systém zapamatování rovnic, ale je velmi hrubý a neefektivní, takže jej budete muset vyladit. Pokud se vám to podaří vylepšit, sdílejte jej prosím se mnou. </p>
+
+<p> Zde si pamatuji věci. </p>
+<ul>
+<li> Můžete označovat čísla objekty. Dělám to jen pro malý počet, aby věci zůstaly snadné. Pro větší čísla můžete vytvořit konstantu a zapamatovat si ji samostatně na jiné cestě. </li>
+<li> Můžete také vytvořit cestu naplněnou vzorci, které již znáte, a použít její kolíky zde </li>
+<li> Pro konstantní rychlost světla (c) nebo univerzální gravitační konstantu (G) můžete použít zvířata. Takže žirafa pro G a velbloud pro c. </li>
+<li> Použijte akci pro operátora. Příklad - punč pro násobení. Závorky a odběry si můžete zapamatovat také jako akce. </li>
+<li> Pro proměnnou se člověk jeví jako nejlepší volba. Alan z Kocoviny je pro A. dobrou volbou. Nemíchejte hlavní a malá písmena a přiřaďte oběma různým lidem.
+<li> Pro chemickou rovnici mohou lidé označovat <b> nové </b> molekuly. Nepoužívejte nic pro prvky, měli byste je znát všechny nebo stačí použít kolíky z jiné cesty / šatníku. </li>
+</ul>
+<p> Chcete-li si zapamatovat všechny tyto symboly, vytvořte příběh. Krátkou rovnici můžete uložit na jediný kolík, ale pokud bude dlouhá, budete pravděpodobně muset pokračovat na dalším kolíku. V posledním případě ji označte jako pokračování. Pro tento úkol lze použít jinou akci. </p>
+
+<p> Některé tipy </p>
+
+<ul>
+<li> Pokuste se udržet všechny termíny a proměnné v pořádku. Má své klady a zápory. Hlavní nevýhoda spočívá v tom, že dělá příběhy podobnými a opakujícími se a zvyšuje šance na zapomenutí rovnice. Výsledkem je pro - povzbuzující porozumění rovnicím pro ty, kteří se učí rote. </li>
+</ul>

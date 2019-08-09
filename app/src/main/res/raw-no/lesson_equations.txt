@@ -1,0 +1,18 @@
+<p> Praksisen med å memorere ligninger er en utilgivelig synd fordi de er ment å forstå. Når det gjelder sport, blir imidlertid disse syndene tilgitt. Dessverre ligger memorering av ligninger ved bruk av minneteknikker i et ikke-utvunnet territorium. Jeg har prøvd å lage et system for å huske ligninger, men det er veldig grovt og ineffektivt, så du må finpusse den. Hvis du klarer å forbedre det, kan du dele det med meg. </ P>
+
+<p> Slik memorerer jeg ting. </p>
+<ul>
+<li> Du kan betegne tall med objekter. Jeg gjør dette bare for små tall slik at ting forblir enkelt. For større antall kan du opprette en konstant og huske den separat på en annen bane. </li>
+<li> Du kan også opprette en bane fylt med formler du allerede kjenner og bruke knaggene her </li>
+<li> For en konstant like lyshastighet (c) eller den universelle gravitasjonskonstanten (G) kan du bruke dyr. Altså en sjiraff for G og en kamel for c. </li>
+<li> Bruk en handling for en operatør. Eksempel - slag for multiplikasjon. Du kan huske parenteser og abonnement som handlinger også. </li>
+<li> For en variabel ser en person ut til å være det beste valget. Alan fra The Hangover er et godt valg for A. Ikke bland opp store bokstaver og små bokstaver, tilord forskjellige mennesker til begge. </li>
+<li> For en kjemisk ligning, kan mennesker betegne <b> nye </b> molekyler. Ikke bruk noe til elementer, du bør kjenne dem alle, eller du kan bare bruke knaggene fra en annen bane / garderobe. </li>
+</ul>
+<p> Hvis du vil huske alle disse symbolene, lager du en historie. Du kan lagre en kort ligning på en enkelt knagg, men hvis den blir lang, vil du sannsynligvis trenge å fortsette den på neste knagg. I det siste må du huske å merke det som fortsettelsen. En annen handling kan brukes til denne oppgaven. </p>
+
+<p> Noen tips </p>
+
+<ul>
+<li> Forsøk å holde ordene og variablene i orden. Det har sine fordeler og ulemper. Det viktigste er at det gjør historiene like og repeterende og øker sjansene for å glemme ligningen. Dette kan føre til en pro - oppmuntrer til å forstå likningene for de som gjør rote learning. </li>
+</ul>

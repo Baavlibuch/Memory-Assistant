@@ -125,7 +125,7 @@
 1769,"'Spanish missionaries establish the first of 21 missions in California'"
 1769,"'James Cook explores and maps New Zealand and Australia'"
 1769,"'The Bengal famine of 1770 kills one-third of the Bengal population'"
-1769,"'French expeditions capture clove plants in Ambon, ending the VOC monopoly of the plant[22] (to 1772)'"
+1769,"'French expeditions capture clove plants in Ambon, ending the VOC monopoly of the plant (to 1772)'"
 1769,"'Court Factor, Mayer Amschel Rothschild'"
 1770,"'James Cook claims the East Coast of Australia (New South Wales) for Great Britain'"
 1770,"'5 March, the Boston Massacre'"

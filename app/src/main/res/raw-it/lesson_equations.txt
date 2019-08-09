@@ -1,0 +1,18 @@
+<p> La pratica di memorizzare le equazioni è un peccato imperdonabile perché sono pensate per essere comprese. Tuttavia, quando si tratta di sport, questi peccati sono perdonati. Sfortunatamente, memorizzare le equazioni usando le tecniche di memoria si trova in un territorio non voluto. Ho cercato di creare un sistema di memorizzazione delle equazioni, ma è molto grezzo e inefficiente, quindi dovrai modificarlo. Se riesci a migliorarlo, ti preghiamo di condividerlo con me. </ P>
+
+<p> Ecco come memorizzo le cose. </p>
+<ul>
+<li> È possibile indicare numeri con oggetti. Lo faccio solo per piccoli numeri in modo che le cose rimangano facili. Per numeri più grandi, puoi creare una costante e memorizzarla separatamente su un percorso diverso. </li>
+<li> Puoi anche creare un percorso pieno di formule che già conosci e utilizzare i suoi pioli qui </li>
+<li> Per una costante come la velocità della luce (c) o la costante di gravitazione universale (G) puoi usare gli animali. Quindi una giraffa per G e un cammello per c. </li>
+<li> Utilizza un'azione per un operatore. Esempio: pugno per moltiplicazione. Puoi anche memorizzare parentesi e pedici come azioni. </li>
+<li> Per una variabile, una persona sembra essere la scelta migliore. Alan di The Hangover è una buona scelta per A. Non confondere maiuscole e minuscole, assegnare persone diverse a entrambi. </li>
+<li> Per un'equazione chimica, le persone possono indicare <b> nuove </b> molecole. Non usare nulla per gli elementi, dovresti conoscerli tutti o puoi semplicemente usare le mollette da un altro percorso / guardaroba. </li>
+</ul>
+<p> Per memorizzare tutti quei simboli, crea una storia. Puoi memorizzare un'equazione breve, a un singolo pegging ma se si allunga, probabilmente dovrai continuare con il pegging successivo. In quest'ultimo, assicurati di contrassegnarlo come continuazione. Un'altra azione può essere utilizzata per questa attività. </p>
+
+<p> Alcuni suggerimenti </p>
+
+<ul>
+<li> Cerca di mantenere in ordine tutti i termini e le variabili. Ha i suoi pro e contro. Il principale svantaggio è che rende le storie simili e ripetitive e aumenta le possibilità di dimenticare l'equazione. Questo risultato si traduce in un pro - incoraggiamento a comprendere le equazioni per coloro che imparano a memoria. </li>
+</ul>
