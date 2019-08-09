@@ -8,11 +8,11 @@
 <li>Use an action for an operator. Example - punch for multiplication. You can memorise parentheses and subscripts as actions too.</li>
 <li>For a variable, a person seems to be the best choice. Alan from The Hangover is a good choice for A. Don’t mix up the capital and small letters, assign different people to both.</li>
 <li>For a chemical equation, people can denote <b>new</b> molecules. Don’t use anything for elements, you should know them all or you can just use the pegs from another path/wardrobe.</li>
-
+</ul>
 <p>To memorise all those symbols, create a story. You can store a short equation, at a single peg but if it gets long, you probably will need to continue it on the next peg. In the latter, be sure to mark it as the continuation. Another action can be used for this task.</p>
 
 <p>Some tips</p>
 
 <ul>
 <li>Try to keep all the terms and variables in order. It has its pros and cons. The main con is that it makes the stories similar and repetitive and increases the chances of forgetting the equation. This con results into a pro - encourages understanding the equations for those who do rote learning.</li>
-<ul>
+</ul>

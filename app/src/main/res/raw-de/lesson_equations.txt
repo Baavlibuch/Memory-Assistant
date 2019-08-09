@@ -1,0 +1,18 @@
+<p> Das Auswendiglernen von Gleichungen ist eine unverzeihliche Sünde, weil sie verstanden werden sollen. Wenn es jedoch um Sport geht, sind diese Sünden vergeben. Unglücklicherweise liegt das Auswendiglernen von Gleichungen mithilfe von Speichertechniken in einem unbekannten Gebiet. Ich habe versucht, ein System zum Auswendiglernen von Gleichungen zu erstellen, aber es ist sehr grob und ineffizient, sodass Sie es anpassen müssen. Wenn Sie es schaffen, es zu verbessern, teilen Sie es bitte mit mir. </p>
+
+<p> So merke ich mir Dinge. </p>
+<ul>
+<li> Sie können Zahlen mit Objekten bezeichnen. Ich mache das nur für kleine Zahlen, damit es einfach bleibt. Bei größeren Zahlen können Sie eine Konstante erstellen und diese separat auf einem anderen Pfad speichern. </li>
+<li> Sie können auch einen Pfad mit Formeln erstellen, die Sie bereits kennen, und hier die zugehörigen Stifte verwenden. </li>
+<li> Für eine Konstante wie Lichtgeschwindigkeit (c) oder die universelle Gravitationskonstante (G) können Sie Tiere verwenden. Also eine Giraffe für G und ein Kamel für c
+<li> Verwenden Sie eine Aktion für einen Operator. Beispiel - Schlag zur Multiplikation. Sie können sich auch Klammern und Indizes als Aktionen merken. </li>
+<li> Für eine Variable scheint eine Person die beste Wahl zu sein. Alan von The Hangover ist eine gute Wahl für A. Verwechseln Sie nicht die Groß- und Kleinschreibung, sondern weisen Sie beiden unterschiedliche Personen zu. </li>
+<li> Für eine chemische Gleichung können Menschen <b> neue </b> Moleküle bezeichnen. Verwenden Sie nichts für Elemente, Sie sollten sie alle kennen oder Sie können einfach die Stifte von einem anderen Pfad / Kleiderschrank verwenden. </li>
+</ul>
+<p> Um sich all diese Symbole zu merken, erstellen Sie eine Geschichte. Sie können eine kurze Gleichung auf einem einzelnen Stift speichern. Wenn sie jedoch länger wird, müssen Sie sie wahrscheinlich auf dem nächsten Stift fortsetzen. Stellen Sie im letzteren Fall sicher, dass Sie es als Fortsetzung markieren. Für diese Aufgabe kann eine andere Aktion verwendet werden. </p>
+
+<p> Einige Tipps </p>
+
+<ul>
+<li> Versuchen Sie, alle Begriffe und Variablen in der richtigen Reihenfolge zu halten. Es hat seine Vor- und Nachteile. Das Hauptproblem ist, dass die Geschichten sich ähneln und wiederholen und die Wahrscheinlichkeit steigt, dass die Gleichung vergessen wird. Dies führt dazu, dass das Verständnis der Gleichungen für diejenigen gefördert wird, die Auswendiglernen betreiben. </li>
+</ul>

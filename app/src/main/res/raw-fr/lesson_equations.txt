@@ -1,0 +1,18 @@
+<p> La pratique de la mémorisation d’équations est un péché impardonnable, car elles sont censées être comprises. Cependant, lorsqu'il s'agit de sport, ces péchés sont pardonnés. Malheureusement, la mémorisation d’équations à l’aide de techniques de mémoire se situe en territoire inconnu. J’ai essayé de créer un système de mémorisation d’équations, mais il est très grossier et peu efficace, vous devrez donc le peaufiner. Si vous parvenez à l'améliorer, merci de le partager avec moi. </p>
+
+<p> Voici comment je mémorise les choses. </p>
+<ul>
+<li> Vous pouvez désigner des nombres avec des objets. Je ne fais cela que pour de petits nombres pour que les choses restent faciles. Pour des nombres plus importants, vous pouvez créer une constante et la mémoriser séparément sur un chemin différent. </li>
+<li> Vous pouvez également créer un chemin contenant des formules que vous connaissez déjà et les utiliser ici </li>
+<li> Pour utiliser une vitesse de la lumière constante (c) ou une constante de gravitation universelle (G), vous pouvez utiliser des animaux. Donc, une girafe pour G et un chameau pour c. </li>
+<li> Utilisez une action pour un opérateur. Exemple - coup de poing pour la multiplication. Vous pouvez également mémoriser les parenthèses et les indices en tant qu'actions. </li>
+<li> Pour une variable, une personne semble être le meilleur choix. Alan de The Hangover est un bon choix pour A. Ne mélangez pas les majuscules et les minuscules, assignez des personnes différentes aux deux. </li>
+<li> Pour une équation chimique, les utilisateurs peuvent désigner de <b> nouvelles </b> molécules. N'utilisez rien pour les éléments, vous devez les connaître tous ou vous pouvez simplement utiliser les piquets d'un autre chemin / vestiaire. </li>
+
+<p> Pour mémoriser tous ces symboles, créez une histoire. Vous pouvez stocker une équation courte, à un seul piquet, mais si elle devient longue, vous devrez probablement la continuer au prochain piquet. Dans ce dernier cas, assurez-vous de le marquer comme la suite. Une autre action peut être utilisée pour cette tâche. </p>
+
+<p> Quelques conseils </p>
+
+<ul>
+<li> Essayez de garder tous les termes et variables dans l’ordre. Il a ses avantages et ses inconvénients. Le principal inconvénient est que cela rend les histoires similaires et répétitives et augmente les chances d'oubli de l'équation. Cela se traduit par un pro - encourage la compréhension des équations pour ceux qui apprennent par cœur. </li>
+</ul>
