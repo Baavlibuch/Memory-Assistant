@@ -285,6 +285,16 @@ public class Lessons extends AppCompatActivity {
         } catch (IOException e) {
             Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
             finish();
+        } catch (IllegalArgumentException e){
+            throw new RuntimeException(
+                    "\nAsset path - " + line + "" +
+                    "fileInt = " + intent.getIntExtra("file", 0) +
+                    "resources boolean = " + intent.getBooleanExtra("resource", true) +
+                    "list boolean = " + intent.getBooleanExtra("list", false) +
+                    "webView boolean = " + intent.getBooleanExtra("webView", false) +
+                    "headerInt = " + intent.getIntExtra("mHeader", 0) +
+                    "headerString" + intent.getStringExtra("headerString"),
+                    e);
         }
         try {
             if (bufferedReader != null)
