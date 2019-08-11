@@ -14,7 +14,7 @@
 * eMail address – memoryassistantapp@gmail.com
 
 ### How do I get set up?
-* **Summary of set up 
+* **Summary of set up**
 1. Install [Android Studio](https://developer.android.com/studio). 
 2. [Download](https://github.com/maniksejwal/Memory-Assistant/archive/master.zip) and extract the repository or run the command `git clone https://github.com/maniksejwal/Memory-Assistant.git` on your computer.
 3. In Android Studio, open the project as an existing android studio project after extracting the downloaded zip or import as a new project from git.
@@ -24,7 +24,7 @@
 7. Add your own `fabric.properties` to `app/src/`. Download it after connecting your builds to [Crashlytics](https://console.firebase.google.com/project/_/crashlytics) through Fabric. To run the app without it remove – the crashlytics dependency and fabric repository and plugin from `build.gradle`; the `meta-data` tag from the `AndroidManifests.xml`; Crashlytics calls from all java files. 
 8. Keep googling the errors that you face.
 
-* **Dependencies
+* **Dependencies**
 1. Java 8
 2. Kitlin
 3. Android SDK
