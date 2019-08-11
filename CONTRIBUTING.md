@@ -7,7 +7,7 @@
 * [Questions, etc](#who-do-i-talk-to)
 
 ## Translation Guidelines
-* The translation instructions are for to non tech savvy people who want to contribute to the project. They are written with the assumption that you just want to make a quick contribution using the web browser on your phone.
+* The translation instructions are for non tech savvy people who want to contribute to the project. They are written with the assumption that you just want to make a quick contribution using the web browser on your phone.
 * **Theory** - There are three ways in which text resources are stored in Android.
   1. **Key-value pairs in [strings.xml](https://github.com/maniksejwal/Memory-Assistant/blob/master/app/src/main/res/values/strings.xml)** - These are small pieces of text used throughout the application for various tasks such as displaying messages, content labelling, etc.
   2. **[Raw text files](https://github.com/maniksejwal/Memory-Assistant/tree/master/app/src/main/res/raw)** - These are larger pieces of text which are not well suited to be put together into a single file. In this project, these files are formatted using [HTML](https://htmlcheatsheet.com/), which can take less than 10 minutes to be learnt from scratch.
