@@ -704,7 +704,14 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         @Override
         protected final String doInBackground(ArrayList<Integer>... a) {
             Timber.v("doInBackground entered");
-            return backgroundString();
+            try {
+                return backgroundString();
+            } catch (IllegalStateException e) {
+                Activity activity = getActivity();
+                if (activity == null) return null;
+                if (activity.isFinishing()) return null;
+                throw new RuntimeException("activity is not null!", e);
+            }
         }
 
         @Override
@@ -728,7 +735,14 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         @Override
         protected ArrayList doInBackground(ArrayList<Integer>[] a) {
-            return backgroundArray();
+            try {
+                return backgroundArray();
+            } catch (IllegalStateException e) {
+                Activity activity = getActivity();
+                if (activity == null) return null;
+                if (activity.isFinishing()) return null;
+                throw new RuntimeException("activity is not null!", e);
+            }
         }
 
         @Override
