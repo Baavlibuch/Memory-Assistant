@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.lessons;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
@@ -24,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 
@@ -314,9 +316,16 @@ public class Lessons extends AppCompatActivity {
         @Override
         public View getView(final int position, View listItemView, @NonNull final ViewGroup parent) {
             Timber.v("getView() entered");
-            if (listItemView == null)
-                listItemView = LayoutInflater.from(getContext()).inflate(
-                        R.layout.item_lesson_list, null, true);
+            try {
+                if (listItemView == null)
+                    listItemView = LayoutInflater.from(getContext()).inflate(
+                            R.layout.item_lesson_list, null, true);
+            } catch (Resources.NotFoundException e){
+                Crashlytics.logException(e);
+                Toast.makeText(getContext(), "Please download the application from the Google Play Store",
+                        Toast.LENGTH_LONG).show();
+                throw new RuntimeException("Not downloaded from the Play Store");
+            }
 
             final Item item = getItem(position);
             final ImageView arrowImageView = listItemView.findViewById(R.id.arrow_image_view);
