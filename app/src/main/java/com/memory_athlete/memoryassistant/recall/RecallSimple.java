@@ -87,6 +87,10 @@ public class RecallSimple extends AppCompatActivity {
         mFilePath = intent.getStringExtra("file");
         mDiscipline = intent.getStringExtra(getString(R.string.discipline));
 
+        Crashlytics.log("file Path = " + mFilePath);
+        Crashlytics.log("discipline = " + mDiscipline);
+        Crashlytics.log("file exists = " + intent.getBooleanExtra("file exists", false));
+
         setTitle(mDiscipline);
 
         gridView = findViewById(R.id.cards_responses);
@@ -229,6 +233,7 @@ public class RecallSimple extends AppCompatActivity {
         } else {
             // words or sentences
             // simple response format - ' ' delimited
+            // word response format  - '\n' delimited
             char delimiter = (responseFormat == ResponseFormat.SIMPLE_RESPONSE_FORMAT ? ' ' : '\n');
             for (int i = 0; i < values.length(); i++) {
                 // append character to the value if it is not equal to the delimiter
@@ -244,10 +249,10 @@ public class RecallSimple extends AppCompatActivity {
                 // elsed multiple delimiters encountered. ignore and move on
             }
         }
-        // No clue what this does!
-        String text = ((TextView) findViewById(R.id.responses_text)).getText() + value + " " + getString(R.string.tab);
-        ((TextView) findViewById(R.id.responses_text)).setText(text);
-        Timber.v("onEditorAction complete");
+        // No clue what this does! so commented it out. Look for bugs
+        // String text = ((TextView) findViewById(R.id.responses_text)).getText() + value + " " + getString(R.string.tab);
+        // ((TextView) findViewById(R.id.responses_text)).setText(text);
+        // Timber.v("onEditorAction complete");
     }
 
     void hideResponseLayout() {
