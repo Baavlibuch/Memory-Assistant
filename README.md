@@ -1,26 +1,30 @@
-# README #
+# README
 
-### I don't understand anything! ###
-* Join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U) and ask your questions.
-
-### What is this repository for? ###
-
-* **Quick summary** - Memory sports android app. [Website's repository](https://github.com/sharadv245/Memory-Assistant)
+### What is this repository for?
+* **Quick summary** - Memory sports android app development. [Website's repository](https://github.com/sharadv245/Memory-Assistant)
 * [Version](https://github.com/maniksejwal/Memory-Assistant/blob/master/app/build.gradle)
 
-### How do I get set up? ###
+### I don't understand anything!
+* Join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U) and ask your questions.
 
-* **Summary of set up** 
+### [Contribution guidelines](https://github.com/maniksejwal/Memory-Assistant/blob/master/CONTRIBUTING.md)
+
+### Who do I talk to?
+* Feel free to join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U)
+* eMail address – memoryassistantapp@gmail.com
+
+### How do I get set up?
+* **Summary of set up 
 1. Install [Android Studio](https://developer.android.com/studio). 
-2. Download and extract the repository by clicking the green button above or run the command `git clone https://github.com/maniksejwal/Memory-Assistant.git` on your computer.
-3. In Android Studio, import new project from git or open the project as an existing android studio project after extracting the downloaded zip. 
+2. [Download](https://github.com/maniksejwal/Memory-Assistant/archive/master.zip) and extract the repository or run the command `git clone https://github.com/maniksejwal/Memory-Assistant.git` on your computer.
+3. In Android Studio, open the project as an existing android studio project after extracting the downloaded zip or import as a new project from git.
 4. Create your own `final class Encryption.java` in `app/src/main/java/com.memory_athlete.memoryassistant/inAppBilling/`. Add `static` functions, `decrypt` and `addSomePepper` with return type `String`. You can return empty strings. 
 5. Remove apk signing by removing `keystoreProperties` and `signingConfigs{...}` from app level `build.gradle`. To use your own signature, refer to the [documentation](https://developer.android.com/studio/publish/app-signing).
 6. Add your own `google-services.json` to `app/src/`. Download it by linking your builds to Firebase. To run the app without it remove – all mentions to firebase from the app level `build.gradle`; `meta-data` tag from the `AndroidManifests.xml`. **Do NOT remove `firebase-jobdispatcher`** it is important for reminders.
 7. Add your own `fabric.properties` to `app/src/`. Download it after connecting your builds to [Crashlytics](https://console.firebase.google.com/project/_/crashlytics) through Fabric. To run the app without it remove – the crashlytics dependency and fabric repository and plugin from `build.gradle`; the `meta-data` tag from the `AndroidManifests.xml`; Crashlytics calls from all java files. 
 8. Keep googling the errors that you face.
 
-* **Dependencies** 
+* **Dependencies
 1. Java 8
 2. Kitlin
 3. Android SDK
@@ -35,19 +39,13 @@
 12. JUnit
 13. Espresso
 
-13.  Refer to [`app/build.gradle`](https://github.com/maniksejwal/Memory-Assistant/blob/master/app/build.gradle) for details
+14.  Refer to [`app/build.gradle`](https://github.com/maniksejwal/Memory-Assistant/blob/master/app/build.gradle) for details
 
-### How to run tests ###
+### How to run tests
 * Only some trivial Esspresso tests have been written, nothing serious. Pre Launch Report on Google Play Console is the only useful automated testing done. 
 * For Running Espresso tests, go to the desired test in `D:\Projects\Skynet\MemoryAthlete\Android\app\src\androidTest\java\com\memory_athlete\memoryassistant`, right click and run the test on the device of your choice. USB debugging might be necessary.
 * Write a more tests whenever you feel idle.
 
-### Deployment instructions ###
-1. On android studio `Build -> Build Bundles(s)/APKs -> Build Bundle/APK`.
-2. Upload it to [Google Play Console](https://play.google.com/apps/publish/).
-
-### [Contribution guidelines](https://github.com/maniksejwal/Memory-Assistant/blob/master/CONTRIBUTING.md) ###
-
-### Who do I talk to? ###
-* Feel free to join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U)
-* eMail address – memoryassistantapp@gmail.com
+### Deployment instructions
+1. On android studio `Build -> Build Bundles(s)/APKs -> Build Bundle/APK`
+2. Upload it to [Google Play Console](https://play.google.com/apps/publish/)
