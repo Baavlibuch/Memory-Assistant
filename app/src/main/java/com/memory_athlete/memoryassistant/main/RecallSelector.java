@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.main;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -47,7 +49,13 @@ public class RecallSelector extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Helper.theme(this, this);
-        setContentView(R.layout.activity_my_space);
+        try {
+            setContentView(R.layout.activity_my_space);
+        } catch (Resources.NotFoundException e) {
+            Crashlytics.logException(e);
+            Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
+            throw new RuntimeException("Not downloaded from the Play Store");
+        }
         setTitle(R.string.recall);
 
         listViewId = MIN_DYNAMIC_VIEW_ID;
@@ -190,8 +198,7 @@ public class RecallSelector extends AppCompatActivity {
             if (isDirectoryCreated) {
                 startActivity(intent);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            }
-            else Toast.makeText(getApplicationContext(), "Try again",
+            } else Toast.makeText(getApplicationContext(), "Try again",
                     Toast.LENGTH_SHORT).show();
         }
     }

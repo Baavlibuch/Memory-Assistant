@@ -332,8 +332,7 @@ public class Lessons extends AppCompatActivity {
                             R.layout.item_lesson_list, null, true);
             } catch (Resources.NotFoundException e){
                 Crashlytics.logException(e);
-                Toast.makeText(getContext(), "Please download the application from the Google Play Store",
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.dl_from_play, Toast.LENGTH_LONG).show();
                 throw new RuntimeException("Not downloaded from the Play Store");
             }
 
