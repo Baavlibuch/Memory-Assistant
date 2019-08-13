@@ -17,3 +17,61 @@
 <h4> 1er niveau: système de numération et de rimes </h4>
 
 <p> Une approche consiste à définir la forme de chaque nombre. Par exemple: Le «deux» ressemble à un cygne. Une autre façon consiste à utiliser des comptines pour chaque numéro. Dans ce cas, les «deux» pourraient être «chaussure». Sauf que vous avez affaire à seulement quelques petits nombres, ne vous fatiguez pas à apprendre un système aussi simple. Mais pourquoi est-ce? </p>
+
+<p> Au début, vous n’utilisez pas la puissance des clusters. Cela signifie, mettre plusieurs informations dans une image. Pour mémoriser un numéro de téléphone à huit chiffres, il vous faudrait huit images avec un système aussi simple. Même s'il est utile de s'en souvenir, l'effort est trop lourd pour une tâche aussi simple. </p>
+
+<p> Deuxièmement, dix images ne suffisent pas pour avoir une variété suffisante pour différentes histoires. Imaginez que vous deviez créer une histoire pour un nombre de quatre «deux». Vous devez mettre quatre cygnes dans votre image mentale. </p>
+
+<p> Si vous souhaitez mémoriser les chiffres plus efficacement, vous aurez besoin d’un système plus évolué. Alors sautons-les et passons aux systèmes à deux chiffres. </p>
+
+<h4> 2ème niveau: le système principal </h4>
+
+<p> Le plus petit groupe de chiffres décimaux est constitué de deux chiffres ensemble. 10x10 crée 100 images pour chaque combinaison de deux nombres. Cela peut sembler beaucoup à apprendre, mais la base mnémonique de ces systèmes vous aide à le faire en très peu de temps. Ce guide se concentre sur le système principal, une des nombreuses façons de regrouper deux chiffres. En fin de compte, peu importe le type de système que vous utilisez si vous avez la même quantité d’informations stockées sous forme d’images. </p>
+
+<p> Le système majeur est une technique phonétique permettant de traduire des nombres en mots. Il commence par convertir les chiffres en sons de consonnes. Après cela, vous ajoutez des voyelles avant, entre et après ces lettres. Les règles phonétiques sont mnémoniques et donc faciles à mémoriser. Cela vous aide à reconstruire les images que vous avez dans la tête, même si vous n’avez pas encore appris la série complète des 100 images. Après quelques exercices, vous aurez de fortes associations avec chaque chiffre de 00 à 99. Cela semble être un gros effort pour rendre les choses plus faciles pour votre mémoire. Mais ce n’est pas si difficile et à la fin, vous n’y penserez plus jamais. Vous allez juste connaître vos images. Si vous pouvez surmonter vos doutes quant à l'efficacité de cet effort, vous avez une énorme avance sur tous ceux qui sont venus si loin mais qui ont abandonné ces techniques. </p>
+
+<p> Une autre grande chose à propos du système majeur est le fait qu’il est extensible. En ajoutant un troisième numéro à votre cluster, vous atteindrez le 3ème niveau. Cela signifierait de mémoriser 1 000 objets avant de pouvoir l’utiliser (ou 900 si vous avez déjà appris une liste de 100). Mais ce n’est pas une chose à laquelle vous devriez penser pour commencer. En fait, vous pouvez aller très loin avec un système de second niveau. Mais la quantité d'athlètes de mémoire utilisant un système de 3ème niveau augmente chaque jour. Je n’entrerai pas dans les détails concernant le système de troisième niveau car il fonctionne exactement de la même manière qu’un système majeur de deuxième niveau, mais avec trois chiffres à encoder au lieu de deux. </p>
+
+<h4> Les règles: 86 est un poisson </h4>
+
+<p> Les règles suivantes constituent les bases du système. Vous devez les mémoriser pour créer et reconstruire vos images. Je leur ai appris à des dizaines d'enfants. Ils ont pu les apprendre en une dizaine de minutes. Sans une explication orale, cela pourrait prendre un peu plus de temps, mais vous voyez ce que je veux dire: c'est très simple! </p>
+
+<h4> Le code majeur </h4>
+
+<p> Constantes numériques associées </p>
+
+<ul>
+<li> 0 s, z, soft c </li>
+<li> 1 t, d </li>
+<li> 2 n </li>
+<li> 3 m </li>
+<li> 4 r </li>
+<li> 5 l </li>
+<li> 6 j, sh, soft g, soft "ch" </li>
+<li> 7 k, c dur, g dur, dur "ch", q, qu </li>
+<li> 8 f, v </li>
+<li> 9 p, b </li>
+<li> Sons de voyelle non affectés, w, h, y, x </li>
+</ul>
+<b> Les mnémoniques - </b>
+<ul>
+<li> z est la première lettre de zéro. Les autres lettres ont un son similaire </li>
+<li> t & d ont un trait vers le bas et un son similaire (certains systèmes variantes incluent "th") </li>
+<li> n a deux traits vers le bas </li>
+<li> la dernière lettre de quatre, 4 et R sont presque des images inversées </li>
+<li> un script j a une boucle inférieure / g est presque un 6 tourné </li>
+<li> capital K "contient" deux sept (certains systèmes variantes incluent "ng") </li>
+<li> le script f ressemble à un chiffre-8. V semble similaire </li>
+<li> p est une image miroir 9. b semble similaire et ressemble à un 9 enroulé </li>
+<li> Ceux-ci peuvent être utilisés n'importe où sans changer la valeur numérique d'un mot </li>
+</ul>
+
+<p> Chaque chiffre correspond à un ensemble de sons similaires avec des positions similaires de la bouche et de la langue. La correspondance est phonétique, donc ce sont les consonnes qui importent qui importent, pas l'orthographe. Par conséquent, un mot comme «action» devrait coder le nombre 762 et non 712; et «fantôme» serait 701, tandis que, parce que «gh» dans «assez» est prononcé comme un «f», le mot «suffisant» code le nombre 28. </p>
+
+<p> De même, les lettres doubles ne sont pas prises en compte. Le mot "missile" est mappé sur 305, pas sur 3005. Pour encoder 3005, on utilisera quelque chose comme "voile moussue". </p>
+
+<p> Le mappage est souvent compact. «Quartier arrière», par exemple, traduit sans ambiguïté le numéro 2174140, ce qui correspond à 7 chiffres codés en 12 lettres et peut être facilement visualisé. </p>
+
+<h4> Créez votre propre liste </h4>
+
+<p> Si vous vous en tenez aux règles ci-dessus, vous pouvez faire très peu de choses qui ne vont pas. Vous pouvez même utiliser des mots abstraits comme «heure» si vous avez une association visuelle forte comme une horloge. Restez strictement avec les règles au début. Cela vous aidera à mémoriser les mots. Plus tard, vous pourrez sauter et utiliser n’importe quel mot pour remplacer vos images les plus faibles. Au fil du temps, j'ai changé plusieurs piquets dans mon système sans utiliser le système principal. Mais pour apprendre tout le peloton à la fois, les règles sont indispensables. </p>

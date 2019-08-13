@@ -17,3 +17,61 @@
 <h4> Kiwango cha 1: Sura ya Nambari na Mfumo wa Idadi ya Rhymeh </h4>
 
 <p> Njia moja ni kupitia sura ya kila nambari. Kwa mfano: "mbili" inaonekana tu kama Jani. Njia nyingine ni kutumia mashairi kwa kila nambari. Katika kesi hii "mbili" zinaweza kuwa "kiatu". Isipokuwa unashughulika na idadi ndogo tu, usijali kujifunza mfumo rahisi kama huu. Lakini kwa nini hiyo? </p>
+
+<p> Mwanzoni, hautumii nguvu ya nguzo. Hiyo inamaanisha, kuweka habari kadhaa katika picha moja. Ili kukumbuka nambari ya simu na nambari nane, utahitaji picha nane na mfumo rahisi kama huo. Ingawa bado inasaidia kuikumbuka, juhudi ni kubwa sana kwa kazi rahisi kama hiyo. </p>
+
+<p> Pili ya pili, picha kumi hazitoshi kuwa na aina ya kutosha kwa hadithi tofauti. Fikiria unalazimika kutengeneza hadithi ya nambari na "wawili". Utalazimika kuweka swichi nne kwenye picha yako ya akili. </p>
+
+<p> Ikiwa unataka kukariri nambari kwa ufanisi zaidi, utahitaji mfumo ulio tolewa zaidi. Basi wacha ruka hizi na uende kwa Mifumo ya nambari mbili. </p>
+
+<h4> 2nd -Level: Mfumo Mzito </h4>
+
+<p> nguzo ndogo zaidi ya tarakimu ya decimal ni tarakimu mbili pamoja. 10x10 hufanya picha 100 kwa kila mchanganyiko wa nambari mbili. Inaweza kusikika sana kujifunza, lakini msingi wa mnemonic wa mifumo hii hukusaidia kufanya hivyo kwa muda mfupi sana. Mwongozo huu unaweka mwelekeo wake kwenye Mfumo Mkuu, moja wapo ya njia nyingi za kuunganisha nambari mbili pamoja. Mwishowe haijalishi ni aina gani ya mfumo unaotumia ikiwa una idadi sawa ya habari iliyohifadhiwa kama picha. </p>
+
+<p> Mfumo Mkuu ni mbinu ya fonetiki ya kutafsiri nambari kwa maneno. Huanza na kubadilisha nambari kuwa sauti za konsonanti. Baada ya hapo unaongeza vokali kabla, kati na baada ya barua hizo. Sheria za fonetiki ni mnemonics na kwa hivyo ni rahisi kukumbuka. Hiyo inakusaidia kuunda tena picha ulizonazo kichwani mwako, hata ikiwa haukujifunza seti kamili ya picha 100 bado. Baada ya mazoezi kadhaa utakuwa na vyama vyenye nguvu na kila nambari kutoka 00 hadi 99. Inaonekana kama juhudi kubwa kufanya mambo iwe rahisi kwa kumbukumbu yako. Lakini sio ngumu na mwisho hautalazimika kufikiria tena. Utajua tu picha zako. Ikiwa unaweza kuondokana na shaka yako ya ufanisi wa juhudi hii, wewe ni hatua moja kubwa mbele ya kila mtu aliyekuja mbali lakini akaachana na mbinu hizi. </p>
+
+<p> Jambo lingine kubwa juu ya Mfumo Mkuu ni ukweli, kwamba inaweza kupanuka. Kwa kuongeza nambari ya tatu kwenye nguzo yako utafikia kiwango cha 3. Hiyo inamaanisha kukariri vitu 1.000, kabla ya kuitumia (au 900 ikiwa tayari umejifunza orodha ya 100). Lakini hiyo sio kitu unapaswa kufikiria juu ya wanaoanza. Kweli una uwezo wa kuja mbali sana na mfumo wa 2-Level. Lakini idadi ya wanariadha wa kumbukumbu wanaotumia mfumo wa kiwango cha 3 inakua kila siku. Sitakwenda kwa undani juu ya mfumo wa kiwango cha 3 kwa sababu inafanya kazi sawasawa na Mfumo Mkuu wa Kiwango cha 2 lakini ikiwa na nambari tatu za kusimba badala ya mbili. </p>
+
+<h4> Sheria: 86 ni samaki </h4>
+
+<p> Sheria zifuatazo ni misingi ya mfumo. Lazima uzikariri ili kuunda na kuunda tena picha zako. Niliwafundisha watoto kadhaa. Waliweza kujifunza yao katika dakika kama kumi. Bila maelezo ya mdomo, inaweza kuchukua muda kidogo, lakini unapata maoni yangu: Ni rahisi sana! </p>
+
+<h4> Nambari Kubwa </h4>
+
+<p> Vifungu Vya Ushirika vilivyojumuishwa </p>
+
+<ul>
+<li> 0 s, z, laini c </li>
+<li> 1 t, d </li>
+<li> 2 n </li>
+<li> 3 m </li>
+<li> 4 r </li>
+<li> 5 l </li>
+<li> 6 j, sh, laini g, laini "ch" </li>
+<li> 7 k, hard c, hard g, hard "ch", q, qu </li>
+<li> 8 f, v </li>
+<li> 9 p, b </li>
+<li> Sio saizi-Vowel sauti, w, h, y, x </li>
+</ul>
+<b> Mnemonics - </b>
+<ul>
+<li> z ni barua ya kwanza ya sifuri. Barua zingine zina sauti inayofanana </li>
+<li> t & d ina kiharusi kimoja cha chini na sauti sawa (mifumo kadhaa tofauti ni pamoja na "th") </li>
+<li> n ina viboko viwili vya chini </li>
+<li> Barua ya mwisho ya nne, pia 4 na R ni karibu picha za kioo za kila mmoja </li>
+<li> a script j ina kitanzi cha chini / g ni karibu 6 kuzungukwa </li>
+<li> capital K "inayo" saba saba (mifumo mingine inayojumuisha "ng") </li>
+<li> Nakala ya f inafanana na takwimu-8. V zinasikika sawa </li>
+<li> p ni picha ya kioo 9. b inasikika sawa na inafanana na 9 iliyozungukwa </li>
+<li> Hizi zinaweza kutumika mahali popote bila kubadilisha nambari ya nambari ya neno </li>
+</ul>
+
+<p> Kila ramani za seti kwa seti ya sauti zinazofanana na nafasi sawa za kinywa na ulimi. Ramani ni ya fonetiki, kwa hivyo ni sauti za konsonanti ambazo zinafaa, sio herufi. Kwa hivyo neno kama "hatua" lingefunga nambari ya 762, sio 712; na "ghost" ingekuwa 701, wakati, kwa sababu "gh" katika "ya kutosha" hutamkwa kama "f", neno "kutosha" husimamia nambari 28. </p>
+
+<p> Vile vile, barua mbili hazipuuzi. Neno "kombora" limewekwa kwenye 305, sio 3005. Ili kuweka kambi 3005 mtu atatumia kitu kama "mossy meli". </p>
+
+<p> Mara nyingi ramani ni ngumu. "Makao makuu", kwa mfano, hutafsiri bila nia ya 2174140, ambayo ni nambari 7 zilizofungwa kwa barua 12, na zinaweza kutazamwa kwa urahisi. </p>
+
+<h4> Unda orodha yako mwenyewe </h4>
+
+<p> Ikiwa unashikilia sheria zilizo hapo juu, kuna mambo machache unaweza kukosea. Unaweza kutumia hata maneno ya kufikirika kama "wakati" ikiwa una ushirika mkubwa wa kuona kwake kama saa. Kaa madhubuti na sheria hapo mwanzo. Itakusaidia kukariri maneno. Baadaye unaweza kuruka karibu na kutumia maneno yoyote kuchukua nafasi ya picha zako dhaifu. Nilibadilisha msururu kadhaa katika mfumo wangu kwa wakati bila kutumia Mfumo Mkuu tena. Lakini ili kujifunza pakiti yote mara moja, sheria ni lazima ziwe nazo. </p>

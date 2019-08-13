@@ -17,3 +17,61 @@
 <h4> 1. Ebene: Zahlenform- und Zahlenreimsystem </h4>
 
 <p> Ein Ansatz besteht in der Form jeder Zahl. Zum Beispiel: Die „Zwei“ sehen aus wie ein Schwan. Ein anderer Weg ist die Verwendung von Reimen für jede Zahl. In diesem Fall könnten die "zwei" "Schuh" sein. Wenn Sie nur mit wenigen kleinen Zahlen zu tun haben, sollten Sie sich nicht die Mühe machen, ein so einfaches System zu lernen. Aber warum ist das so? </p>
+
+<p> Zunächst nutzen Sie die Kraft von Clustern nicht. Das heißt, mehrere Informationen in einem Bild zusammenfassen. Um sich eine Telefonnummer mit acht Ziffern zu merken, würden Sie mit einem so einfachen System acht Bilder benötigen. Obwohl es immer noch hilfreich ist, sich daran zu erinnern, ist der Aufwand für eine so einfache Aufgabe zu groß. </p>
+
+<p> Zweitens reichen zehn Bilder nicht aus, um eine ausreichende Auswahl für verschiedene Geschichten zu haben. Stellen Sie sich vor, Sie müssen eine Geschichte für eine Zahl mit vier „Zweien“ schreiben. Sie müssten vier Schwäne in Ihr Bild einfügen. </p>
+
+<p> Wenn Sie sich Ziffern besser merken möchten, benötigen Sie ein weiterentwickeltes System. Lassen Sie uns diese überspringen und zu den zweistelligen Systemen übergehen. </p>
+
+<h4> 2. Ebene: Das Hauptsystem </h4>
+
+<p> Der kleinste Cluster für Dezimalstellen besteht aus zwei Ziffern. 10x10 ergibt 100 Bilder für jede Kombination von zwei Zahlen. Es mag sich nach viel Lernen anhören, aber die mnemonische Basis dieser Systeme hilft Ihnen dabei, dies in sehr kurzer Zeit zu tun. Dieses Handbuch konzentriert sich auf das Hauptsystem, eine von vielen Möglichkeiten, zwei Ziffern zu gruppieren. Letztendlich spielt es keine Rolle, welches System Sie verwenden, wenn Sie die gleiche Menge an Informationen als Bilder gespeichert haben. </p>
+
+<p> Das Hauptsystem ist eine phonetische Technik, um Zahlen in Wörter zu übersetzen. Es beginnt mit der Umwandlung von Ziffern in Konsonanten. Danach fügen Sie vor, zwischen und nach diesen Buchstaben Vokale hinzu. Die phonetischen Regeln sind mnemonisch und daher leicht zu merken. Auf diese Weise können Sie die Bilder, die Sie in Ihrem Kopf haben, rekonstruieren, auch wenn Sie noch nicht den vollständigen Satz von 100 Bildern gelernt haben. Nach einigem Üben haben Sie starke Assoziationen mit jeder Zahl von 00 bis 99. Es scheint eine große Anstrengung zu sein, die Dinge für Ihr Gedächtnis einfacher zu machen. Aber es ist nicht so schwierig und am Ende wirst du nie wieder darüber nachdenken müssen. Sie werden nur Ihre Bilder kennen. Wenn Sie Ihre Zweifel an der Effizienz dieser Bemühungen überwinden können, sind Sie jedem einen großen Schritt voraus, der so weit gekommen ist, diesen Techniken jedoch den Rücken gekehrt hat. </p>
+
+<p> Ein weiteres großartiges Merkmal des Major-Systems ist die Tatsache, dass es erweiterbar ist. Indem Sie Ihrem Cluster eine dritte Zahl hinzufügen, gelangen Sie in die dritte Ebene. Das würde bedeuten, sich 1.000 Objekte zu merken, bevor Sie es benutzen können (oder 900, wenn Sie bereits eine Liste von 100 gelernt haben). Aber das ist nichts, woran Sie für den Anfang denken sollten. Tatsächlich können Sie mit einem 2nd-Level-System sehr weit kommen. Die Zahl der Gedächtnissportler, die ein 3rd-Level-System verwenden, wächst jedoch von Tag zu Tag. Auf das 3rd-Level-System werde ich nicht näher eingehen, da es genau so funktioniert wie ein 2nd-Level-Major-System, jedoch mit drei statt zwei zu codierenden Ziffern. </p>
+
+<h4> Die Regeln: 86 ist ein Fisch </h4>
+
+<p> Die folgenden Regeln sind die Grundlagen des Systems. Sie müssen sie auswendig lernen, um Ihre Bilder zu erstellen und zu rekonstruieren. Ich habe sie Dutzenden von Kindern beigebracht. Sie konnten sie in ungefähr zehn Minuten erlernen. Ohne eine mündliche Erklärung kann es etwas länger dauern, aber Sie verstehen: Es ist sehr einfach! </p>
+
+<h4> Der Hauptcode </h4>
+
+<p> Mit Zahlen assoziierte Konstanten </p>
+
+<ul>
+<li> 0 s, z, weiches c </li>
+<li> 1 t, d </li>
+<li> 2 n </li>
+<li> 3 m </li>
+<li> 4 r </li>
+<li> 5 l </li>
+<li> 6 j, sh, soft g, soft "ch" </li>
+<li> 7 k, hart c, hart g, hart "ch", q, qu </li>
+<li> 8 f, v </li>
+<li> 9 p, b </li>
+<li> Nicht zugewiesener Vokal klingt, w, h, y, x </li>
+</ul>
+<b> Die Mnemonics - </b>
+<ul>
+<li> z ist der erste Buchstabe von Null. Die anderen Buchstaben haben einen ähnlichen Klang</li>
+<li> t & d haben einen Abwärtshub und klingen ähnlich (einige Variantensysteme enthalten "th") </li>
+<li> n hat zwei Abwärtsbewegungen </li>
+<li> letzter vierter Buchstabe, auch 4 und R sind fast spiegelbildlich zueinander </li>
+<li> Ein Skript j hat eine untere Schleife / g ist fast eine 6 gedreht </li>
+<li> capital K "enthält" zwei Siebenen (einige Variantensysteme enthalten "ng") </li>
+<li> script f ähnelt einer 8. V klingt ähnlich
+<li> p ist ein Spiegelbild 9. b klingt ähnlich und ähnelt einer 9, die um </li> herum gerollt wird
+<li> Diese können überall verwendet werden, ohne den Zahlenwert eines Wortes zu ändern. </li>
+</ul>
+
+<p> Jede Ziffer ist einer Reihe ähnlicher Klänge mit ähnlichen Mund- und Zungenpositionen zugeordnet. Die Zuordnung ist phonetisch, es kommt also auf die Konsonantenklänge an, nicht auf die Schreibweise. Daher würde ein Wort wie "Aktion" die Nummer 762 und nicht 712 codieren. und "ghost" wäre 701, während das Wort "enough" die Zahl 28 codiert, da "gh" in "enough" wie ein "f" ausgesprochen wird. </p>
+
+<p> Doppelbuchstaben werden ebenfalls ignoriert. Das Wort "Rakete" wird auf 305 abgebildet, nicht auf 3005. Zum Codieren von 3005 würde man so etwas wie "moosiges Segel" verwenden. </p>
+
+<p> Oft ist das Mapping kompakt. "Hinterhand" zum Beispiel bedeutet eindeutig 2174140, was 7 Ziffern entspricht, die von 12 Buchstaben codiert werden, und ist leicht zu visualisieren. </p>
+
+<h4> Erstellen Sie Ihre eigene Liste </h4>
+
+<p> Wenn Sie sich an die obigen Regeln halten, können Sie einige Dinge falsch machen. Sie können sogar abstrakte Wörter wie "Zeit" verwenden, wenn Sie eine starke visuelle Assoziation dafür haben, wie eine Uhr. Halten Sie sich am Anfang strikt an die Regeln. Es wird Ihnen helfen, die Wörter auswendig zu lernen. Später können Sie herumspringen und beliebige Wörter verwenden, um Ihre schwächeren Bilder zu ersetzen. Ich habe im Laufe der Zeit mehrere Stifte in meinem System gewechselt, ohne das Hauptsystem mehr zu verwenden. Aber um das ganze Rudel auf einmal zu lernen, sind die Regeln ein Muss. </p>
