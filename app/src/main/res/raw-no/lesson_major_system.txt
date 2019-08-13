@@ -17,3 +17,61 @@
 <h4> 1st-level: Number-Shape and Number-Rhyme System </h4>
 
 <p> En tilnærming er gjennom formen til hvert nummer. For eksempel: “De to” ser ut som en svane. En annen måte er å bruke rim for hvert nummer. I dette tilfellet kan "to" være "sko". Bortsett fra at du bare har noen få små tall å gjøre, ikke bry deg om å lære et så enkelt system. Men hvorfor er det? </p>
+
+<p> Til å begynne med bruker du ikke kraften fra klynger. Det betyr å sette flere opplysninger i ett bilde. For å huske et telefonnummer med åtte sifre, trenger du åtte bilder med et så enkelt system. Selv om det fremdeles hjelper å huske det, er innsatsen for stor for en så enkel oppgave. </p>
+
+<p> For det andre er ti bilder ikke nok til å ha et tilstrekkelig utvalg for forskjellige historier. Se for deg at du må lage en historie for et nummer med fire "toere". Du må legge fire svaner i ditt mentale bilde. </p>
+
+<p> Hvis du vil huske sifrene mer effektivt, trenger du et mer utviklet system. Så la oss hoppe over disse og gå videre til tosifrede systemer. </p>
+
+<h4> Andre nivå: Nivået: Major-systemet </h4>
+
+<p> Den minste klyngen for desimaler er to sifre sammen. 10x10 lager 100 bilder for hver kombinasjon av to tall. Det høres kanskje mye ut å lære, men det mnemoniske grunnlaget for disse systemene hjelper deg å gjøre det på veldig kort tid. Denne guiden setter fokus på Major System, en av mange måter å gruppere to sifre sammen. Til slutt spiller det ingen rolle hva slags system du bruker hvis du har den samme mengden informasjon som er lagret som bilder. </p>
+
+<p> Major-systemet er en fonetisk teknikk for å oversette tall til ord. Det starter med å konvertere sifre til konsonantlyder. Etter det legger du vokaler før, mellom og etter disse bokstavene. De fonetiske reglene er mnemonics og derfor enkle å huske. Det hjelper deg med å rekonstruere bildene du har i hodet, selv om du ikke lærte hele settet med 100 bilder ennå. Etter litt trening vil du ha sterke assosiasjoner til hvert nummer fra 00 til 99. Det virker som en stor innsats for å gjøre ting lettere for minnet ditt. Men det er ikke så vanskelig, og til slutt vil du aldri måtte tenke på det igjen. Du vil bare kjenne bildene dine. Hvis du kan overvinne tvilen din om effektiviteten til denne innsatsen, er du ett stort skritt foran alle som kom så langt, men vendte ryggen til disse teknikkene. </p>
+
+<p> En annen stor ting med Major System er at det kan utvides. Ved å legge til et tredje nummer i klyngen din, kommer du til det tredje nivået. Det vil bety å huske 1.000 objekter, før du kan bruke dem (eller 900 hvis du allerede har lært en liste med 100). Men det er ingenting du bør tenke på for det første. Egentlig er du i stand til å komme veldig langt med et 2. nivå-system. Men mengden minne-idrettsutøvere som bruker et 3. nivå-system vokser hver dag. Jeg vil ikke gå i detalj om 3.-nivå-systemet fordi det fungerer nøyaktig på samme måte som et 2.-nivå-major-system, men med tre sifre for å kode i stedet for to. </p>
+
+<h4> Reglene: 86 er en fisk </h4>
+
+<p> Følgende regler er det grunnleggende i systemet. Du må huske dem for å lage og rekonstruere bildene dine. Jeg lærte dem til dusinvis av barn. De klarte å lære dem på omtrent ti minutter. Uten en muntlig forklaring kan det ta litt lengre tid, men du får poenget mitt: Det er veldig enkelt! </p>
+
+<h4> Majorkoden </h4>
+
+<p> Tall tilknyttede konstanter </p>
+
+<ul>
+<li> 0 s, z, myk c </li>
+<li> 1 t, d </li>
+<li> 2 n </li>
+<li> 3 m </li>
+<li> 4 r </li>
+<li> 5 l </li>
+<li> 6 j, sh, myk g, myk "ch" </li>
+<li> 7 k, hard c, hard g, hard "ch", q, qu </li>
+<li> 8 f, v </li>
+<li> 9 p, b </li>
+<li> Ikke tildelte vokallyder, w, h, y, x </li>
+</ul>
+<b> Mnemonikken - </b>
+<ul>
+<li> z er den første bokstaven på null. De andre bokstavene har en lignende lyd </li>
+<li> t & d har ett slag nedover og høres lignende ut (noen variantsystemer inkluderer "th") </li>
+<li> n har to nedadgående streker </li>
+<li> siste bokstav på fire, også 4 og R, er nesten speilbilder av hverandre </li>
+<li> et skript j har en nedre sløyfe / g er nesten en 6 rotert </li>
+<li> kapital K "inneholder" to syvinger (noen variantsystemer inkluderer "ng") </li>
+<li> skript f likner en figur-8. V høres ut </li>
+<li> p er et speilbilde 9. b høres likt ut og ligner en 9 rullet rundt </li>
+<li> Disse kan brukes hvor som helst uten å endre et ords tallverdi </li>
+</ul>
+
+<p> Hvert siffer kartlegger et sett med lignende lyder med lignende munn- og tungeposisjoner. Kartleggingen er fonetisk, så det er konsonantlydene som betyr noe, ikke stavemåten. Derfor ville et ord som "handling" kode koden for tallet 762, ikke 712; og "spøkelse" ville være 701, mens fordi "gh" i "nok" uttales som en "f", koder ordet "nok" tallet 28. </p>
+
+<p> Tilsvarende ser man bort fra dobbeltbokstaver. Ordet “missil” er kartlagt til 305, ikke 3005. For å kode 3005 vil man bruke noe som “mossy sail”. </p>
+
+<p> Ofte er kartleggingen kompakt. "Hindquarters", for eksempel, oversettes entydig til 2174140, som utgjør 7 sifre kodet med 12 bokstaver, og kan lett visualiseres. </p>
+
+<h4> Lag din egen liste </h4>
+
+<p> Hvis du holder deg til reglene ovenfor, er det få ting du kan gjøre feil. Du kan til og med bruke abstrakte ord som "tid" hvis du har en sterk visuell tilknytning til det som en klokke. Hold deg strengt med reglene i begynnelsen. Det vil hjelpe deg å huske ordene. Senere kan du hoppe rundt og bruke hvilke som helst ord for å erstatte svakere bilder. Jeg byttet flere knagger i systemet mitt over tid uten å bruke Major System lenger. Men for å lære hele pakken på en gang, er reglene et must. </p>

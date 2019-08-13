@@ -17,3 +17,61 @@
 <h4> Tahap 1: Sistem Nombor-Bentuk dan Nombor-Rhyme </h4>
 
 <p> Satu pendekatan adalah melalui bentuk setiap nombor. Sebagai contoh: "Dua" kelihatan seperti angsa. Cara lain menggunakan puisi untuk setiap nombor. Dalam kes ini "dua" boleh menjadi "kasut". Kecuali anda berurusan dengan hanya beberapa nombor kecil, jangan risau belajar sistem mudah sedemikian. Tetapi kenapa begitu? </p>
+
+<p> Pada mulanya, anda tidak menggunakan kuasa kluster. Ini bermakna, meletakkan beberapa maklumat dalam satu imej. Untuk mengingati nombor telefon dengan lapan digit, anda memerlukan lapan imej dengan sistem mudah sedemikian. Walaupun masih dapat mengingatnya, usaha itu terlalu besar untuk tugas yang mudah. ​​</p>
+
+<p> Kedua, sepuluh imej tidak cukup untuk mempunyai pelbagai yang memadai untuk cerita yang berbeza. Bayangkan anda perlu membuat cerita untuk nombor dengan empat "dua". Anda perlu meletakkan empat angsa dalam imej mental anda. </p>
+
+<p> Jika anda ingin menghafalkan digit dengan lebih berkesan, anda memerlukan sistem yang lebih berkembang. Oleh itu mari melangkau ini dan pergi ke 2-digit-Sistem. </p>
+
+<h4> 2 -Level: Sistem Utama </h4>
+
+<p> Kelompok terkecil untuk digit perpuluhan adalah dua digit bersama. 10x10 membuat 100 imej untuk setiap kombinasi dua nombor. Ia mungkin berbunyi banyak untuk belajar, tetapi asas mnemonik sistem ini membantu anda untuk melakukannya dalam masa yang singkat. Panduan ini menetapkan fokusnya pada Sistem Utama, salah satu daripada banyak cara untuk mengumpulkan dua digit bersama-sama. Akhirnya, tidak kira jenis sistem yang anda gunakan jika anda mempunyai jumlah maklumat yang sama yang disimpan sebagai imej. </p>
+
+<p> Sistem Utama adalah teknik fonetik untuk menerjemahkan nombor ke dalam kata-kata. Ia bermula dengan menukarkan angka ke dalam bunyi konsonan. Selepas itu anda menambah huruf vokal sebelum, antara dan selepas huruf tersebut. Peraturan fonetik adalah mnemonik dan oleh itu mudah diingat. Ini membantu anda untuk membina semula imej yang ada di kepala anda, walaupun anda tidak mempelajari set lengkap 100 imej. Selepas beberapa amalan, anda akan mempunyai persatuan yang kuat dengan setiap nombor dari 00 hingga 99. Nampaknya usaha yang besar untuk membuat lebih mudah untuk ingatan anda. Tetapi tidak begitu sukar dan pada akhirnya anda tidak akan perlu memikirkannya lagi. Anda hanya akan tahu imej anda. Jika anda dapat mengatasi keraguan anda tentang kecekapan usaha ini, anda adalah satu langkah besar di depan semua orang yang datang sejauh ini tetapi berpaling kepada teknik ini. </p>
+
+<p> Satu lagi perkara besar mengenai Sistem Utama adalah fakta, bahawa ia boleh diperluaskan. Dengan menambahkan nombor ketiga ke kumpulan anda, anda akan mencapai tahap ke-3. Itu bermakna menghafal 1.000 objek, sebelum anda boleh menggunakannya (atau 900 jika anda sudah belajar senarai 100). Tetapi itu bukan apa yang anda perlu fikirkan untuk permulaan. Sebenarnya anda boleh datang sangat jauh dengan sistem Tahap ke-2. Tetapi jumlah atlet ingatan menggunakan sistem Tahap ke-3 semakin meningkat setiap hari. Saya tidak akan terperinci tentang sistem Tahap ke-3 kerana ia berfungsi dengan cara yang sama seperti Sistem Utama Peringkat 2 tetapi dengan tiga digit untuk menyandikan bukannya dua. </p>
+
+<h4> Peraturan: 86 adalah ikan </h4>
+
+<p> Peraturan berikut adalah asas-asas sistem. Anda perlu menghafal mereka untuk mencipta dan membina semula imej anda. Saya mengajar mereka kepada berpuluh-puluh kanak-kanak. Mereka dapat belajar mereka dalam kira-kira sepuluh minit. Tanpa penjelasan lisan, ia mungkin mengambil sedikit masa lagi, tetapi anda mendapat maksud saya: Ia sangat mudah! </p>
+
+<h4> Kod Utama </h4>
+
+<p> Penghalusan Bersekutu Bilangan </p>
+
+<ul>
+<li> 0 s, z, soft c </li>
+<li> 1 t, d </li>
+<li> 2 n </li>
+<li> 3 m </li>
+<li> 4 r </li>
+<li> 5 l </li>
+<li> 6 j, sh, lembut g, lembut "ch" </li>
+<li> 7k, keras c, keras g, keras "ch", q, qu </li>
+<li> 8 f, v </li>
+<li> 9 p, b </li>
+<li> Bunyi, w, h, y, x </li> yang tidak ditugaskan-Vowel</li>
+</ul>
+<b> The Mnemonics - </b>
+<ul>
+<li> z ialah huruf pertama sifar. Huruf lain mempunyai bunyi serupa </li>
+<li> t & d mempunyai satu strok ke bawah dan bunyi yang sama (beberapa sistem varians termasuk "th") </li>
+<li> n mempunyai dua pukulan ke bawah </li>
+<li> huruf terakhir empat, juga 4 dan R hampir sama dengan satu sama lain </li>
+<li> skrip j mempunyai gelung / g lebih rendah hampir 6 diputar </li>
+<li> modal K "mengandungi" dua tujuh (beberapa sistem varians termasuk "ng") </li>
+Skrip <li> menyerupai angka-8. V kedengarannya serupa </li>
+<li> p ialah imej cermin 9. b berbunyi serupa dan menyerupai 9 yang dilancarkan sekitar </li>
+<li> Ini boleh digunakan di mana sahaja tanpa mengubah nilai nombor perkataan </li>
+</ul>
+
+<p> Setiap peta digit kepada satu set bunyi serupa dengan mulut dan lidah yang sama. Pemetaan adalah fonetik, jadi bunyi konsonan itu penting, bukan ejaan. Oleh itu, perkataan seperti "tindakan" akan mengekod nombor 762, bukan 712; dan "hantu" akan menjadi 701, sementara, kerana "gh" dalam "cukup" diucapkan seperti "f", perkataan "cukup" menyandi nombor 28. </p>
+
+<p> Begitu juga, huruf berganda tidak diendahkan. Perkataan "peluru berpandu" dipetakan ke 305, bukan 3005. Untuk mengekod 3005, seseorang akan menggunakan sesuatu seperti "pelayaran berlumut". </p>
+
+<p> Selalu pemetaan adalah padat. Sebagai contoh, "Hindquarters" diterjemahkan secara tidak jelas kepada 2174140, yang berjumlah 7 digit yang dikodkan dengan 12 huruf, dan dapat dilihat dengan mudah. ​​</p>
+
+<h4> Buat senarai anda sendiri </h4>
+
+<p> Jika anda berpegang pada peraturan di atas, terdapat beberapa perkara yang boleh anda lakukan salah. Anda juga boleh menggunakan perkataan abstrak seperti "masa" jika anda mempunyai persatuan visual yang kuat untuknya seperti jam. Tetap tegas dengan peraturan pada mulanya. Ia akan membantu anda menghafal kata-kata. Kemudian anda boleh melompat dan menggunakan sebarang perkataan untuk menggantikan imej anda yang lemah. Saya menukar beberapa pasak dalam sistem saya dari masa ke masa tanpa menggunakan Sistem Utama lagi. Tetapi untuk mempelajari keseluruhan pek sekaligus, peraturan mesti ada. </p>

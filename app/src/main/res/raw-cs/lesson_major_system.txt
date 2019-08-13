@@ -17,3 +17,61 @@
 <h4> 1st-Level: Number-Shape and Number-Rhyme System </h4>
 
 <p> Jedním přístupem je tvar každého čísla. Například: „Dva“ vypadá jako labuť. Dalším způsobem je použití rýmů pro každé číslo. V tomto případě by „dva“ mohly být „boty“. Kromě toho, že se zabýváte pouze několika malými čísly, neobtěžujte se naučit takový jednoduchý systém. Ale proč to je? </p>
+
+<p> Nejprve nepoužíváte sílu klastrů. To znamená, že do jednoho obrázku vložíme několik informací. Pro zapamatování telefonního čísla s osmi číslicemi byste potřebovali osm obrázků s tak jednoduchým systémem. Ačkoli to stále pomáhá pamatovat si, úsilí je příliš velké pro takový jednoduchý úkol. </p>
+
+<p> Za druhé, deset obrázků nestačí na to, aby měly odpovídající rozmanitost pro různé příběhy. Představte si, že musíte vytvořit příběh pro číslo se čtyřmi „dvojčaty“. Museli byste dát do svého mentálního obrazu čtyři labutě. </p>
+
+<p> Pokud si chcete zapamatovat číslice efektivněji, budete potřebovat rozvinutější systém. Pojďme je tedy přeskočit a přejít na dvoumístné systémy. </p>
+
+<h4> 2nd -Level: Hlavní systém </h4>
+
+<p> Nejmenší cluster pro desetinná místa jsou dvě číslice dohromady. 10x10 vytvoří 100 obrázků pro každou kombinaci dvou čísel. To se může hodně naučit, ale mnemotechnická základna těchto systémů vám to pomůže ve velmi krátké době. Tato příručka se zaměřuje na hlavní systém, jeden z mnoha způsobů, jak seskupit dvě číslice dohromady. Nakonec nezáleží na tom, jaký systém používáte, pokud máte stejné množství informací uložených jako obrázky. </p>
+
+<p> Hlavní systém je fonetická technika k překladu čísel do slov. Začíná konverzí číslic na souhlásky. Poté přidáte samohlásky před, mezi a za těmito písmeny. Fonetická pravidla jsou mnemonika, a proto je snadno zapamatovatelná. To vám pomůže rekonstruovat obrázky, které máte v hlavě, i když jste se dosud nenaučili celou sadu 100 obrázků. Po nějaké praxi budete mít silné spojení s každým číslem od 00 do 99. Vypadá to jako velké úsilí usnadnit věci pro vaši paměť. Ale není to tak těžké a nakonec už na to už nikdy nebudete muset myslet. Budete jen znát své obrázky. Pokud dokážete překonat své pochybnosti o účinnosti tohoto úsilí, jste o jeden velký krok před všemi, kteří přišli tak daleko, ale obrátili se zády k těmto technikám. </p>
+
+<p> Další velkou věcí na hlavním systému je skutečnost, že je rozšiřitelný. Přidáním třetího čísla do svého klastru dosáhnete 3. úrovně. To by znamenalo zapamatovat si 1 000 objektů, než je budete moci použít (nebo 900, pokud jste se již naučili seznam 100). Ale to není nic, na co byste měli myslet na začátek. Ve skutečnosti jste schopni přijít velmi daleko se systémem 2. úrovně. Ale množství paměťových sportovců používajících systém 3. úrovně roste každý den. Nebudu se zabývat podrobnostmi o systému 3. úrovně, protože funguje excactly stejným způsobem jako hlavní systém 2. úrovně, ale se třemi číslicemi kódovat místo dvou. </p>
+
+<h4> Pravidla: 86 je ryba </h4>
+
+<p> Následující pravidla jsou základem systému. Abyste si mohli vytvořit a rekonstruovat své obrázky, musíte si je zapamatovat. Naučil jsem je desítkám dětí. Dokázali se je naučit asi za deset minut. Bez ústního vysvětlení by to mohlo trvat trochu déle, ale chápete, že: Je to velmi jednoduché! </p>
+
+<h4> Hlavní kód </h4>
+
+<p> Číselné sdružené konstanty </p>
+
+<ul>
+<li> 0 s, z, soft c </li>
+<li> 1 t, d </li>
+<li> 2 n </li>
+<li> 3 m </li>
+<li> 4 r </li>
+<li> 5 l </li>
+<li> 6 j, sh, měkké g, měkké "ch" </li>
+<li> 7 k, tvrdý c, tvrdý g, tvrdý "ch", q, qu </li>
+<li> 8 f, v </li>
+<li> 9 p, b </li>
+<li> Samohláska samohláska zní, w, h, y, x </li>
+</ul>
+<b> Mnemonika - </b>
+ <ul>
+<li> z je první písmeno nula. Ostatní písmena mají podobný zvuk </li>
+<li> t & d mají jeden zdvih a zvuk podobný (některé varianty systémů zahrnují "th") </li>
+<li> n má dva tahy dolů </li>
+<li> poslední písmeno ze čtyř, také 4 a R jsou téměř zrcadlovými obrázky navzájem </li>
+<li> skript j má dolní smyčku / g je téměř 6 otočený </li>
+<li> kapitál K "obsahuje" dvě sedmičky (některé varianty systémů zahrnují "ng") </li>
+<li> skript f se podobá číslu-8. V zní podobně </li>
+<li> p je zrcadlový obraz 9. b zní podobně a podobá se 9 válenému kolem </li>
+<li> Lze je použít kdekoli, aniž by se změnila hodnota čísla slova </li>
+</ul>
+
+<p> Každá číslice mapuje na sadu podobných zvuků s podobnými pozicemi v ústech a v jazyce. Mapování je fonetické, takže záleží na souhláskách, nikoli na pravopisu. Proto slovo jako „akce“ kóduje číslo 762, nikoli 712; a “duch” by byl 701, zatímco, protože “gh” v “dost” je vyslovováno jako “f”, slovo “dost” kóduje číslo 28. </p>
+
+<p> Podobně se neberou v úvahu dvojitá písmena. Slovo „raketa“ je mapováno na 305, ne na 3005. K zakódování 3005 by se použilo něco jako „mechová plachta“. </p>
+
+<p> Často je mapování kompaktní. Například „Hindie“ se jednoznačně překládá na 2174140, což je 7 číslic kódovaných 12 písmeny a lze je snadno vizualizovat. </p>
+
+<h4> Vytvořte si vlastní seznam </h4>
+
+<p> Pokud se budete držet výše uvedených pravidel, je několik věcí, které můžete udělat špatně. Abstraktní slova, jako je „čas“, můžete použít i v případě, že máte silnou vizuální asociaci jako hodiny. Na začátku zůstaňte striktně v souladu s pravidly. Pomůže vám zapamatovat si slova. Později můžete skákat kolem a pomocí jakýchkoli slov nahradit vaše slabší obrázky. Postupem času jsem změnil několik kolíčků v mém systému, aniž bych už používal hlavní systém. Ale abych se naučil celou smečku najednou, musíš mít pravidla. </p>
