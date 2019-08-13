@@ -54,7 +54,8 @@ public class RecallSelector extends AppCompatActivity {
         } catch (Resources.NotFoundException e) {
             Crashlytics.logException(e);
             Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
-            throw new RuntimeException("Not downloaded from the Play Store");
+            finish();
+            return;
         }
         setTitle(R.string.recall);
 
