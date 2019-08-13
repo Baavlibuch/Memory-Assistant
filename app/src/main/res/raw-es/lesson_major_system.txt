@@ -17,3 +17,61 @@
 <h4> 1er nivel: sistema de forma numérica y rima numérica </h4>
 
 <p> Un enfoque es a través de la forma de cada número. Por ejemplo: los "dos" se parecen a un cisne. Otra forma es usar rimas para cada número. En este caso, los "dos" podrían ser "zapato". Excepto que solo se trata de unos pocos números pequeños, no se moleste en aprender un sistema tan simple. ¿Pero por qué es eso? </p>
+
+<p> Al principio, no usas el poder de los clústeres. Eso significa, poner varias informaciones en una imagen. Para recordar un número de teléfono con ocho dígitos, necesitaría ocho imágenes con un sistema tan simple. Aunque todavía ayuda recordarlo, el esfuerzo es demasiado grande para una tarea tan simple. </p>
+
+<p> En segundo lugar, diez imágenes no son suficientes para tener una variedad adecuada para diferentes historias. Imagine que tiene que hacer una historia para un número con cuatro "dos". Tendrías que poner cuatro cisnes en tu imagen mental. </p>
+
+<p> Si desea memorizar dígitos de manera más efectiva, necesitará un sistema más evolucionado. Así que omita estos y pasemos a los sistemas de 2 dígitos. </p>
+
+<h4> 2do nivel: el sistema principal </h4>
+
+<p> El grupo más pequeño para dígitos decimales es de dos dígitos juntos. 10x10 crea 100 imágenes para cada combinación de dos números. Puede parecer mucho aprender, pero la base mnemónica de estos sistemas lo ayuda a hacerlo en muy poco tiempo. Esta guía se centra en el Sistema principal, una de las muchas formas de agrupar dos dígitos. Al final, no importa qué tipo de sistema use si tiene la misma cantidad de información almacenada que las imágenes. </p>
+
+<p> El Sistema Mayor es una técnica fonética para traducir números en palabras. Comienza con la conversión de dígitos en sonidos consonantes. Después de eso, agrega vocales antes, entre y después de esas letras. Las reglas fonéticas son mnemotécnicas y, por lo tanto, fáciles de recordar. Eso te ayuda a reconstruir las imágenes que tienes en la cabeza, incluso si aún no aprendiste el conjunto completo de 100 imágenes. Después de un poco de práctica, tendrá fuertes asociaciones con cada número del 00 al 99. Parece un gran esfuerzo hacer las cosas más fáciles para su memoria. Pero no es tan difícil y al final nunca más tendrás que pensarlo nuevamente. Solo sabrás tus imágenes. Si puede superar su duda sobre la eficacia de este esfuerzo, está un gran paso por delante de todos los que llegaron hasta aquí pero dieron la espalda a estas técnicas. </p>
+
+<p> Otra gran cosa sobre el Sistema Principal es el hecho de que es expandible. Al agregar un tercer número a su clúster, alcanzará el 3er nivel. Eso significaría memorizar 1.000 objetos, antes de poder usarlo (o 900 si ya aprendió una lista de 100). Pero eso no es nada en lo que deba pensar para empezar. En realidad, puedes llegar muy lejos con un sistema de segundo nivel. Pero la cantidad de atletas con memoria que usan un sistema de tercer nivel está creciendo cada día. No entraré en detalles sobre el sistema de tercer nivel porque funciona exactamente de la misma manera que un sistema principal de segundo nivel pero con tres dígitos para codificar en lugar de dos. </p>
+
+<h4> Las reglas: 86 es un pez </h4>
+
+<p> Las siguientes reglas son los fundamentos del sistema. Tienes que memorizarlos para crear y reconstruir tus imágenes. Les enseñé a docenas de niños. Pudieron aprenderlos en unos diez minutos. Sin una explicación oral, puede llevar un poco más de tiempo, pero entiendes lo siguiente: ¡es muy simple! </p>
+
+<h4> El Código Mayor </h4>
+
+<p> Constantes numéricas asociadas </p>
+
+<ul>
+<li> 0 s, z, c suave </li>
+<li> 1 t, d </li>
+<li> 2 n </li>
+<li> 3 m </li>
+<li> 4 r </li>
+<li> 5 l </li>
+<li> 6 j, sh, g suave, "ch" suave </li>
+<li> 7 k, hard c, hard g, hard "ch", q, qu </li>
+<li> 8 f, v </li>
+<li> 9 p, b </li>
+<li> Sonidos de vocales no asignados, w, h, y, x </li>
+</ul>
+<b> La mnemotecnia - </b>
+<ul>
+<li> z es la primera letra de cero. Las otras letras tienen un sonido similar </li>
+<li> t & d tiene un golpe hacia abajo y suena similar (algunos sistemas variantes incluyen "th") </li>
+<li> n tiene dos golpes hacia abajo </li>
+<li> última letra de cuatro, también 4 y R son casi imágenes especulares entre sí </li>
+<li> un script j tiene un bucle inferior / g es casi un 6 girado </li>
+<li> mayúscula K "contiene" dos sietes (algunos sistemas variantes incluyen "ng") </li>
+<li> script f se asemeja a una figura-8. V suena similar </li>
+<li> p es una imagen espejo 9. b suena similar y se asemeja a un 9 enrollado </li>
+<li> Se pueden usar en cualquier lugar sin cambiar el valor numérico de una palabra </li>
+</ul>
+
+<p> Cada dígito se asigna a un conjunto de sonidos similares con posiciones similares de boca y lengua. El mapeo es fonético, por lo que son los sonidos consonantes los que importan, no la ortografía. Por lo tanto, una palabra como "acción" codificaría el número 762, no 712; y "fantasma" sería 701, mientras que, debido a que "gh" en "suficiente" se pronuncia como una "f", la palabra "suficiente" codifica el número 28. </p>
+
+<p> Del mismo modo, las letras dobles no se tienen en cuenta. La palabra "misil" se asigna a 305, no a 3005. Para codificar 3005 se usaría algo como "vela cubierta de musgo". </p>
+
+<p> A menudo, el mapeo es compacto. "Cuartos traseros", por ejemplo, se traduce inequívocamente en 2174140, que equivale a 7 dígitos codificados por 12 letras, y se puede visualizar fácilmente. </p>
+
+<h4> Crea tu propia lista </h4>
+
+<p> Si se apega a las reglas anteriores, hay algunas cosas que puede hacer mal. Incluso puede usar palabras abstractas como "tiempo" si tiene una asociación visual fuerte como un reloj. Manténgase estrictamente con las reglas al principio. Te ayudará a memorizar las palabras. Más tarde, puede saltar y usar cualquier palabra para reemplazar sus imágenes más débiles. Cambié varias clavijas en mi sistema con el tiempo sin usar el sistema principal. Pero para aprender todo el paquete de una vez, las reglas son imprescindibles. </p>
