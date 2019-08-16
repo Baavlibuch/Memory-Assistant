@@ -47,9 +47,9 @@ public class RecallSelector extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Helper.theme(this, this);
         try {
+            super.onCreate(savedInstanceState);
+            Helper.theme(this, this);
             setContentView(R.layout.activity_my_space);
         } catch (Resources.NotFoundException e) {
             Crashlytics.logException(e);
