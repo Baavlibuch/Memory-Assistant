@@ -61,7 +61,7 @@ public class Lessons extends AppCompatActivity {
         theme(intent);
 
         StringBuilder sb = new StringBuilder();   // Empty string used to distinguish from null
-                                                    // that might be returned after file is read
+        // that might be returned after file is read
         int fileInt = intent.getIntExtra("file", 0);
         if (fileInt != 0 && intent.getBooleanExtra("resource", true)) { // Raw
 
@@ -95,7 +95,7 @@ public class Lessons extends AppCompatActivity {
             sb = readAsset(sb, intent);                                                 // non-list
         }
 
-        Objects.requireNonNull(sb );                // null if error in reading file
+        Objects.requireNonNull(sb);                // null if error in reading file
 
         if (intent.getBooleanExtra("webView", false)) {             // JQMath
             setWebView(sb);
@@ -255,22 +255,16 @@ public class Lessons extends AppCompatActivity {
                 } else sb.append(line);
             }
             letterList.add(new Item(header, sb.toString()));
-            try {
-                reader.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            reader.close();
             return letterList;
-
         } catch (IOException e) {
             Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
+            try {
+                if (reader != null) reader.close();
+            } catch (IOException e1) {
+                Crashlytics.logException(e1);
+            }
             finish();
-        }
-        try {
-            if (reader != null)
-                reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -285,15 +279,15 @@ public class Lessons extends AppCompatActivity {
         } catch (IOException e) {
             Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
             finish();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new RuntimeException(
                     "\nAsset path - " + line + "" +
-                    "fileInt = " + intent.getIntExtra("file", 0) +
-                    "resources boolean = " + intent.getBooleanExtra("resource", true) +
-                    "list boolean = " + intent.getBooleanExtra("list", false) +
-                    "webView boolean = " + intent.getBooleanExtra("webView", false) +
-                    "headerInt = " + intent.getIntExtra("mHeader", 0) +
-                    "headerString" + intent.getStringExtra("headerString"),
+                            "fileInt = " + intent.getIntExtra("file", 0) +
+                            "resources boolean = " + intent.getBooleanExtra("resource", true) +
+                            "list boolean = " + intent.getBooleanExtra("list", false) +
+                            "webView boolean = " + intent.getBooleanExtra("webView", false) +
+                            "headerInt = " + intent.getIntExtra("mHeader", 0) +
+                            "headerString" + intent.getStringExtra("headerString"),
                     e);
         }
         try {
@@ -330,7 +324,7 @@ public class Lessons extends AppCompatActivity {
                 if (listItemView == null)
                     listItemView = LayoutInflater.from(getContext()).inflate(
                             R.layout.item_lesson_list, null, true);
-            } catch (Resources.NotFoundException e){
+            } catch (Resources.NotFoundException e) {
                 Crashlytics.logException(e);
                 Toast.makeText(getContext(), R.string.dl_from_play, Toast.LENGTH_LONG).show();
                 throw new RuntimeException("Not downloaded from the Play Store");

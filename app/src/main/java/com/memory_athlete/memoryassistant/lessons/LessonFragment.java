@@ -231,14 +231,12 @@ public class LessonFragment extends Fragment {
             return letterList;
         } catch (IOException e) {
             Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
-            activity.finish();
-        } finally {
             try {
-                assert reader != null;
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                if (reader != null) reader.close();
+            } catch (IOException e1) {
+                Crashlytics.logException(e1);
             }
+            activity.finish();
         }
         throw new RuntimeException("failure");
     }
