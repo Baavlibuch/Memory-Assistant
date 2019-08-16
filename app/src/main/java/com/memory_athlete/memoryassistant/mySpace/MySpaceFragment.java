@@ -3,13 +3,13 @@ package com.memory_athlete.memoryassistant.mySpace;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -77,24 +78,21 @@ public class MySpaceFragment extends Fragment {
                              Bundle savedInstanceState) {
         Timber.v("onCreateView() started");
         //if(savedInstanceState != null){}
-        rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
+        try {
+            rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
+        } catch (Resources.NotFoundException e) {
+            Crashlytics.logException(e);
+            Toast.makeText(getActivity(), R.string.dl_from_play, Toast.LENGTH_LONG).show();
+            Objects.requireNonNull(getActivity()).finish();
+            return rootView;
+        }
         rootView.findViewById(R.id.add).setVisibility(GONE);//.removeViewAt(0);
         //if (fragListViewId > 0)
         //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
         activity = getActivity();
         fragListViewId = MIN_DYNAMIC_VIEW_ID;    //There are three other views with ids 0,1,2
-        new Runnable() {
-            @Override
-            public void run() {
-                setAdapter(rootView);
-            }
-        }.run();
-        new Runnable() {
-            @Override
-            public void run() {
-                setButtons(rootView);
-            }
-        }.run();
+        setAdapter(rootView);
+        setButtons(rootView);
         return rootView;
     }
 
@@ -147,48 +145,46 @@ public class MySpaceFragment extends Fragment {
         layout.addView(listView);
         listView.setAdapter(adapter);
         final ArrayList<Item> finalArrayList = arrayList;
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Timber.d("listView id = %s", listView.getId());
-                Item item = finalArrayList.get(position);
-                Timber.v("item.mPath = %s", item.mPath);
-                if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
-                    dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mPath);
-                    layout.findViewById(fragListViewId).setVisibility(View.GONE);
-                    fragListViewId++;
-                    title = item.mName;
-                    mCallback.tabTitleUpdate(title);
-                    rootView.findViewById(R.id.add).setVisibility(View.VISIBLE);
-                    setAdapter(rootView);
-                    Timber.v("going to id 1, listViewId = %s", fragListViewId);
-                    //rootView.findViewById(R.id.back_button).setVisibility(View.VISIBLE);
-                    //rootView.findViewById(R.id.back_button).bringToFront();
-                } else {
-                    Timber.v("listViewId = %s", fragListViewId);
-                    fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
-                    //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
-                    //intent.putExtra("mHeader", item.mName);
-                    //intent.putExtra("fileString", item.mItem);
-                    //intent.putExtra("fileName", fileName);
-                    File file = new File(fileName);
-                    boolean isDirectoryCreated = file.exists();
-                    if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
-                    if (isDirectoryCreated) {
-                        name = true;
-                        //rootView.findViewById(R.id.back_button).setVisibility(View.GONE);
-                        rootView.findViewById(R.id.add).setVisibility(View.GONE);
-                        try {
-                            rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
-                        } catch (NullPointerException e){
-                            throw new RuntimeException("Wrong value of fragListViewId = " + fragListViewId);
-                        }
-                        rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
-                        rootView.findViewById(R.id.my_space_scroll_view).setVisibility(View.VISIBLE);
-                        rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
-                        writeFile(rootView, fileName, item.mName);
-                    } else throw new RuntimeException("Directory not created in MySpace");
-                    //rootView.findViewById(R.id.back_button).bringToFront();
-                }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Timber.d("listView id = %s", listView.getId());
+            Item item = finalArrayList.get(position);
+            Timber.v("item.mPath = %s", item.mPath);
+            if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
+                dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mPath);
+                layout.findViewById(fragListViewId).setVisibility(View.GONE);
+                fragListViewId++;
+                title = item.mName;
+                mCallback.tabTitleUpdate(title);
+                rootView.findViewById(R.id.add).setVisibility(View.VISIBLE);
+                setAdapter(rootView);
+                Timber.v("going to id 1, listViewId = %s", fragListViewId);
+                //rootView.findViewById(R.id.back_button).setVisibility(View.VISIBLE);
+                //rootView.findViewById(R.id.back_button).bringToFront();
+            } else {
+                Timber.v("listViewId = %s", fragListViewId);
+                fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
+                //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
+                //intent.putExtra("mHeader", item.mName);
+                //intent.putExtra("fileString", item.mItem);
+                //intent.putExtra("fileName", fileName);
+                File file = new File(fileName);
+                boolean isDirectoryCreated = file.exists();
+                if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
+                if (isDirectoryCreated) {
+                    name = true;
+                    //rootView.findViewById(R.id.back_button).setVisibility(View.GONE);
+                    rootView.findViewById(R.id.add).setVisibility(View.GONE);
+                    try {
+                        rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
+                    } catch (NullPointerException e) {
+                        throw new RuntimeException("Wrong value of fragListViewId = " + fragListViewId);
+                    }
+                    rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.my_space_scroll_view).setVisibility(View.VISIBLE);
+                    rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
+                    writeFile(rootView, fileName, item.mName);
+                } else throw new RuntimeException("Directory not created in MySpace");
+                //rootView.findViewById(R.id.back_button).bringToFront();
             }
         });
     }
@@ -230,28 +226,18 @@ public class MySpaceFragment extends Fragment {
     }
 
     private void setButtons(final View rootView) {
-        /*rootView.findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                back();
-            }
-        });*/
-
-        rootView.findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Timber.v("add button clicked");
-                name = false;
-                fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
-                rootView.findViewById(R.id.add).setVisibility(View.GONE);
-                if (rootView.findViewById(fragListViewId) != null)
-                    rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
-                else fragListViewId++;
-                rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.my_space_scroll_view).setVisibility(View.VISIBLE);
-                rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
-                writeFile(rootView, fileName, title);
-            }
+        rootView.findViewById(R.id.add).setOnClickListener(v -> {
+            Timber.v("add button clicked");
+            name = false;
+            fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
+            rootView.findViewById(R.id.add).setVisibility(View.GONE);
+            if (rootView.findViewById(fragListViewId) != null)
+                rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
+            else fragListViewId++;
+            rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
+            rootView.findViewById(R.id.my_space_scroll_view).setVisibility(View.VISIBLE);
+            rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
+            writeFile(rootView, fileName, title);
         });
     }
 
@@ -341,7 +327,8 @@ public class MySpaceFragment extends Fragment {
                 outputStream.write(string.getBytes());
                 outputStream.close();
 
-                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(
+                        Objects.requireNonNull(getActivity())).edit();
                 editor.putLong(fname, System.currentTimeMillis());
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
