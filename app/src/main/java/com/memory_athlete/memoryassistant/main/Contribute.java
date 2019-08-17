@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.inAppBilling.DonateActivity;
@@ -28,6 +28,7 @@ import timber.log.Timber;
 
 
 public class Contribute extends AppCompatActivity {
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class Contribute extends AppCompatActivity {
         Helper.theme(this, Contribute.this);
         setContentView(R.layout.activity_contribute);
         setTitle(R.string.get_pro);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setAdapter();
     }
 
@@ -44,48 +46,49 @@ public class Contribute extends AppCompatActivity {
         MainAdapter adapter = new MainAdapter(this, list);
         ListView listView = findViewById(R.id.contribute_list_view);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                Item item = list.get(position);
-                switch (item.type) {
-                    case PLAY_STORE:
-                        try {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(
-                                    "market://details?id=" + getPackageName())));
-                        } catch (android.content.ActivityNotFoundException anfe) {
-                            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(
-                                    "https://play.google.com/store/apps/details?id=" + getPackageName())));
-                        }
-                        break;
-                    case ACTIVITY:
-                        startActivity(new Intent(getApplicationContext(), DonateActivity.class));
-                        break;
-                    case GITHUB:
-                        startActivity(new Intent(Intent.ACTION_VIEW,
-                                Uri.parse("https://github.com/maniksejwal/Memory-Assistant")));
-                        break;
-                    case EMAIL:
-                        Toast.makeText(getApplicationContext(),
-                                "Your eMail address will be added to the list of alpha testers manually",
-                                Toast.LENGTH_LONG).show();
-                        String mailto = "mailto:memoryassistantapp@gmail.com" +
-                                "?cc=" + "" +
-                                "&subject=" + Uri.encode("Alpha tester") +
-                                "&body=" + Uri.encode("I'd like to join the alpha testers");
-                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                        emailIntent.setData(Uri.parse(mailto));
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Item item = list.get(position);
+            switch (item.type) {
+                case PLAY_STORE:                                                    // review
+                    mFirebaseAnalytics.logEvent("wants_to_review", null);
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(
+                                "market://details?id=" + getPackageName())));
+                    } catch (ActivityNotFoundException anfe) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(
+                                "https://play.google.com/store/apps/details?id=" + getPackageName())));
+                    }
+                    break;
+                case ACTIVITY:                                                      // donate
+                    mFirebaseAnalytics.logEvent("wants_to_donate", null);
+                    startActivity(new Intent(getApplicationContext(), DonateActivity.class));
+                    break;
+                case GITHUB:                                                        // code
+                    mFirebaseAnalytics.logEvent("wants_to_code", null);
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://github.com/maniksejwal/Memory-Assistant")));
+                    break;
+                case EMAIL:
+                    Toast.makeText(getApplicationContext(),
+                            "Your eMail address will be added to the list of alpha testers manually",
+                            Toast.LENGTH_LONG).show();
+                    String mailto = "mailto:memoryassistantapp@gmail.com" +
+                            "?cc=" + "" +
+                            "&subject=" + Uri.encode("Alpha tester") +
+                            "&body=" + Uri.encode("I'd like to join the alpha testers");
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                    emailIntent.setData(Uri.parse(mailto));
 
-                        try {
-                            startActivity(emailIntent);
-                        } catch (ActivityNotFoundException e) {
-                            Toast.makeText(getApplicationContext(),
-                                    "No eMail application found", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-                    case CREDITS:
-                        startActivity(new Intent(getApplicationContext(), CreditsActivity.class));
-                        break;
-                }
+                    try {
+                        startActivity(emailIntent);
+                    } catch (ActivityNotFoundException e) {
+                        Toast.makeText(getApplicationContext(),
+                                "No eMail application found", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case CREDITS:
+                    startActivity(new Intent(getApplicationContext(), CreditsActivity.class));
+                    break;
             }
         });
         Timber.v("Adapter set!");

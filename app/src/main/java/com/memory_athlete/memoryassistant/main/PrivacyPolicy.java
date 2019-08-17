@@ -5,6 +5,7 @@ import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.ByteArrayOutputStream;
@@ -20,6 +21,7 @@ public class PrivacyPolicy extends AppCompatActivity {
         ((WebView) findViewById(R.id.privacy_policy_view)).loadData(readTextFromResource(),
                 "text/html", "utf-8");
         setTitle(R.string.privacy_policy);
+        FirebaseAnalytics.getInstance(this).logEvent("checked_privacy_policy", null);
     }
 
     private String readTextFromResource() {

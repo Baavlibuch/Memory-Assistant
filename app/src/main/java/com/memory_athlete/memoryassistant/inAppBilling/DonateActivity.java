@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -42,6 +43,7 @@ public class DonateActivity extends AppCompatActivity {
     RecyclerView mRecycler;
     private ActivityCheckout mCheckout;
     private InventoryCallback mInventoryCallback;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class DonateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donate);
         ButterKnife.bind(this);
         setTitle("Donate");
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         final Adapter adapter = new Adapter();
         mInventoryCallback = new InventoryCallback(adapter);
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -79,7 +82,10 @@ public class DonateActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         mCheckout.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) Toast.makeText(this, R.string.thanks, Toast.LENGTH_LONG).show();
+        if (resultCode == RESULT_OK) {
+            Toast.makeText(this, R.string.thanks, Toast.LENGTH_LONG).show();
+            mFirebaseAnalytics.logEvent("donated", null);
+        }
     }
 
     @Override
@@ -232,6 +238,7 @@ public class DonateActivity extends AppCompatActivity {
         }
 
         void onClick(Sku sku) {
+            mFirebaseAnalytics.logEvent("clicked_to_donate", null);
             final Purchase purchase = mProduct.getPurchaseInState(sku, Purchase.State.PURCHASED);
             Timber.v("purchase =%s", purchase);
             if (purchase != null) consume(purchase);
