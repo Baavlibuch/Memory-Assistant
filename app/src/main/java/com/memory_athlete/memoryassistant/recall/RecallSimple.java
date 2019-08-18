@@ -73,7 +73,8 @@ public class RecallSimple extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (findViewById(R.id.result).getVisibility() == View.VISIBLE || givenUp) reset();                  // answers are visible, go back to responses
+        if (findViewById(R.id.result).getVisibility() == View.VISIBLE || givenUp)
+            reset();                  // answers are visible, go back to responses
         else super.onBackPressed();
     }
 
@@ -202,12 +203,9 @@ public class RecallSimple extends AppCompatActivity {
         StringBuilder sb = new StringBuilder();
         try (Scanner scanner = new Scanner(new File(mFilePath)).useDelimiter("\t|\t {3}\t|\n|\n\n")) {
             return formatAnswers(scanner, sb, whitespace);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            return null;
         }
-
-        Timber.v("giveUp() complete, returns null");
-        return null;
     }
 
     protected String formatAnswers(Scanner scanner, StringBuilder sb, String whitespace) {
@@ -336,9 +334,12 @@ public class RecallSimple extends AppCompatActivity {
 
         // initialise k
         // k != 0 because that would be an obvious mismatch as it is checked in the driver function
-        if (i < 3) k = 1;                                   // ? it works for some reason. Can't remember why
-        else if (responses.size() - i < 5) k = -1;          // keep the lookback small near the end because lookahead is small
-        else if (i < 10) k = -(i / 3);                      // keep the window small and don't look beyond 0
+        if (i < 3)
+            k = 1;                                   // ? it works for some reason. Can't remember why
+        else if (responses.size() - i < 5)
+            k = -1;          // keep the lookback small near the end because lookahead is small
+        else if (i < 10)
+            k = -(i / 3);                      // keep the window small and don't look beyond 0
         else k = -4;                                        // preferred look back
 
         for (; k <= checkRange && i + k < responses.size() && j + k < answers.size(); k++) {
@@ -569,7 +570,8 @@ public class RecallSimple extends AppCompatActivity {
 
     public void startSW(View view) {
         Chronometer chronometer = findViewById(R.id.time_elapsed_value);
-        if (resetSWFlag) chronometer.setBase(SystemClock.elapsedRealtime());           // start from zero if reset
+        if (resetSWFlag)
+            chronometer.setBase(SystemClock.elapsedRealtime());           // start from zero if reset
         chronometer.start();
         findViewById(R.id.time_elapsed_value).setVisibility(View.VISIBLE);
         findViewById(R.id.result).setVisibility(View.VISIBLE);
@@ -622,10 +624,10 @@ public class RecallSimple extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Boolean error) {
-            super.onPostExecute(error);
-            if (error) {
-                Toast.makeText(getApplicationContext(), "File not found. Please try again", Toast.LENGTH_SHORT).show();
+        protected void onPostExecute(Boolean fileNotFound) {
+            super.onPostExecute(fileNotFound);
+            if (fileNotFound) {
+                Toast.makeText(getApplicationContext(), "File not found", Toast.LENGTH_SHORT).show();
                 finish();
                 return;
             }
@@ -651,8 +653,8 @@ public class RecallSimple extends AppCompatActivity {
             ((TextView) findViewById(R.id.value_of_score)).setText(String.valueOf(
                     correctCount - 10 * wrongCount - 5 * missedCount - 2 * extraCount - spelling));
 
-            if (missedCount > 8 && missedCount > correctCount) Toast.makeText(getApplicationContext(),
-                    "Very less accuracy", Toast.LENGTH_SHORT).show();
+            if (missedCount > 8 && missedCount > correctCount)
+                Toast.makeText(getApplicationContext(), "Very less accuracy", Toast.LENGTH_SHORT).show();
             postExecuteCompare();
         }
     }
@@ -674,7 +676,7 @@ public class RecallSimple extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             if (s == null) {
-                Toast.makeText(getApplicationContext(), "Sorry...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "File not found", Toast.LENGTH_SHORT).show();
                 reset();
                 return;
             }

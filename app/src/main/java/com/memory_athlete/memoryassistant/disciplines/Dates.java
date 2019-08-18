@@ -1,9 +1,9 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -28,8 +28,6 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
-import timber.log.Timber;
-
 public class Dates extends WordDisciplineFragment {
     private ArrayList<String> events = new ArrayList<>();
     private int startYear, endYear;
@@ -53,16 +51,13 @@ public class Dates extends WordDisciplineFragment {
     private void setDateSpinners() {
         ArrayList<String> arrayList = new ArrayList<>(), arrayList1 = new ArrayList<>();
         Spinner dateSpinner = rootView.findViewById(R.id.start_date);
-        dateSpinner.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                view.performClick();
-                InputMethodManager im = (InputMethodManager) activity.getSystemService(
-                        Context.INPUT_METHOD_SERVICE);
-                if (activity.getCurrentFocus() != null) Objects.requireNonNull(im).hideSoftInputFromWindow(
-                        activity.getCurrentFocus().getWindowToken(), 0);
-                return false;
-            }
+        dateSpinner.setOnTouchListener((view, motionEvent) -> {
+            view.performClick();
+            InputMethodManager im = (InputMethodManager) activity.getSystemService(
+                    Context.INPUT_METHOD_SERVICE);
+            if (activity.getCurrentFocus() != null) Objects.requireNonNull(im).hideSoftInputFromWindow(
+                    activity.getCurrentFocus().getWindowToken(), 0);
+            return false;
         });
 
         arrayList.add(getString(R.string.start_year));
@@ -84,16 +79,13 @@ public class Dates extends WordDisciplineFragment {
         dateSpinner.setVisibility(View.VISIBLE);
 
         Spinner dateSpinner1 = rootView.findViewById(R.id.end_date);
-        dateSpinner1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                view.performClick();
-                InputMethodManager im = (InputMethodManager) activity.getSystemService(
-                        Context.INPUT_METHOD_SERVICE);
-                if (activity.getCurrentFocus() != null) Objects.requireNonNull(im).hideSoftInputFromWindow(
-                        activity.getCurrentFocus().getWindowToken(), 0);
-                return false;
-            }
+        dateSpinner1.setOnTouchListener((view, motionEvent) -> {
+            view.performClick();
+            InputMethodManager im = (InputMethodManager) activity.getSystemService(
+                    Context.INPUT_METHOD_SERVICE);
+            if (activity.getCurrentFocus() != null) Objects.requireNonNull(im).hideSoftInputFromWindow(
+                    activity.getCurrentFocus().getWindowToken(), 0);
+            return false;
         });
 
         arrayList1.clear();
@@ -152,6 +144,7 @@ public class Dates extends WordDisciplineFragment {
                 if (n < 10) stringBuilder.append(0);
                 stringBuilder.append(n).append("/");
 
+                // generate date of month
                 switch (n) {
                     case 0:
                     case 2:
@@ -159,16 +152,19 @@ public class Dates extends WordDisciplineFragment {
                     case 6:
                     case 7:
                     case 9:
-                    case 11:                    //month of 31 days
+                    case 11:
+                        //month of 31 days
                         stringBuilder.append(rand.nextInt(32) + 1);
                         break;
                     case 3:
                     case 5:
                     case 8:
-                    case 10:                    //month of 30 days
+                    case 10:
+                        //month of 30 days
                         stringBuilder.append(rand.nextInt(31) + 1);
                         break;
-                    case 1:                     //February
+                    case 1:
+                        //February
                         int max = 29;
                         if (year % 4 == 0) max++;
                         stringBuilder.append(rand.nextInt(max) + 1);
@@ -178,6 +174,7 @@ public class Dates extends WordDisciplineFragment {
             stringBuilder.append(" - ");
             // Event
             stringBuilder.append(events.get(indexList.get(n))).append("\n\n");
+            // split the entire list into blocks of 20 for efficiency
             if ((++i) % 20 == 0) {
                 arrayList.add(stringBuilder.toString());
                 stringBuilder = new StringBuilder();
@@ -208,14 +205,21 @@ public class Dates extends WordDisciplineFragment {
 
                     while (scanner.hasNext()) events.add(scanner.next());
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            try {
                 dict.close();
-            } catch (IOException e) {
-                Timber.e("File not closed");
+
+            } catch (Exception e) {
+                // exception handling
+                try {
+                    if (dict != null) dict.close();
+                } catch (IOException e1) {
+                    throw new RuntimeException("Failed to close the buffer", e1);
+                }
+                if (e instanceof IOException) return;
+                if (e instanceof IllegalStateException) {
+                    Activity activity = getActivity();
+                    if (activity == null || activity.isFinishing()) return;
+                    throw new RuntimeException("Activity is not null!", e);
+                }
             }
         }
     }
