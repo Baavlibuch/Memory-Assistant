@@ -29,6 +29,7 @@
 <li>Don’t make them to close together</li>
 <li>Don’t make them too far away from each other</li>
 <li>Don’t use similar way-points in the same path</li>
+<ul>
 
 <h4>Step 3 – Memorize your Path</h4>
 
