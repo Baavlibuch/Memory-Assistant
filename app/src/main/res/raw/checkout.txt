@@ -1,4 +1,4 @@
-<P>To improve your skills, checkout these links-</p>
+<p>To improve your skills, checkout these links-</p>
 
 <ul>
 <li><a href="http://memory-sports.com">memory-sports.com</a></li>

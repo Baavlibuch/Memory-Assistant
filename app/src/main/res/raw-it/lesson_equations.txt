@@ -1,4 +1,4 @@
-<p> La pratica di memorizzare le equazioni è un peccato imperdonabile perché sono pensate per essere comprese. Tuttavia, quando si tratta di sport, questi peccati sono perdonati. Sfortunatamente, memorizzare le equazioni usando le tecniche di memoria si trova in un territorio non voluto. Ho cercato di creare un sistema di memorizzazione delle equazioni, ma è molto grezzo e inefficiente, quindi dovrai modificarlo. Se riesci a migliorarlo, ti preghiamo di condividerlo con me. </ P>
+<p> La pratica di memorizzare le equazioni è un peccato imperdonabile perché sono pensate per essere comprese. Tuttavia, quando si tratta di sport, questi peccati sono perdonati. Sfortunatamente, memorizzare le equazioni usando le tecniche di memoria si trova in un territorio non voluto. Ho cercato di creare un sistema di memorizzazione delle equazioni, ma è molto grezzo e inefficiente, quindi dovrai modificarlo. Se riesci a migliorarlo, ti preghiamo di condividerlo con me. </p>
 
 <p> Ecco come memorizzo le cose. </p>
 <ul>
