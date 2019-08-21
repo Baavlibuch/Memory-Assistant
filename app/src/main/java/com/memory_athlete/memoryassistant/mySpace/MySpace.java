@@ -177,7 +177,6 @@ public class MySpace extends AppCompatActivity {
     private ArrayList<Item> setList() {
         return new ArrayList<>(Arrays.asList(
                 new Item(getString(R.string.majors), R.drawable.major_system, WriteFile.class),
-                new Item(getString(R.string.ben), R.drawable.ben_system, WriteFile.class),
                 new Item(getString(R.string.wardrobes), R.drawable.wardrobe_method, WriteFile.class),
                 new Item(getString(R.string.lists), R.drawable.lists, WriteFile.class),
                 new Item(getString(R.string.words), R.drawable.words1, WriteFile.class)));

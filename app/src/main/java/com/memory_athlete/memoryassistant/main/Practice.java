@@ -56,15 +56,12 @@ public class Practice extends AppCompatActivity {
         if (!Helper.mayAccessStorage(this)) {
             Snackbar.make(findViewById(R.id.main_list),
                     "Storage permissions are required", Snackbar.LENGTH_LONG)
-                    .setAction("Grant", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent();
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        }
+                    .setAction("Grant", view -> {
+                        Intent intent = new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivity(intent);
                     })
                     .show();
         }
