@@ -24,6 +24,7 @@ import androidx.preference.PreferenceManager;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -31,6 +32,7 @@ import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -88,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
         firstStart();
         mayAccessStorage();
+        if (!verifyInstallerId()) {
+            Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
+            if(!BuildConfig.DEBUG) FirebaseAnalytics.getInstance(this).logEvent(
+                    "release_app_not_installed_form_play", null);
+        }
     }
 
     @Override
@@ -106,6 +113,15 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferences.getLong("last_opened", 0) != 0) return;
         makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
         Timber.d("firstStart");
+    }
+
+    boolean verifyInstallerId() {
+        // A list with valid installers package name
+        List<String> validInstallers = new ArrayList<>(Arrays.asList("com.android.vending", "com.google.android.feedback"));
+        // The package name of the app that has installed your app
+        final String installer = getPackageManager().getInstallerPackageName(getPackageName());
+        // true if your app has been downloaded from Play Store
+        return installer != null && validInstallers.contains(installer);
     }
 
 
