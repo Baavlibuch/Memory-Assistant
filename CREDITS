@@ -14,13 +14,25 @@ W : https://github.com/AmartyoRoy
 E : amartyo09@gmail.com
 D : Web scraping for dates
 
+N : Android Assets Studio
+W : https://romannurik.github.io/AndroidAssetStudio/
+D : Icons, etc
+
 N : www.flaticon.com
 W : https://www.flaticon.com
-D : Icons including app icon
+D : Icons
+
+N : Freepik
+W : https://www.flaticon.com/authors/freepik
+D : R.drawable.places, R.drawable.theres_more, etc.
 
 N : John Prause
 W : https://github.com/JPrause
 D : Rectification of grammatical issues
+
+N : jqMath
+W : https://mathscribe.com/author/jqmath.html
+D : Used for displaying math
 
 N : Manik Sejwal      
 W : https://github.com/maniksejwal/
@@ -32,11 +44,23 @@ W : https://www.linkedin.com/in/mehak-sejwal-9a9b84175/
 D : Quality assurace
 D : Layout design
 
-N : Pexels
-W : https://www.pexels.com
-D : Images for faces
+N : Pause08
+W : https://www.flaticon.com/authors/pause08
+D : R.drawable.my_space
+
+N : Pixel perfect
+W : https://www.flaticon.com/authors/pixel-perfect
+D : R.drawable.practice
+
+N : Roundicons
+W : https://www.flaticon.com/authors/roundicons
+D : R.drawable.numbers
 
 N : Sharad Verma
 W : https://github.com/sharadv245
 E : sharadv245@gmail.com
 D : Created the website
+
+N : Smashicons
+W : https://www.flaticon.com/authors/smashicons
+D : R.drawable.dates
