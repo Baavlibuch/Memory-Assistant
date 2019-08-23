@@ -30,8 +30,11 @@ public class Helper {
             + "/Memory Assistant/";
     private static final int REQUEST_STORAGE_ACCESS = 555;
 
-    //App constants
     public static final String TYPE = "type";
+
+    public final static int LOWER_CASE = 0;             // a = 97
+    final static int UPPER_CASE = 1;             // A = 65
+    public final static int MIXED_CASE = 2;             // 65 + r + c * 32             c == 0 or 1
 
     public static int[] makeCards() {
         return new int[]{

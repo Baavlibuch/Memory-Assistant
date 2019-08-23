@@ -325,7 +325,7 @@ public class Lessons extends AppCompatActivity {
                     listItemView = LayoutInflater.from(getContext()).inflate(
                             R.layout.item_lesson_list, null, true);
             } catch (Resources.NotFoundException e) {
-                Crashlytics.logException(e);
+                // Crashlytics.logException(e);
                 Toast.makeText(getContext(), R.string.dl_from_play, Toast.LENGTH_LONG).show();
                 throw new RuntimeException("Not downloaded from the Play Store");
             }

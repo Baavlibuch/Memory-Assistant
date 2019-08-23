@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
@@ -55,7 +56,7 @@ public class RecallSimple extends AppCompatActivity {
     protected int wrongCount = 0;                       // 10 points penalized
     protected int missedCount = 0;                      // 5 points penalized
     protected int extraCount = 0;                       // 2 points penalized
-    protected int spelling = 0;                         // 1 point penalized. not displayed
+    protected int spellingCount = 0;                    // 1 point penalized. not displayed
 
     protected StringBuilder mTextAnswer = null;
     protected StringBuilder mTextResponse = null;
@@ -70,6 +71,7 @@ public class RecallSimple extends AppCompatActivity {
     protected GridView gridView;
 
     protected SharedPreferences sharedPreferences;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     public void onBackPressed() {
@@ -87,6 +89,7 @@ public class RecallSimple extends AppCompatActivity {
         Intent intent = getIntent();
         mFilePath = intent.getStringExtra("file");
         mDiscipline = intent.getStringExtra(getString(R.string.discipline));
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Crashlytics.log("file Path = " + mFilePath);
         Crashlytics.log("discipline = " + mDiscipline);
@@ -120,18 +123,18 @@ public class RecallSimple extends AppCompatActivity {
 
         switch (mDiscipline) {
             case "Numbers":
-                responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;
+                responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;         // space separated
                 compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Binary Digits":
             case "Digits":
-                responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;
+                responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;      // no delimiter
                 compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_NUMBER);
                 break;
             case "Letters":
-                responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;
+                responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;      // no delimiter
                 compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -139,11 +142,14 @@ public class RecallSimple extends AppCompatActivity {
             case "Words":
             case "Names":
             case "Places":
-                responseFormat = ResponseFormat.WORD_RESPONSE_FORMAT;
+                responseFormat = ResponseFormat.WORD_RESPONSE_FORMAT;           // newline separated
                 compareFormat = CompareFormat.WORD_COMPARE_FORMAT;
                 editText.setRawInputType(TYPE_CLASS_TEXT);
                 editText.setImeOptions(EditorInfo.IME_ACTION_NONE);
                 break;
+            default:
+                throw new RuntimeException("Bad discipline");
+                //TODO : fix the hardcoding
         }
     }
 
@@ -268,7 +274,7 @@ public class RecallSimple extends AppCompatActivity {
     protected void compare(boolean words) {
         Timber.v("Comparing answers and responses in backgroundString");
         if (mDiscipline.equals(getString(R.string.letters)) && Integer.parseInt(Objects.requireNonNull(
-                sharedPreferences.getString(getString(R.string.letter_case), "1"))) == 2) {
+                sharedPreferences.getString(getString(R.string.letter_case), "1"))) == Helper.MIXED_CASE) {
             compareMixed();
             return;
         }
@@ -282,7 +288,7 @@ public class RecallSimple extends AppCompatActivity {
             if (isCorrect(i, j)) continue;
             if (missedCount > 8 && missedCount > correctCount) break;
             if (words && isSpelling(i, j)) {
-                spelling++;
+                spellingCount++;
                 mTextAnswer.append("<font color=#EEE000>").append(answers.get(j))
                         .append("</font>").append(" ").append(whitespace);
                 mTextResponse.append("<font color=#EEE000>").append(responses.get(i))
@@ -636,10 +642,20 @@ public class RecallSimple extends AppCompatActivity {
             Timber.v("mTextAnswer length = %s", String.valueOf(mTextResponse.toString().length()));
             Timber.v("answer 0 = %s", answers.get(0));
 
+            // If remembered all, level up
+            // Do not level up for binary digits, it is too easy and different
+            // Level up only if at max level
+            // minimum random count is 2^3 so add 2 to level 1. same for all levels
+            int level = sharedPreferences.getInt("level", 1);
             if (correctCount == answers.size() && !mDiscipline.equals(getString(R.string.binary)) &&
-                    pow(2, sharedPreferences.getInt("level", 1) + 2) == correctCount)
-                sharedPreferences.edit().putInt("level",
-                        1 + sharedPreferences.getInt("level", 1)).apply();
+                    pow(2, level + 2) == correctCount) {
+                sharedPreferences.edit().putInt("level", level++).apply();
+
+                // report level up
+                Bundle bundle = new Bundle();
+                bundle.putLong(FirebaseAnalytics.Param.LEVEL, level);
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_UP, bundle);
+            }
 
             findViewById(R.id.responses_text).setVisibility(View.VISIBLE);
             findViewById(R.id.result).setVisibility(View.VISIBLE);
@@ -651,7 +667,7 @@ public class RecallSimple extends AppCompatActivity {
             ((TextView) findViewById(R.id.no_of_missed)).setText(String.valueOf(missedCount));
             ((TextView) findViewById(R.id.no_of_extra)).setText(String.valueOf(extraCount));
             ((TextView) findViewById(R.id.value_of_score)).setText(String.valueOf(
-                    correctCount - 10 * wrongCount - 5 * missedCount - 2 * extraCount - spelling));
+                    correctCount - 10 * wrongCount - 5 * missedCount - 2 * extraCount - spellingCount));
 
             if (missedCount > 8 && missedCount > correctCount)
                 Toast.makeText(getApplicationContext(), "Very less accuracy", Toast.LENGTH_SHORT).show();
@@ -699,6 +715,6 @@ public class RecallSimple extends AppCompatActivity {
     }
 }
 
-//orange:FFA500
+// orange:FFA500
 // textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
 // TODO: shift to fragments

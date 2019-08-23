@@ -21,7 +21,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -81,7 +80,7 @@ public class MySpaceFragment extends Fragment {
         try {
             rootView = inflater.inflate(R.layout.fragment_my_space, container, false);
         } catch (Resources.NotFoundException e) {
-            Crashlytics.logException(e);
+            // Crashlytics.logException(e);
             Toast.makeText(getActivity(), R.string.dl_from_play, Toast.LENGTH_LONG).show();
             Objects.requireNonNull(getActivity()).finish();
             return rootView;

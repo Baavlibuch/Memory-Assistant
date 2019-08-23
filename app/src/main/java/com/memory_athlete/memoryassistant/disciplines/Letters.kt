@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import com.memory_athlete.memoryassistant.Helper
 import com.memory_athlete.memoryassistant.R
 import timber.log.Timber
 import java.util.*
@@ -25,8 +26,8 @@ class Letters : DisciplineFragment() {
             val rand = Random()
             val letterCaseRand = Random()
             val letterCase = Integer.parseInt(sharedPreferences.getString(getString(R.string.letter_case), "0")!!)
-            val letterA = if (letterCase == 0) 97 else 65
-            val mixed = if (letterCase == 2) 1 else 0
+            val letterA = if (letterCase == Helper.LOWER_CASE) 97 else 65
+            val mixed = if (letterCase == Helper.MIXED_CASE) 1 else 0
 
             var s = StringBuilder()
             for (i in 0 until a[NO_OF_VALUES] / a[GROUP_SIZE]) {
@@ -34,9 +35,12 @@ class Letters : DisciplineFragment() {
                     val c = (rand.nextInt(26) + letterA +
                             letterCaseRand.nextInt(2) * 32 * mixed).toChar()
                     Timber.v("value of c = $c")
+                    // add whitespace to ensure proper indentation
                     if (c != 'm' && c != 'w' && c != 'M' && c != 'W') s.append(" ")
                     if (c == 'i' || c == 'j' || c == 'l' || c == 't' || c == 'f' || c == 'I') s.append(" ")
+                    // append to list
                     stringBuilder.append(c.toString())
+                    // break if stopped
                     if (a[RUNNING] == FALSE) break
                 }
                 stringBuilder.append(s).append(getString(R.string.tab)).append("   ")
@@ -47,6 +51,5 @@ class Letters : DisciplineFragment() {
         } catch (e: IllegalStateException) {
             throw RuntimeException("IllegalStateException from ViewPager.populate() " + "caused in BinaryDigits.backgroundString")
         }
-
     }
 }
