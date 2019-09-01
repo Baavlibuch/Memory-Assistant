@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,14 +31,11 @@ public class CreditsActivity extends AppCompatActivity {
         CreditAdapter adapter = new CreditAdapter(getApplicationContext(), items);
         ListView listView = findViewById(R.id.credits_list_view);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Item item = (Item) parent.getItemAtPosition(position);
-                String url = item.mUrl;
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(browserIntent);
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Item item = (Item) parent.getItemAtPosition(position);
+            String url = item.mUrl;
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
         });
     }
 
@@ -73,7 +69,7 @@ public class CreditsActivity extends AppCompatActivity {
         public View getView(final int position, View listItemView, @NonNull final ViewGroup parent) {
             TextView textView = (TextView) listItemView;
             if (textView == null) textView = (TextView) LayoutInflater.from(getContext())
-                    .inflate(R.layout.credit_text_view, null, true);
+                    .inflate(R.layout.text_view_credit, null, true);
             Item item = getItem(position);
             assert item != null;
             textView.setText(item.mName);

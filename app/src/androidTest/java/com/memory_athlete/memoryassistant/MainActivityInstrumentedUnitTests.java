@@ -14,7 +14,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.Random;
+import java.util.Scanner;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -67,11 +70,30 @@ public class MainActivityInstrumentedUnitTests {
     }
 
     @Test
-    public void valuesTest(){
+    public void valuesTest() {
         String[] themes = mActivityTestRule.getActivity().getResources().getStringArray(R.array.themes);
         assertEquals(themes[0], "Light (Default)");
         assertEquals(themes[1], "Dark");
         assertEquals(themes[2], "Night");
 
+    }
+
+    @Test
+    public void contributorCountInstrumentedUnitTest() throws IOException {
+        URL url = new URL("https://raw.githubusercontent.com/maniksejwal/Memory-Assistant/master/CREDITS");
+        Scanner s = new Scanner(url.openStream());
+        int count = 0;
+        while (s.hasNext()) {
+            String line = s.nextLine();
+
+            try {
+                if (line.charAt(0) == 'N') count++;
+            } catch (StringIndexOutOfBoundsException ignored) {
+            }
+        }
+        s.close();
+
+        assertEquals(count, mActivityTestRule.getActivity().getResources().
+                getStringArray(R.array.contributor_names).length);
     }
 }

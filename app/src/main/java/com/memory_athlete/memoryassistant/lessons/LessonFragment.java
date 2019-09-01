@@ -37,7 +37,6 @@ public class LessonFragment extends Fragment {
     private Activity activity;
     private int textColor;
     private int dropDownResId;
-    private int dropUpResId;
     private String themeForWebView;
 
     public LessonFragment() {
@@ -115,7 +114,6 @@ public class LessonFragment extends Fragment {
         if (themes[1].equals(theme)) {
             textColor = Color.LTGRAY;
             dropDownResId = R.drawable.ic_arrow_drop_down_dark;
-            dropUpResId = R.drawable.ic_arrow_drop_up_dark;
             themeForWebView = "<style>\n" +
                     "body {backgroundString-color: #303030;}\n" +
                     "p    {color: #c1c1c1;}\n" +
@@ -123,7 +121,6 @@ public class LessonFragment extends Fragment {
         } else if (themes[2].equals(theme)) {
             textColor = Color.LTGRAY;
             dropDownResId = R.drawable.ic_arrow_drop_down_pitch;
-            dropUpResId = R.drawable.ic_arrow_drop_up_pitch;
             themeForWebView = "<style>\n" +
                     "body {backgroundString-color: #000000;}\n" +
                     "p    {color: #c1c1c1;}\n" +
@@ -131,7 +128,6 @@ public class LessonFragment extends Fragment {
         } else {
             textColor = Color.DKGRAY;
             dropDownResId = R.drawable.ic_arrow_drop_down_light;
-            dropUpResId = R.drawable.ic_arrow_drop_up_light;
             themeForWebView = "";
         }
     }
@@ -294,6 +290,7 @@ public class LessonFragment extends Fragment {
             View headerLayout = listItemView.findViewById(R.id.lesson_item_header_layout);
 
             arrowImageView.setImageResource(dropDownResId);
+            arrowImageView.setScaleY(1f);
             clickableViewAnimation(headerLayout, getContext());
             clickableViewAnimation(contentTextView, getContext());
 
@@ -301,6 +298,7 @@ public class LessonFragment extends Fragment {
                 contentTextView.setVisibility(View.GONE);
                 contentTextView.setOnLongClickListener(view -> {
                     contentTextView.setVisibility(View.GONE);
+                    arrowImageView.setScaleY(1f);
                     return false;
                 });
             }
@@ -321,7 +319,8 @@ public class LessonFragment extends Fragment {
                 headerLayout.setOnClickListener(view -> {
                     if (contentTextView.getVisibility() == View.GONE) {
                         progressBar.setVisibility(View.VISIBLE);
-                        arrowImageView.setImageResource(dropUpResId);
+                        arrowImageView.setImageResource(dropDownResId);
+                        arrowImageView.setScaleY(-1f);                      // vertical flip
                         contentTextView.post(() -> {
                             Timber.v("mText = %s", item.mText);
                             contentTextView.setText(Html.fromHtml(item.mText));
@@ -333,6 +332,7 @@ public class LessonFragment extends Fragment {
                     } else {
                         contentTextView.setVisibility(View.GONE);
                         arrowImageView.setImageResource(dropDownResId);
+                        arrowImageView.setScaleY(1f);
                     }
                 });
             }

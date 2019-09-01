@@ -36,6 +36,7 @@
         <item>Pixel perfect</item>
         <item>Roundicons</item>
         <item>Smashicons</item>
+        <item>Nikita Golubev</item>
     </string-array>
 
     <string-array name="contributor_urls">
@@ -57,6 +58,7 @@
         <item>https://www.flaticon.com/authors/pixel-perfect</item>
         <item>https://www.flaticon.com/authors/roundicons</item>
         <item>https://www.flaticon.com/authors/smashicons</item>
+        <item>https://www.flaticon.com/authors/nikita-golubev</item>
     </string-array>
 
     <string-array name="themes">
