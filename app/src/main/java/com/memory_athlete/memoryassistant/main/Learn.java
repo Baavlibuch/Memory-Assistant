@@ -45,7 +45,7 @@ public class Learn extends AppCompatActivity {
             Item item = list.get(position);
             Intent intent = new Intent(getApplicationContext(), item.mClass);
             intent.putExtra("mHeader", item.mItem);
-            intent.putExtra("file", item.mFile);
+            intent.putExtra(Helper.RAW_RESOURCE_ID_KEY, item.mFile);
             intent.putExtra("mWebView", item.mWebView);
             intent.putExtra("list", true);
             startActivity(intent);

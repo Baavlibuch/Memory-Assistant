@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.crashlytics.android.Crashlytics;
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.BufferedReader;
@@ -53,7 +54,7 @@ public class LessonFragment extends Fragment {
         StringBuilder sb = new StringBuilder();     // Initialised to empty string to distinguish
                                                     // from null which is returned after reading resource
         assert bundle != null;
-        int fileInt = bundle.getInt("file", 0);
+        int fileInt = bundle.getInt(Helper.RAW_RESOURCE_ID_KEY, 0);
         if (fileInt != 0 && bundle.getBoolean("resource", true)) {  // Raw
             if (bundle.getBoolean("list", false)) {                 // list
                 ListView listView = rootView.findViewById(R.id.lesson_list);
@@ -226,7 +227,7 @@ public class LessonFragment extends Fragment {
             reader.close();
             return letterList;
         } catch (IOException e) {
-            Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.dl_from_play, Toast.LENGTH_SHORT).show();
             try {
                 if (reader != null) reader.close();
             } catch (IOException e1) {

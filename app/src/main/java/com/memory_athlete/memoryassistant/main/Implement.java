@@ -101,10 +101,10 @@ public class Implement extends AppCompatActivity {
                 if (item.mFileName.endsWith(".txt")) {
                     Intent intent = new Intent(getApplicationContext(), ImplementLesson.class);
                     intent.putExtra("headerString", item.mItem);
-                    intent.putExtra("webView", webView);
+                    intent.putExtra("webView", webView);            // uses webView (boolean)
                     intent.putExtra("list", hasList);
                     intent.putExtra("resource", true);
-                    StringBuilder path1 = new StringBuilder("");
+                    StringBuilder path1 = new StringBuilder();
                     for (String i : pathList) path1.append(i);
                     intent.putExtra("fileString", path1 + "/" + item.mFileName);
                     startActivity(intent);
