@@ -269,7 +269,17 @@ public class Lessons extends AppCompatActivity {
         String line = intent.getStringExtra("fileString"); //For assets and filesDir
         BufferedReader bufferedReader = null;
         try {
-            assert line != null;
+            if (line == null) {
+                Toast.makeText(getApplicationContext(), "Please download the app from the GOogle Play Store", Toast.LENGTH_LONG).show();
+                throw new RuntimeException(
+                        "\nAsset_path - " + line + "" +
+                                "fileInt = " + intent.getIntExtra("file", 0) +
+                                "resources_boolean = " + intent.getBooleanExtra("resource", true) +
+                                "list_boolean = " + intent.getBooleanExtra("list", false) +
+                                "webView_boolean = " + intent.getBooleanExtra("webView", false) +
+                                "headerInt = " + intent.getIntExtra("mHeader", 0) +
+                                "headerString" + intent.getStringExtra("headerString"));
+            }
             bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
             while ((line = bufferedReader.readLine()) != null) sb.append(line);
         } catch (IOException e) {
