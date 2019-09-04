@@ -3,8 +3,11 @@ package com.memory_athlete.memoryassistant.mySpace;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -30,6 +34,10 @@ public class WriteFile extends AppCompatActivity {
     String path;
     String oldName = null;
     boolean deleted = false;
+    EditText searchEditText;
+    EditText mySpaceEditText;
+    FloatingActionButton searchFAB;
+    int searchIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,10 @@ public class WriteFile extends AppCompatActivity {
         else oldName = header;
         //header = header.substring(0, header.length() - 4);
         setTitle(header);
+
+        mySpaceEditText = findViewById(R.id.my_space_editText);
+        searchEditText = findViewById(R.id.search_edit_text);
+        searchFAB = findViewById((R.id.search_mySpace_FAB));
 
         path = intent.getStringExtra("fileName");
         if (intent.getBooleanExtra("name", true)) {
@@ -57,7 +69,7 @@ public class WriteFile extends AppCompatActivity {
                     text.append('\n');
                 }
                 br.close();
-                ((EditText) findViewById(R.id.my_space_editText)).setText(text);
+                mySpaceEditText.setText(text);
                 //findViewById(R.id.saveFAB).setVisibility(View.VISIBLE);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -67,6 +79,25 @@ public class WriteFile extends AppCompatActivity {
         }
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         //intent.getStringExtra()
+
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (count > 0) {
+                    searchIndex = 0;
+                    search("" + s);
+                    // TODO searchFAB.setImageDrawable();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
     }
 
 
@@ -87,6 +118,7 @@ public class WriteFile extends AppCompatActivity {
                 return !file.exists() || file.delete();
             case R.id.dont_save:
                 NavUtils.navigateUpFromSameTask(this);
+                break;
             case android.R.id.home:
                 if (save()) NavUtils.navigateUpFromSameTask(this);
         }
@@ -95,6 +127,12 @@ public class WriteFile extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        // hide searchEditText if it is visible
+        if (searchEditText.getVisibility() == View.VISIBLE) {
+            searchEditText.setVisibility(View.GONE);
+            return;
+        }
+        // save() returns false if save was rejected to notify the user at most once.
         if (save()) super.onBackPressed();
     }
 
@@ -106,7 +144,7 @@ public class WriteFile extends AppCompatActivity {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public boolean save() {
-        String string = ((EditText) findViewById(R.id.my_space_editText)).getText().toString();
+        String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {
             if (!name) {
@@ -174,5 +212,29 @@ public class WriteFile extends AppCompatActivity {
         }
         Timber.v("fileName = %s", path);
         return true;
+    }
+
+    private void search(String stringToSearch) {
+        String fullText = mySpaceEditText.getText().toString();
+        boolean hasText = fullText.contains(stringToSearch);
+        if (hasText) {
+            searchIndex = fullText.indexOf(stringToSearch, searchIndex);
+            if (searchIndex == -1) searchIndex = 0;
+
+            int lineNumber = mySpaceEditText.getLayout().getLineForOffset(searchIndex);
+            int totalLines = mySpaceEditText.getLayout().getLineCount();
+            int editTextViewBottom = findViewById(R.id.my_space_editText).getBottom();
+            findViewById(R.id.my_space_scroll_view).scrollTo(0, editTextViewBottom * lineNumber / totalLines);
+            searchIndex++;
+            return;
+        }
+        Toast.makeText(getApplicationContext(), R.string.not_found, Toast.LENGTH_SHORT).show();
+    }
+
+    public void search(View view) {
+        String stringToSearch = searchEditText.getText().toString();
+        searchIndex++;
+        search(stringToSearch);
+        searchEditText.setVisibility(View.VISIBLE);
     }
 }

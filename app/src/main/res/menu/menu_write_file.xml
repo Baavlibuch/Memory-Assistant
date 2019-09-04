@@ -7,13 +7,11 @@
     <item
         android:id="@+id/action_delete"
         android:title="@string/delete"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/dont_save"
         android:title="@string/do_not_save"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
 
 </menu>

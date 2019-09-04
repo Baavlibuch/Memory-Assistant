@@ -20,4 +20,13 @@ public class ExampleUnitTest {
         String hex = "999999";
         assertEquals(10066329, Integer.parseInt(hex, 16));
     }
+
+    @Test
+    public void charSequenceToString(){
+        String s = "qwerty";
+        //noinspection UnnecessaryLocalVariable
+        CharSequence c = s;
+        //noinspection CastCanBeRemovedNarrowingVariableType
+        assertEquals(s, (String) c);
+    }
 }
