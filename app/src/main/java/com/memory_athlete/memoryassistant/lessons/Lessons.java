@@ -60,8 +60,9 @@ public class Lessons extends AppCompatActivity {
         Intent intent = getIntent();
         theme(intent);
 
-        StringBuilder sb = new StringBuilder();   // Empty string used to distinguish from null
-        // that might be returned after file is read
+        // Initialized as an empty string to distinguish from null that might be returned after file is read
+        StringBuilder sb = new StringBuilder();
+
         int fileInt = intent.getIntExtra(Helper.RAW_RESOURCE_ID_KEY, 0);
         if (fileInt != 0 && intent.getBooleanExtra("resource", true)) { // Raw
 
@@ -100,11 +101,13 @@ public class Lessons extends AppCompatActivity {
 
         if (intent.getBooleanExtra("webView", false)) {             // JQMath
             setWebView(sb);
-        } else {
-            Timber.v("list is false");
-            ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
-            findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
+            return;
         }
+
+        // Display the plain-text/HTML read above into sb in the textView inside the ScrollView
+        Timber.v("list is false");
+        ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
+        findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -282,6 +285,7 @@ public class Lessons extends AppCompatActivity {
                                 "headerInt = " + intent.getIntExtra("mHeader", 0) +
                                 "headerString" + intent.getStringExtra("headerString"));
             }
+
             bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
             while ((line = bufferedReader.readLine()) != null) sb.append(line);
         } catch (IOException e) {

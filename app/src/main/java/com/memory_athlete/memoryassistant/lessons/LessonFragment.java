@@ -51,11 +51,13 @@ public class LessonFragment extends Fragment {
         activity = getActivity();
         theme();
 
-        StringBuilder sb = new StringBuilder();     // Initialised to empty string to distinguish
-                                                    // from null which is returned after reading resource
+        // Initialized as an empty string to distinguish from null that might be returned after file is read
+        StringBuilder sb = new StringBuilder();
+
         assert bundle != null;
         int fileInt = bundle.getInt(Helper.RAW_RESOURCE_ID_KEY, 0);
         if (fileInt != 0 && bundle.getBoolean("resource", true)) {  // Raw
+
             if (bundle.getBoolean("list", false)) {                 // list
                 ListView listView = rootView.findViewById(R.id.lesson_list);
                 ArrayList<Item> list = readResourceList(fileInt);
@@ -67,11 +69,15 @@ public class LessonFragment extends Fragment {
                 listView.setVisibility(View.VISIBLE);
                 Timber.v("listView set");
                 return rootView;
+
             } else {
+
                 sb = readResource(fileInt);                                      // non-list
                 if (sb == null) throw new RuntimeException("Got null stringBuilder");
             }
+
         } else {                                                                    // Asset
+
             if (bundle.getBoolean("list", false)) {                  // list
                 Crashlytics.log("activity = " + activity.getLocalClassName());
                 Crashlytics.log("bundle = " + bundle);
@@ -88,23 +94,19 @@ public class LessonFragment extends Fragment {
                 Timber.v("listView set");
                 return rootView;
             }
-            // ignore this warning. The code relies on reassigning values to the variable
-            //sb = readAsset(sb, bundle);                                             // non-list
+
             readAsset(sb, bundle);                                                  // non-list
+
         }
-//        if (sb == null) {
-//            Timber.e("String Builder sb is empty");
-//            activity.finish();
-//            return rootView;
-//        }
 
         if (bundle.getBoolean("webView", false)) {                  // JQMath
             setWebView(sb, rootView);
-        } else {
-            Timber.v("list is false");
-            ((TextView) rootView.findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
-            rootView.findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
+            return rootView;
         }
+
+        Timber.v("list is false");
+        ((TextView) rootView.findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
+        rootView.findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
         return rootView;
     }
 
