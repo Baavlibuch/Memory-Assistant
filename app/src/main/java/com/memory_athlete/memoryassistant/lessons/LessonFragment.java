@@ -236,8 +236,10 @@ public class LessonFragment extends Fragment {
                 Crashlytics.logException(e1);
             }
             activity.finish();
+        } catch (Exception e) {
+            throw new RuntimeException("failure", e);
         }
-        throw new RuntimeException("failure");
+        throw new RuntimeException("What a terrible failure");
     }
 
     private void readAsset(StringBuilder sb, Bundle intent) {
