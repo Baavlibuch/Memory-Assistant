@@ -37,6 +37,9 @@
         <item>Roundicons</item>
         <item>Smashicons</item>
         <item>Nikita Golubev</item>
+        <item>Vectors Market</item>
+        <item>Eucalyp</item>
+        <item>Flat Icons</item>
     </string-array>
 
     <string-array name="contributor_urls">
@@ -59,6 +62,9 @@
         <item>https://www.flaticon.com/authors/roundicons</item>
         <item>https://www.flaticon.com/authors/smashicons</item>
         <item>https://www.flaticon.com/authors/nikita-golubev</item>
+        <item>https://www.flaticon.com/authors/vectors-market</item>
+        <item>https://www.flaticon.com/authors/eucalyp</item>
+        <item>https://www.flaticon.com/authors/flat-icons</item>
     </string-array>
 
     <string-array name="themes">
