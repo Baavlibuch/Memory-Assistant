@@ -121,35 +121,26 @@ public class RecallSimple extends AppCompatActivity {
     void simpleResponseLayout() {
         final EditText editText = findViewById(R.id.response_input);
 
-        switch (mDiscipline) {
-            case "Numbers":
-                responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;         // space separated
-                compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
-                editText.setRawInputType(TYPE_CLASS_NUMBER);
-                break;
-            case "Binary Digits":
-            case "Digits":
-                responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;      // no delimiter
-                compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
-                editText.setRawInputType(TYPE_CLASS_NUMBER);
-                break;
-            case "Letters":
-                responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;      // no delimiter
-                compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
-                editText.setRawInputType(TYPE_CLASS_TEXT);
-                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
-                break;
-            case "Words":
-            case "Names":
-            case "Places":
-                responseFormat = ResponseFormat.WORD_RESPONSE_FORMAT;           // newline separated
-                compareFormat = CompareFormat.WORD_COMPARE_FORMAT;
-                editText.setRawInputType(TYPE_CLASS_TEXT);
-                editText.setImeOptions(EditorInfo.IME_ACTION_NONE);
-                break;
-            default:
-                throw new RuntimeException("Bad discipline");
-                //TODO : fix the hardcoding
+        if (mDiscipline.equals(getString(R.string.numbers))) {
+            responseFormat = ResponseFormat.SIMPLE_RESPONSE_FORMAT;         // space separated
+            compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
+            editText.setRawInputType(TYPE_CLASS_NUMBER);
+        } else if (mDiscipline.equals(getString(R.string.binary)) || mDiscipline.equals(getString(R.string.digits))) {
+            responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;      // no delimiter
+            compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
+            editText.setRawInputType(TYPE_CLASS_NUMBER);
+        } else if (mDiscipline.equals(getString(R.string.letters))) {
+            responseFormat = ResponseFormat.CHARACTER_RESPONSE_FORMAT;      // no delimiter
+            compareFormat = CompareFormat.SIMPLE_COMPARE_FORMAT;
+            editText.setRawInputType(TYPE_CLASS_TEXT);
+            editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        } else if (mDiscipline.equals(getString(R.string.words)) || mDiscipline.equals(getString(R.string.names)) || mDiscipline.equals(getString(R.string.places_capital))) {
+            responseFormat = ResponseFormat.WORD_RESPONSE_FORMAT;           // newline separated
+            compareFormat = CompareFormat.WORD_COMPARE_FORMAT;
+            editText.setRawInputType(TYPE_CLASS_TEXT);
+            editText.setImeOptions(EditorInfo.IME_ACTION_NONE);
+        } else {
+            throw new RuntimeException("Bad discipline : " + mDiscipline);
         }
     }
 
