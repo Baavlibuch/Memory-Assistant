@@ -1,0 +1,37 @@
+<p> Zdroj: <a href="http://memory-sports.com"> http://memory-sports.com </a> </p>
+
+<h4> Historie </h4>
+
+<p> Počínaje dvoumístným systémem, jako je hlavní systém 2. úrovně, je relativně malé úsilí 100 obrázků (10²). Systém, jako je tento, se lze naučit ve velmi krátké době, je proto rychle k dispozici a lze jej snadno vyškolit. Nevýhodou je malá shluk pouze dvou číslic. Pro čtyřicetimístné číslo si budete muset zapamatovat 20 obrázků na 20 místech s vaší sloní cestou pomocí metody Loci (za předpokladu, že na každém místě použijete jeden obrázek). </p>
+
+<p> Vylepšení systému na 3místný systém je velmi velký krok a vyžaduje již 1 000 obrázků (10³). Existuje několik technik, jak to udělat, například pomocí hlavního systému 3. úrovně nebo systému Ben. Oba jsou skvělé způsoby, jak vytvořit seznam 1 000 obrázků. Úsilí je desetkrát tolik a bude vyžadovat hodně praxe, než je budete moci rychle použít. Ale pro čtyřicetimístné číslo si budete muset zapamatovat pouze 13,3 obrázků na 13,3 místech, což v konečném důsledku zvýší vaši rychlost a přesnost (.3 protože nemůžete rozdělit 40 na 6 celými čísly; více o tom pod „PAO v akci“). Každý tříciferný systém bude proto sofistikovanější než dvouciferný systém. </p>
+
+<p> Systém PAO skočí v této obrovské mezeře mezi těmito dvěma technikami a poskytuje nádhernou alternativu s pouze 300 potřebnými obrázky. Technicky se jedná o 3 x 2místný systém. Je to také skvělý upgrade pro váš stávající dvouciferný systém a bude si ho rychle uložit. Může však také fungovat jako váš první systém. </p>
+
+<h4> Jak PAO funguje </h4>
+
+<p> Myšlenka systému PAO je velmi jednoduchá: Pokud se chceme vyhnout kódování více číslic do jednoho obrázku, musíme najít jiný způsob, jak kondenzovat informace. To můžeme udělat vytvořením shluku dvouciferných obrázků. To znamená, že používáme více než jeden seznam 100 obrázků a kombinujeme je do jednoho velkého clusteru. V případě systému PAO vytváříme tři seznamy po 100 položkách: 100 osob (P), 100 akcí (A) a 100 objektů (O). </p>
+
+<p> Krása tohoto systému, kromě seskupených informací o šesti číslicích, je přirozeným pořádkem každého seznamu: vždy je to nejprve Osoba, poté Akce a Objekt jako poslední. Zapamatujte si 6,6 malých scén, jako je tato, na 6,6 vašich míst a zakódovali jste čtyřicet číslic. Zní to mnohem lépe než tříciferný systém, ve kterém si musíte zapamatovat dvakrát tolik a především se naučit o 700 obrázků více, že? </p>
+
+<p> Ale všechna magie přichází s cenou: I když seskupíte tři obrázky do jednoho, musí si na konci stále pamatovat všichni sami. Uvidíte, že to vyžaduje zcela nové zaměření ve srovnání s jednoduchým dvoumístným nebo dokonce třímístným systémem. Je nezbytné jasně vizualizovat každou osobu, akci a objekt. Jinak byste mohli zapomenout, kdo na vaší pohovce skočil s velkou svíčkou. Totéž platí pro akci a předmět samozřejmě. Bude to nějakou praxi přijít na to. </p>
+
+<p> A v tomto systému je ještě jedna nevýhoda: Vyřezáváte se od hodně kreativity. Kombinace těchto tří prvků vytváří jasný obraz, který musíte umístit pouze na jedno ze svých míst. Podle mého názoru není dostatek místa pro vaše nápady, které jsou velkou částí zábavy. Na druhé straně to bude vyváženo kreativnější potřebou interakce s polohou. Více o tom najdete v bodě „PAO v akci“. </p>
+
+<p> Kvůli tomuto a jinému jevu mnoho zvažuje variace systému, například PO-systém s pouze dvěma seznamy 100 osob a 100 objektů. To vám opět poskytne dostatek prostoru pro kreativitu, ale zredukuje shluk na 4 číslice místo 6. Jiní mají problémy se 100 osobami. Vždy je zaměňují navzájem a používají pouze systém AO se 100 akcemi a 100 objekty. </p>
+
+<h4> Vytvoření systému PAO </h4>
+
+<p> Existuje mnoho způsobů, jak vytvořit své tři seznamy. Osobně dávám přednost následující metodě: Pokud stavíte svůj první systém čísel, měli byste zvážit hlavní systém. Pomůže vám zakódovat váš první seznam 100 obrázků a rychle se je naučit. Pak, nebo pokud již máte dvoumístný systém, můžete jej upgradovat neuvěřitelně snadno a rychle: Podívejte se na všech 100 obrázků. Pokud se jedná o objekty, zkuste najít asociace s osobou a akci pro každou z nich. Pokud se jedná o osoby, hledejte vhodný objekt a akci. Tímto způsobem vytvoříte přirozené asociace, které již máte v hlavě. Po jejich zadání si snadno zapamatujete své nové seznamy aktivací obrázků v prvním seznamu. </p>
+
+<h4> PAO v akci </h4>
+
+<p> Chcete-li si zapamatovat 40místné číslo, přečtete ho v krocích po dvou číslicích, přičemž první dvě převedete na osobu, druhé dvě do akce a třetí dvě číslice do objektu. Dejte je dohromady a zkombinujte tento obrázek s vaší polohou z vaší sloní cesty. Poté přejděte na dalších šest číslic a opakujte tuto sekvenci, dokud nevytvoříte pět obrazových klastrů. Pouze 6,6 clusterů a můžete si zapamatovat 8304827739410499306928301829439382904639 - úžasné, že? </p>
+
+<p> Pokud dáváte přednost tomu, aby vaše obrázky interagovaly s vašimi místy, místo toho, abyste je jednoduše umístili před sebe, musíte být kreativní. Například pokud je vaše poloha klepadlo ve tvaru písmene U a vaše PAO vám poskytne něco jako slon (P) zpívá (A) na kole (O). Aby mohl obrovský slon působit při klepání na dveře při interakci se zpěvákem, mohl by být ve vaší fantazii dostatečně malý. Možná tak maličký, že on a jeho kolo snadno zapadli do křivky u klepátka na dveře. Bude to roztomilý obrázek, který si zaslouží zapamatovat si váš mozek. </p>
+
+<p> Pokud soutěžíte v paměťové soutěži, budete se muset vypořádat s tím, že každý řádek bude dlouhý 40 číslic. Po 6 obrázcích PAO (36 číslic) se dostanete na konec řádku a zbývají pouze čtyři číslice. Pokud kódujete další čtyři obrázky v tomto řádku A další dvě číslice v následujícím řádku a vytvoříte plný obraz PAO, můžete ztratit dva úplné řádky s 80 číslicemi dohromady. Pokud zapomenete tento obrázek PAO, budete mít 4 chyby v prvním řádku a 2 chyby ve druhém, nastavení obou na nulu (1 chybná polovina řádku, 2 chyby zruší řádek). Chcete-li tomu zabránit, měli byste například zapamatovat pouze poslední čtyři číslice řádku s obrázkem PO a začít další řádek s novým obrázkem PAO. </p>
+
+<h4> PAO pro karty </h4>
+
+<p> PAO-Sytem můžete použít také pro karty. V případě karet to dává ještě větší smysl, protože systém se dvěma kartami vyžaduje 2,652 obrázků (52x51 karet). Je mnohem snazší vytvořit a funguje přesně stejným způsobem jako u čísel. Můžete jednoduše vzít svůj existující systém karet 1. úrovně a upgradovat jej stejným způsobem, jaký jsem vysvětlil výše. Pokud ještě nemáte systém karet, měli byste si vytvořit jednoduchý a poté jej upgradovat. Opravdu to stojí za námahu a sportovci jako Andy Bell si dokáží zapamatovat balíček s 52 kartami za 31,16 sekund. </p>

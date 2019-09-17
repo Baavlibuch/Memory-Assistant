@@ -1,0 +1,37 @@
+<p> Kilde: <a href="http://memory-sports.com"> http://memory-sports.com </a> </p>
+
+<h4> Logg </h4>
+
+<p> Å starte med et tosifret system som 2.-nivå Major System er en relativt liten innsats på 100 bilder (10²). Et system som dette kan læres på veldig kort tid, er derfor raskt tilgjengelig og kan lett trenes. Ulempen med den er den lille klyngen på bare to sifre. For et firesifret nummer må du huske 20 bilder på 20 steder med elefantstien din gjennom metoden for Loci (antar at du bruker ett bilde på hvert sted). </p>
+
+<p> Å forbedre systemet til et tresifret system er et veldig stort skritt og ber om allerede 1.000 bilder (10³). Det er flere teknikker for å gjøre dette, for eksempel å bruke et 3. nivå nivå-system eller Ben-systemet. Begge er gode måter å lage en liste med 1.000 bilder på. Innsatsen er ti ganger så mye og vil kreve mye trening før du kan bruke den raskt. Men for et firesifret tall må du bare huske 13,3 bilder på 13,3 steder som til slutt vil øke hastigheten og presisjonen din (.3 fordi du ikke kan dele 40 med 6 med hele tall; mer om dette under “PAO in Action”). Ethvert tresifret system vil derfor være mer sofistikert enn et tosifret system. </p>
+
+<p> PAO-systemet hopper i det enorme gapet mellom disse to teknikkene og gir et vakkert alternativ med bare 300 bilder som trengs. Teknisk er det et 3 x 2-sifret system. Det er også en flott oppgradering for ditt eksisterende 2-sifrede system og vil bli husket på kort tid. Men det kan også fungere som det første systemet ditt. </p>
+
+<h4> Slik fungerer PAO </h4>
+
+<p> Ideen bak PAO-systemet er veldig enkel: Hvis vi ønsker å unngå å kode flere sifre i ett bilde, må vi finne en annen måte å kondensere informasjon på. Det kan vi gjøre ved å lage en klynge med 2-sifrede bilder. Det betyr at vi bruker mer enn en liste med 100 bilder og kombinerer dem til en stor klynge. I tilfelle av PAO-systemet lager vi tre lister med 100 elementer hver: 100 personer (P), 100 handlinger (A) og 100 objekter (O). </p>
+
+<p> Dette systemets skjønnhet foruten den grupperte informasjonen om seks sifre er den naturlige rekkefølgen på hver liste: Det er alltid personen først, etterfulgt av handlingen og objektet sist. Husk 6.6 små scener som dette på 6.6 av stedene dine, og du har kodet et firti sifret nummer. Det høres mye bedre ut enn et tresifret system der du må huske dobbelt så mye og lære 700 bilder mer i utgangspunktet, ikke sant? </p>
+
+<p> Men all magi kommer med en pris: Selv om du klynger sammen tre bilder til ett, må de fremdeles huskes helt alene til slutt. Du vil se at det tar et helt nytt fokus sammenlignet med et enkelt tosifret eller til og med et tresifret system. Det er viktig å tydelig visualisere hver person, handling og objekt. Ellers kan du glemme hvem som hoppet på sofaen din med et stort stearinlys. Det samme gjelder handlingen og gjenstanden selvfølgelig. Det vil ta litt praksis å finne ut av dette. </p>
+
+<p> Og det er en annen ulempe med dette systemet: Du kutter deg fra mye kreativitet. Kombinasjonen av disse tre elementene tegner et tydelig bilde som du bare må legge på et av stedene dine. Det er lite rom for ideene dine som er en stor del av moroa etter min mening. På den annen side vil dette bli balansert ut gjennom et mer kreativt behov for lokasjonssamhandling. Du finner mer om dette under punktet “PAO in action”. </p>
+
+<p> På grunn av dette og andre fenomen vurderer mange varianter av systemet, for eksempel et PO-system med bare to lister på 100 personer og 100 objekter. Det vil gi deg god plass til kreativitet igjen, men vil redusere klyngen til 4 sifre i stedet for 6. Andre har problemer med de 100 personene. De forveksler dem alltid med hverandre og bruker bare et AO-system med 100 handlinger og 100 objekter. </p>
+
+<h4> Opprette PAO-systemet </h4>
+
+<p> Det er mange måter å lage dine tre lister på. Personlig foretrekker jeg følgende metode: Hvis du bygger ditt første tallsystem, bør du vurdere Major System. Det vil hjelpe deg å kode den første listen over 100 bilder og lære dem raskt. Deretter, eller hvis du allerede har et tosifret system, kan du oppgradere det forbausende enkelt og raskt: Se på alle de 100 bildene dine. Hvis de er objekter, prøv å finne assosiasjoner til en person og handling for hver enkelt. Hvis de er personer, ser du etter et passende objekt og handling. På den måten vil du skape naturlige assosiasjoner du allerede har i hodet. Etter å ha spesifisert dem vil du huske de nye listene veldig enkelt ved å aktivere bildene i den første listen. </p>
+
+<h4> PAO i aksjon </h4>
+
+<p> For å memorere et 40-sifret nummer vil du lese det i trinn på to sifre hver, oversette de to første til personen, de to andre til handlingen og de tredje to sifrene til objektet. Sett dem sammen og kombiner dette bildet med din beliggenhet fra elefantstien. Gå deretter videre til de neste seks sifrene og gjenta denne sekvensen til du opprettet fem bildeklynger. Bare 6,6 klynger, og du kan huske 8304827739410499306928301829439382904639 - fantastisk er det ikke? </p>
+
+<p> Hvis du foretrekker å la bildene samhandle med stedene dine, i stedet for å bare plassere dem foran dem, må du bli kreativ. For eksempel hvis stedet ditt er en u-formet dørknapper og PAO-en din gir deg noe som en elefant (P) synger (A) på en sykkel (O). For å la den enorme elefanten samhandle med dørknappen mens han utførte sin sang-ridning, kunne han bli liten nok i fantasien. Kanskje så bitteliten at han og sykkelen hans passer lett innenfor u-kurven til dørknappen. Dette vil være et søtt lite bilde som er verdt å huske for hjernen din. </p>
+
+<p> Hvis du konkurrerer på en minnekonkurranse, må du takle det faktum at hver rad er 40 sifre lang. Etter 6 PAO-bilder (36 sifre) kommer du til slutten av raden med bare fire sifre igjen. Når du koder for de neste fire bildene i denne raden, OG de neste to sifrene i den følgende raden for å lage et fullstendig PAO-bilde, kan du miste to komplette rader med 80 sifre sammen. Hvis du glemmer dette PAO-bildet, vil du ha 4 feil i den første raden og 2 feil i den andre, ved å sette begge til null (1 feil halvdel av raden, 2 feil kansellerer raden). For å unngå dette, bør du vurdere å huske bare de fire siste sifrene i rekken med et PO-bilde for eksempel og starte neste rad med et nytt PAO-bilde. </p>
+
+<h4> PAO for kort </h4>
+
+<p> Du kan også bruke PAO-Sytem til kort. Når det gjelder kort er det enda mer fornuftig fordi et 2-kortsystem krever 2 652 bilder (52x51 kort). Det er mye lettere å lage og fungerer nøyaktig på samme måte som med tall. Du kan ganske enkelt ta ditt eksisterende 1.-nivå-kortsystem og oppgradere det med samme teknikk som jeg forklarte ovenfor. Hvis du ikke har et kortsystem ennå, bør du opprette et enkelt og deretter oppgradere det. Det er virkelig verdt innsatsen og idrettsutøvere som Andy Bell klarer å memorere et kortstokk på 52 kort med det på 31,16 sekunder. </p>

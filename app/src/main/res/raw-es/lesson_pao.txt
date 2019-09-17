@@ -1,0 +1,37 @@
+<p> Fuente: <a href="http://memory-sports.com"> http://memory-sports.com </a> </p>
+
+<h4> Historia </h4>
+
+<p> Comenzar con un sistema de 2 dígitos como el sistema principal de segundo nivel es un esfuerzo relativamente pequeño de 100 imágenes (10²). Un sistema como este se puede aprender en muy poco tiempo, por lo tanto, está disponible rápidamente y se puede entrenar fácilmente. La desventaja es el pequeño grupo de solo dos dígitos. Para un número de cuarenta dígitos, tendrá que memorizar 20 imágenes en 20 ubicaciones con su Camino de elefante a través del Método de Loci (suponiendo que use una imagen en cada ubicación). </p>
+
+<p> Mejorar el sistema a un sistema de 3 dígitos es un gran paso y ya solicita 1.000 imágenes (10³). Hay varias técnicas para hacer esto, como el uso de un sistema principal de tercer nivel o el sistema Ben. Ambas son excelentes formas de crear una lista de 1.000 imágenes. El esfuerzo es diez veces mayor y requerirá mucha práctica antes de poder usarlo rápidamente. Pero para un número de cuarenta dígitos, solo tendrá que memorizar 13.3 imágenes en 13.3 ubicaciones, lo que en última instancia aumentará su velocidad y precisión (.3 porque no puede dividir 40 por 6 con números enteros; más sobre esto en "PAO en acción"). Por lo tanto, cualquier sistema de 3 dígitos será más sofisticado que un sistema de 2 dígitos. </p>
+
+<p> El sistema PAO salta en esa enorme brecha entre estas dos técnicas y proporciona una hermosa alternativa con solo 300 imágenes necesarias. Técnicamente es un sistema de 3 x 2 dígitos. También es una gran actualización para su sistema actual de 2 dígitos y se memorizará en poco tiempo. Pero también puede funcionar como su primer sistema. </p>
+
+<h4> Cómo funciona PAO </h4>
+
+<p> La idea detrás del sistema PAO es muy simple: si queremos evitar codificar más dígitos en una imagen, tenemos que encontrar otra forma de condensar la información. Podemos hacerlo creando un grupo de imágenes de 2 dígitos. Eso significa que usamos más de una lista de 100 imágenes y las combinamos en un gran grupo. En el caso del Sistema PAO, creamos tres listas de 100 elementos cada una: 100 personas (P), 100 acciones (A) y 100 objetos (O). </p>
+
+<p> La belleza de este sistema además de la información agrupada de seis dígitos es el orden natural de cada lista: siempre es la Persona primero, seguida por la Acción y el Objeto por último. Memorice 6.6 pequeñas escenas como esta en 6.6 de sus ubicaciones y ha codificado un número de cuarenta dígitos. Eso suena mucho mejor que un sistema de 3 dígitos donde tienes que memorizar el doble y aprender 700 imágenes más en primer lugar, ¿no? </p>
+
+<p> Pero toda la magia tiene un precio: incluso si agrupa tres imágenes en una sola, al final deben ser recordadas por sí mismas. Verá que requiere un enfoque completamente nuevo en comparación con un sistema simple de 2 dígitos o incluso un sistema de 3 dígitos. Es esencial visualizar claramente a cada persona, acción y objeto. De lo contrario, podría olvidar quién estaba saltando en su sofá con una gran vela. Lo mismo ocurre con la acción y el objeto, por supuesto. Tomará un poco de práctica resolver esto. </p>
+
+<p> Y hay otro inconveniente en este sistema: te estás quitando mucha creatividad. La combinación de estos tres elementos dibuja una imagen clara que solo tiene que poner en una de sus ubicaciones. Hay poco espacio para sus ideas, que son una gran parte de la diversión en mi opinión. Por otro lado, esto se equilibrará mediante una necesidad más creativa de interacción de ubicación. Encontrará más información sobre esto en el punto "PAO en acción". </p>
+
+<p> Debido a este y otros fenómenos, muchos consideran variaciones del sistema, por ejemplo, un sistema PO con solo dos listas de 100 personas y 100 objetos. Eso le dará mucho espacio para la creatividad nuevamente, pero reducirá el grupo a 4 dígitos en lugar de 6. Otros tienen problemas con las 100 personas. Siempre los confunden entre sí y solo usan un sistema AO con 100 acciones y 100 objetos. </p>
+
+<h4> Creación del sistema PAO </h4>
+
+<p> Hay muchas formas de crear sus tres listas. Personalmente, prefiero el siguiente método: si está creando su primer sistema de números, debe considerar el Sistema principal. Le ayudará a codificar su primera lista de 100 imágenes y aprenderlas rápidamente. Luego, o si ya tiene un sistema de 2 dígitos, puede actualizarlo de manera asombrosamente fácil y rápida: vea todas sus 100 imágenes. Si son objetos, intente encontrar asociaciones con una persona y acción para cada uno. Si son personas, busque un objeto y una acción adecuados. De esa manera crearás asociaciones naturales que ya tienes en tu cabeza. Después de especificarlos, recordará sus nuevas listas muy fácilmente activando sus imágenes en su primera lista. </p>
+
+<h4> PAO en acción </h4>
+
+<p> Para memorizar un número de 40 dígitos, lo leerá en pasos de dos dígitos cada uno, traduciendo los dos primeros en la persona, los segundos dos en la acción y los terceros dos dígitos en el objeto. Póngalos juntos y combine esta imagen con su ubicación desde su Elephant Path. Luego continúe con los siguientes seis dígitos y repita esta secuencia hasta que haya creado cinco grupos de imágenes. Solo 6.6 clústeres y puedes memorizar 8304827739410499306928301829439382904639, ¿no es sorprendente? </p>
+
+<p> Si prefiere dejar que sus imágenes interactúen con sus ubicaciones, en lugar de simplemente colocarlas frente a ellas, debe ser creativo. Por ejemplo, si su ubicación es una aldaba de puerta en forma de U y su PAO le proporciona algo como un elefante (P) canta (A) en una bicicleta (O). Para permitir que el enorme elefante interactúe con el llamador de la puerta mientras monta su canto, podría volverse lo suficientemente pequeño en su imaginación. Tal vez tan pequeño, que él y su bicicleta encajan fácilmente dentro de la curva en U de la aldaba. Esta será una pequeña imagen linda que vale la pena recordar para tu cerebro. </p>
+
+<p> Si está compitiendo en una competencia de memoria, tendrá que lidiar con el hecho de que cada fila tendrá 40 dígitos. Después de 6 imágenes PAO (36 dígitos) llegará al final de la fila con solo cuatro dígitos restantes. Cuando codifica las siguientes cuatro imágenes en esta fila Y los siguientes dos dígitos en la siguiente fila para crear una imagen PAO completa, puede perder dos filas completas con 80 dígitos juntos. Si olvida esta imagen PAO, tendrá 4 errores en la primera fila y 2 errores en la segunda, estableciendo ambos a cero (1 error en la mitad de la fila, 2 errores cancela la fila). Para evitar esto, debería considerar memorizar solo los últimos cuatro dígitos de la fila con una imagen PO, por ejemplo, y comenzar la siguiente fila con una nueva imagen PAO. </p>
+
+<h4> PAO para tarjetas </h4>
+
+<p> También puede usar el PAO-Sytem para tarjetas. En el caso de las tarjetas, tiene aún más sentido porque un sistema de 2 tarjetas requiere 2.652 imágenes (52x51 tarjetas). Es mucho más fácil de crear y funciona exactamente de la misma manera que con los números. Simplemente puede tomar su sistema de tarjeta existente de primer nivel y actualizarlo con la misma técnica que expliqué anteriormente. Si aún no tiene un sistema de tarjeta, debe crear uno simple y luego actualizarlo. Realmente vale la pena el esfuerzo y los atletas como Andy Bell pueden memorizar una baraja de 52 cartas con ella en 31.16 segundos. </p>
