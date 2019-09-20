@@ -9,7 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.preference.PreferenceManager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -36,7 +37,6 @@ public class WriteFile extends AppCompatActivity {
     boolean deleted = false;
     EditText searchEditText;
     EditText mySpaceEditText;
-    FloatingActionButton searchFAB;
     int searchIndex;
 
     @Override
@@ -53,7 +53,6 @@ public class WriteFile extends AppCompatActivity {
 
         mySpaceEditText = findViewById(R.id.my_space_editText);
         searchEditText = findViewById(R.id.search_edit_text);
-        searchFAB = findViewById((R.id.search_mySpace_FAB));
 
         path = intent.getStringExtra("fileName");
         if (intent.getBooleanExtra("name", true)) {
@@ -80,6 +79,7 @@ public class WriteFile extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         //intent.getStringExtra()
 
+        // reset search index to zero whenever text changes
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -89,14 +89,19 @@ public class WriteFile extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (count > 0) {
                     searchIndex = 0;
-                    search("" + s);
-                    // TODO searchFAB.setImageDrawable();
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
             }
+        });
+        searchEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                search(searchEditText);
+                return true;
+            }
+            return false;
         });
     }
 
@@ -217,14 +222,20 @@ public class WriteFile extends AppCompatActivity {
     private void search(String stringToSearch) {
         String fullText = mySpaceEditText.getText().toString();
         boolean hasText = fullText.contains(stringToSearch);
+        Timber.d("hasText = %s", hasText);
         if (hasText) {
             searchIndex = fullText.indexOf(stringToSearch, searchIndex);
-            if (searchIndex == -1) searchIndex = 0;
+            // -1 : not found. Happens after the last
+            if (searchIndex == -1) {
+                searchIndex = 0;
+                Toast.makeText(this, R.string.search_from_start, Toast.LENGTH_SHORT).show();
+            }
 
             int lineNumber = mySpaceEditText.getLayout().getLineForOffset(searchIndex);
             int totalLines = mySpaceEditText.getLayout().getLineCount();
             int editTextViewBottom = findViewById(R.id.my_space_editText).getBottom();
-            findViewById(R.id.my_space_scroll_view).scrollTo(0, editTextViewBottom * lineNumber / totalLines);
+            ((ScrollView) findViewById(R.id.my_space_scroll_view))
+                    .smoothScrollTo(0, editTextViewBottom * (lineNumber-1) / totalLines);
             searchIndex++;
             return;
         }
@@ -236,5 +247,6 @@ public class WriteFile extends AppCompatActivity {
         searchIndex++;
         search(stringToSearch);
         searchEditText.setVisibility(View.VISIBLE);
+        searchEditText.requestFocus();
     }
 }

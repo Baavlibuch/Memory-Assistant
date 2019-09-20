@@ -102,6 +102,7 @@
     <string name="my_space_file_picker">My Space file picker</string>
     <string name="search">Search</string>
     <string name="not_found">Not Found</string>
+    <string name="search_from_start">Reached the bottom. Searching from the top</string>
 
     <!--Preferences-->
     <string name="remind">Remind Me Periodically</string>

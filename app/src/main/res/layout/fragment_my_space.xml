@@ -4,42 +4,12 @@
     android:id="@+id/my_space_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.memory_athlete.memoryassistant.mySpace.MySpace"
     android:animateLayoutChanges="true"
-    android:contentDescription="@string/my_space_file_picker">
-
-    <!--
-    <ImageView
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:visibility="gone"
-        app:srcCompat="@drawable/ic_action_back" />
-
-    <LinearLayout
-        android:id="@+id/fragmentTitleBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:visibility="visible">
-
-
-        <TextView
-            android:id="@+id/fragment_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp" />
-
-    </LinearLayout>-->
+    android:contentDescription="@string/my_space_file_picker"
+    android:orientation="vertical">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add"
+        android:id="@+id/add_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -49,38 +19,56 @@
         android:src="@drawable/ic_action_add"
         android:visibility="gone" />
 
-    <EditText
-        android:id="@+id/f_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:hint="@string/f_name"
-        android:inputType="text"
-        android:visibility="gone"
-        tools:ignore="Autofill" />
-
-    <ScrollView
-        android:id="@+id/my_space_scroll_view"
+    <LinearLayout
+        android:id="@+id/edit_mySpaceFragment_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/f_name">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <EditText
-            android:id="@+id/my_space_editText"
+            android:id="@+id/f_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:hint="@string/here"
+            android:hint="@string/f_name"
+            android:inputType="text"
+            tools:ignore="Autofill" />
+
+        <ScrollView
+            android:id="@+id/my_space_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/my_space_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/here"
+                android:inputType="textMultiLine"
+                tools:ignore="Autofill"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp" />
+
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/search_edit_text_mySpaceFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/search"
+            android:importantForAutofill="no"
             android:inputType="text"
             android:visibility="gone"
-            tools:ignore="Autofill"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+            tools:targetApi="o" />
 
-    </ScrollView>
+    </LinearLayout>
 
 </RelativeLayout>

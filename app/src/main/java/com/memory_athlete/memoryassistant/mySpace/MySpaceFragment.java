@@ -6,21 +6,28 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -40,11 +47,23 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MySpaceFragment extends Fragment {
-    public int fragListViewId = 0, MIN_DYNAMIC_VIEW_ID = 3;
+    public int MIN_DYNAMIC_VIEW_ID = 2;
+
+    public int fragListViewId = 0;
     private File dir = null;
     private String title = "", fileName, oldTabTitle, oldName = null;
     private Boolean name;
+    private int searchIndex;
+
     private View rootView;
+    private EditText searchEditText;
+    private EditText mySpaceEditText;
+    private LinearLayout editLayout;
+    private View fab;
+
+    private View.OnClickListener addClickListener;
+    private View.OnClickListener searchClickListener;
+
     private Activity activity;
 
     public interface TabTitleUpdater {
@@ -85,13 +104,50 @@ public class MySpaceFragment extends Fragment {
             Objects.requireNonNull(getActivity()).finish();
             return rootView;
         }
-        rootView.findViewById(R.id.add).setVisibility(GONE);//.removeViewAt(0);
+        rootView.findViewById(R.id.add_search).setVisibility(GONE);//.removeViewAt(0);
         //if (fragListViewId > 0)
         //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
         activity = getActivity();
-        fragListViewId = MIN_DYNAMIC_VIEW_ID;    //There are three other views with ids 0,1,2
+
+        // There are 2 direct children of the RelativeLayout with IDs 0,1
+        // Only add new views with IDs >=2
+        fragListViewId = MIN_DYNAMIC_VIEW_ID;
+
+        mySpaceEditText = rootView.findViewById(R.id.my_space_editText);
+        searchEditText = rootView.findViewById(R.id.search_edit_text_mySpaceFragment);
+        editLayout = rootView.findViewById(R.id.edit_mySpaceFragment_layout);
+        fab = rootView.findViewById(R.id.add_search);
+        Timber.i("FAB id = %s", fab.getId());
+
         setAdapter(rootView);
         setButtons(rootView);
+
+        // reset whenever query is edited
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (count > 0) {
+                    searchIndex = 0;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        // search when done is pressed
+        searchEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                search();
+                return true;
+            }
+            return false;
+        });
+
         return rootView;
     }
 
@@ -148,18 +204,23 @@ public class MySpaceFragment extends Fragment {
             Timber.d("listView id = %s", listView.getId());
             Item item = finalArrayList.get(position);
             Timber.v("item.mPath = %s", item.mPath);
-            if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
+            if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {                                // show selector
                 dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mPath);
                 layout.findViewById(fragListViewId).setVisibility(View.GONE);
                 fragListViewId++;
                 title = item.mName;
                 mCallback.tabTitleUpdate(title);
-                rootView.findViewById(R.id.add).setVisibility(View.VISIBLE);
+                fab.setVisibility(View.VISIBLE);
+                ((FloatingActionButton) fab).setImageDrawable(
+                        ContextCompat.getDrawable(activity, R.drawable.ic_action_add));
+                fab.setContentDescription(getString(R.string.word_new));
+                fab.setOnClickListener(addClickListener);
+                rootView.findViewById(R.id.edit_mySpaceFragment_layout).setVisibility(GONE);
                 setAdapter(rootView);
                 Timber.v("going to id 1, listViewId = %s", fragListViewId);
                 //rootView.findViewById(R.id.back_button).setVisibility(View.VISIBLE);
                 //rootView.findViewById(R.id.back_button).bringToFront();
-            } else {
+            } else {                                                                    // show editor
                 Timber.v("listViewId = %s", fragListViewId);
                 fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
                 //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
@@ -171,80 +232,97 @@ public class MySpaceFragment extends Fragment {
                 if (!isDirectoryCreated) isDirectoryCreated = file.mkdirs();
                 if (isDirectoryCreated) {
                     name = true;
-                    //rootView.findViewById(R.id.back_button).setVisibility(View.GONE);
-                    rootView.findViewById(R.id.add).setVisibility(View.GONE);
                     try {
                         rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
                     } catch (NullPointerException e) {
                         throw new RuntimeException("Wrong value of fragListViewId = " + fragListViewId);
                     }
-                    rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
-                    rootView.findViewById(R.id.my_space_scroll_view).setVisibility(View.VISIBLE);
-                    rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
+
+                    editLayout.setVisibility(VISIBLE);
+                    fab.setContentDescription(getString(R.string.search));
+                    fab.setOnClickListener(searchClickListener);
+                    ((FloatingActionButton) fab).setImageDrawable(
+                            ContextCompat.getDrawable(activity, R.drawable.ic_action_search));
+
                     writeFile(rootView, fileName, item.mName);
                 } else throw new RuntimeException("Directory not created in MySpace");
-                //rootView.findViewById(R.id.back_button).bringToFront();
             }
         });
     }
 
     public void back() {
         Timber.v("back_button clicked, fragListViewId = %s", fragListViewId);
+        // hide keypad
         if (activity.getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE);
             assert inputMethodManager != null;
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
-        if (rootView.findViewById(R.id.f_name).getVisibility() == VISIBLE) {
+        // hide search box
+        if (searchEditText.getVisibility() == View.VISIBLE) {
+            searchEditText.setVisibility(View.GONE);
+            return;
+        }
+        // return to mySpace selector
+        if (rootView.findViewById(R.id.edit_mySpaceFragment_layout).getVisibility() == VISIBLE) {
             Timber.v("fileName = %s", fileName);
-            if (!save(rootView)) return;
-            rootView.findViewById(R.id.f_name).setVisibility(GONE);
-            rootView.findViewById(R.id.my_space_editText).setVisibility(GONE);
-            rootView.findViewById(R.id.my_space_scroll_view).setVisibility(GONE);
+            if (!save(rootView)) return;    // check if file has name if editor is visible
+            editLayout.setVisibility(GONE);
+            fab.setContentDescription(getString(R.string.word_new));
+            fab.setOnClickListener(addClickListener);
+            ((FloatingActionButton) fab).setImageDrawable(
+                    ContextCompat.getDrawable(activity, R.drawable.ic_action_add));
         }
-        if (rootView.findViewById(fragListViewId) != null) {
+        // go back in mySpace
+        if (rootView.findViewById(fragListViewId) != null)
             ((RelativeLayout) rootView).removeViewAt(fragListViewId);
-            Timber.v("Removed view at fragListViewId %s", fragListViewId);
-        }
+
         if (rootView.findViewById(--fragListViewId) != null) {
             ((RelativeLayout) rootView).removeViewAt(fragListViewId);
             // findViewById(fragListViewId).setVisibility(View.VISIBLE);
             if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {
-                rootView.findViewById(R.id.add).setVisibility(View.GONE);
+                rootView.findViewById(R.id.add_search).setVisibility(View.GONE);
                 //rootView.findViewById(R.id.back_button).setVisibility(GONE);
                 mCallback.tabTitleUpdate(getString(R.string.my_space));
             }
         }
         setAdapter(rootView);
-        //rootView.findViewById(R.id.back_button).bringToFront();
+
         if (fragListViewId != MIN_DYNAMIC_VIEW_ID)
-            rootView.findViewById(R.id.add).setVisibility(VISIBLE);
-        if (oldTabTitle == null || fragListViewId == 3)
+            rootView.findViewById(R.id.add_search).setVisibility(VISIBLE);
+        if (oldTabTitle == null || fragListViewId == MIN_DYNAMIC_VIEW_ID)
             mCallback.tabTitleUpdate(getString(R.string.my_space));
         else mCallback.tabTitleUpdate(oldTabTitle);
     }
 
     private void setButtons(final View rootView) {
-        rootView.findViewById(R.id.add).setOnClickListener(v -> {
+        //rootView.findViewById(R.id.add_search).setOnClickListener(
+        addClickListener = v -> {
             Timber.v("add button clicked");
             name = false;
-            fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
-            rootView.findViewById(R.id.add).setVisibility(View.GONE);
+            fileName = Helper.APP_FOLDER + MySpaceFragment.this.getString(R.string.my_space) + File.separator + title;
+
+            editLayout.setVisibility(VISIBLE);
+            fab.setContentDescription(getString(R.string.search));
+            fab.setOnClickListener(searchClickListener);
+            ((FloatingActionButton) fab).setImageDrawable(
+                    ContextCompat.getDrawable(activity, R.drawable.ic_action_search));
+
             if (rootView.findViewById(fragListViewId) != null)
                 rootView.findViewById(fragListViewId++).setVisibility(View.GONE);
             else fragListViewId++;
-            rootView.findViewById(R.id.f_name).setVisibility(View.VISIBLE);
-            rootView.findViewById(R.id.my_space_scroll_view).setVisibility(View.VISIBLE);
-            rootView.findViewById(R.id.my_space_editText).setVisibility(View.VISIBLE);
-            writeFile(rootView, fileName, title);
-        });
+
+            MySpaceFragment.this.writeFile(rootView, fileName, title);
+        };
+
+        searchClickListener = v -> search();
     }
 
     private void writeFile(View rootView, String path, String header) {
         oldTabTitle = title;
         mCallback.tabTitleUpdate(header);
         oldName = header;
-        ((TextView) rootView.findViewById(R.id.my_space_editText)).setText("");
+        mySpaceEditText.setText("");
         ((TextView) rootView.findViewById(R.id.f_name)).setText("");
         if (name) {
             ((EditText) rootView.findViewById(R.id.f_name)).setText(header);
@@ -259,7 +337,7 @@ public class MySpaceFragment extends Fragment {
                     text.append('\n');
                 }
                 br.close();
-                ((EditText) rootView.findViewById(R.id.my_space_editText)).setText(text);
+                mySpaceEditText.setText(text);
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
@@ -271,7 +349,7 @@ public class MySpaceFragment extends Fragment {
 
     public boolean save(View rootView) {
         Timber.v("entered save()");
-        String string = ((EditText) rootView.findViewById(R.id.my_space_editText)).getText().toString();
+        String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {
             if (!name) {
@@ -352,6 +430,38 @@ public class MySpaceFragment extends Fragment {
             mClass = class1;
             Timber.i("Item set!");
         }
+    }
+
+    private void search(String stringToSearch) {
+        String fullText = mySpaceEditText.getText().toString();
+        boolean hasText = fullText.contains(stringToSearch);
+        Timber.d("hasText = %s", hasText);
+        if (hasText) {
+            searchIndex = fullText.indexOf(stringToSearch, searchIndex);
+            // -1 : not found. Happens after the last
+            if (searchIndex == -1) {
+                searchIndex = 0;
+                Toast.makeText(activity, R.string.search_from_start, Toast.LENGTH_SHORT).show();
+            }
+
+            int lineNumber = mySpaceEditText.getLayout().getLineForOffset(searchIndex);
+            int totalLines = mySpaceEditText.getLayout().getLineCount();
+            int editTextViewBottom = mySpaceEditText.getBottom();
+            ((ScrollView) rootView.findViewById(R.id.my_space_scroll_view))
+                    .smoothScrollTo(0, editTextViewBottom * (lineNumber-1) / totalLines);
+            searchIndex++;
+            return;
+        }
+        Toast.makeText(activity, R.string.not_found, Toast.LENGTH_SHORT).show();
+    }
+
+    public void search() {
+        String stringToSearch = searchEditText.getText().toString();
+        searchIndex++;
+        search(stringToSearch);
+        searchEditText.setVisibility(View.VISIBLE);
+        searchEditText.requestFocus();
+        Timber.v("rootView.findViewById(R.id.search_edit_text_mySpaceFragment) visibility = %s", rootView.findViewById(R.id.search_edit_text_mySpaceFragment));
     }
 
     private class MySpaceAdapter extends ArrayAdapter<Item> {
