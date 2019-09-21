@@ -54,7 +54,7 @@ public class MySpaceFragment extends Fragment {
     private TabTitleUpdater mCallback;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
             mCallback = (TabTitleUpdater) context;
