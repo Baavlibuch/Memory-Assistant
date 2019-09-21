@@ -18,9 +18,17 @@ N : Android Assets Studio
 W : https://romannurik.github.io/AndroidAssetStudio/
 D : Icons, etc
 
+N : Eucalyp
+W : https://www.flaticon.com/authors/eucalyp
+D : R.drawable.perfect_association
+
 N : www.flaticon.com
 W : https://www.flaticon.com
 D : Icons
+
+N : Flat Icons
+W : https://www.flaticon.com/authors/flat-icons
+D : R.drawable.vocabulary
 
 N : Freepik
 W : https://www.flaticon.com/authors/freepik
@@ -68,3 +76,7 @@ D : Created the website
 N : Smashicons
 W : https://www.flaticon.com/authors/smashicons
 D : R.drawable.dates
+
+N : Vectors Market
+W : https://www.flaticon.com/authors/vectors-market
+D : R.drawable.pao

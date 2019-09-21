@@ -31,6 +31,7 @@ public class Helper {
     private static final int REQUEST_STORAGE_ACCESS = 555;
 
     public static final String TYPE = "type";
+    public static final String RAW_RESOURCE_ID_KEY = "rawResourceID";
 
     public final static int LOWER_CASE = 0;             // a = 97
     final static int UPPER_CASE = 1;             // A = 65

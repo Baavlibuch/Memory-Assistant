@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.crashlytics.android.Crashlytics;
+import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 
@@ -59,9 +60,10 @@ public class Lessons extends AppCompatActivity {
         Intent intent = getIntent();
         theme(intent);
 
-        StringBuilder sb = new StringBuilder();   // Empty string used to distinguish from null
-        // that might be returned after file is read
-        int fileInt = intent.getIntExtra("file", 0);
+        // Initialized as an empty string to distinguish from null that might be returned after file is read
+        StringBuilder sb = new StringBuilder();
+
+        int fileInt = intent.getIntExtra(Helper.RAW_RESOURCE_ID_KEY, 0);
         if (fileInt != 0 && intent.getBooleanExtra("resource", true)) { // Raw
 
             if (intent.getBooleanExtra("list", false)) {                // list
@@ -77,6 +79,7 @@ public class Lessons extends AppCompatActivity {
             }
 
             sb = readResource(fileInt);                                                 // non-list
+
         } else {                                                                        // Asset
 
             if (intent.getBooleanExtra("list", false)) {             // list
@@ -98,11 +101,13 @@ public class Lessons extends AppCompatActivity {
 
         if (intent.getBooleanExtra("webView", false)) {             // JQMath
             setWebView(sb);
-        } else {
-            Timber.v("list is false");
-            ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
-            findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
+            return;
         }
+
+        // Display the plain-text/HTML read above into sb in the textView inside the ScrollView
+        Timber.v("list is false");
+        ((TextView) findViewById(R.id.lesson)).setText(Html.fromHtml(sb.toString()));
+        findViewById(R.id.lesson_scroll).setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -269,28 +274,29 @@ public class Lessons extends AppCompatActivity {
         String line = intent.getStringExtra("fileString"); //For assets and filesDir
         BufferedReader bufferedReader = null;
         try {
-            assert line != null;
+            if (line == null) {
+                Toast.makeText(getApplicationContext(), R.string.dl_from_play, Toast.LENGTH_LONG).show();
+                throw new RuntimeException(
+                        "\nAsset_path - " + line + "" +
+                                "fileInt = " + intent.getIntExtra(Helper.RAW_RESOURCE_ID_KEY, 0) +
+                                "resources_boolean = " + intent.getBooleanExtra("resource", true) +
+                                "list_boolean = " + intent.getBooleanExtra("list", false) +
+                                "webView_boolean = " + intent.getBooleanExtra("webView", false) +
+                                "headerInt = " + intent.getIntExtra("mHeader", 0) +
+                                "headerString" + intent.getStringExtra("headerString"));
+            }
+
             bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open(line)));
             while ((line = bufferedReader.readLine()) != null) sb.append(line);
         } catch (IOException e) {
             Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
             finish();
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException(
-                    "\nAsset path - " + line + "" +
-                            "fileInt = " + intent.getIntExtra("file", 0) +
-                            "resources boolean = " + intent.getBooleanExtra("resource", true) +
-                            "list boolean = " + intent.getBooleanExtra("list", false) +
-                            "webView boolean = " + intent.getBooleanExtra("webView", false) +
-                            "headerInt = " + intent.getIntExtra("mHeader", 0) +
-                            "headerString" + intent.getStringExtra("headerString"),
-                    e);
         }
         try {
             if (bufferedReader != null)
                 bufferedReader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("buffer not closed", e);
         }
         return sb;
     }
