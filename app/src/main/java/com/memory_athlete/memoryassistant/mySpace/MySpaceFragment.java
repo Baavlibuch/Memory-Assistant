@@ -104,9 +104,8 @@ public class MySpaceFragment extends Fragment {
             Objects.requireNonNull(getActivity()).finish();
             return rootView;
         }
-        rootView.findViewById(R.id.add_search).setVisibility(GONE);//.removeViewAt(0);
-        //if (fragListViewId > 0)
-        //  ((RelativeLayout) rootView.findViewById(R.id.my_space_relative_layout)).removeViewAt(fragListViewId);
+        rootView.findViewById(R.id.add_search).setVisibility(GONE);
+
         activity = getActivity();
 
         // There are 2 direct children of the RelativeLayout with IDs 0,1
@@ -130,9 +129,7 @@ public class MySpaceFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (count > 0) {
-                    searchIndex = 0;
-                }
+                if (count > 0) searchIndex = 0;
             }
 
             @Override
@@ -171,7 +168,7 @@ public class MySpaceFragment extends Fragment {
         if (fragListViewId == MIN_DYNAMIC_VIEW_ID) arrayList = setList();
         else {
             if (dir == null) {
-                Toast.makeText(getActivity(), "Please try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
                 back();
             }
             File[] files = dir.listFiles();
@@ -340,7 +337,7 @@ public class MySpaceFragment extends Fragment {
                 mySpaceEditText.setText(text);
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
                 back();
             }
         }
@@ -359,14 +356,14 @@ public class MySpaceFragment extends Fragment {
                 name = true;
                 return false;
             }
-            Toast.makeText(getActivity(), "Didn't save nameless file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.nameless_file, Toast.LENGTH_SHORT).show();
             return true;
         }
         String dirPath = fileName;
         if (fname.length() > 250) {
             if (name) return true;
 
-            Toast.makeText(getActivity(), "Try again with a shorter name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.shorter_name, Toast.LENGTH_SHORT).show();
             name = true;
             return false;
         }
@@ -381,7 +378,7 @@ public class MySpaceFragment extends Fragment {
         }
         if (!Helper.mayAccessStorage(getContext())) {
             if (name) {
-                Toast.makeText(getContext(), "Permission to access storage is needed",
+                Toast.makeText(getContext(), R.string.storage_permissions,
                         Toast.LENGTH_SHORT).show();
                 return true;
             }
@@ -390,7 +387,7 @@ public class MySpaceFragment extends Fragment {
             return false;
         }
         if (Helper.externalStorageNotWritable()) {
-            Toast.makeText(getActivity(), "Please check storage", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.check_storage, Toast.LENGTH_SHORT).show();
             if (name) return true;
 
             name = true;

@@ -4,20 +4,21 @@
     android:id="@+id/my_space_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:animateLayoutChanges="true"
+    android:contentDescription="@string/my_space_file_picker"
+    android:orientation="vertical"
     tools:context="com.memory_athlete.memoryassistant.mySpace.MySpace">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_action_add"
-        android:onClick="add"
         android:contentDescription="@string/word_new"
+        android:onClick="add"
+        android:src="@drawable/ic_action_add"
         android:visibility="gone" />
 
 </RelativeLayout>

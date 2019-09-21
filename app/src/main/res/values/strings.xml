@@ -103,6 +103,10 @@
     <string name="search">Search</string>
     <string name="not_found">Not Found</string>
     <string name="search_from_start">Reached the bottom. Searching from the top</string>
+    <string name="nameless_file">Did not save nameless file</string>
+    <string name="shorter_name">Try again with a shorter name</string>
+    <string name="storage_permissions">Permission to access storage is needed</string>
+    <string name="check_storage">Please check storage</string>
 
     <!--Preferences-->
     <string name="remind">Remind Me Periodically</string>
