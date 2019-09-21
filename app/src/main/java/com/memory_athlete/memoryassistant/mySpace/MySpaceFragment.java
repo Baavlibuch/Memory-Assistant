@@ -52,7 +52,7 @@ public class MySpaceFragment extends Fragment {
     public int fragListViewId = 0;
     private File dir = null;
     private String title = "", fileName, oldTabTitle, oldName = null;
-    private Boolean name;
+    private Boolean name;                                       // flag to indicate whether warning for file name has been issued
     private int searchIndex;
 
     private View rootView;
@@ -344,15 +344,15 @@ public class MySpaceFragment extends Fragment {
         //intent.getStringExtra()
     }
 
+    // returns true to allow the user to return. false to send a warning. 1 type of a warning is issued at most once.
     public boolean save(View rootView) {
         Timber.v("entered save()");
         String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {
-            if (!name) {
-                ((EditText) rootView.findViewById(R.id.f_name)).setError("please enter a name");
+            if (name != null && !name) {
+                ((EditText) rootView.findViewById(R.id.f_name)).setError(getString(R.string.enter_name));
                 rootView.findViewById(R.id.f_name).requestFocus();
-                //Toast.makeText(getActivity(), "please enter a name", Toast.LENGTH_SHORT).show();
                 name = true;
                 return false;
             }

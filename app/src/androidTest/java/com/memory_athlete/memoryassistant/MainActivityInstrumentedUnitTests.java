@@ -21,18 +21,22 @@ import java.util.Scanner;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class MainActivityInstrumentedUnitTests {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule
-            = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void checkArrayAdapterElementCount() {
+        waitForExecution();
+
         onView(withId(R.id.main_list)).check(new ListViewItemCountAssertion(7));
+
+        waitForExecution();
     }
 
     // run twice
@@ -67,6 +71,8 @@ public class MainActivityInstrumentedUnitTests {
         SharedPreferences.Editor e = sharedPreferences.edit();
         e.putString(mActivityTestRule.getActivity().getString(R.string.theme), themes[new Random().nextInt(3)]);
         e.apply();
+
+        waitForExecution();
     }
 
     @Test
@@ -76,6 +82,7 @@ public class MainActivityInstrumentedUnitTests {
         assertEquals(themes[1], "Dark");
         assertEquals(themes[2], "Night");
 
+        waitForExecution();
     }
 
     @Test
@@ -95,5 +102,7 @@ public class MainActivityInstrumentedUnitTests {
 
         assertEquals(count, mActivityTestRule.getActivity().getResources().
                 getStringArray(R.array.contributor_names).length);
+
+        waitForExecution();
     }
 }

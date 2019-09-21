@@ -8,6 +8,7 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -24,5 +25,7 @@ public class PackageNameInstrumentedUnitTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         // No longer useful
         assertEquals("com.memory_athelte.memoryassistant", appContext.getPackageName());
+
+        waitForExecution();
     }
 }

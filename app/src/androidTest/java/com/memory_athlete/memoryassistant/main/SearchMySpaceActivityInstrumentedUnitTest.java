@@ -38,6 +38,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
@@ -128,6 +129,9 @@ public class SearchMySpaceActivityInstrumentedUnitTest {
                         isDisplayed()));
         appCompatEditText4.perform(replaceText("acgt"), closeSoftKeyboard());
 
+        // wait 10s for old toast messages to disappear
+        for (int i = 0; i < 10; i++) waitForExecution();
+
         // press done to search
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.search_edit_text), withText("acgt"),
@@ -158,7 +162,7 @@ public class SearchMySpaceActivityInstrumentedUnitTest {
             // ignore
         }
 
-        // tap searcg FAB
+        // tap search FAB
         floatingActionButton2.perform(click());
         // searchIndex == 3
         try {
@@ -169,7 +173,7 @@ public class SearchMySpaceActivityInstrumentedUnitTest {
             // ignore
         }
 
-        // tap searcg FAB
+        // tap search FAB
         floatingActionButton2.perform(click());
         // searchIndex == 4
         try {
@@ -180,21 +184,17 @@ public class SearchMySpaceActivityInstrumentedUnitTest {
             // ignore
         }
 
-        // tap searcg FAB
+        // tap search FAB
         floatingActionButton2.perform(click());
         // searchIndex == -1
-        try {
-            // the Toast should not be found and an exception should be thrown. If it is found, fail the test
-            onView(withText(R.string.search_from_start)).inRoot(withDecorView(not(Is.is(
-                    mActivityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
-        } catch (NoMatchingViewException e) {
-            // ignore
-        }
+        // the Toast should not be found and an exception should be thrown. If it is found, fail the test
+        onView(withText(R.string.search_from_start)).inRoot(withDecorView(not(Is.is(
+                mActivityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
         // wait for toast to disappear (2s)
-        for (int i =0; i<20; i++) waitForExecution();
+        for (int i = 0; i < 2; i++) waitForExecution();
 
-        // tap searcg FAB
+        // tap search FAB
         floatingActionButton2.perform(click());
         // searchIndex == 1
         try {
@@ -203,17 +203,6 @@ public class SearchMySpaceActivityInstrumentedUnitTest {
                     mActivityTestRule.getActivity().getWindow().getDecorView())))).check(matches(not(isDisplayed())));
         } catch (NoMatchingViewException e) {
             // ignore
-        }
-    }
-
-    private static void waitForExecution() {
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 

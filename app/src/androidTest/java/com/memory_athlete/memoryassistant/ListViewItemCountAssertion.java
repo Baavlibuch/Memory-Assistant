@@ -9,6 +9,7 @@ import androidx.test.espresso.ViewAssertion;
 
 import java.util.Objects;
 
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -27,6 +28,7 @@ class ListViewItemCountAssertion implements ViewAssertion {
         ListView listView = (ListView) view;
         Adapter adapter = listView.getAdapter();
         assertThat(Objects.requireNonNull(adapter).getCount(), is(expectedCount));
+        waitForExecution();
     }
 }
 

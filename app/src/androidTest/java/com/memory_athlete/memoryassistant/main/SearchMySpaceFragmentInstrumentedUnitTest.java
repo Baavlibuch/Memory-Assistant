@@ -36,6 +36,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.core.Is.is;
@@ -46,7 +47,7 @@ import static org.hamcrest.core.IsNot.not;
 public class SearchMySpaceFragmentInstrumentedUnitTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<Practice> mActivityTestRule = new ActivityTestRule<>(Practice.class);
 
     @Rule
     public GrantPermissionRule mGrantPermissionRule =
@@ -56,17 +57,6 @@ public class SearchMySpaceFragmentInstrumentedUnitTest {
 
     @Test
     public void searchTestMySpaceFragment() {
-        waitForExecution();
-
-        // select practice
-        DataInteraction cardView = onData(anything())
-                .inAdapterView(allOf(withId(R.id.main_list),
-                        childAtPosition(
-                                withId(R.id.main_linear_layout),
-                                0)))
-                .atPosition(1);
-        cardView.perform(click());
-
         waitForExecution();
 
         // select numbers discipline
@@ -168,6 +158,9 @@ public class SearchMySpaceFragmentInstrumentedUnitTest {
                         isDisplayed()));
         appCompatEditText6.perform(replaceText("acgt"), closeSoftKeyboard());
 
+        // wait 5s for old toast messages to disappear
+        for (int i = 0; i < 5; i++) waitForExecution();
+
         // press done to search
         ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.search_edit_text_mySpaceFragment), withText("acgt"),
@@ -229,7 +222,7 @@ public class SearchMySpaceFragmentInstrumentedUnitTest {
                 mActivityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
         // wait for toast to disappear (2s)
-        for (int i =0; i<20; i++) waitForExecution();
+        for (int i = 0; i < 2; i++) waitForExecution();
 
         // tap search FAB
         floatingActionButton2.perform(click());
@@ -242,17 +235,6 @@ public class SearchMySpaceFragmentInstrumentedUnitTest {
             // ignore
         }
 
-    }
-
-    private static void waitForExecution() {
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     private static Matcher<View> childAtPosition(

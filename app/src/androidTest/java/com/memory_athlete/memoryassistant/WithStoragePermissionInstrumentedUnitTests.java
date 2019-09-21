@@ -21,6 +21,7 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static androidx.core.content.PermissionChecker.checkSelfPermission;
 import static com.memory_athlete.memoryassistant.Helper.APP_FOLDER;
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class WithStoragePermissionInstrumentedUnitTests {
@@ -46,5 +47,7 @@ public class WithStoragePermissionInstrumentedUnitTests {
             if (!pDir.delete()) throw new RuntimeException("Couldn't delete the test directory");
         }
         if (!isDirectoryCreated) throw new RuntimeException("Couldn't create the directory!");
+
+        waitForExecution();
     }
 }

@@ -107,6 +107,7 @@
     <string name="shorter_name">Try again with a shorter name</string>
     <string name="storage_permissions">Permission to access storage is needed</string>
     <string name="check_storage">Please check storage</string>
+    <string name="enter_name">Please enter a name</string>
 
     <!--Preferences-->
     <string name="remind">Remind Me Periodically</string>

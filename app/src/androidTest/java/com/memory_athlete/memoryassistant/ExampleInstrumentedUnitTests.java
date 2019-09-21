@@ -7,6 +7,8 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
+
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class ExampleInstrumentedUnitTests {
 
@@ -15,5 +17,6 @@ public class ExampleInstrumentedUnitTests {
         Intent intent = new Intent();
         intent.putExtra("extra1", "extra value");
         intent.putExtra("extra2", "extra2 value");
+        waitForExecution();
     }
 }

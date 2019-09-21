@@ -33,6 +33,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
@@ -73,7 +74,6 @@ public class RecallDisciplineNameInstrumentedIntegratedTests {
 
     private void executeTest(int disciplinePosition, String expectedValue){
         waitForExecution();
-        waitForExecution();                                         // Maybe only one wait is required. Who cares
 
         // Select Practice
         DataInteraction cardView = onData(anything())
@@ -135,17 +135,6 @@ public class RecallDisciplineNameInstrumentedIntegratedTests {
         // Check title
         onView(allOf(isAssignableFrom(TextView.class), withParent(isAssignableFrom(Toolbar.class))))
                 .check(matches(withText(expectedValue)));
-    }
-
-    private void waitForExecution(){
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     private static Matcher<View> childAtPosition(
