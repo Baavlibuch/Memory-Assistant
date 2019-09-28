@@ -23,4 +23,6 @@
 
     <color name="color_transparent">#00FFFFFF</color>
     <color name="color_translucent">#33AAAAAA</color>
+
+    <color name="ic_launcher_background">#263238</color>
 </resources>

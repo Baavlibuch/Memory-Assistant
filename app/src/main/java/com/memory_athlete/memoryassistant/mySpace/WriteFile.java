@@ -151,7 +151,7 @@ public class WriteFile extends AppCompatActivity {
     public boolean save() {
         String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) findViewById(R.id.f_name)).getText().toString();
-        if (fname.length() == 0) {
+        if (fname.length() == 0 && string.length() == 0) {
             if (!name) {
                 ((EditText) findViewById(R.id.f_name)).setError("please enter a name");
                 findViewById(R.id.f_name).requestFocus();
@@ -159,7 +159,7 @@ public class WriteFile extends AppCompatActivity {
                 name = true;
                 return false;
             }
-            Toast.makeText(this, "Didn't save nameless file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.nameless_file, Toast.LENGTH_SHORT).show();
             return true;
         }
         String dirPath = path;

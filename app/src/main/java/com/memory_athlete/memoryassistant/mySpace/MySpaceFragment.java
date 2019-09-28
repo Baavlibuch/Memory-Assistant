@@ -73,7 +73,7 @@ public class MySpaceFragment extends Fragment {
     private TabTitleUpdater mCallback;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
             mCallback = (TabTitleUpdater) context;
@@ -349,7 +349,7 @@ public class MySpaceFragment extends Fragment {
         Timber.v("entered save()");
         String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
-        if (fname.length() == 0) {
+        if (fname.length() == 0 && string.length() == 0) {
             if (name != null && !name) {
                 ((EditText) rootView.findViewById(R.id.f_name)).setError(getString(R.string.enter_name));
                 rootView.findViewById(R.id.f_name).requestFocus();
