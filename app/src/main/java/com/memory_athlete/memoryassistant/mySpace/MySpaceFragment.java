@@ -349,13 +349,16 @@ public class MySpaceFragment extends Fragment {
         Timber.v("entered save()");
         String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
-        if (fname.length() == 0 && string.length() == 0) {
+        if (fname.length() == 0) {
+            if (string.length() != 0) return true;                      // no content
             if (name != null && !name) {
+                // set error
                 ((EditText) rootView.findViewById(R.id.f_name)).setError(getString(R.string.enter_name));
                 rootView.findViewById(R.id.f_name).requestFocus();
                 name = true;
                 return false;
             }
+            // warning ignored. go back and show message
             Toast.makeText(getActivity(), R.string.nameless_file, Toast.LENGTH_SHORT).show();
             return true;
         }
