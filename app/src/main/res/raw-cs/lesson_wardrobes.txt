@@ -1,0 +1,129 @@
+<p> Zdroj: <a href="http://memory-sports.com"> http://memory-sports.com </a> </p>
+
+<p> Nyní je čas na další velmi účinnou metodu, která vás na vaší cestě povede, abyste se stali Mistrem paměti: Metoda Wardrobe. </p>
+
+<p> Skříň je připravená sekvence paměťových kolíků, ke kterým lze přistupovat jak v pořádku, tak přímo. </p>
+
+<h4> Historie </h4>
+
+<p> Tento konkrétní mnemotechnický systém sahá až do starověkých Řeků. Simonides, jeden z prvních mnemotechnických techniků, už použil jeho zjednodušenou verzi. Skutečným zakladatelem vylepšené metody by mohl být Řek jménem Theodektis z Phaselis, který ovlivnil Aristoteles. Slavný filozof napsal ve svých písmech o používání abecedy jako šatníku. </p>
+
+<p> V moderní době to byl německý historik Ulrich Voigt, který ve své mnemotechnické příručce „Esels Welt“ (Donkey's World) napsal tento fascinující přístup k technikám paměti. </p>
+
+<h4> Prvních osm věcí, které je třeba zvážit </h4>
+
+<p> Chcete-li použít tuto metodu, musíte si připravit jeden nebo více různých skříní. Skutečná délka každého šatníku není důležitá, aby fungovala. Před vytvořením prvního je však třeba zvážit několik věcí: </p>
+
+<ul>
+
+<li> Mysli velký. Pokud je váš šatník příliš krátký, nebude dostatečně výkonný pro delší seznamy. Řada deseti zvuků je skvělá pro začátečníky, ale brzy dosáhne svých limitů. </li>
+
+<li> Mysli také na malé. Pokud je váš šatník příliš velký, stane se obrovským úsilím najít na jedné straně dostatek kolíčků. Na druhou stranu se také stane ještě větší snahou si ji zapamatovat, než ji začnete používat. Počet 1.000 má z dlouhodobého hlediska obrovský potenciál. Pokud by však stálo za to vytvořit, předpokládalo by to jeho nadměrné použití. Do této kategorie se vejde jen velmi málo, například ambiciózní atleti na paměť. </li>
+
+<li> Najděte svou perfektní velikost. Použití určitého množství kolíčků vám pomůže stabilizovat váš šatník. Může to být kulaté číslo jako 25, 50 nebo 100. Může to být také číslo, které se hodí do určitého systému, který vám pomůže zapamatovat si skříň. Abeceda je vynikající pro poskytování desítek různých skříní od A-Z. </li>
+
+<li> Používejte paměťové systémy. Pokud tak neučiníte, budete mít velké problémy se zapamatováním svých šatníků. Existuje mnoho možných systémů, které byste mohli použít. Některé z nich popíšu níže. </li>
+
+<li> Použijte známé kolíky. Pokaždé, když se snažíte si představit některé z vašich kolíčků, měli byste požádat sami, aby jej nahradili něčím lepším. Existují pro vás doslova miliony možných kolíčků. Používejte pouze ty, které se vám opravdu líbí. </li>
+
+<li> Ohněte pravidla. Nadměrná důvěra ve vaše systémy není nutná. Bend pravidla, jak se vám líbí. Jediná věc, která se nakonec počítá, je, že si můžete snadno zapamatovat svůj šatník a že nemáte žádné problémy s kolíky. </li>
+
+<li> Použijte číselné pořadí. Jednou z nejdůležitějších věcí správného šatníku je, že můžete vždy přejít na každý kolík v systému. Nemusíte dodržovat celou objednávku, stejně jako při použití metody String. </li>
+
+<li> Ujistěte se, proč a jak byste tuto metodu použili. Zapamatování něčeho pro lepší zapamatování něčeho jiného zní pro většinu lidí velmi divně. Pokud jste si jisti, že to navždy zlepší vaši paměť a jaké věci si budete pamatovat, motivujete se k tomu. </li>
+
+</ul>
+
+<h4> Používejte jednoduché kódy jako Animal Alphabet </h4>
+
+<p> Jak můžete vidět níže, abeceda je vynikajícím doplňkem pro 26 šatní skříň. Musíte pouze změnit kategorii a můžete začít znovu od písmene A. Existuje mnoho přemýšlivých šatníků, jako jsou hudebníci, herci, autoři, politici, kreslené postavičky a mnoho dalších. Protože abeceda je přirozeným řádem 26 čísel, můžete z tohoto šatníku dokonce vytvořit první čtvrtinu svého nového systému čísel. Tři další z těchto seznamů a máte úplný seznam 100 kolíčků. </p>
+
+<h4> Příklad zvířecí abecedy </h4>
+
+<ul>
+<li> A = Aligátor </li>
+<li> B = Motýl </li>
+<li> C = Krab </li>
+<li> D = Dolphin </li>
+<li> E = Elephant </li>
+<li> F = Žába </li>
+<li> G = Žirafa </li>
+<li> H = kůň </li>
+<li> I = Iguana </li>
+<li> J = medúza </li>
+<li> K = klokan </li>
+<li> L = ještěrka </li>
+<li> M = Myš </li>
+<li> N = Nautilus </li>
+<li> O = Sova </li>
+<li> P = Panda </li>
+<li> Q = Křepelka </li>
+<li> R = nosorožci </li>
+<li> S = Šnek </li>
+<li> T = Tiger </li>
+<li> U = Unicorn </li>
+<li> V = Sup </li>
+<li> W = Walrus </li>
+<li> X = X-Mas Reindeer </li>
+<li> Y = Yak </li>
+<li> Z = Zebra </li>
+</ul>
+
+<h4> Vytvořte dvoumístný systém - znovu a znovu </h4>
+
+<p> Použití číselného systému pro každou kombinaci dvou desetinných míst (00-99) vám poskytne 100 šatník. Osobně si myslím, že by to mohl být nejlepší šatník, jaký můžete získat. Číslo 100 je kompromis mezi snadným, ale nepružným 10 šatníkem a výkonným, ale obtížným 1 000 šatníku. </p>
+
+<p> Takovou skříň můžete vytvořit pomocí libovolné metody, kterou chcete. Může to být dominický systém, hlavní systém nebo systém Ben. Může to být složitý tvar čísla nebo systém rýmování čísel. Nebo byste mohli přijít s něčím novým, jako je použití deseti různých kategorií po 10 kolíčcích, uspořádaných podle fonetického kódu hlavního systému. </p>
+
+<p> Začal jsem s hlavním systémem a používal jej nyní jako svůj hlavní šatník. Z toho jsem vytvořil další dva seznamy pro generování systému Person-Action-Object (PAO). To je základna pro všechny mé nové skříně. Už nepoužívám žádnou kodifikaci, ale spojím každý nový seznam 100 se dvěma mými starými seznamy. </p>
+
+<h4> Jak si zapamatovat skříň bez jakékoli kodifikace </h4>
+
+<p> Vytvořil jsem deset skříní, každý se 100 lidmi. K jejich zapamatování jsem použil můj seznam 100 akcí a můj seznam 100 objektů a překrýval je. Vypadá to jako následující příklad: </p>
+
+<ul>
+<li> 674 = Jean Claude van Damme </li>
+<li> 67 = visí </li>
+<li> 74 = auto </li>
+</ul>
+
+<h4> Použijte objednanou cestu </h4>
+
+<p> Pro svůj nový šatník můžete použít metodu Loci. V podstatě se jedná o šatník vyrobený z několika známých míst v řadě. Ale místo pouhého zapamatování cesty v sekvenci, jakou byste normálně dělali s vašimi cestami, si ji objednáte a uložíte si pozice každého místa jako číslo. Protože tento proces vyžaduje čas, můžete začít zapamatováním každých deseti míst jako háčků. V průběhu času budete znát přesné pozice, pokud se zaměříte na jejich učení. Nebo ji přidružíte ke svému již existujícímu číselnému systému a budete znát všechny pozice od začátku. </p>
+
+<h4> Každý seznam, který si zapamatujete, je nový skříň </h4>
+
+<p> Pokud jste již vytvořili šatník a používáte jej poprvé k zapamatování určitého seznamu informací, vytvoříte tím další šatník. Pokud si například pamatujete prezidenty Spojených států amerických, například podle jejich předsednictví, budete je znát se svými prezidentskými čísly. Vzhledem k tomu, že nyní představují samy o sobě číslo, můžete je použít jako samostatný šatník. Od George Washingtonu po Baracka Obamu bude váš nový 44 šatník. </p>
+
+<p> Protože to poskytuje liché číslo (nikoli z matematického hlediska, ale z pohledu masteru paměti), můžete přidat další informace, aby bylo 50 nebo dokonce 100. Pokud chcete zůstat flexibilní pro nadcházející prezidenty až do příštích voleb mohou sloužit jako zástupné symboly. </p>
+
+<p> V zásadě děláte úmyslně, co váš mozek dělá podvědomě se všemi vzpomínkami: Informace po sobě spojujete. Velký rozdíl spočívá v tom, že si vždy pamatujete svou paměť, protože víte, kde hledat ve své obrovské knihovně zvané mozek. </p>
+
+<h4> Jak používat svůj šatník </h4>
+
+<p> Přiřaďte svůj (1) k vašemu (A). Použijte svou kreativitu k tomu, aby aligátor (1) komunikoval s Georgem Washingtonem (A), motýlem (2) s Johnem Adamsem (B) a Krabem (3) s Thomasem Jeffersonem (C). (Nenechte se zmást skutečností, že Aligátor je (1) a NE (A). To jednoduše znamená, že Aligátor je číslo jedna ve vašem skutečném šatníku. (A) představuje první prvek vašeho seznamu v v tom případě George Washington. </p>
+
+<p> Pokud bojujete s přiřazováním jmen zvířatům, měli byste myslet mimo krabici: Místo samotného jména použijte něco, co vám připomíná jméno. Může to být položka, jiná osoba, píseň atd. </p>
+
+<ul>
+<li> Aligátor nosí bílou paruku Washingtonu. </li>
+<li> Motýl žije v Edenově zahradě s Adamem a Evou. Jmenuje se John </li>
+<li> Krab má skvělý nápad. Žhnoucí žárovka vyskakuje nad její hlavu, ale nesvítí. Thomas Edison to opravuje s velkým úsilím pomocí nástroje vytvořeného jako „J“. </li>
+<li> Obzvláště se zdá, že moje asociace číslo 3 je velmi vzdálená. Ale stále vás může přivést zpět k nezbytným prvkům k rekonstrukci jména Thomas Jefferson. </li>
+</ul>
+
+<p> Pro více kreativní inspiraci byste si měli přečíst o 7 mentálních prvcích a dokonalé asociaci. </p>
+
+<p> Varování: Abecedu bych nepoužil pro takový úkol, protože vám poskytne pouze 26 písmen. To byl jen jednoduchý příklad. Doporučuji použít hlavní systém nebo něco podobného se 100 paměťovými kolíky. Na druhou stranu můžete přidat čtyři seznamy abecedy dohromady, zbavit se nejvíce nepříjemného dopisu, například „X“ a máte 100. Udělejte, jak chcete. </p>
+
+<h4> Nechte to růst </h4>
+
+<p> Když si pamatujete mnoho skříní se stejným základním systémem, je nevyhnutelný zmatek. Abyste se vyhnuli opakovanému používání aligátoru, aniž byste se zaměňovali, který příběh je ten pravý, musíte použít klíčové slovo (*) jako třetí prvek pro každé z vašich přidružení. Výsledkem bude následující konstrukce: </p>
+
+<p> (*) - (1) - (A), (*) - (2) - (B) atd. </p>
+
+<p> Souvisí to s maticí Self Enhanced Memory Matrix (SEM³). Osobně se mi tento přístup vůbec nelíbí, protože podle mého názoru je příliš mnoho nesouvisejících kousků. Raději nechám své skříně růst společně a vytvářet větší systémy, jak jsem psal výše s příkladem Jean Claude van Damme. Měli byste to vyzkoušet a najít ten správný přístup pro svůj osobní vkus. </p>
+
+<h4> Závěr </h4>
+
+<p> Metoda Wardrobe je pravděpodobně nejlepší mnemotechnický systém, jaký znám. Než budete moci skočit do akce a zapamatovat si cokoli jiného, ​​potřebuje připravenou skříň. Ale pak si budete moci zapamatovat mnoho různých druhů informací. Můžete jej použít jako číselné systémy a jako místa pro dočasné uložení seznamů. Dokonce ji můžete trvale uložit pouhým použitím každého šatníku a pokračovat s nově vytvořeným šatníkem z posledního seznamu uloženého v paměti. Ale tohle nic nenavrhuji. Kombinace klíčového slova se správným šatníkem nebo alternativního překrývání vašeho PAO, jako jsem to udělal výše, jsou podle mého názoru dva nejsilnější přístupy pro delší seznamy. Jsou tak silné, že byste mohli stokrát znovu a znovu použít pouze jeden jediný šatník. </p>
