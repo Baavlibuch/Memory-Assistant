@@ -640,7 +640,7 @@ public class RecallSimple extends AppCompatActivity {
             int level = sharedPreferences.getInt("level", 1);
             if (correctCount == answers.size() && !mDiscipline.equals(getString(R.string.binary)) &&
                     pow(2, level + 2) == correctCount) {
-                sharedPreferences.edit().putInt("level", level++).apply();
+                sharedPreferences.edit().putInt("level", ++level).apply();
 
                 // report level up
                 Bundle bundle = new Bundle();

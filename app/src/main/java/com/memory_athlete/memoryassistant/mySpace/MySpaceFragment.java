@@ -273,7 +273,7 @@ public class MySpaceFragment extends Fragment {
         Timber.v("entered save()");
         String string = ((EditText) rootView.findViewById(R.id.my_space_editText)).getText().toString();
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
-        if (fname.length() == 0) {
+        if (fname.length() == 0 && string.length() == 0) {
             if (!name) {
                 ((EditText) rootView.findViewById(R.id.f_name)).setError("please enter a name");
                 rootView.findViewById(R.id.f_name).requestFocus();
@@ -281,7 +281,7 @@ public class MySpaceFragment extends Fragment {
                 name = true;
                 return false;
             }
-            Toast.makeText(getActivity(), "Didn't save nameless file", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.nameless_file, Toast.LENGTH_SHORT).show();
             return true;
         }
         String dirPath = fileName;
