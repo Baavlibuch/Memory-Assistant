@@ -210,7 +210,7 @@ public class RecallSelector extends AppCompatActivity {
                 .setAction(R.string.practice, view -> {
                     String s = discipline;
                     if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
-                    s = s.replaceAll("\\s", "");
+                    //s = s.replaceAll("\\s", "");                          why?    remove this!
                     Timber.v("s= %s", s);
 
                     int classId;

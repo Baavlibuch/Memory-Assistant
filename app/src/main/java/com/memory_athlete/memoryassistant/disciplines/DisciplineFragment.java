@@ -184,12 +184,14 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         noOfValuesEditText = rootView.findViewById(R.id.no_of_values);
 
         try {
+            // Intent received from Practice
             assert bundle != null;
             String s = getString(bundle.getInt("nameID", 0));
             if (s.equals(getString(R.string.cards))) hasStandard = false;
             else if (s.equals(getString(R.string.digits))) s = getString(R.string.numbers);
             activity.setTitle(s);
         } catch (Exception e) {
+            // Intent received from recall selector as there were no practice files.
             String s = bundle.getString("name");
             String[] strings = new String[0];
             if (s != null) strings = s.split("/");
