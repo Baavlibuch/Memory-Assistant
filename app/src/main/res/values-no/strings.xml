@@ -52,7 +52,7 @@
     <string name="tm">Timer</string>
     <string name="clock">Velg tidvakt</string>
     <string name="start">Start</string>
-    <string name="time_up">Time \ 's Up</string>
+    <string name="time_up">Time \'s Up</string>
     <string name="ed">Vennligst skriv inn varighet!</string>
     <string name="reset">tilbakestille</string>
     <string name="stop">Stoppe</string>
@@ -128,7 +128,7 @@
     <string name="checkout">Det er mer å lære</string>
     <string name="pao">PAO-minnesystemet</string>
     <string name="wardrobe_method">Garderobemetode</string>
-    <string name="vocab">Ordforråd</string>
+    <!--     TODO     <string name="vocab">Ordforråd</string>     replaced with language     -->
     <string name="already_purchased">Du har allerede foretatt den transaksjonen\nPrøve noe annet: p</string>
     <string name="donate_amounts">Liste over donerbare beløp</string>
     <string name="thanks">Takk</string>
