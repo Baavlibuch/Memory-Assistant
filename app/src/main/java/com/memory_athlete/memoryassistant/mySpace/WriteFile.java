@@ -220,7 +220,8 @@ public class WriteFile extends AppCompatActivity {
     }
 
     private void search(String stringToSearch) {
-        String fullText = mySpaceEditText.getText().toString();
+        stringToSearch = stringToSearch.toLowerCase();
+        String fullText = mySpaceEditText.getText().toString().toLowerCase();
         boolean hasText = fullText.contains(stringToSearch);
         Timber.d("hasText = %s", hasText);
         if (hasText) {
