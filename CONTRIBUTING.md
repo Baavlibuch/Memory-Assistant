@@ -90,8 +90,8 @@ After your pull request is merged, you can safely delete your branch and pull th
 
 ## Writing tests
 * If you have no knowledge on how to write automated tests, you can learn [Espresso](https://developer.android.com/training/testing/espresso/) testing for android on [Udacity](https://eu.udacity.com/course/advanced-android-app-development--ud855).
-* Be creative in writing functional tests tests.
-* UI testing is the main goal, bondary value, and other forms of tests are not that important.
+* Be creative in writing functional tests.
+* UI testing is the main goal, boundary value, and other forms of tests are less important.
 
 ## Who do I talk to?
 * Feel free to join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U) for easy and effecient communication
