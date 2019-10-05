@@ -40,6 +40,7 @@ public class PreferenceActivityInstrumentedUnitTests {
                     "android.permission.READ_EXTERNAL_STORAGE",
                     "android.permission.WRITE_EXTERNAL_STORAGE");
 
+    // Only works on low level APIs
     @Test
     public void preferenceActivityInstrumentedUnitTests() {
         waitForExecution();
@@ -103,8 +104,9 @@ public class PreferenceActivityInstrumentedUnitTests {
         linearLayout6.perform(click());
     }
 
+    // warning suppressed to make sure that the code can be edited whenever needed. It is not really needed
     private static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
+            final Matcher<View> parentMatcher, @SuppressWarnings("SameParameterValue") final int position) {
 
         return new TypeSafeMatcher<View>() {
             @Override

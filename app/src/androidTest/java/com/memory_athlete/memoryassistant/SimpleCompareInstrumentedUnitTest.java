@@ -1,11 +1,7 @@
 package com.memory_athlete.memoryassistant;
 
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
-import androidx.test.rule.ActivityTestRule;
 
-import com.memory_athlete.memoryassistant.recall.RecallSimple;
-
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -15,9 +11,9 @@ public class SimpleCompareInstrumentedUnitTest {
 
     // TODO: THIS DOES NOT WORK
 
-    @Rule
-    public ActivityTestRule<RecallSimple> mActivityTestRule
-            = new ActivityTestRule<>(RecallSimple.class);
+    //@Rule
+    //public ActivityTestRule<RecallSimple> mActivityTestRule
+    //        = new ActivityTestRule<>(RecallSimple.class);
 
     @Test
     public void comparisionIsCorrect() {

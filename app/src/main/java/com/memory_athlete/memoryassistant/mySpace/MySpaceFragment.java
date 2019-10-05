@@ -344,22 +344,24 @@ public class MySpaceFragment extends Fragment {
         //intent.getStringExtra()
     }
 
-    // returns true to allow the user to return. false to send a warning. 1 type of a warning is issued at most once.
+    // returns true to allow the user to return. false to send a warning. 1 type of a warning is issued at most once per activity session.
     public boolean save(View rootView) {
         Timber.v("entered save()");
         String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) rootView.findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0) {
-            if (string.length() != 0) return true;                      // no content
-            if (name != null && !name) {
-                // set error
-                ((EditText) rootView.findViewById(R.id.f_name)).setError(getString(R.string.enter_name));
-                rootView.findViewById(R.id.f_name).requestFocus();
-                name = true;
-                return false;
+            if (string.length() == 0) return true;                      // no content, no warning
+            if (name != null) {
+                if (!name) {
+                    // set error
+                    ((EditText) rootView.findViewById(R.id.f_name)).setError(getString(R.string.enter_name));
+                    rootView.findViewById(R.id.f_name).requestFocus();
+                    name = true;
+                    return false;
+                }
+                // warning ignored. go back and show message
+                Toast.makeText(getActivity(), R.string.nameless_file, Toast.LENGTH_SHORT).show();
             }
-            // warning ignored. go back and show message
-            Toast.makeText(getActivity(), R.string.nameless_file, Toast.LENGTH_SHORT).show();
             return true;
         }
         String dirPath = fileName;
@@ -449,7 +451,7 @@ public class MySpaceFragment extends Fragment {
             int totalLines = mySpaceEditText.getLayout().getLineCount();
             int editTextViewBottom = mySpaceEditText.getBottom();
             ((ScrollView) rootView.findViewById(R.id.my_space_scroll_view))
-                    .smoothScrollTo(0, editTextViewBottom * (lineNumber-1) / totalLines);
+                    .smoothScrollTo(0, editTextViewBottom * (lineNumber - 1) / totalLines);
             searchIndex++;
             return;
         }
