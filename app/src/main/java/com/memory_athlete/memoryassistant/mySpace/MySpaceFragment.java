@@ -400,7 +400,7 @@ public class MySpaceFragment extends Fragment {
         }
 
         fname = fileName + File.separator + fname + ".txt";
-        if (Helper.makeDirectory(dirPath)) {
+        if (Helper.makeDirectory(dirPath, getContext())) {
             try {
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
                 outputStream.write(string.getBytes());

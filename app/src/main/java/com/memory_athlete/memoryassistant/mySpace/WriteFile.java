@@ -198,7 +198,7 @@ public class WriteFile extends AppCompatActivity {
             name = true;
             return false;
         }
-        if (Helper.makeDirectory(dirPath)) {
+        if (Helper.makeDirectory(dirPath, getApplicationContext())) {
             try {
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
                 outputStream.write(string.getBytes());

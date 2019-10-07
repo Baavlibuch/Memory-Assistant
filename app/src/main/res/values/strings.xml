@@ -171,5 +171,6 @@
     <string name="word_new">New</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="dl_from_play">For correct functioning, please download the app from the Google Play Store</string>
+    <string name="storage_full">Device storage full</string>
 
 </resources>

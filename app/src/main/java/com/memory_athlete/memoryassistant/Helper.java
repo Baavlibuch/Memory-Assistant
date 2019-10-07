@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import androidx.preference.PreferenceManager;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
+import java.nio.file.FileSystemException;
 import java.nio.file.Files;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -34,7 +36,7 @@ public class Helper {
     public static final String RAW_RESOURCE_ID_KEY = "rawResourceID";
 
     public final static int LOWER_CASE = 0;             // a = 97
-    final static int UPPER_CASE = 1;             // A = 65
+    // final static int UPPER_CASE = 1;             // A = 65       // unused
     public final static int MIXED_CASE = 2;             // 65 + r + c * 32             c == 0 or 1
 
     public static int[] makeCards() {
@@ -181,7 +183,7 @@ public class Helper {
     // custom themes - Cards, Lessons, LessonFragment, ImplementLesson, RecallCards, DisciplineActivity
 
     // return true if directory was created successfully. returns false if it fails (when storage permissions are not granted)
-    public static boolean makeDirectory(String path) {
+    public static boolean makeDirectory(String path, Context context) {
         File pDir = new File(path);
         boolean isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) {
@@ -190,6 +192,13 @@ public class Helper {
                     Files.createDirectories(pDir.toPath());
                 } catch (AccessDeniedException e){
                     // No write permissions
+                    return false;
+                } catch (FileSystemException e) {
+                    // No space left
+                    new Handler(context.getMainLooper()).post(() ->
+                            Toast.makeText(context,
+                                    R.string.storage_full, Toast.LENGTH_SHORT).show()
+                    );
                     return false;
                 } catch (IOException e) {
                     // Check whether there is another unknown cause;

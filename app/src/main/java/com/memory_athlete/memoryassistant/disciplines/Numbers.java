@@ -191,10 +191,10 @@ public class Numbers extends DisciplineFragment {
             String path = Helper.APP_FOLDER + File.separator
                     + getString(R.string.practice);
 
-            if (Helper.makeDirectory(path)) {
+            if (Helper.makeDirectory(path, getContext())) {
                 //Discipline Directory
                 path += File.separator + "Digits";
-                if (Helper.makeDirectory(path)) {
+                if (Helper.makeDirectory(path, getContext())) {
                     //FilePath
                     path += File.separator
                             + ((new SimpleDateFormat("yy-MM-dd_HH:mm", Locale.getDefault()))

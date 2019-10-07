@@ -172,10 +172,10 @@ public class Cards extends DisciplineFragment {
         String path = Helper.APP_FOLDER + File.separator
                 + getString(R.string.practice);
 
-        if (Helper.makeDirectory(path)) {
+        if (Helper.makeDirectory(path, activity)) {
             //Discipline Directory
             path += File.separator + activity.getTitle();
-            if (Helper.makeDirectory(path)) {
+            if (Helper.makeDirectory(path, activity)) {
                 //File Path
                 path += File.separator + ((new SimpleDateFormat(
                         "yy-MM-dd_HH:mm", Locale.getDefault())).format(new Date())) + ".txt";
