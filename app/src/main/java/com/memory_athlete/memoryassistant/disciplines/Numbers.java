@@ -221,8 +221,12 @@ public class Numbers extends DisciplineFragment {
 
     @Override
     protected void recall() {
-        if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked()
-                || ((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2) {
+        if (((RadioButton) rootView.findViewById(R.id.standard_radio)).isChecked() ||               // standard is equivalent to digits
+
+                (((Spinner) rootView.findViewById(R.id.group)).getSelectedItemPosition() < 2 &&     // single digit
+                        !((CheckBox) rootView.findViewById(R.id.decimal)).isChecked() &&            // no decimal
+                        !((CheckBox) rootView.findViewById(R.id.negative_or_date)).isChecked())) {  // non negative
+
             //Recall Digits
             boolean fileExists = save();
             Timber.v("fileExists = %s", fileExists);
@@ -237,5 +241,3 @@ public class Numbers extends DisciplineFragment {
         } else super.recall();  //Recall Numbers
     }
 }
-
-//TODO: add zeros if needed
