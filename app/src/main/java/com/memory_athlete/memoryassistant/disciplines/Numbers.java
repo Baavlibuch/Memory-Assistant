@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
+import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.RecallSelector;
@@ -236,6 +237,10 @@ public class Numbers extends DisciplineFragment {
 
             intent.putExtra("file exists", fileExists);
             intent.putExtra("discipline", "Digits");
+
+            Crashlytics.log("Numbers/fileExists = " + fileExists);
+            Crashlytics.log("Numbers/discipline = Digits");
+
             Timber.v("recalling Digits");
             startActivity(intent);
         } else super.recall();  //Recall Numbers

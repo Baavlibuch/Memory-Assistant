@@ -32,6 +32,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.RecallSelector;
@@ -527,6 +528,12 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         else intent = new Intent(activity.getApplicationContext(), RecallSelector.class);
         intent.putExtra("file exists", fileExists);
         intent.putExtra(getString(R.string.discipline), "" + activity.getTitle());
+
+        Crashlytics.log("DisciplineFragment/fileExists = " + fileExists);
+        Crashlytics.log("DisciplineFragment/discipline = " + activity.getTitle());
+
+        // no need to send filename as the most recent file within the disciplint is selected
+
         Timber.v("recalling%s", activity.getTitle());
         startActivity(intent);
     }
@@ -637,6 +644,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 Timber.v("TTS.speak will be called");
                 textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                 Timber.v("TTS.speak has been called");
+                // TODO update someday
+                //noinspection deprecation
                 textToSpeech.setOnUtteranceCompletedListener(s1 -> cardAndSpeechImageView.setImageResource(R.drawable.green_tick));
                 numbersVisibility(View.GONE);
                 rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
