@@ -1,5 +1,0 @@
-<p> Zapamatování rovnic pomocí paměťových technik je velmi vzácné, ale zapamatování derivací je téměř nepraktikováno. </p>
-
-<p> Pokud si můžete zapamatovat rovnice, mělo by být zapamatování derivací hračkou. Stačí si zapamatovat každý krok na dalším kolíku. </p>
-
-<p> Zapamatujte si co nejméně, abyste zajistili, že rozumíte co nejvíce. Také to je velmi efektivní. Zapamatujte si tedy pouze nejdůležitější kroky a podrobnosti, zejména první. </p>

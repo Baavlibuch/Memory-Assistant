@@ -141,5 +141,16 @@
     <string name="speech_rate">話速</string>
     <string name="word_new">新しい</string>
     <string name="privacy_policy">個人情報保護方針</string>
+    <string name="check_storage">ストレージを確認してください</string>
+    <string name="dl_from_play">正しく機能するには、Google Playストアからアプリをダウンロードしてください</string>
+    <string name="enter_name">名前を入力してください</string>
+    <string name="language">言語</string>
+    <string name="nameless_file">名前のないファイルを保存しませんでした</string>
+    <string name="not_found">見つかりません</string>
+    <string name="search">調べる</string>
+    <string name="search_from_start">底に達した。上から検索する</string>
+    <string name="shorter_name">短い名前でもう一度お試しください</string>
+    <string name="storage_full">デバイスストレージがいっぱいです</string>
+    <string name="storage_permissions">ストレージへのアクセス許可が必要です</string>
 
 </resources>

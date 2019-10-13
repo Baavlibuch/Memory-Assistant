@@ -1,0 +1,18 @@
+<p> Denklemleri ezberleme uygulaması affedilmez bir günahtır çünkü anlaşılmaları gerekir. Ancak, spor söz konusu olduğunda, bu günahlar affedilir. Ne yazık ki, bellek tekniklerini kullanarak denklemleri ezberlemek, istenmeyen bölgelere aittir. Denklemleri ezberlemek için bir sistem yaratmaya çalıştım, ancak çok kaba ve verimsiz olduğu için ince ayar yapmanız gerekecek. Geliştirmeyi başarırsanız, lütfen benimle paylaşın. </p>
+
+<p> İşte işlerimi nasıl ezberleyeceğim. <p>
+<ul>
+<li> Sayıları nesnelerle gösterebilirsiniz. Bunu sadece küçük sayılar için yapıyorum, böylece işler kolay kalıyor. Daha büyük sayılar için, bir sabit oluşturabilir ve farklı bir yolda ayrı olarak ezberleyebilirsiniz. </li>
+<li> Ayrıca zaten bildiğiniz formüllerle dolu bir yol da oluşturabilir ve buradaki mandalları </li>
+<li> Sabit ışık hızı (c) veya evrensel yerçekimi sabiti (G) için hayvanları kullanabilirsiniz. Yani G için bir zürafa ve c için bir deve. </li>
+<li> Bir operatör için bir işlem kullanın. Örnek - çarpma için yumruk. Parantezleri ve abonelikleri de eylemler olarak ezberleyebilirsiniz. </li>
+<li> Bir değişken için, bir kişi en iyi seçenek gibi görünüyor. Hangover'dan Alan, A için iyi bir seçimdir. Büyük ve küçük harfleri karıştırmayın, her ikisine de farklı insanlar verin. </li>
+<li> Kimyasal bir denklem için insanlar <b> yeni </b> molekülleri ifade edebilir. Öğeler için hiçbir şey kullanmayın, hepsini bilmelisiniz veya mandalları başka bir yoldan / gardıroptan kullanabilirsiniz. </li>
+</ul>
+<p> Tüm bu sembolleri ezberlemek için bir hikaye oluşturun. Kısa bir denklemi, tek bir mandalda saklayabilirsiniz, ancak uzun sürerse, muhtemelen bir sonraki mandal üzerinde devam etmeniz gerekecektir. İkincisi, devamı olarak işaretlediğinizden emin olun. Bu görev için başka bir işlem kullanılabilir. </p>
+
+<p> Bazı ipuçları </p>
+
+<ul>
+<li> Tüm terimleri ve değişkenleri sırayla tutmaya çalışın. Artıları ve eksileri var. Asıl aleyhte öyküleri benzer ve tekrarlayan kılar ve denklemi unutma şansını arttırmasıdır. Bu, profesyonel yanlısı sonuçlanır - öğrenmeye başlayanlar için denklemlerin anlaşılmasını teşvik eder. </li>
+</ul>
