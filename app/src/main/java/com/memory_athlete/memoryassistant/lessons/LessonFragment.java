@@ -8,6 +8,8 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.ConsoleMessage;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
@@ -148,6 +150,14 @@ public class LessonFragment extends Fragment {
 
         webView.loadDataWithBaseURL("file:///android_asset/jqmath/", js, "mText/html", "UTF-8", null);
         webView.setVisibility(View.VISIBLE);
+        webView.setWebChromeClient(new WebChromeClient() {
+            public boolean onConsoleMessage(ConsoleMessage cm) {
+                Timber.d("WebView Log: " + cm.message() + " -- From line "
+                        + cm.lineNumber() + " of " + cm.sourceId());
+                return true;
+            }
+        });
+
     }
 
     private StringBuilder readResource(int path) {
