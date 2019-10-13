@@ -96,6 +96,7 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
             super(fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {
@@ -169,7 +170,6 @@ public class ImplementLesson extends AppCompatActivity implements MySpaceFragmen
                 if (!fragment.save()) {
                     viewPager.setCurrentItem(i, true);
                     return true;
-                    //super.onOptionsItemSelected(item)
                 }
             }
         }

@@ -33,6 +33,8 @@ public class WithStoragePermissionInstrumentedUnitTests {
 
     @Test
     public void checkPermissionsAndMakeDirectoryTest() throws IOException {
+        waitForExecution();
+
         if (!(checkSelfPermission(mActivityTestRule.getActivity(), READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED))
             throw new RuntimeException("Doesn't have read permission");
         if (!(checkSelfPermission(mActivityTestRule.getActivity(), WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED))

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -161,6 +162,7 @@ public class RecallSelector extends AppCompatActivity {
         Item item = finalArrayList.get(position);
         Timber.v("item.mPath = %s", item.mFileName);
         if (listViewId == MIN_DYNAMIC_VIEW_ID) {
+            // selected discipline
             targetClass = item.mClass;
             mDiscipline = item.mFileName;
 
@@ -184,13 +186,18 @@ public class RecallSelector extends AppCompatActivity {
             setAdapter();
             Timber.v("going to id 1, listViewId = %s", listViewId);
         } else {
+            // selected stored file within the discipline
             Timber.v("listViewId = %s", listViewId);
             String filePath = Helper.APP_FOLDER + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline + File.separator + item.mFileName;
-            Intent intent = new Intent(getApplicationContext(), targetClass);
-            intent.putExtra("name", item.mName);
-            intent.putExtra("file", filePath);
+            Intent intent = new Intent(getApplicationContext(), targetClass);        // file's readable name (without extension)
+            intent.putExtra("name", item.mName);                               // filepath
+            intent.putExtra("file", filePath);                                 // discipline
             intent.putExtra("discipline", mDiscipline);
+
+            Crashlytics.log("RecallSelector/name = " + item.mName);             // file's readable name (without extension)
+            Crashlytics.log("RecallSelector/file = " + filePath);               // filepath
+            Crashlytics.log("RecallSelector/discipline = " + mDiscipline);      // discipline
 
             File file = new File(filePath);
             boolean isDirectoryCreated = file.exists();
@@ -248,7 +255,7 @@ public class RecallSelector extends AppCompatActivity {
                 new Item(getString(R.string.names), RecallSimple.class, R.drawable.names),
                 new Item(getString(R.string.numbers), RecallSimple.class, R.drawable.numbers),
                 new Item(getString(R.string.places_capital), RecallSimple.class, R.drawable.places),
-                new Item(getString(R.string.words), RecallSimple.class, R.drawable.words),
+                new Item(getString(R.string.words), RecallSimple.class, R.drawable.vocabulary),
                 new Item(getString(R.string.dates), RecallComplex.class, R.drawable.dates)));
     }
 
@@ -293,7 +300,8 @@ public class RecallSelector extends AppCompatActivity {
     }
 
     private class Item {
-        String mFileName, mName;
+        String mFileName;               // actual file name
+        String mName;                   // file name without extension if there was one
         Class mClass;
         int mImageId;
 

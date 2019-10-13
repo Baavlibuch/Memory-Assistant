@@ -220,6 +220,7 @@ public class RecallSimple extends AppCompatActivity {
         if (responseFormat == ResponseFormat.CHARACTER_RESPONSE_FORMAT) {
             // just a simple list of characters. Convert it into an ArrayList
             for (int i = 0; i < values.length(); i++) {
+                // ignore whitespace
                 if (values.charAt(i) == ' ' || values.charAt(i) == '\n'
                         || values.charAt(i) == getString(R.string.tab).charAt(0)) continue;
                 responses.add(String.valueOf(values.charAt(i)));
@@ -227,27 +228,31 @@ public class RecallSimple extends AppCompatActivity {
             }
         } else {
             // words or sentences
-            // simple response format - ' ' delimited
+            // simple response format - ' ', '\n' delimited
             // word response format  - '\n' delimited
             char delimiter = (responseFormat == ResponseFormat.SIMPLE_RESPONSE_FORMAT ? ' ' : '\n');
+
             for (int i = 0; i < values.length(); i++) {
+
+                boolean encounteredDelimiter = values.charAt(i) == delimiter || values.charAt(i) == '\n';
                 // append character to the value if it is not equal to the delimiter
-                if (!(values.charAt(i) == delimiter)) value += values.charAt(i);
+                if (!encounteredDelimiter) value += values.charAt(i);
+
                 // search for value's end (delimiter) and move to next
-                if (i != 0 && (values.charAt(i) == delimiter && values.charAt(i - 1) != delimiter)) {
+                // Only if didn't encounter 2 delimiters back to back
+                // Not possible when index is 0 because i-1 == -1
+                if (i != 0 && (encounteredDelimiter && (values.charAt(i - 1) != delimiter || values.charAt(i - 1) == '\n'))) {
                     responses.add(value);
                     value = "";                             // reset for new value
                     continue;
                 }
+
                 // check if the end has been reached. If yes, add to responses list and end loop
                 if (i + 1 == values.length()) responses.add(value);
-                // elsed multiple delimiters encountered. ignore and move on
+
+                // else multiple delimiters encountered. ignore and move on
             }
         }
-        // No clue what this does! so commented it out. Look for bugs
-        // String text = ((TextView) findViewById(R.id.responses_text)).getText() + value + " " + getString(R.string.tab);
-        // ((TextView) findViewById(R.id.responses_text)).setText(text);
-        // Timber.v("onEditorAction complete");
     }
 
     void hideResponseLayout() {
@@ -706,6 +711,4 @@ public class RecallSimple extends AppCompatActivity {
     }
 }
 
-// orange:FFA500
-// textView.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
 // TODO: shift to fragments

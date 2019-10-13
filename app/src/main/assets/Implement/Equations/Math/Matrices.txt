@@ -3,7 +3,7 @@
 <p>$$|R+1|:0, |R|≠0$$</p>
 <p>Normal Form $$[I_r, 0]$$</p>
 <p>Unique Solution $$r(A)=r(A:B)=n$$ $$|A|≠0$$</p>
-<p>Infinite Solutions $$r(A)=r(A:B)<n$$ $$|A|=0$$</p>
+<p>Infinite Solutions $$r(A)=r(A:B)&ltn$$ $$|A|=0$$</p>
 <p>No Solutions $$r(A)≠r(A:B)$$</p>
 <br/>
 <p>Characteristic Equation $$|A-λI|=λ^m+a_cλ^{m-1}+a_1λ^{m-2}+\_\ \_\ \_\ a_k=0$$$$λ_1,λ_2,λ_3\_\ \_\ \_\ λ_m\text": Roots or Eigen Values"$$$$X_1,X_2,X_3\_\ \_\ \_\ X_m\text": Eigen Vectors"$$</p>

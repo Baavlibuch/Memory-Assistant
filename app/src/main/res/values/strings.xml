@@ -147,7 +147,6 @@
     <string name="associations">The Perfect Association</string>
     <string name="major_system">The Major System</string>
     <string name="equations">Equations</string>
-    <string name="derivations">Derivations</string>
     <string name="checkout">There\'s more to learn</string>
     <string name="pao">The PAO Memory System</string>
     <string name="wardrobe_method">Wardrobe Method</string>
@@ -170,6 +169,7 @@
     <string name="speech_rate">Speech rate</string>
     <string name="word_new">New</string>
     <string name="privacy_policy">Privacy Policy</string>
-    <string name="dl_from_play">Please download the app from the Google Play Store</string>
+    <string name="dl_from_play">For correct functioning, please download the app from the Google Play Store</string>
+    <string name="storage_full">Device storage full</string>
 
 </resources>

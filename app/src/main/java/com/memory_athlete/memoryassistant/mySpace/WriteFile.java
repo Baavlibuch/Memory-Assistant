@@ -198,7 +198,7 @@ public class WriteFile extends AppCompatActivity {
             name = true;
             return false;
         }
-        if (Helper.makeDirectory(dirPath)) {
+        if (Helper.makeDirectory(dirPath, getApplicationContext())) {
             try {
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
                 outputStream.write(string.getBytes());
@@ -220,7 +220,8 @@ public class WriteFile extends AppCompatActivity {
     }
 
     private void search(String stringToSearch) {
-        String fullText = mySpaceEditText.getText().toString();
+        stringToSearch = stringToSearch.toLowerCase();
+        String fullText = mySpaceEditText.getText().toString().toLowerCase();
         boolean hasText = fullText.contains(stringToSearch);
         Timber.d("hasText = %s", hasText);
         if (hasText) {

@@ -32,8 +32,8 @@ android {
         applicationId "com.memory_athelte.memoryassistant"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 111
-        versionName "1.7.0"
+        versionCode 114
+        versionName "1.7.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }

@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
         firstStart();
         mayAccessStorage();
-        if (!verifyInstallerId()) {
+        if (!verifyInstallerId() && !BuildConfig.DEBUG) {
             Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
-            if(!BuildConfig.DEBUG) FirebaseAnalytics.getInstance(this).logEvent(
+            FirebaseAnalytics.getInstance(this).logEvent(
                     "release_app_not_installed_form_play", null);
         }
     }
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         // show popup if never ask again has not been selected
         if (shouldShowRequestPermissionRationale(READ_EXTERNAL_STORAGE)) requestPermissions(new
                 String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
-        // ?
+            // ?
         else requestPermissions(new
                 String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
     }
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_STORAGE_ACCESS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                Helper.makeDirectory(Helper.APP_FOLDER);
+                Helper.makeDirectory(Helper.APP_FOLDER, getApplicationContext());
             } else {
                 Snackbar.make(findViewById(R.id.main_list), "The app might crash without these permissions",
                         Snackbar.LENGTH_SHORT).setAction("Grant", view -> firstStart());
