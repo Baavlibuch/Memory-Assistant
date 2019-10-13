@@ -124,11 +124,9 @@
     <string name="associations">完美的协会</string>
     <string name="major_system">主要制度</string>
     <string name="equations">方程</string>
-    <string name="derivations">导</string>
     <string name="checkout">还有更多需要学习的地方</string>
     <string name="pao">PAO记忆系统</string>
     <string name="wardrobe_method">衣柜法</string>
-    <string name="vocab">词汇</string>
     <string name="already_purchased">您已经完成了该交易\ n尝试其他事项：p</string>
     <string name="donate_amounts">可捐赠金额清单</string>
     <string name="thanks">谢谢</string>
@@ -143,5 +141,16 @@
     <string name="speech_rate">语速</string>
     <string name="word_new">新</string>
     <string name="privacy_policy">隐私政策</string>
+    <string name="check_storage">请检查存储</string>
+    <string name="dl_from_play">为确保功能正常，请从Google Play商店下载该应用</string>
+    <string name="enter_name">请输入名字</string>
+    <string name="language">语言能力</string>
+    <string name="nameless_file">没有保存无名文件</string>
+    <string name="not_found">未找到</string>
+    <string name="search">搜索</string>
+    <string name="search_from_start">到达底部。从顶部搜寻</string>
+    <string name="shorter_name">请使用较短的名称再试一次</string>
+    <string name="storage_full">设备存储空间已满</string>
+    <string name="storage_permissions">需要访问存储的权限</string>
 
 </resources>

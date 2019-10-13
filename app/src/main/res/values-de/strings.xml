@@ -124,11 +124,9 @@
     <string name="associations">Die perfekte Assoziation</string>
     <string name="major_system">Das Hauptsystem</string>
     <string name="equations">Gleichungen</string>
-    <string name="derivations">Ableitungen</string>
     <string name="checkout">Es gibt noch mehr zu lernen</string>
     <string name="pao">Das PAO-Speichersystem</string>
     <string name="wardrobe_method">Kleiderschrank-Methode</string>
-    <string name="vocab">Wortschatz</string>
     <string name="already_purchased">Sie haben diese Transaktion bereits durchgeführt\nVersuchen Sie etwas anderes: p</string>
     <string name="donate_amounts">Liste der spendbaren Beträge</string>
     <string name="thanks">Vielen Dank</string>
@@ -143,5 +141,16 @@
     <string name="speech_rate">Sprachrate</string>
     <string name="word_new">Neu</string>
     <string name="privacy_policy">Datenschutz-Bestimmungen</string>
+    <string name="check_storage">Bitte überprüfen Sie die Lagerung</string>
+    <string name="dl_from_play">Laden Sie die App aus dem Google Play Store herunter, um eine ordnungsgemäße Funktion zu gewährleisten</string>
+    <string name="enter_name">Bitte geben Sie einen Namen ein</string>
+    <string name="language">Sprachen</string>
+    <string name="nameless_file">Keine namenlose Datei gespeichert</string>
+    <string name="not_found">Nicht gefunden</string>
+    <string name="search">Suche</string>
+    <string name="search_from_start">Erreicht den Boden. Von oben suchen</string>
+    <string name="shorter_name">Versuchen Sie es mit einem kürzeren Namen noch einmal</string>
+    <string name="storage_full">Gerätespeicher voll</string>
+    <string name="storage_permissions">Die Erlaubnis zum Zugriff auf den Speicher ist erforderlich</string>
 
 </resources>

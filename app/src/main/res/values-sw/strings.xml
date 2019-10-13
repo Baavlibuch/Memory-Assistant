@@ -124,11 +124,9 @@
     <string name="associations">Chama kamili</string>
     <string name="major_system">Mfumo Mkubwa</string>
     <string name="equations">Viwango</string>
-    <string name="derivations">Kutoa</string>
     <string name="checkout">Kuna zaidi ya kujifunza</string>
     <string name="pao">Mfumo wa Kumbukumbu ya PAO</string>
     <string name="wardrobe_method">Njia ya Wadi</string>
-    <string name="vocab">Msamiati</string>
     <string name="already_purchased">Tayari umefanya shughuli hiyo\n Jaribu kitu kingine: p</string>
     <string name="donate_amounts">Orodha ya kiasi kinachoweza kutolewa</string>
     <string name="thanks">Asante</string>
@@ -143,5 +141,16 @@
     <string name="speech_rate">Kiwango cha hotuba</string>
     <string name="word_new">Mpya</string>
     <string name="privacy_policy">Sera ya faragha</string>
+    <string name="check_storage">Tafadhali angalia kuhifadhi</string>
+    <string name="dl_from_play">Kwa utendaji sahihi, tafadhali pakua programu kutoka Duka la Google Play</string>
+    <string name="enter_name">Tafadhali ingiza jina</string>
+    <string name="language">Lugha</string>
+    <string name="nameless_file">Haikuhifadhi faili isiyo na jina</string>
+    <string name="not_found">Haipatikani</string>
+    <string name="search">Tafuta</string>
+    <string name="search_from_start">Imefikia chini. Kutafuta kutoka juu</string>
+    <string name="shorter_name">Jaribu tena na jina fupi</string>
+    <string name="storage_full">Hifadhi ya kifaa imejaa</string>
+    <string name="storage_permissions">Ruhusa ya kuhifadhi kuhifadhi inahitajika</string>
 
 </resources>

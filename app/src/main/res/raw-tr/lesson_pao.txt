@@ -1,0 +1,37 @@
+<p> Kaynak: <a href="http://memory-sports.com"> http://memory-sports.com </a> </p>
+
+<h4> Geçmiş </h4>
+
+<p> 2. Seviye Ana Sistem gibi 2 basamaklı bir sistemle başlamak, 100 görüntünün (10²) nispeten küçük bir çabasıdır. Bunun gibi bir sistem çok kısa sürede öğrenilebilir, bu nedenle hızlı bir şekilde kullanılabilir ve kolayca eğitilebilir. Bunun dezavantajı, yalnızca iki basamaklı küçük kümedir. Kırk basamaklı bir sayı için, Loci Yöntemi ile Fil Yolu'nuzla 20 konumdaki 20 görüntüyü ezberlemeniz gerekir (her bir konum için bir görüntü kullandığınızı varsayalım). </p>
+
+<p> Sistemin 3 basamaklı bir sisteme iyileştirilmesi çok büyük bir adımdır ve zaten 1.000 görüntü ister (10³). Bunu yapmak için, 3. Seviye Bir Ana Sistem veya Ben Sistemi kullanmak gibi birkaç teknik vardır. Her ikisi de 1.000 görüntüden oluşan bir liste oluşturmak için harika yollar. Çaba on kat daha fazla ve hızlı bir şekilde kullanmadan önce çok fazla pratik gerektirecektir. Ancak kırk basamaklı bir sayı için, 13.3 konumdaki 13.3 görüntüyü yalnızca hafızanızı ve hassasiyetinizi artıracak 13.3 resmi ezberlemeniz gerekecektir (.3, çünkü 40'a 6'yı tam sayılarla bölemezsiniz; bu konuda daha fazlası “Eylemde PAO” altında). 3 basamaklı herhangi bir sistem bu nedenle 2 basamaklı bir sistemden daha karmaşık olacaktır. </p>
+
+<p> PAO Sistemi bu iki teknik arasındaki o büyük boşluğa sıçrar ve sadece 300 görüntüyle güzel bir alternatif sunar. Teknik olarak 3 x 2 basamaklı bir sistemdir. Aynı zamanda mevcut 2 basamaklı sisteminiz için mükemmel bir yükseltmedir ve kısa sürede kaydedilecektir. Ancak, aynı zamanda ilk sisteminiz olarak da çalışabilir. </p>
+
+<h4> PAO nasıl çalışır? </h4>
+
+<p> PAO Sisteminin arkasındaki fikir çok basit: Eğer bir resme daha fazla rakam kodlamaktan kaçınmak istiyorsak, bilgiyi yoğunlaştırmanın başka bir yolunu bulmalıyız. Bunu, 2 basamaklı görüntülerden oluşan bir küme oluşturarak yapabiliriz. Bu, birden fazla 100 görüntünün bir listesini kullandığımız ve bunları büyük bir kümede birleştirdiğimiz anlamına gelir. PAO Sistemi durumunda, her biri 100 öğeden oluşan üç liste oluştururuz: 100 kişi (P), 100 eylem (A) ve 100 nesne (O). </p>
+
+<p> Bu sistemin altı basamaklı kümelenmiş bilgilerinin yanı sıra güzelliği de her listenin doğal sırasıdır: Her zaman önce Kişi, ardından en son Eylem ve Nesne. Konumlarınızın 6.6'sında bunun gibi 6.6 küçük sahneyi ezberleyin ve kırk basamaklı bir sayı kodladınız. Bu, iki katı kadar ezberlemeniz ve ilk başta 700 görüntü daha fazla öğrenmeniz gereken 3 basamaklı bir sistemden çok daha iyi geliyor, değil mi? </p>
+
+<p> Fakat bütün sihir bir bedelle gelir: Üç görüntüyü bir araya toplasanız bile, yine de sonunda tek başlarına hatırlanmaları gerekir. Basit bir 2 basamaklı hatta 3 basamaklı bir sisteme kıyasla tamamen yeni bir odaklanmanın olduğunu göreceksiniz. Her bir kişiyi, eylemi ve nesneyi açıkça görselleştirmek önemlidir. Aksi taktirde koltukta kimin attığını büyük bir mumla unutabilirsin. Aynı şey eylem ve elbette nesne için de geçerli. Bunu anlamak biraz pratik gerektirecek. </p>
+
+<p> Ve bu sistemin bir dezavantajı var: Kendinizi birçok yaratıcılıktan kesiyorsunuz. Bu üç öğenin birleşimi, yalnızca konumlarınızdan birine yerleştirmeniz gereken net bir görüntü çizer. Bence eğlencenin büyük bir parçası olan fikirleriniz için az yer var. Öte yandan, bu konum etkileşimi için daha yaratıcı bir ihtiyaçla dengelenecek. Bununla ilgili daha fazla bilgiyi “PAO'yu çalışırken” altında bulabilirsiniz. </p>
+
+<p> Bu ve diğer fenomenler nedeniyle, birçok kişi sistemin sadece 100 kişilik ve 100 nesneden oluşan iki listeye sahip bir PO Sistemi gibi varyasyonlarını düşünür. Bu size tekrar yaratıcılık için yeterli alan sağlayacaktır, ancak kümeyi 6 yerine 4 basamağa indirecektir. Diğerlerinin 100 kişiyle sorunları var. Onları her zaman birbirleriyle karıştırırlar ve yalnızca 100 eylem ve 100 nesne içeren bir AO Sistemi kullanırlar. </p>
+
+<h4> PAO Sistemini Oluşturma </h4>
+
+<p> Üç listenizi oluşturmanın birçok yolu vardır. Şahsen aşağıdaki yöntemi tercih ediyorum: İlk sayı sisteminizi kuruyorsanız, Binbaşı Sistemi göz önünde bulundurmalısınız. İlk 100 resim listenizi kodlamanıza ve bunları hızlı bir şekilde öğrenmenize yardımcı olacaktır. Ardından veya 2 basamaklı bir sisteminiz varsa, şaşırtıcı derecede kolay ve hızlı bir şekilde yükseltebilirsiniz: Tüm 100 resminize bakın. Nesnelerse, bir kişiyle ilişki kurmayı ve her biri için eylem bulmayı deneyin. Eğer insanlar ise uygun bir nesne ve eylem ararlar. Bu şekilde, zaten kafanızda sahip olduğunuz doğal dernekler yaratacaksınız. Bunları belirledikten sonra, ilk listende resimlerinizi aktive ederek yeni listelerinizi çok kolay hatırlayacaksınız. </p>
+
+<h4> PAO çalışıyor </h4>
+
+<p> 40 basamaklı bir sayıyı ezberlemek için her birini iki basamaklı adımlar halinde okuyacaksınız, ilk ikisini kişiye, ikincisini eyleme ve üçüncü iki hatayı nesneye çevireceksiniz. Onları bir araya getirin ve bu görüntüyü Fil Yolunuzdaki konumunuzla birleştirin. Ardından sonraki altı basamağa geçin ve beş resim kümesi oluşturuncaya kadar bu sırayı tekrarlayın. Yalnızca 6,6 küme ve 8304827739410499306928301829439382904639 ezberleyebilirsiniz - şaşırtıcı değil mi? </p>
+
+<p> Resimlerinizin konumlarınızla etkileşimine izin vermeyi tercih ediyorsanız, sadece önlerine yerleştirmek yerine, yaratıcı olmanız gerekir. Örneğin, bulunduğunuz yer u şeklinde bir kapı tokmağıysa ve PAO'nuz size bir fil (P) gibi bisikletle (O) şarkı söyler (A) verir. Büyük filin şarkı sürerken kapı tokmağıyla etkileşime girmesine izin vermek için hayal gücünüzde yeterince küçük olabilir. Belki o kadar küçük ki, o ve bisikleti kapı tokmağının u-eğrisine kolayca uyuyor. Bu beyniniz için hatırlamaya değer küçük şirin bir resim olacak. </p>
+
+<p> Bir hafıza yarışmasında yarışıyorsanız, her bir sıranın 40 basamak uzunluğunda olacağı gerçeğiyle başa çıkmak zorunda kalacaksınız. 6 PAO görüntüden sonra (36 hane) satırın sonuna yalnızca dört hane kalacaktır. Tam PAO görüntü oluşturmak için bu satırdaki sonraki dört görüntüyü VE sonraki satırdaki sonraki iki hatayı kodladığınızda, birlikte 80 basamaklı iki tam satırı kaybedebilirsiniz. Bu PAO görüntüsünü unutursanız, ilk satırda 4 hataya, ikincide 2 hataya sahip olacaksınız, ikisini de sıfıra ayarlayacaksınız (sıranın yarısı 1 hata, 2 hata sırayı iptal eder). Bundan kaçınmak için, örneğin bir PO-resimle satırın yalnızca son dört hanesini ezberlemeyi ve bir sonraki satıra yeni bir PAO-resimle başlamayı düşünmelisiniz. </p>
+
+<h4> Kartlar için PAO </h4>
+
+<p> PAO-Sytem'i kartlar için de kullanabilirsiniz. Kartlar söz konusu olduğunda daha mantıklı geliyor çünkü 2 kartlı bir sistemde 2.652 görüntü gerekiyor (52x51 kart). Oluşturmak çok daha kolaydır ve sayılarla tam olarak aynı şekilde çalışır. Mevcut 1. Seviye kart sisteminizi alıp yukarıda açıkladığım teknikle güncelleyebilirsiniz. Henüz bir kart sisteminiz yoksa, basit bir sistem oluşturmalı ve daha sonra güncellemelisiniz. Bu gerçekten çabaya değer ve Andy Bell gibi sporcular 31.16 saniyede 52 kart destesini ezberleyebilirler. </p>

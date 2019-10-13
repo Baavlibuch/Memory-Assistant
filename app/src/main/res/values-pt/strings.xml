@@ -124,11 +124,9 @@
     <string name="associations">A associação perfeita</string>
     <string name="major_system">O sistema principal</string>
     <string name="equations">Equações</string>
-    <string name="derivations">Derivações</string>
     <string name="checkout">Há mais para aprender</string>
     <string name="pao">O sistema de memória PAO</string>
     <string name="wardrobe_method">Método de guarda-roupa</string>
-    <string name="vocab">Vocabulário</string>
     <string name="already_purchased">Você já fez essa transação\nTente outra coisa: p</string>
     <string name="donate_amounts">Lista de quantias não doáveis</string>
     <string name="thanks">obrigado</string>
@@ -143,5 +141,16 @@
     <string name="speech_rate">Taxa de fala</string>
     <string name="word_new">Novo</string>
     <string name="privacy_policy">Política de Privacidade</string>
+    <string name="check_storage">Verifique o armazenamento</string>
+    <string name="dl_from_play">Para o funcionamento correto, faça o download do aplicativo na Google Play Store</string>
+    <string name="enter_name">Por favor insira um nome</string>
+    <string name="language">línguas</string>
+    <string name="nameless_file">Não salvou o arquivo sem nome</string>
+    <string name="not_found">Não encontrado</string>
+    <string name="search">Procurar</string>
+    <string name="search_from_start">Chegou ao fundo. Pesquisando de cima</string>
+    <string name="shorter_name">Tente novamente com um nome mais curto</string>
+    <string name="storage_full">Armazenamento do dispositivo cheio</string>
+    <string name="storage_permissions">É necessária permissão para acessar o armazenamento</string>
 
 </resources>

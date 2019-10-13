@@ -124,11 +124,9 @@
     <string name="associations">Den perfekte forening</string>
     <string name="major_system">Major-systemet</string>
     <string name="equations">ligninger</string>
-    <string name="derivations">avledninger</string>
     <string name="checkout">Det er mer å lære</string>
     <string name="pao">PAO-minnesystemet</string>
     <string name="wardrobe_method">Garderobemetode</string>
-    <!--     TODO     <string name="vocab">Ordforråd</string>     replaced with language     -->
     <string name="already_purchased">Du har allerede foretatt den transaksjonen\nPrøve noe annet: p</string>
     <string name="donate_amounts">Liste over donerbare beløp</string>
     <string name="thanks">Takk</string>
@@ -143,5 +141,16 @@
     <string name="speech_rate">Talehastighet</string>
     <string name="word_new">Ny</string>
     <string name="privacy_policy">Personvern</string>
+    <string name="check_storage">Vennligst sjekk lagring</string>
+    <string name="dl_from_play">Last ned appen fra Google Play Store for å fungere korrekt</string>
+    <string name="enter_name">Skriv inn et navn</string>
+    <string name="language">språk</string>
+    <string name="nameless_file">Lagret ikke navnløs fil</string>
+    <string name="not_found">Ikke funnet</string>
+    <string name="search">Søk</string>
+    <string name="search_from_start">Nådde bunnen. Søker fra toppen</string>
+    <string name="shorter_name">Prøv igjen med et kortere navn</string>
+    <string name="storage_full">Enhetslagring full</string>
+    <string name="storage_permissions">Tillatelse til tilgang til lagring er nødvendig</string>
 
 </resources>

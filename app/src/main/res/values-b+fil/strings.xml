@@ -125,11 +125,9 @@
     <string name="associations">Ang Perpektong Samahan</string>
     <string name="major_system">Ang pangunahing System</string>
     <string name="equations">Pagkakapantay-pantay</string>
-    <string name="derivations">Mga derivasyon</string>
     <string name="checkout">Marami pa upang malaman</string>
     <string name="pao">Ang PAO Memory System</string>
     <string name="wardrobe_method">Paraan ng Wardrobe</string>
-    <string name="vocab">Talasalitaan</string>
     <string name="already_purchased">Ginawa mo na ang transaksyon na iyon \nMagawa ng iba pa: p</string>
     <string name="donate_amounts">Listahan ng mga naibigay na halaga</string>
     <string name="thanks">Salamat</string>
@@ -144,5 +142,16 @@
     <string name="speech_rate">Rate ng pagsasalita</string>
     <string name="word_new">Bago</string>
     <string name="privacy_policy">Patakaran sa Pagkapribado</string>
+    <string name="check_storage">Mangyaring suriin ang imbakan</string>
+    <string name="dl_from_play">For correct functioning, please download the app from the Google Play Store</string>
+    <string name="enter_name">Mangyaring magpasok ng isang pangalan</string>
+    <string name="language">Mga Wika</string>
+    <string name="nameless_file">Hindi nag-save ng walang pangalan na file</string>
+    <string name="not_found">Hindi mahanap</string>
+    <string name="search">Paghahanap</string>
+    <string name="search_from_start">Umabot sa ilalim. Naghahanap mula sa itaas</string>
+    <string name="shorter_name">Subukan muli gamit ang isang mas maikling pangalan</string>
+    <string name="storage_full">Buong imbakan ng aparato</string>
+    <string name="storage_permissions">Ang pahintulot upang ma-access ang imbakan ay kinakailangan</string>
 
 </resources>

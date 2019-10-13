@@ -124,11 +124,9 @@
     <string name="associations">Идеальная Ассоциация</string>
     <string name="major_system">Основная система</string>
     <string name="equations">уравнения</string>
-    <string name="derivations">Дифференцирования</string>
     <string name="checkout">Есть больше, чтобы учиться</string>
     <string name="pao">Система памяти PAO</string>
     <string name="wardrobe_method">Метод гардероба</string>
-    <string name="vocab">Запас слов</string>
     <string name="already_purchased">Вы уже совершили эту транзакцию\nПопробуйте что-то еще: p</string>
     <string name="donate_amounts">Список пожертвованных сумм</string>
     <string name="thanks">Спасибо</string>
@@ -143,5 +141,16 @@
     <string name="speech_rate">Скорость речи</string>
     <string name="word_new">новый</string>
     <string name="privacy_policy">политика конфиденциальности</string>
+    <string name="check_storage">Пожалуйста, проверьте хранение</string>
+    <string name="dl_from_play">Для корректной работы, пожалуйста, скачайте приложение из Google Play Store</string>
+    <string name="enter_name">Пожалуйста, введите имя</string>
+    <string name="language">Языки</string>
+    <string name="nameless_file">Не сохранил безымянный файл</string>
+    <string name="not_found">Не найдено</string>
+    <string name="search">Поиск</string>
+    <string name="search_from_start">Дошел до дна. Поиск сверху</string>
+    <string name="shorter_name">Попробуйте еще раз с более коротким именем</string>
+    <string name="storage_full">Память устройства заполнена</string>
+    <string name="storage_permissions">Требуется разрешение на доступ к хранилищу</string>
 
 </resources>

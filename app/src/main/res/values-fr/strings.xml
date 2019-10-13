@@ -124,11 +124,9 @@
     <string name="associations">L\'association parfaite</string>
     <string name="major_system">Le système majeur</string>
     <string name="equations">Les équations</string>
-    <string name="derivations">Dérivations</string>
     <string name="checkout">Il y a plus à apprendre</string>
     <string name="pao">Le système de mémoire PAO</string>
     <string name="wardrobe_method">Méthode de garde-robe</string>
-    <string name="vocab">Vocabulaire</string>
     <string name="already_purchased">Vous avez déjà effectué cette transaction\nEssayez autre chose: p</string>
     <string name="donate_amounts">Liste des montants pouvant être donnés</string>
     <string name="thanks">Merci</string>
@@ -143,5 +141,16 @@
     <string name="speech_rate">Débit de parole</string>
     <string name="word_new">Nouveau</string>
     <string name="privacy_policy">Politique de confidentialité</string>
+    <string name="check_storage">S\'il vous plaît vérifier le stockage</string>
+    <string name="dl_from_play">Pour un fonctionnement correct, téléchargez l\'application à partir du Google Play Store.</string>
+    <string name="enter_name">S\'il vous plaît entrer un nom</string>
+    <string name="language">Langages</string>
+    <string name="nameless_file">N\'a pas sauvegardé le fichier sans nom</string>
+    <string name="not_found">Pas trouvé</string>
+    <string name="search">Chercher</string>
+    <string name="search_from_start">Atteint le fond. Chercher du haut</string>
+    <string name="shorter_name">Essayez à nouveau avec un nom plus court</string>
+    <string name="storage_full">Mémoire de stockage pleine</string>
+    <string name="storage_permissions">Ang pahintulot upang ma-access ang imbakan ay kinakailangan</string>
 
 </resources>

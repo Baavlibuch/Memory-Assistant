@@ -124,11 +124,9 @@
     <string name="associations">Perfektní asociace</string>
     <string name="major_system">Hlavní systém</string>
     <string name="equations">Rovnice</string>
-    <string name="derivations">Derivace</string>
     <string name="checkout">Naučit se více</string>
     <string name="pao">Paměťový systém PAO</string>
     <string name="wardrobe_method">Metoda šatníku</string>
-    <string name="vocab">Slovní zásoba</string>
     <string name="already_purchased">Tuto transakci jste již provedli\nZkuste něco jiného: p</string>
     <string name="donate_amounts">Seznam darovatelných částek</string>
     <string name="thanks">dík</string>
@@ -143,5 +141,16 @@
     <string name="speech_rate">Rychlost řeči</string>
     <string name="word_new">Nový</string>
     <string name="privacy_policy">Zásady ochrany osobních údajů</string>
+    <string name="check_storage">Zkontrolujte prosím úložiště</string>
+    <string name="dl_from_play">Pro správnou funkci si stáhněte aplikaci z obchodu Google Play</string>
+    <string name="enter_name">Zadejte jméno</string>
+    <string name="language">Jazyky</string>
+    <string name="nameless_file">Neuložili jste bezejmenný soubor</string>
+    <string name="not_found">Nenalezeno</string>
+    <string name="search">Vyhledávání</string>
+    <string name="search_from_start">Dosáhl dna. Vyhledávání z vrcholu</string>
+    <string name="shorter_name">Zkuste to znovu s kratším jménem</string>
+    <string name="storage_full">Úložiště zařízení je plné</string>
+    <string name="storage_permissions">Je třeba povolení přístupu k úložišti</string>
 
 </resources>
