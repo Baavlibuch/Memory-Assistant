@@ -255,7 +255,7 @@ public class RecallSelector extends AppCompatActivity {
                 new Item(getString(R.string.names), RecallSimple.class, R.drawable.names),
                 new Item(getString(R.string.numbers), RecallSimple.class, R.drawable.numbers),
                 new Item(getString(R.string.places_capital), RecallSimple.class, R.drawable.places),
-                new Item(getString(R.string.words), RecallSimple.class, R.drawable.words),
+                new Item(getString(R.string.words), RecallSimple.class, R.drawable.vocabulary),
                 new Item(getString(R.string.dates), RecallComplex.class, R.drawable.dates)));
     }
 

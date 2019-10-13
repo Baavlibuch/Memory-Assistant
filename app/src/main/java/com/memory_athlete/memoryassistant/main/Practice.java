@@ -69,7 +69,7 @@ public class Practice extends AppCompatActivity {
 
     private void setList(ArrayList<Discipline> disc) {
         disc.add(new Discipline(R.string.numbers, R.drawable.numbers, 1, true, false, 1));
-        disc.add(new Discipline(R.string.words, R.drawable.words, 2, false, true));
+        disc.add(new Discipline(R.string.words, R.drawable.vocabulary, 2, false, true));
         disc.add(new Discipline(R.string.names, R.drawable.names, 3, false, true));
         disc.add(new Discipline(R.string.places_capital, R.drawable.places, 4, false, true));
         disc.add(new Discipline(R.string.cards, R.drawable.cards, 5, false, false));
