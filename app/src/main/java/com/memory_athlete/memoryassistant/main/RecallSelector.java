@@ -21,7 +21,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -52,7 +51,7 @@ public class RecallSelector extends AppCompatActivity {
             Helper.theme(this, this);
             setContentView(R.layout.activity_my_space);
         } catch (Resources.NotFoundException e) {
-            // Crashlytics.logException(e);
+            // Timber.e(e);
             Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
             finish();
             return;
@@ -195,9 +194,9 @@ public class RecallSelector extends AppCompatActivity {
             intent.putExtra("file", filePath);                                 // discipline
             intent.putExtra("discipline", mDiscipline);
 
-            Crashlytics.log("RecallSelector/name = " + item.mName);             // file's readable name (without extension)
-            Crashlytics.log("RecallSelector/file = " + filePath);               // filepath
-            Crashlytics.log("RecallSelector/discipline = " + mDiscipline);      // discipline
+            Timber.i("RecallSelector/name = " + item.mName);             // file's readable name (without extension)
+            Timber.i("RecallSelector/file = " + filePath);               // filepath
+            Timber.i("RecallSelector/discipline = " + mDiscipline);      // discipline
 
             File file = new File(filePath);
             boolean isDirectoryCreated = file.exists();

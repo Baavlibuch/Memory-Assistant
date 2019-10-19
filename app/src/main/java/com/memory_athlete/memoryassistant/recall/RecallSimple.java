@@ -21,7 +21,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -91,9 +90,9 @@ public class RecallSimple extends AppCompatActivity {
         mDiscipline = intent.getStringExtra(getString(R.string.discipline));
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        Crashlytics.log("file Path = " + mFilePath);
-        Crashlytics.log("discipline = " + mDiscipline);
-        Crashlytics.log("file exists = " + intent.getBooleanExtra("file exists", false));
+        Timber.i("file Path = " + mFilePath);
+        Timber.i("discipline = " + mDiscipline);
+        Timber.i("file exists = " + intent.getBooleanExtra("file exists", false));
 
         setTitle(mDiscipline);
 
@@ -620,7 +619,7 @@ public class RecallSimple extends AppCompatActivity {
                 else if (compareFormat == CompareFormat.WORD_COMPARE_FORMAT) compare(true);
                 return false;
             } catch (FileNotFoundException e) {
-                Crashlytics.logException(e);
+                Timber.e(e);
                 return true;
             }
         }

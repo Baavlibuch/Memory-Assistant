@@ -44,7 +44,7 @@ public class MySpace extends AppCompatActivity {
         try {
             setContentView(R.layout.activity_my_space);
         } catch (Resources.NotFoundException e) {
-            // Crashlytics.logException(e);
+            // Timber.e(e);
             Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
             finish();
             return;

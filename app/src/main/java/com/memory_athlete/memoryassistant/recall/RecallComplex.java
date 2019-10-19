@@ -71,7 +71,7 @@ public class RecallComplex extends RecallSimple {
     @Override
     protected void getAnswers() throws FileNotFoundException {
         if (answers.size() > 0) {
-            Timber.i("getAnswers() is returning early because the answers have already been read");
+            Timber.v("getAnswers() is returning early because the answers have already been read");
             return;
         }
         Timber.v("getAnswersEntered");

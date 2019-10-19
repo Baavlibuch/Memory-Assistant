@@ -25,7 +25,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
@@ -263,7 +262,7 @@ public class Lessons extends AppCompatActivity {
             try {
                 if (reader != null) reader.close();
             } catch (IOException e1) {
-                Crashlytics.logException(e1);
+                Timber.e(e1);
             }
             finish();
         }
@@ -327,7 +326,7 @@ public class Lessons extends AppCompatActivity {
                     listItemView = LayoutInflater.from(getContext()).inflate(
                             R.layout.item_lesson_list, null, true);
             } catch (Resources.NotFoundException e) {
-                // Crashlytics.logException(e);
+                // Timber.e(e);
                 Toast.makeText(getContext(), R.string.dl_from_play, Toast.LENGTH_LONG).show();
                 throw new RuntimeException("Not downloaded from the Play Store");
             }

@@ -32,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.RecallSelector;
@@ -529,8 +528,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         intent.putExtra("file exists", fileExists);
         intent.putExtra(getString(R.string.discipline), "" + activity.getTitle());
 
-        Crashlytics.log("DisciplineFragment/fileExists = " + fileExists);
-        Crashlytics.log("DisciplineFragment/discipline = " + activity.getTitle());
+        Timber.i("DisciplineFragment/fileExists = " + fileExists);
+        Timber.i("DisciplineFragment/discipline = " + activity.getTitle());
 
         // no need to send filename as the most recent file within the disciplint is selected
 

@@ -22,7 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
-import com.crashlytics.android.Crashlytics;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
@@ -81,9 +80,9 @@ public class LessonFragment extends Fragment {
         } else {                                                                    // Asset
 
             if (bundle.getBoolean("list", false)) {                  // list
-                Crashlytics.log("activity = " + activity.getLocalClassName());
-                Crashlytics.log("bundle = " + bundle);
-                Crashlytics.log("title = " + activity.getTitle());
+                Timber.i("activity = " + activity.getLocalClassName());
+                Timber.i("bundle = " + bundle);
+                Timber.i("title = " + activity.getTitle());
 
                 ArrayList<Item> list = readAssetList(bundle);
 
@@ -171,11 +170,11 @@ public class LessonFragment extends Fragment {
             reader.close();
             return sb;
         } catch (IOException e) {
-            Crashlytics.logException(e);
+            Timber.e(e);
             try {
                 reader.close();
             } catch (Exception e1) {
-                Crashlytics.logException(e1);
+                Timber.e(e1);
             }
             Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
             activity.finish();
@@ -243,7 +242,7 @@ public class LessonFragment extends Fragment {
             try {
                 if (reader != null) reader.close();
             } catch (IOException e1) {
-                Crashlytics.logException(e1);
+                Timber.e(e1);
             }
             activity.finish();
         } catch (Exception e) {
