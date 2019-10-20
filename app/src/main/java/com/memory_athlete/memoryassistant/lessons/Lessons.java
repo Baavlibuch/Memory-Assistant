@@ -149,7 +149,13 @@ public class Lessons extends AppCompatActivity {
         else setTitle(intent.getStringExtra("headerString"));
 
         Timber.v("theme = %s", theme);
-        setContentView(R.layout.activity_lesson);
+        try {
+            setContentView(R.layout.activity_lesson);
+        } catch (Resources.NotFoundException e) {
+            Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
+            Timber.i("resource not found");
+            finish();
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
