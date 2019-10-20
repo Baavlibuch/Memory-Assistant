@@ -21,7 +21,7 @@
 4. Create your own `final class Encryption.java` in `app/src/main/java/com.memory_athlete.memoryassistant/inAppBilling/`. Add `static` functions, `decrypt` and `addSomePepper` with return type `String`. You can return empty strings. 
 5. Remove apk signing by removing `keystoreProperties` and `signingConfigs{...}` from app level `build.gradle`. To use your own signature, refer to the [documentation](https://developer.android.com/studio/publish/app-signing).
 6. Add your own `google-services.json` to `app/src/`. Download it by linking your builds to Firebase. To run the app without it remove – all mentions to firebase from the app level `build.gradle`; `meta-data` tag from the `AndroidManifests.xml`. **Do NOT remove `firebase-jobdispatcher`** it is important for reminders.
-7. Add your own `fabric.properties` to `app/src/`. Download it after connecting your builds to [Crashlytics](https://console.firebase.google.com/project/_/crashlytics) through Fabric. To run the app without it remove – the crashlytics dependency and fabric repository and plugin from `build.gradle`; the `meta-data` tag from the `AndroidManifests.xml`; Crashlytics calls from all java files. 
+7. Add your own `fabric.properties` to `app/src/`. Download it after connecting your builds to [Crashlytics](https://console.firebase.google.com/project/_/crashlytics) through Fabric. To run the app without it, run in debug or remove the crashlytics dependency and fabric repository and plugin from `build.gradle`; the `meta-data` tag from the `AndroidManifests.xml`; Crashlytics calls from all java files. 
 8. Keep googling the errors that you face.
 
 * **Dependencies**

@@ -78,7 +78,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        } else {
+            Fabric.with(this, new Crashlytics());
+            Timber.plant(new CrashlyticsLogTree());
+        }
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
 
         Helper.theme(this, MainActivity.this);
