@@ -414,6 +414,15 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 if (saveErrorCount == 0) {
                     Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
                     saveErrorCount++;
+                    String[] blocked = {"|", "\\", "?", "*", "<", "\"", ":", ">", "+", "[", "]", "'"};
+                    for (CharSequence c : blocked) {
+                        String s = path;
+                        s = s.replace(c, "");
+                        if (!s.equals(path)) {
+                            Timber.i("illegal character in path : %s", path);
+                            path = s;
+                        }
+                    }
                     return false;
                 }
                 File f = new File(path);
@@ -528,8 +537,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         intent.putExtra("file exists", fileExists);
         intent.putExtra(getString(R.string.discipline), "" + activity.getTitle());
 
-        Timber.i("DisciplineFragment/fileExists = " + fileExists);
-        Timber.i("DisciplineFragment/discipline = " + activity.getTitle());
+        Timber.i("DisciplineFragment/fileExists = %s", fileExists);
+        Timber.i("DisciplineFragment/discipline = %s", activity.getTitle());
 
         // no need to send filename as the most recent file within the disciplint is selected
 

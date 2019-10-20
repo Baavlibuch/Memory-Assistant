@@ -90,9 +90,9 @@ public class RecallSimple extends AppCompatActivity {
         mDiscipline = intent.getStringExtra(getString(R.string.discipline));
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        Timber.i("file Path = " + mFilePath);
-        Timber.i("discipline = " + mDiscipline);
-        Timber.i("file exists = " + intent.getBooleanExtra("file exists", false));
+        Timber.i("file Path = %s", mFilePath);
+        Timber.i("discipline = %s", mDiscipline);
+        Timber.i("file exists = %s", intent.getBooleanExtra("file exists", false));
 
         setTitle(mDiscipline);
 
