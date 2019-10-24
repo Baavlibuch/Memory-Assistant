@@ -89,6 +89,7 @@
             android:name=".main.DisciplineActivity"
             android:launchMode="singleTask"
             android:parentActivityName=".main.Practice"
+            android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.RecallSelector"

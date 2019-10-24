@@ -32,8 +32,8 @@ android {
         applicationId "com.memory_athelte.memoryassistant"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 114
-        versionName "1.7.2"
+        versionCode 115
+        versionName "1.7.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -76,7 +76,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-appindexing:19.0.0'
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
     implementation 'com.google.firebase:firebase-core:17.2.0'
-    implementation 'com.google.firebase:firebase-perf:19.0.0'
+    implementation 'com.google.firebase:firebase-perf:19.0.1'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
 
     implementation 'org.solovyev.android:checkout:1.2.2'

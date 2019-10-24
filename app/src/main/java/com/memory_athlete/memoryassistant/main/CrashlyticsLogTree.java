@@ -2,6 +2,8 @@ package com.memory_athlete.memoryassistant.main;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.crashlytics.android.Crashlytics;
 
 import timber.log.Timber;
@@ -12,7 +14,7 @@ public class CrashlyticsLogTree extends Timber.Tree {
     private static final String CRASHLYTICS_KEY_MESSAGE = "message";
 
     @Override
-    protected void log(int priority, String tag, String message, Throwable throwable) {
+    protected void log(int priority, String tag, @NonNull String message, Throwable throwable) {
         if (priority == Log.VERBOSE || priority == Log.DEBUG) {
             return;
         } else if (priority == Log.INFO) {
