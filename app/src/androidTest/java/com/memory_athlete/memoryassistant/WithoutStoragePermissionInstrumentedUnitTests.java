@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static androidx.core.content.PermissionChecker.checkSelfPermission;
 import static com.memory_athlete.memoryassistant.Helper.APP_FOLDER;
@@ -34,8 +33,8 @@ public class WithoutStoragePermissionInstrumentedUnitTests {
     public void checkPermissionsAndMakeDirectoryTest() throws IOException {
         waitForExecution();
 
-        if (checkSelfPermission(mActivityTestRule.getActivity(), READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            throw new RuntimeException("Has read permission");
+        //if (checkSelfPermission(mActivityTestRule.getActivity(), READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+        //    throw new RuntimeException("Has read permission");
         if (checkSelfPermission(mActivityTestRule.getActivity(), WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             throw new RuntimeException("Has write permission");
         File pDir = new File(APP_FOLDER + "Tests");
