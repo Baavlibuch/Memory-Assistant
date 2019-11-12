@@ -12,6 +12,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import timber.log.Timber;
+
 public class PrivacyPolicy extends AppCompatActivity {
 
     @Override
@@ -36,7 +38,7 @@ public class PrivacyPolicy extends AppCompatActivity {
             }
             raw.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Timber.e(e);
         }
         return stream.toString();
     }

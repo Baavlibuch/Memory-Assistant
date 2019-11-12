@@ -67,6 +67,7 @@
     <string name="resume">Resume</string>
     <string name="ers">Enter number of values and size of each value</string>
     <string name="save">Save</string>
+    <string name="saved">Saved</string>
     <string name="save_failed">Save Failed. Retry?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>

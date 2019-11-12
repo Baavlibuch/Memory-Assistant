@@ -204,11 +204,11 @@ public class Numbers extends DisciplineFragment {
                         outputStream.write(stringToSave.getBytes());
 
                         outputStream.close();
-                        Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), R.string.saved, Toast.LENGTH_SHORT).show();
                         return true;
                     } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(getActivity(), "Try again", Toast.LENGTH_SHORT).show();
+                        Timber.e(e);
+                        Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
                     }
                 }
             } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
@@ -237,7 +237,7 @@ public class Numbers extends DisciplineFragment {
             intent.putExtra("file exists", fileExists);
             intent.putExtra("discipline", "Digits");
 
-            Timber.i("Numbers/fileExists = " + fileExists);
+            Timber.i("Numbers/fileExists = %s", fileExists);
             Timber.i("Numbers/discipline = Digits");
 
             Timber.v("recalling Digits");

@@ -532,7 +532,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
     //When recall button is pressed
     protected void recall() {
         boolean fileExists = save();
-        Timber.v("fileExists = %s", fileExists);
+        Timber.i("DisciplineFragment.recall() - fileExists = %s", fileExists);
         Intent intent;
         if (fileExists) intent = new Intent(activity.getApplicationContext(), mRecallClass);
         else intent = new Intent(activity.getApplicationContext(), RecallSelector.class);
