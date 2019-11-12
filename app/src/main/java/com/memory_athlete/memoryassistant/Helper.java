@@ -18,10 +18,12 @@ import java.nio.file.AccessDeniedException;
 import java.nio.file.FileSystemException;
 import java.nio.file.Files;
 
+import timber.log.Timber;
+
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static androidx.core.app.ActivityCompat.requestPermissions;
-import static androidx.core.content.PermissionChecker.checkSelfPermission;
+import static androidx.core.content.ContextCompat.checkSelfPermission;
 
 /**
  * Created by Manik on 15/07/17.
@@ -192,9 +194,11 @@ public class Helper {
                     Files.createDirectories(pDir.toPath());
                 } catch (AccessDeniedException e){
                     // No write permissions
+                    Timber.i(e);
                     return false;
                 } catch (FileSystemException e) {
                     // No space left
+                    Timber.i(e);
                     new Handler(context.getMainLooper()).post(() ->
                             Toast.makeText(context,
                                     R.string.storage_full, Toast.LENGTH_SHORT).show()
@@ -205,10 +209,14 @@ public class Helper {
                     throw new RuntimeException(e);
                 }
                 return true;
-            } else isDirectoryCreated = pDir.mkdirs();
+            } else {
+                // checked later for reliability
+                //noinspection ResultOfMethodCallIgnored
+                pDir.mkdirs();
+            }
         }
         // Build.VERSION.SDK_INT < Build.VERSION_CODES.O
-        return isDirectoryCreated;
+        return pDir.exists();
     }
 
     public static boolean externalStorageNotWritable() {
@@ -221,13 +229,8 @@ public class Helper {
 
         if (checkSelfPermission(context, READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
             return true;
-        //if (shouldShowRequestPermissionRationale((Activity) context, READ_EXTERNAL_STORAGE)) {
         requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
                 WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
-        //} else {
-        //    requestPermissions((Activity) context, new String[]{READ_EXTERNAL_STORAGE,
-        //            WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
-        //}
         return false;
     }
 

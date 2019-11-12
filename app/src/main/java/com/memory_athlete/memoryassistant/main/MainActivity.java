@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -40,8 +39,6 @@ import java.util.Objects;
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.widget.Toast.makeText;
 
 
@@ -94,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         setAdapter();
 
         firstStart();
-        mayAccessStorage();
+        Helper.mayAccessStorage(this);
         if (!verifyInstallerId() && !BuildConfig.DEBUG) {
             Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
             FirebaseAnalytics.getInstance(this).logEvent(
@@ -127,22 +124,6 @@ public class MainActivity extends AppCompatActivity {
         final String installer = getPackageManager().getInstallerPackageName(getPackageName());
         // true if your app has been downloaded from Play Store
         return installer != null && validInstallers.contains(installer);
-    }
-
-
-    private void mayAccessStorage() {
-        // permissions not needed at runtime
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return;
-        // permissions granted
-        if (checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            return;
-        // request permissions
-        // show popup if never ask again has not been selected
-        if (shouldShowRequestPermissionRationale(READ_EXTERNAL_STORAGE)) requestPermissions(new
-                String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
-            // ?
-        else requestPermissions(new
-                String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_ACCESS);
     }
 
     @Override

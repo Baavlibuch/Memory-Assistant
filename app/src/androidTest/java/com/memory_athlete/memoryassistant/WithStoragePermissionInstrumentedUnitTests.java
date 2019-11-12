@@ -45,10 +45,12 @@ public class WithStoragePermissionInstrumentedUnitTests {
         if (!isDirectoryCreated) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
                 Files.createDirectories(pDir.toPath());
-            else isDirectoryCreated = pDir.mkdirs();
+            else //noinspection ResultOfMethodCallIgnored
+                pDir.mkdirs();
         } else {
             if (!pDir.delete()) throw new RuntimeException("Couldn't delete the test directory");
         }
+        isDirectoryCreated = pDir.exists();
         if (!isDirectoryCreated) throw new RuntimeException("Couldn't create the directory!");
 
         waitForExecution();

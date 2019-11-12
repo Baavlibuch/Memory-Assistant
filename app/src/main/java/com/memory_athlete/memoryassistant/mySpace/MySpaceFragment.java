@@ -383,6 +383,7 @@ public class MySpaceFragment extends Fragment {
         }
         if (!Helper.mayAccessStorage(getContext())) {
             if (name) {
+                Timber.i(getString(R.string.storage_permissions));
                 Toast.makeText(getContext(), R.string.storage_permissions,
                         Toast.LENGTH_SHORT).show();
                 return true;
@@ -392,6 +393,7 @@ public class MySpaceFragment extends Fragment {
             return false;
         }
         if (Helper.externalStorageNotWritable()) {
+            Timber.i("externalStorageNotWritable");
             Toast.makeText(getActivity(), R.string.check_storage, Toast.LENGTH_SHORT).show();
             if (name) return true;
 
@@ -413,7 +415,7 @@ public class MySpaceFragment extends Fragment {
                 editor.apply();
                 ReminderUtils.mySpaceReminder(activity, fname);
             } catch (Exception e) {
-                e.printStackTrace();
+                Timber.e(e);
                 Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
         }

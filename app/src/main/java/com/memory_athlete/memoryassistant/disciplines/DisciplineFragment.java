@@ -411,15 +411,16 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 Toast.makeText(activity.getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
                 return true;
             } catch (FileNotFoundException e) {
+                Timber.e(e);
                 if (saveErrorCount == 0) {
-                    Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity.getApplicationContext(), R.string.fnf_try_again, Toast.LENGTH_SHORT).show();
                     saveErrorCount++;
                     String[] blocked = {"|", "\\", "?", "*", "<", "\"", ":", ">", "+", "[", "]", "'"};
                     for (CharSequence c : blocked) {
                         String s = path;
                         s = s.replace(c, "");
                         if (!s.equals(path)) {
-                            Timber.i("illegal character in path : %s", path);
+                            Timber.e("illegal character in path : %s", path);
                             path = s;
                         }
                     }
@@ -430,8 +431,9 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                         activity.getTitle().toString() + " directory doesn't exist", e);
                 throw new RuntimeException(e);
             } catch (IOException e) {
+                Timber.e(e);
                 if (saveErrorCount == 0) {
-                    Toast.makeText(activity.getApplicationContext(), "Try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity.getApplicationContext(), R.string.io_try_again, Toast.LENGTH_SHORT).show();
                     saveErrorCount++;
                     return false;
                 }

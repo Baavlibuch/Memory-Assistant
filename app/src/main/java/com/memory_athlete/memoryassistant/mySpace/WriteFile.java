@@ -183,7 +183,8 @@ public class WriteFile extends AppCompatActivity {
         Timber.v("fname = %s", fname);
         if (!Helper.mayAccessStorage(this)) {
             if (name) {
-                Toast.makeText(this, "Permission to access storage is needed",
+                Timber.i(getString(R.string.storage_permissions));
+                Toast.makeText(this, R.string.storage_permissions,
                         Toast.LENGTH_SHORT).show();
                 return true;
             }
@@ -192,7 +193,8 @@ public class WriteFile extends AppCompatActivity {
             return false;
         }
         if (Helper.externalStorageNotWritable()) {
-            Toast.makeText(this, "Please check the storage", Toast.LENGTH_SHORT).show();
+            Timber.i("externalStorageNotWritable");
+            Toast.makeText(this, R.string.check_storage, Toast.LENGTH_SHORT).show();
             if (name) return true;
 
             name = true;
@@ -211,7 +213,7 @@ public class WriteFile extends AppCompatActivity {
                 editor.apply();
                 ReminderUtils.mySpaceReminder(this, fname);
             } catch (Exception e) {
-                e.printStackTrace();
+                Timber.e(e);
                 Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
         }

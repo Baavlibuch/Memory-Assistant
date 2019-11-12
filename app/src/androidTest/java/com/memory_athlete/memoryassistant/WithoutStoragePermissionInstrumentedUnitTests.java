@@ -18,7 +18,7 @@ import java.nio.file.AccessDeniedException;
 import java.nio.file.Files;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static androidx.core.content.PermissionChecker.checkSelfPermission;
+import static androidx.core.content.ContextCompat.checkSelfPermission;
 import static com.memory_athlete.memoryassistant.Helper.APP_FOLDER;
 import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
 
