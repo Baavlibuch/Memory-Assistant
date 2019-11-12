@@ -1,7 +1,9 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +21,12 @@ public class PrivacyPolicy extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_privacy_policy);
+        try {
+            setContentView(R.layout.activity_privacy_policy);
+        } catch (Resources.NotFoundException e){
+            Toast.makeText(this, R.string.wait, Toast.LENGTH_SHORT).show();
+            finish();
+        }
         ((WebView) findViewById(R.id.privacy_policy_view)).loadData(readTextFromResource(),
                 "text/html", "utf-8");
         setTitle(R.string.privacy_policy);
