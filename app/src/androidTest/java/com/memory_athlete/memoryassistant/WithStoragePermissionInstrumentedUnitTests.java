@@ -33,7 +33,7 @@ public class WithStoragePermissionInstrumentedUnitTests {
 
     // If it fails, try running it again
     @Test
-    public void checkPermissionsAndMakeDirectoryTest() throws IOException {
+    public void checkPermissionsAndMakeOrDeleteDirectoryTest() throws IOException {
         waitForExecution();
 
         if (!(checkSelfPermission(mActivityTestRule.getActivity(), READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED))
@@ -47,11 +47,11 @@ public class WithStoragePermissionInstrumentedUnitTests {
                 Files.createDirectories(pDir.toPath());
             else //noinspection ResultOfMethodCallIgnored
                 pDir.mkdirs();
+            isDirectoryCreated = pDir.exists();
+            if (!isDirectoryCreated) throw new RuntimeException("Couldn't create the directory!");
         } else {
             if (!pDir.delete()) throw new RuntimeException("Couldn't delete the test directory");
         }
-        isDirectoryCreated = pDir.exists();
-        if (!isDirectoryCreated) throw new RuntimeException("Couldn't create the directory!");
 
         waitForExecution();
     }

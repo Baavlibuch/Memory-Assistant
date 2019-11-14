@@ -32,7 +32,7 @@ import static androidx.core.content.ContextCompat.checkSelfPermission;
 public class Helper {
     public static final String APP_FOLDER = Environment.getExternalStorageDirectory().getAbsolutePath()
             + "/Memory Assistant/";
-    private static final int REQUEST_STORAGE_ACCESS = 555;
+    public static final int REQUEST_STORAGE_ACCESS = 555;
 
     public static final String TYPE = "type";
     public static final String RAW_RESOURCE_ID_KEY = "rawResourceID";

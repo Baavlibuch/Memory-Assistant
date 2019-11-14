@@ -17,7 +17,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/light">
+        android:theme="@style/light"
+        android:requestLegacyExternalStorage="true">
 
         <!-- android:largeHeap="true" -->
 

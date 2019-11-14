@@ -40,11 +40,11 @@ import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 import static android.widget.Toast.makeText;
+import static com.memory_athlete.memoryassistant.Helper.REQUEST_STORAGE_ACCESS;
 
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
-    private final int REQUEST_STORAGE_ACCESS = 444;
     private SharedPreferences sharedPreferences;
 
     @Override
