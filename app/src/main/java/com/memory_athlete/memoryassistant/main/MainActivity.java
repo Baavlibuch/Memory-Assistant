@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                     grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                 Helper.makeDirectory(Helper.APP_FOLDER, getApplicationContext());
             } else {
-                Snackbar.make(findViewById(R.id.main_list), "The app might crash without these permissions",
+                Snackbar.make(findViewById(R.id.main_list), R.string.storage_permissions,
                         Snackbar.LENGTH_SHORT).setAction("Grant", view -> firstStart());
             }
         }

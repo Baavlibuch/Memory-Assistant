@@ -112,6 +112,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             super(fm);
         }
 
+        @NonNull
         @Override
         public Fragment getItem(int position) {
             if (position == 0) {

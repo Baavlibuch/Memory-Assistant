@@ -23,7 +23,7 @@ public class PrivacyPolicy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         try {
             setContentView(R.layout.activity_privacy_policy);
-        } catch (Resources.NotFoundException e){
+        } catch (Resources.NotFoundException e){                                     // Does it even work!?
             Toast.makeText(this, R.string.wait, Toast.LENGTH_SHORT).show();
             finish();
         }
