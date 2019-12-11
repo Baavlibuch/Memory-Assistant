@@ -13,7 +13,7 @@ apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 //apply plugin: 'com.jakewharton.hugo'
 
-def keystorePropertiesFile = rootProject.file(".keystore.properties")
+def keystorePropertiesFile = rootProject.file("other/.keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
@@ -30,7 +30,7 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.memory_athelte.memoryassistant"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 120
         versionName "1.7.6"
@@ -74,7 +74,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-appindexing:19.0.0'
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
     implementation 'com.google.firebase:firebase-core:17.2.1'
-    implementation 'com.google.firebase:firebase-perf:19.0.2'
+    implementation 'com.google.firebase:firebase-perf:19.0.3'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
 
     implementation 'org.solovyev.android:checkout:1.2.2'
