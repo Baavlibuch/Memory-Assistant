@@ -53,7 +53,7 @@ public class MySpaceFragment extends Fragment {
     private File dir = null;
     private String title = "", fileName, oldTabTitle, oldName = null;
     private Boolean name;                                       // flag to indicate whether warning for file name has been issued
-    private int searchIndex;
+    private int searchIndex;                                    // index in string to start searching from
 
     private View rootView;
     private EditText searchEditText;
@@ -436,36 +436,45 @@ public class MySpaceFragment extends Fragment {
         }
     }
 
-    private void search(String stringToSearch) {
+    private boolean search(String stringToSearch) {
+        if (stringToSearch.equals("")) return false;                            // don't search
+
         stringToSearch = stringToSearch.toLowerCase();
         String fullText = mySpaceEditText.getText().toString().toLowerCase();
         boolean hasText = fullText.contains(stringToSearch);
         Timber.d("hasText = %s", hasText);
         if (hasText) {
-            searchIndex = fullText.indexOf(stringToSearch, searchIndex);
+            searchIndex = fullText.indexOf(stringToSearch, searchIndex);        // index in string
             // -1 : not found. Happens after the last
             if (searchIndex == -1) {
                 searchIndex = 0;
                 Toast.makeText(activity, R.string.search_from_start, Toast.LENGTH_SHORT).show();
+                return false;
             }
 
+            // scroll to location
             int lineNumber = mySpaceEditText.getLayout().getLineForOffset(searchIndex);
             int totalLines = mySpaceEditText.getLayout().getLineCount();
             int editTextViewBottom = mySpaceEditText.getBottom();
             ((ScrollView) rootView.findViewById(R.id.my_space_scroll_view))
                     .smoothScrollTo(0, editTextViewBottom * (lineNumber - 1) / totalLines);
+            // highlight
+            mySpaceEditText.setSelection(searchIndex, searchIndex + stringToSearch.length());
+            mySpaceEditText.requestFocus();
+
             searchIndex++;
-            return;
+            return true;
         }
         Toast.makeText(activity, R.string.not_found, Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     public void search() {
         String stringToSearch = searchEditText.getText().toString();
         searchIndex++;
-        search(stringToSearch);
         searchEditText.setVisibility(View.VISIBLE);
-        searchEditText.requestFocus();
+        if (!search(stringToSearch))
+            searchEditText.requestFocus();
         Timber.v("rootView.findViewById(R.id.search_edit_text_mySpaceFragment) visibility = %s", rootView.findViewById(R.id.search_edit_text_mySpaceFragment));
     }
 

@@ -37,7 +37,7 @@ public class WriteFile extends AppCompatActivity {
     boolean deleted = false;
     EditText searchEditText;
     EditText mySpaceEditText;
-    int searchIndex;
+    int searchIndex;                                    // index in string to start searching from
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -221,35 +221,45 @@ public class WriteFile extends AppCompatActivity {
         return true;
     }
 
-    private void search(String stringToSearch) {
+    // returns true if found
+    private boolean search(String stringToSearch) {
+        if (stringToSearch.equals("")) return false;                            // don't search
+
         stringToSearch = stringToSearch.toLowerCase();
         String fullText = mySpaceEditText.getText().toString().toLowerCase();
         boolean hasText = fullText.contains(stringToSearch);
         Timber.d("hasText = %s", hasText);
         if (hasText) {
-            searchIndex = fullText.indexOf(stringToSearch, searchIndex);
+            searchIndex = fullText.indexOf(stringToSearch, searchIndex);        // index in string
             // -1 : not found. Happens after the last
             if (searchIndex == -1) {
                 searchIndex = 0;
                 Toast.makeText(this, R.string.search_from_start, Toast.LENGTH_SHORT).show();
+                return false;
             }
 
+            // scroll to location
             int lineNumber = mySpaceEditText.getLayout().getLineForOffset(searchIndex);
             int totalLines = mySpaceEditText.getLayout().getLineCount();
             int editTextViewBottom = findViewById(R.id.my_space_editText).getBottom();
             ((ScrollView) findViewById(R.id.my_space_scroll_view))
                     .smoothScrollTo(0, editTextViewBottom * (lineNumber-1) / totalLines);
+            // highlight
+            mySpaceEditText.setSelection(searchIndex, searchIndex + stringToSearch.length());
+            mySpaceEditText.requestFocus();
+
             searchIndex++;
-            return;
+            return true;
         }
         Toast.makeText(getApplicationContext(), R.string.not_found, Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     public void search(View view) {
         String stringToSearch = searchEditText.getText().toString();
         searchIndex++;
-        search(stringToSearch);
         searchEditText.setVisibility(View.VISIBLE);
-        searchEditText.requestFocus();
+        if (!search(stringToSearch))
+            searchEditText.requestFocus();
     }
 }
