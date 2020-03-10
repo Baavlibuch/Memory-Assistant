@@ -1,0 +1,18 @@
+<p> A prática de memorizar equações é um pecado imperdoável porque elas devem ser entendidas. No entanto, quando se trata de esporte, esses pecados são perdoados. Infelizmente, memorizar equações usando técnicas de memória encontra-se em território não visitado. Eu tentei criar um sistema de memorização de equações, mas é muito grosseiro e ineficiente, então você terá que ajustá-lo. Se você conseguir melhorá-lo, por favor, compartilhe comigo. </p>
+
+<p> Aqui está como eu memorizo ​​as coisas. </p>
+<ul>
+<li> Você pode denotar números com objetos. Eu só faço isso por números pequenos para que as coisas fiquem fáceis. Para números maiores, você pode criar uma constante e memorizá-la separadamente em um caminho diferente. </li>
+<li> Você também pode criar um caminho preenchido com fórmulas que já conhece e usá-las aqui </li>
+<li> Para uma constante como a velocidade da luz (c) ou a constante de gravitação universal (G), você pode usar animais. Então uma girafa para G e um camelo para c. </li>
+<li> Use uma ação para um operador. Exemplo - soco para multiplicação. Você pode memorizar parênteses e subscritos como ações também. </li>
+<li> Para uma variável, uma pessoa parece ser a melhor escolha. Alan da The Hangover é uma boa escolha para A. Não misture o capital e letras minúsculas, atribua pessoas diferentes a ambos. </li>
+<li> Para uma equação química, as pessoas podem denotar moléculas <b> novas </b>. Não use nada para elementos, você deve conhecê-los todos ou apenas usar os pinos de outro caminho / guarda-roupa. </li>
+</ul>
+<p> Para memorizar todos esses símbolos, crie uma história. Você pode armazenar uma equação curta, em uma única cavilha, mas se ela ficar longa, você provavelmente precisará continuar na próxima cavilha. Neste último, certifique-se de marcá-lo como a continuação. Outra ação pode ser usada para esta tarefa. </p>
+
+<p> Algumas dicas </p>
+
+<ul>
+<li> Tente manter todos os termos e variáveis ​​em ordem. Tem seus prós e contras. A principal desvantagem é que torna as histórias semelhantes e repetitivas e aumenta as chances de esquecer a equação. Isto resulta em um pró - encoraja a compreensão das equações para aqueles que fazem o aprendizado de rotina. </li>
+</ul>

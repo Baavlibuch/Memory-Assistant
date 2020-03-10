@@ -1,0 +1,77 @@
+<p> Fonte: <a href="http://memory-sports.com"> http://memory-sports.com </a> </p>
+
+<p> É uma ferramenta poderosa que é usada pela maioria dos atletas mentais. Como é baseado em um sistema fonético, você memorizará facilmente todas as imagens e passará a utilizá-las em ação. </p>
+
+<h4> O desafio dos números </h4>
+
+<p> A razão pela qual os números são tão problemáticos para muitas pessoas é que elas são abstratas. Eles caracterizam uma quantidade de algo, mas não são nada que possamos ver, segurar ou sentir. Nós não podemos nem descrever o que eles significam. Claro, você pode tentar por um dígito muito baixo. Mas quando se trata de mais de dez você terá grandes problemas. A conclusão para atletas de memória é tornar os números mais concretos. </p>
+
+<h4> Os diferentes sistemas de pinos </h4>
+
+<p> Para manifestar um número, você precisa alterá-lo em outra coisa. Não importa em que, desde que você possa imaginar. Como temos um sistema decimal, precisamos traduzir pelo menos dez imagens para cada número. As listas que você cria a partir desses objetos são amplamente chamadas de “listas de pegadas”. Eu me referirei a esses objetos como “imagens” ou “mnemônicos”. Depois de memorizar essa lista, você poderá usá-la repetidamente e memorizar qualquer quantidade de dígitos (dependendo da quantidade de locais do seu Método de Localização). </p>
+
+<p> Agora veremos alguns sistemas numéricos diferentes usados ​​por atletas de memória. A complexidade crescente é indicada pelo termo “Nível”. Um nível superior contém mais informações dentro de uma imagem e, portanto, é mais eficiente para a tarefa de memorização. Ao mesmo tempo, o esforço cresce para aprender o sistema. Um sistema de 1º nível pode ser aprendido dentro de cinco minutos. Para um sistema de 3º nível, é melhor prever algumas semanas. Depende do seu propósito que você deve usar. Para estudos, você pode estar bem com os sistemas menores. Se você quer se tornar um campeão de memória, você deve buscar maior complexidade. </p>
+
+<p> Esta visão geral é apenas um exemplo dos sistemas mais populares. As possibilidades são muito maiores. Todo novato é aconselhado a ter em mente que sempre pode haver uma solução melhor para traduzir os números em algo mais memorável. </p>
+
+<h4> Nível 1: Sistema numérico e de número-rima </h4>
+
+<p> Uma abordagem é através da forma de cada número. Por exemplo: O “dois” parece com um cisne. Outra maneira é usar rimas para cada número. Neste caso, os “dois” podem ser “sapato”. Exceto que você está lidando com apenas alguns números pequenos, não se preocupe em aprender um sistema tão simples. Mas por que isso? </p>
+
+<p> Primeiramente, você não usa o poder dos clusters. Isso significa colocar várias informações em uma imagem. Para lembrar um número de telefone com oito dígitos, você precisaria de oito imagens com um sistema tão simples. Embora ainda seja útil lembrar, o esforço é grande demais para uma tarefa tão simples. </p>
+
+<p> Em segundo lugar, dez imagens não são suficientes para ter uma variedade adequada para diferentes histórias. Imagine que você tenha que fazer uma história para um número com quatro “dois”. Você teria que colocar quatro cisnes em sua imagem mental. </p>
+
+<p> Se você quiser memorizar dígitos com mais eficiência, precisará de um sistema mais evoluído. Então vamos pular estes e ir para os sistemas de 2 dígitos. </p>
+
+<h4> 2º nível: o sistema principal </h4>
+
+<p> O menor cluster para dígitos decimais é de dois dígitos juntos. 10x10 faz 100 imagens para cada combinação de dois números. Pode parecer muito para aprender, mas a base mnemônica desses sistemas ajuda você a fazê-lo em um tempo muito curto. Este guia define seu foco no Sistema Principal, uma das muitas maneiras de agrupar dois dígitos juntos. No final, não importa que tipo de sistema você usa se tiver a mesma quantidade de informação armazenada que as imagens. </p>
+
+<p> O Sistema Principal é uma técnica fonética para traduzir números em palavras. Começa com a conversão de dígitos em sons consonantes. Depois disso, você adiciona vogais antes, entre e depois dessas letras. As regras fonéticas são mnemônicas e, portanto, fáceis de lembrar. Isso ajuda você a reconstruir as imagens que você tem em mente, mesmo que você não tenha aprendido o conjunto completo de 100 imagens ainda. Depois de alguma prática, você terá fortes associações com cada número de 00 a 99. Parece um grande esforço para tornar as coisas mais fáceis para a sua memória. Mas não é tão difícil e no final você nunca terá que pensar sobre isso novamente. Você apenas conhecerá suas imagens. Se você pode superar sua dúvida sobre a eficiência desse esforço, você é um grande passo à frente de todos que chegaram até aqui, mas deu as costas para essas técnicas. </p>
+
+<p> Outra grande coisa sobre o Sistema Principal é o fato de que ele é expansível. Ao adicionar um terceiro número ao seu cluster, você alcançará o terceiro nível. Isso significaria memorizar 1.000 objetos, antes de poder usá-lo (ou 900, se você já aprendeu uma lista de 100). Mas isso não é nada que você deva pensar em começar. Na verdade, você é capaz de ir muito longe com um sistema de segundo nível. Mas a quantidade de atletas de memória usando um sistema de terceiro nível está crescendo a cada dia. Não entrarei em detalhes sobre o sistema de 3º nível porque ele funciona exatamente da mesma maneira que um sistema de segundo nível, mas com três dígitos para codificar em vez de dois. </p>
+
+<h4> As regras: 86 é um peixe </h4>
+
+<p> As regras a seguir são as noções básicas do sistema. Você tem que memorizá-los para criar e reconstruir suas imagens. Ensinei-os a dezenas de crianças. Eles foram capazes de aprendê-los em dez minutos. Sem uma explicação oral, pode demorar um pouco mais, mas você entendeu: é muito simples! </p>
+
+<h4> O Código Principal </h4>
+
+<p> Constantes associadas a numerais </p>
+
+<ul>
+<li> 0 s, z, c suave </li>
+<li> 1 t, d </li>
+<li> 2 n </li>
+<li> 3 m </li>
+<li> 4 r </li>
+<li> 5 l </li>
+<li> 6 j, sh, suave g, soft "ch" </li>
+<li> 7 k, difícil c, difícil g, difícil "ch", q, qu </li>
+<li> 8 f, v </li>
+<li> 9 p, b </li>
+<li> Sons não atribuídos de vogal, w, h, y, x </li>
+</ul>
+<b> Os mnemônicos - </b>
+<ul>
+<li> z é a primeira letra do zero. As outras letras têm um som similar </li>
+<li> t & d tem um traço para baixo e soa similar (alguns sistemas variantes incluem "th") </li>
+<li> n tem dois traços descendentes </li>
+<li> última letra de quatro, também 4 e R são quase imagens invertidas entre si </li>
+<li> um script j tem um loop inferior / g é quase um 6 girado </li>
+<li> capital K "contém" dois setes (alguns sistemas variantes incluem "ng") </li>
+<li> O script se assemelha a uma figura-8. V parece similar </li>
+<li> p é uma imagem espelhada 9. b soa semelhante e se assemelha a um 9 enrolado </li>
+<li> Eles podem ser usados ​​em qualquer lugar sem alterar o valor numérico de uma palavra </li>
+</ul>
+
+<p> Cada dígito mapeia para um conjunto de sons semelhantes com posições semelhantes de boca e língua. O mapeamento é fonético, então são os sons consonantes que importam, não a ortografia. Portanto, uma palavra como “ação” codificaria o número 762, não 712; e "fantasma" seria 701, enquanto, porque o "gh" em "suficiente" é pronunciado como um "f", a palavra "suficiente" codifica o número 28. </p>
+
+<p> Da mesma forma, letras duplas são desconsideradas. A palavra "míssil" é mapeada para 305, não para 3005. Para codificar 3005, alguém usaria algo como "vela musgosa". </p>
+
+<p> Muitas vezes, o mapeamento é compacto. "Hindquarters", por exemplo, se traduz inequivocamente em 2174140, o que equivale a 7 dígitos codificados por 12 letras e pode ser facilmente visualizado. </p>
+
+<h4> Crie sua própria lista </​​h4>
+
+<p> Se você está seguindo as regras acima, há poucas coisas que você pode fazer de errado. Você pode até usar palavras abstratas como "tempo" se você tiver uma forte associação visual para ele como um relógio. Fique estritamente com as regras no começo. Isso ajudará você a memorizar as palavras. Mais tarde, você pode pular e usar qualquer palavra para substituir suas imagens mais fracas. Eu mudei vários pinos no meu sistema ao longo do tempo sem usar o sistema principal mais. Mas para aprender o pacote inteiro de uma só vez, as regras são obrigatórias. </p>
