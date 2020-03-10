@@ -34,6 +34,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import io.fabric.sdk.android.Fabric;
@@ -97,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
             FirebaseAnalytics.getInstance(this).logEvent(
                     "release_app_not_installed_form_play", null);
         }
+        if (!Locale.getDefault().getLanguage().equals("en"))
+            Toast.makeText(this, R.string.faulty_translations, Toast.LENGTH_LONG).show();
+
     }
 
     @Override

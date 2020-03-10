@@ -176,5 +176,6 @@
     <string name="storage_full">Device storage full</string>
     <string name="wait">Please wait</string>
     <string name="fake_dates">These dates are not real</string>
+    <string name="faulty_translations">Translations might be faulty</string>
 
 </resources>
