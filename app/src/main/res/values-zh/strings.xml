@@ -157,5 +157,6 @@
     <string name="wait">请耐心等待</string>
     <string name="tab">\t</string>
     <string name="fake_dates">这些日期不是真实的</string>
+    <string name="faulty_translations">翻译可能有误</string>
 
 </resources>

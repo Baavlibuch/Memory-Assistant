@@ -157,5 +157,6 @@
     <string name="storage_permissions">É necessária permissão para acessar o armazenamento</string>
     <string name="wait">Por favor, espere</string>
     <string name="fake_dates">Essas datas não são reais</string>
+    <string name="faulty_translations">As traduções podem estar com defeito</string>
 
 </resources>

@@ -157,5 +157,6 @@
     <string name="storage_permissions">Die Erlaubnis zum Zugriff auf den Speicher ist erforderlich</string>
     <string name="wait">Warten Sie mal</string>
     <string name="fake_dates">Diese Daten sind nicht echt</string>
+    <string name="faulty_translations">Übersetzungen sind möglicherweise fehlerhaft</string>
 
 </resources>

@@ -157,5 +157,6 @@
     <string name="storage_permissions">Ruhusa ya kuhifadhi kuhifadhi inahitajika</string>
     <string name="wait">Tafadhali subiri</string>
     <string name="fake_dates">Tarehe hizi sio halisi</string>
+    <string name="faulty_translations">Tafsiri inaweza kuwa na makosa</string>
 
 </resources>

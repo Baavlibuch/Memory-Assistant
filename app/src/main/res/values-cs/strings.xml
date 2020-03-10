@@ -157,5 +157,6 @@
     <string name="storage_permissions">Je třeba povolení přístupu k úložišti</string>
     <string name="wait">Prosím, čekejte</string>
     <string name="fake_dates">Tato data nejsou skutečná</string>
+    <string name="faulty_translations">Překlady mohou být vadné</string>
 
 </resources>

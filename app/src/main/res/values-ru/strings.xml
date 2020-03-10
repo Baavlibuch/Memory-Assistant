@@ -157,5 +157,6 @@
     <string name="storage_permissions">Требуется разрешение на доступ к хранилищу</string>
     <string name="wait">пожалуйста, подождите</string>
     <string name="fake_dates">Эти даты не являются реальными</string>
+    <string name="faulty_translations">Переводы могут быть ошибочными</string>
 
 </resources>

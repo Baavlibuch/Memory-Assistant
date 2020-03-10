@@ -157,5 +157,6 @@
     <string name="storage_permissions">भंडारण तक पहुंच की अनुमति आवश्यक है</string>
     <string name="wait">कृपया प्रतीक्षा करें</string>
     <string name="fake_dates">ये तारीखें वास्तविक नहीं हैं</string>
+    <string name="faulty_translations">अनुवाद दोषपूर्ण हो सकते हैं</string>
 
 </resources>

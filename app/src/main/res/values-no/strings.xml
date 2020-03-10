@@ -157,5 +157,6 @@
     <string name="storage_permissions">Tillatelse til tilgang til lagring er nødvendig</string>
     <string name="wait">Vennligst vent</string>
     <string name="fake_dates">Disse datoene er ikke ekte</string>
+    <string name="faulty_translations">Oversettelser kan være feil</string>
 
 </resources>

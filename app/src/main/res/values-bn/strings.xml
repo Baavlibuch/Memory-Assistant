@@ -157,5 +157,6 @@
     <string name="storage_permissions">স্টোরেজ অ্যাক্সেসের অনুমতি প্রয়োজন</string>
     <string name="wait">অনুগ্রহপূর্বক অপেক্ষা করুন</string>
     <string name="fake_dates">এই তারিখগুলি আসল নয়</string>
+    <string name="faulty_translations">অনুবাদগুলি ত্রুটিযুক্ত হতে পারে</string>
 
 </resources>

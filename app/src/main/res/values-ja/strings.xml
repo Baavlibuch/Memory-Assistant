@@ -152,5 +152,11 @@
     <string name="shorter_name">短い名前でもう一度お試しください</string>
     <string name="storage_full">デバイスストレージがいっぱいです</string>
     <string name="storage_permissions">ストレージへのアクセス許可が必要です</string>
+    <string name="fake_dates">これらの日付は本物ではありません</string>
+    <string name="faulty_translations">翻訳に問題がある可能性があります</string>
+    <string name="fnf_try_again">ファイルが見つかりません。再試行</string>
+    <string name="io_try_again">IOException。もう一度やり直してください</string>
+    <string name="saved">保存しました</string>
+    <string name="wait">お待ちください</string>
 
 </resources>

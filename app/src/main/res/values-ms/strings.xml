@@ -157,5 +157,6 @@
     <string name="storage_permissions">Kebenaran untuk mengakses storan diperlukan</string>
     <string name="wait">Sila tunggu</string>
     <string name="fake_dates">Tarikh-tarikh ini tidak benar</string>
+    <string name="faulty_translations">Terjemahan mungkin rosak</string>
 
 </resources>

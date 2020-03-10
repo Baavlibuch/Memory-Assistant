@@ -157,5 +157,6 @@
     <string name="storage_permissions">مطلوب إذن للوصول إلى التخزين</string>
     <string name="wait">أرجو الإنتظار</string>
     <string name="fake_dates">これらの日付は本物ではありません</string>
+    <string name="faulty_translations">الترجمات قد تكون خاطئة</string>
 
 </resources>

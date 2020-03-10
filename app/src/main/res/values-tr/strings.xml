@@ -153,5 +153,11 @@
     <string name="privacy_policy">Gizlilik Politikası</string>
     <string name="dl_from_play">Doğru çalışması için, lütfen uygulamayı Google Play Store\'dan indirin</string>
     <string name="storage_full">Cihaz depolama alanı dolu</string>
+    <string name="fake_dates">Bu tarihler gerçek değil</string>
+    <string name="faulty_translations">Çeviriler hatalı olabilir</string>
+    <string name="fnf_try_again">Dosya bulunamadı. Tekrar deneyin</string>
+    <string name="io_try_again">IOException. Lütfen tekrar deneyin</string>
+    <string name="saved">Kayıtlı</string>
+    <string name="wait">Lütfen bekle</string>
 
 </resources>

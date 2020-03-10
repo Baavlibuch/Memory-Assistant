@@ -158,5 +158,6 @@
     <string name="storage_permissions">Ang pahintulot upang ma-access ang imbakan ay kinakailangan</string>
     <string name="wait">Mangyaring maghintay</string>
     <string name="fake_dates">Ang mga petsa na ito ay hindi totoo</string>
+    <string name="faulty_translations">Ang mga pagsalin ay maaaring mali</string>
 
 </resources>
