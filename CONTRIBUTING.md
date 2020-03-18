@@ -1,10 +1,16 @@
 # Contributing
+* [Introduction](#introduction)
 * [Code of Conduct](https://github.com/maniksejwal/Memory-Assistant/blob/master/CODE_OF_CONDUCT.md)
 * [Translation Guidelines](#translation-guidelines)
 * [Issue Submission Guidelines](#issue-submission-guidelines)
 * [Pull Request Submission Guidelines](#pull-request-submission-guidelines)
 * [Writing tests](#writing-tests)
 * [Questions, etc](#who-do-i-talk-to)
+
+## Introduction
+* The first step you need to take to be able to contribute to software is to believe in yourself; working on sowtware and coding are actually quite easy.
+* The second step is to create an account on [Github](https://github.com/join?source=header). Github is the place where code, resources, backups, etc. are stored and can be played around with.
+* Most of the unfamiliar work can be done by simply using the onscreen buttons on the page so you will barely have to learn anything.
 
 ## Translation Guidelines
 * The translation instructions are for non tech savvy people who want to contribute to the project. They are written with the assumption that you just want to make a quick contribution using the web browser on your phone.
@@ -16,8 +22,8 @@
 * **Locales**
 The resources in the default language are stored in the `res/values/strings.xml`, `res/raw/` or `assets`. 
 The resources in other languages are stored at different locations but have the same filename and key. 
-  1. An English (default) value `<string name="practice">Practice</string>` is stored in [`app/src/main/res/values/strings.xml`](translations/app/src/main/res/values/strings.xml) while the same is stored in [`app/src/main/res/values-fr/strings.xml`](translations/app/src/main/res/values-fr/strings.xml) as `<string name="practice">Entraine</string>` for French. The only differences here are the actual value and the folders `values` and `values-fr`.
-  2. An English (default) raw file is stored as [`app/src/main/res/raw/lesson_equations.txt`](translations/app/src/main/res/raw/lesson_pao.txt) while the same is stored as [`app/src/main/res/raw-jp/lesson_equation.txt`](translations/app/src/main/res/raw-jp/lesson_pao.txt) for Japanese. Differences - actual contents and the folders `raw` and `raw-jp`.
+  1. An English (default) value `<string name="practice">Practice</string>` is stored in [`app/src/main/res/values/strings.xml`](master/app/src/main/res/values/strings.xml) while the same is stored in [`app/src/main/res/values-fr/strings.xml`](master/app/src/main/res/values-fr/strings.xml) as `<string name="practice">Entraine</string>` for French. The only differences here are the actual value and the folders `values` and `values-fr`.
+  2. An English (default) raw file is stored as [`app/src/main/res/raw/lesson_equations.txt`](master/app/src/main/res/raw/lesson_pao.txt) while the same is stored as [`app/src/main/res/raw-jp/lesson_equation.txt`](master/app/src/main/res/raw-jp/lesson_pao.txt) for Japanese. Differences - actual contents and the folders `raw` and `raw-jp`.
   3. An English (default) assets file is stored in [`app/src/main/assets/...`] while the same is stored as [`app/src/main/assets-ar/...`] for Arabian. Differences - actual contents within the files present deep inside the folders and the folders `assets` and `assets-ar`.
   
 * **Formatting**
@@ -28,14 +34,14 @@ The resources in other languages are stored at different locations but have the 
   
 * **Translation Submission Guidelines** (using only the web browser)
   1. Create a fork of this repository. The button is in the top right corner of this web page.
-  2. Navigate to the file that you want to translate and copy everything. Paths to resources - [`app/src/main/res`](translations/app/src/main/assets/Implement/), path to assets - [`app/src/main/assets/Implement/`](translations/app/src/main/assets/Implement/). Be sure to work on the `translations` branch.
+  2. Navigate to the file that you want to translate and copy everything. Paths to resources - [`app/src/main/res`](master/app/src/main/assets/Implement/), path to assets - [`app/src/main/assets/Implement/`](master/app/src/main/assets/Implement/). Be sure to work on the `master` branch.
   3. Priority of translation: `res/values/strings.xml` > `res/raw/lesson_xxx.txt` > `res/raw/privacy_policy.txt` > `res/raw/xxx.txt` > `assets/Implement/xxx`. You can edit file names and folder names in `assets/Implement/`. Do **not** edit anything related to jq_math, it contains code.
   4. Go back to the parent folder and click the `Create new file` button. Give the same name to the file. Simply hitting backspace in the 'Name your file' box allows you to edit the path.
   5. Make sure that everything except `-xx` matches. You can find the value of -xx by searching for `(Language) locale` on your search engine.
   6. Paste the contents you copied in step 2 and begin the translation process.
-  7. Click `Commit new file` to save the changes. Be sure to give a descriptive name to the commit. Do NOT commit directly to the master or translations branch if you have the option.
+  7. Click `Commit new file` to save the changes. Be sure to give a descriptive name to the commit. Do NOT commit directly to the master branch if you have the option.
   8. Test whether the file is doing what you want them to do
-  9. Once you have are done, create a Pull Request to `maniksejwal/memory-assistant:translations`.
+  9. Once you have are done, create a Pull Request to `maniksejwal/memory-assistant:master`.
 
 ## Issue Submission Guidelines
 * Before you submit your issue search the archive, maybe your question was already answered. 
