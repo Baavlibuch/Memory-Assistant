@@ -10,7 +10,7 @@
 ### [Contribution guidelines](https://github.com/maniksejwal/Memory-Assistant/blob/master/CONTRIBUTING.md)
 
 ### Who do I talk to?
-* Feel free to join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U)
+* Feel free to join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/zt-5uq1mobq-i2UthsNyBXISWZHqkr2zZQ)
 * eMail address – memoryassistantapp@gmail.com
 
 ### How do I get set up?
