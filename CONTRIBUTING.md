@@ -11,6 +11,7 @@
 * The first step you need to take to be able to contribute to software is to believe in yourself; working on sowtware and coding are actually quite easy.
 * The second step is to create an account on [Github](https://github.com/join?source=header). Github is the place where code, resources, backups, etc. are stored and can be played around with.
 * Most of the unfamiliar work can be done by simply using the onscreen buttons on the page so you will barely have to learn anything.
+* To edit a file on your browser, simply click on the edit button (pen) and edit the text. Once done, scroll to the bottom of the web page and fill in the message and description. Don't forget to press the commit button once you are done. Once all this is done, create a pull request.
 
 ## Translation Guidelines
 * The translation instructions are for non tech savvy people who want to contribute to the project. They are written with the assumption that you just want to make a quick contribution using the web browser on your phone.
@@ -100,5 +101,5 @@ After your pull request is merged, you can safely delete your branch and pull th
 * UI testing is the main goal, boundary value, and other forms of tests are less important.
 
 ## Who do I talk to?
-* Feel free to join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/enQtNDU4Njk5MTQ4NzEwLTQ4YWRhMTRkMmY0ZjllMWJmOTJkYmI3MjY3M2Q1Y2M4MGNkNmU3OGM0ZWE0MTRiZWRlZGRlN2I0NDcxMGRmN2U) for easy and effecient communication
+* Feel free to join the [Slack workspace](https://join.slack.com/t/memory-athlete-skynet/shared_invite/zt-5uq1mobq-i2UthsNyBXISWZHqkr2zZQ) for easy and effecient communication
 * eMail address – memoryassistantapp@gmail.com
