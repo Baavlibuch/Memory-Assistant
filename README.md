@@ -1,4 +1,3 @@
-[#AndroidDevChallenge](https://github.com/maniksejwal/Memory-Assistant/blob/master/AndroidDevChallenge)
 # README
 
 ### What is this repository for?
@@ -27,7 +26,7 @@
 
 * **Dependencies**
 1. Java 8
-2. Kitlin
+2. Kotlin
 3. Android SDK
 4. *Fabric* (Crashlytics)
 5. *Firebase* (Indexing, AdMob, JobDispatcher) 
