@@ -26,7 +26,6 @@ import java.util.List;
 
 import timber.log.Timber;
 
-
 public class Contribute extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -40,6 +39,8 @@ public class Contribute extends AppCompatActivity {
         setAdapter();
     }
 
+
+    // setting the adapter for displaying the list support, fund,..
     public void setAdapter() {
         final List<Item> list = setList();
 
@@ -94,6 +95,7 @@ public class Contribute extends AppCompatActivity {
         Timber.v("Adapter set!");
     }
 
+    // defining the list items
     private List<Item> setList() {
         String[] headers = getResources().getStringArray(R.array.contribute_headers);
         String[] bodies = getResources().getStringArray(R.array.contribute_bodies);
@@ -116,6 +118,7 @@ public class Contribute extends AppCompatActivity {
         }
     }
 
+    // defining each item of adapter
     private class MainAdapter extends ArrayAdapter<Item> {
 
         MainAdapter(Activity context, List<Item> words) {

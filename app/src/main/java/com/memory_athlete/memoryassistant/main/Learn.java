@@ -22,7 +22,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-
 public class Learn extends AppCompatActivity {
 
     @Override
@@ -34,8 +33,10 @@ public class Learn extends AppCompatActivity {
         setAdapter();
     }
 
+    // setting the adapter
     public void setAdapter() {
         final ArrayList<Item> list = new ArrayList<>();
+
         setList(list);
 
         LearnAdapter adapter = new LearnAdapter(this, list);
@@ -53,6 +54,7 @@ public class Learn extends AppCompatActivity {
         });
     }
 
+    // sets the list method of loci, the perfect association,...
     private void setList(ArrayList<Item> list) {
         list.add(new Item(R.string.method_of_loci, R.drawable.method_of_loci, Lessons.class, R.raw.lesson_method_of_loci));
         list.add(new Item(R.string.associations, R.drawable.perfect_association, Lessons.class, R.raw.lesson_perfect_association));
@@ -65,6 +67,7 @@ public class Learn extends AppCompatActivity {
         //list.add(new Item(R.string.checkout, Lessons.class, R.raw.Important, true));
     }
 
+    // data about each item
     private class Item {
         int mItem, mFile, mImageId;
         Class mClass;
@@ -85,6 +88,7 @@ public class Learn extends AppCompatActivity {
         }*/
     }
 
+    // defining the adapter which is going to take the list of items for displaying
     private class LearnAdapter extends ArrayAdapter<Item> {
 
         LearnAdapter(Activity context, ArrayList<Item> list) {

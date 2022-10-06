@@ -39,6 +39,7 @@ public class CreditsActivity extends AppCompatActivity {
         });
     }
 
+    // getting the names to be displayed
     ArrayList<Item> setList(){
         ArrayList<Item> contributors = new ArrayList<>();
         String[] names = getResources().getStringArray(R.array.contributor_names);
@@ -56,6 +57,7 @@ public class CreditsActivity extends AppCompatActivity {
         }
     }
 
+    // defining each item of adapter
     private class CreditAdapter extends ArrayAdapter<Item> {
 
         CreditAdapter(Context context, ArrayList<Item> list) {

@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
@@ -202,7 +204,15 @@ public class MySpaceFragment extends Fragment {
             Item item = finalArrayList.get(position);
             Timber.v("item.mPath = %s", item.mPath);
             if (fragListViewId == MIN_DYNAMIC_VIEW_ID) {                                // show selector
-                dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mPath);
+
+                //Directory of practice - external storage
+                int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        EXTERNAL_STORAGE_PERMISSION_CODE);
+                File folder = getActivity().getFilesDir();
+                dir = new File(folder + File.separator + getString(R.string.my_space) + File.separator + item.mPath);
+
+                //dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mPath);
                 layout.findViewById(fragListViewId).setVisibility(View.GONE);
                 fragListViewId++;
                 title = item.mName;
@@ -219,7 +229,15 @@ public class MySpaceFragment extends Fragment {
                 //rootView.findViewById(R.id.back_button).bringToFront();
             } else {                                                                    // show editor
                 Timber.v("listViewId = %s", fragListViewId);
-                fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
+
+                //Directory of practice - external storage
+                int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        EXTERNAL_STORAGE_PERMISSION_CODE);
+                File folder = getActivity().getFilesDir();
+                fileName = folder + File.separator + getString(R.string.my_space) + File.separator + title;
+
+                //fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + title;
                 //Intent intent = new Intent(getApplicationContext(), WriteFile.class);
                 //intent.putExtra("mHeader", item.mName);
                 //intent.putExtra("fileString", item.mItem);
@@ -297,8 +315,15 @@ public class MySpaceFragment extends Fragment {
         addClickListener = v -> {
             Timber.v("add button clicked");
             name = false;
-            fileName = Helper.APP_FOLDER + MySpaceFragment.this.getString(R.string.my_space) + File.separator + title;
 
+            //Directory of practice - external storage
+            int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    EXTERNAL_STORAGE_PERMISSION_CODE);
+            File folder = getActivity().getFilesDir();
+            fileName = folder + File.separator + MySpaceFragment.this.getString(R.string.my_space) + File.separator + title;;
+
+            //fileName = Helper.APP_FOLDER + MySpaceFragment.this.getString(R.string.my_space) + File.separator + title;
             editLayout.setVisibility(VISIBLE);
             fab.setContentDescription(getString(R.string.search));
             fab.setOnClickListener(searchClickListener);

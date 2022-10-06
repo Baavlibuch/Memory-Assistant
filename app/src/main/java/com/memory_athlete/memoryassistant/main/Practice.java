@@ -67,6 +67,7 @@ public class Practice extends AppCompatActivity {
         }
     }
 
+    // sets the list numbers,words,...
     private void setList(ArrayList<Discipline> disc) {
         disc.add(new Discipline(R.string.numbers, R.drawable.numbers, 1, true, false, 1));
         disc.add(new Discipline(R.string.words, R.drawable.vocabulary, 2, false, true));
@@ -81,6 +82,7 @@ public class Practice extends AppCompatActivity {
         //disc.add(new Discipline(R.string.j, R.drawable.colours, Colours.class, false, false));
     }
 
+    // data about each item
     private class Discipline {
         private int mNameId;
         private int mImageId;
@@ -107,6 +109,7 @@ public class Practice extends AppCompatActivity {
         }
     }
 
+    // defining the adapter which is going to take the list of items for displaying
     private class DisciplineAdapter extends ArrayAdapter<Discipline> {
         DisciplineAdapter(Context context, ArrayList<Discipline> cats) {
             super(context, 0, cats);

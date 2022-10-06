@@ -1,5 +1,10 @@
 package com.memory_athlete.memoryassistant;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
+import static org.junit.Assert.assertEquals;
+
 import android.content.SharedPreferences;
 import android.widget.ListView;
 
@@ -18,11 +23,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.Scanner;
-
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
-import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class MainActivityInstrumentedUnitTests {

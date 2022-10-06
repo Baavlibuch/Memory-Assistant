@@ -21,10 +21,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-import com.crashlytics.android.Crashlytics;
+//import com.crashlytics.android.Crashlytics;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
@@ -37,23 +37,25 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-import io.fabric.sdk.android.Fabric;
+//import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 import static android.widget.Toast.makeText;
 import static com.memory_athlete.memoryassistant.Helper.REQUEST_STORAGE_ACCESS;
 
-
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
+    // sharedPreferences object points to a file containing key-value pairs
     private SharedPreferences sharedPreferences;
 
+    // create a menu bar on the first page
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    // when clicked on Privacy Policy, go to the PrivacyPolicy activity which is a menu item of menu bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.privacy_policy_menu) {
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    // close the MainActivity on back press
     @Override
     public void onBackPressed() {
         if (sharedPreferences.getBoolean(getString(R.string.double_back_to_exit), false)
@@ -73,25 +76,27 @@ public class MainActivity extends AppCompatActivity {
         } else super.onBackPressed();
     }
 
+    // displays the main content on the first page
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         } else {
-            Fabric.with(this, new Crashlytics());
+            //Fabric.with(this, new Crashlytics());
             Timber.plant(new CrashlyticsLogTree());
         }
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
 
         Helper.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
-
         setTitle(getString(R.string.app_name));
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
         setAdapter();
 
         firstStart();
+
         Helper.mayAccessStorage(this);
         if (!verifyInstallerId() && !BuildConfig.DEBUG) {
             Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
@@ -100,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!Locale.getDefault().getLanguage().equals("en"))
             Toast.makeText(this, R.string.faulty_translations, Toast.LENGTH_LONG).show();
-
     }
 
+    // resuming the MainActivity again
     @Override
     protected void onResume() {
         super.onResume();
@@ -115,12 +120,14 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+    // checks if the MainActivity is running
     void firstStart() {
         if (sharedPreferences.getLong("last_opened", 0) != 0) return;
         makeText(getApplicationContext(), R.string.confused, Toast.LENGTH_LONG).show();
         Timber.d("firstStart");
     }
 
+    // verifies the installer id for checking if app is installed from play store
     boolean verifyInstallerId() {
         // A list with valid installers package name
         List<String> validInstallers = new ArrayList<>(Arrays.asList("com.android.vending", "com.google.android.feedback"));
@@ -130,9 +137,11 @@ public class MainActivity extends AppCompatActivity {
         return installer != null && validInstallers.contains(installer);
     }
 
+    // ask user's permission for phone read and write storage
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_STORAGE_ACCESS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                     grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
@@ -144,9 +153,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // displays the list learn, practice, recall,... on the first page, when clicked on a list item, go to that Activity
     public void setAdapter() {
         final List<Item> list = setList();
-
         MainAdapter adapter = new MainAdapter(this, list);
         ListView listView = findViewById(R.id.main_list);
         listView.setAdapter(adapter);
@@ -161,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
         Timber.v("Adapter set!");
     }
 
+    // sets the list learn, practice, recall,...
     private List<Item> setList() {
         return Arrays.asList(
                 new Item(R.string.learn, R.drawable.learn, Learn.class),
@@ -170,10 +180,11 @@ public class MainActivity extends AppCompatActivity {
                 new Item(R.string.my_space, R.drawable.my_space, MySpace.class),
                 new Item(R.string.preferences, R.drawable.preferences, Preferences.class),
                 new Item(R.string.get_pro, R.drawable.get_pro, Contribute.class));
-        //list.add(new Item(R.string.reminders, ))
+        //list.add(new Item(R.string.reminders,))
         //Timber.v("List set!");
     }
 
+    // data about each item
     private class Item {
         int mItem, mImageId;
         Class mClass;
@@ -185,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // defining the adapter which is going to take the list of items for displaying
     private class MainAdapter extends ArrayAdapter<Item> {
 
         MainAdapter(Activity context, List<Item> words) {

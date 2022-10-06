@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 
 import com.memory_athlete.memoryassistant.Helper;
@@ -22,7 +24,9 @@ import com.memory_athlete.memoryassistant.main.RecallSelector;
 import com.memory_athlete.memoryassistant.recall.RecallSimple;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -188,32 +192,99 @@ public class Numbers extends DisciplineFragment {
 
             if (stringToSave == null || stringToSave.equals("")) return false;
             //Practice Directory
-            String path = Helper.APP_FOLDER + File.separator
-                    + getString(R.string.practice);
+//            String path = Helper.APP_FOLDER + File.separator
+//                    + getString(R.string.practice);
+//
+//            if (Helper.makeDirectory(path, getContext())) {
+//                //Discipline Directory
+//                path += File.separator + activity.getTitle().toString();
+//                if (Helper.makeDirectory(path, getContext())) {
+//                    //FilePath
+//                    path += File.separator
+//                            + ((new SimpleDateFormat("yy-MM-dd_HH:mm", Locale.getDefault()))
+//                            .format(new Date())) + ".txt";
+//                    try {
+//                        FileOutputStream outputStream = new FileOutputStream(new File(path));
+//                        outputStream.write(stringToSave.getBytes());
+//
+//                        outputStream.close();
+//                        Toast.makeText(getActivity(), R.string.saved, Toast.LENGTH_SHORT).show();
+//                        return true;
+//                    } catch (Exception e) {
+//                        Timber.e(e);
+//                        Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
+//                    Toast.LENGTH_LONG).show();
+//            return false;
+
+
+            //From discipline
+            //Directory of practice - external storage
+            int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    EXTERNAL_STORAGE_PERMISSION_CODE);
+
+            File folder = getActivity().getFilesDir();
+            String path = folder + File.separator + getString(R.string.practice) + File.separator + activity.getTitle().toString();
+
+            //Directory of practice - internal storage
+//        String path = Helper.APP_FOLDER + File.separator
+//                + getString(R.string.practice) + File.separator + activity.getTitle().toString();
+
+            Toast.makeText(activity.getApplicationContext(),"discipline is working", Toast.LENGTH_SHORT).show();
 
             if (Helper.makeDirectory(path, getContext())) {
-                //Discipline Directory
-                path += File.separator + "Digits";
-                if (Helper.makeDirectory(path, getContext())) {
-                    //FilePath
-                    path += File.separator
-                            + ((new SimpleDateFormat("yy-MM-dd_HH:mm", Locale.getDefault()))
-                            .format(new Date())) + ".txt";
-                    try {
-                        FileOutputStream outputStream = new FileOutputStream(new File(path));
-                        outputStream.write(stringToSave.getBytes());
+                path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",
+                        Locale.getDefault())).format(new Date())) + ".txt";
 
-                        outputStream.close();
-                        Toast.makeText(getActivity(), R.string.saved, Toast.LENGTH_SHORT).show();
-                        return true;
-                    } catch (Exception e) {
-                        Timber.e(e);
-                        Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                //Write the file
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(new File(path));
+                    outputStream.write(stringToSave.getBytes());
+
+                    outputStream.close();
+                    Toast.makeText(activity.getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                    return true;
+                } catch (FileNotFoundException e) {
+                    Timber.e(e);
+                    if (saveErrorCount == 0) {
+                        Toast.makeText(activity.getApplicationContext(), R.string.fnf_try_again, Toast.LENGTH_SHORT).show();
+                        saveErrorCount++;
+                        String[] blocked = {"|", "\\", "?", "*", "<", "\"", ":", ">", "+", "[", "]", "'"};
+                        for (CharSequence c : blocked) {
+                            String s = path;
+                            s = s.replace(c, "");
+                            if (!s.equals(path)) {
+                                Timber.e("illegal character in path : %s", path);
+                                path = s;
+                            }
+                        }
+                        return false;
                     }
+                    File f = new File(path);
+                    if (!f.exists()) throw new RuntimeException(
+                            activity.getTitle().toString() + " directory doesn't exist", e);
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    Timber.e(e);
+                    if (saveErrorCount == 0) {
+                        Toast.makeText(activity.getApplicationContext(), R.string.io_try_again, Toast.LENGTH_SHORT).show();
+                        saveErrorCount++;
+                        return false;
+                    }
+                    File f = new File(path);
+                    if (!f.exists() && !f.isDirectory())
+                        throw new RuntimeException(path + " doesn't exist", e);
+                    throw new RuntimeException(e);
                 }
             } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
                     Toast.LENGTH_LONG).show();
             return false;
+
+
+
         }
         //Case with more digits than 1 or Custom
         return super.save();

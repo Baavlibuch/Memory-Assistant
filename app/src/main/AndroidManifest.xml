@@ -3,11 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.memory_athlete.memoryassistant">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:name=".inAppBilling.CheckoutApplication"
@@ -48,7 +52,8 @@
         <activity
             android:name=".main.Learn"
             android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean">
+            tools:targetApi="jelly_bean"
+            android:exported="true">
             <intent-filter
                 android:autoVerify="true"
                 tools:targetApi="m">
@@ -71,7 +76,8 @@
             android:name=".main.Practice"
             android:launchMode="singleTask"
             android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean">
+            tools:targetApi="jelly_bean"
+            android:exported="true">
             <intent-filter
                 android:autoVerify="true"
                 tools:targetApi="m">
@@ -144,9 +150,9 @@
             android:name=".inAppBilling.DonateActivity"
             android:parentActivityName=".main.Contribute"
             tools:targetApi="jelly_bean">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".main.Contribute" />
+            <!--            <meta-data-->
+            <!--                android:name="android.support.PARENT_ACTIVITY"-->
+            <!--                android:value=".main.Contribute" />-->
         </activity>
         <activity
             android:name=".main.CreditsActivity"
@@ -175,9 +181,9 @@
             </intent-filter>
         </service>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="32fd3e2a89a1903109b82b78e8ad3641cb25e326" />
+        <!--        <meta-data-->
+        <!--            android:name="io.fabric.ApiKey"-->
+        <!--            android:value="32fd3e2a89a1903109b82b78e8ad3641cb25e326" />-->
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 

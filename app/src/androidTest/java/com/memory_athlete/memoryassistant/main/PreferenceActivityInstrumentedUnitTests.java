@@ -1,6 +1,13 @@
 package com.memory_athlete.memoryassistant.main;
 
 
+import static androidx.test.espresso.Espresso.onData;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -19,13 +26,6 @@ import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static androidx.test.espresso.Espresso.onData;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static com.memory_athlete.memoryassistant.TestHelper.waitForExecution;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.anything;
 
 @LargeTest
 @RunWith(AndroidJUnit4ClassRunner.class)
