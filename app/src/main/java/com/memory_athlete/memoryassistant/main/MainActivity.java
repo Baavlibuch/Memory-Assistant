@@ -1,5 +1,8 @@
 package com.memory_athlete.memoryassistant.main;
 
+import static android.widget.Toast.makeText;
+import static com.memory_athlete.memoryassistant.Helper.REQUEST_STORAGE_ACCESS;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -21,7 +24,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-//import com.crashlytics.android.Crashlytics;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -37,11 +39,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-//import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
-import static android.widget.Toast.makeText;
-import static com.memory_athlete.memoryassistant.Helper.REQUEST_STORAGE_ACCESS;
+//import com.crashlytics.android.Crashlytics;
+//import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.privacy_policy_menu) {
             startActivity(new Intent(MainActivity.this, PrivacyPolicy.class));
+            //throw new RuntimeException("Testing crash");
         } else {
             return super.onOptionsItemSelected(item);
         }
