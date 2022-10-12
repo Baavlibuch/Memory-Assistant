@@ -12,7 +12,6 @@
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:name=".inAppBilling.CheckoutApplication"
         android:allowBackup="true"
@@ -20,18 +19,22 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:resizeableActivity="true"
         android:supportsRtl="true"
         android:theme="@style/light"
-        android:resizeableActivity="true"
-        android:requestLegacyExternalStorage="true"
+        tools:ignore="ExtraText"
         tools:targetApi="n">
 
         <activity
+            android:name=".BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".main.MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter
@@ -48,12 +51,11 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".main.Learn"
+            android:exported="true"
             android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean"
-            android:exported="true">
+            tools:targetApi="jelly_bean">
             <intent-filter
                 android:autoVerify="true"
                 tools:targetApi="m">
@@ -74,10 +76,10 @@
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.Practice"
+            android:exported="true"
             android:launchMode="singleTask"
             android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean"
-            android:exported="true">
+            tools:targetApi="jelly_bean">
             <intent-filter
                 android:autoVerify="true"
                 tools:targetApi="m">
@@ -150,9 +152,9 @@
             android:name=".inAppBilling.DonateActivity"
             android:parentActivityName=".main.Contribute"
             tools:targetApi="jelly_bean">
-            <!--            <meta-data-->
-            <!--                android:name="android.support.PARENT_ACTIVITY"-->
-            <!--                android:value=".main.Contribute" />-->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".main.Contribute" />
         </activity>
         <activity
             android:name=".main.CreditsActivity"
@@ -161,10 +163,7 @@
         <activity
             android:name=".main.PrivacyPolicy"
             android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean" />
-
-        <!-- Services -->
-
+            tools:targetApi="jelly_bean" /> <!-- Services -->
         <service
             android:name=".services.ReminderJobService"
             android:exported="false">
@@ -179,14 +178,12 @@
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
-        </service>
-
-        <!--        <meta-data-->
-        <!--            android:name="io.fabric.ApiKey"-->
-        <!--            android:value="32fd3e2a89a1903109b82b78e8ad3641cb25e326" />-->
-
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-
+        </service> <!-- <meta-data -->
+        <!-- android:name="io.fabric.ApiKey" -->
+        <!-- android:value="32fd3e2a89a1903109b82b78e8ad3641cb25e326" /> -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
     </application>
 
 </manifest>

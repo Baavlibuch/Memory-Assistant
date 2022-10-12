@@ -1,10 +1,12 @@
 package com.memory_athlete.memoryassistant.services;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 
 import timber.log.Timber;
 
@@ -40,5 +42,10 @@ public class MySpaceJobService extends JobService {
     @Override
     public boolean onStopJob(JobParameters job) {
         return false;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

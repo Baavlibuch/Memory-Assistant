@@ -1,7 +1,10 @@
 package com.memory_athlete.memoryassistant.lessons;
 
+import static com.memory_athlete.memoryassistant.Helper.clickableViewAnimation;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -26,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 
@@ -36,8 +40,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import timber.log.Timber;
-
-import static com.memory_athlete.memoryassistant.Helper.clickableViewAnimation;
 
 /**
  * Created by Manik on 14/04/17.
@@ -394,5 +396,10 @@ public class Lessons extends AppCompatActivity {
 
             return listItemView;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

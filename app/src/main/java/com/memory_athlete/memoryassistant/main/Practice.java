@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.squareup.picasso.Picasso;
 
@@ -137,5 +138,10 @@ public class Practice extends AppCompatActivity {
             //img.setImageResource(cat.mImageId);
             return listView;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

@@ -23,6 +23,7 @@
             android:importantForAutofill="no"
             android:inputType="text"
             android:textSize="22sp"
+            tools:ignore="TextContrastCheck"
             tools:targetApi="o" />
 
         <ScrollView
@@ -41,6 +42,8 @@
                 android:hint="@string/here"
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                tools:ignore="TextContrastCheck"
                 tools:layout_editor_absoluteX="8dp"
                 tools:layout_editor_absoluteY="8dp"
                 tools:targetApi="o" />
@@ -66,9 +69,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/todo"
+        android:onClick="search"
         android:visibility="visible"
         app:srcCompat="@drawable/ic_action_search"
-        android:onClick="search"/>
+        tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.main;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
 import com.squareup.picasso.Picasso;
@@ -116,5 +118,10 @@ public class Learn extends AppCompatActivity {
 
             return listItemView;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

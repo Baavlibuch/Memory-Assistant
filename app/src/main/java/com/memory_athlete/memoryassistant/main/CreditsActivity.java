@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.util.ArrayList;
@@ -77,5 +78,10 @@ public class CreditsActivity extends AppCompatActivity {
             textView.setText(item.mName);
             return textView;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

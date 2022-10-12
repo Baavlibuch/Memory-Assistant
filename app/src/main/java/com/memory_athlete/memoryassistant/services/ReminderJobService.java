@@ -1,9 +1,11 @@
 package com.memory_athlete.memoryassistant.services;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 
 import timber.log.Timber;
 
@@ -38,5 +40,10 @@ public class ReminderJobService extends JobService {
     public boolean onStopJob(com.firebase.jobdispatcher.JobParameters job) {
         Timber.v("Entered onStopJob()");
         return false;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

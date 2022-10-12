@@ -1,5 +1,10 @@
 package com.memory_athlete.memoryassistant.recall;
 
+import static android.text.InputType.TYPE_CLASS_NUMBER;
+import static android.text.InputType.TYPE_CLASS_TEXT;
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +28,7 @@ import androidx.preference.PreferenceManager;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
@@ -32,11 +38,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import timber.log.Timber;
-
-import static android.text.InputType.TYPE_CLASS_NUMBER;
-import static android.text.InputType.TYPE_CLASS_TEXT;
-import static java.lang.Math.abs;
-import static java.lang.Math.pow;
 
 public class RecallSimple extends AppCompatActivity {
     protected boolean givenUp = false;
@@ -707,6 +708,11 @@ public class RecallSimple extends AppCompatActivity {
 
     protected enum CompareFormat {
         SIMPLE_COMPARE_FORMAT, WORD_COMPARE_FORMAT, CARD_COMPARE_FORMAT
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }
 

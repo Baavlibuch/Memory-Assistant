@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.main;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.inAppBilling.DonateActivity;
 
@@ -141,4 +143,9 @@ public class Contribute extends AppCompatActivity {
     }
 
     enum PART_TYPE {PLAY_STORE, ACTIVITY, GITHUB, EMAIL, CREDITS}
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
+    }
 }

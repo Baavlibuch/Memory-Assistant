@@ -1,7 +1,11 @@
 package com.memory_athlete.memoryassistant.recall;
 
+import static com.memory_athlete.memoryassistant.Helper.makeCardString;
+import static java.lang.Integer.parseInt;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -16,6 +20,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.squareup.picasso.Picasso;
 
@@ -24,9 +29,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import timber.log.Timber;
-
-import static com.memory_athlete.memoryassistant.Helper.makeCardString;
-import static java.lang.Integer.parseInt;
 
 public class RecallCards extends RecallSimple {
     CardAdapter mAdapter;
@@ -217,6 +219,11 @@ public class RecallCards extends RecallSimple {
             //      cardImageIds[parseInt(responses.get(position))]);
             return imageView;//listItemView;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }
 

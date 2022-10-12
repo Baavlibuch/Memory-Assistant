@@ -24,6 +24,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="4dp"
+            android:contentDescription="@string/item_image"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -31,6 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:contentDescription="@string/item_text"
             android:gravity="center_vertical"
             android:textAppearance="?android:textAppearanceLarge" />
 

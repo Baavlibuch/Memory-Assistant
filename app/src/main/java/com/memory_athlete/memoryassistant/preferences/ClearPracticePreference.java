@@ -1,5 +1,9 @@
 package com.memory_athlete.memoryassistant.preferences;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static androidx.core.content.ContextCompat.checkSelfPermission;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -11,10 +15,6 @@ import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
 import java.util.Objects;
-
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static androidx.core.content.ContextCompat.checkSelfPermission;
 
 /**
  * Created by Manik on 10/09/17.
@@ -63,4 +63,5 @@ public class ClearPracticePreference extends Preference {
         //noinspection ResultOfMethodCallIgnored
         fileOrDirectory.delete();
     }
+
 }

@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import androidx.core.app.NavUtils;
 import androidx.preference.PreferenceManager;
 
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
@@ -261,5 +263,9 @@ public class WriteFile extends AppCompatActivity {
         searchEditText.setVisibility(View.VISIBLE);
         if (!search(stringToSearch))
             searchEditText.requestFocus();
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

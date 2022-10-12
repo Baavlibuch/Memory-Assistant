@@ -1,5 +1,7 @@
 package com.memory_athlete.memoryassistant.lessons;
 
+import static com.memory_athlete.memoryassistant.Helper.clickableViewAnimation;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
@@ -29,11 +31,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import timber.log.Timber;
-
-import static com.memory_athlete.memoryassistant.Helper.clickableViewAnimation;
 
 public class LessonFragment extends Fragment {
     private Activity activity;
@@ -112,7 +111,7 @@ public class LessonFragment extends Fragment {
     }
 
     protected void theme() {
-        String theme = PreferenceManager.getDefaultSharedPreferences(Objects.requireNonNull(getActivity()))
+        String theme = PreferenceManager.getDefaultSharedPreferences(requireActivity())
                 .getString(getString(R.string.theme), "AppTheme");
         String[] themes = getResources().getStringArray(R.array.themes);
         if (themes[1].equals(theme)) {

@@ -31,6 +31,7 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
@@ -103,7 +104,7 @@ public class MySpaceFragment extends Fragment {
         } catch (Resources.NotFoundException e) {
             // Timber.e(e);
             Toast.makeText(getActivity(), R.string.dl_from_play, Toast.LENGTH_LONG).show();
-            Objects.requireNonNull(getActivity()).finish();
+            requireActivity().finish();
             return rootView;
         }
         rootView.findViewById(R.id.add_search).setVisibility(GONE);
@@ -434,7 +435,7 @@ public class MySpaceFragment extends Fragment {
                 outputStream.close();
 
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(
-                        Objects.requireNonNull(getActivity())).edit();
+                        requireActivity()).edit();
                 editor.putLong(fname, System.currentTimeMillis());
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
@@ -521,4 +522,5 @@ public class MySpaceFragment extends Fragment {
             return listItemView;
         }
     }
+
 }

@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.mySpace;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -25,6 +26,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.squareup.picasso.Picasso;
 
@@ -144,7 +146,7 @@ public class MySpace extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         EXTERNAL_STORAGE_PERMISSION_CODE);
                 File folder = getFilesDir();
-                dir = new File(folder + File.separator + getString(R.string.my_space) + File.separator + item.mItem);
+                dir = new File(folder + File.separator +getString(R.string.my_space) + File.separator + item.mItem);
 
                 //dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mItem);
                 layout.findViewById(listViewId).setVisibility(View.GONE);
@@ -163,7 +165,7 @@ public class MySpace extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     EXTERNAL_STORAGE_PERMISSION_CODE);
             File folder = getFilesDir();
-            String fileName = folder + File.separator + "My Space" + File.separator + getTitle().toString();
+            String fileName = folder + File.separator + getString(R.string.my_space) + File.separator + getTitle().toString();
 
             //String fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + getTitle();
 
@@ -266,6 +268,10 @@ public class MySpace extends AppCompatActivity {
 
             return listItemView;
         }
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }
 

@@ -16,7 +16,8 @@
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:contentDescription="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,14 +39,18 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="@string/standard" />
+                    android:contentDescription="@string/standard"
+                    android:text="@string/standard"
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <RadioButton
                     android:id="@+id/custom_radio"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/custom" />
+                    android:contentDescription="@string/custom"
+                    android:text="@string/custom"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </RadioGroup>
 
@@ -53,14 +58,16 @@
                 android:id="@+id/level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp" />
+                android:layout_margin="8dp"
+                android:contentDescription="@string/practice_level"
+                android:minHeight="48dp" />
 
             <LinearLayout
                 android:id="@+id/custom_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:animateLayoutChanges="true"
+                android:orientation="vertical"
                 android:visibility="gone">
 
                 <EditText
@@ -143,8 +150,8 @@
                     android:id="@+id/clock_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:animateLayoutChanges="true"
+                    android:orientation="horizontal"
                     android:visibility="gone">
 
                     <EditText
@@ -153,8 +160,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/minutes"
                         android:imeOptions="actionNext"
-                        android:inputType="number"
                         android:importantForAutofill="no"
+                        android:inputType="number"
                         tools:ignore="UnusedAttribute" />
 
                     <EditText
@@ -163,8 +170,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/seconds"
                         android:imeOptions="actionDone"
-                        android:inputType="number"
                         android:importantForAutofill="no"
+                        android:inputType="number"
                         tools:ignore="UnusedAttribute" />
 
                 </LinearLayout>
@@ -180,7 +187,8 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/appbar_scrolling_view_behavior">
 
                 <TextView
                     android:id="@+id/random_values"
@@ -255,6 +263,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:contentDescription="@string/horizontal_scroll"
         android:fadingEdgeLength="16dp"
         android:requiresFadingEdge="horizontal">
 
@@ -271,42 +280,48 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/prev" />
+                android:text="@string/prev"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/start"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/start" />
+                android:text="@string/start"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/stop"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/stop" />
+                android:text="@string/stop"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/resume"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/resume" />
+                android:text="@string/resume"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/reset"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/reset" />
+                android:text="@string/reset"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/save"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/save" />
+                android:text="@string/save"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/recall"

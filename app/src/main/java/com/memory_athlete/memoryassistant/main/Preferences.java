@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -10,7 +11,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.SettingLanguage;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
 import java.util.Objects;
@@ -43,6 +46,7 @@ public class Preferences extends AppCompatActivity {
 
             bindPreferenceSummaryToValue(findPreference(getString(R.string.periodic)));
             bindPreferenceToast(findPreference(getString(R.string.speech_rate)));
+            bindPreferenceToast(findPreference("Change Language"));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
             //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
@@ -71,7 +75,29 @@ public class Preferences extends AppCompatActivity {
                 if (changeCount++ == 1) Toast.makeText(getActivity(),
                         R.string.speech_rate_changed_message, Toast.LENGTH_LONG).show();
 
-            } else if (preference instanceof TimePreference) {
+            }
+            else if (Objects.equals(preference.getKey(), "Change Language")){
+
+                SharedPreferences Preference = androidx.preference.PreferenceManager.getDefaultSharedPreferences(getActivity());
+                String language = Preference.getString("Change Language","");
+
+                SettingLanguage sl = new SettingLanguage();
+                String string_to_locale = sl.setLang(stringValue);
+                LocaleHelper.setLocale(getActivity(), string_to_locale);
+
+                SharedPreferences shrd = getActivity().getSharedPreferences("LANGUAGE",MODE_PRIVATE);
+                SharedPreferences.Editor editor = shrd.edit();
+                editor.putString("str",stringValue);
+                editor.apply();
+
+                //Toast.makeText(getActivity(),stringValue+" Language selected",Toast.LENGTH_SHORT).show();
+
+                if(!language.equals(stringValue)){
+                    Toast.makeText(getActivity(), "Language changed. Please restart the app", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            else if (preference instanceof TimePreference) {
                 int min = Integer.parseInt(stringValue.substring(stringValue.indexOf(":") + 1));
                 int hour = Integer.parseInt(stringValue.substring(0, stringValue.indexOf(":")));
                 String meridian = (hour < 12) ? " am" : " pm";
@@ -95,5 +121,11 @@ public class Preferences extends AppCompatActivity {
         if (!Objects.equals(PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.theme), "AppTheme"), mTheme))
             Toast.makeText(this, "Please restart the app", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

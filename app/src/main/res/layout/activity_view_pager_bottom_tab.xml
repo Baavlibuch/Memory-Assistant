@@ -11,16 +11,17 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:contentDescription="@string/view_pager" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMaxWidth="0dp"
+        android:contentDescription="@string/sliding_tabs"
         app:tabGravity="fill"
-        app:tabMode="scrollable"
-        />
+        app:tabMaxWidth="0dp"
+        app:tabMode="scrollable" />
     <!--app:tabTextColor="#A8A19E"
     app:tabIndicatorColor="#FFFFFF"-->
 

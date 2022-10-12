@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.ByteArrayOutputStream;
@@ -48,6 +50,11 @@ public class PrivacyPolicy extends AppCompatActivity {
             Timber.e(e);
         }
         return stream.toString();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 
 }

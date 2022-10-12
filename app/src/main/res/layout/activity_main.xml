@@ -11,6 +11,7 @@
         android:layout_height="0dp"
         android:layout_margin="8dp"
         android:layout_weight="1"
+        android:contentDescription="@string/list_of_tasks_that_can_be_performed_with_the_app"
         android:divider="@color/color_transparent"
         android:dividerHeight="0px" />
 

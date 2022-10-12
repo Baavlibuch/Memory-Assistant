@@ -19,6 +19,13 @@
         android:title="@string/theme" />
 
     <ListPreference
+        android:defaultValue="AppLanguage"
+        android:entries="@array/languages"
+        android:entryValues="@array/languages"
+        android:key="Change Language"
+        android:title="Change Language" />
+
+    <ListPreference
         android:defaultValue="1"
         android:entries="@array/zero_to_nine"
         android:entryValues="@array/zero_to_nine"

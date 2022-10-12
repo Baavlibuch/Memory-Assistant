@@ -5,6 +5,7 @@ import static com.memory_athlete.memoryassistant.Helper.REQUEST_STORAGE_ACCESS;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -22,12 +23,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.os.LocaleListCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.memory_athlete.memoryassistant.BaseActivity;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -95,18 +99,30 @@ public class MainActivity extends AppCompatActivity {
         setTitle(getString(R.string.app_name));
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
+        SharedPreferences getShared = getSharedPreferences("LANGUAGE", MODE_PRIVATE);
+        String value = getShared.getString("str", null);
+        if (value != null) {
+            Toast.makeText(MainActivity.this,value+" language", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Intent intent = new Intent(MainActivity.this, BaseActivity.class);
+            startActivity(intent);
+        }
+
         setAdapter();
 
         firstStart();
 
         Helper.mayAccessStorage(this);
         if (!verifyInstallerId() && !BuildConfig.DEBUG) {
-            Toast.makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
+            makeText(this, R.string.dl_from_play, Toast.LENGTH_LONG).show();
             FirebaseAnalytics.getInstance(this).logEvent(
                     "release_app_not_installed_form_play", null);
         }
         if (!Locale.getDefault().getLanguage().equals("en"))
-            Toast.makeText(this, R.string.faulty_translations, Toast.LENGTH_LONG).show();
+            makeText(this, R.string.faulty_translations, Toast.LENGTH_LONG).show();
+        LocaleListCompat appLocale = LocaleListCompat.forLanguageTags("xx-YY");
+        //AppCompatDelegate.setApplicationLocales(appLocale);
     }
 
     // resuming the MainActivity again
@@ -198,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     // defining the adapter which is going to take the list of items for displaying
     private class MainAdapter extends ArrayAdapter<Item> {
 
@@ -226,6 +243,11 @@ public class MainActivity extends AppCompatActivity {
 
             return convertView;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }
 
