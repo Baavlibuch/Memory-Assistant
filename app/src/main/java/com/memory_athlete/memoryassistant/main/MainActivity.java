@@ -153,6 +153,29 @@ public class MainActivity extends AppCompatActivity {
         final String installer = getPackageManager().getInstallerPackageName(getPackageName());
         // true if your app has been downloaded from Play Store
         return installer != null && validInstallers.contains(installer);
+
+
+//        boolean flag = true;
+//        try {
+//            Context context = null;
+//            PackageManager pm = context.getPackageManager();
+//            InstallSourceInfo info = pm.getInstallSourceInfo("com.memory_athlete.memoryassistant");
+//            String installerPackageName = "";
+//            if (info != null) {
+//                installerPackageName = info.getInstallingPackageName();
+//            }
+//
+//            if ("com.android.vending".equals(installerPackageName) || "com.google.android.feedback".equals(installerPackageName)) {
+//            } else {
+//                flag = false;
+//            }
+//        }
+//        catch (PackageManager.NameNotFoundException e){
+//            Toast.makeText(MainActivity.this,"checking installing package failed", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        return(flag);
+
     }
 
     // ask user's permission for phone read and write storage

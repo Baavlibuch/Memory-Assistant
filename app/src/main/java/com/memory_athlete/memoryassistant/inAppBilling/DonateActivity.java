@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.inAppBilling;
 
 import static org.solovyev.android.checkout.ResponseCodes.ITEM_ALREADY_OWNED;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -41,6 +42,7 @@ import butterknife.ButterKnife;
 import timber.log.Timber;
 
 public class DonateActivity extends AppCompatActivity {
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.recycler)
     RecyclerView mRecycler;
     private ActivityCheckout mCheckout;

@@ -100,6 +100,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-intents:' + espressoVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + espressoVersion
 
+    def billing_version = "4.0.0"
+    implementation "com.android.billingclient:billing:$billing_version"
+
+
 }
 repositories {
     mavenCentral()
