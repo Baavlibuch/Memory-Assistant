@@ -22,10 +22,6 @@ public class CrashlyticsLogTree extends Timber.Tree {
             return;
         }
 
-//        Crashlytics.setInt(CRASHLYTICS_KEY_PRIORITY, priority);
-//        Crashlytics.setString(CRASHLYTICS_KEY_TAG, tag);
-//        Crashlytics.setString(CRASHLYTICS_KEY_MESSAGE, message);
-
         if (throwable != null) {
             //Crashlytics.logException(throwable);
         } else {

@@ -178,9 +178,7 @@
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
-        </service> <!-- <meta-data -->
-        <!-- android:name="io.fabric.ApiKey" -->
-        <!-- android:value="32fd3e2a89a1903109b82b78e8ad3641cb25e326" /> -->
+        </service>
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />

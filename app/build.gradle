@@ -13,19 +13,20 @@ apply plugin: 'kotlin-android'
 //apply plugin: 'io.fabric'
 //apply plugin: 'com.jakewharton.hugo'
 
-//def keystorePropertiesFile = rootProject.file("other/.keystore.properties")
-//def keystoreProperties = new Properties()
-//keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+def keystorePropertiesFile = rootProject.file("C:\\Users\\keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-//    signingConfigs {
-//        config {
-//            keyAlias keystoreProperties['keyAlias']
-//            keyPassword keystoreProperties['keyPassword']
-//            storeFile file(keystoreProperties['storeFile'])
-//            storePassword keystoreProperties['storePassword']
-//        }
-//    }
+
+    signingConfigs {
+        config {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     compileSdkVersion 32
     buildToolsVersion '28.0.3'
     defaultConfig {
@@ -46,6 +47,7 @@ android {
             //minifyEnabled true
             //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
             //signingConfig signingConfigs.config
         }
     }
@@ -82,7 +84,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.preference:preference:1.1.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    //implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+    //implementation 'com.crashlytics.sdk.android:crashlytics:17.2.2'
 
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -95,7 +97,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
 
-    //noinspection GradleCompatible
+    //noinspection GradleCompatible.
     androidTestImplementation 'androidx.test:rules:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:' + espressoVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + espressoVersion

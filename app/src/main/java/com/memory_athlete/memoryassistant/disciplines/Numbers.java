@@ -191,33 +191,6 @@ public class Numbers extends DisciplineFragment {
 
             if (stringToSave == null || stringToSave.equals("")) return false;
             //Practice Directory
-//            String path = Helper.APP_FOLDER + File.separator
-//                    + getString(R.string.practice);
-//
-//            if (Helper.makeDirectory(path, getContext())) {
-//                //Discipline Directory
-//                path += File.separator + activity.getTitle().toString();
-//                if (Helper.makeDirectory(path, getContext())) {
-//                    //FilePath
-//                    path += File.separator
-//                            + ((new SimpleDateFormat("yy-MM-dd_HH:mm", Locale.getDefault()))
-//                            .format(new Date())) + ".txt";
-//                    try {
-//                        FileOutputStream outputStream = new FileOutputStream(new File(path));
-//                        outputStream.write(stringToSave.getBytes());
-//
-//                        outputStream.close();
-//                        Toast.makeText(getActivity(), R.string.saved, Toast.LENGTH_SHORT).show();
-//                        return true;
-//                    } catch (Exception e) {
-//                        Timber.e(e);
-//                        Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
-//                    Toast.LENGTH_LONG).show();
-//            return false;
-
 
             //From discipline
             //Directory of practice - external storage

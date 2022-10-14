@@ -1,11 +1,13 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import static android.view.View.GONE;
+import static java.util.Objects.requireNonNull;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,9 +38,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import timber.log.Timber;
-
-import static android.view.View.GONE;
-import static java.util.Objects.requireNonNull;
 
 public class Cards extends DisciplineFragment {
     private int mPosition = 0;
@@ -173,38 +172,6 @@ public class Cards extends DisciplineFragment {
         if (randomList.isEmpty()) return false;
         StringBuilder stringBuilder = new StringBuilder();
 
-//        //Practice Directory
-//        String path = Helper.APP_FOLDER + File.separator
-//                + getString(R.string.practice);
-//
-//        if (Helper.makeDirectory(path, activity)) {
-//            //Discipline Directory
-//            path += File.separator + activity.getTitle().toString();
-//            if (Helper.makeDirectory(path, activity)) {
-//                //File Path
-//                path += File.separator + ((new SimpleDateFormat(
-//                        "yy-MM-dd_HH:mm", Locale.getDefault())).format(new Date())) + ".txt";
-//                try {
-//                    FileOutputStream outputStream = new FileOutputStream(new File(path));
-//
-//                    for (Integer i : randomList)// 0; i < randomList.size(); i++)
-//                        stringBuilder.append(i).append("\n");
-//                    //\n is also a delimiter used in recall
-//
-//                    outputStream.write(stringBuilder.toString().getBytes());
-//                    outputStream.close();
-//                    Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show();
-//                    return true;
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                    Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
-//                Toast.LENGTH_LONG).show();
-//        return false;
-//
-
         //discipline code
         //Directory of practice - external storage
         int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
@@ -272,8 +239,6 @@ public class Cards extends DisciplineFragment {
         } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
                 Toast.LENGTH_LONG).show();
         return false;
-
-
 
     }
 
