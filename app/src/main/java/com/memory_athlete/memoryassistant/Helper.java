@@ -181,8 +181,8 @@ public class Helper {
         } else {
             context.setTheme(R.style.light);
         }
-    }
 
+    }
 
     // custom themes - Cards, Lessons, LessonFragment, ImplementLesson, RecallCards, DisciplineActivity
 

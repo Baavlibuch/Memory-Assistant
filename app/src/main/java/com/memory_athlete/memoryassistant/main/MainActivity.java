@@ -8,7 +8,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.InstallSourceInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -150,31 +152,32 @@ public class MainActivity extends AppCompatActivity {
         // A list with valid installers package name
         List<String> validInstallers = new ArrayList<>(Arrays.asList("com.android.vending", "com.google.android.feedback"));
         // The package name of the app that has installed your app
-        final String installer = getPackageManager().getInstallerPackageName(getPackageName());
+        //final String installer = getPackageManager().getInstallerPackageName(getPackageName());
         // true if your app has been downloaded from Play Store
-        return installer != null && validInstallers.contains(installer);
+        //return installer != null && validInstallers.contains(installer);
 
+        String installerPackageName = "";
+        try {
+            String packageName = getPackageName();
+            PackageManager pm = getPackageManager();
+            installerPackageName =  pm.getInstallerPackageName(packageName);
 
-//        boolean flag = true;
-//        try {
-//            Context context = null;
-//            PackageManager pm = context.getPackageManager();
-//            InstallSourceInfo info = pm.getInstallSourceInfo("com.memory_athlete.memoryassistant");
-//            String installerPackageName = "";
-//            if (info != null) {
-//                installerPackageName = info.getInstallingPackageName();
-//            }
-//
-//            if ("com.android.vending".equals(installerPackageName) || "com.google.android.feedback".equals(installerPackageName)) {
-//            } else {
-//                flag = false;
-//            }
-//        }
-//        catch (PackageManager.NameNotFoundException e){
-//            Toast.makeText(MainActivity.this,"checking installing package failed", Toast.LENGTH_SHORT).show();
-//        }
-//
-//        return(flag);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                InstallSourceInfo info = pm.getInstallSourceInfo(packageName);
+                if (info != null) {
+                    installerPackageName = info.getInstallingPackageName();
+                }
+            }
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(MainActivity.this,"PackageManager exception", Toast.LENGTH_SHORT).show();
+        }
+
+        //Toast.makeText(MainActivity.this,installerPackageName, Toast.LENGTH_SHORT).show();
+
+        // true if your app has been downloaded from Play Store
+        return installerPackageName != null && validInstallers.contains(installerPackageName);
+
 
     }
 

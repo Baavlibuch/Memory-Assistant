@@ -23,7 +23,7 @@
         android:entries="@array/languages"
         android:entryValues="@array/languages"
         android:key="Change Language"
-        android:title="Change Language" />
+        android:title="@string/language" />
 
     <ListPreference
         android:defaultValue="1"
