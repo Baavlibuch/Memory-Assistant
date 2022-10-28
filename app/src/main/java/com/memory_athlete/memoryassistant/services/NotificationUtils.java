@@ -21,7 +21,7 @@ import timber.log.Timber;
  * Created by Manik on 26/08/17.
  */
 
-abstract class NotificationUtils {
+public class NotificationUtils {
     private static final int PERIODIC_REMINDER_PENDING_INTENT_ID = 3417;
     //private static final int MY_SPACE_REMINDER_PENDING_INTENT_ID;
     private static final long MIN = 60000;
@@ -47,7 +47,7 @@ abstract class NotificationUtils {
         mNotificationManager.createNotificationChannel(mChannel);
     }
 
-    static void createNotification(Context context) {
+    public static void createNotification(Context context) {
         if (!PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(context.getString(R.string.remind), false)) return;
         Timber.d("creating notification");
@@ -93,7 +93,7 @@ abstract class NotificationUtils {
         return "You haven't practiced for a week";
     }
 
-    static void createMySpaceNotification(Context context, String fPath) {
+    public static void createMySpaceNotification(Context context, String fPath) {
         if (!PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(context.getString(R.string.remind), false)) return;
         String channelId = context.getString(R.string.my_space) + " " + context.getString(R.string.reminders);

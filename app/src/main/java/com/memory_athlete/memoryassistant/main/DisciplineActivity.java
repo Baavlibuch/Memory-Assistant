@@ -22,7 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.LocaleHelper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;

@@ -64,6 +64,7 @@ android {
 }
 
 dependencies {
+    def work_version = "2.7.1"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -73,17 +74,17 @@ dependencies {
     implementation 'androidx.browser:browser:1.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'com.google.firebase:firebase-appindexing:19.1.0'
+    implementation 'com.google.firebase:firebase-appindexing:20.0.0'
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
-    implementation 'com.google.firebase:firebase-core:17.2.3'
-    implementation 'com.google.firebase:firebase-perf:19.0.5'
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation 'com.google.firebase:firebase-perf:20.2.0'
     implementation 'org.solovyev.android:checkout:1.2.2'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.jakewharton:butterknife:' + butterknifeVersion
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.preference:preference:1.1.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.work:work-runtime:$work_version"
     //implementation "androidx.preference:preference-ktx:1.2.0"
     //implementation 'com.crashlytics.sdk.android:crashlytics:17.2.2'
 
@@ -102,10 +103,6 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:' + espressoVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + espressoVersion
-
-    def billing_version = "4.0.0"
-    implementation "com.android.billingclient:billing:$billing_version"
-
 
 }
 repositories {

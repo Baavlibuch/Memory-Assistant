@@ -1,5 +1,9 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
@@ -31,7 +35,6 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
@@ -44,10 +47,6 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import timber.log.Timber;
-
-import static android.content.Context.INPUT_METHOD_SERVICE;
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 public class MySpaceFragment extends Fragment {
     public int MIN_DYNAMIC_VIEW_ID = 2;

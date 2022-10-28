@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.LocaleHelper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 
 import org.solovyev.android.checkout.ActivityCheckout;

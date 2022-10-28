@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.memory_athlete.memoryassistant.LocaleHelper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;

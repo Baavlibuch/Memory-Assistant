@@ -2,21 +2,21 @@ package com.memory_athlete.memoryassistant.reminders;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import androidx.preference.PreferenceManager;
-import androidx.annotation.NonNull;
 
-import com.firebase.jobdispatcher.Driver;
-import com.firebase.jobdispatcher.FirebaseJobDispatcher;
-import com.firebase.jobdispatcher.GooglePlayDriver;
-import com.firebase.jobdispatcher.Job;
-import com.firebase.jobdispatcher.Lifetime;
-import com.firebase.jobdispatcher.Trigger;
+import androidx.annotation.NonNull;
+import androidx.preference.PreferenceManager;
+import androidx.work.BackoffPolicy;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.services.MySpaceJobService;
-import com.memory_athlete.memoryassistant.services.ReminderJobService;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 import timber.log.Timber;
 
@@ -43,8 +43,11 @@ public class ReminderUtils {
         int diff = next(context) * 60, diff1;
         if (diff < 0) diff += DAY;
 
-        Driver driver = new GooglePlayDriver(context);
-        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
+        Data input = new Data.Builder().putString("rem","remainder").build();
+
+//        Driver driver = new GooglePlayDriver(context);
+//        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
+
         for (int i = 0; i < 3; i++) {
             switch (i) {
                 case 1:
@@ -57,23 +60,56 @@ public class ReminderUtils {
                     diff1 = diff;
             }
 
-            dispatcher.cancel(REMINDER_JOB_TAG + i);
-            Job constraintReminderJob = dispatcher.newJobBuilder()
-                    .setService(ReminderJobService.class)
-                    .setTag(REMINDER_JOB_TAG + i)
-                    .setLifetime(Lifetime.FOREVER)
-                    .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1, diff1 + HOUR))
-                    .setReplaceCurrent(true)
-                    .build();
+            //dispatcher.cancel(REMINDER_JOB_TAG + i);
+            WorkManager.getInstance(context).cancelUniqueWork(REMINDER_JOB_TAG + i);
+
+//            Job constraintReminderJob = dispatcher.newJobBuilder()
+//                    .setService(ReminderJobService.class)
+//                    .setTag(REMINDER_JOB_TAG + i)
+//                    .setLifetime(Lifetime.FOREVER)
+//                    .setRecurring(false)
+//                    .setTrigger(Trigger.executionWindow(diff1, diff1 + HOUR))
+//                    .setReplaceCurrent(true)
+//                    .build();
+
             Timber.v("Notification is after " + diff1);
             //.setConstraints()
             //REMINDER_INTERVAL_SECS - SYNC_FLEXTIME_SECONDS,
             //REMINDER_INTERVAL_SECS + SYNC_FLEXTIME_SECONDS))
             //.setExtras(bundle)
             Timber.v("Job built");
-            dispatcher.schedule(constraintReminderJob);
+            //dispatcher.schedule(constraintReminderJob);
             Timber.v("dispatcher scheduled");
+
+
+            Constraints constraints = new Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .setRequiresCharging(false)
+                    .build();
+
+            OneTimeWorkRequest request =
+                    // Tell which work to execute
+                    new OneTimeWorkRequest.Builder(MyWorkerForReminder.class)
+                            // Sets the input data for the ListenableWorker
+                            .setInputData(input)
+                            // If you want to delay the start of work by 60 seconds
+                            .setInitialDelay(5, TimeUnit.SECONDS)
+                            // Set a backoff criteria to be used when retry-ing
+                            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL,10, TimeUnit.SECONDS)
+                            //.setBackoffCriteria(BackoffCriteria.EXPONENTIAL, 30000, TimeUnit.MILLISECONDS)
+                            // Set additional constraints
+                            .setConstraints(constraints)
+                            .build();
+
+            //OneTimeWorkRequest workRequest = null; // a WorkRequest;
+            WorkManager.getInstance(context)
+                    // Use ExistingWorkPolicy.REPLACE to cancel and delete any existing pending
+                    // (uncompleted) work with the same unique name. Then, insert the newly-specified
+                    // work.
+                    .enqueueUniqueWork(REMINDER_JOB_TAG, ExistingWorkPolicy.KEEP, request);
+                    //.enqueue(request);
+
+
         }
         Timber.v("reminder set");
     }
@@ -93,13 +129,17 @@ public class ReminderUtils {
     }
 
     synchronized public static void mySpaceReminder(@NonNull final Context context, String fname) {
-        Bundle bundle = new Bundle();
-        bundle.putString("fPath", fname);
 
-        Driver driver = new GooglePlayDriver(context);
-        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
+//        Bundle bundle = new Bundle();
+//        bundle.putString("fPath", fname);
+
+        Data input = new Data.Builder().putString("fpath",fname).build();
+
+//        Driver driver = new GooglePlayDriver(context);
+//        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
+
+
         int diff = next(context) * 60;
-
         for (int i = 0; i < 7; i++) {
             int diff1 = diff;
             switch (i) {
@@ -126,23 +166,57 @@ public class ReminderUtils {
                     break;
             }
 
+            //WorkManager.getInstance(context).cancelUniqueWork(fname + i);
+
             Timber.v("MySpace notification is after " + diff1);
-            Job constraintReminderJob = dispatcher.newJobBuilder()
-                    .setService(MySpaceJobService.class)
-                    .setTag(fname + i)
-                    .setLifetime(Lifetime.FOREVER)
-                    .setRecurring(false)
-                    .setTrigger(Trigger.executionWindow(diff1 - 10 * MIN, diff1 + HOUR))
-                    .setReplaceCurrent(true)
-                    .setExtras(bundle)
-                    .build();
+
+//            Job constraintReminderJob = dispatcher.newJobBuilder()
+//                    .setService(MySpaceJobService.class)
+//                    .setTag(fname + i)
+//                    .setLifetime(Lifetime.FOREVER)
+//                    .setRecurring(false)
+//                    .setTrigger(Trigger.executionWindow(diff1 - 10 * MIN, diff1 + HOUR))
+//                    .setReplaceCurrent(true)
+//                    .setExtras(bundle)
+//                    .build();
             //.setConstraints()
             //REMINDER_INTERVAL_SECS - SYNC_FLEXTIME_SECONDS,
             //REMINDER_INTERVAL_SECS + SYNC_FLEXTIME_SECONDS))
             //.setExtras(bundle)
             Timber.v("Job built");
-            dispatcher.schedule(constraintReminderJob);
+            //dispatcher.schedule(constraintReminderJob);
             Timber.v("dispatcher scheduled, tag = " + fname + i);
+
+            Constraints constraints = new Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .setRequiresCharging(false)
+                    .build();
+
+
+            OneTimeWorkRequest request =
+                    // Tell which work to execute
+                    new OneTimeWorkRequest.Builder(MyWorkerForMySpace.class)
+                            // Sets the input data for the ListenableWorker
+                            .setInputData(input)
+                            // If you want to delay the start of work by 60 seconds
+                            .setInitialDelay(5, TimeUnit.SECONDS)
+                            // Set a backoff criteria to be used when retry-ing
+                            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL,10, TimeUnit.SECONDS)
+                            //.setBackoffCriteria(BackoffCriteria.EXPONENTIAL, 30000, TimeUnit.MILLISECONDS)
+                            // Set additional constraints
+                            .setConstraints(constraints)
+                            .build();
+
+            //OneTimeWorkRequest workRequest = null; // a WorkRequest;
+                    WorkManager.getInstance(context)
+                            // Use ExistingWorkPolicy.REPLACE to cancel and delete any existing pending
+                            // (uncompleted) work with the same unique name. Then, insert the newly-specified
+                            // work.
+                            .enqueueUniqueWork(fname, ExistingWorkPolicy.KEEP, request);
+                            //.enqueue(request);
+
+
+
         }
     }
 

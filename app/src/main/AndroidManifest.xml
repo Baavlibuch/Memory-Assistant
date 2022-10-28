@@ -27,7 +27,7 @@
         tools:targetApi="n">
 
         <activity
-            android:name=".BaseActivity"
+            android:name=".language.BaseActivity"
             android:exported="false" />
         <activity
             android:name=".main.MainActivity"
@@ -182,6 +182,9 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+        <receiver android:name=".NotificationReceiver" />
+
     </application>
 
 </manifest>

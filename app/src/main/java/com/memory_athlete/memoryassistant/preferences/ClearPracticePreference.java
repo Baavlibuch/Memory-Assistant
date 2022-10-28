@@ -7,8 +7,9 @@ import static androidx.core.content.ContextCompat.checkSelfPermission;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.preference.Preference;
 import android.util.AttributeSet;
+
+import androidx.preference.Preference;
 
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;

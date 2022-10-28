@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant;
+package com.memory_athlete.memoryassistant.language;
 
 public class SettingLanguage {
 

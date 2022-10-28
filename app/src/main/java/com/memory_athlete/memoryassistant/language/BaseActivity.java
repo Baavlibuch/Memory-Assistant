@@ -1,4 +1,4 @@
-package com.memory_athlete.memoryassistant;
+package com.memory_athlete.memoryassistant.language;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;
 
 public class BaseActivity extends AppCompatActivity
