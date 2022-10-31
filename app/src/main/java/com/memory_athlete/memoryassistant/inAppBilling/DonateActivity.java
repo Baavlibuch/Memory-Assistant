@@ -2,8 +2,6 @@ package com.memory_athlete.memoryassistant.inAppBilling;
 
 import static org.solovyev.android.checkout.ResponseCodes.ITEM_ALREADY_OWNED;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -19,10 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 
 import org.solovyev.android.checkout.ActivityCheckout;
@@ -42,7 +39,6 @@ import butterknife.ButterKnife;
 import timber.log.Timber;
 
 public class DonateActivity extends AppCompatActivity {
-    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.recycler)
     RecyclerView mRecycler;
     private ActivityCheckout mCheckout;
@@ -248,10 +244,5 @@ public class DonateActivity extends AppCompatActivity {
             if (purchase != null) consume(purchase);
             else purchase(sku);
         }
-    }
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }
