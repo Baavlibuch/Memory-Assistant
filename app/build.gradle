@@ -26,6 +26,7 @@ android {
             storeFile file(keystoreProperties['storeFile'])
             storePassword keystoreProperties['storePassword']
         }
+
     }
     compileSdkVersion 32
     buildToolsVersion '28.0.3'
@@ -49,7 +50,7 @@ android {
             //minifyEnabled true
             //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.config
             //signingConfig signingConfigs.config
         }
     }
