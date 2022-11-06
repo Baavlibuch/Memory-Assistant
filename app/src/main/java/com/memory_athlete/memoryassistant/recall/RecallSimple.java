@@ -6,11 +6,9 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.Html;
@@ -29,8 +27,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.memory_athlete.memoryassistant.AsyncTaskExecutorService;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
@@ -91,7 +89,7 @@ public class RecallSimple extends AppCompatActivity {
         Intent intent = getIntent();
         mFilePath = intent.getStringExtra("file");
         mDiscipline = intent.getStringExtra("discipline");
-        Toast.makeText(RecallSimple.this,mDiscipline, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(RecallSimple.this,mDiscipline, Toast.LENGTH_SHORT).show();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Timber.i("file Path = %s", mFilePath);
@@ -580,8 +578,10 @@ public class RecallSimple extends AppCompatActivity {
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         }
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
-        //noinspection unchecked            // couldn't find a fix. Help out if you can
+        //noinspection unchecked  // couldn't find a fix. Help out if you can
+
         (new CompareAsyncTask()).execute();
+
     }
 
     public void startSW(View view) {
@@ -597,7 +597,9 @@ public class RecallSimple extends AppCompatActivity {
 
     public void giveUp(View view) {
         ((Chronometer) findViewById(R.id.time_elapsed_value)).stop();
+
         (new JustAnswersAsyncTask()).execute();
+
     }
 
     // TODO: Start a timer
@@ -610,8 +612,8 @@ public class RecallSimple extends AppCompatActivity {
                 TextView.BufferType.SPANNABLE);
     }
 
-    @SuppressLint("StaticFieldLeak")
-    protected class CompareAsyncTask extends AsyncTask<ArrayList<Integer>, Void, Boolean> {
+    //@SuppressLint("StaticFieldLeak")
+    protected class CompareAsyncTask extends AsyncTaskExecutorService<ArrayList<Integer>, Void, Boolean> {
 
         @Override
         protected void onPreExecute() {
@@ -622,9 +624,8 @@ public class RecallSimple extends AppCompatActivity {
             Timber.v("responses.size() = %s", String.valueOf(responses.size()));
         }
 
-        @SafeVarargs
         @Override
-        protected final Boolean doInBackground(ArrayList<Integer>... a) {
+        protected Boolean doInBackground(ArrayList<Integer> a) {
             try {
                 getResponse();
                 getAnswers();
@@ -639,9 +640,26 @@ public class RecallSimple extends AppCompatActivity {
             }
         }
 
+//        @SafeVarargs
+//        @Override
+//        protected final Boolean doInBackground(ArrayList<Integer>... a) {
+//            try {
+//                getResponse();
+//                getAnswers();
+//                if (compareFormat == CompareFormat.SIMPLE_COMPARE_FORMAT
+//                        || compareFormat == CompareFormat.CARD_COMPARE_FORMAT)
+//                    compare(false);
+//                else if (compareFormat == CompareFormat.WORD_COMPARE_FORMAT) compare(true);
+//                return false;
+//            } catch (FileNotFoundException e) {
+//                Timber.e(e);
+//                return true;
+//            }
+//        }
+
         @Override
         protected void onPostExecute(Boolean fileNotFound) {
-            super.onPostExecute(fileNotFound);
+            //super.onPostExecute(fileNotFound);
             if (fileNotFound) {
                 Toast.makeText(getApplicationContext(), "File not found", Toast.LENGTH_SHORT).show();
                 finish();
@@ -685,8 +703,8 @@ public class RecallSimple extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
-    private class JustAnswersAsyncTask extends AsyncTask<Void, String, String> {
+    //@SuppressLint("StaticFieldLeak")
+    private class JustAnswersAsyncTask extends AsyncTaskExecutorService<Void, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -694,13 +712,18 @@ public class RecallSimple extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(Void params) {
             return giveUp();
         }
 
+//        @Override
+//        protected String doInBackground(Void... params) {
+//            return giveUp();
+//        }
+
         @Override
         protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+            //super.onPostExecute(s);
             if (s == null) {
                 Toast.makeText(getApplicationContext(), "File not found", Toast.LENGTH_SHORT).show();
                 reset();
@@ -724,10 +747,6 @@ public class RecallSimple extends AppCompatActivity {
         SIMPLE_COMPARE_FORMAT, WORD_COMPARE_FORMAT, CARD_COMPARE_FORMAT
     }
 
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
-    }
 }
 
 // TODO: shift to fragments

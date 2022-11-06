@@ -13,17 +13,25 @@ apply plugin: 'kotlin-android'
 //apply plugin: 'io.fabric'
 //apply plugin: 'com.jakewharton.hugo'
 
-def keystorePropertiesFile = rootProject.file("C:\\Users\\keystore.properties")
+def keystorePropertiesFile = rootProject.file("C:\\Users\\Memory - new key\\keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
 
+    bundle {
+
+        language {
+            enableSplit = false
+        }
+    }
+
     signingConfigs {
         config {
+
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
+            storeFile file('C:\\Users\\Memory - new key\\android.jks')
             storePassword keystoreProperties['storePassword']
         }
 
@@ -34,12 +42,11 @@ android {
         applicationId "com.memory_athelte.memoryassistant"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 153
-        versionName "1.8.2"
+        versionCode 166
+
+        versionName "1.8.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        //resConfigs "en", "en-GB", "fr", "ja", "zh-Hans-MO", "zh-Hant-MO"
-
     }
 
     buildTypes {
@@ -51,7 +58,8 @@ android {
             //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
-            //signingConfig signingConfigs.config
+            //signingConfig signingConfigs.release
+
         }
     }
 
@@ -64,10 +72,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
+
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-ads-lite:21.2.0'
+
     def work_version = "2.7.1"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
@@ -89,16 +101,14 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.work:work-runtime:$work_version"
-    //implementation "androidx.preference:preference-ktx:1.2.0"
-    //implementation 'com.crashlytics.sdk.android:crashlytics:17.2.2'
+    implementation "androidx.concurrent:concurrent-futures:1.1.0"
 
-//    implementation 'com.android.billingclient:billing:5.0.0'
-//    implementation 'com.google.guava:guava:24.1-jre'
-//    implementation 'com.google.guava:guava:27.0.1-android'
+    implementation 'com.android.billingclient:billing:5.0.0'
+    implementation 'com.google.guava:guava:24.1-jre'
+    implementation 'com.google.guava:guava:27.0.1-android'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.google.android.gms:play-services-ads:21.3.0'
+
     testImplementation 'junit:junit:4.12'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:' + butterknifeVersion

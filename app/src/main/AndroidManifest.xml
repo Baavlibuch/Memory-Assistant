@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <application
         android:name=".inAppBilling.CheckoutApplication"
@@ -22,19 +23,19 @@
         android:requestLegacyExternalStorage="true"
         android:resizeableActivity="true"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/light"
         tools:ignore="ExtraText"
         tools:targetApi="n">
         <activity
             android:name=".language.BaseActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".main.MainActivity"
             android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter
@@ -98,7 +99,7 @@
             android:name=".main.DisciplineActivity"
             android:launchMode="singleTask"
             android:parentActivityName=".main.Practice"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.RecallSelector"
@@ -109,19 +110,19 @@
             android:name=".recall.RecallSimple"
             android:launchMode="singleTask"
             android:parentActivityName=".main.RecallSelector"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".recall.RecallComplex"
             android:launchMode="singleTask"
             android:parentActivityName=".main.RecallSelector"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".recall.RecallCards"
             android:launchMode="singleTask"
             android:parentActivityName=".main.RecallSelector"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.Implement"
@@ -188,8 +189,10 @@
         <receiver android:name=".NotificationReceiver" />
 
         <meta-data
-            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
-            android:value="true" />
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+
     </application>
 
 </manifest>

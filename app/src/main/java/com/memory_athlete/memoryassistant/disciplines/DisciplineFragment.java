@@ -1,23 +1,15 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import static java.lang.Math.pow;
+
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Instrumentation;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.os.SystemClock;
-import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,10 +31,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import com.memory_athlete.memoryassistant.AsyncTaskExecutorService;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.RecallSelector;
@@ -55,14 +47,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
 
 import timber.log.Timber;
-
-import static java.lang.Math.pow;
 
 /**
  * Created by manik on 5/11/17.
@@ -420,7 +408,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 //        String path = Helper.APP_FOLDER + File.separator
 //                + getString(R.string.practice) + File.separator + activity.getTitle().toString();
 
-        Toast.makeText(activity.getApplicationContext(),"discipline is working", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(activity.getApplicationContext(),"discipline is working", Toast.LENGTH_SHORT).show();
 
         if (Helper.makeDirectory(path, getContext())) {
             path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",
@@ -737,17 +725,16 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //Thread to generate the random list as string
     // TODO: Fix this memory leak
-    @SuppressLint("StaticFieldLeak")
-    protected class GenerateRandomStringAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
+    //@SuppressLint("StaticFieldLeak")
+    protected class GenerateRandomStringAsyncTask extends AsyncTaskExecutorService<ArrayList<Integer>, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             preExecute();
         }
 
-        @SafeVarargs
         @Override
-        protected final String doInBackground(ArrayList<Integer>... a) {
+        protected String doInBackground(ArrayList<Integer> a) {
             Timber.v("doInBackground entered");
             try {
                 return backgroundString();
@@ -759,9 +746,23 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             }
         }
 
+//        @SafeVarargs
+//        @Override
+//        protected final String doInBackground(ArrayList<Integer>... a) {
+//            Timber.v("doInBackground entered");
+//            try {
+//                return backgroundString();
+//            } catch (IllegalStateException e) {
+//                Activity activity = getActivity();
+//                if (activity == null) return null;
+//                if (activity.isFinishing()) return null;
+//                throw new RuntimeException("activity is not null!", e);
+//            }
+//        }
+
         @Override
         protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+            //super.onPostExecute(s);
             postExecuteString(s);
             Timber.v("onPostExecute() complete");
         }
@@ -769,8 +770,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //Thread to generate the random list as arrayList
     // TODO: Fix this memory leak
-    @SuppressLint("StaticFieldLeak")
-    protected class GenerateRandomArrayListAsyncTask extends AsyncTask<ArrayList<Integer>, Void, ArrayList> {
+    //@SuppressLint("StaticFieldLeak")
+    protected class GenerateRandomArrayListAsyncTask extends AsyncTaskExecutorService<ArrayList<Integer>, Void, ArrayList> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -779,7 +780,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
 
         @Override
-        protected ArrayList doInBackground(ArrayList<Integer>[] a) {
+        protected ArrayList doInBackground(ArrayList<Integer> a) {
             try {
                 return backgroundArray();
             } catch (IllegalStateException e) {
@@ -790,9 +791,21 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             }
         }
 
+//        @Override
+//        protected ArrayList doInBackground(ArrayList<Integer>[] a) {
+//            try {
+//                return backgroundArray();
+//            } catch (IllegalStateException e) {
+//                Activity activity = getActivity();
+//                if (activity == null) return null;
+//                if (activity.isFinishing()) return null;
+//                throw new RuntimeException("activity is not null!", e);
+//            }
+//        }
+
         @Override
         protected void onPostExecute(ArrayList list) {
-            super.onPostExecute(list);
+            //super.onPostExecute(list);
             postExecuteArrayList(list);
         }
     }

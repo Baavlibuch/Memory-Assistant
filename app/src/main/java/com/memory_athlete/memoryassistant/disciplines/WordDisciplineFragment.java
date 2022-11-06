@@ -1,7 +1,5 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 
+import com.memory_athlete.memoryassistant.AsyncTaskExecutorService;
 import com.memory_athlete.memoryassistant.R;
 
 public abstract class WordDisciplineFragment extends DisciplineFragment {
@@ -37,12 +36,23 @@ public abstract class WordDisciplineFragment extends DisciplineFragment {
     }
 
     // fixing this leak would require removal of inheritance
-    @SuppressLint("StaticFieldLeak")
-    private class DictionaryAsyncTask extends AsyncTask<Void, Void, String> {
+    //@SuppressLint("StaticFieldLeak")
+    private class DictionaryAsyncTask extends AsyncTaskExecutorService<Void, Void, String> {
+//        @Override
+//        protected String doInBackground(Void... a) {
+//            createDictionary();
+//            return "";
+//        }
+
         @Override
-        protected String doInBackground(Void... a) {
+        protected String doInBackground(Void a) {
             createDictionary();
             return "";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
         }
     }
 }

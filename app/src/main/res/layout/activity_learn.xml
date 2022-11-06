@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     tools:context="com.memory_athlete.memoryassistant.main.Learn"
     android:orientation="vertical"
     android:id="@+id/learn_linear_layout">
@@ -15,5 +16,16 @@
         android:contentDescription="@string/a_list_of_all_the_learning_methods"
         android:divider="@color/color_transparent"
         android:dividerHeight="0px" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-5457013636131861/3119544472"
+        tools:ignore="ObsoleteLayoutParam" />
+    <!--    ads:adUnitId="ca-app-pub-3940256099942544/6300978111"-->
 
 </LinearLayout>

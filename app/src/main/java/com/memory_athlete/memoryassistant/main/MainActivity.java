@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,10 +32,11 @@ import androidx.preference.PreferenceManager;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.memory_athlete.memoryassistant.language.BaseActivity;
+import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.language.BaseActivity;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         Helper.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name));
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         SharedPreferences getShared = getSharedPreferences("LANGUAGE", MODE_PRIVATE);
@@ -125,11 +128,19 @@ public class MainActivity extends AppCompatActivity {
             makeText(this, R.string.faulty_translations, Toast.LENGTH_LONG).show();
         LocaleListCompat appLocale = LocaleListCompat.forLanguageTags("xx-YY");
         //AppCompatDelegate.setApplicationLocales(appLocale);
+
+
+        AdMob adMob = new AdMob(this);
+        LinearLayout add_layout = findViewById(R.id.add_layout);
+        adMob.loadBannerAd(add_layout);
+
+
     }
 
     // resuming the MainActivity again
     @Override
     protected void onResume() {
+        //app.loadAd(layAd);
         super.onResume();
         new Thread(() -> {
             SharedPreferences.Editor e = sharedPreferences.edit();

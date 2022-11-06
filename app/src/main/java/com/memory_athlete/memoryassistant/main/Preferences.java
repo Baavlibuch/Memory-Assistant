@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -52,23 +53,22 @@ public class Preferences extends AppCompatActivity {
 
 //        @Override
 //        public void onCreate(Bundle savedInstanceState) {
-//            Timber.v("onCreate() started");
-//            super.onCreate(savedInstanceState);
-//            addPreferencesFromResource(R.xml.settings_main);
-//
-//            bindPreferenceSummaryToValue(findPreference(getString(R.string.periodic)));
-//            bindPreferenceToast(findPreference(getString(R.string.speech_rate)));
-//            bindPreferenceToast(findPreference("Change Language"));
-//            //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
-//            //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
-//            //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
-//            Timber.v("onCreate() complete");
+////            Timber.v("onCreate() started");
+////            super.onCreate(savedInstanceState);
+////            addPreferencesFromResource(R.xml.settings_main);
+////
+////            bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
+////            bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
+////            bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
+////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
+////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
+////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
+////            Timber.v("onCreate() complete");
 //        }
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.settings_main);
-
             bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
             bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
             bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
@@ -176,8 +176,19 @@ public class Preferences extends AppCompatActivity {
                     calendar.add(Calendar.DAY_OF_MONTH, 1);
 
                 Intent intent = new Intent(getActivity(), NotificationReceiver.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+
+                PendingIntent pendingIntent;
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    pendingIntent = PendingIntent.getBroadcast(getActivity(),0, intent,PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+                }else {
+                    pendingIntent = PendingIntent.getBroadcast(getActivity(),0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                }
+
+                //PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager) Objects.requireNonNull(getActivity()).getSystemService(Context.ALARM_SERVICE);
 
                 if (alarmManager != null) {
                     alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);

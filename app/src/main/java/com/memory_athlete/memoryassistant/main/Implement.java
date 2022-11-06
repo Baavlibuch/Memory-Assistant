@@ -18,9 +18,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 
 import java.io.IOException;
@@ -47,6 +48,12 @@ public class Implement extends AppCompatActivity {
         pathList.add("Implement");
 
         setAdapter();
+
+        AdMob adMob = new AdMob(this);
+        LinearLayout add_layout = findViewById(R.id.add_layout);
+        adMob.loadBannerAd(add_layout);
+
+
     }
 
     @Override
@@ -69,7 +76,7 @@ public class Implement extends AppCompatActivity {
             //Toast.makeText(this, pathList.get(0), Toast.LENGTH_SHORT).show();
             Timber.v("path = %s", path);
             String[] list = listAssetFiles(path.toString());
-            Toast.makeText(this, String.valueOf(list.length), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, String.valueOf(list.length), Toast.LENGTH_SHORT).show();
             Timber.v("list set");
             if (list == null) {
                 Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();

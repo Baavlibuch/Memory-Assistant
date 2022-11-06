@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
@@ -70,6 +72,10 @@ public class MySpace extends AppCompatActivity {
                     })
                     .show();
         }
+
+        AdMob adMob = new AdMob(this);
+        LinearLayout add_layout = findViewById(R.id.add_layout);
+        adMob.loadBannerAd(add_layout);
     }
 
     @Override
