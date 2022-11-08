@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    android:contentDescription="A list of all the contributors in making the app"
+    android:contentDescription="@string/a_list_of_all_the_contributors_in_making_the_app"
     android:divider="@null"
     android:dividerHeight="0dp"
     android:orientation="vertical" />

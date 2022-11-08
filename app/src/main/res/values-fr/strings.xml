@@ -159,4 +159,30 @@
     <string name="fake_dates">Ces dates ne sont pas réelles</string>
     <string name="faulty_translations">Les traductions peuvent être défectueuses</string>
 
+    <string name="a_list_of_all_the_learning_methods">Une liste de toutes les méthodes d\'apprentissage</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">Une liste d\'options de contribution telles que le support, le financement, l\'engagement et les crédits</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">Liste des tâches pouvant être effectuées dans l\'application</string>
+    <string name="a_list_of_disciplines_to_practice">Une liste de disciplines à pratiquer</string>
+    <string name="privacy_policy_information">Informations sur la politique de confidentialité</string>
+    <string name="item_image">Image de l\'article</string>
+    <string name="item_text">Texte de l\'article</string>
+    <string name="heading_of_donation">Rubrique du don</string>
+    <string name="details_of_donation">Détails du don</string>
+    <string name="event_occurred">L\'événement s\'est produit</string>
+    <string name="date_of_event">Date de l\'évènement</string>
+    <string name="loading_progress_bar">Chargement de la barre de progression</string>
+    <string name="practice_level">Niveau de pratique</string>
+    <string name="todo">TOUT</string>
+    <string name="sliding_tabs">Onglets coulissants</string>
+    <string name="view_pager">Afficher le téléavertisseur</string>
+    <string name="horizontal_scroll">défilement horizontal</string>
+    <string name="card_view">Vue Carte</string>
+    <string name="walkthrough_viewpager">Page de visualisation pas à pas</string>
+    <string name="language_spinner">Langue Spinner</string>
+    <string name="choose_your_language">Choisissez votre langue</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">Une liste de tous les contributeurs à la création de l\'application</string>
+
+
+
+
 </resources>

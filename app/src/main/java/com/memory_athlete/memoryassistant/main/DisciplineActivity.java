@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,8 +20,8 @@ import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.memory_athlete.memoryassistant.AsyncTaskExecutorService;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
@@ -33,6 +32,7 @@ import com.memory_athlete.memoryassistant.disciplines.Names;
 import com.memory_athlete.memoryassistant.disciplines.Numbers;
 import com.memory_athlete.memoryassistant.disciplines.Places;
 import com.memory_athlete.memoryassistant.disciplines.Words;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.mySpace.MySpaceFragment;
 
 import java.util.ArrayList;
@@ -261,10 +261,24 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
         return super.onOptionsItemSelected(item);
     }
 
-    static protected class LoadFragmentsAsyncTask extends AsyncTask<Void, Void, SimpleFragmentPagerAdapter> {
+    static protected class LoadFragmentsAsyncTask extends AsyncTaskExecutorService<Void, Void, SimpleFragmentPagerAdapter> {
+
+//        @Override
+//        protected SimpleFragmentPagerAdapter doInBackground(Void... v) {
+//            if (mayAccessStorage) {
+//                int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
+//                        .getString(noOfMySpaceFrags, "1")));
+//                for (int i = 0; i < noOfMySpaceScreens; i++) {
+//                    if (noOfMySpaceScreens == 1) tabTitles.add(mySpace);
+//                    else tabTitles.add(mySpace + " " + (i + 1));
+//                }
+//                Timber.v("tabTitles.size() = %s", tabTitles.size());
+//            }
+//            return new SimpleFragmentPagerAdapter(fragManager);
+//        }
 
         @Override
-        protected SimpleFragmentPagerAdapter doInBackground(Void... v) {
+        protected SimpleFragmentPagerAdapter doInBackground(Void v) {
             if (mayAccessStorage) {
                 int noOfMySpaceScreens = Integer.parseInt(Objects.requireNonNull(sharedPreferences
                         .getString(noOfMySpaceFrags, "1")));
@@ -279,7 +293,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
         @Override
         protected void onPostExecute(SimpleFragmentPagerAdapter adapter) {
-            super.onPostExecute(adapter);
+            //super.onPostExecute(adapter);
             if (tabTitles.size() == 1 || !mayAccessStorage)
                 tabLayout.setVisibility(View.GONE);
 

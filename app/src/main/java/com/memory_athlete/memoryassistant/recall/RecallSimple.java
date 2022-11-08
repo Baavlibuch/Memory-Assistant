@@ -106,12 +106,12 @@ public class RecallSimple extends AppCompatActivity {
         if (intent.getBooleanExtra("file exists", false)) {
 
             int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-                ActivityCompat.requestPermissions(RecallSimple.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        EXTERNAL_STORAGE_PERMISSION_CODE);
+            ActivityCompat.requestPermissions(RecallSimple.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    EXTERNAL_STORAGE_PERMISSION_CODE);
 
-                File folder = getFilesDir();
-                File dir = new File(folder + File.separator
-                        + getString(R.string.practice) + File.separator + mDiscipline);
+            File folder = getFilesDir();
+            File dir = new File(folder + File.separator
+                    + getString(R.string.practice) + File.separator + mDiscipline);
 
 //            File dir = new File(Helper.APP_FOLDER + File.separator
 //                    + getString(R.string.practice) + File.separator + mDiscipline);

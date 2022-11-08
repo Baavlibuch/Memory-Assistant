@@ -31,6 +31,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 import timber.log.Timber;
@@ -195,7 +196,7 @@ public class Numbers extends DisciplineFragment {
             //From discipline
             //Directory of practice - external storage
             int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+            ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     EXTERNAL_STORAGE_PERMISSION_CODE);
 
             File folder = getActivity().getFilesDir();
@@ -205,7 +206,7 @@ public class Numbers extends DisciplineFragment {
 //        String path = Helper.APP_FOLDER + File.separator
 //                + getString(R.string.practice) + File.separator + activity.getTitle().toString();
 
-            Toast.makeText(activity.getApplicationContext(),"discipline is working", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(activity.getApplicationContext(),"discipline is working", Toast.LENGTH_SHORT).show();
 
             if (Helper.makeDirectory(path, getContext())) {
                 path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",

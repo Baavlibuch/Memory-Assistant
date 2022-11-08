@@ -159,4 +159,29 @@
     <string name="fake_dates">Эти даты не являются реальными</string>
     <string name="faulty_translations">Переводы могут быть ошибочными</string>
 
+    <string name="a_list_of_all_the_learning_methods">Список всех методов обучения</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">Список вариантов участия, таких как поддержка, финансирование, фиксация и кредиты.</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">Список задач, которые можно выполнять в приложении</string>
+    <string name="a_list_of_disciplines_to_practice">Список дисциплин для занятий</string>
+    <string name="privacy_policy_information">Информация о политике конфиденциальности</string>
+    <string name="item_image">Изображение товара</string>
+    <string name="item_text">Текст элемента</string>
+    <string name="heading_of_donation">Заголовок пожертвования</string>
+    <string name="details_of_donation">Детали пожертвования</string>
+    <string name="event_occurred">Произошло событие</string>
+    <string name="date_of_event">Дата события</string>
+    <string name="loading_progress_bar">Индикатор загрузки</string>
+    <string name="practice_level">Уровень практики</string>
+    <string name="todo">ВСЕ</string>
+    <string name="sliding_tabs">Скользящие вкладки</string>
+    <string name="view_pager">Просмотр пейджера</string>
+    <string name="horizontal_scroll">горизонтальная прокрутка</string>
+    <string name="card_view">Вид карты</string>
+    <string name="walkthrough_viewpager">Прохождение Viewpager</string>
+    <string name="language_spinner">Спиннер языков</string>
+    <string name="choose_your_language">Выберите свой язык</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">Список всех участников, принимавших участие в создании приложения.</string>
+
+
+
 </resources>

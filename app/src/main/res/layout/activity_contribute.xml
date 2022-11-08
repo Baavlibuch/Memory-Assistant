@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-xmlns:ads="http://schemas.android.com/apk/res-auto"
-android:orientation="vertical"
-android:id="@+id/main_linear_layout">
-
-<ListView
-    android:id="@+id/contribute_list_view"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_margin="8dp"
-    android:layout_weight="1"
-    android:contentDescription="@string/a_list_of_contributing_options_like_support_fund_commit_and_credits"
-    android:divider="@android:color/transparent"
-    android:dividerHeight="0px"
-    tools:context="com.memory_athlete.memoryassistant.main.Contribute"/>
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/main_linear_layout">
 
-<LinearLayout
-    android:id="@+id/add_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"/>
+    <ListView
+        android:id="@+id/contribute_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/a_list_of_contributing_options_like_support_fund_commit_and_credits"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0px"
+        tools:context="com.memory_athlete.memoryassistant.main.Contribute"/>
+
+    <LinearLayout
+        android:id="@+id/add_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
 
 </LinearLayout>
 

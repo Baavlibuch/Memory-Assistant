@@ -159,5 +159,29 @@
     <string name="fake_dates">これらの日付は本物ではありません</string>
     <string name="faulty_translations">الترجمات قد تكون خاطئة</string>
 
+    <string name="a_list_of_all_the_learning_methods">قائمة بجميع طرق التعلم</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">قائمة بخيارات المساهمة مثل الدعم والتمويل والالتزام والاعتمادات</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">قائمة المهام التي يمكن أداؤها داخل التطبيق</string>
+    <string name="a_list_of_disciplines_to_practice">قائمة التخصصات التي يجب ممارستها</string>
+    <string name="privacy_policy_information">معلومات سياسة الخصوصية</string>
+    <string name="item_image">صورة العنصر</string>
+    <string name="item_text">نص العنصر</string>
+    <string name="heading_of_donation">عنوان التبرع</string>
+    <string name="details_of_donation">تفاصيل التبرع</string>
+    <string name="event_occurred">وقع الحدث</string>
+    <string name="date_of_event">تاريخ الحدث</string>
+    <string name="loading_progress_bar">تحميل شريط التقدم</string>
+    <string name="practice_level">مستوى الممارسة</string>
+    <string name="todo">الكل</string>
+    <string name="sliding_tabs">انزلاق علامات التبويب</string>
+    <string name="view_pager">مشاهدة ملف Pager</string>
+    <string name="horizontal_scroll">التمرير الأفقي</string>
+    <string name="card_view">عرض البطاقة</string>
+    <string name="walkthrough_viewpager">تجول Viewpager</string>
+    <string name="language_spinner">سبينر اللغة</string>
+    <string name="choose_your_language">اختر لغتك</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">قائمة بجميع المساهمين في صنع التطبيق</string>
+
+
 
 </resources>

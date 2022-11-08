@@ -159,4 +159,28 @@
     <string name="fake_dates">Disse datoene er ikke ekte</string>
     <string name="faulty_translations">Oversettelser kan være feil</string>
 
+    <string name="a_list_of_all_the_learning_methods">En liste over alle læringsmetodene</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">En liste over bidragsalternativer som støtte, fond, forpliktelse og kreditter</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">Liste over oppgaver som kan utføres i appen</string>
+    <string name="a_list_of_disciplines_to_practice">En liste over disipliner å praktisere</string>
+    <string name="privacy_policy_information">Informasjon om personvern</string>
+    <string name="item_image">Varebilde</string>
+    <string name="item_text">Varetekst</string>
+    <string name="heading_of_donation">Overskrift for donasjon</string>
+    <string name="details_of_donation">Detaljer om donasjon</string>
+    <string name="event_occurred">Hendelsen skjedde</string>
+    <string name="date_of_event">Dato for hendelsen</string>
+    <string name="loading_progress_bar">Laster frem fremdriftsindikator</string>
+    <string name="practice_level">Praksisnivå</string>
+    <string name="todo">ALLE</string>
+    <string name="sliding_tabs">Skyvbare faner</string>
+    <string name="view_pager">Se personsøker</string>
+    <string name="horizontal_scroll">horisontal rulling</string>
+    <string name="card_view">Kortvisning</string>
+    <string name="walkthrough_viewpager">Walkthrough Viewpager</string>
+    <string name="language_spinner">Språkspinner</string>
+    <string name="choose_your_language">Velg ditt språk</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">En liste over alle bidragsyterne til å lage appen</string>
+
+
 </resources>

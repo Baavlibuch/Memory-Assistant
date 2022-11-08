@@ -159,4 +159,28 @@
     <string name="fake_dates">ये तारीखें वास्तविक नहीं हैं</string>
     <string name="faulty_translations">अनुवाद दोषपूर्ण हो सकते हैं</string>
 
+    <string name="a_list_of_all_the_learning_methods">सभी सीखने के तरीकों की एक सूची</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">समर्थन, फंड, कमिट और क्रेडिट जैसे योगदान विकल्पों की सूची</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">ऐप के भीतर किए जा सकने वाले कार्यों की सूची</string>
+    <string name="a_list_of_disciplines_to_practice">अभ्यास करने के लिए विषयों की एक सूची</string>
+    <string name="privacy_policy_information">गोपनीयता नीति की जानकारी</string>
+    <string name="item_image">आइटम छवि</string>
+    <string name="item_text">आइटम टेक्स्ट</string>
+    <string name="heading_of_donation">दान का शीर्षक</string>
+    <string name="details_of_donation">दान का विवरण</string>
+    <string name="event_occurred">घटना घटी</string>
+    <string name="date_of_event">घटना की तिथि</string>
+    <string name="loading_progress_bar">प्रगति पट्टी लोड हो रही है</string>
+    <string name="practice_level">अभ्यास स्तर</string>
+    <string name="todo">सब</string>
+    <string name="sliding_tabs">स्लाइडिंग टैब</string>
+    <string name="view_pager">पेजर देखें</string>
+    <string name="horizontal_scroll">क्षैतिज स्क्रॉल</string>
+    <string name="card_view">कार्ड व्यू</string>
+    <string name="walkthrough_viewpager">वॉकथ्रू व्यूपेजर</string>
+    <string name="language_spinner">भाषा स्पिनर</string>
+    <string name="choose_your_language">अपनी भाषा चुनिए</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">ऐप बनाने में सभी योगदानकर्ताओं की सूची</string>
+
+
 </resources>

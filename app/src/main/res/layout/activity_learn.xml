@@ -17,15 +17,4 @@
         android:divider="@color/color_transparent"
         android:dividerHeight="0px" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-5457013636131861/3119544472"
-        tools:ignore="ObsoleteLayoutParam" />
-    <!--    ads:adUnitId="ca-app-pub-3940256099942544/6300978111"-->
-
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
@@ -398,7 +399,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         //Directory of practice - external storage
         int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+        ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                 EXTERNAL_STORAGE_PERMISSION_CODE);
 
         File folder = getActivity().getFilesDir();
@@ -459,17 +460,6 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return false;
     }
 
-    //// Checks if external storage is available for read and write
-    //public boolean isExternalStorageWritable() {
-    //    return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
-    //}
-    //
-    //// Checks if external storage is available to at least read
-    //public boolean isExternalStorageReadable() {
-    //    String externalStorageState = Environment.getExternalStorageState();
-    //    return Environment.MEDIA_MOUNTED.equals(externalStorageState) ||
-    //            Environment.MEDIA_MOUNTED_READ_ONLY.equals(externalStorageState);
-    //}
 
     public boolean reset() {
         if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE)
@@ -664,7 +654,14 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                         sharedPreferences.getString(activity.getString(R.string.speech_rate), "0.25")))
                         * speechSpeedMultiplier);
                 Timber.v("TTS.speak will be called");
-                textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    textToSpeech.speak(s,TextToSpeech.QUEUE_FLUSH,null,null);
+                } else {
+                    textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+                }
+
+                //textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                 Timber.v("TTS.speak has been called");
                 // TODO update someday
                 //noinspection deprecation
