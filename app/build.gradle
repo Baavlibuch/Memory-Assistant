@@ -51,10 +51,10 @@ android {
 
     buildTypes {
         debug{
-            //minifyEnabled true
+            minifyEnabled true
         }
         release {
-            //minifyEnabled true
+            minifyEnabled true
             //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
@@ -80,6 +80,7 @@ android {
 
 dependencies {
 
+    implementation 'com.google.firebase:firebase-database:20.1.0'
     def work_version = "2.7.1"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
@@ -102,6 +103,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.work:work-runtime:$work_version"
     implementation "androidx.concurrent:concurrent-futures:1.1.0"
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
 
     implementation 'com.android.billingclient:billing:5.0.0'
     implementation 'com.google.guava:guava:24.1-jre'
@@ -116,6 +119,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
 
     //noinspection GradleCompatible.
     androidTestImplementation 'androidx.test:rules:1.1.1'

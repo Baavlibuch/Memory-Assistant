@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.main;
 import static android.widget.Toast.makeText;
 import static com.memory_athlete.memoryassistant.Helper.REQUEST_STORAGE_ACCESS;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -26,21 +27,36 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.os.LocaleListCompat;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.language.BaseActivity;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
+import com.memory_athlete.memoryassistant.mySpace.ModelForSavingFiles;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,9 +64,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 import timber.log.Timber;
-
-//import com.crashlytics.android.Crashlytics;
-//import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
@@ -102,10 +115,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name));
 
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         SharedPreferences getShared = getSharedPreferences("LANGUAGE", MODE_PRIVATE);
         String value = getShared.getString("str", null);
+
         if (value != null) {
             Toast.makeText(MainActivity.this,value+" language", Toast.LENGTH_SHORT).show();
 
@@ -129,13 +144,29 @@ public class MainActivity extends AppCompatActivity {
         LocaleListCompat appLocale = LocaleListCompat.forLanguageTags("xx-YY");
         //AppCompatDelegate.setApplicationLocales(appLocale);
 
+        //already signed
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(MainActivity.this);
+        if(account!=null) {
+            String name_from_account = account.getDisplayName();
+            String id_from_account = account.getId();
+            Toast.makeText(MainActivity.this, name_from_account, Toast.LENGTH_SHORT).show();
+
+            assert id_from_account != null;
+
+            getFromFirebase(id_from_account,getString(R.string.majors));
+            getFromFirebase(id_from_account,getString(R.string.wardrobes));
+            getFromFirebase(id_from_account,getString(R.string.lists));
+            getFromFirebase(id_from_account,getString(R.string.words));
+
+        }
+
 
         AdMob adMob = new AdMob(this);
         LinearLayout add_layout = findViewById(R.id.add_layout);
         adMob.loadBannerAd(add_layout);
 
-
     }
+
 
     // resuming the MainActivity again
     @Override
@@ -281,6 +312,80 @@ public class MainActivity extends AppCompatActivity {
             return convertView;
         }
     }
+
+
+    private void getFromFirebase(String id_from_account, String practice_type) {
+
+        ArrayList<ModelForSavingFiles> files = new ArrayList<>();
+        //Directory of practice - external storage
+        int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                EXTERNAL_STORAGE_PERMISSION_CODE);
+        File folder = getFilesDir();
+
+        //check path
+        String path_to_store = folder + File.separator + getString(R.string.my_space) + File.separator + practice_type + File.separator;
+        File discipline_folder = new File(path_to_store);
+
+
+        if(!discipline_folder.exists()) {
+
+            Boolean is_created = discipline_folder.mkdirs();
+
+            try {
+                DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference("MySpaceFiles").child(id_from_account)
+                        .child(getString(R.string.my_space)).child(practice_type);
+
+                databaseReference1.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                            ModelForSavingFiles modelForSavingFiles = postSnapshot.getValue(ModelForSavingFiles.class);
+                            files.add(modelForSavingFiles);
+
+                        }
+                        String[] file_urls = new String[files.size()];
+
+                        if (file_urls.length > 0) {
+                            for (int i = 0; i < file_urls.length; i++) {
+                                file_urls[i] = files.get(i).getUrl_file();
+
+                                try {
+
+                                    FirebaseStorage storage = FirebaseStorage.getInstance();
+                                    StorageReference httpsReference = storage.getReferenceFromUrl(file_urls[i]);
+
+                                    String name_file = httpsReference.getName();
+                                    File file = new File(path_to_store, name_file + ".txt");
+
+                                    httpsReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {}
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception exception) {}
+                                    });
+                                } catch (final Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {}
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
 
     @Override
     protected void attachBaseContext(Context base) {

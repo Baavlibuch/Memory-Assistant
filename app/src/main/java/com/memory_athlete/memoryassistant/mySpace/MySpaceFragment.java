@@ -207,7 +207,7 @@ public class MySpaceFragment extends Fragment {
 
                 //Directory of practice - external storage
                 int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         EXTERNAL_STORAGE_PERMISSION_CODE);
                 File folder = getActivity().getFilesDir();
                 dir = new File(folder + File.separator + getString(R.string.my_space) + File.separator + item.mPath);
@@ -232,7 +232,7 @@ public class MySpaceFragment extends Fragment {
 
                 //Directory of practice - external storage
                 int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         EXTERNAL_STORAGE_PERMISSION_CODE);
                 File folder = getActivity().getFilesDir();
                 fileName = folder + File.separator + getString(R.string.my_space) + File.separator + title;
@@ -318,7 +318,7 @@ public class MySpaceFragment extends Fragment {
 
             //Directory of practice - external storage
             int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+            ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     EXTERNAL_STORAGE_PERMISSION_CODE);
             File folder = getActivity().getFilesDir();
             fileName = folder + File.separator + MySpaceFragment.this.getString(R.string.my_space) + File.separator + title;;
@@ -360,6 +360,9 @@ public class MySpaceFragment extends Fragment {
                 }
                 br.close();
                 mySpaceEditText.setText(text);
+
+                Toast.makeText(getActivity(), path + File.separator + header + ".txt", Toast.LENGTH_SHORT).show();
+
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
@@ -438,7 +441,14 @@ public class MySpaceFragment extends Fragment {
                 editor.putLong(fname, System.currentTimeMillis());
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
+
+                //firebase
+                Toast.makeText(getActivity(), fname, Toast.LENGTH_SHORT).show();
+
+
                 ReminderUtils.mySpaceReminder(activity, fname);
+
+
             } catch (Exception e) {
                 Timber.e(e);
                 Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();

@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <application
@@ -23,7 +22,6 @@
         android:requestLegacyExternalStorage="true"
         android:resizeableActivity="true"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/light"
         tools:ignore="ExtraText"
         tools:targetApi="n">
@@ -98,30 +96,31 @@
             android:name=".main.DisciplineActivity"
             android:launchMode="singleTask"
             android:parentActivityName=".main.Practice"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.RecallSelector"
             android:launchMode="singleTask"
             android:parentActivityName=".main.MainActivity"
+            android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".recall.RecallSimple"
             android:launchMode="singleTask"
             android:parentActivityName=".main.RecallSelector"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".recall.RecallComplex"
             android:launchMode="singleTask"
             android:parentActivityName=".main.RecallSelector"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".recall.RecallCards"
             android:launchMode="singleTask"
             android:parentActivityName=".main.RecallSelector"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.Implement"
@@ -139,10 +138,12 @@
         <activity
             android:name=".mySpace.MySpace"
             android:parentActivityName=".main.MainActivity"
+            android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".mySpace.WriteFile"
             android:parentActivityName=".mySpace.MySpace"
+            android:screenOrientation="portrait"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.Contribute"
@@ -189,7 +190,8 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-        android:value="ca-app-pub-5457013636131861~4128114636"/>
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+<!--        android:value="ca-app-pub-5457013636131861~4128114636"/>-->
 
 
     </application>

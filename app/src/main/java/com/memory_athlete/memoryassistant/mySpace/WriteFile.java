@@ -3,6 +3,7 @@ package com.memory_athlete.memoryassistant.mySpace;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +21,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
@@ -48,6 +59,8 @@ public class WriteFile extends AppCompatActivity {
         Helper.theme(this, WriteFile.this);
         setContentView(R.layout.activity_write_file);
         String header = intent.getStringExtra("mHeader");
+
+
         if (header == null) header = "New";
         else oldName = header;
         //header = header.substring(0, header.length() - 4);
@@ -121,6 +134,9 @@ public class WriteFile extends AppCompatActivity {
                 Timber.d(getTitle().toString());
                 File file = new File(path + File.separator + getTitle().toString() + ".txt");
                 deleted = true;
+
+                //delete from firebase
+
                 finish();
                 return !file.exists() || file.delete();
             case R.id.dont_save:
@@ -180,7 +196,7 @@ public class WriteFile extends AppCompatActivity {
                 from.renameTo(to);
             }
         }
-
+        String f_head = fname;
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = %s", fname);
         if (!Helper.mayAccessStorage(this)) {
@@ -214,12 +230,67 @@ public class WriteFile extends AppCompatActivity {
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
 
-                //Data input = new Data.Builder().putString("fpath",fname).build();
+
+                //firebase
+                //Toast.makeText(WriteFile.this, fname, Toast.LENGTH_SHORT).show();
+                Uri uri_file = Uri.fromFile(new File(fname));
+
+                if(uri_file!=null) {
+
+                    GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+                    String id_from_account = "";
+
+                    if (account == null) {
+                        Toast.makeText(WriteFile.this, "Sign in for saving file to firebase", Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+                        id_from_account = account.getId();
+                        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                        StorageReference upload_ref = storageReference.child("MySpaceFiles/" + id_from_account + "/" + getString(R.string.my_space)
+                                + "/" + getTitle().toString() + "/" + f_head + ".txt");
+
+                        assert id_from_account != null;
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
+                                    .child(id_from_account).child(getString(R.string.my_space)).child(getTitle().toString()).child(f_head);
+
+
+                        upload_ref.putFile(uri_file).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                upload_ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+
+                                        ModelForSavingFiles modelForSavingFiles = new ModelForSavingFiles(uri.toString());
+                                        databaseReference.setValue(modelForSavingFiles);
+
+                                    }
+                                });
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(WriteFile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+
+                            }
+                        });
+
+                    }
+                }
+
                 ReminderUtils.mySpaceReminder(this, fname);
 
             } catch (Exception e) {
                 Timber.e(e);
-                Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
         }
         Timber.v("fileName = %s", path);
@@ -267,6 +338,8 @@ public class WriteFile extends AppCompatActivity {
         if (!search(stringToSearch))
             searchEditText.requestFocus();
     }
+
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
