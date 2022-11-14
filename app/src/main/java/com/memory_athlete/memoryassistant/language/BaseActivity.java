@@ -44,12 +44,12 @@ public class BaseActivity extends AppCompatActivity
         spin.setAdapter(adapter);
 
         //google sign in
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        gsc = GoogleSignIn.getClient(BaseActivity.this,gso);
-        Intent intent = gsc.getSignInIntent();
-        startActivityForResult(intent,1000);
+//        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail()
+//                .build();
+//        gsc = GoogleSignIn.getClient(BaseActivity.this,gso);
+//        Intent intent = gsc.getSignInIntent();
+//        startActivityForResult(intent,1000);
 
             spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
