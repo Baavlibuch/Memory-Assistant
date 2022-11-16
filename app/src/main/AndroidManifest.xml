@@ -17,6 +17,7 @@
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:hardwareAccelerated="true"
+        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
@@ -190,8 +191,9 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5457013636131861~4128114636"/>
-<!--            android:value="ca-app-pub-3940256099942544~3347511713"/>-->
+                    android:value="ca-app-pub-3940256099942544~3347511713"/>
+<!--            android:value="ca-app-pub-5457013636131861~4128114636"/>-->
+
 
 
 

@@ -332,31 +332,28 @@ public class MainActivity extends AppCompatActivity {
 
             Boolean is_created = discipline_folder.mkdirs();
 
-            try {
                 DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference("MySpaceFiles").child(id_from_account)
                         .child(getString(R.string.my_space)).child(practice_type);
 
                 databaseReference1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                         for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                             ModelForSavingFiles modelForSavingFiles = postSnapshot.getValue(ModelForSavingFiles.class);
                             files.add(modelForSavingFiles);
-
                         }
                         String[] file_urls = new String[files.size()];
-
                         if (file_urls.length > 0) {
                             for (int i = 0; i < file_urls.length; i++) {
                                 file_urls[i] = files.get(i).getUrl_file();
 
                                 try {
-
                                     FirebaseStorage storage = FirebaseStorage.getInstance();
                                     StorageReference httpsReference = storage.getReferenceFromUrl(file_urls[i]);
 
                                     String name_file = httpsReference.getName();
-                                    File file = new File(path_to_store, name_file + ".txt");
+                                    File file = new File(path_to_store, name_file);
 
                                     httpsReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                         @Override
@@ -368,9 +365,7 @@ public class MainActivity extends AppCompatActivity {
                                 } catch (final Exception e) {
                                     e.printStackTrace();
                                 }
-
                             }
-
                         }
                     }
 
@@ -378,9 +373,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError error) {}
                 });
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
 
         }
 

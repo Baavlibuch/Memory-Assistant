@@ -25,10 +25,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.memory_athlete.memoryassistant.Helper;
@@ -59,7 +61,6 @@ public class WriteFile extends AppCompatActivity {
         Helper.theme(this, WriteFile.this);
         setContentView(R.layout.activity_write_file);
         String header = intent.getStringExtra("mHeader");
-
 
         if (header == null) header = "New";
         else oldName = header;
@@ -134,9 +135,7 @@ public class WriteFile extends AppCompatActivity {
                 Timber.d(getTitle().toString());
                 File file = new File(path + File.separator + getTitle().toString() + ".txt");
                 deleted = true;
-
-                //delete from firebase
-
+                deleteFromFirebase(getTitle().toString());
                 finish();
                 return !file.exists() || file.delete();
             case R.id.dont_save:
@@ -231,8 +230,7 @@ public class WriteFile extends AppCompatActivity {
                 editor.apply();
 
 
-                //firebase
-                //Toast.makeText(WriteFile.this, fname, Toast.LENGTH_SHORT).show();
+                //firebase storage
                 Uri uri_file = Uri.fromFile(new File(fname));
 
                 if(uri_file!=null) {
@@ -245,15 +243,19 @@ public class WriteFile extends AppCompatActivity {
                     }
 
                     else {
+
+                        Intent intent = getIntent();
+                        String disciplineHeader = intent.getStringExtra("disciplineHeader");
+
                         id_from_account = account.getId();
                         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
                         StorageReference upload_ref = storageReference.child("MySpaceFiles/" + id_from_account + "/" + getString(R.string.my_space)
-                                + "/" + getTitle().toString() + "/" + f_head + ".txt");
+                                + "/" + disciplineHeader + "/" + f_head + ".txt");
 
                         assert id_from_account != null;
-                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
-                                    .child(id_from_account).child(getString(R.string.my_space)).child(getTitle().toString()).child(f_head);
 
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
+                                    .child(id_from_account).child(getString(R.string.my_space)).child(disciplineHeader).child(f_head);
 
                         upload_ref.putFile(uri_file).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -274,15 +276,8 @@ public class WriteFile extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(WriteFile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                            }
-                        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-
                             }
                         });
-
                     }
                 }
 
@@ -337,6 +332,65 @@ public class WriteFile extends AppCompatActivity {
         searchEditText.setVisibility(View.VISIBLE);
         if (!search(stringToSearch))
             searchEditText.requestFocus();
+    }
+
+    public void deleteFromFirebase(String fileHeading){
+        //delete from firebase
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        String id_from_account = "";
+
+        if (account == null) {
+            Toast.makeText(WriteFile.this, "Sign in for saving file to firebase", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+
+            Intent intent = getIntent();
+            String disciplineHeader = intent.getStringExtra("disciplineHeader");
+
+            id_from_account = account.getId();
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+            StorageReference upload_ref = storageReference.child("MySpaceFiles/" + id_from_account + "/" + getString(R.string.my_space)
+                    + "/" + disciplineHeader + "/" + fileHeading + ".txt");
+
+            assert id_from_account != null;
+
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
+                    .child(id_from_account).child(getString(R.string.my_space)).child(disciplineHeader).child(fileHeading);
+
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String url_file = snapshot.child("a").getValue(String.class);
+
+                    snapshot.getRef().removeValue();
+
+                    if(url_file!=null){
+
+                        FirebaseStorage storage = FirebaseStorage.getInstance();
+                        StorageReference httpsReference = storage.getReferenceFromUrl(url_file);
+
+                        httpsReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                            }
+                        });
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+        }
+
     }
 
 

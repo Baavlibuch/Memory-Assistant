@@ -177,6 +177,7 @@ public class MySpace extends AppCompatActivity {
 
             Intent intent = new Intent(getApplicationContext(), WriteFile.class);
             intent.putExtra("mHeader", item.mName);
+            intent.putExtra("disciplineHeader", getTitle().toString());
             intent.putExtra("fileString", item.mItem);
             intent.putExtra("fileName", fileName);
 
@@ -194,6 +195,7 @@ public class MySpace extends AppCompatActivity {
     public void add(View view) {
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
+        intent.putExtra("disciplineHeader", getTitle());
         intent.putExtra("name", false);
 
         //Directory of practice - external storage

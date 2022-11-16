@@ -33,8 +33,8 @@ public class AdMob{
         });
 
         AdView adView = new AdView(activity);
-//        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-        adView.setAdUnitId("ca-app-pub-5457013636131861/3119544472");
+        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+//        adView.setAdUnitId("ca-app-pub-5457013636131861/3119544472");
         adView.setAdSize(AdSize.BANNER);
         linearLayout.addView(adView);
 

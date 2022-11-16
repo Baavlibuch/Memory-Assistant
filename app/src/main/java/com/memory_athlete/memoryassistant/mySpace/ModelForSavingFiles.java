@@ -2,7 +2,7 @@ package com.memory_athlete.memoryassistant.mySpace;
 
 public class ModelForSavingFiles {
 
-    private String url_file;
+    public String url_file;
 
     public ModelForSavingFiles(){
 
