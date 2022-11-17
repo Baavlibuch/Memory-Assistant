@@ -666,6 +666,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                 // TODO update someday
                 //noinspection deprecation
                 textToSpeech.setOnUtteranceCompletedListener(s1 -> cardAndSpeechImageView.setImageResource(R.drawable.green_tick));
+
+                //textToSpeech.setOnUtteranceProgressListener(s1 -> cardAndSpeechImageView.setImageResource(R.drawable.green_tick));
                 numbersVisibility(View.GONE);
                 rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
             } else reset();

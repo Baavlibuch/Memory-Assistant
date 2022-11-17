@@ -52,7 +52,8 @@ public class WriteFile extends AppCompatActivity {
     boolean deleted = false;
     EditText searchEditText;
     EditText mySpaceEditText;
-    int searchIndex;                                    // index in string to start searching from
+    int searchIndex;// index in string to start searching from
+    boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +140,7 @@ public class WriteFile extends AppCompatActivity {
                 finish();
                 return !file.exists() || file.delete();
             case R.id.dont_save:
+                flag = true;
                 NavUtils.navigateUpFromSameTask(this);
                 break;
             case android.R.id.home:
@@ -154,6 +156,9 @@ public class WriteFile extends AppCompatActivity {
             searchEditText.setVisibility(View.GONE);
             return;
         }
+        if(flag){
+            super.onBackPressed();
+        }
         // save() returns false if save was rejected to notify the user at most once.
         if (save()) super.onBackPressed();
     }
@@ -161,6 +166,9 @@ public class WriteFile extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        if(flag){
+            return;
+        }
         if (!deleted) save();
     }
 
