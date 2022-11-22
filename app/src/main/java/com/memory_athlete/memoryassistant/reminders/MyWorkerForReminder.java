@@ -6,9 +6,10 @@ import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.work.Data;
-import androidx.work.Worker;
+import androidx.work.ListenableWorker;
 import androidx.work.WorkerParameters;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.memory_athlete.memoryassistant.services.NotificationUtils;
 
 import java.util.concurrent.ExecutorService;
@@ -16,15 +17,16 @@ import java.util.concurrent.Executors;
 
 import timber.log.Timber;
 
-public class MyWorkerForReminder extends Worker {
+ public class MyWorkerForReminder extends ListenableWorker {
 
-    public MyWorkerForReminder( Context appContext,  WorkerParameters params) {
+    public MyWorkerForReminder(@NonNull Context appContext, @NonNull WorkerParameters params) {
         super(appContext, params);
     }
 
+
     @NonNull
     @Override
-    public Result doWork() {
+    public ListenableFuture<ListenableWorker.Result> startWork() {
         // Do your work here.
         Data input = getInputData();
         String r = input.getString("rem");
@@ -60,14 +62,13 @@ public class MyWorkerForReminder extends Worker {
             }
         });
 
-        return Result.success(outputData);
+
+        return (ListenableFuture<Result>) Result.success(outputData);
     }
 
     @Override
     public void onStopped() {
         // Cleanup because you are being stopped.
-
     }
-
 }
 

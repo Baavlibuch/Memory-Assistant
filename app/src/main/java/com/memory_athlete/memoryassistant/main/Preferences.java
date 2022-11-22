@@ -15,6 +15,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.NotificationReceiver;
 import com.memory_athlete.memoryassistant.R;
@@ -143,7 +144,12 @@ public class Preferences extends AppCompatActivity {
 
                 if(!language.equals(stringValue)){
                     Toast.makeText(getActivity(), "Language changed. Please restart the app", Toast.LENGTH_SHORT).show();
+
+                    Preferences r = new Preferences();
+                    Snackbar.make(Objects.requireNonNull(getActivity()).findViewById(R.id.preferences_fragment), "Restart app!",
+                            Snackbar.LENGTH_SHORT).setAction("Restart",view -> r.restart()).show();
                 }
+
             }
 
             else if (preference instanceof TimePreference) {
@@ -159,41 +165,41 @@ public class Preferences extends AppCompatActivity {
 
                 int minutess = Integer.parseInt(minutes);
 
-                Toast.makeText(getActivity(), stringValue, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), stringValue, Toast.LENGTH_SHORT).show();
 
                 preference.setSummary(stringValue);
 
-                Calendar calendar = Calendar.getInstance();
-                if(meridian.equals(" pm")){
-                    hour = hour + 12;
-                }
-
-                calendar.set(Calendar.HOUR_OF_DAY, hour);
-                calendar.set(Calendar.MINUTE, minutess);
-                calendar.set(Calendar.SECOND, 0);
-
-                if (calendar.getTime().compareTo(new Date()) < 0)
-                    calendar.add(Calendar.DAY_OF_MONTH, 1);
-
-                Intent intent = new Intent(getActivity(), NotificationReceiver.class);
-
-                PendingIntent pendingIntent;
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    pendingIntent = PendingIntent.getBroadcast(getActivity(),0, intent,PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-
-                }else {
-                    pendingIntent = PendingIntent.getBroadcast(getActivity(),0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                }
-
-                //PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager alarmManager = (AlarmManager) Objects.requireNonNull(getActivity()).getSystemService(Context.ALARM_SERVICE);
-
-                if (alarmManager != null) {
-                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
-                }
+//                Calendar calendar = Calendar.getInstance();
+//                if(meridian.equals(" pm")){
+//                    hour = hour + 12;
+//                }
+//
+//                calendar.set(Calendar.HOUR_OF_DAY, hour);
+//                calendar.set(Calendar.MINUTE, minutess);
+//                calendar.set(Calendar.SECOND, 0);
+//
+//                if (calendar.getTime().compareTo(new Date()) < 0)
+//                    calendar.add(Calendar.DAY_OF_MONTH, 1);
+//
+//                Intent intent = new Intent(getActivity(), NotificationReceiver.class);
+//
+//                PendingIntent pendingIntent;
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    pendingIntent = PendingIntent.getBroadcast(getActivity(),0, intent,PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+//
+//                }else {
+//                    pendingIntent = PendingIntent.getBroadcast(getActivity(),0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//                }
+//
+//                //PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//                AlarmManager alarmManager = (AlarmManager) Objects.requireNonNull(getActivity()).getSystemService(Context.ALARM_SERVICE);
+//
+//                if (alarmManager != null) {
+//                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+//
+//                }
 
             } else Timber.d("Preference key = " + preference.getKey() +
                     "\nPreference title = " + preference.getTitle());
@@ -248,6 +254,11 @@ public class Preferences extends AppCompatActivity {
 
         }
 
+    }
+
+    public void restart(){
+        this.finish();
+        System.exit(0);
     }
 
 

@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.os.LocaleListCompat;
@@ -169,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // resuming the MainActivity again
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onResume() {
         //app.loadAd(layAd);
