@@ -120,8 +120,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
-
     implementation 'com.google.android.gms:play-services-safetynet'
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 
     //noinspection GradleCompatible.
     androidTestImplementation 'androidx.test:rules:1.1.1'

@@ -152,6 +152,7 @@ public class Preferences extends AppCompatActivity {
 
             }
 
+
             else if (preference instanceof TimePreference) {
 
                 int min = Integer.parseInt(stringValue.substring(stringValue.indexOf(":") + 1));
@@ -260,6 +261,8 @@ public class Preferences extends AppCompatActivity {
         this.finish();
         System.exit(0);
     }
+
+
 
 
     @Override
