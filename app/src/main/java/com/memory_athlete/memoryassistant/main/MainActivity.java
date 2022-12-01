@@ -158,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             getFromFirebase(id_from_account,getString(R.string.wardrobes));
             getFromFirebase(id_from_account,getString(R.string.lists));
             getFromFirebase(id_from_account,getString(R.string.words));
+            getFromFirebase(id_from_account,getString(R.string.ben));
 
         }
 
@@ -380,6 +381,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 
     @Override

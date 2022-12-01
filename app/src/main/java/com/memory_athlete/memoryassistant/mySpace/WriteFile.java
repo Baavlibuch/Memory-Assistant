@@ -23,17 +23,8 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,7 +35,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.language.BaseActivity;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
@@ -64,10 +54,6 @@ public class WriteFile extends AppCompatActivity {
     EditText mySpaceEditText;
     int searchIndex;// index in string to start searching from
     boolean flag = false;
-
-    GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
-    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,6 +174,7 @@ public class WriteFile extends AppCompatActivity {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public boolean save() {
+
         String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0 && string.length() == 0) {
@@ -251,36 +238,23 @@ public class WriteFile extends AppCompatActivity {
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
 
-
                 //firebase storage
                 Uri uri_file = Uri.fromFile(new File(fname));
                 Intent intent = getIntent();
                 String disciplineHeader = intent.getStringExtra("disciplineHeader");
 
-
                 if(uri_file!=null) {
 
                     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                    String id_from_account = "";
 
-                    if (account == null) {
-                        Toast.makeText(WriteFile.this, "Sign in for saving file to firebase", Toast.LENGTH_SHORT).show();
-                        //google sign in
-                        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                                .requestEmail()
-                                .build();
-                        gsc = GoogleSignIn.getClient(WriteFile.this,gso);
-                        firebaseAuth = FirebaseAuth.getInstance();
-
-                        Intent intent1 = gsc.getSignInIntent();
-                        startActivityForResult(intent1,1000);
+                    if (account != null) {
+                        String id_from_account = account.getId();
+                        saveToFirebase(id_from_account, uri_file, f_head, disciplineHeader);
+                        Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();
                     }
-
-                    account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                    assert account != null;
-                    id_from_account = account.getId();
-                    saveToFirebase(id_from_account, uri_file, f_head, disciplineHeader);
-
+                    else{
+                        Toast.makeText(this, "Saved offline", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 ReminderUtils.mySpaceReminder(this, fname);
@@ -339,7 +313,6 @@ public class WriteFile extends AppCompatActivity {
     public void deleteFromFirebase(String fileHeading){
         //delete from firebase
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        String id_from_account = "";
 
         if (account == null) {
             Toast.makeText(WriteFile.this, "Not signed in!", Toast.LENGTH_SHORT).show();
@@ -350,7 +323,7 @@ public class WriteFile extends AppCompatActivity {
             Intent intent = getIntent();
             String disciplineHeader = intent.getStringExtra("disciplineHeader");
 
-            id_from_account = account.getId();
+            String id_from_account = account.getId();
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
             StorageReference upload_ref = storageReference.child("MySpaceFiles/" + id_from_account + "/" + getString(R.string.my_space)
                     + "/" + disciplineHeader + "/" + fileHeading + ".txt");
@@ -394,46 +367,6 @@ public class WriteFile extends AppCompatActivity {
         }
 
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1000)
-        {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
-            if(task.isSuccessful())
-            {
-                try {
-                    GoogleSignInAccount googleSignInAccount = task.getResult(ApiException.class);
-
-                    if(googleSignInAccount!=null)
-                    {
-                        AuthCredential authCredential= GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(),null);
-                        firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful())
-                                {
-                                    Toast.makeText(WriteFile.this, "Signed in!", Toast.LENGTH_SHORT).show();
-                                }
-                                else
-                                {
-                                    Toast.makeText(WriteFile.this,"Not signed in", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-
-                    }
-                }
-                catch (ApiException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
 
     public void saveToFirebase(String id_from_account, Uri uri_file,  String f_head, String disciplineHeader){
 

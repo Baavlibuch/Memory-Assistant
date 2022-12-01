@@ -28,8 +28,8 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -193,6 +193,7 @@ public class MySpace extends AppCompatActivity {
     }
 
     public void add(View view) {
+
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
         intent.putExtra("disciplineHeader", getTitle());
@@ -215,7 +216,8 @@ public class MySpace extends AppCompatActivity {
                 new Item(getString(R.string.majors), R.drawable.major_system, WriteFile.class),
                 new Item(getString(R.string.wardrobes), R.drawable.wardrobe_method, WriteFile.class),
                 new Item(getString(R.string.lists), R.drawable.lists, WriteFile.class),
-                new Item(getString(R.string.words), R.drawable.vocabulary, WriteFile.class)));
+                new Item(getString(R.string.words), R.drawable.vocabulary, WriteFile.class),
+                new Item(getString(R.string.ben), R.drawable.bensystems, WriteFile.class)));
     }
 
     private class Item {
@@ -277,6 +279,7 @@ public class MySpace extends AppCompatActivity {
             return listItemView;
         }
     }
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleHelper.onAttach(base, "en"));

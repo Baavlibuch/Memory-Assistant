@@ -26,6 +26,9 @@
         android:theme="@style/light"
         tools:ignore="ExtraText"
         tools:targetApi="n">
+
+        <activity
+            android:name=".preferences.SignInActivity"/>
         <activity
             android:name=".language.BaseActivity"/>
         <activity

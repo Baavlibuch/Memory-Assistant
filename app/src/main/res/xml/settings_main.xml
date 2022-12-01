@@ -126,4 +126,9 @@
         android:title="@string/clear_practice"
         app:iconSpaceReserved="false"/>
 
+    <com.memory_athlete.memoryassistant.preferences.SignInPreference
+        android:key="SignIn"
+        android:title="Login with Google"
+        app:iconSpaceReserved="false"/>
+
 </PreferenceScreen>

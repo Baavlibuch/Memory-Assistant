@@ -361,7 +361,7 @@ public class MySpaceFragment extends Fragment {
                 br.close();
                 mySpaceEditText.setText(text);
 
-                Toast.makeText(getActivity(), path + File.separator + header + ".txt", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), path + File.separator + header + ".txt", Toast.LENGTH_SHORT).show();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -443,7 +443,7 @@ public class MySpaceFragment extends Fragment {
                 editor.apply();
 
                 //firebase
-                Toast.makeText(getActivity(), fname, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), fname, Toast.LENGTH_SHORT).show();
 
 
                 ReminderUtils.mySpaceReminder(activity, fname);

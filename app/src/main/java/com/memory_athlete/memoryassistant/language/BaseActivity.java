@@ -72,8 +72,6 @@ public class BaseActivity extends AppCompatActivity
                         String string_to_locale = sl.setLang(value);
                         LocaleHelper.setLocale(BaseActivity.this, string_to_locale);
 
-
-
                         SharedPreferences shrd = getSharedPreferences("LANGUAGE",MODE_PRIVATE);
                         SharedPreferences.Editor editor = shrd.edit();
                         editor.putString("str",value);

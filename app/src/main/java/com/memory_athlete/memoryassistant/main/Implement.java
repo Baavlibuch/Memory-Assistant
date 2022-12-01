@@ -18,7 +18,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
@@ -42,6 +41,8 @@ public class Implement extends AppCompatActivity {
         setContentView(R.layout.activity_implement_list);
         setTitle(getString(R.string.apply));
         Timber.v("Title Set");
+
+
         Timber.v(Helper.TYPE + " " + intent.getStringExtra(Helper.TYPE));
         int s = intent.getIntExtra(Helper.TYPE, 0);
         if (s == 0) throw new RuntimeException("Error in getting 'Implement' from the intent");
@@ -49,10 +50,9 @@ public class Implement extends AppCompatActivity {
 
         setAdapter();
 
-        AdMob adMob = new AdMob(this);
-        LinearLayout add_layout = findViewById(R.id.add_layout);
-        adMob.loadBannerAd(add_layout);
-
+//        AdMob adMob = new AdMob(this);
+//        LinearLayout add_layout = findViewById(R.id.add_layout);
+//        adMob.loadBannerAd(add_layout);
 
     }
 
@@ -66,7 +66,7 @@ public class Implement extends AppCompatActivity {
         }
         LinearLayout linearLayout = findViewById(R.id.apply_layout);
         linearLayout.removeViewAt(listViewId--);
-        linearLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
+        //linearLayout.findViewById(listViewId).setVisibility(View.VISIBLE);
         pathList.remove(pathList.size() - 1);
     }
 

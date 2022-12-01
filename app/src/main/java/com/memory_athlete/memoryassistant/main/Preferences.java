@@ -15,12 +15,15 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.NotificationReceiver;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.language.SettingLanguage;
+import com.memory_athlete.memoryassistant.preferences.SignInPreference;
 import com.memory_athlete.memoryassistant.preferences.TimeDialog;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
@@ -35,6 +38,7 @@ import timber.log.Timber;
 public class Preferences extends AppCompatActivity {
     String mTheme;
     static SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +77,7 @@ public class Preferences extends AppCompatActivity {
             bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
             bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
             bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
+            bindPreferenceToast(Objects.requireNonNull(findPreference("SignIn")));
 
         }
 
@@ -113,10 +118,13 @@ public class Preferences extends AppCompatActivity {
             {
                 super.onDisplayPreferenceDialog(preference);
             }
+
         }
+
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
+
             Timber.v("preference changed");
             String stringValue = value.toString();
 
@@ -148,6 +156,20 @@ public class Preferences extends AppCompatActivity {
                     Preferences r = new Preferences();
                     Snackbar.make(Objects.requireNonNull(getActivity()).findViewById(R.id.preferences_fragment), "Restart app!",
                             Snackbar.LENGTH_SHORT).setAction("Restart",view -> r.restart()).show();
+                }
+
+            }
+
+            else if (preference instanceof SignInPreference){
+
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(Objects.requireNonNull(getActivity()));
+
+                if(account!=null){
+                    preference.setTitle("Logout");
+                }
+
+                else{
+                    preference.setTitle("Login with Google");
                 }
 
             }
@@ -261,8 +283,6 @@ public class Preferences extends AppCompatActivity {
         this.finish();
         System.exit(0);
     }
-
-
 
 
     @Override
