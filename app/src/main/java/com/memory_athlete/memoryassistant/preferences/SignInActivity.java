@@ -69,6 +69,7 @@ public class SignInActivity extends AppCompatActivity {
 //                        });
 
                         Toast.makeText(SignInActivity.this, "Signed in!", Toast.LENGTH_SHORT).show();
+
                         finish();
                         Intent i = new Intent(this, Preferences.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

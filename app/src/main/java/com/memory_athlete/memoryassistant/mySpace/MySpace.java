@@ -25,7 +25,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
@@ -36,6 +43,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
 import timber.log.Timber;
 
@@ -76,6 +84,46 @@ public class MySpace extends AppCompatActivity {
         AdMob adMob = new AdMob(this);
         LinearLayout add_layout = findViewById(R.id.add_layout);
         adMob.loadBannerAd(add_layout);
+
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(MySpace.this);
+
+        if(account!=null) {
+            String id_from_account = account.getId();
+            //unique key/salt
+            String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder saltString = new StringBuilder();
+            Random rnd = new Random();
+            while (saltString.length() < 10) {
+                int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+                saltString.append(SALTCHARS.charAt(index));
+            }
+            String salt = saltString.toString();
+
+            assert id_from_account != null;
+            DatabaseReference databaseReferenceKey = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
+                    .child(id_from_account);
+
+            databaseReferenceKey.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        if(!snapshot.hasChild("UNIQUE_KEY")) {
+                            databaseReferenceKey.child("UNIQUE_KEY").setValue(salt);
+                        }
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+
+            });
+
+        }
+
     }
 
     @Override

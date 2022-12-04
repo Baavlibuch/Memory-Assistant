@@ -152,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
             String id_from_account = account.getId();
             Toast.makeText(MainActivity.this, name_from_account, Toast.LENGTH_SHORT).show();
 
-            assert id_from_account != null;
-
             getFromFirebase(id_from_account,getString(R.string.majors));
             getFromFirebase(id_from_account,getString(R.string.wardrobes));
             getFromFirebase(id_from_account,getString(R.string.lists));

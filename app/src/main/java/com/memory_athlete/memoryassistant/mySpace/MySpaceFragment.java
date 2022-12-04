@@ -34,6 +34,7 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.memory_athlete.memoryassistant.Encryption;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -359,7 +360,10 @@ public class MySpaceFragment extends Fragment {
                     text.append('\n');
                 }
                 br.close();
-                mySpaceEditText.setText(text);
+
+                //decrypt the file
+                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,"anuja"));
+                mySpaceEditText.setText(text1);
 
                 //Toast.makeText(getActivity(), path + File.separator + header + ".txt", Toast.LENGTH_SHORT).show();
 
@@ -429,11 +433,16 @@ public class MySpaceFragment extends Fragment {
             return false;
         }
 
+        String f_head = fname;
         fname = fileName + File.separator + fname + ".txt";
         if (Helper.makeDirectory(dirPath, getContext())) {
             try {
+
+                //encrypt the file
+                String string1 = Encryption.encrypt(string, "anuja");
+
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                outputStream.write(string.getBytes());
+                outputStream.write(string1.getBytes());
                 outputStream.close();
 
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(
@@ -443,8 +452,7 @@ public class MySpaceFragment extends Fragment {
                 editor.apply();
 
                 //firebase
-                //Toast.makeText(getActivity(), fname, Toast.LENGTH_SHORT).show();
-
+                //firebase storage
 
                 ReminderUtils.mySpaceReminder(activity, fname);
 
