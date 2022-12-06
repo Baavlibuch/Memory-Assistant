@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:windowContentOverlay="@null"
@@ -10,16 +11,19 @@
         android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMaxWidth="0dp"
+        android:contentDescription="@string/sliding_tabs"
         app:tabGravity="fill"
+        app:tabMaxWidth="0dp"
         app:tabMode="scrollable"
-        />
+        tools:ignore="SpeakableTextPresentCheck" />
         <!--app:tabTextColor="#A8A19E"
         app:tabIndicatorColor="#FFFFFF"-->
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:contentDescription="@string/view_pager"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </LinearLayout>

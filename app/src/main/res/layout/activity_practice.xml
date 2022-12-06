@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
+        android:contentDescription="@string/a_list_of_disciplines_to_practice"
         android:divider="@color/color_transparent"
         android:dividerHeight="0dp" />
 

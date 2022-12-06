@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.main;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.lessons.ImplementLesson;
 
@@ -42,7 +44,7 @@ public class Implement extends AppCompatActivity {
         Timber.v(Helper.TYPE + " " + intent.getStringExtra(Helper.TYPE));
         int s = intent.getIntExtra(Helper.TYPE, 0);
         if (s == 0) throw new RuntimeException("Error in getting 'Implement' from the intent");
-        pathList.add(getString(s));
+        pathList.add("Implement");
 
         setAdapter();
     }
@@ -64,8 +66,10 @@ public class Implement extends AppCompatActivity {
         try {
             StringBuilder path = new StringBuilder();
             for (String i : pathList) path.append(i);
+            //Toast.makeText(this, pathList.get(0), Toast.LENGTH_SHORT).show();
             Timber.v("path = %s", path);
             String[] list = listAssetFiles(path.toString());
+            Toast.makeText(this, String.valueOf(list.length), Toast.LENGTH_SHORT).show();
             Timber.v("list set");
             if (list == null) {
                 Toast.makeText(this, "Nothing here", Toast.LENGTH_SHORT).show();
@@ -128,7 +132,6 @@ public class Implement extends AppCompatActivity {
     }
 
     private String[] listAssetFiles(String path) {
-
         String[] list;
         try {
             list = getAssets().list(path);
@@ -169,5 +172,10 @@ public class Implement extends AppCompatActivity {
 
             return listItemView;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

@@ -1,5 +1,10 @@
 package com.memory_athlete.memoryassistant;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static androidx.core.app.ActivityCompat.requestPermissions;
+import static androidx.core.content.ContextCompat.checkSelfPermission;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -19,11 +24,6 @@ import java.nio.file.FileSystemException;
 import java.nio.file.Files;
 
 import timber.log.Timber;
-
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static androidx.core.app.ActivityCompat.requestPermissions;
-import static androidx.core.content.ContextCompat.checkSelfPermission;
 
 /**
  * Created by Manik on 15/07/17.
@@ -181,7 +181,9 @@ public class Helper {
         } else {
             context.setTheme(R.style.light);
         }
+
     }
+
     // custom themes - Cards, Lessons, LessonFragment, ImplementLesson, RecallCards, DisciplineActivity
 
     // return true if directory was created successfully. returns false if it fails (when storage permissions are not granted)
@@ -244,4 +246,5 @@ public class Helper {
     public static float oneDpAsPixels(int dp, Context context){
         return dp * context.getResources().getDisplayMetrics().density;
     }
+
 }

@@ -1,5 +1,7 @@
 package com.memory_athlete.memoryassistant.inAppBilling;
 
+import static org.solovyev.android.checkout.ResponseCodes.ITEM_ALREADY_OWNED;
+
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -15,8 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.memory_athlete.memoryassistant.BuildConfig;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 
@@ -35,8 +37,6 @@ import javax.annotation.Nonnull;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
-
-import static org.solovyev.android.checkout.ResponseCodes.ITEM_ALREADY_OWNED;
 
 public class DonateActivity extends AppCompatActivity {
     @BindView(R.id.recycler)

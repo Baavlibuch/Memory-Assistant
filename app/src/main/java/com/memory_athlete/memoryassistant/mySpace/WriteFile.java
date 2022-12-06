@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import androidx.preference.PreferenceManager;
 
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 
 import java.io.BufferedReader;
@@ -211,7 +213,10 @@ public class WriteFile extends AppCompatActivity {
                 editor.putLong(fname, System.currentTimeMillis());
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
+
+                //Data input = new Data.Builder().putString("fpath",fname).build();
                 ReminderUtils.mySpaceReminder(this, fname);
+
             } catch (Exception e) {
                 Timber.e(e);
                 Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
@@ -261,5 +266,9 @@ public class WriteFile extends AppCompatActivity {
         searchEditText.setVisibility(View.VISIBLE);
         if (!search(stringToSearch))
             searchEditText.requestFocus();
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

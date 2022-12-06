@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.main;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.inAppBilling.DonateActivity;
 
@@ -25,7 +27,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import timber.log.Timber;
-
 
 public class Contribute extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -40,6 +41,8 @@ public class Contribute extends AppCompatActivity {
         setAdapter();
     }
 
+
+    // setting the adapter for displaying the list support, fund,..
     public void setAdapter() {
         final List<Item> list = setList();
 
@@ -94,6 +97,7 @@ public class Contribute extends AppCompatActivity {
         Timber.v("Adapter set!");
     }
 
+    // defining the list items
     private List<Item> setList() {
         String[] headers = getResources().getStringArray(R.array.contribute_headers);
         String[] bodies = getResources().getStringArray(R.array.contribute_bodies);
@@ -116,6 +120,7 @@ public class Contribute extends AppCompatActivity {
         }
     }
 
+    // defining each item of adapter
     private class MainAdapter extends ArrayAdapter<Item> {
 
         MainAdapter(Activity context, List<Item> words) {
@@ -138,4 +143,9 @@ public class Contribute extends AppCompatActivity {
     }
 
     enum PART_TYPE {PLAY_STORE, ACTIVITY, GITHUB, EMAIL, CREDITS}
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
+    }
 }

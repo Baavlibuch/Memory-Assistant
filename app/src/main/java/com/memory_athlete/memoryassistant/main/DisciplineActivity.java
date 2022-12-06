@@ -1,5 +1,8 @@
 package com.memory_athlete.memoryassistant.main;
 
+import static java.util.Objects.requireNonNull;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -19,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.disciplines.BinaryDigits;
 import com.memory_athlete.memoryassistant.disciplines.Cards;
@@ -36,11 +40,8 @@ import java.util.Objects;
 
 import timber.log.Timber;
 
-import static java.util.Objects.requireNonNull;
-
 public class DisciplineActivity extends AppCompatActivity implements MySpaceFragment.TabTitleUpdater {
     boolean backPressed = false;
-
     private static ArrayList<String> tabTitles;
     static Intent intent;                                      //Contains data sent to this activity
     static ViewPager viewPager;
@@ -112,6 +113,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
             super(fm);
         }
 
+        // it takes the content according to the discipline like numbers, words, names,..
         @NonNull
         @Override
         public Fragment getItem(int position) {
@@ -180,7 +182,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
     @Override
     public void onBackPressed() {
         int cur = viewPager.getCurrentItem();
-            String tag = "android:switcher:" + R.id.viewpager + ":" + cur;
+        String tag = "android:switcher:" + R.id.viewpager + ":" + cur;
 
         //go back in current fragment
         if (cur != 0) {
@@ -270,7 +272,7 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
                     if (noOfMySpaceScreens == 1) tabTitles.add(mySpace);
                     else tabTitles.add(mySpace + " " + (i + 1));
                 }
-            Timber.v("tabTitles.size() = %s", tabTitles.size());
+                Timber.v("tabTitles.size() = %s", tabTitles.size());
             }
             return new SimpleFragmentPagerAdapter(fragManager);
         }
@@ -286,5 +288,9 @@ public class DisciplineActivity extends AppCompatActivity implements MySpaceFrag
 
             tabLayout.setupWithViewPager(viewPager);
         }
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

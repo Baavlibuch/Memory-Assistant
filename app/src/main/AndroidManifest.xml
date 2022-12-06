@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.memory_athlete.memoryassistant">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.android.vending.BILLING" />
@@ -16,14 +19,18 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:resizeableActivity="true"
         android:supportsRtl="true"
         android:theme="@style/light"
-        android:resizeableActivity="true"
-        android:requestLegacyExternalStorage="true"
+        tools:ignore="ExtraText"
         tools:targetApi="n">
-
+        <activity
+            android:name=".language.BaseActivity"
+            android:exported="false" />
         <activity
             android:name=".main.MainActivity"
+            android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,9 +51,9 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".main.Learn"
+            android:exported="true"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean">
             <intent-filter
@@ -69,6 +76,7 @@
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".main.Practice"
+            android:exported="true"
             android:launchMode="singleTask"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean">
@@ -147,6 +155,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.Contribute" />
+
         </activity>
         <activity
             android:name=".main.CreditsActivity"
@@ -155,10 +164,7 @@
         <activity
             android:name=".main.PrivacyPolicy"
             android:parentActivityName=".main.MainActivity"
-            tools:targetApi="jelly_bean" />
-
-        <!-- Services -->
-
+            tools:targetApi="jelly_bean" /> <!-- Services -->
         <service
             android:name=".services.ReminderJobService"
             android:exported="false">
@@ -175,12 +181,15 @@
             </intent-filter>
         </service>
 
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <receiver android:name=".NotificationReceiver" />
+
         <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="32fd3e2a89a1903109b82b78e8ad3641cb25e326" />
-
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
     </application>
 
 </manifest>

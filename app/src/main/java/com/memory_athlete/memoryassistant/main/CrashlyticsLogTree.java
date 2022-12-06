@@ -4,7 +4,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.crashlytics.android.Crashlytics;
+//import com.crashlytics.android.Crashlytics;
 
 import timber.log.Timber;
 
@@ -18,18 +18,14 @@ public class CrashlyticsLogTree extends Timber.Tree {
         if (priority == Log.VERBOSE || priority == Log.DEBUG) {
             return;
         } else if (priority == Log.INFO) {
-            Crashlytics.log(priority, tag, message);
+            //Crashlytics.log(priority, tag, message);
             return;
         }
 
-        Crashlytics.setInt(CRASHLYTICS_KEY_PRIORITY, priority);
-        Crashlytics.setString(CRASHLYTICS_KEY_TAG, tag);
-        Crashlytics.setString(CRASHLYTICS_KEY_MESSAGE, message);
-
         if (throwable != null) {
-            Crashlytics.logException(throwable);
+            //Crashlytics.logException(throwable);
         } else {
-            Crashlytics.logException(new Exception(message));
+            //Crashlytics.logException(new Exception(message));
         }
     }
 }

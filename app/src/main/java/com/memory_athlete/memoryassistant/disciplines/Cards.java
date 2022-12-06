@@ -1,5 +1,9 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import static android.view.View.GONE;
+import static java.util.Objects.requireNonNull;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -14,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 
 import com.memory_athlete.memoryassistant.Helper;
@@ -22,7 +27,9 @@ import com.memory_athlete.memoryassistant.recall.RecallCards;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,9 +38,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 import timber.log.Timber;
-
-import static android.view.View.GONE;
-import static java.util.Objects.requireNonNull;
 
 public class Cards extends DisciplineFragment {
     private int mPosition = 0;
@@ -168,36 +172,74 @@ public class Cards extends DisciplineFragment {
         if (randomList.isEmpty()) return false;
         StringBuilder stringBuilder = new StringBuilder();
 
-        //Practice Directory
-        String path = Helper.APP_FOLDER + File.separator
-                + getString(R.string.practice);
+        //discipline code
+        //Directory of practice - external storage
+        int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                EXTERNAL_STORAGE_PERMISSION_CODE);
 
-        if (Helper.makeDirectory(path, activity)) {
-            //Discipline Directory
-            path += File.separator + activity.getTitle();
-            if (Helper.makeDirectory(path, activity)) {
-                //File Path
-                path += File.separator + ((new SimpleDateFormat(
-                        "yy-MM-dd_HH:mm", Locale.getDefault())).format(new Date())) + ".txt";
-                try {
-                    FileOutputStream outputStream = new FileOutputStream(new File(path));
+        File folder = getActivity().getFilesDir();
+        String path = folder + File.separator + getString(R.string.practice) + File.separator + activity.getTitle().toString();
 
-                    for (Integer i : randomList)// 0; i < randomList.size(); i++)
-                        stringBuilder.append(i).append("\n");
-                    //\n is also a delimiter used in recall
+        //Directory of practice - internal storage
+//        String path = Helper.APP_FOLDER + File.separator
+//                + getString(R.string.practice) + File.separator + activity.getTitle().toString();
 
-                    outputStream.write(stringBuilder.toString().getBytes());
-                    outputStream.close();
-                    Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show();
-                    return true;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(activity, "Try again", Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity.getApplicationContext(),path, Toast.LENGTH_SHORT).show();
+
+        if (Helper.makeDirectory(path, getContext())) {
+            path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",
+                    Locale.getDefault())).format(new Date())) + ".txt";
+
+            //Write the file
+            try {
+
+                FileOutputStream outputStream = new FileOutputStream(new File(path));
+                for (Integer i : randomList)// 0; i < randomList.size(); i++)
+                    stringBuilder.append(i).append("\n");
+                //\n is also a delimiter used in recall
+
+                outputStream.write(stringBuilder.toString().getBytes());
+                outputStream.close();
+                Toast.makeText(activity, "Saved", Toast.LENGTH_SHORT).show();
+                return true;
+
+            } catch (FileNotFoundException e) {
+                Timber.e(e);
+                if (saveErrorCount == 0) {
+                    Toast.makeText(activity.getApplicationContext(), R.string.fnf_try_again, Toast.LENGTH_SHORT).show();
+                    saveErrorCount++;
+                    String[] blocked = {"|", "\\", "?", "*", "<", "\"", ":", ">", "+", "[", "]", "'"};
+                    for (CharSequence c : blocked) {
+                        String s = path;
+                        s = s.replace(c, "");
+                        if (!s.equals(path)) {
+                            Timber.e("illegal character in path : %s", path);
+                            path = s;
+                        }
+                    }
+                    return false;
                 }
+                File f = new File(path);
+                if (!f.exists()) throw new RuntimeException(
+                        activity.getTitle().toString() + " directory doesn't exist", e);
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                Timber.e(e);
+                if (saveErrorCount == 0) {
+                    Toast.makeText(activity.getApplicationContext(), R.string.io_try_again, Toast.LENGTH_SHORT).show();
+                    saveErrorCount++;
+                    return false;
+                }
+                File f = new File(path);
+                if (!f.exists() && !f.isDirectory())
+                    throw new RuntimeException(path + " doesn't exist", e);
+                throw new RuntimeException(e);
             }
         } else Toast.makeText(getActivity(), R.string.storage_permission_for_recall,
                 Toast.LENGTH_LONG).show();
         return false;
+
     }
 
     @Override

@@ -5,5 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
+    android:contentDescription="@string/privacy_policy_information"
     tools:context="com.memory_athlete.memoryassistant.main.PrivacyPolicy" />
 

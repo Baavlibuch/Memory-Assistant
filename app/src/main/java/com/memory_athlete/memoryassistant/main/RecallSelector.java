@@ -1,7 +1,9 @@
 package com.memory_athlete.memoryassistant.main;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -20,9 +22,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.recall.RecallCards;
 import com.memory_athlete.memoryassistant.recall.RecallComplex;
@@ -165,16 +169,34 @@ public class RecallSelector extends AppCompatActivity {
             targetClass = item.mClass;
             mDiscipline = item.mFileName;
 
-            dir = new File(Helper.APP_FOLDER + File.separator
+            //Directory of practice - external storage
+            int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    EXTERNAL_STORAGE_PERMISSION_CODE);
+
+            File folder = getFilesDir();
+            dir = new File(folder + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline);
+
+//            dir = new File(Helper.APP_FOLDER + File.separator
+//                    + getString(R.string.practice) + File.separator + mDiscipline);
             Timber.v("directory path = %s", dir.getAbsolutePath());
 
             File[] files = dir.listFiles();
             if (files == null || files.length == 0) {
                 String s = (mDiscipline.equals(getString(R.string.digits)))
                         ? getString(R.string.numbers) : mDiscipline;
-                practice(Helper.APP_FOLDER + File.separator
+
+                //Directory of practice - external storage
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        EXTERNAL_STORAGE_PERMISSION_CODE);
+
+                File folder1 = getFilesDir();
+                practice(folder1 + File.separator
                         + getString(R.string.practice) + File.separator + s);
+
+//                practice(Helper.APP_FOLDER + File.separator
+//                        + getString(R.string.practice) + File.separator + s);
                 return;
             }
 
@@ -187,8 +209,19 @@ public class RecallSelector extends AppCompatActivity {
         } else {
             // selected stored file within the discipline
             Timber.v("listViewId = %s", listViewId);
-            String filePath = Helper.APP_FOLDER + File.separator
+
+            //Directory of practice - external storage
+            int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    EXTERNAL_STORAGE_PERMISSION_CODE);
+
+            File folder = getFilesDir();
+            String filePath = folder + File.separator
                     + getString(R.string.practice) + File.separator + mDiscipline + File.separator + item.mFileName;
+
+
+//            String filePath = Helper.APP_FOLDER + File.separator
+//                    + getString(R.string.practice) + File.separator + mDiscipline + File.separator + item.mFileName;
             Intent intent = new Intent(getApplicationContext(), targetClass);        // file's readable name (without extension)
             intent.putExtra("name", item.mName);                               // filepath
             intent.putExtra("file", filePath);                                 // discipline
@@ -321,5 +354,10 @@ public class RecallSelector extends AppCompatActivity {
         public String getName() {
             return mFileName;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }

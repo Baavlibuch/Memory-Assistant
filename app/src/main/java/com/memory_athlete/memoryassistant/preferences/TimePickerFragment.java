@@ -1,13 +1,15 @@
 package com.memory_athlete.memoryassistant.preferences;
 
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
@@ -19,6 +21,7 @@ import java.util.Calendar;
 public class TimePickerFragment extends DialogFragment
         implements TimePickerDialog.OnTimeSetListener {
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the current time as the default values for the picker
@@ -31,11 +34,14 @@ public class TimePickerFragment extends DialogFragment
                 DateFormat.is24HourFormat(getActivity()));
     }
 
+    @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        SharedPreferences prefer = getActivity().getApplicationContext().getSharedPreferences("MyPREFERENCES", 0);
+        SharedPreferences prefer = requireActivity().getApplicationContext().getSharedPreferences("MyPREFERENCES", 0);
         SharedPreferences.Editor preferencesEditor = prefer.edit();
         preferencesEditor.putInt("Hour", hourOfDay);
         preferencesEditor.putInt("Min", minute);
+
+
         if (!preferencesEditor.commit())
             Toast.makeText(getActivity(), "Try again", Toast.LENGTH_LONG).show();
 

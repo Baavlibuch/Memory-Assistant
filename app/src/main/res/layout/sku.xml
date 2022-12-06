@@ -10,29 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:contentDescription="@string/card_view"
         app:cardCornerRadius="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_margin="4dp"
             android:animateLayoutChanges="true"
-            android:layout_margin="4dp">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="1"
                 android:animateLayoutChanges="true"
-                android:gravity="start">
+                android:gravity="start"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/sku_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
                 <TextView
                     android:id="@+id/sku_description"
@@ -48,8 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:gravity="end"
                 android:layout_margin="4dp"
+                android:gravity="end"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textStyle="bold" />
 

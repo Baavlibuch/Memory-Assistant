@@ -7,21 +7,22 @@
     android:layout_margin="4dp">
 
     <TextView
+        android:id="@+id/event"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:id="@+id/event"
-        />
+        android:contentDescription="@string/event_occurred"
+        android:textAppearance="?android:textAppearanceMedium" />
 
     <EditText
         android:id="@+id/date_response"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enter_date"
-        android:textSize="20sp"
         android:imeOptions="actionNext"
         android:importantForAutofill="no"
         android:inputType="date"
+        android:textSize="20sp"
+        tools:ignore="TextContrastCheck,EditableContentDescCheck"
         tools:targetApi="o" />
 
 </LinearLayout>

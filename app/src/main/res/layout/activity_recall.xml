@@ -227,10 +227,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:shadowColor="#8800EE00"
+                        android:shadowRadius="1"
                         android:text="@string/correct"
                         android:textColor="#FF00EE00"
-                        android:shadowColor="#8800EE00"
-                        android:shadowRadius="1"/>
+                        tools:ignore="TextContrastCheck" />
 
                     <TextView
                         android:id="@+id/no_of_correct"
@@ -252,10 +253,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:shadowColor="#88FF0000"
+                        android:shadowRadius="1"
                         android:text="@string/wrong"
                         android:textColor="#FFFF0000"
-                        android:shadowColor="#88FF0000"
-                        android:shadowRadius="1"/>
+                        tools:ignore="TextContrastCheck" />
 
                     <TextView
                         android:id="@+id/no_of_wrong"
@@ -277,10 +279,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:shadowColor="#88FF9500"
+                        android:shadowRadius="1"
                         android:text="@string/missed"
                         android:textColor="#FFFF9500"
-                        android:shadowColor="#88FF9500"
-                        android:shadowRadius="1"/>
+                        tools:ignore="TextContrastCheck" />
 
                     <TextView
                         android:id="@+id/no_of_missed"
@@ -392,27 +395,30 @@
                     android:onClick="startTimer"/>-->
 
                 <Button
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="startSW"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:text="@string/start_stopwatch" />
+                    android:text="@string/start_stopwatch"
+                    tools:ignore="TextContrastCheck" />
 
                 <Button
                     android:id="@+id/check"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="check"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:text="@string/check" />
+                    android:text="@string/check"
+                    tools:ignore="TextContrastCheck" />
 
                 <Button
                     android:id="@+id/just_answers"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="giveUp"
-                    style="?android:attr/buttonBarButtonStyle"
-                    android:text="@string/just_answers" />
+                    android:text="@string/just_answers"
+                    tools:ignore="TextContrastCheck" />
 
             </LinearLayout>
 

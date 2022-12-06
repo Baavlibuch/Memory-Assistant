@@ -1,5 +1,11 @@
 package com.memory_athlete.memoryassistant.recall;
 
+import static android.text.InputType.TYPE_CLASS_NUMBER;
+import static android.text.InputType.TYPE_CLASS_TEXT;
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -19,10 +25,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
@@ -32,11 +40,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import timber.log.Timber;
-
-import static android.text.InputType.TYPE_CLASS_NUMBER;
-import static android.text.InputType.TYPE_CLASS_TEXT;
-import static java.lang.Math.abs;
-import static java.lang.Math.pow;
 
 public class RecallSimple extends AppCompatActivity {
     protected boolean givenUp = false;
@@ -87,7 +90,8 @@ public class RecallSimple extends AppCompatActivity {
         setContentView(R.layout.activity_recall);
         Intent intent = getIntent();
         mFilePath = intent.getStringExtra("file");
-        mDiscipline = intent.getStringExtra(getString(R.string.discipline));
+        mDiscipline = intent.getStringExtra("discipline");
+        Toast.makeText(RecallSimple.this,mDiscipline, Toast.LENGTH_SHORT).show();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Timber.i("file Path = %s", mFilePath);
@@ -102,8 +106,17 @@ public class RecallSimple extends AppCompatActivity {
         findViewById(R.id.result).setVisibility(View.GONE);
 
         if (intent.getBooleanExtra("file exists", false)) {
-            File dir = new File(Helper.APP_FOLDER + File.separator
-                    + getString(R.string.practice) + File.separator + mDiscipline);
+
+            int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+                ActivityCompat.requestPermissions(RecallSimple.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        EXTERNAL_STORAGE_PERMISSION_CODE);
+
+                File folder = getFilesDir();
+                File dir = new File(folder + File.separator
+                        + getString(R.string.practice) + File.separator + mDiscipline);
+
+//            File dir = new File(Helper.APP_FOLDER + File.separator
+//                    + getString(R.string.practice) + File.separator + mDiscipline);
             File[] files = dir.listFiles();
             if (files == null) {
                 finish();
@@ -111,6 +124,8 @@ public class RecallSimple extends AppCompatActivity {
             }
             mFilePath = files[files.length - 1].getAbsolutePath();
             Timber.v("filePath = %s", mFilePath);
+
+
         }
 
         setResponseLayout(true);
@@ -707,6 +722,11 @@ public class RecallSimple extends AppCompatActivity {
 
     protected enum CompareFormat {
         SIMPLE_COMPARE_FORMAT, WORD_COMPARE_FORMAT, CARD_COMPARE_FORMAT
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }
 

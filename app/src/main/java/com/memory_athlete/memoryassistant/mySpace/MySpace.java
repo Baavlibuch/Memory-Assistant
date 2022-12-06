@@ -1,7 +1,9 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -20,9 +22,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
 import com.squareup.picasso.Picasso;
 
@@ -100,6 +104,7 @@ public class MySpace extends AppCompatActivity {
         Timber.v("setAdapter started");
         ArrayList<Item> arrayList = new ArrayList<>();
         if (listViewId == MIN_DYNAMIC_VIEW_ID) arrayList = setList();
+
         else {
             File[] files = dir.listFiles();
             if (files == null || files.length == 0) return;
@@ -135,7 +140,15 @@ public class MySpace extends AppCompatActivity {
             Item item = finalArrayList.get(position);
             Timber.v("item.mPath = %s", item.mItem);
             if (listViewId == MIN_DYNAMIC_VIEW_ID) {
-                dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mItem);
+
+                //Directory of practice - external storage
+                int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        EXTERNAL_STORAGE_PERMISSION_CODE);
+                File folder = getFilesDir();
+                dir = new File(folder + File.separator +getString(R.string.my_space) + File.separator + item.mItem);
+
+                //dir = new File(Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + item.mItem);
                 layout.findViewById(listViewId).setVisibility(View.GONE);
                 listViewId++;
                 setTitle(item.mName);
@@ -146,7 +159,15 @@ public class MySpace extends AppCompatActivity {
             }
 
             Timber.v("listViewId = %s", listViewId);
-            String fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + getTitle();
+
+            //Directory of practice - external storage
+            int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    EXTERNAL_STORAGE_PERMISSION_CODE);
+            File folder = getFilesDir();
+            String fileName = folder + File.separator + getString(R.string.my_space) + File.separator + getTitle().toString();
+
+            //String fileName = Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + getTitle();
 
             Intent intent = new Intent(getApplicationContext(), WriteFile.class);
             intent.putExtra("mHeader", item.mName);
@@ -168,7 +189,15 @@ public class MySpace extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
         intent.putExtra("name", false);
-        intent.putExtra("fileName", Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + getTitle());
+
+        //Directory of practice - external storage
+        int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                EXTERNAL_STORAGE_PERMISSION_CODE);
+        File folder = getFilesDir();
+        intent.putExtra("fileName", folder + File.separator + getString(R.string.my_space) + File.separator + getTitle());
+
+        //intent.putExtra("fileName", Helper.APP_FOLDER + getString(R.string.my_space) + File.separator + getTitle());
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
@@ -202,6 +231,7 @@ public class MySpace extends AppCompatActivity {
         }
     }
 
+    // define each list item of mySpace
     private class MySpaceAdapter extends ArrayAdapter<Item> {
 
         MySpaceAdapter(Activity context, ArrayList<Item> list) {
@@ -238,6 +268,10 @@ public class MySpace extends AppCompatActivity {
 
             return listItemView;
         }
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
     }
 }
 
