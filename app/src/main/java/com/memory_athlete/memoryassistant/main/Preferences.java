@@ -56,21 +56,6 @@ public class Preferences extends AppCompatActivity {
 
         int changeCount = 0;
 
-//        @Override
-//        public void onCreate(Bundle savedInstanceState) {
-////            Timber.v("onCreate() started");
-////            super.onCreate(savedInstanceState);
-////            addPreferencesFromResource(R.xml.settings_main);
-////
-////            bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
-////            bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
-////            bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
-////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
-////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
-////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
-////            Timber.v("onCreate() complete");
-//        }
-
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.settings_main);
@@ -96,6 +81,9 @@ public class Preferences extends AppCompatActivity {
             onPreferenceChange(preference,
                     sharedPreferences.getString(preference.getKey(), "22:30"));
         }
+
+
+
 
         @Override
         public void onDisplayPreferenceDialog(Preference preference)
@@ -139,6 +127,8 @@ public class Preferences extends AppCompatActivity {
                 SharedPreferences Preference = androidx.preference.PreferenceManager.getDefaultSharedPreferences(requireActivity());
                 String language = Preference.getString("Change Language","");
 
+                preference.setSummary(language);
+
                 SettingLanguage sl = new SettingLanguage();
                 String string_to_locale = sl.setLang(stringValue);
                 LocaleHelper.setLocale(getActivity(), string_to_locale);
@@ -152,6 +142,7 @@ public class Preferences extends AppCompatActivity {
 
                 if(!language.equals(stringValue)){
                     Toast.makeText(getActivity(), "Language changed. Please restart the app", Toast.LENGTH_SHORT).show();
+                    preference.setSummary(stringValue);
 
                     Preferences r = new Preferences();
                     Snackbar.make(Objects.requireNonNull(getActivity()).findViewById(R.id.preferences_fragment), "Restart app!",
@@ -159,6 +150,7 @@ public class Preferences extends AppCompatActivity {
                 }
 
             }
+
 
             else if (preference instanceof SignInPreference){
 

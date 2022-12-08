@@ -8,7 +8,8 @@ app/mapping.txt
 app/fabric.properties
 gradle.properties
 resources/
-
+gradle/
+gradlew
 
 #built application files
 *.apk

@@ -35,8 +35,6 @@ public class NotificationUtils {
 
     private static PendingIntent contentIntent(Context context) {
         Intent startActivityIntent = new Intent(context, MainActivity.class);
-//        return PendingIntent.getActivity(context, PERIODIC_REMINDER_PENDING_INTENT_ID, startActivityIntent,
-//                PendingIntent.FLAG_UPDATE_CURRENT);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return PendingIntent.getActivity(context, PERIODIC_REMINDER_PENDING_INTENT_ID, startActivityIntent,

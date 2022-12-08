@@ -104,7 +104,8 @@ public class WriteFile extends AppCompatActivity {
 
                             if (snapshot.exists()) {
                                 String salt = Objects.requireNonNull(snapshot.getValue()).toString();
-                                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,salt));
+//                                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,salt));
+                                String text1 = Encryption.decrypt(text.toString(), salt);
                                 mySpaceEditText.setText(text1);
                             }
 
@@ -289,7 +290,7 @@ public class WriteFile extends AppCompatActivity {
                                         outputStream.write(string1.getBytes());
                                         outputStream.close();
                                     } catch (Exception e) {
-                                        Toast.makeText(WriteFile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(WriteFile.this, "Please sign in!", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
@@ -479,7 +480,7 @@ public class WriteFile extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(WriteFile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(WriteFile.this, "Please sign in!", Toast.LENGTH_SHORT).show();
             }
         });
 

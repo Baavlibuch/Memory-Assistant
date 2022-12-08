@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -11,8 +12,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.main.Preferences;
 
@@ -24,7 +29,6 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Helper.theme(this, SignInActivity.this);
-        //setContentView(R.layout.activity_preferences);
         setTitle("Google authentication");
 
         //google sign in
@@ -53,20 +57,20 @@ public class SignInActivity extends AppCompatActivity {
 
                     if(googleSignInAccount!=null)
                     {
-//                        AuthCredential authCredential= GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(),null);
-//                        firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if(task.isSuccessful())
-//                                {
-//                                    Toast.makeText(Preferences.this, "Signed in!", Toast.LENGTH_SHORT).show();
-//                                }
-//                                else
-//                                {
-//                                    Toast.makeText(Preferences.this,"Not signed in", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
+                        AuthCredential authCredential= GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(),null);
+                        firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful())
+                                {
+                                    Toast.makeText(SignInActivity.this, "Signed in!", Toast.LENGTH_SHORT).show();
+                                }
+                                else
+                                {
+                                    Toast.makeText(SignInActivity.this,"Not signed in", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
 
                         Toast.makeText(SignInActivity.this, "Signed in!", Toast.LENGTH_SHORT).show();
 

@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.InstallSourceInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -54,6 +55,7 @@ import com.memory_athlete.memoryassistant.language.BaseActivity;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.mySpace.ModelForSavingFiles;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
+import com.memory_athlete.memoryassistant.preferences.SignInActivity;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
@@ -159,6 +161,21 @@ public class MainActivity extends AppCompatActivity {
             getFromFirebase(id_from_account,getString(R.string.ben));
 
         }
+
+        try {
+            PackageInfo pInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), 0);
+            String version = pInfo.versionName;
+//            Toast.makeText(MainActivity.this,version, Toast.LENGTH_SHORT).show();
+
+            if(!version.equals("2.1.0")){
+                Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+                startActivity(intent);
+            }
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(MainActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
 
 
         AdMob adMob = new AdMob(this);

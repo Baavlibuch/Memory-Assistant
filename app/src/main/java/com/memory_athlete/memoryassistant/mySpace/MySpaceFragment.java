@@ -34,7 +34,6 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.memory_athlete.memoryassistant.Encryption;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -360,10 +359,7 @@ public class MySpaceFragment extends Fragment {
                     text.append('\n');
                 }
                 br.close();
-
-                //decrypt the file
-                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,"anuja"));
-                mySpaceEditText.setText(text1);
+                mySpaceEditText.setText(text);
 
                 //Toast.makeText(getActivity(), path + File.separator + header + ".txt", Toast.LENGTH_SHORT).show();
 
@@ -438,11 +434,8 @@ public class MySpaceFragment extends Fragment {
         if (Helper.makeDirectory(dirPath, getContext())) {
             try {
 
-                //encrypt the file
-                String string1 = Encryption.encrypt(string, "anuja");
-
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                outputStream.write(string1.getBytes());
+                outputStream.write(string.getBytes());
                 outputStream.close();
 
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(

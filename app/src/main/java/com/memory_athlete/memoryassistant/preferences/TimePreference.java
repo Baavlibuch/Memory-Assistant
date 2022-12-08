@@ -14,8 +14,6 @@ import androidx.preference.DialogPreference;
 public class TimePreference extends DialogPreference {
      int lastHour = 0;
      int lastMinute = 0;
-    //    private TimePicker picker=null;
-    //    private String time;
 
     public static int getHour(String time) {
         String[] pieces = time.split(":");
@@ -35,38 +33,6 @@ public class TimePreference extends DialogPreference {
         setPositiveButtonText("Set");
         setNegativeButtonText("Cancel");
     }
-
-
-//    @Override
-//    protected View onCreateDialogView() {
-//        picker = new TimePicker(getContext());
-//
-//        return (picker);
-//    }
-//
-//    @Override
-//    protected void onBindDialogView(View v) {
-//        super.onBindDialogView(v);
-//
-//        picker.setCurrentHour(lastHour);
-//        picker.setCurrentMinute(lastMinute);
-//    }
-//
-//    @Override
-//    protected void onDialogClosed(boolean positiveResult) {
-//        super.onDialogClosed(positiveResult);
-//
-//        if (positiveResult) {
-//            lastHour = picker.getCurrentHour();
-//            lastMinute = picker.getCurrentMinute();
-//
-//            String time = String.valueOf(lastHour) + ":" + String.valueOf(lastMinute);
-//
-//            if (callChangeListener(time)) {
-//                persistString(time);
-//            }
-//        }
-//    }
 
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {

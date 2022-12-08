@@ -42,9 +42,9 @@ android {
         applicationId "com.memory_athelte.memoryassistant"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 170
+        versionCode 176
 
-        versionName "2.0.0"
+        versionName "2.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -105,11 +105,9 @@ dependencies {
     implementation "androidx.concurrent:concurrent-futures:1.1.0"
     implementation 'com.google.firebase:firebase-storage:20.1.0'
     implementation 'com.google.android.gms:play-services-auth:20.3.0'
-
     implementation 'com.android.billingclient:billing:5.0.0'
     implementation 'com.google.guava:guava:24.1-jre'
     implementation 'com.google.guava:guava:27.0.1-android'
-
     implementation 'com.google.android.gms:play-services-ads:21.3.0'
 
     testImplementation 'junit:junit:4.12'

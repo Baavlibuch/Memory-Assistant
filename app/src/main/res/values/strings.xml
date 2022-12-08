@@ -151,7 +151,7 @@
     <string name="checkout">There\'s more to learn</string>
     <string name="pao">The PAO Memory System</string>
     <string name="wardrobe_method">Wardrobe Method</string>
-    <string name="language">Languages</string>
+    <string name="language">Language</string>
 
     <!--Revenue-->
     <string name="already_purchased">You have already made that transaction\nTry something else :p</string>
