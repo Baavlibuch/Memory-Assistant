@@ -2,6 +2,7 @@ package com.memory_athlete.memoryassistant.preferences;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.memory_athlete.memoryassistant.Helper;
+import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.Preferences;
 
 public class SignInActivity extends AppCompatActivity {
@@ -29,19 +32,29 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Helper.theme(this, SignInActivity.this);
-        setTitle("Google authentication");
+        setContentView(R.layout.sign_in);
+        setTitle("Google sign in");
 
-        //google sign in
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .requestIdToken("520025171011-f9v8n1d0l7jtm249rj7u9em5att3d8bj.apps.googleusercontent.com")
-                .build();
-        GoogleSignInClient gsc = GoogleSignIn.getClient(this, gso);
-        Intent intent = gsc.getSignInIntent();
-        startActivityForResult(intent, 1000);
+        SignInButton signInButton = findViewById(R.id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+
+        signInButton = findViewById(R.id.sign_in_button);
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //google sign in
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestEmail()
+                        .requestIdToken("520025171011-f9v8n1d0l7jtm249rj7u9em5att3d8bj.apps.googleusercontent.com")
+                        .build();
+                GoogleSignInClient gsc = GoogleSignIn.getClient(SignInActivity.this, gso);
+                Intent intent = gsc.getSignInIntent();
+                startActivityForResult(intent, 1000);
+            }
+        });
 
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

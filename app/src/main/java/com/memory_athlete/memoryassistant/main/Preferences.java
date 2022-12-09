@@ -161,7 +161,7 @@ public class Preferences extends AppCompatActivity {
                 }
 
                 else{
-                    preference.setTitle("Login with Google");
+                    preference.setTitle("Sign in with Google");
                 }
 
             }

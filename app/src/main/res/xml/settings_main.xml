@@ -123,7 +123,9 @@
 
     <com.memory_athlete.memoryassistant.preferences.SignInPreference
         android:key="SignIn"
-        android:title="Login with Google"
+        android:title="Sign in with Google"
         app:iconSpaceReserved="false"/>
+<!--        android:icon="@drawable/google"-->
+
 
 </PreferenceScreen>

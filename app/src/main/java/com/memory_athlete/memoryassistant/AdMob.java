@@ -2,7 +2,6 @@ package com.memory_athlete.memoryassistant;
 
 import android.app.Activity;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -33,8 +32,8 @@ public class AdMob{
         });
 
         AdView adView = new AdView(activity);
-//        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-        adView.setAdUnitId("ca-app-pub-5457013636131861/3119544472");
+        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+//        adView.setAdUnitId("ca-app-pub-5457013636131861/3119544472");
         adView.setAdSize(AdSize.BANNER);
         linearLayout.addView(adView);
 
@@ -53,7 +52,7 @@ public class AdMob{
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError adError) {
                 // Code to be executed when an ad request fails.
-                Toast.makeText(activity,"Failed to show Ad.",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(activity,"Failed to show Ad.",Toast.LENGTH_SHORT).show();
             }
 
             @Override
