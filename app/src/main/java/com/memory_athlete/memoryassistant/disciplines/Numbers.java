@@ -281,8 +281,11 @@ public class Numbers extends DisciplineFragment {
 //            intent.putExtra("file exists", fileExists);
 //            intent.putExtra("discipline", "Digits");
 
+//            intent.putExtra("file exists", fileExists);
+//            intent.putExtra(getString(R.string.discipline), "Digits");
+
             intent.putExtra("file exists", fileExists);
-            intent.putExtra(getString(R.string.discipline), "Digits");
+            intent.putExtra(getString(R.string.discipline), getString(R.string.numbers));
 
             Timber.i("Numbers/fileExists = %s", fileExists);
             Timber.i("Numbers/discipline = Numbers");

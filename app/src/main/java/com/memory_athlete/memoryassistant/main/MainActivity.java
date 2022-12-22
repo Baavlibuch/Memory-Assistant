@@ -55,7 +55,6 @@ import com.memory_athlete.memoryassistant.language.BaseActivity;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.mySpace.ModelForSavingFiles;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
-import com.memory_athlete.memoryassistant.preferences.SignInActivity;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
@@ -168,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
 //            Toast.makeText(MainActivity.this,version, Toast.LENGTH_SHORT).show();
 
             if(!version.equals("2.1.0")){
-                Intent intent = new Intent(MainActivity.this, SignInActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+//                startActivity(intent);
             }
 
         } catch (PackageManager.NameNotFoundException e) {
@@ -373,9 +372,14 @@ public class MainActivity extends AppCompatActivity {
                                     String name_file = httpsReference.getName();
                                     File file = new File(path_to_store, name_file);
 
+
                                     httpsReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                         @Override
-                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {}
+                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+
+                                            }
+
+
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception exception) {}

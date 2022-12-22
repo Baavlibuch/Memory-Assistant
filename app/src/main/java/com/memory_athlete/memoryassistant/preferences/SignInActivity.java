@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
-import com.memory_athlete.memoryassistant.main.Preferences;
+import com.memory_athlete.memoryassistant.main.MainActivity;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -88,7 +88,7 @@ public class SignInActivity extends AppCompatActivity {
                         Toast.makeText(SignInActivity.this, "Signed in!", Toast.LENGTH_SHORT).show();
 
                         finish();
-                        Intent i = new Intent(this, Preferences.class);
+                        Intent i = new Intent(this, MainActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(i);
 

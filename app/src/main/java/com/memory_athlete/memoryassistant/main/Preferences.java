@@ -57,12 +57,28 @@ public class Preferences extends AppCompatActivity {
         int changeCount = 0;
 
         @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        public void onCreate(Bundle savedInstanceState) {
+            Timber.v("onCreate() started");
+            super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
+
             bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
             bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
             bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
             bindPreferenceToast(Objects.requireNonNull(findPreference("SignIn")));
+            //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
+            //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
+            //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
+            Timber.v("onCreate() complete");
+        }
+
+        @Override
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+//            addPreferencesFromResource(R.xml.settings_main);
+//            bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
+//            bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
+//            bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
+//            bindPreferenceToast(Objects.requireNonNull(findPreference("SignIn")));
 
         }
 

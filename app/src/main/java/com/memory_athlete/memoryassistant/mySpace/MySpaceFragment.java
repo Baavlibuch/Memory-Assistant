@@ -90,6 +90,7 @@ public class MySpaceFragment extends Fragment {
     public boolean save() {
         if (rootView.findViewById(R.id.f_name).getVisibility() != VISIBLE) return true;
         Timber.v("Received back from the activity");
+
         return save(rootView);
     }
 
@@ -359,6 +360,7 @@ public class MySpaceFragment extends Fragment {
                     text.append('\n');
                 }
                 br.close();
+
                 mySpaceEditText.setText(text);
 
                 //Toast.makeText(getActivity(), path + File.separator + header + ".txt", Toast.LENGTH_SHORT).show();

@@ -74,6 +74,7 @@ public class WriteFile extends AppCompatActivity {
         searchEditText = findViewById(R.id.search_edit_text);
 
         path = intent.getStringExtra("fileName");
+
         if (intent.getBooleanExtra("name", true)) {
             ((EditText) findViewById(R.id.f_name)).setText(getTitle().toString());
             StringBuilder text = new StringBuilder();
@@ -90,7 +91,7 @@ public class WriteFile extends AppCompatActivity {
 
                 //decrypt the file
 
-                //take salt from database
+//                take salt from database
                 GoogleSignInAccount account1 = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
                 if (account1 != null) {
                     String id_from_account1 = account1.getId();
@@ -107,6 +108,17 @@ public class WriteFile extends AppCompatActivity {
 //                                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,salt));
                                 String text1 = Encryption.decrypt(text.toString(), salt);
                                 mySpaceEditText.setText(text1);
+
+                                try {
+                                    FileOutputStream outputStream = new FileOutputStream(new File(path + File.separator + getTitle().toString() + ".txt"));
+                                    outputStream.write(text1.getBytes());
+                                    outputStream.close();
+                                }
+                                catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
                             }
 
                         }
@@ -267,8 +279,8 @@ public class WriteFile extends AppCompatActivity {
         if (Helper.makeDirectory(dirPath, getApplicationContext())) {
             try {
 
-                //encrypt the file
-                //take salt from firebase
+//                encrypt the file
+//                take salt from firebase
                 GoogleSignInAccount account1 = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
                 if (account1 != null) {
                     String id_from_account1 = account1.getId();
@@ -321,19 +333,26 @@ public class WriteFile extends AppCompatActivity {
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
 
-                //firebase storage
-                Uri uri_file = Uri.fromFile(new File(fname));
                 Intent intent = getIntent();
                 String disciplineHeader = intent.getStringExtra("disciplineHeader");
 
+                //firebase storage
+
+                Uri uri_file = Uri.fromFile(new File(fname));
+
                 if(uri_file!=null) {
+
+//                    Toast.makeText(this, fname, Toast.LENGTH_SHORT).show();
 
                     GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
 
                     if (account != null) {
                         String id_from_account = account.getId();
                         saveToFirebase(id_from_account, uri_file, f_head, disciplineHeader);
+
                         Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();
+
+//                        file_for_firebase.delete();
                     }
                     else{
                         Toast.makeText(this, "Saved offline", Toast.LENGTH_SHORT).show();
@@ -473,6 +492,7 @@ public class WriteFile extends AppCompatActivity {
                         ModelForSavingFiles modelForSavingFiles = new ModelForSavingFiles(uri.toString());
                         databaseReference.setValue(modelForSavingFiles);
 
+
                     }
                 });
 
@@ -480,10 +500,9 @@ public class WriteFile extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(WriteFile.this, "Please sign in!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(WriteFile.this, "Please try saving again!", Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 

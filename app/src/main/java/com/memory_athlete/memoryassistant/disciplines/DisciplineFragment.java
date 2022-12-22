@@ -558,7 +558,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             String s = ((EditText) rootView.findViewById(R.id.sec)).getText().toString();
             if (s.length() == 0) s = "0";
             cdt = new CountDownTimer(((Long.parseLong(((EditText) rootView.findViewById(R.id.min)).getText()
-                    .toString()) * 60000 + Integer.parseInt(s) * 1000)), 1000) {
+                    .toString()) * 60000 + Integer.parseInt(s) * 1000L)), 1000) {
 
                 boolean isRunning = true;
 

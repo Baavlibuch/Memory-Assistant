@@ -18,13 +18,28 @@ public class TimePreference extends DialogPreference {
     public static int getHour(String time) {
         String[] pieces = time.split(":");
 
-        return (Integer.parseInt(pieces[0]));
+        int hr = 0;
+        try{
+            hr = Integer.parseInt(pieces[0]);
+        } catch(NumberFormatException ex){ // handle your exception
+
+        }
+
+        return (hr);
     }
 
     public static int getMinute(String time) {
         String[] pieces = time.split(":");
 
-        return (Integer.parseInt(pieces[1]));
+        int min = 0;
+        try{
+            min = Integer.parseInt(pieces[0]);
+        } catch(NumberFormatException ex){ // handle your exception
+
+        }
+
+        return (min);
+
     }
 
     public TimePreference(Context context, AttributeSet attrs) {
