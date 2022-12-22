@@ -9,8 +9,7 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'kotlin-android'
-//apply plugin: 'io.fabric'
-//apply plugin: 'com.jakewharton.hugo'
+
 def keystorePropertiesFile = rootProject.file("C:\\Users\\Memory - new key\\keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
