@@ -361,10 +361,6 @@ public class MySpaceFragment extends Fragment {
                 }
                 br.close();
 
-                //decrypt the file
-                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,"anuja"));
-                mySpaceEditText.setText(text1);
-
                 //Toast.makeText(getActivity(), path + File.separator + header + ".txt", Toast.LENGTH_SHORT).show();
 
             } catch (Exception e) {

@@ -15,15 +15,12 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.NotificationReceiver;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.language.SettingLanguage;
-import com.memory_athlete.memoryassistant.preferences.SignInPreference;
 import com.memory_athlete.memoryassistant.preferences.TimeDialog;
 import com.memory_athlete.memoryassistant.preferences.TimePreference;
 
@@ -56,28 +53,27 @@ public class Preferences extends AppCompatActivity {
 
         int changeCount = 0;
 
-//        @Override
-//        public void onCreate(Bundle savedInstanceState) {
-////            Timber.v("onCreate() started");
-////            super.onCreate(savedInstanceState);
-////            addPreferencesFromResource(R.xml.settings_main);
-////
-////            bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
-////            bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
-////            bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
-////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
-////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
-////            //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
-////            Timber.v("onCreate() complete");
-//        }
-
         @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        public void onCreate(Bundle savedInstanceState) {
+            Timber.v("onCreate() started");
+            super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
+
             bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
             bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
             bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
-            bindPreferenceToast(Objects.requireNonNull(findPreference("SignIn")));
+            //bindPreferenceSummaryToValue(findPreference(getString(R.string.mTheme)));
+            //bindPreferenceSummaryToValue(findPreference(getString(R.string.location_wise)));
+            //bindPreferenceSummaryToValue(findPreference(getString(R.string.transit)));
+            Timber.v("onCreate() complete");
+        }
+
+        @Override
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+//            addPreferencesFromResource(R.xml.settings_main);
+//            bindPreferenceSummaryToValue(Objects.requireNonNull(findPreference(getString(R.string.periodic))));
+//            bindPreferenceToast(Objects.requireNonNull(findPreference(getString(R.string.speech_rate))));
+//            bindPreferenceToast(Objects.requireNonNull(findPreference("Change Language")));
 
         }
 
@@ -96,6 +92,9 @@ public class Preferences extends AppCompatActivity {
             onPreferenceChange(preference,
                     sharedPreferences.getString(preference.getKey(), "22:30"));
         }
+
+
+
 
         @Override
         public void onDisplayPreferenceDialog(Preference preference)
@@ -139,6 +138,8 @@ public class Preferences extends AppCompatActivity {
                 SharedPreferences Preference = androidx.preference.PreferenceManager.getDefaultSharedPreferences(requireActivity());
                 String language = Preference.getString("Change Language","");
 
+                preference.setSummary(language);
+
                 SettingLanguage sl = new SettingLanguage();
                 String string_to_locale = sl.setLang(stringValue);
                 LocaleHelper.setLocale(getActivity(), string_to_locale);
@@ -152,24 +153,11 @@ public class Preferences extends AppCompatActivity {
 
                 if(!language.equals(stringValue)){
                     Toast.makeText(getActivity(), "Language changed. Please restart the app", Toast.LENGTH_SHORT).show();
+                    preference.setSummary(stringValue);
 
                     Preferences r = new Preferences();
                     Snackbar.make(Objects.requireNonNull(getActivity()).findViewById(R.id.preferences_fragment), "Restart app!",
                             Snackbar.LENGTH_SHORT).setAction("Restart",view -> r.restart()).show();
-                }
-
-            }
-
-            else if (preference instanceof SignInPreference){
-
-                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(Objects.requireNonNull(getActivity()));
-
-                if(account!=null){
-                    preference.setTitle("Logout");
-                }
-
-                else{
-                    preference.setTitle("Login with Google");
                 }
 
             }

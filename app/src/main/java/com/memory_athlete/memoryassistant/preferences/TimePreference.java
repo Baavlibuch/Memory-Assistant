@@ -12,21 +12,34 @@ import androidx.preference.DialogPreference;
 
 
 public class TimePreference extends DialogPreference {
-     int lastHour = 0;
-     int lastMinute = 0;
-    //    private TimePicker picker=null;
-    //    private String time;
+    int lastHour = 0;
+    int lastMinute = 0;
 
     public static int getHour(String time) {
         String[] pieces = time.split(":");
 
-        return (Integer.parseInt(pieces[0]));
+        int hr = 0;
+        try{
+            hr = Integer.parseInt(pieces[0]);
+        } catch(NumberFormatException ex){ // handle your exception
+
+        }
+
+        return (hr);
     }
 
     public static int getMinute(String time) {
         String[] pieces = time.split(":");
 
-        return (Integer.parseInt(pieces[1]));
+        int min = 0;
+        try{
+            min = Integer.parseInt(pieces[0]);
+        } catch(NumberFormatException ex){ // handle your exception
+
+        }
+
+        return (min);
+
     }
 
     public TimePreference(Context context, AttributeSet attrs) {
@@ -35,38 +48,6 @@ public class TimePreference extends DialogPreference {
         setPositiveButtonText("Set");
         setNegativeButtonText("Cancel");
     }
-
-
-//    @Override
-//    protected View onCreateDialogView() {
-//        picker = new TimePicker(getContext());
-//
-//        return (picker);
-//    }
-//
-//    @Override
-//    protected void onBindDialogView(View v) {
-//        super.onBindDialogView(v);
-//
-//        picker.setCurrentHour(lastHour);
-//        picker.setCurrentMinute(lastMinute);
-//    }
-//
-//    @Override
-//    protected void onDialogClosed(boolean positiveResult) {
-//        super.onDialogClosed(positiveResult);
-//
-//        if (positiveResult) {
-//            lastHour = picker.getCurrentHour();
-//            lastMinute = picker.getCurrentMinute();
-//
-//            String time = String.valueOf(lastHour) + ":" + String.valueOf(lastMinute);
-//
-//            if (callChangeListener(time)) {
-//                persistString(time);
-//            }
-//        }
-//    }
 
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {
@@ -98,11 +79,3 @@ public class TimePreference extends DialogPreference {
     }
 
 }
-
-
-
-
-
-
-
-

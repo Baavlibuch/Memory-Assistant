@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">-->
-
-<!--<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto">-->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
 
     <SwitchPreference
         android:defaultValue="true"
@@ -126,9 +121,6 @@
         android:title="@string/clear_practice"
         app:iconSpaceReserved="false"/>
 
-    <com.memory_athlete.memoryassistant.preferences.SignInPreference
-        android:key="SignIn"
-        android:title="Login with Google"
-        app:iconSpaceReserved="false"/>
+
 
 </PreferenceScreen>
