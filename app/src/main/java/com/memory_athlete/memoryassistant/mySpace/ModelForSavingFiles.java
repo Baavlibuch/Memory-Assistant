@@ -1,5 +1,8 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class ModelForSavingFiles {
 
     public String url_file;

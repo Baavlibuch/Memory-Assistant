@@ -1,5 +1,6 @@
 package com.memory_athlete.memoryassistant.mySpace;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NavUtils;
 import androidx.preference.PreferenceManager;
 
@@ -90,50 +92,49 @@ public class WriteFile extends AppCompatActivity {
                 br.close();
 
                 //decrypt the file
-
 //                take salt from database
-                GoogleSignInAccount account1 = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-                if (account1 != null) {
-                    String id_from_account1 = account1.getId();
-                    assert id_from_account1 != null;
-                    DatabaseReference databaseReferenceKey = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
-                            .child(id_from_account1).child("UNIQUE_KEY");
+//                GoogleSignInAccount account1 = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+//                if (account1 != null) {
+//                    String id_from_account1 = account1.getId();
+//                    assert id_from_account1 != null;
+//                    DatabaseReference databaseReferenceKey = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
+//                            .child(id_from_account1).child("UNIQUE_KEY");
+//
+//                    databaseReferenceKey.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                            if (snapshot.exists()) {
+//                                String salt = Objects.requireNonNull(snapshot.getValue()).toString();
+////                                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,salt));
+//                                String text1 = Encryption.decrypt(text.toString(), salt);
+//                                mySpaceEditText.setText(text1);
+//
+//                                try {
+//                                    FileOutputStream outputStream = new FileOutputStream(new File(path + File.separator + getTitle().toString() + ".txt"));
+//                                    outputStream.write(text1.getBytes());
+//                                    outputStream.close();
+//                                }
+//                                catch (Exception e){
+//                                    e.printStackTrace();
+//                                }
+//
+//
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//
+//                        }
+//                    });
+//
+//                }
 
-                    databaseReferenceKey.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                            if (snapshot.exists()) {
-                                String salt = Objects.requireNonNull(snapshot.getValue()).toString();
-//                                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,salt));
-                                String text1 = Encryption.decrypt(text.toString(), salt);
-                                mySpaceEditText.setText(text1);
-
-                                try {
-                                    FileOutputStream outputStream = new FileOutputStream(new File(path + File.separator + getTitle().toString() + ".txt"));
-                                    outputStream.write(text1.getBytes());
-                                    outputStream.close();
-                                }
-                                catch (Exception e){
-                                    e.printStackTrace();
-                                }
-
-
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-                }
-
-                else{
+//                else{
                     mySpaceEditText.setText(text);
-                }
+//                }
 
 
                 //findViewById(R.id.saveFAB).setVisibility(View.VISIBLE);
@@ -279,13 +280,29 @@ public class WriteFile extends AppCompatActivity {
         if (Helper.makeDirectory(dirPath, getApplicationContext())) {
             try {
 
+
+                int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        EXTERNAL_STORAGE_PERMISSION_CODE);
+
+                File folder = getFilesDir();
+
+                Helper.makeDirectory(folder+File.separator+"Firebase",getApplicationContext());
+
+                String path_for_firebase = "";
+
 //                encrypt the file
 //                take salt from firebase
                 GoogleSignInAccount account1 = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
                 if (account1 != null) {
                     String id_from_account1 = account1.getId();
 
-                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
+
+                    path_for_firebase = folder+File.separator+"Firebase"+File.separator+f_head+".txt";
+
+                    FileOutputStream outputStream1 = new FileOutputStream(new File(path_for_firebase));
+
+//                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
 
                     assert id_from_account1 != null;
                     DatabaseReference databaseReferenceKey = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
@@ -299,8 +316,8 @@ public class WriteFile extends AppCompatActivity {
                                     String salt = Objects.requireNonNull(snapshot.child("UNIQUE_KEY").getValue()).toString();
                                     String string1 = Encryption.encrypt(string, salt);
                                     try {
-                                        outputStream.write(string1.getBytes());
-                                        outputStream.close();
+                                        outputStream1.write(string1.getBytes());
+                                        outputStream1.close();
                                     } catch (Exception e) {
                                         Toast.makeText(WriteFile.this, "Please sign in!", Toast.LENGTH_SHORT).show();
                                     }
@@ -320,11 +337,8 @@ public class WriteFile extends AppCompatActivity {
 
                 }
 
-                else{
-                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                    outputStream.write(string.getBytes());
-                    outputStream.close();
-                }
+
+
 
 
                 SharedPreferences.Editor editor = PreferenceManager
@@ -338,7 +352,7 @@ public class WriteFile extends AppCompatActivity {
 
                 //firebase storage
 
-                Uri uri_file = Uri.fromFile(new File(fname));
+                Uri uri_file = Uri.fromFile(new File(path_for_firebase));
 
                 if(uri_file!=null) {
 
@@ -351,6 +365,11 @@ public class WriteFile extends AppCompatActivity {
                         saveToFirebase(id_from_account, uri_file, f_head, disciplineHeader);
 
                         Toast.makeText(this, R.string.saved, Toast.LENGTH_SHORT).show();
+
+                        FileOutputStream outputStream = new FileOutputStream(new File(fname));
+                        outputStream.write(string.getBytes());
+                        outputStream.close();
+
 
 //                        file_for_firebase.delete();
                     }

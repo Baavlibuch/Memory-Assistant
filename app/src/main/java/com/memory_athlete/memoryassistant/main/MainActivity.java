@@ -49,6 +49,7 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.memory_athlete.memoryassistant.AdMob;
+import com.memory_athlete.memoryassistant.Encryption;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.language.BaseActivity;
@@ -58,7 +59,10 @@ import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -376,6 +380,60 @@ public class MainActivity extends AppCompatActivity {
                                     httpsReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                         @Override
                                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+
+                                            try {
+
+                                                StringBuilder text = new StringBuilder();
+                                                BufferedReader br = new BufferedReader(new FileReader(new File(
+                                                        path_to_store+name_file)));
+                                                String line;
+
+                                                while ((line = br.readLine()) != null) {
+                                                    text.append(line);
+                                                    text.append('\n');
+                                                }
+                                                br.close();
+
+//                                                Toast.makeText(MainActivity.this,text, Toast.LENGTH_SHORT).show();
+
+                                                    DatabaseReference databaseReferenceKey = FirebaseDatabase.getInstance().getReference("MySpaceFiles")
+                                                            .child(id_from_account).child("UNIQUE_KEY");
+
+                                                    databaseReferenceKey.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                                            if (snapshot.exists()) {
+                                                                String salt = Objects.requireNonNull(snapshot.getValue()).toString();
+//                                StringBuilder text1 = new StringBuilder(Encryption.decrypt(text,salt));
+                                                                String text1 = Encryption.decrypt(text.toString(), salt);
+
+//                                                                Toast.makeText(MainActivity.this,text1, Toast.LENGTH_SHORT).show();
+
+                                                                try {
+                                                                    FileOutputStream outputStream = new FileOutputStream(new File(path_to_store + name_file));
+                                                                    outputStream.write(text1.getBytes());
+                                                                    outputStream.close();
+                                                                }
+                                                                catch (Exception e){
+                                                                    e.printStackTrace();
+                                                                }
+
+                                                            }
+
+                                                        }
+
+                                                        @Override
+                                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                                        }
+                                                    });
+
+                                            }
+                                            catch (Exception e){
+                                                e.printStackTrace();
+                                            }
+
 
                                             }
 

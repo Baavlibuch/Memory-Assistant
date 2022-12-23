@@ -172,21 +172,21 @@
             android:name=".main.PrivacyPolicy"
             android:parentActivityName=".main.MainActivity"
             tools:targetApi="jelly_bean" /> <!-- Services -->
-        <service
-            android:name=".services.ReminderJobService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
-        <service
-            android:name=".services.MySpaceJobService"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
+<!--        <service-->
+<!--            android:name=".services.ReminderJobService"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+<!--        <service-->
+<!--            android:name=".services.MySpaceJobService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
 
         <uses-library
             android:name="org.apache.http.legacy"
