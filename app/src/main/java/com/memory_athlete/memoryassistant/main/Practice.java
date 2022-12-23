@@ -19,8 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -66,6 +66,7 @@ public class Practice extends AppCompatActivity {
                     })
                     .show();
         }
+
     }
 
     // sets the list numbers,words,...

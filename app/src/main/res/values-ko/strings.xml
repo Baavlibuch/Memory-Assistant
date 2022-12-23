@@ -159,4 +159,28 @@
     <string name="fake_dates">이 날짜는 실제가 아닙니다</string>
     <string name="faulty_translations">번역이 잘못되었을 수 있습니다</string>
 
+    <string name="a_list_of_all_the_learning_methods">모든 학습 방법 목록</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">지원, 자금, 약정 및 크레딧과 같은 기여 옵션 목록</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">앱 내에서 수행할 수 있는 작업 목록</string>
+    <string name="a_list_of_disciplines_to_practice">연습할 분야 목록</string>
+    <string name="privacy_policy_information">개인 정보 보호 정책 정보</string>
+    <string name="item_image">아이템 이미지</string>
+    <string name="item_text">항목 텍스트</string>
+    <string name="heading_of_donation">기부 제목</string>
+    <string name="details_of_donation">기부내역</string>
+    <string name="event_occurred">이벤트 발생</string>
+    <string name="date_of_event">이벤트 날짜</string>
+    <string name="loading_progress_bar">진행률 표시줄 로드 중</string>
+    <string name="practice_level">연습 수준</string>
+    <string name="todo">모두</string>
+    <string name="sliding_tabs">슬라이딩 탭</string>
+    <string name="view_pager">호출기 보기</string>
+    <string name="horizontal_scroll">가로 스크롤</string>
+    <string name="card_view">카드 보기</string>
+    <string name="walkthrough_viewpager">연습 뷰페이저</string>
+    <string name="language_spinner">언어 스피너</string>
+    <string name="choose_your_language">당신의 언어를 고르시 오</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">앱 제작에 참여한 모든 기여자 목록</string>
+
+
 </resources>

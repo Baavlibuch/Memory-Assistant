@@ -159,4 +159,28 @@
     <string name="fake_dates">Estas fechas no son reales</string>
     <string name="faulty_translations">Las traducciones pueden ser defectuosas</string>
 
+    <string name="a_list_of_all_the_learning_methods">Una lista de todos los métodos de aprendizaje.</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">Una lista de opciones de contribución como soporte, fondo, compromiso y créditos</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">Lista de tareas que se pueden realizar dentro de la aplicación</string>
+    <string name="a_list_of_disciplines_to_practice">Una lista de disciplinas para practicar</string>
+    <string name="privacy_policy_information">Información de la política de privacidad</string>
+    <string name="item_image">Imagen del artículo</string>
+    <string name="item_text">Texto del artículo</string>
+    <string name="heading_of_donation">encabezamiento de la donación</string>
+    <string name="details_of_donation">Detalles de la donación</string>
+    <string name="event_occurred">Evento ocurrido</string>
+    <string name="date_of_event">Fecha del evento</string>
+    <string name="loading_progress_bar">Barra de progreso de carga</string>
+    <string name="practice_level">nivel de práctica</string>
+    <string name="todo">TODOS</string>
+    <string name="sliding_tabs">Pestañas deslizantes</string>
+    <string name="view_pager">Ver buscapersonas</string>
+    <string name="horizontal_scroll">desplazamiento horizontal</string>
+    <string name="card_view">Vista de tarjeta</string>
+    <string name="walkthrough_viewpager">Visor de tutoriales</string>
+    <string name="language_spinner">Rueda de idioma</string>
+    <string name="choose_your_language">Elige tu idioma</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">Una lista de todos los colaboradores en la creación de la aplicación.</string>
+
+
 </resources>

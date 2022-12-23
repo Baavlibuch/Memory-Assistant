@@ -159,4 +159,28 @@
     <string name="fake_dates">这些日期不是真实的</string>
     <string name="faulty_translations">翻译可能有误</string>
 
+    <string name="a_list_of_all_the_learning_methods">所有学习方法的列表</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">支持、资金、承诺和信用等贡献选项列表</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">可在应用内执行的任务列表</string>
+    <string name="a_list_of_disciplines_to_practice">练习的学科列表</string>
+    <string name="privacy_policy_information">隐私政策信息</string>
+    <string name="item_image">商品图片</string>
+    <string name="item_text">项目文本</string>
+    <string name="heading_of_donation">捐赠标题</string>
+    <string name="details_of_donation">捐款详情</string>
+    <string name="event_occurred">事件发生</string>
+    <string name="date_of_event">活动日期</string>
+    <string name="loading_progress_bar">加载进度条</string>
+    <string name="practice_level">实践水平</string>
+    <string name="todo">全部</string>
+    <string name="sliding_tabs">滑动标签</string>
+    <string name="view_pager">查看寻呼机</string>
+    <string name="horizontal_scroll">水平滚动</string>
+    <string name="card_view">卡片视图</string>
+    <string name="walkthrough_viewpager">演练查看器</string>
+    <string name="language_spinner">语言微调器</string>
+    <string name="choose_your_language">选择你的语言</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">制作应用程序的所有贡献者的列表</string>
+
+
 </resources>

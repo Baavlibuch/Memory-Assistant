@@ -1,23 +1,16 @@
 package com.memory_athlete.memoryassistant.disciplines;
 
+import static java.lang.Math.pow;
+
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Instrumentation;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.os.SystemClock;
-import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,10 +32,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
+import com.memory_athlete.memoryassistant.AsyncTaskExecutorService;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.RecallSelector;
@@ -55,14 +48,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
 
 import timber.log.Timber;
-
-import static java.lang.Math.pow;
 
 /**
  * Created by manik on 5/11/17.
@@ -410,7 +399,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
         //Directory of practice - external storage
         int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+        ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                 EXTERNAL_STORAGE_PERMISSION_CODE);
 
         File folder = getActivity().getFilesDir();
@@ -420,7 +409,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 //        String path = Helper.APP_FOLDER + File.separator
 //                + getString(R.string.practice) + File.separator + activity.getTitle().toString();
 
-        Toast.makeText(activity.getApplicationContext(),"discipline is working", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(activity.getApplicationContext(),"discipline is working", Toast.LENGTH_SHORT).show();
 
         if (Helper.makeDirectory(path, getContext())) {
             path += File.separator + ((new SimpleDateFormat("yy-MM-dd_HH:mm",
@@ -471,17 +460,6 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         return false;
     }
 
-    //// Checks if external storage is available for read and write
-    //public boolean isExternalStorageWritable() {
-    //    return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
-    //}
-    //
-    //// Checks if external storage is available to at least read
-    //public boolean isExternalStorageReadable() {
-    //    String externalStorageState = Environment.getExternalStorageState();
-    //    return Environment.MEDIA_MOUNTED.equals(externalStorageState) ||
-    //            Environment.MEDIA_MOUNTED_READ_ONLY.equals(externalStorageState);
-    //}
 
     public boolean reset() {
         if (rootView.findViewById(R.id.reset).getVisibility() == View.GONE)
@@ -580,7 +558,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             String s = ((EditText) rootView.findViewById(R.id.sec)).getText().toString();
             if (s.length() == 0) s = "0";
             cdt = new CountDownTimer(((Long.parseLong(((EditText) rootView.findViewById(R.id.min)).getText()
-                    .toString()) * 60000 + Integer.parseInt(s) * 1000)), 1000) {
+                    .toString()) * 60000 + Integer.parseInt(s) * 1000L)), 1000) {
 
                 boolean isRunning = true;
 
@@ -676,11 +654,20 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
                         sharedPreferences.getString(activity.getString(R.string.speech_rate), "0.25")))
                         * speechSpeedMultiplier);
                 Timber.v("TTS.speak will be called");
-                textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    textToSpeech.speak(s,TextToSpeech.QUEUE_FLUSH,null,null);
+                } else {
+                    textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
+                }
+
+                //textToSpeech.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                 Timber.v("TTS.speak has been called");
                 // TODO update someday
                 //noinspection deprecation
                 textToSpeech.setOnUtteranceCompletedListener(s1 -> cardAndSpeechImageView.setImageResource(R.drawable.green_tick));
+
+                //textToSpeech.setOnUtteranceProgressListener(s1 -> cardAndSpeechImageView.setImageResource(R.drawable.green_tick));
                 numbersVisibility(View.GONE);
                 rootView.findViewById(R.id.nested_scroll_view).setVisibility(View.GONE);
             } else reset();
@@ -737,17 +724,16 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //Thread to generate the random list as string
     // TODO: Fix this memory leak
-    @SuppressLint("StaticFieldLeak")
-    protected class GenerateRandomStringAsyncTask extends AsyncTask<ArrayList<Integer>, Void, String> {
+    //@SuppressLint("StaticFieldLeak")
+    protected class GenerateRandomStringAsyncTask extends AsyncTaskExecutorService<ArrayList<Integer>, Void, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             preExecute();
         }
 
-        @SafeVarargs
         @Override
-        protected final String doInBackground(ArrayList<Integer>... a) {
+        protected String doInBackground(ArrayList<Integer> a) {
             Timber.v("doInBackground entered");
             try {
                 return backgroundString();
@@ -759,9 +745,23 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             }
         }
 
+//        @SafeVarargs
+//        @Override
+//        protected final String doInBackground(ArrayList<Integer>... a) {
+//            Timber.v("doInBackground entered");
+//            try {
+//                return backgroundString();
+//            } catch (IllegalStateException e) {
+//                Activity activity = getActivity();
+//                if (activity == null) return null;
+//                if (activity.isFinishing()) return null;
+//                throw new RuntimeException("activity is not null!", e);
+//            }
+//        }
+
         @Override
         protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+            //super.onPostExecute(s);
             postExecuteString(s);
             Timber.v("onPostExecute() complete");
         }
@@ -769,8 +769,8 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
 
     //Thread to generate the random list as arrayList
     // TODO: Fix this memory leak
-    @SuppressLint("StaticFieldLeak")
-    protected class GenerateRandomArrayListAsyncTask extends AsyncTask<ArrayList<Integer>, Void, ArrayList> {
+    //@SuppressLint("StaticFieldLeak")
+    protected class GenerateRandomArrayListAsyncTask extends AsyncTaskExecutorService<ArrayList<Integer>, Void, ArrayList> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -779,7 +779,7 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
         }
 
         @Override
-        protected ArrayList doInBackground(ArrayList<Integer>[] a) {
+        protected ArrayList doInBackground(ArrayList<Integer> a) {
             try {
                 return backgroundArray();
             } catch (IllegalStateException e) {
@@ -790,9 +790,21 @@ public abstract class DisciplineFragment extends Fragment implements View.OnClic
             }
         }
 
+//        @Override
+//        protected ArrayList doInBackground(ArrayList<Integer>[] a) {
+//            try {
+//                return backgroundArray();
+//            } catch (IllegalStateException e) {
+//                Activity activity = getActivity();
+//                if (activity == null) return null;
+//                if (activity.isFinishing()) return null;
+//                throw new RuntimeException("activity is not null!", e);
+//            }
+//        }
+
         @Override
         protected void onPostExecute(ArrayList list) {
-            super.onPostExecute(list);
+            //super.onPostExecute(list);
             postExecuteArrayList(list);
         }
     }

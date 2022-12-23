@@ -17,8 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.lessons.Lessons;
 import com.squareup.picasso.Picasso;
 
@@ -33,6 +33,7 @@ public class Learn extends AppCompatActivity {
         setContentView(R.layout.activity_learn);
         setTitle(getString(R.string.learn));
         setAdapter();
+
     }
 
     // setting the adapter

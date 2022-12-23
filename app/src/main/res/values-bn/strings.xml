@@ -159,4 +159,28 @@
     <string name="fake_dates">এই তারিখগুলি আসল নয়</string>
     <string name="faulty_translations">অনুবাদগুলি ত্রুটিযুক্ত হতে পারে</string>
 
+    <string name="a_list_of_all_the_learning_methods">সমস্ত শেখার পদ্ধতির একটি তালিকা</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">সহায়তা, তহবিল, প্রতিশ্রুতি এবং ক্রেডিটগুলির মতো অবদানের বিকল্পগুলির একটি তালিকা৷</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">অ্যাপের মধ্যে করা যেতে পারে এমন কাজের তালিকা</string>
+    <string name="a_list_of_disciplines_to_practice">অনুশীলন করার জন্য শৃঙ্খলাগুলির একটি তালিকা</string>
+    <string name="privacy_policy_information">গোপনীয়তা নীতি তথ্য</string>
+    <string name="item_image">আইটেম ইমেজ</string>
+    <string name="item_text">আইটেম পাঠ্য</string>
+    <string name="heading_of_donation">অনুদানের শিরোনাম</string>
+    <string name="details_of_donation">অনুদানের বিবরণ</string>
+    <string name="event_occurred">ঘটনা ঘটেছে</string>
+    <string name="date_of_event">ইভেন্টের তারিখ</string>
+    <string name="loading_progress_bar">অগ্রগতি বার লোড হচ্ছে</string>
+    <string name="practice_level">অনুশীলন স্তর</string>
+    <string name="todo">সমস্ত</string>
+    <string name="sliding_tabs">স্লাইডিং ট্যাব</string>
+    <string name="view_pager">পেজার দেখুন</string>
+    <string name="horizontal_scroll">অনুভূমিক স্ক্রোল</string>
+    <string name="card_view">কার্ড ভিউ</string>
+    <string name="walkthrough_viewpager">ওয়াকথ্রু ভিউপেজার</string>
+    <string name="language_spinner">ভাষা স্পিনার</string>
+    <string name="choose_your_language">আপনার ভাষা নির্বাচন করুন</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">অ্যাপটি তৈরিতে সকল অবদানকারীদের একটি তালিকা</string>
+
+
 </resources>
