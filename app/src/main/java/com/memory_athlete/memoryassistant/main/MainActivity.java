@@ -19,11 +19,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.LocaleListCompat;
 import androidx.preference.PreferenceManager;
@@ -31,10 +33,11 @@ import androidx.preference.PreferenceManager;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.BuildConfig;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.memory_athlete.memoryassistant.language.BaseActivity;
+import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.language.BaseActivity;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.mySpace.MySpace;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
 import com.squareup.picasso.Picasso;
@@ -46,9 +49,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 import timber.log.Timber;
-
-//import com.crashlytics.android.Crashlytics;
-//import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
     boolean backPressed = false;
@@ -99,10 +99,13 @@ public class MainActivity extends AppCompatActivity {
         Helper.theme(this, MainActivity.this);
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.app_name));
+
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         SharedPreferences getShared = getSharedPreferences("LANGUAGE", MODE_PRIVATE);
         String value = getShared.getString("str", null);
+
         if (value != null) {
             Toast.makeText(MainActivity.this,value+" language", Toast.LENGTH_SHORT).show();
 
@@ -125,11 +128,20 @@ public class MainActivity extends AppCompatActivity {
             makeText(this, R.string.faulty_translations, Toast.LENGTH_LONG).show();
         LocaleListCompat appLocale = LocaleListCompat.forLanguageTags("xx-YY");
         //AppCompatDelegate.setApplicationLocales(appLocale);
+
+
+        AdMob adMob = new AdMob(this);
+        LinearLayout add_layout = findViewById(R.id.add_layout);
+        adMob.loadBannerAd(add_layout);
+
     }
 
+
     // resuming the MainActivity again
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onResume() {
+        //app.loadAd(layAd);
         super.onResume();
         new Thread(() -> {
             SharedPreferences.Editor e = sharedPreferences.edit();
@@ -270,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
             return convertView;
         }
     }
+
 
     @Override
     protected void attachBaseContext(Context base) {

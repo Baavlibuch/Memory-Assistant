@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,9 +26,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.memory_athlete.memoryassistant.AdMob;
 import com.memory_athlete.memoryassistant.Helper;
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.memory_athlete.memoryassistant.R;
+import com.memory_athlete.memoryassistant.language.LocaleHelper;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -70,6 +72,12 @@ public class MySpace extends AppCompatActivity {
                     })
                     .show();
         }
+
+        AdMob adMob = new AdMob(this);
+        LinearLayout add_layout = findViewById(R.id.add_layout);
+        adMob.loadBannerAd(add_layout);
+
+
     }
 
     @Override
@@ -171,6 +179,7 @@ public class MySpace extends AppCompatActivity {
 
             Intent intent = new Intent(getApplicationContext(), WriteFile.class);
             intent.putExtra("mHeader", item.mName);
+            intent.putExtra("disciplineHeader", getTitle().toString());
             intent.putExtra("fileString", item.mItem);
             intent.putExtra("fileName", fileName);
 
@@ -186,8 +195,10 @@ public class MySpace extends AppCompatActivity {
     }
 
     public void add(View view) {
+
         Intent intent = new Intent(getApplicationContext(), WriteFile.class);
         intent.putExtra("mHeader", getTitle());
+        intent.putExtra("disciplineHeader", getTitle());
         intent.putExtra("name", false);
 
         //Directory of practice - external storage
@@ -207,7 +218,8 @@ public class MySpace extends AppCompatActivity {
                 new Item(getString(R.string.majors), R.drawable.major_system, WriteFile.class),
                 new Item(getString(R.string.wardrobes), R.drawable.wardrobe_method, WriteFile.class),
                 new Item(getString(R.string.lists), R.drawable.lists, WriteFile.class),
-                new Item(getString(R.string.words), R.drawable.vocabulary, WriteFile.class)));
+                new Item(getString(R.string.words), R.drawable.vocabulary, WriteFile.class),
+                new Item(getString(R.string.ben), R.drawable.bensystems, WriteFile.class)));
     }
 
     private class Item {
@@ -269,6 +281,7 @@ public class MySpace extends AppCompatActivity {
             return listItemView;
         }
     }
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleHelper.onAttach(base, "en"));

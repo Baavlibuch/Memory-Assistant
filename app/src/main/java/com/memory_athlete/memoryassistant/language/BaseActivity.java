@@ -50,10 +50,12 @@ public class BaseActivity extends AppCompatActivity
                         editor.apply();
 
                         Toast.makeText(BaseActivity.this, value + " language will be applied", Toast.LENGTH_SHORT).show();
+
+
                         finish();
-                        Intent intent = new Intent(BaseActivity.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                        Intent intent1 = new Intent(BaseActivity.this, MainActivity.class);
+                        intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent1);
                     }
                 }
 
@@ -71,4 +73,5 @@ public class BaseActivity extends AppCompatActivity
     }
 
 }
+
 

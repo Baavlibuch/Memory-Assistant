@@ -159,4 +159,29 @@
     <string name="fake_dates">Tarehe hizi sio halisi</string>
     <string name="faulty_translations">Tafsiri inaweza kuwa na makosa</string>
 
+    <string name="a_list_of_all_the_learning_methods">Orodha ya njia zote za kujifunza</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">Orodha ya chaguzi za kuchangia kama vile usaidizi, hazina, ahadi na mikopo</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">Orodha ya kazi zinazoweza kufanywa ndani ya programu</string>
+    <string name="a_list_of_disciplines_to_practice">Orodha ya taaluma za kufanya mazoezi</string>
+    <string name="privacy_policy_information">Maelezo ya sera ya faragha</string>
+    <string name="item_image">Picha ya kipengee</string>
+    <string name="item_text">Maandishi ya kipengee</string>
+    <string name="heading_of_donation">Kichwa cha mchango</string>
+    <string name="details_of_donation">Maelezo ya mchango</string>
+    <string name="event_occurred">Tukio lilitokea</string>
+    <string name="date_of_event">Tarehe ya tukio</string>
+    <string name="loading_progress_bar">Inapakia upau wa maendeleo</string>
+    <string name="practice_level">Kiwango cha mazoezi</string>
+    <string name="todo">YOTE</string>
+    <string name="sliding_tabs">Vichupo vya kuteleza</string>
+    <string name="view_pager">Tazama Kipeja</string>
+    <string name="horizontal_scroll">kitabu cha mlalo</string>
+    <string name="card_view">Mwonekano wa Kadi</string>
+    <string name="walkthrough_viewpager">Walkthrough Viewpager</string>
+    <string name="language_spinner">Lugha Spinner</string>
+    <string name="choose_your_language">Chagua lugha yako</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">Orodha ya wachangiaji wote katika kutengeneza programu</string>
+
+
+
 </resources>

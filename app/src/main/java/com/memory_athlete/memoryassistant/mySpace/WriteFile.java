@@ -39,7 +39,8 @@ public class WriteFile extends AppCompatActivity {
     boolean deleted = false;
     EditText searchEditText;
     EditText mySpaceEditText;
-    int searchIndex;                                    // index in string to start searching from
+    int searchIndex;// index in string to start searching from
+    boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class WriteFile extends AppCompatActivity {
         Helper.theme(this, WriteFile.this);
         setContentView(R.layout.activity_write_file);
         String header = intent.getStringExtra("mHeader");
+
         if (header == null) header = "New";
         else oldName = header;
         //header = header.substring(0, header.length() - 4);
@@ -70,7 +72,11 @@ public class WriteFile extends AppCompatActivity {
                     text.append('\n');
                 }
                 br.close();
+
                 mySpaceEditText.setText(text);
+
+
+
                 //findViewById(R.id.saveFAB).setVisibility(View.VISIBLE);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -124,6 +130,7 @@ public class WriteFile extends AppCompatActivity {
                 finish();
                 return !file.exists() || file.delete();
             case R.id.dont_save:
+                flag = true;
                 NavUtils.navigateUpFromSameTask(this);
                 break;
             case android.R.id.home:
@@ -139,6 +146,9 @@ public class WriteFile extends AppCompatActivity {
             searchEditText.setVisibility(View.GONE);
             return;
         }
+        if(flag){
+            super.onBackPressed();
+        }
         // save() returns false if save was rejected to notify the user at most once.
         if (save()) super.onBackPressed();
     }
@@ -146,11 +156,15 @@ public class WriteFile extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        if(flag){
+            return;
+        }
         if (!deleted) save();
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public boolean save() {
+
         String string = mySpaceEditText.getText().toString();
         String fname = ((EditText) findViewById(R.id.f_name)).getText().toString();
         if (fname.length() == 0 && string.length() == 0) {
@@ -180,7 +194,7 @@ public class WriteFile extends AppCompatActivity {
                 from.renameTo(to);
             }
         }
-
+        String f_head = fname;
         fname = path + File.separator + fname + ".txt";
         Timber.v("fname = %s", fname);
         if (!Helper.mayAccessStorage(this)) {
@@ -204,9 +218,10 @@ public class WriteFile extends AppCompatActivity {
         }
         if (Helper.makeDirectory(dirPath, getApplicationContext())) {
             try {
-                FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                outputStream.write(string.getBytes());
-                outputStream.close();
+
+                    FileOutputStream outputStream = new FileOutputStream(new File(fname));
+                    outputStream.write(string.getBytes());
+                    outputStream.close();
 
                 SharedPreferences.Editor editor = PreferenceManager
                         .getDefaultSharedPreferences(this).edit();
@@ -214,12 +229,13 @@ public class WriteFile extends AppCompatActivity {
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
 
-                //Data input = new Data.Builder().putString("fpath",fname).build();
+                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+
                 ReminderUtils.mySpaceReminder(this, fname);
 
             } catch (Exception e) {
                 Timber.e(e);
-                Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), R.string.try_again, Toast.LENGTH_SHORT).show();
             }
         }
         Timber.v("fileName = %s", path);
@@ -267,6 +283,8 @@ public class WriteFile extends AppCompatActivity {
         if (!search(stringToSearch))
             searchEditText.requestFocus();
     }
+
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(LocaleHelper.onAttach(base, "en"));

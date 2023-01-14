@@ -160,4 +160,29 @@
     <string name="saved">Kayıtlı</string>
     <string name="wait">Lütfen bekle</string>
 
+    <string name="a_list_of_all_the_learning_methods">Tüm öğrenme yöntemlerinin bir listesi</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">Destek, fon, taahhüt ve krediler gibi katkıda bulunma seçeneklerinin listesi</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">Uygulama içinde gerçekleştirilebilecek görevlerin listesi</string>
+    <string name="a_list_of_disciplines_to_practice">Uygulamak için disiplinlerin bir listesi</string>
+    <string name="privacy_policy_information">Gizlilik politikası bilgileri</string>
+    <string name="item_image">Öğe resmi</string>
+    <string name="item_text">Öğe metni</string>
+    <string name="heading_of_donation">bağış başlığı</string>
+    <string name="details_of_donation">Bağış detayları</string>
+    <string name="event_occurred">Olay meydana geldi</string>
+    <string name="date_of_event">Etkinlik tarihi</string>
+    <string name="loading_progress_bar">İlerleme çubuğu yükleniyor</string>
+    <string name="practice_level">Uygulama seviyesi</string>
+    <string name="todo">TÜM</string>
+    <string name="sliding_tabs">Kayan sekmeler</string>
+    <string name="view_pager">Çağrı Cihazını Görüntüle</string>
+    <string name="horizontal_scroll">yatay kaydırma</string>
+    <string name="card_view">Kart Görünümü</string>
+    <string name="walkthrough_viewpager">İlerleme Görüntüleme Çağrı Cihazı</string>
+    <string name="language_spinner">Dil Çevirici</string>
+    <string name="choose_your_language">Dilinizi seçin</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">Uygulamayı oluşturan tüm katkıda bulunanların listesi</string>
+
+
+
 </resources>

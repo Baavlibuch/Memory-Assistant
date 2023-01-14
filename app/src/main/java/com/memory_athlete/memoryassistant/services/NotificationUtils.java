@@ -6,8 +6,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import androidx.preference.PreferenceManager;
+import android.os.Build;
+
 import androidx.core.app.NotificationCompat;
+import androidx.preference.PreferenceManager;
 
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.main.MainActivity;
@@ -30,10 +32,20 @@ public class NotificationUtils {
     private static final long WEEK = DAY * 7;
     private static final long MONTH = WEEK * 4;
 
+
     private static PendingIntent contentIntent(Context context) {
         Intent startActivityIntent = new Intent(context, MainActivity.class);
-        return PendingIntent.getActivity(context, PERIODIC_REMINDER_PENDING_INTENT_ID, startActivityIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+//        return PendingIntent.getActivity(context, PERIODIC_REMINDER_PENDING_INTENT_ID, startActivityIntent,
+//                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return PendingIntent.getActivity(context, PERIODIC_REMINDER_PENDING_INTENT_ID, startActivityIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        }else {
+            return PendingIntent.getActivity(context, PERIODIC_REMINDER_PENDING_INTENT_ID, startActivityIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+        }
     }
 
     private static void createChannel(Context context, String channelId){

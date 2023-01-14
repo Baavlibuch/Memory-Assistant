@@ -1,5 +1,6 @@
 app/build
 app/src/main/java/com/memory_athlete/memoryassistant/inAppBilling/Encryption.java
+app/src/main/java/com/memory_athlete/memoryassistant/Encryption.java
 app/google-services.json
 app/mapping.txt
 .signing/
@@ -7,6 +8,7 @@ app/mapping.txt
 app/fabric.properties
 gradle.properties
 resources/
+
 
 #built application files
 *.apk

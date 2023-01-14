@@ -159,4 +159,28 @@
     <string name="fake_dates">Tato data nejsou skutečná</string>
     <string name="faulty_translations">Překlady mohou být vadné</string>
 
+    <string name="a_list_of_all_the_learning_methods">Seznam všech metod učení</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">Seznam možností přispívání, jako je podpora, fond, závazek a kredity</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">Seznam úkolů, které lze v aplikaci provést</string>
+    <string name="a_list_of_disciplines_to_practice">Seznam oborů k procvičování</string>
+    <string name="privacy_policy_information">Informace o zásadách ochrany osobních údajů</string>
+    <string name="item_image">Obrázek položky</string>
+    <string name="item_text">Text položky</string>
+    <string name="heading_of_donation">Nadpis darování</string>
+    <string name="details_of_donation">Podrobnosti o darování</string>
+    <string name="event_occurred">K události došlo</string>
+    <string name="date_of_event">Datum konání</string>
+    <string name="loading_progress_bar">Ukazatel průběhu načítání</string>
+    <string name="practice_level">Úroveň praxe</string>
+    <string name="todo">VŠECHNO</string>
+    <string name="sliding_tabs">Posuvné záložky</string>
+    <string name="view_pager">Zobrazit Pager</string>
+    <string name="horizontal_scroll">horizontální rolování</string>
+    <string name="card_view">Zobrazení karty</string>
+    <string name="walkthrough_viewpager">Návod na prohlížení</string>
+    <string name="language_spinner">Language Spinner</string>
+    <string name="choose_your_language">Vyberte si jazyk</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">Seznam všech přispěvatelů při vytváření aplikace</string>
+
+
 </resources>

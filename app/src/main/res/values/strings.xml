@@ -179,26 +179,27 @@
     <string name="faulty_translations">Translations might be faulty</string>
 
     <!--contentDescription-->
-    <string name="a_list_of_all_the_learning_methods" translatable="false">A list of all the learning methods</string>
-    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits" translatable="false">A list of contributing options like support, fund, commit and credits</string>
-    <string name="list_of_tasks_that_can_be_performed_with_the_app" translatable="false">List of tasks that can be performed within the app</string>
-    <string name="a_list_of_disciplines_to_practice" translatable="false">A list of disciplines to practice</string>
-    <string name="privacy_policy_information" translatable="false">Privacy policy information</string>
-    <string name="item_image" translatable="false">Item image</string>
-    <string name="item_text" translatable="false">Item text</string>
-    <string name="heading_of_donation" translatable="false">Heading of donation</string>
-    <string name="details_of_donation" translatable="false">Details of donation</string>
-    <string name="event_occurred" translatable="false">Event occurred</string>
-    <string name="date_of_event" translatable="false">Date of event</string>
-    <string name="loading_progress_bar" translatable="false">Loading progress bar</string>
-    <string name="practice_level" translatable="false">Practice level</string>
-    <string name="todo" translatable="false">TODO</string>
-    <string name="sliding_tabs" translatable="false">Sliding tabs</string>
-    <string name="view_pager" translatable="false">View Pager</string>
-    <string name="horizontal_scroll" translatable="false">horizontal scroll</string>
-    <string name="card_view" translatable="false">Card View</string>
-    <string name="walkthrough_viewpager" translatable="false">Walkthrough Viewpager</string>
-    <string name="language_spinner" translatable="false">Language Spinner</string>
-    <string name="choose_your_language" translatable="false">Choose your language</string>
+    <string name="a_list_of_all_the_learning_methods" >A list of all the learning methods</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits" >A list of contributing options like support, fund, commit and credits</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app" >List of tasks that can be performed within the app</string>
+    <string name="a_list_of_disciplines_to_practice" >A list of disciplines to practice</string>
+    <string name="privacy_policy_information" >Privacy policy information</string>
+    <string name="item_image" >Item image</string>
+    <string name="item_text" >Item text</string>
+    <string name="heading_of_donation" >Heading of donation</string>
+    <string name="details_of_donation" >Details of donation</string>
+    <string name="event_occurred" >Event occurred</string>
+    <string name="date_of_event" >Date of event</string>
+    <string name="loading_progress_bar" >Loading progress bar</string>
+    <string name="practice_level" >Practice level</string>
+    <string name="todo" >TODO</string>
+    <string name="sliding_tabs" >Sliding tabs</string>
+    <string name="view_pager" >View Pager</string>
+    <string name="horizontal_scroll" >horizontal scroll</string>
+    <string name="card_view" >Card View</string>
+    <string name="walkthrough_viewpager" >Walkthrough Viewpager</string>
+    <string name="language_spinner" >Language Spinner</string>
+    <string name="choose_your_language" >Choose your language</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">A list of all the contributors in making the app</string>
 
 </resources>

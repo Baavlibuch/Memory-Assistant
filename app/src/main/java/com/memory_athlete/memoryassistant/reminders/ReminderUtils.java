@@ -2,8 +2,10 @@ package com.memory_athlete.memoryassistant.reminders;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.preference.PreferenceManager;
 import androidx.work.BackoffPolicy;
 import androidx.work.Constraints;
@@ -39,6 +41,7 @@ public class ReminderUtils {
     private static final String REMINDER_JOB_TAG = "practice_time_";
 
     //@DebugLog
+    @RequiresApi(api = Build.VERSION_CODES.O)
     synchronized public static void scheduleReminder(@NonNull final Context context) {
         int diff = next(context) * 60, diff1;
         if (diff < 0) diff += DAY;
@@ -61,7 +64,7 @@ public class ReminderUtils {
             }
 
             //dispatcher.cancel(REMINDER_JOB_TAG + i);
-            WorkManager.getInstance(context).cancelUniqueWork(REMINDER_JOB_TAG + i);
+            WorkManager.getInstance(context).cancelUniqueWork(REMINDER_JOB_TAG+i);
 
 //            Job constraintReminderJob = dispatcher.newJobBuilder()
 //                    .setService(ReminderJobService.class)
@@ -93,12 +96,13 @@ public class ReminderUtils {
                             // Sets the input data for the ListenableWorker
                             .setInputData(input)
                             // If you want to delay the start of work by 60 seconds
-                            .setInitialDelay(5, TimeUnit.SECONDS)
+                            .setInitialDelay(diff1, TimeUnit.SECONDS)
                             // Set a backoff criteria to be used when retry-ing
-                            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL,10, TimeUnit.SECONDS)
+                            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL,3, TimeUnit.SECONDS)
                             //.setBackoffCriteria(BackoffCriteria.EXPONENTIAL, 30000, TimeUnit.MILLISECONDS)
                             // Set additional constraints
                             .setConstraints(constraints)
+                            //.addTag(REMINDER_JOB_TAG+i)
                             .build();
 
             //OneTimeWorkRequest workRequest = null; // a WorkRequest;
@@ -106,7 +110,7 @@ public class ReminderUtils {
                     // Use ExistingWorkPolicy.REPLACE to cancel and delete any existing pending
                     // (uncompleted) work with the same unique name. Then, insert the newly-specified
                     // work.
-                    .enqueueUniqueWork(REMINDER_JOB_TAG, ExistingWorkPolicy.KEEP, request);
+                    .enqueueUniqueWork(REMINDER_JOB_TAG+i, ExistingWorkPolicy.REPLACE, request);
                     //.enqueue(request);
 
 
@@ -199,12 +203,13 @@ public class ReminderUtils {
                             // Sets the input data for the ListenableWorker
                             .setInputData(input)
                             // If you want to delay the start of work by 60 seconds
-                            .setInitialDelay(5, TimeUnit.SECONDS)
+                            .setInitialDelay(diff1, TimeUnit.SECONDS)
                             // Set a backoff criteria to be used when retry-ing
-                            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL,10, TimeUnit.SECONDS)
+                            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL,3, TimeUnit.SECONDS)
                             //.setBackoffCriteria(BackoffCriteria.EXPONENTIAL, 30000, TimeUnit.MILLISECONDS)
                             // Set additional constraints
                             .setConstraints(constraints)
+                            //.addTag(fname+i)
                             .build();
 
             //OneTimeWorkRequest workRequest = null; // a WorkRequest;
@@ -212,7 +217,7 @@ public class ReminderUtils {
                             // Use ExistingWorkPolicy.REPLACE to cancel and delete any existing pending
                             // (uncompleted) work with the same unique name. Then, insert the newly-specified
                             // work.
-                            .enqueueUniqueWork(fname, ExistingWorkPolicy.KEEP, request);
+                            .enqueueUniqueWork(fname+i, ExistingWorkPolicy.REPLACE, request);
                             //.enqueue(request);
 
 

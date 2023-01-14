@@ -2,7 +2,6 @@ buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
     }
-
     dependencies {
         classpath 'io.fabric.tools:gradle:1.30.0'
     }
@@ -10,51 +9,50 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'kotlin-android'
-//apply plugin: 'io.fabric'
-//apply plugin: 'com.jakewharton.hugo'
 
-def keystorePropertiesFile = rootProject.file("C:\\Users\\keystore.properties")
+def keystorePropertiesFile = rootProject.file("C:\\Users\\Memory - new key\\keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-
 android {
-
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
     signingConfigs {
         config {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
+            storeFile file('C:\\Users\\Memory - new key\\android.jks')
             storePassword keystoreProperties['storePassword']
         }
-
     }
     compileSdkVersion 32
-    buildToolsVersion '28.0.3'
+//    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.memory_athelte.memoryassistant"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 153
-        versionName "1.8.2"
+        versionCode 170
+        versionCode 176
+
+        versionName "2.0.0"
+        versionName "2.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-        //resConfigs "en", "en-GB", "fr", "ja", "zh-Hans-MO", "zh-Hant-MO"
-
     }
-
     buildTypes {
         debug{
-            //minifyEnabled true
+            minifyEnabled true
         }
         release {
-            //minifyEnabled true
+            minifyEnabled true
             //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
-            //signingConfig signingConfigs.config
+            //signingConfig signingConfigs.release
         }
     }
-
     productFlavors {
     }
     aaptOptions {
@@ -64,13 +62,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
-
 dependencies {
-    implementation 'com.google.android.gms:play-services-ads-lite:21.2.0'
+    implementation 'com.google.firebase:firebase-database:20.1.0'
     def work_version = "2.7.1"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.google.android.material:material:1.1.0'
@@ -79,7 +78,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     implementation 'com.google.firebase:firebase-appindexing:20.0.0'
-    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+//    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
     implementation 'com.google.firebase:firebase-core:21.1.1'
     implementation 'com.google.firebase:firebase-perf:20.2.0'
     implementation 'org.solovyev.android:checkout:1.2.2'
@@ -89,34 +88,34 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.work:work-runtime:$work_version"
-    //implementation "androidx.preference:preference-ktx:1.2.0"
-    //implementation 'com.crashlytics.sdk.android:crashlytics:17.2.2'
+    implementation "androidx.concurrent:concurrent-futures:1.1.0"
+    implementation 'com.google.firebase:firebase-storage:20.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
 
-//    implementation 'com.android.billingclient:billing:5.0.0'
-//    implementation 'com.google.guava:guava:24.1-jre'
-//    implementation 'com.google.guava:guava:27.0.1-android'
+    implementation 'com.android.billingclient:billing:5.0.0'
+    implementation 'com.google.guava:guava:24.1-jre'
+    implementation 'com.google.guava:guava:27.0.1-android'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.google.android.gms:play-services-ads:21.3.0'
+
     testImplementation 'junit:junit:4.12'
-
     annotationProcessor 'com.jakewharton:butterknife-compiler:' + butterknifeVersion
-
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-crashlytics'
-
+//    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+    implementation 'com.google.android.gms:play-services-safetynet'
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
     //noinspection GradleCompatible.
     androidTestImplementation 'androidx.test:rules:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:' + espressoVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + espressoVersion
-
 }
 repositories {
     mavenCentral()
     //maven { url 'https://maven.fabric.io/public' }
 }
-
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+

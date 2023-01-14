@@ -160,4 +160,30 @@
     <string name="fake_dates">Ang mga petsa na ito ay hindi totoo</string>
     <string name="faulty_translations">Ang mga pagsalin ay maaaring mali</string>
 
+    <string name="a_list_of_all_the_learning_methods">Isang listahan ng lahat ng paraan ng pag-aaral</string>
+    <string name="a_list_of_contributing_options_like_support_fund_commit_and_credits">Isang listahan ng mga opsyon sa pag-aambag tulad ng suporta, pondo, commit at mga kredito</string>
+    <string name="list_of_tasks_that_can_be_performed_with_the_app">Listahan ng mga gawain na maaaring gawin sa loob ng app</string>
+    <string name="a_list_of_disciplines_to_practice">Isang listahan ng mga disiplina sa pagsasanay</string>
+    <string name="privacy_policy_information">Impormasyon sa patakaran sa privacy</string>
+    <string name="item_image">Larawan ng item</string>
+    <string name="item_text">Text ng item</string>
+    <string name="heading_of_donation">Pamagat ng donasyon</string>
+    <string name="details_of_donation">Mga detalye ng donasyon</string>
+    <string name="event_occurred">Naganap ang kaganapan</string>
+    <string name="date_of_event">Petsa ng kaganapan</string>
+    <string name="loading_progress_bar">Nilo-load ang progress bar</string>
+    <string name="practice_level">Antas ng pagsasanay</string>
+    <string name="todo">LAHAT</string>
+    <string name="sliding_tabs">Mga sliding tab</string>
+    <string name="view_pager">Tingnan ang Pager</string>
+    <string name="horizontal_scroll">pahalang na scroll</string>
+    <string name="card_view">Card View</string>
+    <string name="walkthrough_viewpager">Walkthrough Viewpager</string>
+    <string name="language_spinner">Wika Spinner</string>
+    <string name="choose_your_language">Piliin ang iyong wika</string>
+    <string name="a_list_of_all_the_contributors_in_making_the_app">Isang listahan ng lahat ng nag-ambag sa paggawa ng app</string>
+
+
+
+
 </resources>

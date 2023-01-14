@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.util.AttributeSet;
+import android.widget.Toast;
 
 import androidx.preference.Preference;
 
@@ -51,6 +52,8 @@ public class ClearPracticePreference extends Preference {
         };
         for (File file : arr)
             if (file.exists()) deleteRecursive(file);
+
+        Toast.makeText(getContext(),"Cleared all practice files", Toast.LENGTH_SHORT).show();
     }
 
     private void deleteRecursive(File fileOrDirectory) {

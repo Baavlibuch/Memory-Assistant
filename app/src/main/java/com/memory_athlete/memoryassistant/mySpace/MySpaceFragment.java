@@ -34,6 +34,7 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.memory_athlete.memoryassistant.Encryption;
 import com.memory_athlete.memoryassistant.Helper;
 import com.memory_athlete.memoryassistant.R;
 import com.memory_athlete.memoryassistant.reminders.ReminderUtils;
@@ -207,7 +208,7 @@ public class MySpaceFragment extends Fragment {
 
                 //Directory of practice - external storage
                 int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         EXTERNAL_STORAGE_PERMISSION_CODE);
                 File folder = getActivity().getFilesDir();
                 dir = new File(folder + File.separator + getString(R.string.my_space) + File.separator + item.mPath);
@@ -232,7 +233,7 @@ public class MySpaceFragment extends Fragment {
 
                 //Directory of practice - external storage
                 int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         EXTERNAL_STORAGE_PERMISSION_CODE);
                 File folder = getActivity().getFilesDir();
                 fileName = folder + File.separator + getString(R.string.my_space) + File.separator + title;
@@ -318,7 +319,7 @@ public class MySpaceFragment extends Fragment {
 
             //Directory of practice - external storage
             int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+            ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     EXTERNAL_STORAGE_PERMISSION_CODE);
             File folder = getActivity().getFilesDir();
             fileName = folder + File.separator + MySpaceFragment.this.getString(R.string.my_space) + File.separator + title;;
@@ -359,7 +360,9 @@ public class MySpaceFragment extends Fragment {
                     text.append('\n');
                 }
                 br.close();
-                mySpaceEditText.setText(text);
+
+                //Toast.makeText(getActivity(), path + File.separator + header + ".txt", Toast.LENGTH_SHORT).show();
+
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();
@@ -426,11 +429,16 @@ public class MySpaceFragment extends Fragment {
             return false;
         }
 
+        String f_head = fname;
         fname = fileName + File.separator + fname + ".txt";
         if (Helper.makeDirectory(dirPath, getContext())) {
             try {
+
+                //encrypt the file
+                String string1 = Encryption.encrypt(string, "anuja");
+
                 FileOutputStream outputStream = new FileOutputStream(new File(fname));
-                outputStream.write(string.getBytes());
+                outputStream.write(string1.getBytes());
                 outputStream.close();
 
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(
@@ -438,7 +446,13 @@ public class MySpaceFragment extends Fragment {
                 editor.putLong(fname, System.currentTimeMillis());
                 Timber.v(fname + "made at " + System.currentTimeMillis());
                 editor.apply();
+
+                //firebase
+                //firebase storage
+
                 ReminderUtils.mySpaceReminder(activity, fname);
+
+
             } catch (Exception e) {
                 Timber.e(e);
                 Toast.makeText(getActivity(), R.string.try_again, Toast.LENGTH_SHORT).show();

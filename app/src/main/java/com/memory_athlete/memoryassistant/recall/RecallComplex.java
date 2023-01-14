@@ -2,8 +2,6 @@ package com.memory_athlete.memoryassistant.recall;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -19,7 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.memory_athlete.memoryassistant.language.LocaleHelper;
+import com.memory_athlete.memoryassistant.AsyncTaskExecutorService;
 import com.memory_athlete.memoryassistant.R;
 
 import java.io.File;
@@ -37,7 +35,9 @@ public class RecallComplex extends RecallSimple {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         (new LoadAnswersAsyncTask()).execute();
+
         responseFormat = ResponseFormat.DATE_RESPONSE_FORMAT;
         recallList = new ArrayList<>();
     }
@@ -197,8 +197,9 @@ public class RecallComplex extends RecallSimple {
         Timber.v("Recall Reset Complete");
     }
 
-    @SuppressLint("StaticFieldLeak")
-    class LoadAnswersAsyncTask extends AsyncTask<Void, Void, Boolean> {
+
+    protected class LoadAnswersAsyncTask extends AsyncTaskExecutorService<Void, Void, Boolean> {
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -206,7 +207,7 @@ public class RecallComplex extends RecallSimple {
         }
 
         @Override
-        protected Boolean doInBackground(Void... voids) {
+        protected Boolean doInBackground(Void voids) {
             try {
                 getAnswers();
                 return false;
@@ -216,9 +217,20 @@ public class RecallComplex extends RecallSimple {
             }
         }
 
+//        @Override
+//        protected Boolean doInBackground(Void... voids) {
+//            try {
+//                getAnswers();
+//                return false;
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//                return true;
+//            }
+//        }
+
         @Override
         protected void onPostExecute(Boolean error) {
-            super.onPostExecute(error);
+            //super.onPostExecute(error);
             if (error) {
                 Toast.makeText(getApplicationContext(), "Please try again", Toast.LENGTH_SHORT).show();
                 finish();
@@ -227,6 +239,7 @@ public class RecallComplex extends RecallSimple {
             setResponseLayout(false);
         }
     }
+
 
     class ResponseAdapter extends ArrayAdapter<String> {
 
@@ -314,10 +327,6 @@ public class RecallComplex extends RecallSimple {
         }
     }
 
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
-    }
 }
 
 //TODO minimise response text
